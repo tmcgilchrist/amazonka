@@ -123,7 +123,7 @@ instance ToQuery ModifyRule where
 -- | Contains the output of ModifyRules.
 --
 -- /See:/ 'modifyRuleResponse' smart constructor.
-data ModifyRuleResponse = ModifyRuleResponse'
+data ModifyRuleResponse a = ModifyRuleResponse'
     { _mrrsRules          :: !(Maybe [Rule])
     , _mrrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data ModifyRuleResponse = ModifyRuleResponse'
 -- * 'mrrsResponseStatus'
 modifyRuleResponse
     :: Int -- ^ 'mrrsResponseStatus'
-    -> ModifyRuleResponse
+    -> ModifyRuleResponse (a)
 modifyRuleResponse pResponseStatus_ =
     ModifyRuleResponse'
     { _mrrsRules = Nothing
@@ -145,11 +145,11 @@ modifyRuleResponse pResponseStatus_ =
     }
 
 -- | Information about the rule.
-mrrsRules :: Lens' ModifyRuleResponse [Rule]
+mrrsRules :: Lens' (ModifyRuleResponse (a)) [Rule]
 mrrsRules = lens _mrrsRules (\ s a -> s{_mrrsRules = a}) . _Default . _Coerce;
 
 -- | The response status code.
-mrrsResponseStatus :: Lens' ModifyRuleResponse Int
+mrrsResponseStatus :: Lens' (ModifyRuleResponse (a)) Int
 mrrsResponseStatus = lens _mrrsResponseStatus (\ s a -> s{_mrrsResponseStatus = a});
 
 instance NFData ModifyRuleResponse

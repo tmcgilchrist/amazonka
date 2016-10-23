@@ -109,14 +109,14 @@ instance ToQuery SetVaultAccessPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'setVaultAccessPolicyResponse' smart constructor.
-data SetVaultAccessPolicyResponse =
+data SetVaultAccessPolicyResponse a =
     SetVaultAccessPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetVaultAccessPolicyResponse' with the minimum fields required to make a request.
 --
 setVaultAccessPolicyResponse
-    :: SetVaultAccessPolicyResponse
+    :: SetVaultAccessPolicyResponse (a)
 setVaultAccessPolicyResponse = SetVaultAccessPolicyResponse'
 
 instance NFData SetVaultAccessPolicyResponse

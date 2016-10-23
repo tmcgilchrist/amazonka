@@ -128,14 +128,14 @@ instance ToQuery EnableMetricsCollection where
                "Granularity" =: _emcGranularity]
 
 -- | /See:/ 'enableMetricsCollectionResponse' smart constructor.
-data EnableMetricsCollectionResponse =
+data EnableMetricsCollectionResponse a =
     EnableMetricsCollectionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'EnableMetricsCollectionResponse' with the minimum fields required to make a request.
 --
 enableMetricsCollectionResponse
-    :: EnableMetricsCollectionResponse
+    :: EnableMetricsCollectionResponse (a)
 enableMetricsCollectionResponse = EnableMetricsCollectionResponse'
 
 instance NFData EnableMetricsCollectionResponse

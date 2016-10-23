@@ -92,14 +92,14 @@ instance ToQuery DeleteLogGroup where
         toQuery = const mempty
 
 -- | /See:/ 'deleteLogGroupResponse' smart constructor.
-data DeleteLogGroupResponse =
+data DeleteLogGroupResponse a =
     DeleteLogGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteLogGroupResponse' with the minimum fields required to make a request.
 --
 deleteLogGroupResponse
-    :: DeleteLogGroupResponse
+    :: DeleteLogGroupResponse (a)
 deleteLogGroupResponse = DeleteLogGroupResponse'
 
 instance NFData DeleteLogGroupResponse

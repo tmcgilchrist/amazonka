@@ -85,7 +85,7 @@ instance ToQuery DescribeScalingProcessTypes where
 -- | Contains the output of DescribeScalingProcessTypes.
 --
 -- /See:/ 'describeScalingProcessTypesResponse' smart constructor.
-data DescribeScalingProcessTypesResponse = DescribeScalingProcessTypesResponse'
+data DescribeScalingProcessTypesResponse a = DescribeScalingProcessTypesResponse'
     { _dsptrsProcesses      :: !(Maybe [ProcessType])
     , _dsptrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -99,7 +99,7 @@ data DescribeScalingProcessTypesResponse = DescribeScalingProcessTypesResponse'
 -- * 'dsptrsResponseStatus'
 describeScalingProcessTypesResponse
     :: Int -- ^ 'dsptrsResponseStatus'
-    -> DescribeScalingProcessTypesResponse
+    -> DescribeScalingProcessTypesResponse (a)
 describeScalingProcessTypesResponse pResponseStatus_ =
     DescribeScalingProcessTypesResponse'
     { _dsptrsProcesses = Nothing
@@ -107,11 +107,11 @@ describeScalingProcessTypesResponse pResponseStatus_ =
     }
 
 -- | The names of the process types.
-dsptrsProcesses :: Lens' DescribeScalingProcessTypesResponse [ProcessType]
+dsptrsProcesses :: Lens' (DescribeScalingProcessTypesResponse (a)) [ProcessType]
 dsptrsProcesses = lens _dsptrsProcesses (\ s a -> s{_dsptrsProcesses = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsptrsResponseStatus :: Lens' DescribeScalingProcessTypesResponse Int
+dsptrsResponseStatus :: Lens' (DescribeScalingProcessTypesResponse (a)) Int
 dsptrsResponseStatus = lens _dsptrsResponseStatus (\ s a -> s{_dsptrsResponseStatus = a});
 
 instance NFData DescribeScalingProcessTypesResponse

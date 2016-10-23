@@ -107,7 +107,7 @@ instance ToQuery StartGateway where
 -- | A JSON object containing the of the gateway that was restarted.
 --
 -- /See:/ 'startGatewayResponse' smart constructor.
-data StartGatewayResponse = StartGatewayResponse'
+data StartGatewayResponse a = StartGatewayResponse'
     { _sgrsGatewayARN     :: !(Maybe Text)
     , _sgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data StartGatewayResponse = StartGatewayResponse'
 -- * 'sgrsResponseStatus'
 startGatewayResponse
     :: Int -- ^ 'sgrsResponseStatus'
-    -> StartGatewayResponse
+    -> StartGatewayResponse (a)
 startGatewayResponse pResponseStatus_ =
     StartGatewayResponse'
     { _sgrsGatewayARN = Nothing
@@ -129,11 +129,11 @@ startGatewayResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-sgrsGatewayARN :: Lens' StartGatewayResponse (Maybe Text)
+sgrsGatewayARN :: Lens' (StartGatewayResponse (a)) (Maybe Text)
 sgrsGatewayARN = lens _sgrsGatewayARN (\ s a -> s{_sgrsGatewayARN = a});
 
 -- | The response status code.
-sgrsResponseStatus :: Lens' StartGatewayResponse Int
+sgrsResponseStatus :: Lens' (StartGatewayResponse (a)) Int
 sgrsResponseStatus = lens _sgrsResponseStatus (\ s a -> s{_sgrsResponseStatus = a});
 
 instance NFData StartGatewayResponse

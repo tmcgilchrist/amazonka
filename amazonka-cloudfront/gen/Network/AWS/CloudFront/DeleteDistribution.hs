@@ -94,14 +94,14 @@ instance ToQuery DeleteDistribution where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDistributionResponse' smart constructor.
-data DeleteDistributionResponse =
+data DeleteDistributionResponse a =
     DeleteDistributionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteDistributionResponse' with the minimum fields required to make a request.
 --
 deleteDistributionResponse
-    :: DeleteDistributionResponse
+    :: DeleteDistributionResponse (a)
 deleteDistributionResponse = DeleteDistributionResponse'
 
 instance NFData DeleteDistributionResponse

@@ -232,7 +232,7 @@ instance ToQuery RegisterImage where
 -- | Contains the output of RegisterImage.
 --
 -- /See:/ 'registerImageResponse' smart constructor.
-data RegisterImageResponse = RegisterImageResponse'
+data RegisterImageResponse a = RegisterImageResponse'
     { _rirsImageId        :: !(Maybe Text)
     , _rirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -246,7 +246,7 @@ data RegisterImageResponse = RegisterImageResponse'
 -- * 'rirsResponseStatus'
 registerImageResponse
     :: Int -- ^ 'rirsResponseStatus'
-    -> RegisterImageResponse
+    -> RegisterImageResponse (a)
 registerImageResponse pResponseStatus_ =
     RegisterImageResponse'
     { _rirsImageId = Nothing
@@ -254,11 +254,11 @@ registerImageResponse pResponseStatus_ =
     }
 
 -- | The ID of the newly registered AMI.
-rirsImageId :: Lens' RegisterImageResponse (Maybe Text)
+rirsImageId :: Lens' (RegisterImageResponse (a)) (Maybe Text)
 rirsImageId = lens _rirsImageId (\ s a -> s{_rirsImageId = a});
 
 -- | The response status code.
-rirsResponseStatus :: Lens' RegisterImageResponse Int
+rirsResponseStatus :: Lens' (RegisterImageResponse (a)) Int
 rirsResponseStatus = lens _rirsResponseStatus (\ s a -> s{_rirsResponseStatus = a});
 
 instance NFData RegisterImageResponse

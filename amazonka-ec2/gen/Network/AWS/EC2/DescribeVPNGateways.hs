@@ -141,7 +141,7 @@ instance ToQuery DescribeVPNGateways where
 -- | Contains the output of DescribeVpnGateways.
 --
 -- /See:/ 'describeVPNGatewaysResponse' smart constructor.
-data DescribeVPNGatewaysResponse = DescribeVPNGatewaysResponse'
+data DescribeVPNGatewaysResponse a = DescribeVPNGatewaysResponse'
     { _dvgrsVPNGateways    :: !(Maybe [VPNGateway])
     , _dvgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -155,7 +155,7 @@ data DescribeVPNGatewaysResponse = DescribeVPNGatewaysResponse'
 -- * 'dvgrsResponseStatus'
 describeVPNGatewaysResponse
     :: Int -- ^ 'dvgrsResponseStatus'
-    -> DescribeVPNGatewaysResponse
+    -> DescribeVPNGatewaysResponse (a)
 describeVPNGatewaysResponse pResponseStatus_ =
     DescribeVPNGatewaysResponse'
     { _dvgrsVPNGateways = Nothing
@@ -163,11 +163,11 @@ describeVPNGatewaysResponse pResponseStatus_ =
     }
 
 -- | Information about one or more virtual private gateways.
-dvgrsVPNGateways :: Lens' DescribeVPNGatewaysResponse [VPNGateway]
+dvgrsVPNGateways :: Lens' (DescribeVPNGatewaysResponse (a)) [VPNGateway]
 dvgrsVPNGateways = lens _dvgrsVPNGateways (\ s a -> s{_dvgrsVPNGateways = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvgrsResponseStatus :: Lens' DescribeVPNGatewaysResponse Int
+dvgrsResponseStatus :: Lens' (DescribeVPNGatewaysResponse (a)) Int
 dvgrsResponseStatus = lens _dvgrsResponseStatus (\ s a -> s{_dvgrsResponseStatus = a});
 
 instance NFData DescribeVPNGatewaysResponse

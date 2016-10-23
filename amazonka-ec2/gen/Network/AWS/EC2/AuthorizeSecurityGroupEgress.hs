@@ -177,14 +177,14 @@ instance ToQuery AuthorizeSecurityGroupEgress where
                "DryRun" =: _asgeDryRun, "GroupId" =: _asgeGroupId]
 
 -- | /See:/ 'authorizeSecurityGroupEgressResponse' smart constructor.
-data AuthorizeSecurityGroupEgressResponse =
+data AuthorizeSecurityGroupEgressResponse a =
     AuthorizeSecurityGroupEgressResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AuthorizeSecurityGroupEgressResponse' with the minimum fields required to make a request.
 --
 authorizeSecurityGroupEgressResponse
-    :: AuthorizeSecurityGroupEgressResponse
+    :: AuthorizeSecurityGroupEgressResponse (a)
 authorizeSecurityGroupEgressResponse = AuthorizeSecurityGroupEgressResponse'
 
 instance NFData AuthorizeSecurityGroupEgressResponse

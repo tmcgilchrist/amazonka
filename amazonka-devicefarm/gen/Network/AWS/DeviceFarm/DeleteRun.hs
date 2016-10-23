@@ -101,7 +101,7 @@ instance ToQuery DeleteRun where
 -- | Represents the result of a delete run request.
 --
 -- /See:/ 'deleteRunResponse' smart constructor.
-newtype DeleteRunResponse = DeleteRunResponse'
+newtype DeleteRunResponse a = DeleteRunResponse'
     { _drrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -112,14 +112,14 @@ newtype DeleteRunResponse = DeleteRunResponse'
 -- * 'drrsResponseStatus'
 deleteRunResponse
     :: Int -- ^ 'drrsResponseStatus'
-    -> DeleteRunResponse
+    -> DeleteRunResponse (a)
 deleteRunResponse pResponseStatus_ =
     DeleteRunResponse'
     { _drrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drrsResponseStatus :: Lens' DeleteRunResponse Int
+drrsResponseStatus :: Lens' (DeleteRunResponse (a)) Int
 drrsResponseStatus = lens _drrsResponseStatus (\ s a -> s{_drrsResponseStatus = a});
 
 instance NFData DeleteRunResponse

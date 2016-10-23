@@ -142,7 +142,7 @@ instance ToQuery SetTaskStatus where
 -- | Contains the output of SetTaskStatus.
 --
 -- /See:/ 'setTaskStatusResponse' smart constructor.
-newtype SetTaskStatusResponse = SetTaskStatusResponse'
+newtype SetTaskStatusResponse a = SetTaskStatusResponse'
     { _stsrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -153,14 +153,14 @@ newtype SetTaskStatusResponse = SetTaskStatusResponse'
 -- * 'stsrsResponseStatus'
 setTaskStatusResponse
     :: Int -- ^ 'stsrsResponseStatus'
-    -> SetTaskStatusResponse
+    -> SetTaskStatusResponse (a)
 setTaskStatusResponse pResponseStatus_ =
     SetTaskStatusResponse'
     { _stsrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-stsrsResponseStatus :: Lens' SetTaskStatusResponse Int
+stsrsResponseStatus :: Lens' (SetTaskStatusResponse (a)) Int
 stsrsResponseStatus = lens _stsrsResponseStatus (\ s a -> s{_stsrsResponseStatus = a});
 
 instance NFData SetTaskStatusResponse

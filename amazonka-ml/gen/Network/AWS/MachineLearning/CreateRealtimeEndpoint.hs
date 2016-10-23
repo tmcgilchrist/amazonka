@@ -109,7 +109,7 @@ instance ToQuery CreateRealtimeEndpoint where
 -- The endpoint information includes the URI of the 'MLModel'; that is, the location to send online prediction requests for the specified 'MLModel'.
 --
 -- /See:/ 'createRealtimeEndpointResponse' smart constructor.
-data CreateRealtimeEndpointResponse = CreateRealtimeEndpointResponse'
+data CreateRealtimeEndpointResponse a = CreateRealtimeEndpointResponse'
     { _crersRealtimeEndpointInfo :: !(Maybe RealtimeEndpointInfo)
     , _crersMLModelId            :: !(Maybe Text)
     , _crersResponseStatus       :: !Int
@@ -126,7 +126,7 @@ data CreateRealtimeEndpointResponse = CreateRealtimeEndpointResponse'
 -- * 'crersResponseStatus'
 createRealtimeEndpointResponse
     :: Int -- ^ 'crersResponseStatus'
-    -> CreateRealtimeEndpointResponse
+    -> CreateRealtimeEndpointResponse (a)
 createRealtimeEndpointResponse pResponseStatus_ =
     CreateRealtimeEndpointResponse'
     { _crersRealtimeEndpointInfo = Nothing
@@ -135,15 +135,15 @@ createRealtimeEndpointResponse pResponseStatus_ =
     }
 
 -- | The endpoint information of the 'MLModel'
-crersRealtimeEndpointInfo :: Lens' CreateRealtimeEndpointResponse (Maybe RealtimeEndpointInfo)
+crersRealtimeEndpointInfo :: Lens' (CreateRealtimeEndpointResponse (a)) (Maybe RealtimeEndpointInfo)
 crersRealtimeEndpointInfo = lens _crersRealtimeEndpointInfo (\ s a -> s{_crersRealtimeEndpointInfo = a});
 
 -- | A user-supplied ID that uniquely identifies the 'MLModel'. This value should be identical to the value of the 'MLModelId' in the request.
-crersMLModelId :: Lens' CreateRealtimeEndpointResponse (Maybe Text)
+crersMLModelId :: Lens' (CreateRealtimeEndpointResponse (a)) (Maybe Text)
 crersMLModelId = lens _crersMLModelId (\ s a -> s{_crersMLModelId = a});
 
 -- | The response status code.
-crersResponseStatus :: Lens' CreateRealtimeEndpointResponse Int
+crersResponseStatus :: Lens' (CreateRealtimeEndpointResponse (a)) Int
 crersResponseStatus = lens _crersResponseStatus (\ s a -> s{_crersResponseStatus = a});
 
 instance NFData CreateRealtimeEndpointResponse

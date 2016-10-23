@@ -110,7 +110,7 @@ instance ToQuery DeleteBatchPrediction where
 -- You can use the 'GetBatchPrediction' operation and check the value of the 'Status' parameter to see whether a 'BatchPrediction' is marked as 'DELETED'.
 --
 -- /See:/ 'deleteBatchPredictionResponse' smart constructor.
-data DeleteBatchPredictionResponse = DeleteBatchPredictionResponse'
+data DeleteBatchPredictionResponse a = DeleteBatchPredictionResponse'
     { _dbprsBatchPredictionId :: !(Maybe Text)
     , _dbprsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -124,7 +124,7 @@ data DeleteBatchPredictionResponse = DeleteBatchPredictionResponse'
 -- * 'dbprsResponseStatus'
 deleteBatchPredictionResponse
     :: Int -- ^ 'dbprsResponseStatus'
-    -> DeleteBatchPredictionResponse
+    -> DeleteBatchPredictionResponse (a)
 deleteBatchPredictionResponse pResponseStatus_ =
     DeleteBatchPredictionResponse'
     { _dbprsBatchPredictionId = Nothing
@@ -132,11 +132,11 @@ deleteBatchPredictionResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the 'BatchPrediction'. This value should be identical to the value of the 'BatchPredictionID' in the request.
-dbprsBatchPredictionId :: Lens' DeleteBatchPredictionResponse (Maybe Text)
+dbprsBatchPredictionId :: Lens' (DeleteBatchPredictionResponse (a)) (Maybe Text)
 dbprsBatchPredictionId = lens _dbprsBatchPredictionId (\ s a -> s{_dbprsBatchPredictionId = a});
 
 -- | The response status code.
-dbprsResponseStatus :: Lens' DeleteBatchPredictionResponse Int
+dbprsResponseStatus :: Lens' (DeleteBatchPredictionResponse (a)) Int
 dbprsResponseStatus = lens _dbprsResponseStatus (\ s a -> s{_dbprsResponseStatus = a});
 
 instance NFData DeleteBatchPredictionResponse

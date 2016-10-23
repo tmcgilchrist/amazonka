@@ -93,14 +93,14 @@ instance ToQuery DeleteCacheSubnetGroup where
                "CacheSubnetGroupName" =: _dCacheSubnetGroupName]
 
 -- | /See:/ 'deleteCacheSubnetGroupResponse' smart constructor.
-data DeleteCacheSubnetGroupResponse =
+data DeleteCacheSubnetGroupResponse a =
     DeleteCacheSubnetGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteCacheSubnetGroupResponse' with the minimum fields required to make a request.
 --
 deleteCacheSubnetGroupResponse
-    :: DeleteCacheSubnetGroupResponse
+    :: DeleteCacheSubnetGroupResponse (a)
 deleteCacheSubnetGroupResponse = DeleteCacheSubnetGroupResponse'
 
 instance NFData DeleteCacheSubnetGroupResponse

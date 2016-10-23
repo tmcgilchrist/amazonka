@@ -131,7 +131,7 @@ instance ToQuery DescribeLoadBalancers where
 -- | Contains the parameters for DescribeLoadBalancers.
 --
 -- /See:/ 'describeLoadBalancersResponse' smart constructor.
-data DescribeLoadBalancersResponse = DescribeLoadBalancersResponse'
+data DescribeLoadBalancersResponse a = DescribeLoadBalancersResponse'
     { _dlbrsLoadBalancerDescriptions :: !(Maybe [LoadBalancerDescription])
     , _dlbrsNextMarker               :: !(Maybe Text)
     , _dlbrsResponseStatus           :: !Int
@@ -148,7 +148,7 @@ data DescribeLoadBalancersResponse = DescribeLoadBalancersResponse'
 -- * 'dlbrsResponseStatus'
 describeLoadBalancersResponse
     :: Int -- ^ 'dlbrsResponseStatus'
-    -> DescribeLoadBalancersResponse
+    -> DescribeLoadBalancersResponse (a)
 describeLoadBalancersResponse pResponseStatus_ =
     DescribeLoadBalancersResponse'
     { _dlbrsLoadBalancerDescriptions = Nothing
@@ -157,15 +157,15 @@ describeLoadBalancersResponse pResponseStatus_ =
     }
 
 -- | Information about the load balancers.
-dlbrsLoadBalancerDescriptions :: Lens' DescribeLoadBalancersResponse [LoadBalancerDescription]
+dlbrsLoadBalancerDescriptions :: Lens' (DescribeLoadBalancersResponse (a)) [LoadBalancerDescription]
 dlbrsLoadBalancerDescriptions = lens _dlbrsLoadBalancerDescriptions (\ s a -> s{_dlbrsLoadBalancerDescriptions = a}) . _Default . _Coerce;
 
 -- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
-dlbrsNextMarker :: Lens' DescribeLoadBalancersResponse (Maybe Text)
+dlbrsNextMarker :: Lens' (DescribeLoadBalancersResponse (a)) (Maybe Text)
 dlbrsNextMarker = lens _dlbrsNextMarker (\ s a -> s{_dlbrsNextMarker = a});
 
 -- | The response status code.
-dlbrsResponseStatus :: Lens' DescribeLoadBalancersResponse Int
+dlbrsResponseStatus :: Lens' (DescribeLoadBalancersResponse (a)) Int
 dlbrsResponseStatus = lens _dlbrsResponseStatus (\ s a -> s{_dlbrsResponseStatus = a});
 
 instance NFData DescribeLoadBalancersResponse

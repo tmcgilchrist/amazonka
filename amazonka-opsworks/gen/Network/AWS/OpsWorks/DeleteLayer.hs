@@ -92,14 +92,14 @@ instance ToQuery DeleteLayer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteLayerResponse' smart constructor.
-data DeleteLayerResponse =
+data DeleteLayerResponse a =
     DeleteLayerResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteLayerResponse' with the minimum fields required to make a request.
 --
 deleteLayerResponse
-    :: DeleteLayerResponse
+    :: DeleteLayerResponse (a)
 deleteLayerResponse = DeleteLayerResponse'
 
 instance NFData DeleteLayerResponse

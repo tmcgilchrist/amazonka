@@ -119,7 +119,7 @@ instance ToQuery RevokeSnapshotAccess where
                  _rsaAccountWithRestoreAccess]
 
 -- | /See:/ 'revokeSnapshotAccessResponse' smart constructor.
-data RevokeSnapshotAccessResponse = RevokeSnapshotAccessResponse'
+data RevokeSnapshotAccessResponse a = RevokeSnapshotAccessResponse'
     { _rsarsSnapshot       :: !(Maybe Snapshot)
     , _rsarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data RevokeSnapshotAccessResponse = RevokeSnapshotAccessResponse'
 -- * 'rsarsResponseStatus'
 revokeSnapshotAccessResponse
     :: Int -- ^ 'rsarsResponseStatus'
-    -> RevokeSnapshotAccessResponse
+    -> RevokeSnapshotAccessResponse (a)
 revokeSnapshotAccessResponse pResponseStatus_ =
     RevokeSnapshotAccessResponse'
     { _rsarsSnapshot = Nothing
@@ -141,11 +141,11 @@ revokeSnapshotAccessResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rsarsSnapshot :: Lens' RevokeSnapshotAccessResponse (Maybe Snapshot)
+rsarsSnapshot :: Lens' (RevokeSnapshotAccessResponse (a)) (Maybe Snapshot)
 rsarsSnapshot = lens _rsarsSnapshot (\ s a -> s{_rsarsSnapshot = a});
 
 -- | The response status code.
-rsarsResponseStatus :: Lens' RevokeSnapshotAccessResponse Int
+rsarsResponseStatus :: Lens' (RevokeSnapshotAccessResponse (a)) Int
 rsarsResponseStatus = lens _rsarsResponseStatus (\ s a -> s{_rsarsResponseStatus = a});
 
 instance NFData RevokeSnapshotAccessResponse

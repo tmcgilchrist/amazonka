@@ -132,7 +132,7 @@ instance ToQuery ListBuilds where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'listBuildsResponse' smart constructor.
-data ListBuildsResponse = ListBuildsResponse'
+data ListBuildsResponse a = ListBuildsResponse'
     { _lbrsBuilds         :: !(Maybe [Build])
     , _lbrsNextToken      :: !(Maybe Text)
     , _lbrsResponseStatus :: !Int
@@ -149,7 +149,7 @@ data ListBuildsResponse = ListBuildsResponse'
 -- * 'lbrsResponseStatus'
 listBuildsResponse
     :: Int -- ^ 'lbrsResponseStatus'
-    -> ListBuildsResponse
+    -> ListBuildsResponse (a)
 listBuildsResponse pResponseStatus_ =
     ListBuildsResponse'
     { _lbrsBuilds = Nothing
@@ -158,17 +158,17 @@ listBuildsResponse pResponseStatus_ =
     }
 
 -- | Collection of build records that match the request.
-lbrsBuilds :: Lens' ListBuildsResponse [Build]
+lbrsBuilds :: Lens' (ListBuildsResponse (a)) [Build]
 lbrsBuilds = lens _lbrsBuilds (\ s a -> s{_lbrsBuilds = a}) . _Default . _Coerce;
 
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-lbrsNextToken :: Lens' ListBuildsResponse (Maybe Text)
+lbrsNextToken :: Lens' (ListBuildsResponse (a)) (Maybe Text)
 lbrsNextToken = lens _lbrsNextToken (\ s a -> s{_lbrsNextToken = a});
 
 -- | The response status code.
-lbrsResponseStatus :: Lens' ListBuildsResponse Int
+lbrsResponseStatus :: Lens' (ListBuildsResponse (a)) Int
 lbrsResponseStatus = lens _lbrsResponseStatus (\ s a -> s{_lbrsResponseStatus = a});
 
 instance NFData ListBuildsResponse

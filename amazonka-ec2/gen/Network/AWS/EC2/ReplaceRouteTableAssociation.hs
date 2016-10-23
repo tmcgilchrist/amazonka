@@ -121,7 +121,7 @@ instance ToQuery ReplaceRouteTableAssociation where
 -- | Contains the output of ReplaceRouteTableAssociation.
 --
 -- /See:/ 'replaceRouteTableAssociationResponse' smart constructor.
-data ReplaceRouteTableAssociationResponse = ReplaceRouteTableAssociationResponse'
+data ReplaceRouteTableAssociationResponse a = ReplaceRouteTableAssociationResponse'
     { _rrtarsNewAssociationId :: !(Maybe Text)
     , _rrtarsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -135,7 +135,7 @@ data ReplaceRouteTableAssociationResponse = ReplaceRouteTableAssociationResponse
 -- * 'rrtarsResponseStatus'
 replaceRouteTableAssociationResponse
     :: Int -- ^ 'rrtarsResponseStatus'
-    -> ReplaceRouteTableAssociationResponse
+    -> ReplaceRouteTableAssociationResponse (a)
 replaceRouteTableAssociationResponse pResponseStatus_ =
     ReplaceRouteTableAssociationResponse'
     { _rrtarsNewAssociationId = Nothing
@@ -143,11 +143,11 @@ replaceRouteTableAssociationResponse pResponseStatus_ =
     }
 
 -- | The ID of the new association.
-rrtarsNewAssociationId :: Lens' ReplaceRouteTableAssociationResponse (Maybe Text)
+rrtarsNewAssociationId :: Lens' (ReplaceRouteTableAssociationResponse (a)) (Maybe Text)
 rrtarsNewAssociationId = lens _rrtarsNewAssociationId (\ s a -> s{_rrtarsNewAssociationId = a});
 
 -- | The response status code.
-rrtarsResponseStatus :: Lens' ReplaceRouteTableAssociationResponse Int
+rrtarsResponseStatus :: Lens' (ReplaceRouteTableAssociationResponse (a)) Int
 rrtarsResponseStatus = lens _rrtarsResponseStatus (\ s a -> s{_rrtarsResponseStatus = a});
 
 instance NFData ReplaceRouteTableAssociationResponse

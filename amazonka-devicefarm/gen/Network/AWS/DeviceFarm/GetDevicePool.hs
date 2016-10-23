@@ -101,7 +101,7 @@ instance ToQuery GetDevicePool where
 -- | Represents the result of a get device pool request.
 --
 -- /See:/ 'getDevicePoolResponse' smart constructor.
-data GetDevicePoolResponse = GetDevicePoolResponse'
+data GetDevicePoolResponse a = GetDevicePoolResponse'
     { _gdprsDevicePool     :: !(Maybe DevicePool)
     , _gdprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetDevicePoolResponse = GetDevicePoolResponse'
 -- * 'gdprsResponseStatus'
 getDevicePoolResponse
     :: Int -- ^ 'gdprsResponseStatus'
-    -> GetDevicePoolResponse
+    -> GetDevicePoolResponse (a)
 getDevicePoolResponse pResponseStatus_ =
     GetDevicePoolResponse'
     { _gdprsDevicePool = Nothing
@@ -123,11 +123,11 @@ getDevicePoolResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gdprsDevicePool :: Lens' GetDevicePoolResponse (Maybe DevicePool)
+gdprsDevicePool :: Lens' (GetDevicePoolResponse (a)) (Maybe DevicePool)
 gdprsDevicePool = lens _gdprsDevicePool (\ s a -> s{_gdprsDevicePool = a});
 
 -- | The response status code.
-gdprsResponseStatus :: Lens' GetDevicePoolResponse Int
+gdprsResponseStatus :: Lens' (GetDevicePoolResponse (a)) Int
 gdprsResponseStatus = lens _gdprsResponseStatus (\ s a -> s{_gdprsResponseStatus = a});
 
 instance NFData GetDevicePoolResponse

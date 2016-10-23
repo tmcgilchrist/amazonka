@@ -463,7 +463,7 @@ instance ToQuery CreateCluster where
                "MasterUserPassword" =: _ccMasterUserPassword]
 
 -- | /See:/ 'createClusterResponse' smart constructor.
-data CreateClusterResponse = CreateClusterResponse'
+data CreateClusterResponse a = CreateClusterResponse'
     { _ccrsCluster        :: !(Maybe Cluster)
     , _ccrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -477,7 +477,7 @@ data CreateClusterResponse = CreateClusterResponse'
 -- * 'ccrsResponseStatus'
 createClusterResponse
     :: Int -- ^ 'ccrsResponseStatus'
-    -> CreateClusterResponse
+    -> CreateClusterResponse (a)
 createClusterResponse pResponseStatus_ =
     CreateClusterResponse'
     { _ccrsCluster = Nothing
@@ -485,11 +485,11 @@ createClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ccrsCluster :: Lens' CreateClusterResponse (Maybe Cluster)
+ccrsCluster :: Lens' (CreateClusterResponse (a)) (Maybe Cluster)
 ccrsCluster = lens _ccrsCluster (\ s a -> s{_ccrsCluster = a});
 
 -- | The response status code.
-ccrsResponseStatus :: Lens' CreateClusterResponse Int
+ccrsResponseStatus :: Lens' (CreateClusterResponse (a)) Int
 ccrsResponseStatus = lens _ccrsResponseStatus (\ s a -> s{_ccrsResponseStatus = a});
 
 instance NFData CreateClusterResponse

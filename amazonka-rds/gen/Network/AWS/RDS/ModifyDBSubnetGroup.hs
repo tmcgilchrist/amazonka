@@ -120,7 +120,7 @@ instance ToQuery ModifyDBSubnetGroup where
                  toQueryList "SubnetIdentifier" _mdsgSubnetIds]
 
 -- | /See:/ 'modifyDBSubnetGroupResponse' smart constructor.
-data ModifyDBSubnetGroupResponse = ModifyDBSubnetGroupResponse'
+data ModifyDBSubnetGroupResponse a = ModifyDBSubnetGroupResponse'
     { _mdsgrsDBSubnetGroup  :: !(Maybe DBSubnetGroup)
     , _mdsgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data ModifyDBSubnetGroupResponse = ModifyDBSubnetGroupResponse'
 -- * 'mdsgrsResponseStatus'
 modifyDBSubnetGroupResponse
     :: Int -- ^ 'mdsgrsResponseStatus'
-    -> ModifyDBSubnetGroupResponse
+    -> ModifyDBSubnetGroupResponse (a)
 modifyDBSubnetGroupResponse pResponseStatus_ =
     ModifyDBSubnetGroupResponse'
     { _mdsgrsDBSubnetGroup = Nothing
@@ -142,11 +142,11 @@ modifyDBSubnetGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mdsgrsDBSubnetGroup :: Lens' ModifyDBSubnetGroupResponse (Maybe DBSubnetGroup)
+mdsgrsDBSubnetGroup :: Lens' (ModifyDBSubnetGroupResponse (a)) (Maybe DBSubnetGroup)
 mdsgrsDBSubnetGroup = lens _mdsgrsDBSubnetGroup (\ s a -> s{_mdsgrsDBSubnetGroup = a});
 
 -- | The response status code.
-mdsgrsResponseStatus :: Lens' ModifyDBSubnetGroupResponse Int
+mdsgrsResponseStatus :: Lens' (ModifyDBSubnetGroupResponse (a)) Int
 mdsgrsResponseStatus = lens _mdsgrsResponseStatus (\ s a -> s{_mdsgrsResponseStatus = a});
 
 instance NFData ModifyDBSubnetGroupResponse

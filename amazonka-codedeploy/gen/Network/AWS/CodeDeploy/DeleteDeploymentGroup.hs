@@ -118,7 +118,7 @@ instance ToQuery DeleteDeploymentGroup where
 -- | Represents the output of a delete deployment group operation.
 --
 -- /See:/ 'deleteDeploymentGroupResponse' smart constructor.
-data DeleteDeploymentGroupResponse = DeleteDeploymentGroupResponse'
+data DeleteDeploymentGroupResponse a = DeleteDeploymentGroupResponse'
     { _ddgrsHooksNotCleanedUp :: !(Maybe [AutoScalingGroup])
     , _ddgrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data DeleteDeploymentGroupResponse = DeleteDeploymentGroupResponse'
 -- * 'ddgrsResponseStatus'
 deleteDeploymentGroupResponse
     :: Int -- ^ 'ddgrsResponseStatus'
-    -> DeleteDeploymentGroupResponse
+    -> DeleteDeploymentGroupResponse (a)
 deleteDeploymentGroupResponse pResponseStatus_ =
     DeleteDeploymentGroupResponse'
     { _ddgrsHooksNotCleanedUp = Nothing
@@ -140,11 +140,11 @@ deleteDeploymentGroupResponse pResponseStatus_ =
     }
 
 -- | If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group.
-ddgrsHooksNotCleanedUp :: Lens' DeleteDeploymentGroupResponse [AutoScalingGroup]
+ddgrsHooksNotCleanedUp :: Lens' (DeleteDeploymentGroupResponse (a)) [AutoScalingGroup]
 ddgrsHooksNotCleanedUp = lens _ddgrsHooksNotCleanedUp (\ s a -> s{_ddgrsHooksNotCleanedUp = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddgrsResponseStatus :: Lens' DeleteDeploymentGroupResponse Int
+ddgrsResponseStatus :: Lens' (DeleteDeploymentGroupResponse (a)) Int
 ddgrsResponseStatus = lens _ddgrsResponseStatus (\ s a -> s{_ddgrsResponseStatus = a});
 
 instance NFData DeleteDeploymentGroupResponse

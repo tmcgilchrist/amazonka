@@ -82,14 +82,14 @@ instance ToQuery DeleteBucketPolicy where
         toQuery = const (mconcat ["policy"])
 
 -- | /See:/ 'deleteBucketPolicyResponse' smart constructor.
-data DeleteBucketPolicyResponse =
+data DeleteBucketPolicyResponse a =
     DeleteBucketPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteBucketPolicyResponse' with the minimum fields required to make a request.
 --
 deleteBucketPolicyResponse
-    :: DeleteBucketPolicyResponse
+    :: DeleteBucketPolicyResponse (a)
 deleteBucketPolicyResponse = DeleteBucketPolicyResponse'
 
 instance NFData DeleteBucketPolicyResponse

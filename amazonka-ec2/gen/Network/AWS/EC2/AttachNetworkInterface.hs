@@ -129,7 +129,7 @@ instance ToQuery AttachNetworkInterface where
 -- | Contains the output of AttachNetworkInterface.
 --
 -- /See:/ 'attachNetworkInterfaceResponse' smart constructor.
-data AttachNetworkInterfaceResponse = AttachNetworkInterfaceResponse'
+data AttachNetworkInterfaceResponse a = AttachNetworkInterfaceResponse'
     { _anirsAttachmentId   :: !(Maybe Text)
     , _anirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -143,7 +143,7 @@ data AttachNetworkInterfaceResponse = AttachNetworkInterfaceResponse'
 -- * 'anirsResponseStatus'
 attachNetworkInterfaceResponse
     :: Int -- ^ 'anirsResponseStatus'
-    -> AttachNetworkInterfaceResponse
+    -> AttachNetworkInterfaceResponse (a)
 attachNetworkInterfaceResponse pResponseStatus_ =
     AttachNetworkInterfaceResponse'
     { _anirsAttachmentId = Nothing
@@ -151,11 +151,11 @@ attachNetworkInterfaceResponse pResponseStatus_ =
     }
 
 -- | The ID of the network interface attachment.
-anirsAttachmentId :: Lens' AttachNetworkInterfaceResponse (Maybe Text)
+anirsAttachmentId :: Lens' (AttachNetworkInterfaceResponse (a)) (Maybe Text)
 anirsAttachmentId = lens _anirsAttachmentId (\ s a -> s{_anirsAttachmentId = a});
 
 -- | The response status code.
-anirsResponseStatus :: Lens' AttachNetworkInterfaceResponse Int
+anirsResponseStatus :: Lens' (AttachNetworkInterfaceResponse (a)) Int
 anirsResponseStatus = lens _anirsResponseStatus (\ s a -> s{_anirsResponseStatus = a});
 
 instance NFData AttachNetworkInterfaceResponse

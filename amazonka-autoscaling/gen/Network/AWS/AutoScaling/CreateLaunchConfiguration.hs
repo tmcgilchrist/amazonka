@@ -296,14 +296,14 @@ instance ToQuery CreateLaunchConfiguration where
                  _clcLaunchConfigurationName]
 
 -- | /See:/ 'createLaunchConfigurationResponse' smart constructor.
-data CreateLaunchConfigurationResponse =
+data CreateLaunchConfigurationResponse a =
     CreateLaunchConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateLaunchConfigurationResponse' with the minimum fields required to make a request.
 --
 createLaunchConfigurationResponse
-    :: CreateLaunchConfigurationResponse
+    :: CreateLaunchConfigurationResponse (a)
 createLaunchConfigurationResponse = CreateLaunchConfigurationResponse'
 
 instance NFData CreateLaunchConfigurationResponse

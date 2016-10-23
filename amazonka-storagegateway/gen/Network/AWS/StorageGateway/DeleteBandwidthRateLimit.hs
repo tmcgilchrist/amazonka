@@ -114,7 +114,7 @@ instance ToQuery DeleteBandwidthRateLimit where
 -- | A JSON object containing the of the gateway whose bandwidth rate information was deleted.
 --
 -- /See:/ 'deleteBandwidthRateLimitResponse' smart constructor.
-data DeleteBandwidthRateLimitResponse = DeleteBandwidthRateLimitResponse'
+data DeleteBandwidthRateLimitResponse a = DeleteBandwidthRateLimitResponse'
     { _delrsGatewayARN     :: !(Maybe Text)
     , _delrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data DeleteBandwidthRateLimitResponse = DeleteBandwidthRateLimitResponse'
 -- * 'delrsResponseStatus'
 deleteBandwidthRateLimitResponse
     :: Int -- ^ 'delrsResponseStatus'
-    -> DeleteBandwidthRateLimitResponse
+    -> DeleteBandwidthRateLimitResponse (a)
 deleteBandwidthRateLimitResponse pResponseStatus_ =
     DeleteBandwidthRateLimitResponse'
     { _delrsGatewayARN = Nothing
@@ -136,11 +136,11 @@ deleteBandwidthRateLimitResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-delrsGatewayARN :: Lens' DeleteBandwidthRateLimitResponse (Maybe Text)
+delrsGatewayARN :: Lens' (DeleteBandwidthRateLimitResponse (a)) (Maybe Text)
 delrsGatewayARN = lens _delrsGatewayARN (\ s a -> s{_delrsGatewayARN = a});
 
 -- | The response status code.
-delrsResponseStatus :: Lens' DeleteBandwidthRateLimitResponse Int
+delrsResponseStatus :: Lens' (DeleteBandwidthRateLimitResponse (a)) Int
 delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a});
 
 instance NFData DeleteBandwidthRateLimitResponse

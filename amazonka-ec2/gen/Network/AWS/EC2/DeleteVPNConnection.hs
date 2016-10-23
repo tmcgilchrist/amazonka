@@ -99,14 +99,14 @@ instance ToQuery DeleteVPNConnection where
                "VpnConnectionId" =: _dvcVPNConnectionId]
 
 -- | /See:/ 'deleteVPNConnectionResponse' smart constructor.
-data DeleteVPNConnectionResponse =
+data DeleteVPNConnectionResponse a =
     DeleteVPNConnectionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVPNConnectionResponse' with the minimum fields required to make a request.
 --
 deleteVPNConnectionResponse
-    :: DeleteVPNConnectionResponse
+    :: DeleteVPNConnectionResponse (a)
 deleteVPNConnectionResponse = DeleteVPNConnectionResponse'
 
 instance NFData DeleteVPNConnectionResponse

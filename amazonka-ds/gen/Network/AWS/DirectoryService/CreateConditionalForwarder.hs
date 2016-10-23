@@ -125,7 +125,7 @@ instance ToQuery CreateConditionalForwarder where
 -- | The result of a CreateConditinalForwarder request.
 --
 -- /See:/ 'createConditionalForwarderResponse' smart constructor.
-newtype CreateConditionalForwarderResponse = CreateConditionalForwarderResponse'
+newtype CreateConditionalForwarderResponse a = CreateConditionalForwarderResponse'
     { _ccfrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -136,14 +136,14 @@ newtype CreateConditionalForwarderResponse = CreateConditionalForwarderResponse'
 -- * 'ccfrsResponseStatus'
 createConditionalForwarderResponse
     :: Int -- ^ 'ccfrsResponseStatus'
-    -> CreateConditionalForwarderResponse
+    -> CreateConditionalForwarderResponse (a)
 createConditionalForwarderResponse pResponseStatus_ =
     CreateConditionalForwarderResponse'
     { _ccfrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ccfrsResponseStatus :: Lens' CreateConditionalForwarderResponse Int
+ccfrsResponseStatus :: Lens' (CreateConditionalForwarderResponse (a)) Int
 ccfrsResponseStatus = lens _ccfrsResponseStatus (\ s a -> s{_ccfrsResponseStatus = a});
 
 instance NFData CreateConditionalForwarderResponse

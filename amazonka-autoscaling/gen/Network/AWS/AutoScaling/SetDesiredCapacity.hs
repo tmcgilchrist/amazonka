@@ -110,14 +110,14 @@ instance ToQuery SetDesiredCapacity where
                "DesiredCapacity" =: _sdcDesiredCapacity]
 
 -- | /See:/ 'setDesiredCapacityResponse' smart constructor.
-data SetDesiredCapacityResponse =
+data SetDesiredCapacityResponse a =
     SetDesiredCapacityResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetDesiredCapacityResponse' with the minimum fields required to make a request.
 --
 setDesiredCapacityResponse
-    :: SetDesiredCapacityResponse
+    :: SetDesiredCapacityResponse (a)
 setDesiredCapacityResponse = SetDesiredCapacityResponse'
 
 instance NFData SetDesiredCapacityResponse

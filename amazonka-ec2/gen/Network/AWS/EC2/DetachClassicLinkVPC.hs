@@ -117,7 +117,7 @@ instance ToQuery DetachClassicLinkVPC where
 -- | Contains the output of DetachClassicLinkVpc.
 --
 -- /See:/ 'detachClassicLinkVPCResponse' smart constructor.
-data DetachClassicLinkVPCResponse = DetachClassicLinkVPCResponse'
+data DetachClassicLinkVPCResponse a = DetachClassicLinkVPCResponse'
     { _dclvrsReturn         :: !(Maybe Bool)
     , _dclvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data DetachClassicLinkVPCResponse = DetachClassicLinkVPCResponse'
 -- * 'dclvrsResponseStatus'
 detachClassicLinkVPCResponse
     :: Int -- ^ 'dclvrsResponseStatus'
-    -> DetachClassicLinkVPCResponse
+    -> DetachClassicLinkVPCResponse (a)
 detachClassicLinkVPCResponse pResponseStatus_ =
     DetachClassicLinkVPCResponse'
     { _dclvrsReturn = Nothing
@@ -139,11 +139,11 @@ detachClassicLinkVPCResponse pResponseStatus_ =
     }
 
 -- | Returns 'true' if the request succeeds; otherwise, it returns an error.
-dclvrsReturn :: Lens' DetachClassicLinkVPCResponse (Maybe Bool)
+dclvrsReturn :: Lens' (DetachClassicLinkVPCResponse (a)) (Maybe Bool)
 dclvrsReturn = lens _dclvrsReturn (\ s a -> s{_dclvrsReturn = a});
 
 -- | The response status code.
-dclvrsResponseStatus :: Lens' DetachClassicLinkVPCResponse Int
+dclvrsResponseStatus :: Lens' (DetachClassicLinkVPCResponse (a)) Int
 dclvrsResponseStatus = lens _dclvrsResponseStatus (\ s a -> s{_dclvrsResponseStatus = a});
 
 instance NFData DetachClassicLinkVPCResponse

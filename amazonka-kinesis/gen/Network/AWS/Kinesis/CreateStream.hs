@@ -124,14 +124,14 @@ instance ToQuery CreateStream where
         toQuery = const mempty
 
 -- | /See:/ 'createStreamResponse' smart constructor.
-data CreateStreamResponse =
+data CreateStreamResponse a =
     CreateStreamResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateStreamResponse' with the minimum fields required to make a request.
 --
 createStreamResponse
-    :: CreateStreamResponse
+    :: CreateStreamResponse (a)
 createStreamResponse = CreateStreamResponse'
 
 instance NFData CreateStreamResponse

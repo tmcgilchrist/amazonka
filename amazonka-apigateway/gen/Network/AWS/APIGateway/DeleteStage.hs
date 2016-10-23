@@ -98,14 +98,14 @@ instance ToQuery DeleteStage where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStageResponse' smart constructor.
-data DeleteStageResponse =
+data DeleteStageResponse a =
     DeleteStageResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteStageResponse' with the minimum fields required to make a request.
 --
 deleteStageResponse
-    :: DeleteStageResponse
+    :: DeleteStageResponse (a)
 deleteStageResponse = DeleteStageResponse'
 
 instance NFData DeleteStageResponse

@@ -133,7 +133,7 @@ instance ToQuery DescribeTags where
 -- | Contains the output of DescribeTags.
 --
 -- /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse = DescribeTagsResponse'
+data DescribeTagsResponse a = DescribeTagsResponse'
     { _dtrsNextToken      :: !(Maybe Text)
     , _dtrsTags           :: !(Maybe [TagDescription])
     , _dtrsResponseStatus :: !Int
@@ -150,7 +150,7 @@ data DescribeTagsResponse = DescribeTagsResponse'
 -- * 'dtrsResponseStatus'
 describeTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
-    -> DescribeTagsResponse
+    -> DescribeTagsResponse (a)
 describeTagsResponse pResponseStatus_ =
     DescribeTagsResponse'
     { _dtrsNextToken = Nothing
@@ -159,15 +159,15 @@ describeTagsResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dtrsNextToken :: Lens' DescribeTagsResponse (Maybe Text)
+dtrsNextToken :: Lens' (DescribeTagsResponse (a)) (Maybe Text)
 dtrsNextToken = lens _dtrsNextToken (\ s a -> s{_dtrsNextToken = a});
 
 -- | One or more tags.
-dtrsTags :: Lens' DescribeTagsResponse [TagDescription]
+dtrsTags :: Lens' (DescribeTagsResponse (a)) [TagDescription]
 dtrsTags = lens _dtrsTags (\ s a -> s{_dtrsTags = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtrsResponseStatus :: Lens' DescribeTagsResponse Int
+dtrsResponseStatus :: Lens' (DescribeTagsResponse (a)) Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a});
 
 instance NFData DescribeTagsResponse

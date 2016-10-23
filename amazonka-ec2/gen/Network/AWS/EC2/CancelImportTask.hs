@@ -118,7 +118,7 @@ instance ToQuery CancelImportTask where
 -- | Contains the output for CancelImportTask.
 --
 -- /See:/ 'cancelImportTaskResponse' smart constructor.
-data CancelImportTaskResponse = CancelImportTaskResponse'
+data CancelImportTaskResponse a = CancelImportTaskResponse'
     { _citrsState          :: !(Maybe Text)
     , _citrsImportTaskId   :: !(Maybe Text)
     , _citrsPreviousState  :: !(Maybe Text)
@@ -138,7 +138,7 @@ data CancelImportTaskResponse = CancelImportTaskResponse'
 -- * 'citrsResponseStatus'
 cancelImportTaskResponse
     :: Int -- ^ 'citrsResponseStatus'
-    -> CancelImportTaskResponse
+    -> CancelImportTaskResponse (a)
 cancelImportTaskResponse pResponseStatus_ =
     CancelImportTaskResponse'
     { _citrsState = Nothing
@@ -148,19 +148,19 @@ cancelImportTaskResponse pResponseStatus_ =
     }
 
 -- | The current state of the task being canceled.
-citrsState :: Lens' CancelImportTaskResponse (Maybe Text)
+citrsState :: Lens' (CancelImportTaskResponse (a)) (Maybe Text)
 citrsState = lens _citrsState (\ s a -> s{_citrsState = a});
 
 -- | The ID of the task being canceled.
-citrsImportTaskId :: Lens' CancelImportTaskResponse (Maybe Text)
+citrsImportTaskId :: Lens' (CancelImportTaskResponse (a)) (Maybe Text)
 citrsImportTaskId = lens _citrsImportTaskId (\ s a -> s{_citrsImportTaskId = a});
 
 -- | The current state of the task being canceled.
-citrsPreviousState :: Lens' CancelImportTaskResponse (Maybe Text)
+citrsPreviousState :: Lens' (CancelImportTaskResponse (a)) (Maybe Text)
 citrsPreviousState = lens _citrsPreviousState (\ s a -> s{_citrsPreviousState = a});
 
 -- | The response status code.
-citrsResponseStatus :: Lens' CancelImportTaskResponse Int
+citrsResponseStatus :: Lens' (CancelImportTaskResponse (a)) Int
 citrsResponseStatus = lens _citrsResponseStatus (\ s a -> s{_citrsResponseStatus = a});
 
 instance NFData CancelImportTaskResponse

@@ -98,14 +98,14 @@ instance ToQuery DeregisterOnPremisesInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterOnPremisesInstanceResponse' smart constructor.
-data DeregisterOnPremisesInstanceResponse =
+data DeregisterOnPremisesInstanceResponse a =
     DeregisterOnPremisesInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeregisterOnPremisesInstanceResponse' with the minimum fields required to make a request.
 --
 deregisterOnPremisesInstanceResponse
-    :: DeregisterOnPremisesInstanceResponse
+    :: DeregisterOnPremisesInstanceResponse (a)
 deregisterOnPremisesInstanceResponse = DeregisterOnPremisesInstanceResponse'
 
 instance NFData DeregisterOnPremisesInstanceResponse

@@ -119,7 +119,7 @@ instance ToQuery DescribeEventTopics where
 -- | The result of a DescribeEventTopic request.
 --
 -- /See:/ 'describeEventTopicsResponse' smart constructor.
-data DescribeEventTopicsResponse = DescribeEventTopicsResponse'
+data DescribeEventTopicsResponse a = DescribeEventTopicsResponse'
     { _detrsEventTopics    :: !(Maybe [EventTopic])
     , _detrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data DescribeEventTopicsResponse = DescribeEventTopicsResponse'
 -- * 'detrsResponseStatus'
 describeEventTopicsResponse
     :: Int -- ^ 'detrsResponseStatus'
-    -> DescribeEventTopicsResponse
+    -> DescribeEventTopicsResponse (a)
 describeEventTopicsResponse pResponseStatus_ =
     DescribeEventTopicsResponse'
     { _detrsEventTopics = Nothing
@@ -141,11 +141,11 @@ describeEventTopicsResponse pResponseStatus_ =
     }
 
 -- | A list of SNS topic names that receive status messages from the specified Directory ID.
-detrsEventTopics :: Lens' DescribeEventTopicsResponse [EventTopic]
+detrsEventTopics :: Lens' (DescribeEventTopicsResponse (a)) [EventTopic]
 detrsEventTopics = lens _detrsEventTopics (\ s a -> s{_detrsEventTopics = a}) . _Default . _Coerce;
 
 -- | The response status code.
-detrsResponseStatus :: Lens' DescribeEventTopicsResponse Int
+detrsResponseStatus :: Lens' (DescribeEventTopicsResponse (a)) Int
 detrsResponseStatus = lens _detrsResponseStatus (\ s a -> s{_detrsResponseStatus = a});
 
 instance NFData DescribeEventTopicsResponse

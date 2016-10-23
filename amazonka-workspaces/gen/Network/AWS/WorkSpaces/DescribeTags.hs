@@ -102,7 +102,7 @@ instance ToQuery DescribeTags where
 -- | The result of the < DescribeTags> operation.
 --
 -- /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse = DescribeTagsResponse'
+data DescribeTagsResponse a = DescribeTagsResponse'
     { _dtrsTagList        :: !(Maybe [Tag])
     , _dtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data DescribeTagsResponse = DescribeTagsResponse'
 -- * 'dtrsResponseStatus'
 describeTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
-    -> DescribeTagsResponse
+    -> DescribeTagsResponse (a)
 describeTagsResponse pResponseStatus_ =
     DescribeTagsResponse'
     { _dtrsTagList = Nothing
@@ -124,11 +124,11 @@ describeTagsResponse pResponseStatus_ =
     }
 
 -- | The list of tags.
-dtrsTagList :: Lens' DescribeTagsResponse [Tag]
+dtrsTagList :: Lens' (DescribeTagsResponse (a)) [Tag]
 dtrsTagList = lens _dtrsTagList (\ s a -> s{_dtrsTagList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtrsResponseStatus :: Lens' DescribeTagsResponse Int
+dtrsResponseStatus :: Lens' (DescribeTagsResponse (a)) Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a});
 
 instance NFData DescribeTagsResponse

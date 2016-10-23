@@ -128,7 +128,7 @@ instance ToQuery DescribeWorkflowType where
 -- | Contains details about a workflow type.
 --
 -- /See:/ 'describeWorkflowTypeResponse' smart constructor.
-data DescribeWorkflowTypeResponse = DescribeWorkflowTypeResponse'
+data DescribeWorkflowTypeResponse a = DescribeWorkflowTypeResponse'
     { _dwtrsResponseStatus :: !Int
     , _dwtrsTypeInfo       :: !WorkflowTypeInfo
     , _dwtrsConfiguration  :: !WorkflowTypeConfiguration
@@ -147,7 +147,7 @@ describeWorkflowTypeResponse
     :: Int -- ^ 'dwtrsResponseStatus'
     -> WorkflowTypeInfo -- ^ 'dwtrsTypeInfo'
     -> WorkflowTypeConfiguration -- ^ 'dwtrsConfiguration'
-    -> DescribeWorkflowTypeResponse
+    -> DescribeWorkflowTypeResponse (a)
 describeWorkflowTypeResponse pResponseStatus_ pTypeInfo_ pConfiguration_ =
     DescribeWorkflowTypeResponse'
     { _dwtrsResponseStatus = pResponseStatus_
@@ -156,7 +156,7 @@ describeWorkflowTypeResponse pResponseStatus_ pTypeInfo_ pConfiguration_ =
     }
 
 -- | The response status code.
-dwtrsResponseStatus :: Lens' DescribeWorkflowTypeResponse Int
+dwtrsResponseStatus :: Lens' (DescribeWorkflowTypeResponse (a)) Int
 dwtrsResponseStatus = lens _dwtrsResponseStatus (\ s a -> s{_dwtrsResponseStatus = a});
 
 -- | General information about the workflow type.
@@ -165,11 +165,11 @@ dwtrsResponseStatus = lens _dwtrsResponseStatus (\ s a -> s{_dwtrsResponseStatus
 --
 -- -   __REGISTERED__: The type is registered and available. Workers supporting this type should be running.
 -- -   __DEPRECATED__: The type was deprecated using < DeprecateWorkflowType>, but is still in use. You should keep workers supporting this type running. You cannot create new workflow executions of this type.
-dwtrsTypeInfo :: Lens' DescribeWorkflowTypeResponse WorkflowTypeInfo
+dwtrsTypeInfo :: Lens' (DescribeWorkflowTypeResponse (a)) WorkflowTypeInfo
 dwtrsTypeInfo = lens _dwtrsTypeInfo (\ s a -> s{_dwtrsTypeInfo = a});
 
 -- | Configuration settings of the workflow type registered through < RegisterWorkflowType>
-dwtrsConfiguration :: Lens' DescribeWorkflowTypeResponse WorkflowTypeConfiguration
+dwtrsConfiguration :: Lens' (DescribeWorkflowTypeResponse (a)) WorkflowTypeConfiguration
 dwtrsConfiguration = lens _dwtrsConfiguration (\ s a -> s{_dwtrsConfiguration = a});
 
 instance NFData DescribeWorkflowTypeResponse

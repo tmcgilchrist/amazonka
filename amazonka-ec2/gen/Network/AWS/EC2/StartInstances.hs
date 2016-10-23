@@ -124,7 +124,7 @@ instance ToQuery StartInstances where
 -- | Contains the output of StartInstances.
 --
 -- /See:/ 'startInstancesResponse' smart constructor.
-data StartInstancesResponse = StartInstancesResponse'
+data StartInstancesResponse a = StartInstancesResponse'
     { _srsStartingInstances :: !(Maybe [InstanceStateChange])
     , _srsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data StartInstancesResponse = StartInstancesResponse'
 -- * 'srsResponseStatus'
 startInstancesResponse
     :: Int -- ^ 'srsResponseStatus'
-    -> StartInstancesResponse
+    -> StartInstancesResponse (a)
 startInstancesResponse pResponseStatus_ =
     StartInstancesResponse'
     { _srsStartingInstances = Nothing
@@ -146,11 +146,11 @@ startInstancesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more started instances.
-srsStartingInstances :: Lens' StartInstancesResponse [InstanceStateChange]
+srsStartingInstances :: Lens' (StartInstancesResponse (a)) [InstanceStateChange]
 srsStartingInstances = lens _srsStartingInstances (\ s a -> s{_srsStartingInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-srsResponseStatus :: Lens' StartInstancesResponse Int
+srsResponseStatus :: Lens' (StartInstancesResponse (a)) Int
 srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a});
 
 instance NFData StartInstancesResponse

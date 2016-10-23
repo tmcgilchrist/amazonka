@@ -100,7 +100,7 @@ instance ToQuery DescribeIdFormat where
 -- | Contains the output of DescribeIdFormat.
 --
 -- /See:/ 'describeIdFormatResponse' smart constructor.
-data DescribeIdFormatResponse = DescribeIdFormatResponse'
+data DescribeIdFormatResponse a = DescribeIdFormatResponse'
     { _difrsStatuses       :: !(Maybe [IdFormat])
     , _difrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -114,7 +114,7 @@ data DescribeIdFormatResponse = DescribeIdFormatResponse'
 -- * 'difrsResponseStatus'
 describeIdFormatResponse
     :: Int -- ^ 'difrsResponseStatus'
-    -> DescribeIdFormatResponse
+    -> DescribeIdFormatResponse (a)
 describeIdFormatResponse pResponseStatus_ =
     DescribeIdFormatResponse'
     { _difrsStatuses = Nothing
@@ -122,11 +122,11 @@ describeIdFormatResponse pResponseStatus_ =
     }
 
 -- | Information about the ID format for the resource.
-difrsStatuses :: Lens' DescribeIdFormatResponse [IdFormat]
+difrsStatuses :: Lens' (DescribeIdFormatResponse (a)) [IdFormat]
 difrsStatuses = lens _difrsStatuses (\ s a -> s{_difrsStatuses = a}) . _Default . _Coerce;
 
 -- | The response status code.
-difrsResponseStatus :: Lens' DescribeIdFormatResponse Int
+difrsResponseStatus :: Lens' (DescribeIdFormatResponse (a)) Int
 difrsResponseStatus = lens _difrsResponseStatus (\ s a -> s{_difrsResponseStatus = a});
 
 instance NFData DescribeIdFormatResponse

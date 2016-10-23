@@ -123,7 +123,7 @@ instance ToQuery UpdateBuild where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'updateBuildResponse' smart constructor.
-data UpdateBuildResponse = UpdateBuildResponse'
+data UpdateBuildResponse a = UpdateBuildResponse'
     { _ubrsBuild          :: !(Maybe Build)
     , _ubrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data UpdateBuildResponse = UpdateBuildResponse'
 -- * 'ubrsResponseStatus'
 updateBuildResponse
     :: Int -- ^ 'ubrsResponseStatus'
-    -> UpdateBuildResponse
+    -> UpdateBuildResponse (a)
 updateBuildResponse pResponseStatus_ =
     UpdateBuildResponse'
     { _ubrsBuild = Nothing
@@ -145,11 +145,11 @@ updateBuildResponse pResponseStatus_ =
     }
 
 -- | Object containing the updated build record.
-ubrsBuild :: Lens' UpdateBuildResponse (Maybe Build)
+ubrsBuild :: Lens' (UpdateBuildResponse (a)) (Maybe Build)
 ubrsBuild = lens _ubrsBuild (\ s a -> s{_ubrsBuild = a});
 
 -- | The response status code.
-ubrsResponseStatus :: Lens' UpdateBuildResponse Int
+ubrsResponseStatus :: Lens' (UpdateBuildResponse (a)) Int
 ubrsResponseStatus = lens _ubrsResponseStatus (\ s a -> s{_ubrsResponseStatus = a});
 
 instance NFData UpdateBuildResponse

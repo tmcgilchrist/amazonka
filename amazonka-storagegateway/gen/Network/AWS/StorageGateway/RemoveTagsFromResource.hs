@@ -115,7 +115,7 @@ instance ToQuery RemoveTagsFromResource where
 -- | RemoveTagsFromResourceOutput
 --
 -- /See:/ 'removeTagsFromResourceResponse' smart constructor.
-data RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'
+data RemoveTagsFromResourceResponse a = RemoveTagsFromResourceResponse'
     { _rtfrrsResourceARN    :: !(Maybe Text)
     , _rtfrrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'
 -- * 'rtfrrsResponseStatus'
 removeTagsFromResourceResponse
     :: Int -- ^ 'rtfrrsResponseStatus'
-    -> RemoveTagsFromResourceResponse
+    -> RemoveTagsFromResourceResponse (a)
 removeTagsFromResourceResponse pResponseStatus_ =
     RemoveTagsFromResourceResponse'
     { _rtfrrsResourceARN = Nothing
@@ -137,11 +137,11 @@ removeTagsFromResourceResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the resource that the tags were removed from.
-rtfrrsResourceARN :: Lens' RemoveTagsFromResourceResponse (Maybe Text)
+rtfrrsResourceARN :: Lens' (RemoveTagsFromResourceResponse (a)) (Maybe Text)
 rtfrrsResourceARN = lens _rtfrrsResourceARN (\ s a -> s{_rtfrrsResourceARN = a});
 
 -- | The response status code.
-rtfrrsResponseStatus :: Lens' RemoveTagsFromResourceResponse Int
+rtfrrsResponseStatus :: Lens' (RemoveTagsFromResourceResponse (a)) Int
 rtfrrsResponseStatus = lens _rtfrrsResponseStatus (\ s a -> s{_rtfrrsResponseStatus = a});
 
 instance NFData RemoveTagsFromResourceResponse

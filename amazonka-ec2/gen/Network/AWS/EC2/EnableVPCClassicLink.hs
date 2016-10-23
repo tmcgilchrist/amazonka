@@ -105,7 +105,7 @@ instance ToQuery EnableVPCClassicLink where
 -- | Contains the output of EnableVpcClassicLink.
 --
 -- /See:/ 'enableVPCClassicLinkResponse' smart constructor.
-data EnableVPCClassicLinkResponse = EnableVPCClassicLinkResponse'
+data EnableVPCClassicLinkResponse a = EnableVPCClassicLinkResponse'
     { _evclrsReturn         :: !(Maybe Bool)
     , _evclrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data EnableVPCClassicLinkResponse = EnableVPCClassicLinkResponse'
 -- * 'evclrsResponseStatus'
 enableVPCClassicLinkResponse
     :: Int -- ^ 'evclrsResponseStatus'
-    -> EnableVPCClassicLinkResponse
+    -> EnableVPCClassicLinkResponse (a)
 enableVPCClassicLinkResponse pResponseStatus_ =
     EnableVPCClassicLinkResponse'
     { _evclrsReturn = Nothing
@@ -127,11 +127,11 @@ enableVPCClassicLinkResponse pResponseStatus_ =
     }
 
 -- | Returns 'true' if the request succeeds; otherwise, it returns an error.
-evclrsReturn :: Lens' EnableVPCClassicLinkResponse (Maybe Bool)
+evclrsReturn :: Lens' (EnableVPCClassicLinkResponse (a)) (Maybe Bool)
 evclrsReturn = lens _evclrsReturn (\ s a -> s{_evclrsReturn = a});
 
 -- | The response status code.
-evclrsResponseStatus :: Lens' EnableVPCClassicLinkResponse Int
+evclrsResponseStatus :: Lens' (EnableVPCClassicLinkResponse (a)) Int
 evclrsResponseStatus = lens _evclrsResponseStatus (\ s a -> s{_evclrsResponseStatus = a});
 
 instance NFData EnableVPCClassicLinkResponse

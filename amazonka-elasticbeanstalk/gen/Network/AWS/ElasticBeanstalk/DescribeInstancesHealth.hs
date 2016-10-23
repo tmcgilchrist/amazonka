@@ -134,7 +134,7 @@ instance ToQuery DescribeInstancesHealth where
 -- | See the example below for a sample response.
 --
 -- /See:/ 'describeInstancesHealthResponse' smart constructor.
-data DescribeInstancesHealthResponse = DescribeInstancesHealthResponse'
+data DescribeInstancesHealthResponse a = DescribeInstancesHealthResponse'
     { _dihrsInstanceHealthList :: !(Maybe [SingleInstanceHealth])
     , _dihrsNextToken          :: !(Maybe Text)
     , _dihrsRefreshedAt        :: !(Maybe ISO8601)
@@ -154,7 +154,7 @@ data DescribeInstancesHealthResponse = DescribeInstancesHealthResponse'
 -- * 'dihrsResponseStatus'
 describeInstancesHealthResponse
     :: Int -- ^ 'dihrsResponseStatus'
-    -> DescribeInstancesHealthResponse
+    -> DescribeInstancesHealthResponse (a)
 describeInstancesHealthResponse pResponseStatus_ =
     DescribeInstancesHealthResponse'
     { _dihrsInstanceHealthList = Nothing
@@ -164,19 +164,19 @@ describeInstancesHealthResponse pResponseStatus_ =
     }
 
 -- | Contains the response body with information about the health of the instance.
-dihrsInstanceHealthList :: Lens' DescribeInstancesHealthResponse [SingleInstanceHealth]
+dihrsInstanceHealthList :: Lens' (DescribeInstancesHealthResponse (a)) [SingleInstanceHealth]
 dihrsInstanceHealthList = lens _dihrsInstanceHealthList (\ s a -> s{_dihrsInstanceHealthList = a}) . _Default . _Coerce;
 
 -- | The next token.
-dihrsNextToken :: Lens' DescribeInstancesHealthResponse (Maybe Text)
+dihrsNextToken :: Lens' (DescribeInstancesHealthResponse (a)) (Maybe Text)
 dihrsNextToken = lens _dihrsNextToken (\ s a -> s{_dihrsNextToken = a});
 
 -- | The date and time the information was last refreshed.
-dihrsRefreshedAt :: Lens' DescribeInstancesHealthResponse (Maybe UTCTime)
+dihrsRefreshedAt :: Lens' (DescribeInstancesHealthResponse (a)) (Maybe UTCTime)
 dihrsRefreshedAt = lens _dihrsRefreshedAt (\ s a -> s{_dihrsRefreshedAt = a}) . mapping _Time;
 
 -- | The response status code.
-dihrsResponseStatus :: Lens' DescribeInstancesHealthResponse Int
+dihrsResponseStatus :: Lens' (DescribeInstancesHealthResponse (a)) Int
 dihrsResponseStatus = lens _dihrsResponseStatus (\ s a -> s{_dihrsResponseStatus = a});
 
 instance NFData DescribeInstancesHealthResponse

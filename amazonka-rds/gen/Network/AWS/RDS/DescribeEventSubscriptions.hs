@@ -147,7 +147,7 @@ instance ToQuery DescribeEventSubscriptions where
 -- | Data returned by the __DescribeEventSubscriptions__ action.
 --
 -- /See:/ 'describeEventSubscriptionsResponse' smart constructor.
-data DescribeEventSubscriptionsResponse = DescribeEventSubscriptionsResponse'
+data DescribeEventSubscriptionsResponse a = DescribeEventSubscriptionsResponse'
     { _desrsEventSubscriptionsList :: !(Maybe [EventSubscription])
     , _desrsMarker                 :: !(Maybe Text)
     , _desrsResponseStatus         :: !Int
@@ -164,7 +164,7 @@ data DescribeEventSubscriptionsResponse = DescribeEventSubscriptionsResponse'
 -- * 'desrsResponseStatus'
 describeEventSubscriptionsResponse
     :: Int -- ^ 'desrsResponseStatus'
-    -> DescribeEventSubscriptionsResponse
+    -> DescribeEventSubscriptionsResponse (a)
 describeEventSubscriptionsResponse pResponseStatus_ =
     DescribeEventSubscriptionsResponse'
     { _desrsEventSubscriptionsList = Nothing
@@ -173,15 +173,15 @@ describeEventSubscriptionsResponse pResponseStatus_ =
     }
 
 -- | A list of EventSubscriptions data types.
-desrsEventSubscriptionsList :: Lens' DescribeEventSubscriptionsResponse [EventSubscription]
+desrsEventSubscriptionsList :: Lens' (DescribeEventSubscriptionsResponse (a)) [EventSubscription]
 desrsEventSubscriptionsList = lens _desrsEventSubscriptionsList (\ s a -> s{_desrsEventSubscriptionsList = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-desrsMarker :: Lens' DescribeEventSubscriptionsResponse (Maybe Text)
+desrsMarker :: Lens' (DescribeEventSubscriptionsResponse (a)) (Maybe Text)
 desrsMarker = lens _desrsMarker (\ s a -> s{_desrsMarker = a});
 
 -- | The response status code.
-desrsResponseStatus :: Lens' DescribeEventSubscriptionsResponse Int
+desrsResponseStatus :: Lens' (DescribeEventSubscriptionsResponse (a)) Int
 desrsResponseStatus = lens _desrsResponseStatus (\ s a -> s{_desrsResponseStatus = a});
 
 instance NFData DescribeEventSubscriptionsResponse

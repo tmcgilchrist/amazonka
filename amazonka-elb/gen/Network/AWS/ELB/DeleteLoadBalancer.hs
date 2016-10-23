@@ -98,7 +98,7 @@ instance ToQuery DeleteLoadBalancer where
 -- | Contains the output of DeleteLoadBalancer.
 --
 -- /See:/ 'deleteLoadBalancerResponse' smart constructor.
-newtype DeleteLoadBalancerResponse = DeleteLoadBalancerResponse'
+newtype DeleteLoadBalancerResponse a = DeleteLoadBalancerResponse'
     { _drsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -109,14 +109,14 @@ newtype DeleteLoadBalancerResponse = DeleteLoadBalancerResponse'
 -- * 'drsResponseStatus'
 deleteLoadBalancerResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteLoadBalancerResponse
+    -> DeleteLoadBalancerResponse (a)
 deleteLoadBalancerResponse pResponseStatus_ =
     DeleteLoadBalancerResponse'
     { _drsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteLoadBalancerResponse Int
+drsResponseStatus :: Lens' (DeleteLoadBalancerResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteLoadBalancerResponse

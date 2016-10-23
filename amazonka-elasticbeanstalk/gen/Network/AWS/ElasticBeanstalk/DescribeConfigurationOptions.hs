@@ -143,7 +143,7 @@ instance ToQuery DescribeConfigurationOptions where
 -- | Describes the settings for a specified configuration set.
 --
 -- /See:/ 'describeConfigurationOptionsResponse' smart constructor.
-data DescribeConfigurationOptionsResponse = DescribeConfigurationOptionsResponse'
+data DescribeConfigurationOptionsResponse a = DescribeConfigurationOptionsResponse'
     { _dcorsSolutionStackName :: !(Maybe Text)
     , _dcorsOptions           :: !(Maybe [ConfigurationOptionDescription])
     , _dcorsResponseStatus    :: !Int
@@ -160,7 +160,7 @@ data DescribeConfigurationOptionsResponse = DescribeConfigurationOptionsResponse
 -- * 'dcorsResponseStatus'
 describeConfigurationOptionsResponse
     :: Int -- ^ 'dcorsResponseStatus'
-    -> DescribeConfigurationOptionsResponse
+    -> DescribeConfigurationOptionsResponse (a)
 describeConfigurationOptionsResponse pResponseStatus_ =
     DescribeConfigurationOptionsResponse'
     { _dcorsSolutionStackName = Nothing
@@ -169,15 +169,15 @@ describeConfigurationOptionsResponse pResponseStatus_ =
     }
 
 -- | The name of the solution stack these configuration options belong to.
-dcorsSolutionStackName :: Lens' DescribeConfigurationOptionsResponse (Maybe Text)
+dcorsSolutionStackName :: Lens' (DescribeConfigurationOptionsResponse (a)) (Maybe Text)
 dcorsSolutionStackName = lens _dcorsSolutionStackName (\ s a -> s{_dcorsSolutionStackName = a});
 
 -- | A list of < ConfigurationOptionDescription>.
-dcorsOptions :: Lens' DescribeConfigurationOptionsResponse [ConfigurationOptionDescription]
+dcorsOptions :: Lens' (DescribeConfigurationOptionsResponse (a)) [ConfigurationOptionDescription]
 dcorsOptions = lens _dcorsOptions (\ s a -> s{_dcorsOptions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcorsResponseStatus :: Lens' DescribeConfigurationOptionsResponse Int
+dcorsResponseStatus :: Lens' (DescribeConfigurationOptionsResponse (a)) Int
 dcorsResponseStatus = lens _dcorsResponseStatus (\ s a -> s{_dcorsResponseStatus = a});
 
 instance NFData DescribeConfigurationOptionsResponse

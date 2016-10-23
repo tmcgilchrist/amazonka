@@ -86,14 +86,14 @@ instance ToQuery DeleteGroup where
                "GroupName" =: _dgGroupName]
 
 -- | /See:/ 'deleteGroupResponse' smart constructor.
-data DeleteGroupResponse =
+data DeleteGroupResponse a =
     DeleteGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteGroupResponse' with the minimum fields required to make a request.
 --
 deleteGroupResponse
-    :: DeleteGroupResponse
+    :: DeleteGroupResponse (a)
 deleteGroupResponse = DeleteGroupResponse'
 
 instance NFData DeleteGroupResponse

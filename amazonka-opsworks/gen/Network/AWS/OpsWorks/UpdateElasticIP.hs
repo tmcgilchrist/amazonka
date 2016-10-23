@@ -104,14 +104,14 @@ instance ToQuery UpdateElasticIP where
         toQuery = const mempty
 
 -- | /See:/ 'updateElasticIPResponse' smart constructor.
-data UpdateElasticIPResponse =
+data UpdateElasticIPResponse a =
     UpdateElasticIPResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateElasticIPResponse' with the minimum fields required to make a request.
 --
 updateElasticIPResponse
-    :: UpdateElasticIPResponse
+    :: UpdateElasticIPResponse (a)
 updateElasticIPResponse = UpdateElasticIPResponse'
 
 instance NFData UpdateElasticIPResponse

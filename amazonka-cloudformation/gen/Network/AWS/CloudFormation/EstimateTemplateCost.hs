@@ -120,7 +120,7 @@ instance ToQuery EstimateTemplateCost where
 -- | The output for a < EstimateTemplateCost> action.
 --
 -- /See:/ 'estimateTemplateCostResponse' smart constructor.
-data EstimateTemplateCostResponse = EstimateTemplateCostResponse'
+data EstimateTemplateCostResponse a = EstimateTemplateCostResponse'
     { _etcrsURL            :: !(Maybe Text)
     , _etcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data EstimateTemplateCostResponse = EstimateTemplateCostResponse'
 -- * 'etcrsResponseStatus'
 estimateTemplateCostResponse
     :: Int -- ^ 'etcrsResponseStatus'
-    -> EstimateTemplateCostResponse
+    -> EstimateTemplateCostResponse (a)
 estimateTemplateCostResponse pResponseStatus_ =
     EstimateTemplateCostResponse'
     { _etcrsURL = Nothing
@@ -142,11 +142,11 @@ estimateTemplateCostResponse pResponseStatus_ =
     }
 
 -- | An AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.
-etcrsURL :: Lens' EstimateTemplateCostResponse (Maybe Text)
+etcrsURL :: Lens' (EstimateTemplateCostResponse (a)) (Maybe Text)
 etcrsURL = lens _etcrsURL (\ s a -> s{_etcrsURL = a});
 
 -- | The response status code.
-etcrsResponseStatus :: Lens' EstimateTemplateCostResponse Int
+etcrsResponseStatus :: Lens' (EstimateTemplateCostResponse (a)) Int
 etcrsResponseStatus = lens _etcrsResponseStatus (\ s a -> s{_etcrsResponseStatus = a});
 
 instance NFData EstimateTemplateCostResponse

@@ -104,14 +104,14 @@ instance ToQuery PutRetentionPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putRetentionPolicyResponse' smart constructor.
-data PutRetentionPolicyResponse =
+data PutRetentionPolicyResponse a =
     PutRetentionPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutRetentionPolicyResponse' with the minimum fields required to make a request.
 --
 putRetentionPolicyResponse
-    :: PutRetentionPolicyResponse
+    :: PutRetentionPolicyResponse (a)
 putRetentionPolicyResponse = PutRetentionPolicyResponse'
 
 instance NFData PutRetentionPolicyResponse

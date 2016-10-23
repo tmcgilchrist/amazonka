@@ -281,7 +281,7 @@ instance ToQuery CreateLayer where
 -- | Contains the response to a 'CreateLayer' request.
 --
 -- /See:/ 'createLayerResponse' smart constructor.
-data CreateLayerResponse = CreateLayerResponse'
+data CreateLayerResponse a = CreateLayerResponse'
     { _clrsLayerId        :: !(Maybe Text)
     , _clrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -295,7 +295,7 @@ data CreateLayerResponse = CreateLayerResponse'
 -- * 'clrsResponseStatus'
 createLayerResponse
     :: Int -- ^ 'clrsResponseStatus'
-    -> CreateLayerResponse
+    -> CreateLayerResponse (a)
 createLayerResponse pResponseStatus_ =
     CreateLayerResponse'
     { _clrsLayerId = Nothing
@@ -303,11 +303,11 @@ createLayerResponse pResponseStatus_ =
     }
 
 -- | The layer ID.
-clrsLayerId :: Lens' CreateLayerResponse (Maybe Text)
+clrsLayerId :: Lens' (CreateLayerResponse (a)) (Maybe Text)
 clrsLayerId = lens _clrsLayerId (\ s a -> s{_clrsLayerId = a});
 
 -- | The response status code.
-clrsResponseStatus :: Lens' CreateLayerResponse Int
+clrsResponseStatus :: Lens' (CreateLayerResponse (a)) Int
 clrsResponseStatus = lens _clrsResponseStatus (\ s a -> s{_clrsResponseStatus = a});
 
 instance NFData CreateLayerResponse

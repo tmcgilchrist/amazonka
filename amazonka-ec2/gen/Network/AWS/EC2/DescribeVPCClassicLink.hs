@@ -127,7 +127,7 @@ instance ToQuery DescribeVPCClassicLink where
 -- | Contains the output of DescribeVpcClassicLink.
 --
 -- /See:/ 'describeVPCClassicLinkResponse' smart constructor.
-data DescribeVPCClassicLinkResponse = DescribeVPCClassicLinkResponse'
+data DescribeVPCClassicLinkResponse a = DescribeVPCClassicLinkResponse'
     { _dvclrsVPCs           :: !(Maybe [VPCClassicLink])
     , _dvclrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data DescribeVPCClassicLinkResponse = DescribeVPCClassicLinkResponse'
 -- * 'dvclrsResponseStatus'
 describeVPCClassicLinkResponse
     :: Int -- ^ 'dvclrsResponseStatus'
-    -> DescribeVPCClassicLinkResponse
+    -> DescribeVPCClassicLinkResponse (a)
 describeVPCClassicLinkResponse pResponseStatus_ =
     DescribeVPCClassicLinkResponse'
     { _dvclrsVPCs = Nothing
@@ -149,11 +149,11 @@ describeVPCClassicLinkResponse pResponseStatus_ =
     }
 
 -- | The ClassicLink status of one or more VPCs.
-dvclrsVPCs :: Lens' DescribeVPCClassicLinkResponse [VPCClassicLink]
+dvclrsVPCs :: Lens' (DescribeVPCClassicLinkResponse (a)) [VPCClassicLink]
 dvclrsVPCs = lens _dvclrsVPCs (\ s a -> s{_dvclrsVPCs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvclrsResponseStatus :: Lens' DescribeVPCClassicLinkResponse Int
+dvclrsResponseStatus :: Lens' (DescribeVPCClassicLinkResponse (a)) Int
 dvclrsResponseStatus = lens _dvclrsResponseStatus (\ s a -> s{_dvclrsResponseStatus = a});
 
 instance NFData DescribeVPCClassicLinkResponse

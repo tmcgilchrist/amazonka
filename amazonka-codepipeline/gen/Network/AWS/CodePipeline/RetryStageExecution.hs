@@ -140,7 +140,7 @@ instance ToQuery RetryStageExecution where
 -- | Represents the output of a retry stage execution action.
 --
 -- /See:/ 'retryStageExecutionResponse' smart constructor.
-data RetryStageExecutionResponse = RetryStageExecutionResponse'
+data RetryStageExecutionResponse a = RetryStageExecutionResponse'
     { _rsersPipelineExecutionId :: !(Maybe Text)
     , _rsersResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -154,7 +154,7 @@ data RetryStageExecutionResponse = RetryStageExecutionResponse'
 -- * 'rsersResponseStatus'
 retryStageExecutionResponse
     :: Int -- ^ 'rsersResponseStatus'
-    -> RetryStageExecutionResponse
+    -> RetryStageExecutionResponse (a)
 retryStageExecutionResponse pResponseStatus_ =
     RetryStageExecutionResponse'
     { _rsersPipelineExecutionId = Nothing
@@ -162,11 +162,11 @@ retryStageExecutionResponse pResponseStatus_ =
     }
 
 -- | The ID of the current workflow execution in the failed stage.
-rsersPipelineExecutionId :: Lens' RetryStageExecutionResponse (Maybe Text)
+rsersPipelineExecutionId :: Lens' (RetryStageExecutionResponse (a)) (Maybe Text)
 rsersPipelineExecutionId = lens _rsersPipelineExecutionId (\ s a -> s{_rsersPipelineExecutionId = a});
 
 -- | The response status code.
-rsersResponseStatus :: Lens' RetryStageExecutionResponse Int
+rsersResponseStatus :: Lens' (RetryStageExecutionResponse (a)) Int
 rsersResponseStatus = lens _rsersResponseStatus (\ s a -> s{_rsersResponseStatus = a});
 
 instance NFData RetryStageExecutionResponse

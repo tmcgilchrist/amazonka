@@ -100,14 +100,14 @@ instance ToQuery BatchDeleteAttributes where
                toQueryList "Item" _bdaItems]
 
 -- | /See:/ 'batchDeleteAttributesResponse' smart constructor.
-data BatchDeleteAttributesResponse =
+data BatchDeleteAttributesResponse a =
     BatchDeleteAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'BatchDeleteAttributesResponse' with the minimum fields required to make a request.
 --
 batchDeleteAttributesResponse
-    :: BatchDeleteAttributesResponse
+    :: BatchDeleteAttributesResponse (a)
 batchDeleteAttributesResponse = BatchDeleteAttributesResponse'
 
 instance NFData BatchDeleteAttributesResponse

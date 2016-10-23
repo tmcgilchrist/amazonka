@@ -120,7 +120,7 @@ instance ToQuery DescribeWorkspaceDirectories where
 -- | Contains the results of the < DescribeWorkspaceDirectories> operation.
 --
 -- /See:/ 'describeWorkspaceDirectoriesResponse' smart constructor.
-data DescribeWorkspaceDirectoriesResponse = DescribeWorkspaceDirectoriesResponse'
+data DescribeWorkspaceDirectoriesResponse a = DescribeWorkspaceDirectoriesResponse'
     { _dwdrsDirectories    :: !(Maybe [WorkspaceDirectory])
     , _dwdrsNextToken      :: !(Maybe Text)
     , _dwdrsResponseStatus :: !Int
@@ -137,7 +137,7 @@ data DescribeWorkspaceDirectoriesResponse = DescribeWorkspaceDirectoriesResponse
 -- * 'dwdrsResponseStatus'
 describeWorkspaceDirectoriesResponse
     :: Int -- ^ 'dwdrsResponseStatus'
-    -> DescribeWorkspaceDirectoriesResponse
+    -> DescribeWorkspaceDirectoriesResponse (a)
 describeWorkspaceDirectoriesResponse pResponseStatus_ =
     DescribeWorkspaceDirectoriesResponse'
     { _dwdrsDirectories = Nothing
@@ -146,15 +146,15 @@ describeWorkspaceDirectoriesResponse pResponseStatus_ =
     }
 
 -- | An array of structures that contain information about the directories.
-dwdrsDirectories :: Lens' DescribeWorkspaceDirectoriesResponse [WorkspaceDirectory]
+dwdrsDirectories :: Lens' (DescribeWorkspaceDirectoriesResponse (a)) [WorkspaceDirectory]
 dwdrsDirectories = lens _dwdrsDirectories (\ s a -> s{_dwdrsDirectories = a}) . _Default . _Coerce;
 
 -- | If not null, more results are available. Pass this value for the 'NextToken' parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.
-dwdrsNextToken :: Lens' DescribeWorkspaceDirectoriesResponse (Maybe Text)
+dwdrsNextToken :: Lens' (DescribeWorkspaceDirectoriesResponse (a)) (Maybe Text)
 dwdrsNextToken = lens _dwdrsNextToken (\ s a -> s{_dwdrsNextToken = a});
 
 -- | The response status code.
-dwdrsResponseStatus :: Lens' DescribeWorkspaceDirectoriesResponse Int
+dwdrsResponseStatus :: Lens' (DescribeWorkspaceDirectoriesResponse (a)) Int
 dwdrsResponseStatus = lens _dwdrsResponseStatus (\ s a -> s{_dwdrsResponseStatus = a});
 
 instance NFData DescribeWorkspaceDirectoriesResponse

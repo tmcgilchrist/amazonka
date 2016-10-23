@@ -133,7 +133,7 @@ instance ToQuery CreatePipeline where
 -- | Contains the output of CreatePipeline.
 --
 -- /See:/ 'createPipelineResponse' smart constructor.
-data CreatePipelineResponse = CreatePipelineResponse'
+data CreatePipelineResponse a = CreatePipelineResponse'
     { _cprsResponseStatus :: !Int
     , _cprsPipelineId     :: !Text
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -148,7 +148,7 @@ data CreatePipelineResponse = CreatePipelineResponse'
 createPipelineResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> Text -- ^ 'cprsPipelineId'
-    -> CreatePipelineResponse
+    -> CreatePipelineResponse (a)
 createPipelineResponse pResponseStatus_ pPipelineId_ =
     CreatePipelineResponse'
     { _cprsResponseStatus = pResponseStatus_
@@ -156,11 +156,11 @@ createPipelineResponse pResponseStatus_ pPipelineId_ =
     }
 
 -- | The response status code.
-cprsResponseStatus :: Lens' CreatePipelineResponse Int
+cprsResponseStatus :: Lens' (CreatePipelineResponse (a)) Int
 cprsResponseStatus = lens _cprsResponseStatus (\ s a -> s{_cprsResponseStatus = a});
 
 -- | The ID that AWS Data Pipeline assigns the newly created pipeline. For example, 'df-06372391ZG65EXAMPLE'.
-cprsPipelineId :: Lens' CreatePipelineResponse Text
+cprsPipelineId :: Lens' (CreatePipelineResponse (a)) Text
 cprsPipelineId = lens _cprsPipelineId (\ s a -> s{_cprsPipelineId = a});
 
 instance NFData CreatePipelineResponse

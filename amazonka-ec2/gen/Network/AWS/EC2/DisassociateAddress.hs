@@ -109,14 +109,14 @@ instance ToQuery DisassociateAddress where
                "PublicIp" =: _dasPublicIP, "DryRun" =: _dasDryRun]
 
 -- | /See:/ 'disassociateAddressResponse' smart constructor.
-data DisassociateAddressResponse =
+data DisassociateAddressResponse a =
     DisassociateAddressResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DisassociateAddressResponse' with the minimum fields required to make a request.
 --
 disassociateAddressResponse
-    :: DisassociateAddressResponse
+    :: DisassociateAddressResponse (a)
 disassociateAddressResponse = DisassociateAddressResponse'
 
 instance NFData DisassociateAddressResponse

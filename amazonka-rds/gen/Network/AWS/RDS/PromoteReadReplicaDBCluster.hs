@@ -106,7 +106,7 @@ instance ToQuery PromoteReadReplicaDBCluster where
                "DBClusterIdentifier" =: _prrdcDBClusterIdentifier]
 
 -- | /See:/ 'promoteReadReplicaDBClusterResponse' smart constructor.
-data PromoteReadReplicaDBClusterResponse = PromoteReadReplicaDBClusterResponse'
+data PromoteReadReplicaDBClusterResponse a = PromoteReadReplicaDBClusterResponse'
     { _prrdcrsDBCluster      :: !(Maybe DBCluster)
     , _prrdcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data PromoteReadReplicaDBClusterResponse = PromoteReadReplicaDBClusterResponse'
 -- * 'prrdcrsResponseStatus'
 promoteReadReplicaDBClusterResponse
     :: Int -- ^ 'prrdcrsResponseStatus'
-    -> PromoteReadReplicaDBClusterResponse
+    -> PromoteReadReplicaDBClusterResponse (a)
 promoteReadReplicaDBClusterResponse pResponseStatus_ =
     PromoteReadReplicaDBClusterResponse'
     { _prrdcrsDBCluster = Nothing
@@ -128,11 +128,11 @@ promoteReadReplicaDBClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-prrdcrsDBCluster :: Lens' PromoteReadReplicaDBClusterResponse (Maybe DBCluster)
+prrdcrsDBCluster :: Lens' (PromoteReadReplicaDBClusterResponse (a)) (Maybe DBCluster)
 prrdcrsDBCluster = lens _prrdcrsDBCluster (\ s a -> s{_prrdcrsDBCluster = a});
 
 -- | The response status code.
-prrdcrsResponseStatus :: Lens' PromoteReadReplicaDBClusterResponse Int
+prrdcrsResponseStatus :: Lens' (PromoteReadReplicaDBClusterResponse (a)) Int
 prrdcrsResponseStatus = lens _prrdcrsResponseStatus (\ s a -> s{_prrdcrsResponseStatus = a});
 
 instance NFData PromoteReadReplicaDBClusterResponse

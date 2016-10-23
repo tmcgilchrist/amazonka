@@ -119,7 +119,7 @@ instance ToQuery SetInstanceProtection where
 -- | Contains the output of SetInstanceProtection.
 --
 -- /See:/ 'setInstanceProtectionResponse' smart constructor.
-newtype SetInstanceProtectionResponse = SetInstanceProtectionResponse'
+newtype SetInstanceProtectionResponse a = SetInstanceProtectionResponse'
     { _siprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -130,14 +130,14 @@ newtype SetInstanceProtectionResponse = SetInstanceProtectionResponse'
 -- * 'siprsResponseStatus'
 setInstanceProtectionResponse
     :: Int -- ^ 'siprsResponseStatus'
-    -> SetInstanceProtectionResponse
+    -> SetInstanceProtectionResponse (a)
 setInstanceProtectionResponse pResponseStatus_ =
     SetInstanceProtectionResponse'
     { _siprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-siprsResponseStatus :: Lens' SetInstanceProtectionResponse Int
+siprsResponseStatus :: Lens' (SetInstanceProtectionResponse (a)) Int
 siprsResponseStatus = lens _siprsResponseStatus (\ s a -> s{_siprsResponseStatus = a});
 
 instance NFData SetInstanceProtectionResponse

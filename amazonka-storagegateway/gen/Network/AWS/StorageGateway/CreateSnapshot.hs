@@ -131,7 +131,7 @@ instance ToQuery CreateSnapshot where
 -- | A JSON object containing the following fields:
 --
 -- /See:/ 'createSnapshotResponse' smart constructor.
-data CreateSnapshotResponse = CreateSnapshotResponse'
+data CreateSnapshotResponse a = CreateSnapshotResponse'
     { _csrsVolumeARN      :: !(Maybe Text)
     , _csrsSnapshotId     :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
@@ -148,7 +148,7 @@ data CreateSnapshotResponse = CreateSnapshotResponse'
 -- * 'csrsResponseStatus'
 createSnapshotResponse
     :: Int -- ^ 'csrsResponseStatus'
-    -> CreateSnapshotResponse
+    -> CreateSnapshotResponse (a)
 createSnapshotResponse pResponseStatus_ =
     CreateSnapshotResponse'
     { _csrsVolumeARN = Nothing
@@ -157,15 +157,15 @@ createSnapshotResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.
-csrsVolumeARN :: Lens' CreateSnapshotResponse (Maybe Text)
+csrsVolumeARN :: Lens' (CreateSnapshotResponse (a)) (Maybe Text)
 csrsVolumeARN = lens _csrsVolumeARN (\ s a -> s{_csrsVolumeARN = a});
 
 -- | The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API 'DescribeSnapshots') or creating a volume from a snapshot (< CreateStorediSCSIVolume>).
-csrsSnapshotId :: Lens' CreateSnapshotResponse (Maybe Text)
+csrsSnapshotId :: Lens' (CreateSnapshotResponse (a)) (Maybe Text)
 csrsSnapshotId = lens _csrsSnapshotId (\ s a -> s{_csrsSnapshotId = a});
 
 -- | The response status code.
-csrsResponseStatus :: Lens' CreateSnapshotResponse Int
+csrsResponseStatus :: Lens' (CreateSnapshotResponse (a)) Int
 csrsResponseStatus = lens _csrsResponseStatus (\ s a -> s{_csrsResponseStatus = a});
 
 instance NFData CreateSnapshotResponse

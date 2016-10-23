@@ -111,14 +111,14 @@ instance ToQuery ModifyVPCAttribute where
                "VpcId" =: _mvaVPCId]
 
 -- | /See:/ 'modifyVPCAttributeResponse' smart constructor.
-data ModifyVPCAttributeResponse =
+data ModifyVPCAttributeResponse a =
     ModifyVPCAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyVPCAttributeResponse' with the minimum fields required to make a request.
 --
 modifyVPCAttributeResponse
-    :: ModifyVPCAttributeResponse
+    :: ModifyVPCAttributeResponse (a)
 modifyVPCAttributeResponse = ModifyVPCAttributeResponse'
 
 instance NFData ModifyVPCAttributeResponse

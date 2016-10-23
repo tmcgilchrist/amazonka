@@ -103,14 +103,14 @@ instance ToQuery DeleteSigningCertificate where
                "CertificateId" =: _dscCertificateId]
 
 -- | /See:/ 'deleteSigningCertificateResponse' smart constructor.
-data DeleteSigningCertificateResponse =
+data DeleteSigningCertificateResponse a =
     DeleteSigningCertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSigningCertificateResponse' with the minimum fields required to make a request.
 --
 deleteSigningCertificateResponse
-    :: DeleteSigningCertificateResponse
+    :: DeleteSigningCertificateResponse (a)
 deleteSigningCertificateResponse = DeleteSigningCertificateResponse'
 
 instance NFData DeleteSigningCertificateResponse

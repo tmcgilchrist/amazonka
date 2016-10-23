@@ -104,7 +104,7 @@ instance ToQuery CreateSnapshot where
                "SnapshotName" =: _csSnapshotName]
 
 -- | /See:/ 'createSnapshotResponse' smart constructor.
-data CreateSnapshotResponse = CreateSnapshotResponse'
+data CreateSnapshotResponse a = CreateSnapshotResponse'
     { _crersSnapshot       :: !(Maybe Snapshot)
     , _crersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data CreateSnapshotResponse = CreateSnapshotResponse'
 -- * 'crersResponseStatus'
 createSnapshotResponse
     :: Int -- ^ 'crersResponseStatus'
-    -> CreateSnapshotResponse
+    -> CreateSnapshotResponse (a)
 createSnapshotResponse pResponseStatus_ =
     CreateSnapshotResponse'
     { _crersSnapshot = Nothing
@@ -126,11 +126,11 @@ createSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crersSnapshot :: Lens' CreateSnapshotResponse (Maybe Snapshot)
+crersSnapshot :: Lens' (CreateSnapshotResponse (a)) (Maybe Snapshot)
 crersSnapshot = lens _crersSnapshot (\ s a -> s{_crersSnapshot = a});
 
 -- | The response status code.
-crersResponseStatus :: Lens' CreateSnapshotResponse Int
+crersResponseStatus :: Lens' (CreateSnapshotResponse (a)) Int
 crersResponseStatus = lens _crersResponseStatus (\ s a -> s{_crersResponseStatus = a});
 
 instance NFData CreateSnapshotResponse

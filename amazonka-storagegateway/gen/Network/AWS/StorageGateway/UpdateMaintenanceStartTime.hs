@@ -145,7 +145,7 @@ instance ToQuery UpdateMaintenanceStartTime where
 -- | A JSON object containing the of the gateway whose maintenance start time is updated.
 --
 -- /See:/ 'updateMaintenanceStartTimeResponse' smart constructor.
-data UpdateMaintenanceStartTimeResponse = UpdateMaintenanceStartTimeResponse'
+data UpdateMaintenanceStartTimeResponse a = UpdateMaintenanceStartTimeResponse'
     { _umstrsGatewayARN     :: !(Maybe Text)
     , _umstrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -159,7 +159,7 @@ data UpdateMaintenanceStartTimeResponse = UpdateMaintenanceStartTimeResponse'
 -- * 'umstrsResponseStatus'
 updateMaintenanceStartTimeResponse
     :: Int -- ^ 'umstrsResponseStatus'
-    -> UpdateMaintenanceStartTimeResponse
+    -> UpdateMaintenanceStartTimeResponse (a)
 updateMaintenanceStartTimeResponse pResponseStatus_ =
     UpdateMaintenanceStartTimeResponse'
     { _umstrsGatewayARN = Nothing
@@ -167,11 +167,11 @@ updateMaintenanceStartTimeResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-umstrsGatewayARN :: Lens' UpdateMaintenanceStartTimeResponse (Maybe Text)
+umstrsGatewayARN :: Lens' (UpdateMaintenanceStartTimeResponse (a)) (Maybe Text)
 umstrsGatewayARN = lens _umstrsGatewayARN (\ s a -> s{_umstrsGatewayARN = a});
 
 -- | The response status code.
-umstrsResponseStatus :: Lens' UpdateMaintenanceStartTimeResponse Int
+umstrsResponseStatus :: Lens' (UpdateMaintenanceStartTimeResponse (a)) Int
 umstrsResponseStatus = lens _umstrsResponseStatus (\ s a -> s{_umstrsResponseStatus = a});
 
 instance NFData UpdateMaintenanceStartTimeResponse

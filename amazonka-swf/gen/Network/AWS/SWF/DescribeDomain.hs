@@ -112,7 +112,7 @@ instance ToQuery DescribeDomain where
 -- | Contains details of a domain.
 --
 -- /See:/ 'describeDomainResponse' smart constructor.
-data DescribeDomainResponse = DescribeDomainResponse'
+data DescribeDomainResponse a = DescribeDomainResponse'
     { _ddrsResponseStatus :: !Int
     , _ddrsDomainInfo     :: !DomainInfo
     , _ddrsConfiguration  :: !DomainConfiguration
@@ -131,7 +131,7 @@ describeDomainResponse
     :: Int -- ^ 'ddrsResponseStatus'
     -> DomainInfo -- ^ 'ddrsDomainInfo'
     -> DomainConfiguration -- ^ 'ddrsConfiguration'
-    -> DescribeDomainResponse
+    -> DescribeDomainResponse (a)
 describeDomainResponse pResponseStatus_ pDomainInfo_ pConfiguration_ =
     DescribeDomainResponse'
     { _ddrsResponseStatus = pResponseStatus_
@@ -140,15 +140,15 @@ describeDomainResponse pResponseStatus_ pDomainInfo_ pConfiguration_ =
     }
 
 -- | The response status code.
-ddrsResponseStatus :: Lens' DescribeDomainResponse Int
+ddrsResponseStatus :: Lens' (DescribeDomainResponse (a)) Int
 ddrsResponseStatus = lens _ddrsResponseStatus (\ s a -> s{_ddrsResponseStatus = a});
 
 -- | Undocumented member.
-ddrsDomainInfo :: Lens' DescribeDomainResponse DomainInfo
+ddrsDomainInfo :: Lens' (DescribeDomainResponse (a)) DomainInfo
 ddrsDomainInfo = lens _ddrsDomainInfo (\ s a -> s{_ddrsDomainInfo = a});
 
 -- | Undocumented member.
-ddrsConfiguration :: Lens' DescribeDomainResponse DomainConfiguration
+ddrsConfiguration :: Lens' (DescribeDomainResponse (a)) DomainConfiguration
 ddrsConfiguration = lens _ddrsConfiguration (\ s a -> s{_ddrsConfiguration = a});
 
 instance NFData DescribeDomainResponse

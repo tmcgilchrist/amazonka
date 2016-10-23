@@ -131,7 +131,7 @@ instance ToQuery CreateTapeWithBarcode where
 -- | CreateTapeOutput
 --
 -- /See:/ 'createTapeWithBarcodeResponse' smart constructor.
-data CreateTapeWithBarcodeResponse = CreateTapeWithBarcodeResponse'
+data CreateTapeWithBarcodeResponse a = CreateTapeWithBarcodeResponse'
     { _ctwbrsTapeARN        :: !(Maybe Text)
     , _ctwbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -145,7 +145,7 @@ data CreateTapeWithBarcodeResponse = CreateTapeWithBarcodeResponse'
 -- * 'ctwbrsResponseStatus'
 createTapeWithBarcodeResponse
     :: Int -- ^ 'ctwbrsResponseStatus'
-    -> CreateTapeWithBarcodeResponse
+    -> CreateTapeWithBarcodeResponse (a)
 createTapeWithBarcodeResponse pResponseStatus_ =
     CreateTapeWithBarcodeResponse'
     { _ctwbrsTapeARN = Nothing
@@ -153,11 +153,11 @@ createTapeWithBarcodeResponse pResponseStatus_ =
     }
 
 -- | A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.
-ctwbrsTapeARN :: Lens' CreateTapeWithBarcodeResponse (Maybe Text)
+ctwbrsTapeARN :: Lens' (CreateTapeWithBarcodeResponse (a)) (Maybe Text)
 ctwbrsTapeARN = lens _ctwbrsTapeARN (\ s a -> s{_ctwbrsTapeARN = a});
 
 -- | The response status code.
-ctwbrsResponseStatus :: Lens' CreateTapeWithBarcodeResponse Int
+ctwbrsResponseStatus :: Lens' (CreateTapeWithBarcodeResponse (a)) Int
 ctwbrsResponseStatus = lens _ctwbrsResponseStatus (\ s a -> s{_ctwbrsResponseStatus = a});
 
 instance NFData CreateTapeWithBarcodeResponse

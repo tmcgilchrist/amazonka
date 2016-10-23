@@ -153,7 +153,7 @@ instance ToQuery DescribeClusterVersions where
 -- | Contains the output from the < DescribeClusterVersions> action.
 --
 -- /See:/ 'describeClusterVersionsResponse' smart constructor.
-data DescribeClusterVersionsResponse = DescribeClusterVersionsResponse'
+data DescribeClusterVersionsResponse a = DescribeClusterVersionsResponse'
     { _dcvrsClusterVersions :: !(Maybe [ClusterVersion])
     , _dcvrsMarker          :: !(Maybe Text)
     , _dcvrsResponseStatus  :: !Int
@@ -170,7 +170,7 @@ data DescribeClusterVersionsResponse = DescribeClusterVersionsResponse'
 -- * 'dcvrsResponseStatus'
 describeClusterVersionsResponse
     :: Int -- ^ 'dcvrsResponseStatus'
-    -> DescribeClusterVersionsResponse
+    -> DescribeClusterVersionsResponse (a)
 describeClusterVersionsResponse pResponseStatus_ =
     DescribeClusterVersionsResponse'
     { _dcvrsClusterVersions = Nothing
@@ -179,15 +179,15 @@ describeClusterVersionsResponse pResponseStatus_ =
     }
 
 -- | A list of 'Version' elements.
-dcvrsClusterVersions :: Lens' DescribeClusterVersionsResponse [ClusterVersion]
+dcvrsClusterVersions :: Lens' (DescribeClusterVersionsResponse (a)) [ClusterVersion]
 dcvrsClusterVersions = lens _dcvrsClusterVersions (\ s a -> s{_dcvrsClusterVersions = a}) . _Default . _Coerce;
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dcvrsMarker :: Lens' DescribeClusterVersionsResponse (Maybe Text)
+dcvrsMarker :: Lens' (DescribeClusterVersionsResponse (a)) (Maybe Text)
 dcvrsMarker = lens _dcvrsMarker (\ s a -> s{_dcvrsMarker = a});
 
 -- | The response status code.
-dcvrsResponseStatus :: Lens' DescribeClusterVersionsResponse Int
+dcvrsResponseStatus :: Lens' (DescribeClusterVersionsResponse (a)) Int
 dcvrsResponseStatus = lens _dcvrsResponseStatus (\ s a -> s{_dcvrsResponseStatus = a});
 
 instance NFData DescribeClusterVersionsResponse

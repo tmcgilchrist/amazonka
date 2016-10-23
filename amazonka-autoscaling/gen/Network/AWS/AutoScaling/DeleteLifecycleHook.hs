@@ -107,7 +107,7 @@ instance ToQuery DeleteLifecycleHook where
 -- | Contains the output of DeleteLifecycleHook.
 --
 -- /See:/ 'deleteLifecycleHookResponse' smart constructor.
-newtype DeleteLifecycleHookResponse = DeleteLifecycleHookResponse'
+newtype DeleteLifecycleHookResponse a = DeleteLifecycleHookResponse'
     { _drsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -118,14 +118,14 @@ newtype DeleteLifecycleHookResponse = DeleteLifecycleHookResponse'
 -- * 'drsResponseStatus'
 deleteLifecycleHookResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteLifecycleHookResponse
+    -> DeleteLifecycleHookResponse (a)
 deleteLifecycleHookResponse pResponseStatus_ =
     DeleteLifecycleHookResponse'
     { _drsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteLifecycleHookResponse Int
+drsResponseStatus :: Lens' (DeleteLifecycleHookResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteLifecycleHookResponse

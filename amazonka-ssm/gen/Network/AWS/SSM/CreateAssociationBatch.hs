@@ -105,7 +105,7 @@ instance ToQuery CreateAssociationBatch where
         toQuery = const mempty
 
 -- | /See:/ 'createAssociationBatchResponse' smart constructor.
-data CreateAssociationBatchResponse = CreateAssociationBatchResponse'
+data CreateAssociationBatchResponse a = CreateAssociationBatchResponse'
     { _cabrsSuccessful     :: !(Maybe [AssociationDescription])
     , _cabrsFailed         :: !(Maybe [FailedCreateAssociation])
     , _cabrsResponseStatus :: !Int
@@ -122,7 +122,7 @@ data CreateAssociationBatchResponse = CreateAssociationBatchResponse'
 -- * 'cabrsResponseStatus'
 createAssociationBatchResponse
     :: Int -- ^ 'cabrsResponseStatus'
-    -> CreateAssociationBatchResponse
+    -> CreateAssociationBatchResponse (a)
 createAssociationBatchResponse pResponseStatus_ =
     CreateAssociationBatchResponse'
     { _cabrsSuccessful = Nothing
@@ -131,15 +131,15 @@ createAssociationBatchResponse pResponseStatus_ =
     }
 
 -- | Information about the associations that succeeded.
-cabrsSuccessful :: Lens' CreateAssociationBatchResponse [AssociationDescription]
+cabrsSuccessful :: Lens' (CreateAssociationBatchResponse (a)) [AssociationDescription]
 cabrsSuccessful = lens _cabrsSuccessful (\ s a -> s{_cabrsSuccessful = a}) . _Default . _Coerce;
 
 -- | Information about the associations that failed.
-cabrsFailed :: Lens' CreateAssociationBatchResponse [FailedCreateAssociation]
+cabrsFailed :: Lens' (CreateAssociationBatchResponse (a)) [FailedCreateAssociation]
 cabrsFailed = lens _cabrsFailed (\ s a -> s{_cabrsFailed = a}) . _Default . _Coerce;
 
 -- | The response status code.
-cabrsResponseStatus :: Lens' CreateAssociationBatchResponse Int
+cabrsResponseStatus :: Lens' (CreateAssociationBatchResponse (a)) Int
 cabrsResponseStatus = lens _cabrsResponseStatus (\ s a -> s{_cabrsResponseStatus = a});
 
 instance NFData CreateAssociationBatchResponse

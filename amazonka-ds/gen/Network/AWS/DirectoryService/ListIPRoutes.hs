@@ -123,7 +123,7 @@ instance ToQuery ListIPRoutes where
         toQuery = const mempty
 
 -- | /See:/ 'listIPRoutesResponse' smart constructor.
-data ListIPRoutesResponse = ListIPRoutesResponse'
+data ListIPRoutesResponse a = ListIPRoutesResponse'
     { _lirrsIPRoutesInfo   :: !(Maybe [IPRouteInfo])
     , _lirrsNextToken      :: !(Maybe Text)
     , _lirrsResponseStatus :: !Int
@@ -140,7 +140,7 @@ data ListIPRoutesResponse = ListIPRoutesResponse'
 -- * 'lirrsResponseStatus'
 listIPRoutesResponse
     :: Int -- ^ 'lirrsResponseStatus'
-    -> ListIPRoutesResponse
+    -> ListIPRoutesResponse (a)
 listIPRoutesResponse pResponseStatus_ =
     ListIPRoutesResponse'
     { _lirrsIPRoutesInfo = Nothing
@@ -149,15 +149,15 @@ listIPRoutesResponse pResponseStatus_ =
     }
 
 -- | A list of < IpRoute>s.
-lirrsIPRoutesInfo :: Lens' ListIPRoutesResponse [IPRouteInfo]
+lirrsIPRoutesInfo :: Lens' (ListIPRoutesResponse (a)) [IPRouteInfo]
 lirrsIPRoutesInfo = lens _lirrsIPRoutesInfo (\ s a -> s{_lirrsIPRoutesInfo = a}) . _Default . _Coerce;
 
 -- | If not null, more results are available. Pass this value for the /NextToken/ parameter in a subsequent call to < ListIpRoutes> to retrieve the next set of items.
-lirrsNextToken :: Lens' ListIPRoutesResponse (Maybe Text)
+lirrsNextToken :: Lens' (ListIPRoutesResponse (a)) (Maybe Text)
 lirrsNextToken = lens _lirrsNextToken (\ s a -> s{_lirrsNextToken = a});
 
 -- | The response status code.
-lirrsResponseStatus :: Lens' ListIPRoutesResponse Int
+lirrsResponseStatus :: Lens' (ListIPRoutesResponse (a)) Int
 lirrsResponseStatus = lens _lirrsResponseStatus (\ s a -> s{_lirrsResponseStatus = a});
 
 instance NFData ListIPRoutesResponse

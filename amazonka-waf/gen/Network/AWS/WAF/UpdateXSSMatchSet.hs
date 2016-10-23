@@ -142,7 +142,7 @@ instance ToQuery UpdateXSSMatchSet where
 -- | The response to an < UpdateXssMatchSets> request.
 --
 -- /See:/ 'updateXSSMatchSetResponse' smart constructor.
-data UpdateXSSMatchSetResponse = UpdateXSSMatchSetResponse'
+data UpdateXSSMatchSetResponse a = UpdateXSSMatchSetResponse'
     { _uxmsrsChangeToken    :: !(Maybe Text)
     , _uxmsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -156,7 +156,7 @@ data UpdateXSSMatchSetResponse = UpdateXSSMatchSetResponse'
 -- * 'uxmsrsResponseStatus'
 updateXSSMatchSetResponse
     :: Int -- ^ 'uxmsrsResponseStatus'
-    -> UpdateXSSMatchSetResponse
+    -> UpdateXSSMatchSetResponse (a)
 updateXSSMatchSetResponse pResponseStatus_ =
     UpdateXSSMatchSetResponse'
     { _uxmsrsChangeToken = Nothing
@@ -164,11 +164,11 @@ updateXSSMatchSetResponse pResponseStatus_ =
     }
 
 -- | The 'ChangeToken' that you used to submit the 'UpdateXssMatchSet' request. You can also use this value to query the status of the request. For more information, see < GetChangeTokenStatus>.
-uxmsrsChangeToken :: Lens' UpdateXSSMatchSetResponse (Maybe Text)
+uxmsrsChangeToken :: Lens' (UpdateXSSMatchSetResponse (a)) (Maybe Text)
 uxmsrsChangeToken = lens _uxmsrsChangeToken (\ s a -> s{_uxmsrsChangeToken = a});
 
 -- | The response status code.
-uxmsrsResponseStatus :: Lens' UpdateXSSMatchSetResponse Int
+uxmsrsResponseStatus :: Lens' (UpdateXSSMatchSetResponse (a)) Int
 uxmsrsResponseStatus = lens _uxmsrsResponseStatus (\ s a -> s{_uxmsrsResponseStatus = a});
 
 instance NFData UpdateXSSMatchSetResponse

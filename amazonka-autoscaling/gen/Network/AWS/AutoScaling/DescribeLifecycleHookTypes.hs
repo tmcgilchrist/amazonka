@@ -85,7 +85,7 @@ instance ToQuery DescribeLifecycleHookTypes where
 -- | Contains the output of DescribeLifecycleHookTypes.
 --
 -- /See:/ 'describeLifecycleHookTypesResponse' smart constructor.
-data DescribeLifecycleHookTypesResponse = DescribeLifecycleHookTypesResponse'
+data DescribeLifecycleHookTypesResponse a = DescribeLifecycleHookTypesResponse'
     { _dlhtrsLifecycleHookTypes :: !(Maybe [Text])
     , _dlhtrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -99,7 +99,7 @@ data DescribeLifecycleHookTypesResponse = DescribeLifecycleHookTypesResponse'
 -- * 'dlhtrsResponseStatus'
 describeLifecycleHookTypesResponse
     :: Int -- ^ 'dlhtrsResponseStatus'
-    -> DescribeLifecycleHookTypesResponse
+    -> DescribeLifecycleHookTypesResponse (a)
 describeLifecycleHookTypesResponse pResponseStatus_ =
     DescribeLifecycleHookTypesResponse'
     { _dlhtrsLifecycleHookTypes = Nothing
@@ -107,11 +107,11 @@ describeLifecycleHookTypesResponse pResponseStatus_ =
     }
 
 -- | The lifecycle hook types.
-dlhtrsLifecycleHookTypes :: Lens' DescribeLifecycleHookTypesResponse [Text]
+dlhtrsLifecycleHookTypes :: Lens' (DescribeLifecycleHookTypesResponse (a)) [Text]
 dlhtrsLifecycleHookTypes = lens _dlhtrsLifecycleHookTypes (\ s a -> s{_dlhtrsLifecycleHookTypes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlhtrsResponseStatus :: Lens' DescribeLifecycleHookTypesResponse Int
+dlhtrsResponseStatus :: Lens' (DescribeLifecycleHookTypesResponse (a)) Int
 dlhtrsResponseStatus = lens _dlhtrsResponseStatus (\ s a -> s{_dlhtrsResponseStatus = a});
 
 instance NFData DescribeLifecycleHookTypesResponse

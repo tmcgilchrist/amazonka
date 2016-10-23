@@ -129,7 +129,7 @@ instance ToQuery DescribeStream where
 -- | Represents the output of a /DescribeStream/ operation.
 --
 -- /See:/ 'describeStreamResponse' smart constructor.
-data DescribeStreamResponse = DescribeStreamResponse'
+data DescribeStreamResponse a = DescribeStreamResponse'
     { _dsrsStreamDescription :: !(Maybe StreamDescription)
     , _dsrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -143,7 +143,7 @@ data DescribeStreamResponse = DescribeStreamResponse'
 -- * 'dsrsResponseStatus'
 describeStreamResponse
     :: Int -- ^ 'dsrsResponseStatus'
-    -> DescribeStreamResponse
+    -> DescribeStreamResponse (a)
 describeStreamResponse pResponseStatus_ =
     DescribeStreamResponse'
     { _dsrsStreamDescription = Nothing
@@ -151,11 +151,11 @@ describeStreamResponse pResponseStatus_ =
     }
 
 -- | A complete description of the stream, including its creation date and time, the DynamoDB table associated with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream records within the shards.
-dsrsStreamDescription :: Lens' DescribeStreamResponse (Maybe StreamDescription)
+dsrsStreamDescription :: Lens' (DescribeStreamResponse (a)) (Maybe StreamDescription)
 dsrsStreamDescription = lens _dsrsStreamDescription (\ s a -> s{_dsrsStreamDescription = a});
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DescribeStreamResponse Int
+dsrsResponseStatus :: Lens' (DescribeStreamResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 instance NFData DescribeStreamResponse

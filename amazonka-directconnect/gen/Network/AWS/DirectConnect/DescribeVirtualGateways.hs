@@ -90,7 +90,7 @@ instance ToQuery DescribeVirtualGateways where
 -- | A structure containing a list of virtual private gateways.
 --
 -- /See:/ 'describeVirtualGatewaysResponse' smart constructor.
-data DescribeVirtualGatewaysResponse = DescribeVirtualGatewaysResponse'
+data DescribeVirtualGatewaysResponse a = DescribeVirtualGatewaysResponse'
     { _dvgrsVirtualGateways :: !(Maybe [VirtualGateway])
     , _dvgrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -104,7 +104,7 @@ data DescribeVirtualGatewaysResponse = DescribeVirtualGatewaysResponse'
 -- * 'dvgrsResponseStatus'
 describeVirtualGatewaysResponse
     :: Int -- ^ 'dvgrsResponseStatus'
-    -> DescribeVirtualGatewaysResponse
+    -> DescribeVirtualGatewaysResponse (a)
 describeVirtualGatewaysResponse pResponseStatus_ =
     DescribeVirtualGatewaysResponse'
     { _dvgrsVirtualGateways = Nothing
@@ -112,11 +112,11 @@ describeVirtualGatewaysResponse pResponseStatus_ =
     }
 
 -- | A list of virtual private gateways.
-dvgrsVirtualGateways :: Lens' DescribeVirtualGatewaysResponse [VirtualGateway]
+dvgrsVirtualGateways :: Lens' (DescribeVirtualGatewaysResponse (a)) [VirtualGateway]
 dvgrsVirtualGateways = lens _dvgrsVirtualGateways (\ s a -> s{_dvgrsVirtualGateways = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvgrsResponseStatus :: Lens' DescribeVirtualGatewaysResponse Int
+dvgrsResponseStatus :: Lens' (DescribeVirtualGatewaysResponse (a)) Int
 dvgrsResponseStatus = lens _dvgrsResponseStatus (\ s a -> s{_dvgrsResponseStatus = a});
 
 instance NFData DescribeVirtualGatewaysResponse

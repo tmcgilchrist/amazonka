@@ -117,14 +117,14 @@ instance ToQuery ResumeProcesses where
                "AutoScalingGroupName" =: _rpAutoScalingGroupName]
 
 -- | /See:/ 'resumeProcessesResponse' smart constructor.
-data ResumeProcessesResponse =
+data ResumeProcessesResponse a =
     ResumeProcessesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ResumeProcessesResponse' with the minimum fields required to make a request.
 --
 resumeProcessesResponse
-    :: ResumeProcessesResponse
+    :: ResumeProcessesResponse (a)
 resumeProcessesResponse = ResumeProcessesResponse'
 
 instance NFData ResumeProcessesResponse

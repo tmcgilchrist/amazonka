@@ -141,7 +141,7 @@ instance ToQuery DescribeCustomerGateways where
 -- | Contains the output of DescribeCustomerGateways.
 --
 -- /See:/ 'describeCustomerGatewaysResponse' smart constructor.
-data DescribeCustomerGatewaysResponse = DescribeCustomerGatewaysResponse'
+data DescribeCustomerGatewaysResponse a = DescribeCustomerGatewaysResponse'
     { _dcgrsCustomerGateways :: !(Maybe [CustomerGateway])
     , _dcgrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -155,7 +155,7 @@ data DescribeCustomerGatewaysResponse = DescribeCustomerGatewaysResponse'
 -- * 'dcgrsResponseStatus'
 describeCustomerGatewaysResponse
     :: Int -- ^ 'dcgrsResponseStatus'
-    -> DescribeCustomerGatewaysResponse
+    -> DescribeCustomerGatewaysResponse (a)
 describeCustomerGatewaysResponse pResponseStatus_ =
     DescribeCustomerGatewaysResponse'
     { _dcgrsCustomerGateways = Nothing
@@ -163,11 +163,11 @@ describeCustomerGatewaysResponse pResponseStatus_ =
     }
 
 -- | Information about one or more customer gateways.
-dcgrsCustomerGateways :: Lens' DescribeCustomerGatewaysResponse [CustomerGateway]
+dcgrsCustomerGateways :: Lens' (DescribeCustomerGatewaysResponse (a)) [CustomerGateway]
 dcgrsCustomerGateways = lens _dcgrsCustomerGateways (\ s a -> s{_dcgrsCustomerGateways = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcgrsResponseStatus :: Lens' DescribeCustomerGatewaysResponse Int
+dcgrsResponseStatus :: Lens' (DescribeCustomerGatewaysResponse (a)) Int
 dcgrsResponseStatus = lens _dcgrsResponseStatus (\ s a -> s{_dcgrsResponseStatus = a});
 
 instance NFData DescribeCustomerGatewaysResponse

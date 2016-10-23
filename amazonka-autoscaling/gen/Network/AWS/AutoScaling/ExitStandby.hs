@@ -110,7 +110,7 @@ instance ToQuery ExitStandby where
 -- | Contains the parameters for ExitStandby.
 --
 -- /See:/ 'exitStandbyResponse' smart constructor.
-data ExitStandbyResponse = ExitStandbyResponse'
+data ExitStandbyResponse a = ExitStandbyResponse'
     { _esrsActivities     :: !(Maybe [Activity])
     , _esrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -124,7 +124,7 @@ data ExitStandbyResponse = ExitStandbyResponse'
 -- * 'esrsResponseStatus'
 exitStandbyResponse
     :: Int -- ^ 'esrsResponseStatus'
-    -> ExitStandbyResponse
+    -> ExitStandbyResponse (a)
 exitStandbyResponse pResponseStatus_ =
     ExitStandbyResponse'
     { _esrsActivities = Nothing
@@ -132,11 +132,11 @@ exitStandbyResponse pResponseStatus_ =
     }
 
 -- | The activities related to moving instances out of 'Standby' mode.
-esrsActivities :: Lens' ExitStandbyResponse [Activity]
+esrsActivities :: Lens' (ExitStandbyResponse (a)) [Activity]
 esrsActivities = lens _esrsActivities (\ s a -> s{_esrsActivities = a}) . _Default . _Coerce;
 
 -- | The response status code.
-esrsResponseStatus :: Lens' ExitStandbyResponse Int
+esrsResponseStatus :: Lens' (ExitStandbyResponse (a)) Int
 esrsResponseStatus = lens _esrsResponseStatus (\ s a -> s{_esrsResponseStatus = a});
 
 instance NFData ExitStandbyResponse

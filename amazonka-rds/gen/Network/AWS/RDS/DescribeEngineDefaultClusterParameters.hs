@@ -141,7 +141,7 @@ instance ToQuery
                  _dedcpDBParameterGroupFamily]
 
 -- | /See:/ 'describeEngineDefaultClusterParametersResponse' smart constructor.
-data DescribeEngineDefaultClusterParametersResponse = DescribeEngineDefaultClusterParametersResponse'
+data DescribeEngineDefaultClusterParametersResponse a = DescribeEngineDefaultClusterParametersResponse'
     { _dedcprsEngineDefaults :: !(Maybe EngineDefaults)
     , _dedcprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -155,7 +155,7 @@ data DescribeEngineDefaultClusterParametersResponse = DescribeEngineDefaultClust
 -- * 'dedcprsResponseStatus'
 describeEngineDefaultClusterParametersResponse
     :: Int -- ^ 'dedcprsResponseStatus'
-    -> DescribeEngineDefaultClusterParametersResponse
+    -> DescribeEngineDefaultClusterParametersResponse (a)
 describeEngineDefaultClusterParametersResponse pResponseStatus_ =
     DescribeEngineDefaultClusterParametersResponse'
     { _dedcprsEngineDefaults = Nothing
@@ -163,11 +163,11 @@ describeEngineDefaultClusterParametersResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dedcprsEngineDefaults :: Lens' DescribeEngineDefaultClusterParametersResponse (Maybe EngineDefaults)
+dedcprsEngineDefaults :: Lens' (DescribeEngineDefaultClusterParametersResponse (a)) (Maybe EngineDefaults)
 dedcprsEngineDefaults = lens _dedcprsEngineDefaults (\ s a -> s{_dedcprsEngineDefaults = a});
 
 -- | The response status code.
-dedcprsResponseStatus :: Lens' DescribeEngineDefaultClusterParametersResponse Int
+dedcprsResponseStatus :: Lens' (DescribeEngineDefaultClusterParametersResponse (a)) Int
 dedcprsResponseStatus = lens _dedcprsResponseStatus (\ s a -> s{_dedcprsResponseStatus = a});
 
 instance NFData

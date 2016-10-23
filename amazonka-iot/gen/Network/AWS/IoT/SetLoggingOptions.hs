@@ -90,14 +90,14 @@ instance ToQuery SetLoggingOptions where
         toQuery = const mempty
 
 -- | /See:/ 'setLoggingOptionsResponse' smart constructor.
-data SetLoggingOptionsResponse =
+data SetLoggingOptionsResponse a =
     SetLoggingOptionsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetLoggingOptionsResponse' with the minimum fields required to make a request.
 --
 setLoggingOptionsResponse
-    :: SetLoggingOptionsResponse
+    :: SetLoggingOptionsResponse (a)
 setLoggingOptionsResponse = SetLoggingOptionsResponse'
 
 instance NFData SetLoggingOptionsResponse

@@ -146,7 +146,7 @@ instance ToQuery DescribePendingMaintenanceActions
 -- | Data returned from the __DescribePendingMaintenanceActions__ action.
 --
 -- /See:/ 'describePendingMaintenanceActionsResponse' smart constructor.
-data DescribePendingMaintenanceActionsResponse = DescribePendingMaintenanceActionsResponse'
+data DescribePendingMaintenanceActionsResponse a = DescribePendingMaintenanceActionsResponse'
     { _dpmarsPendingMaintenanceActions :: !(Maybe [ResourcePendingMaintenanceActions])
     , _dpmarsMarker                    :: !(Maybe Text)
     , _dpmarsResponseStatus            :: !Int
@@ -163,7 +163,7 @@ data DescribePendingMaintenanceActionsResponse = DescribePendingMaintenanceActio
 -- * 'dpmarsResponseStatus'
 describePendingMaintenanceActionsResponse
     :: Int -- ^ 'dpmarsResponseStatus'
-    -> DescribePendingMaintenanceActionsResponse
+    -> DescribePendingMaintenanceActionsResponse (a)
 describePendingMaintenanceActionsResponse pResponseStatus_ =
     DescribePendingMaintenanceActionsResponse'
     { _dpmarsPendingMaintenanceActions = Nothing
@@ -172,15 +172,15 @@ describePendingMaintenanceActionsResponse pResponseStatus_ =
     }
 
 -- | A list of the pending maintenance actions for the resource.
-dpmarsPendingMaintenanceActions :: Lens' DescribePendingMaintenanceActionsResponse [ResourcePendingMaintenanceActions]
+dpmarsPendingMaintenanceActions :: Lens' (DescribePendingMaintenanceActionsResponse (a)) [ResourcePendingMaintenanceActions]
 dpmarsPendingMaintenanceActions = lens _dpmarsPendingMaintenanceActions (\ s a -> s{_dpmarsPendingMaintenanceActions = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous 'DescribePendingMaintenanceActions' request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by 'MaxRecords'.
-dpmarsMarker :: Lens' DescribePendingMaintenanceActionsResponse (Maybe Text)
+dpmarsMarker :: Lens' (DescribePendingMaintenanceActionsResponse (a)) (Maybe Text)
 dpmarsMarker = lens _dpmarsMarker (\ s a -> s{_dpmarsMarker = a});
 
 -- | The response status code.
-dpmarsResponseStatus :: Lens' DescribePendingMaintenanceActionsResponse Int
+dpmarsResponseStatus :: Lens' (DescribePendingMaintenanceActionsResponse (a)) Int
 dpmarsResponseStatus = lens _dpmarsResponseStatus (\ s a -> s{_dpmarsResponseStatus = a});
 
 instance NFData

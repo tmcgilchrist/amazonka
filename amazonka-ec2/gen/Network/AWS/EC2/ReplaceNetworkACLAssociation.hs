@@ -119,7 +119,7 @@ instance ToQuery ReplaceNetworkACLAssociation where
 -- | Contains the output of ReplaceNetworkAclAssociation.
 --
 -- /See:/ 'replaceNetworkACLAssociationResponse' smart constructor.
-data ReplaceNetworkACLAssociationResponse = ReplaceNetworkACLAssociationResponse'
+data ReplaceNetworkACLAssociationResponse a = ReplaceNetworkACLAssociationResponse'
     { _rnaarsNewAssociationId :: !(Maybe Text)
     , _rnaarsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data ReplaceNetworkACLAssociationResponse = ReplaceNetworkACLAssociationResponse
 -- * 'rnaarsResponseStatus'
 replaceNetworkACLAssociationResponse
     :: Int -- ^ 'rnaarsResponseStatus'
-    -> ReplaceNetworkACLAssociationResponse
+    -> ReplaceNetworkACLAssociationResponse (a)
 replaceNetworkACLAssociationResponse pResponseStatus_ =
     ReplaceNetworkACLAssociationResponse'
     { _rnaarsNewAssociationId = Nothing
@@ -141,11 +141,11 @@ replaceNetworkACLAssociationResponse pResponseStatus_ =
     }
 
 -- | The ID of the new association.
-rnaarsNewAssociationId :: Lens' ReplaceNetworkACLAssociationResponse (Maybe Text)
+rnaarsNewAssociationId :: Lens' (ReplaceNetworkACLAssociationResponse (a)) (Maybe Text)
 rnaarsNewAssociationId = lens _rnaarsNewAssociationId (\ s a -> s{_rnaarsNewAssociationId = a});
 
 -- | The response status code.
-rnaarsResponseStatus :: Lens' ReplaceNetworkACLAssociationResponse Int
+rnaarsResponseStatus :: Lens' (ReplaceNetworkACLAssociationResponse (a)) Int
 rnaarsResponseStatus = lens _rnaarsResponseStatus (\ s a -> s{_rnaarsResponseStatus = a});
 
 instance NFData ReplaceNetworkACLAssociationResponse

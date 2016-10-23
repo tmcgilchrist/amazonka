@@ -147,7 +147,7 @@ instance ToQuery CreateOptionGroup where
                  _cogOptionGroupDescription]
 
 -- | /See:/ 'createOptionGroupResponse' smart constructor.
-data CreateOptionGroupResponse = CreateOptionGroupResponse'
+data CreateOptionGroupResponse a = CreateOptionGroupResponse'
     { _crsOptionGroup    :: !(Maybe OptionGroup)
     , _crsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -161,7 +161,7 @@ data CreateOptionGroupResponse = CreateOptionGroupResponse'
 -- * 'crsResponseStatus'
 createOptionGroupResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CreateOptionGroupResponse
+    -> CreateOptionGroupResponse (a)
 createOptionGroupResponse pResponseStatus_ =
     CreateOptionGroupResponse'
     { _crsOptionGroup = Nothing
@@ -169,11 +169,11 @@ createOptionGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crsOptionGroup :: Lens' CreateOptionGroupResponse (Maybe OptionGroup)
+crsOptionGroup :: Lens' (CreateOptionGroupResponse (a)) (Maybe OptionGroup)
 crsOptionGroup = lens _crsOptionGroup (\ s a -> s{_crsOptionGroup = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CreateOptionGroupResponse Int
+crsResponseStatus :: Lens' (CreateOptionGroupResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CreateOptionGroupResponse

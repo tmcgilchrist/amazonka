@@ -162,7 +162,7 @@ instance ToQuery ListCommandInvocations where
         toQuery = const mempty
 
 -- | /See:/ 'listCommandInvocationsResponse' smart constructor.
-data ListCommandInvocationsResponse = ListCommandInvocationsResponse'
+data ListCommandInvocationsResponse a = ListCommandInvocationsResponse'
     { _lcirsNextToken          :: !(Maybe Text)
     , _lcirsCommandInvocations :: !(Maybe [CommandInvocation])
     , _lcirsResponseStatus     :: !Int
@@ -179,7 +179,7 @@ data ListCommandInvocationsResponse = ListCommandInvocationsResponse'
 -- * 'lcirsResponseStatus'
 listCommandInvocationsResponse
     :: Int -- ^ 'lcirsResponseStatus'
-    -> ListCommandInvocationsResponse
+    -> ListCommandInvocationsResponse (a)
 listCommandInvocationsResponse pResponseStatus_ =
     ListCommandInvocationsResponse'
     { _lcirsNextToken = Nothing
@@ -188,15 +188,15 @@ listCommandInvocationsResponse pResponseStatus_ =
     }
 
 -- | (Optional) The token for the next set of items to return. (You received this token from a previous call.)
-lcirsNextToken :: Lens' ListCommandInvocationsResponse (Maybe Text)
+lcirsNextToken :: Lens' (ListCommandInvocationsResponse (a)) (Maybe Text)
 lcirsNextToken = lens _lcirsNextToken (\ s a -> s{_lcirsNextToken = a});
 
 -- | (Optional) A list of all invocations.
-lcirsCommandInvocations :: Lens' ListCommandInvocationsResponse [CommandInvocation]
+lcirsCommandInvocations :: Lens' (ListCommandInvocationsResponse (a)) [CommandInvocation]
 lcirsCommandInvocations = lens _lcirsCommandInvocations (\ s a -> s{_lcirsCommandInvocations = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lcirsResponseStatus :: Lens' ListCommandInvocationsResponse Int
+lcirsResponseStatus :: Lens' (ListCommandInvocationsResponse (a)) Int
 lcirsResponseStatus = lens _lcirsResponseStatus (\ s a -> s{_lcirsResponseStatus = a});
 
 instance NFData ListCommandInvocationsResponse

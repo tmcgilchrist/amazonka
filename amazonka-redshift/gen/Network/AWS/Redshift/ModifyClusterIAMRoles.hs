@@ -120,7 +120,7 @@ instance ToQuery ModifyClusterIAMRoles where
                "ClusterIdentifier" =: _mcirClusterIdentifier]
 
 -- | /See:/ 'modifyClusterIAMRolesResponse' smart constructor.
-data ModifyClusterIAMRolesResponse = ModifyClusterIAMRolesResponse'
+data ModifyClusterIAMRolesResponse a = ModifyClusterIAMRolesResponse'
     { _mcirrsCluster        :: !(Maybe Cluster)
     , _mcirrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data ModifyClusterIAMRolesResponse = ModifyClusterIAMRolesResponse'
 -- * 'mcirrsResponseStatus'
 modifyClusterIAMRolesResponse
     :: Int -- ^ 'mcirrsResponseStatus'
-    -> ModifyClusterIAMRolesResponse
+    -> ModifyClusterIAMRolesResponse (a)
 modifyClusterIAMRolesResponse pResponseStatus_ =
     ModifyClusterIAMRolesResponse'
     { _mcirrsCluster = Nothing
@@ -142,11 +142,11 @@ modifyClusterIAMRolesResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mcirrsCluster :: Lens' ModifyClusterIAMRolesResponse (Maybe Cluster)
+mcirrsCluster :: Lens' (ModifyClusterIAMRolesResponse (a)) (Maybe Cluster)
 mcirrsCluster = lens _mcirrsCluster (\ s a -> s{_mcirrsCluster = a});
 
 -- | The response status code.
-mcirrsResponseStatus :: Lens' ModifyClusterIAMRolesResponse Int
+mcirrsResponseStatus :: Lens' (ModifyClusterIAMRolesResponse (a)) Int
 mcirrsResponseStatus = lens _mcirrsResponseStatus (\ s a -> s{_mcirrsResponseStatus = a});
 
 instance NFData ModifyClusterIAMRolesResponse

@@ -97,7 +97,7 @@ instance ToQuery ListQueues where
 -- | A list of your queues.
 --
 -- /See:/ 'listQueuesResponse' smart constructor.
-data ListQueuesResponse = ListQueuesResponse'
+data ListQueuesResponse a = ListQueuesResponse'
     { _lqrsQueueURLs      :: !(Maybe [Text])
     , _lqrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -111,7 +111,7 @@ data ListQueuesResponse = ListQueuesResponse'
 -- * 'lqrsResponseStatus'
 listQueuesResponse
     :: Int -- ^ 'lqrsResponseStatus'
-    -> ListQueuesResponse
+    -> ListQueuesResponse (a)
 listQueuesResponse pResponseStatus_ =
     ListQueuesResponse'
     { _lqrsQueueURLs = Nothing
@@ -119,11 +119,11 @@ listQueuesResponse pResponseStatus_ =
     }
 
 -- | A list of queue URLs, up to 1000 entries.
-lqrsQueueURLs :: Lens' ListQueuesResponse [Text]
+lqrsQueueURLs :: Lens' (ListQueuesResponse (a)) [Text]
 lqrsQueueURLs = lens _lqrsQueueURLs (\ s a -> s{_lqrsQueueURLs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lqrsResponseStatus :: Lens' ListQueuesResponse Int
+lqrsResponseStatus :: Lens' (ListQueuesResponse (a)) Int
 lqrsResponseStatus = lens _lqrsResponseStatus (\ s a -> s{_lqrsResponseStatus = a});
 
 instance NFData ListQueuesResponse

@@ -142,7 +142,7 @@ instance ToQuery UpdateJob where
 -- | Output structure for the UpateJob operation.
 --
 -- /See:/ 'updateJobResponse' smart constructor.
-data UpdateJobResponse = UpdateJobResponse'
+data UpdateJobResponse a = UpdateJobResponse'
     { _ujrsSuccess        :: !(Maybe Bool)
     , _ujrsWarningMessage :: !(Maybe Text)
     , _ujrsArtifactList   :: !(Maybe [Artifact])
@@ -162,7 +162,7 @@ data UpdateJobResponse = UpdateJobResponse'
 -- * 'ujrsResponseStatus'
 updateJobResponse
     :: Int -- ^ 'ujrsResponseStatus'
-    -> UpdateJobResponse
+    -> UpdateJobResponse (a)
 updateJobResponse pResponseStatus_ =
     UpdateJobResponse'
     { _ujrsSuccess = Nothing
@@ -172,19 +172,19 @@ updateJobResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ujrsSuccess :: Lens' UpdateJobResponse (Maybe Bool)
+ujrsSuccess :: Lens' (UpdateJobResponse (a)) (Maybe Bool)
 ujrsSuccess = lens _ujrsSuccess (\ s a -> s{_ujrsSuccess = a});
 
 -- | Undocumented member.
-ujrsWarningMessage :: Lens' UpdateJobResponse (Maybe Text)
+ujrsWarningMessage :: Lens' (UpdateJobResponse (a)) (Maybe Text)
 ujrsWarningMessage = lens _ujrsWarningMessage (\ s a -> s{_ujrsWarningMessage = a});
 
 -- | Undocumented member.
-ujrsArtifactList :: Lens' UpdateJobResponse [Artifact]
+ujrsArtifactList :: Lens' (UpdateJobResponse (a)) [Artifact]
 ujrsArtifactList = lens _ujrsArtifactList (\ s a -> s{_ujrsArtifactList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ujrsResponseStatus :: Lens' UpdateJobResponse Int
+ujrsResponseStatus :: Lens' (UpdateJobResponse (a)) Int
 ujrsResponseStatus = lens _ujrsResponseStatus (\ s a -> s{_ujrsResponseStatus = a});
 
 instance NFData UpdateJobResponse

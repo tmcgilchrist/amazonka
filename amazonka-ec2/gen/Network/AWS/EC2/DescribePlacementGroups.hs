@@ -128,7 +128,7 @@ instance ToQuery DescribePlacementGroups where
 -- | Contains the output of DescribePlacementGroups.
 --
 -- /See:/ 'describePlacementGroupsResponse' smart constructor.
-data DescribePlacementGroupsResponse = DescribePlacementGroupsResponse'
+data DescribePlacementGroupsResponse a = DescribePlacementGroupsResponse'
     { _dpgrsPlacementGroups :: !(Maybe [PlacementGroup])
     , _dpgrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -142,7 +142,7 @@ data DescribePlacementGroupsResponse = DescribePlacementGroupsResponse'
 -- * 'dpgrsResponseStatus'
 describePlacementGroupsResponse
     :: Int -- ^ 'dpgrsResponseStatus'
-    -> DescribePlacementGroupsResponse
+    -> DescribePlacementGroupsResponse (a)
 describePlacementGroupsResponse pResponseStatus_ =
     DescribePlacementGroupsResponse'
     { _dpgrsPlacementGroups = Nothing
@@ -150,11 +150,11 @@ describePlacementGroupsResponse pResponseStatus_ =
     }
 
 -- | One or more placement groups.
-dpgrsPlacementGroups :: Lens' DescribePlacementGroupsResponse [PlacementGroup]
+dpgrsPlacementGroups :: Lens' (DescribePlacementGroupsResponse (a)) [PlacementGroup]
 dpgrsPlacementGroups = lens _dpgrsPlacementGroups (\ s a -> s{_dpgrsPlacementGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dpgrsResponseStatus :: Lens' DescribePlacementGroupsResponse Int
+dpgrsResponseStatus :: Lens' (DescribePlacementGroupsResponse (a)) Int
 dpgrsResponseStatus = lens _dpgrsResponseStatus (\ s a -> s{_dpgrsResponseStatus = a});
 
 instance NFData DescribePlacementGroupsResponse

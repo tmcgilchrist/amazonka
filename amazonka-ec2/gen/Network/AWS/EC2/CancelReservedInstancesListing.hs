@@ -104,7 +104,7 @@ instance ToQuery CancelReservedInstancesListing where
 -- | Contains the output of CancelReservedInstancesListing.
 --
 -- /See:/ 'cancelReservedInstancesListingResponse' smart constructor.
-data CancelReservedInstancesListingResponse = CancelReservedInstancesListingResponse'
+data CancelReservedInstancesListingResponse a = CancelReservedInstancesListingResponse'
     { _crilrsReservedInstancesListings :: !(Maybe [ReservedInstancesListing])
     , _crilrsResponseStatus            :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data CancelReservedInstancesListingResponse = CancelReservedInstancesListingResp
 -- * 'crilrsResponseStatus'
 cancelReservedInstancesListingResponse
     :: Int -- ^ 'crilrsResponseStatus'
-    -> CancelReservedInstancesListingResponse
+    -> CancelReservedInstancesListingResponse (a)
 cancelReservedInstancesListingResponse pResponseStatus_ =
     CancelReservedInstancesListingResponse'
     { _crilrsReservedInstancesListings = Nothing
@@ -126,11 +126,11 @@ cancelReservedInstancesListingResponse pResponseStatus_ =
     }
 
 -- | The Reserved Instance listing.
-crilrsReservedInstancesListings :: Lens' CancelReservedInstancesListingResponse [ReservedInstancesListing]
+crilrsReservedInstancesListings :: Lens' (CancelReservedInstancesListingResponse (a)) [ReservedInstancesListing]
 crilrsReservedInstancesListings = lens _crilrsReservedInstancesListings (\ s a -> s{_crilrsReservedInstancesListings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-crilrsResponseStatus :: Lens' CancelReservedInstancesListingResponse Int
+crilrsResponseStatus :: Lens' (CancelReservedInstancesListingResponse (a)) Int
 crilrsResponseStatus = lens _crilrsResponseStatus (\ s a -> s{_crilrsResponseStatus = a});
 
 instance NFData

@@ -114,7 +114,7 @@ instance ToQuery ListPipelines where
 -- | Contains the output of ListPipelines.
 --
 -- /See:/ 'listPipelinesResponse' smart constructor.
-data ListPipelinesResponse = ListPipelinesResponse'
+data ListPipelinesResponse a = ListPipelinesResponse'
     { _lprsHasMoreResults :: !(Maybe Bool)
     , _lprsMarker         :: !(Maybe Text)
     , _lprsResponseStatus :: !Int
@@ -134,7 +134,7 @@ data ListPipelinesResponse = ListPipelinesResponse'
 -- * 'lprsPipelineIdList'
 listPipelinesResponse
     :: Int -- ^ 'lprsResponseStatus'
-    -> ListPipelinesResponse
+    -> ListPipelinesResponse (a)
 listPipelinesResponse pResponseStatus_ =
     ListPipelinesResponse'
     { _lprsHasMoreResults = Nothing
@@ -144,19 +144,19 @@ listPipelinesResponse pResponseStatus_ =
     }
 
 -- | Indicates whether there are more results that can be obtained by a subsequent call.
-lprsHasMoreResults :: Lens' ListPipelinesResponse (Maybe Bool)
+lprsHasMoreResults :: Lens' (ListPipelinesResponse (a)) (Maybe Bool)
 lprsHasMoreResults = lens _lprsHasMoreResults (\ s a -> s{_lprsHasMoreResults = a});
 
 -- | The starting point for the next page of results. To view the next page of results, call 'ListPipelinesOutput' again with this marker value. If the value is null, there are no more results.
-lprsMarker :: Lens' ListPipelinesResponse (Maybe Text)
+lprsMarker :: Lens' (ListPipelinesResponse (a)) (Maybe Text)
 lprsMarker = lens _lprsMarker (\ s a -> s{_lprsMarker = a});
 
 -- | The response status code.
-lprsResponseStatus :: Lens' ListPipelinesResponse Int
+lprsResponseStatus :: Lens' (ListPipelinesResponse (a)) Int
 lprsResponseStatus = lens _lprsResponseStatus (\ s a -> s{_lprsResponseStatus = a});
 
 -- | The pipeline identifiers. If you require additional information about the pipelines, you can use these identifiers to call < DescribePipelines> and < GetPipelineDefinition>.
-lprsPipelineIdList :: Lens' ListPipelinesResponse [PipelineIdName]
+lprsPipelineIdList :: Lens' (ListPipelinesResponse (a)) [PipelineIdName]
 lprsPipelineIdList = lens _lprsPipelineIdList (\ s a -> s{_lprsPipelineIdList = a}) . _Coerce;
 
 instance NFData ListPipelinesResponse

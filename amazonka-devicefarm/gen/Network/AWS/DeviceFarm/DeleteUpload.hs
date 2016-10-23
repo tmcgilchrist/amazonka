@@ -99,7 +99,7 @@ instance ToQuery DeleteUpload where
 -- | Represents the result of a delete upload request.
 --
 -- /See:/ 'deleteUploadResponse' smart constructor.
-newtype DeleteUploadResponse = DeleteUploadResponse'
+newtype DeleteUploadResponse a = DeleteUploadResponse'
     { _dursResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -110,14 +110,14 @@ newtype DeleteUploadResponse = DeleteUploadResponse'
 -- * 'dursResponseStatus'
 deleteUploadResponse
     :: Int -- ^ 'dursResponseStatus'
-    -> DeleteUploadResponse
+    -> DeleteUploadResponse (a)
 deleteUploadResponse pResponseStatus_ =
     DeleteUploadResponse'
     { _dursResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dursResponseStatus :: Lens' DeleteUploadResponse Int
+dursResponseStatus :: Lens' (DeleteUploadResponse (a)) Int
 dursResponseStatus = lens _dursResponseStatus (\ s a -> s{_dursResponseStatus = a});
 
 instance NFData DeleteUploadResponse

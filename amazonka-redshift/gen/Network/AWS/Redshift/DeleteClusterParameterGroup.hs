@@ -95,14 +95,14 @@ instance ToQuery DeleteClusterParameterGroup where
                "ParameterGroupName" =: _dParameterGroupName]
 
 -- | /See:/ 'deleteClusterParameterGroupResponse' smart constructor.
-data DeleteClusterParameterGroupResponse =
+data DeleteClusterParameterGroupResponse a =
     DeleteClusterParameterGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteClusterParameterGroupResponse' with the minimum fields required to make a request.
 --
 deleteClusterParameterGroupResponse
-    :: DeleteClusterParameterGroupResponse
+    :: DeleteClusterParameterGroupResponse (a)
 deleteClusterParameterGroupResponse = DeleteClusterParameterGroupResponse'
 
 instance NFData DeleteClusterParameterGroupResponse

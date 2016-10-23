@@ -98,14 +98,14 @@ instance ToQuery DetachPrincipalPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'detachPrincipalPolicyResponse' smart constructor.
-data DetachPrincipalPolicyResponse =
+data DetachPrincipalPolicyResponse a =
     DetachPrincipalPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DetachPrincipalPolicyResponse' with the minimum fields required to make a request.
 --
 detachPrincipalPolicyResponse
-    :: DetachPrincipalPolicyResponse
+    :: DetachPrincipalPolicyResponse (a)
 detachPrincipalPolicyResponse = DetachPrincipalPolicyResponse'
 
 instance NFData DetachPrincipalPolicyResponse

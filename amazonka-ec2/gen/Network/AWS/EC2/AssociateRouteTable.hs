@@ -118,7 +118,7 @@ instance ToQuery AssociateRouteTable where
 -- | Contains the output of AssociateRouteTable.
 --
 -- /See:/ 'associateRouteTableResponse' smart constructor.
-data AssociateRouteTableResponse = AssociateRouteTableResponse'
+data AssociateRouteTableResponse a = AssociateRouteTableResponse'
     { _artrsAssociationId  :: !(Maybe Text)
     , _artrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data AssociateRouteTableResponse = AssociateRouteTableResponse'
 -- * 'artrsResponseStatus'
 associateRouteTableResponse
     :: Int -- ^ 'artrsResponseStatus'
-    -> AssociateRouteTableResponse
+    -> AssociateRouteTableResponse (a)
 associateRouteTableResponse pResponseStatus_ =
     AssociateRouteTableResponse'
     { _artrsAssociationId = Nothing
@@ -140,11 +140,11 @@ associateRouteTableResponse pResponseStatus_ =
     }
 
 -- | The route table association ID (needed to disassociate the route table).
-artrsAssociationId :: Lens' AssociateRouteTableResponse (Maybe Text)
+artrsAssociationId :: Lens' (AssociateRouteTableResponse (a)) (Maybe Text)
 artrsAssociationId = lens _artrsAssociationId (\ s a -> s{_artrsAssociationId = a});
 
 -- | The response status code.
-artrsResponseStatus :: Lens' AssociateRouteTableResponse Int
+artrsResponseStatus :: Lens' (AssociateRouteTableResponse (a)) Int
 artrsResponseStatus = lens _artrsResponseStatus (\ s a -> s{_artrsResponseStatus = a});
 
 instance NFData AssociateRouteTableResponse

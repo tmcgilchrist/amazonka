@@ -113,14 +113,14 @@ instance ToQuery UpdateSSHPublicKey where
                "Status" =: _uspkStatus]
 
 -- | /See:/ 'updateSSHPublicKeyResponse' smart constructor.
-data UpdateSSHPublicKeyResponse =
+data UpdateSSHPublicKeyResponse a =
     UpdateSSHPublicKeyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateSSHPublicKeyResponse' with the minimum fields required to make a request.
 --
 updateSSHPublicKeyResponse
-    :: UpdateSSHPublicKeyResponse
+    :: UpdateSSHPublicKeyResponse (a)
 updateSSHPublicKeyResponse = UpdateSSHPublicKeyResponse'
 
 instance NFData UpdateSSHPublicKeyResponse

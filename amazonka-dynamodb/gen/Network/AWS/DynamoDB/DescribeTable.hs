@@ -104,7 +104,7 @@ instance ToQuery DescribeTable where
 -- | Represents the output of a /DescribeTable/ operation.
 --
 -- /See:/ 'describeTableResponse' smart constructor.
-data DescribeTableResponse = DescribeTableResponse'
+data DescribeTableResponse a = DescribeTableResponse'
     { _drsTable          :: !(Maybe TableDescription)
     , _drsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data DescribeTableResponse = DescribeTableResponse'
 -- * 'drsResponseStatus'
 describeTableResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DescribeTableResponse
+    -> DescribeTableResponse (a)
 describeTableResponse pResponseStatus_ =
     DescribeTableResponse'
     { _drsTable = Nothing
@@ -126,11 +126,11 @@ describeTableResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-drsTable :: Lens' DescribeTableResponse (Maybe TableDescription)
+drsTable :: Lens' (DescribeTableResponse (a)) (Maybe TableDescription)
 drsTable = lens _drsTable (\ s a -> s{_drsTable = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DescribeTableResponse Int
+drsResponseStatus :: Lens' (DescribeTableResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DescribeTableResponse

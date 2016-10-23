@@ -113,7 +113,7 @@ instance ToQuery DescribeCache where
         toQuery = const mempty
 
 -- | /See:/ 'describeCacheResponse' smart constructor.
-data DescribeCacheResponse = DescribeCacheResponse'
+data DescribeCacheResponse a = DescribeCacheResponse'
     { _dcrsGatewayARN            :: !(Maybe Text)
     , _dcrsDiskIds               :: !(Maybe [Text])
     , _dcrsCacheUsedPercentage   :: !(Maybe Double)
@@ -145,7 +145,7 @@ data DescribeCacheResponse = DescribeCacheResponse'
 -- * 'dcrsResponseStatus'
 describeCacheResponse
     :: Int -- ^ 'dcrsResponseStatus'
-    -> DescribeCacheResponse
+    -> DescribeCacheResponse (a)
 describeCacheResponse pResponseStatus_ =
     DescribeCacheResponse'
     { _dcrsGatewayARN = Nothing
@@ -159,35 +159,35 @@ describeCacheResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dcrsGatewayARN :: Lens' DescribeCacheResponse (Maybe Text)
+dcrsGatewayARN :: Lens' (DescribeCacheResponse (a)) (Maybe Text)
 dcrsGatewayARN = lens _dcrsGatewayARN (\ s a -> s{_dcrsGatewayARN = a});
 
 -- | Undocumented member.
-dcrsDiskIds :: Lens' DescribeCacheResponse [Text]
+dcrsDiskIds :: Lens' (DescribeCacheResponse (a)) [Text]
 dcrsDiskIds = lens _dcrsDiskIds (\ s a -> s{_dcrsDiskIds = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-dcrsCacheUsedPercentage :: Lens' DescribeCacheResponse (Maybe Double)
+dcrsCacheUsedPercentage :: Lens' (DescribeCacheResponse (a)) (Maybe Double)
 dcrsCacheUsedPercentage = lens _dcrsCacheUsedPercentage (\ s a -> s{_dcrsCacheUsedPercentage = a});
 
 -- | Undocumented member.
-dcrsCacheHitPercentage :: Lens' DescribeCacheResponse (Maybe Double)
+dcrsCacheHitPercentage :: Lens' (DescribeCacheResponse (a)) (Maybe Double)
 dcrsCacheHitPercentage = lens _dcrsCacheHitPercentage (\ s a -> s{_dcrsCacheHitPercentage = a});
 
 -- | Undocumented member.
-dcrsCacheMissPercentage :: Lens' DescribeCacheResponse (Maybe Double)
+dcrsCacheMissPercentage :: Lens' (DescribeCacheResponse (a)) (Maybe Double)
 dcrsCacheMissPercentage = lens _dcrsCacheMissPercentage (\ s a -> s{_dcrsCacheMissPercentage = a});
 
 -- | Undocumented member.
-dcrsCacheAllocatedInBytes :: Lens' DescribeCacheResponse (Maybe Integer)
+dcrsCacheAllocatedInBytes :: Lens' (DescribeCacheResponse (a)) (Maybe Integer)
 dcrsCacheAllocatedInBytes = lens _dcrsCacheAllocatedInBytes (\ s a -> s{_dcrsCacheAllocatedInBytes = a});
 
 -- | Undocumented member.
-dcrsCacheDirtyPercentage :: Lens' DescribeCacheResponse (Maybe Double)
+dcrsCacheDirtyPercentage :: Lens' (DescribeCacheResponse (a)) (Maybe Double)
 dcrsCacheDirtyPercentage = lens _dcrsCacheDirtyPercentage (\ s a -> s{_dcrsCacheDirtyPercentage = a});
 
 -- | The response status code.
-dcrsResponseStatus :: Lens' DescribeCacheResponse Int
+dcrsResponseStatus :: Lens' (DescribeCacheResponse (a)) Int
 dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a});
 
 instance NFData DescribeCacheResponse

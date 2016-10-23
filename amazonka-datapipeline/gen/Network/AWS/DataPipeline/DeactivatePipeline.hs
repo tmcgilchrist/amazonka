@@ -114,7 +114,7 @@ instance ToQuery DeactivatePipeline where
 -- | Contains the output of DeactivatePipeline.
 --
 -- /See:/ 'deactivatePipelineResponse' smart constructor.
-newtype DeactivatePipelineResponse = DeactivatePipelineResponse'
+newtype DeactivatePipelineResponse a = DeactivatePipelineResponse'
     { _drsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -125,14 +125,14 @@ newtype DeactivatePipelineResponse = DeactivatePipelineResponse'
 -- * 'drsResponseStatus'
 deactivatePipelineResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeactivatePipelineResponse
+    -> DeactivatePipelineResponse (a)
 deactivatePipelineResponse pResponseStatus_ =
     DeactivatePipelineResponse'
     { _drsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeactivatePipelineResponse Int
+drsResponseStatus :: Lens' (DeactivatePipelineResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeactivatePipelineResponse

@@ -164,7 +164,7 @@ instance ToQuery ListParts where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'listPartsResponse' smart constructor.
-data ListPartsResponse = ListPartsResponse'
+data ListPartsResponse a = ListPartsResponse'
     { _lprsParts              :: !(Maybe [PartListElement])
     , _lprsMultipartUploadId  :: !(Maybe Text)
     , _lprsPartSizeInBytes    :: !(Maybe Integer)
@@ -196,7 +196,7 @@ data ListPartsResponse = ListPartsResponse'
 -- * 'lprsResponseStatus'
 listPartsResponse
     :: Int -- ^ 'lprsResponseStatus'
-    -> ListPartsResponse
+    -> ListPartsResponse (a)
 listPartsResponse pResponseStatus_ =
     ListPartsResponse'
     { _lprsParts = Nothing
@@ -210,35 +210,35 @@ listPartsResponse pResponseStatus_ =
     }
 
 -- | A list of the part sizes of the multipart upload.
-lprsParts :: Lens' ListPartsResponse [PartListElement]
+lprsParts :: Lens' (ListPartsResponse (a)) [PartListElement]
 lprsParts = lens _lprsParts (\ s a -> s{_lprsParts = a}) . _Default . _Coerce;
 
 -- | The ID of the upload to which the parts are associated.
-lprsMultipartUploadId :: Lens' ListPartsResponse (Maybe Text)
+lprsMultipartUploadId :: Lens' (ListPartsResponse (a)) (Maybe Text)
 lprsMultipartUploadId = lens _lprsMultipartUploadId (\ s a -> s{_lprsMultipartUploadId = a});
 
 -- | The part size in bytes.
-lprsPartSizeInBytes :: Lens' ListPartsResponse (Maybe Integer)
+lprsPartSizeInBytes :: Lens' (ListPartsResponse (a)) (Maybe Integer)
 lprsPartSizeInBytes = lens _lprsPartSizeInBytes (\ s a -> s{_lprsPartSizeInBytes = a});
 
 -- | The description of the archive that was specified in the Initiate Multipart Upload request.
-lprsArchiveDescription :: Lens' ListPartsResponse (Maybe Text)
+lprsArchiveDescription :: Lens' (ListPartsResponse (a)) (Maybe Text)
 lprsArchiveDescription = lens _lprsArchiveDescription (\ s a -> s{_lprsArchiveDescription = a});
 
 -- | The Amazon Resource Name (ARN) of the vault to which the multipart upload was initiated.
-lprsVaultARN :: Lens' ListPartsResponse (Maybe Text)
+lprsVaultARN :: Lens' (ListPartsResponse (a)) (Maybe Text)
 lprsVaultARN = lens _lprsVaultARN (\ s a -> s{_lprsVaultARN = a});
 
 -- | An opaque string that represents where to continue pagination of the results. You use the marker in a new List Parts request to obtain more jobs in the list. If there are no more parts, this value is 'null'.
-lprsMarker :: Lens' ListPartsResponse (Maybe Text)
+lprsMarker :: Lens' (ListPartsResponse (a)) (Maybe Text)
 lprsMarker = lens _lprsMarker (\ s a -> s{_lprsMarker = a});
 
 -- | The UTC time at which the multipart upload was initiated.
-lprsCreationDate :: Lens' ListPartsResponse (Maybe Text)
+lprsCreationDate :: Lens' (ListPartsResponse (a)) (Maybe Text)
 lprsCreationDate = lens _lprsCreationDate (\ s a -> s{_lprsCreationDate = a});
 
 -- | The response status code.
-lprsResponseStatus :: Lens' ListPartsResponse Int
+lprsResponseStatus :: Lens' (ListPartsResponse (a)) Int
 lprsResponseStatus = lens _lprsResponseStatus (\ s a -> s{_lprsResponseStatus = a});
 
 instance NFData ListPartsResponse

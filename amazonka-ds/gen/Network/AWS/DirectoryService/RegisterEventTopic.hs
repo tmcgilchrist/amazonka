@@ -114,7 +114,7 @@ instance ToQuery RegisterEventTopic where
 -- | The result of a RegisterEventTopic request.
 --
 -- /See:/ 'registerEventTopicResponse' smart constructor.
-newtype RegisterEventTopicResponse = RegisterEventTopicResponse'
+newtype RegisterEventTopicResponse a = RegisterEventTopicResponse'
     { _retrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -125,14 +125,14 @@ newtype RegisterEventTopicResponse = RegisterEventTopicResponse'
 -- * 'retrsResponseStatus'
 registerEventTopicResponse
     :: Int -- ^ 'retrsResponseStatus'
-    -> RegisterEventTopicResponse
+    -> RegisterEventTopicResponse (a)
 registerEventTopicResponse pResponseStatus_ =
     RegisterEventTopicResponse'
     { _retrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-retrsResponseStatus :: Lens' RegisterEventTopicResponse Int
+retrsResponseStatus :: Lens' (RegisterEventTopicResponse (a)) Int
 retrsResponseStatus = lens _retrsResponseStatus (\ s a -> s{_retrsResponseStatus = a});
 
 instance NFData RegisterEventTopicResponse

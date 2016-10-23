@@ -170,7 +170,7 @@ instance ToQuery DescribeClusterSecurityGroups where
 -- |
 --
 -- /See:/ 'describeClusterSecurityGroupsResponse' smart constructor.
-data DescribeClusterSecurityGroupsResponse = DescribeClusterSecurityGroupsResponse'
+data DescribeClusterSecurityGroupsResponse a = DescribeClusterSecurityGroupsResponse'
     { _dcsgsrsClusterSecurityGroups :: !(Maybe [ClusterSecurityGroup])
     , _dcsgsrsMarker                :: !(Maybe Text)
     , _dcsgsrsResponseStatus        :: !Int
@@ -187,7 +187,7 @@ data DescribeClusterSecurityGroupsResponse = DescribeClusterSecurityGroupsRespon
 -- * 'dcsgsrsResponseStatus'
 describeClusterSecurityGroupsResponse
     :: Int -- ^ 'dcsgsrsResponseStatus'
-    -> DescribeClusterSecurityGroupsResponse
+    -> DescribeClusterSecurityGroupsResponse (a)
 describeClusterSecurityGroupsResponse pResponseStatus_ =
     DescribeClusterSecurityGroupsResponse'
     { _dcsgsrsClusterSecurityGroups = Nothing
@@ -196,15 +196,15 @@ describeClusterSecurityGroupsResponse pResponseStatus_ =
     }
 
 -- | A list of < ClusterSecurityGroup> instances.
-dcsgsrsClusterSecurityGroups :: Lens' DescribeClusterSecurityGroupsResponse [ClusterSecurityGroup]
+dcsgsrsClusterSecurityGroups :: Lens' (DescribeClusterSecurityGroupsResponse (a)) [ClusterSecurityGroup]
 dcsgsrsClusterSecurityGroups = lens _dcsgsrsClusterSecurityGroups (\ s a -> s{_dcsgsrsClusterSecurityGroups = a}) . _Default . _Coerce;
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dcsgsrsMarker :: Lens' DescribeClusterSecurityGroupsResponse (Maybe Text)
+dcsgsrsMarker :: Lens' (DescribeClusterSecurityGroupsResponse (a)) (Maybe Text)
 dcsgsrsMarker = lens _dcsgsrsMarker (\ s a -> s{_dcsgsrsMarker = a});
 
 -- | The response status code.
-dcsgsrsResponseStatus :: Lens' DescribeClusterSecurityGroupsResponse Int
+dcsgsrsResponseStatus :: Lens' (DescribeClusterSecurityGroupsResponse (a)) Int
 dcsgsrsResponseStatus = lens _dcsgsrsResponseStatus (\ s a -> s{_dcsgsrsResponseStatus = a});
 
 instance NFData DescribeClusterSecurityGroupsResponse

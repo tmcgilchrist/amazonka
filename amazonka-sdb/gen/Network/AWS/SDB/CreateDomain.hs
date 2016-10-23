@@ -88,14 +88,14 @@ instance ToQuery CreateDomain where
                "DomainName" =: _cdDomainName]
 
 -- | /See:/ 'createDomainResponse' smart constructor.
-data CreateDomainResponse =
+data CreateDomainResponse a =
     CreateDomainResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateDomainResponse' with the minimum fields required to make a request.
 --
 createDomainResponse
-    :: CreateDomainResponse
+    :: CreateDomainResponse (a)
 createDomainResponse = CreateDomainResponse'
 
 instance NFData CreateDomainResponse

@@ -91,7 +91,7 @@ instance ToQuery GetBucketVersioning where
         toQuery = const (mconcat ["versioning"])
 
 -- | /See:/ 'getBucketVersioningResponse' smart constructor.
-data GetBucketVersioningResponse = GetBucketVersioningResponse'
+data GetBucketVersioningResponse a = GetBucketVersioningResponse'
     { _gbvrsStatus         :: !(Maybe BucketVersioningStatus)
     , _gbvrsMFADelete      :: !(Maybe MFADeleteStatus)
     , _gbvrsResponseStatus :: !Int
@@ -108,7 +108,7 @@ data GetBucketVersioningResponse = GetBucketVersioningResponse'
 -- * 'gbvrsResponseStatus'
 getBucketVersioningResponse
     :: Int -- ^ 'gbvrsResponseStatus'
-    -> GetBucketVersioningResponse
+    -> GetBucketVersioningResponse (a)
 getBucketVersioningResponse pResponseStatus_ =
     GetBucketVersioningResponse'
     { _gbvrsStatus = Nothing
@@ -117,15 +117,15 @@ getBucketVersioningResponse pResponseStatus_ =
     }
 
 -- | The versioning state of the bucket.
-gbvrsStatus :: Lens' GetBucketVersioningResponse (Maybe BucketVersioningStatus)
+gbvrsStatus :: Lens' (GetBucketVersioningResponse (a)) (Maybe BucketVersioningStatus)
 gbvrsStatus = lens _gbvrsStatus (\ s a -> s{_gbvrsStatus = a});
 
 -- | Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is only returned if the bucket has been configured with MFA delete. If the bucket has never been so configured, this element is not returned.
-gbvrsMFADelete :: Lens' GetBucketVersioningResponse (Maybe MFADeleteStatus)
+gbvrsMFADelete :: Lens' (GetBucketVersioningResponse (a)) (Maybe MFADeleteStatus)
 gbvrsMFADelete = lens _gbvrsMFADelete (\ s a -> s{_gbvrsMFADelete = a});
 
 -- | The response status code.
-gbvrsResponseStatus :: Lens' GetBucketVersioningResponse Int
+gbvrsResponseStatus :: Lens' (GetBucketVersioningResponse (a)) Int
 gbvrsResponseStatus = lens _gbvrsResponseStatus (\ s a -> s{_gbvrsResponseStatus = a});
 
 instance NFData GetBucketVersioningResponse

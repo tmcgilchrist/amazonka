@@ -148,7 +148,7 @@ instance ToQuery PollForActivityTask where
 -- | Unit of work sent to an activity worker.
 --
 -- /See:/ 'pollForActivityTaskResponse' smart constructor.
-data PollForActivityTaskResponse = PollForActivityTaskResponse'
+data PollForActivityTaskResponse a = PollForActivityTaskResponse'
     { _pfatrsActivityType      :: !(Maybe ActivityType)
     , _pfatrsActivityId        :: !(Maybe Text)
     , _pfatrsInput             :: !(Maybe Text)
@@ -178,7 +178,7 @@ data PollForActivityTaskResponse = PollForActivityTaskResponse'
 pollForActivityTaskResponse
     :: Int -- ^ 'pfatrsResponseStatus'
     -> Integer -- ^ 'pfatrsStartedEventId'
-    -> PollForActivityTaskResponse
+    -> PollForActivityTaskResponse (a)
 pollForActivityTaskResponse pResponseStatus_ pStartedEventId_ =
     PollForActivityTaskResponse'
     { _pfatrsActivityType = Nothing
@@ -191,31 +191,31 @@ pollForActivityTaskResponse pResponseStatus_ pStartedEventId_ =
     }
 
 -- | The type of this activity task.
-pfatrsActivityType :: Lens' PollForActivityTaskResponse (Maybe ActivityType)
+pfatrsActivityType :: Lens' (PollForActivityTaskResponse (a)) (Maybe ActivityType)
 pfatrsActivityType = lens _pfatrsActivityType (\ s a -> s{_pfatrsActivityType = a});
 
 -- | The unique ID of the task.
-pfatrsActivityId :: Lens' PollForActivityTaskResponse (Maybe Text)
+pfatrsActivityId :: Lens' (PollForActivityTaskResponse (a)) (Maybe Text)
 pfatrsActivityId = lens _pfatrsActivityId (\ s a -> s{_pfatrsActivityId = a});
 
 -- | The inputs provided when the activity task was scheduled. The form of the input is user defined and should be meaningful to the activity implementation.
-pfatrsInput :: Lens' PollForActivityTaskResponse (Maybe Text)
+pfatrsInput :: Lens' (PollForActivityTaskResponse (a)) (Maybe Text)
 pfatrsInput = lens _pfatrsInput (\ s a -> s{_pfatrsInput = a});
 
 -- | The opaque string used as a handle on the task. This token is used by workers to communicate progress and response information back to the system about the task.
-pfatrsTaskToken :: Lens' PollForActivityTaskResponse (Maybe Text)
+pfatrsTaskToken :: Lens' (PollForActivityTaskResponse (a)) (Maybe Text)
 pfatrsTaskToken = lens _pfatrsTaskToken (\ s a -> s{_pfatrsTaskToken = a});
 
 -- | The workflow execution that started this activity task.
-pfatrsWorkflowExecution :: Lens' PollForActivityTaskResponse (Maybe WorkflowExecution)
+pfatrsWorkflowExecution :: Lens' (PollForActivityTaskResponse (a)) (Maybe WorkflowExecution)
 pfatrsWorkflowExecution = lens _pfatrsWorkflowExecution (\ s a -> s{_pfatrsWorkflowExecution = a});
 
 -- | The response status code.
-pfatrsResponseStatus :: Lens' PollForActivityTaskResponse Int
+pfatrsResponseStatus :: Lens' (PollForActivityTaskResponse (a)) Int
 pfatrsResponseStatus = lens _pfatrsResponseStatus (\ s a -> s{_pfatrsResponseStatus = a});
 
 -- | The ID of the 'ActivityTaskStarted' event recorded in the history.
-pfatrsStartedEventId :: Lens' PollForActivityTaskResponse Integer
+pfatrsStartedEventId :: Lens' (PollForActivityTaskResponse (a)) Integer
 pfatrsStartedEventId = lens _pfatrsStartedEventId (\ s a -> s{_pfatrsStartedEventId = a});
 
 instance NFData PollForActivityTaskResponse

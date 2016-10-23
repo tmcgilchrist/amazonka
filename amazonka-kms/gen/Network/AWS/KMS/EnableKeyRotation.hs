@@ -95,14 +95,14 @@ instance ToQuery EnableKeyRotation where
         toQuery = const mempty
 
 -- | /See:/ 'enableKeyRotationResponse' smart constructor.
-data EnableKeyRotationResponse =
+data EnableKeyRotationResponse a =
     EnableKeyRotationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'EnableKeyRotationResponse' with the minimum fields required to make a request.
 --
 enableKeyRotationResponse
-    :: EnableKeyRotationResponse
+    :: EnableKeyRotationResponse (a)
 enableKeyRotationResponse = EnableKeyRotationResponse'
 
 instance NFData EnableKeyRotationResponse

@@ -155,7 +155,7 @@ instance ToQuery TerminateProvisionedProduct where
         toQuery = const mempty
 
 -- | /See:/ 'terminateProvisionedProductResponse' smart constructor.
-data TerminateProvisionedProductResponse = TerminateProvisionedProductResponse'
+data TerminateProvisionedProductResponse a = TerminateProvisionedProductResponse'
     { _tpprsRecordDetail   :: !(Maybe RecordDetail)
     , _tpprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -169,7 +169,7 @@ data TerminateProvisionedProductResponse = TerminateProvisionedProductResponse'
 -- * 'tpprsResponseStatus'
 terminateProvisionedProductResponse
     :: Int -- ^ 'tpprsResponseStatus'
-    -> TerminateProvisionedProductResponse
+    -> TerminateProvisionedProductResponse (a)
 terminateProvisionedProductResponse pResponseStatus_ =
     TerminateProvisionedProductResponse'
     { _tpprsRecordDetail = Nothing
@@ -177,11 +177,11 @@ terminateProvisionedProductResponse pResponseStatus_ =
     }
 
 -- | The detailed result of the < TerminateProvisionedProduct> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.
-tpprsRecordDetail :: Lens' TerminateProvisionedProductResponse (Maybe RecordDetail)
+tpprsRecordDetail :: Lens' (TerminateProvisionedProductResponse (a)) (Maybe RecordDetail)
 tpprsRecordDetail = lens _tpprsRecordDetail (\ s a -> s{_tpprsRecordDetail = a});
 
 -- | The response status code.
-tpprsResponseStatus :: Lens' TerminateProvisionedProductResponse Int
+tpprsResponseStatus :: Lens' (TerminateProvisionedProductResponse (a)) Int
 tpprsResponseStatus = lens _tpprsResponseStatus (\ s a -> s{_tpprsResponseStatus = a});
 
 instance NFData TerminateProvisionedProductResponse

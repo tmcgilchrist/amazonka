@@ -150,7 +150,7 @@ instance ToQuery DescribeTapes where
 -- | DescribeTapesOutput
 --
 -- /See:/ 'describeTapesResponse' smart constructor.
-data DescribeTapesResponse = DescribeTapesResponse'
+data DescribeTapesResponse a = DescribeTapesResponse'
     { _dtsrsMarker         :: !(Maybe Text)
     , _dtsrsTapes          :: !(Maybe [Tape])
     , _dtsrsResponseStatus :: !Int
@@ -167,7 +167,7 @@ data DescribeTapesResponse = DescribeTapesResponse'
 -- * 'dtsrsResponseStatus'
 describeTapesResponse
     :: Int -- ^ 'dtsrsResponseStatus'
-    -> DescribeTapesResponse
+    -> DescribeTapesResponse (a)
 describeTapesResponse pResponseStatus_ =
     DescribeTapesResponse'
     { _dtsrsMarker = Nothing
@@ -178,15 +178,15 @@ describeTapesResponse pResponseStatus_ =
 -- | An opaque string which can be used as part of a subsequent DescribeTapes call to retrieve the next page of results.
 --
 -- If a response does not contain a marker, then there are no more results to be retrieved.
-dtsrsMarker :: Lens' DescribeTapesResponse (Maybe Text)
+dtsrsMarker :: Lens' (DescribeTapesResponse (a)) (Maybe Text)
 dtsrsMarker = lens _dtsrsMarker (\ s a -> s{_dtsrsMarker = a});
 
 -- | An array of virtual tape descriptions.
-dtsrsTapes :: Lens' DescribeTapesResponse [Tape]
+dtsrsTapes :: Lens' (DescribeTapesResponse (a)) [Tape]
 dtsrsTapes = lens _dtsrsTapes (\ s a -> s{_dtsrsTapes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtsrsResponseStatus :: Lens' DescribeTapesResponse Int
+dtsrsResponseStatus :: Lens' (DescribeTapesResponse (a)) Int
 dtsrsResponseStatus = lens _dtsrsResponseStatus (\ s a -> s{_dtsrsResponseStatus = a});
 
 instance NFData DescribeTapesResponse

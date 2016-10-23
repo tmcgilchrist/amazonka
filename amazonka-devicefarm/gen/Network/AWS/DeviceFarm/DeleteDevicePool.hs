@@ -100,7 +100,7 @@ instance ToQuery DeleteDevicePool where
 -- | Represents the result of a delete device pool request.
 --
 -- /See:/ 'deleteDevicePoolResponse' smart constructor.
-newtype DeleteDevicePoolResponse = DeleteDevicePoolResponse'
+newtype DeleteDevicePoolResponse a = DeleteDevicePoolResponse'
     { _ddprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -111,14 +111,14 @@ newtype DeleteDevicePoolResponse = DeleteDevicePoolResponse'
 -- * 'ddprsResponseStatus'
 deleteDevicePoolResponse
     :: Int -- ^ 'ddprsResponseStatus'
-    -> DeleteDevicePoolResponse
+    -> DeleteDevicePoolResponse (a)
 deleteDevicePoolResponse pResponseStatus_ =
     DeleteDevicePoolResponse'
     { _ddprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ddprsResponseStatus :: Lens' DeleteDevicePoolResponse Int
+ddprsResponseStatus :: Lens' (DeleteDevicePoolResponse (a)) Int
 ddprsResponseStatus = lens _ddprsResponseStatus (\ s a -> s{_ddprsResponseStatus = a});
 
 instance NFData DeleteDevicePoolResponse

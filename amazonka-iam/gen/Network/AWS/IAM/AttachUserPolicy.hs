@@ -103,14 +103,14 @@ instance ToQuery AttachUserPolicy where
                "PolicyArn" =: _aupPolicyARN]
 
 -- | /See:/ 'attachUserPolicyResponse' smart constructor.
-data AttachUserPolicyResponse =
+data AttachUserPolicyResponse a =
     AttachUserPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AttachUserPolicyResponse' with the minimum fields required to make a request.
 --
 attachUserPolicyResponse
-    :: AttachUserPolicyResponse
+    :: AttachUserPolicyResponse (a)
 attachUserPolicyResponse = AttachUserPolicyResponse'
 
 instance NFData AttachUserPolicyResponse

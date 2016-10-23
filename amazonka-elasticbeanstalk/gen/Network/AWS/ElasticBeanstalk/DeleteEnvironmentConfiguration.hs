@@ -104,14 +104,14 @@ instance ToQuery DeleteEnvironmentConfiguration where
                "EnvironmentName" =: _decEnvironmentName]
 
 -- | /See:/ 'deleteEnvironmentConfigurationResponse' smart constructor.
-data DeleteEnvironmentConfigurationResponse =
+data DeleteEnvironmentConfigurationResponse a =
     DeleteEnvironmentConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteEnvironmentConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteEnvironmentConfigurationResponse
-    :: DeleteEnvironmentConfigurationResponse
+    :: DeleteEnvironmentConfigurationResponse (a)
 deleteEnvironmentConfigurationResponse =
     DeleteEnvironmentConfigurationResponse'
 

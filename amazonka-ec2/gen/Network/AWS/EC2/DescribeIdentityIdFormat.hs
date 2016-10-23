@@ -113,7 +113,7 @@ instance ToQuery DescribeIdentityIdFormat where
 -- | Contains the output of DescribeIdentityIdFormat.
 --
 -- /See:/ 'describeIdentityIdFormatResponse' smart constructor.
-data DescribeIdentityIdFormatResponse = DescribeIdentityIdFormatResponse'
+data DescribeIdentityIdFormatResponse a = DescribeIdentityIdFormatResponse'
     { _diifrsStatuses       :: !(Maybe [IdFormat])
     , _diifrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data DescribeIdentityIdFormatResponse = DescribeIdentityIdFormatResponse'
 -- * 'diifrsResponseStatus'
 describeIdentityIdFormatResponse
     :: Int -- ^ 'diifrsResponseStatus'
-    -> DescribeIdentityIdFormatResponse
+    -> DescribeIdentityIdFormatResponse (a)
 describeIdentityIdFormatResponse pResponseStatus_ =
     DescribeIdentityIdFormatResponse'
     { _diifrsStatuses = Nothing
@@ -135,11 +135,11 @@ describeIdentityIdFormatResponse pResponseStatus_ =
     }
 
 -- | Information about the ID format for the resources.
-diifrsStatuses :: Lens' DescribeIdentityIdFormatResponse [IdFormat]
+diifrsStatuses :: Lens' (DescribeIdentityIdFormatResponse (a)) [IdFormat]
 diifrsStatuses = lens _diifrsStatuses (\ s a -> s{_diifrsStatuses = a}) . _Default . _Coerce;
 
 -- | The response status code.
-diifrsResponseStatus :: Lens' DescribeIdentityIdFormatResponse Int
+diifrsResponseStatus :: Lens' (DescribeIdentityIdFormatResponse (a)) Int
 diifrsResponseStatus = lens _diifrsResponseStatus (\ s a -> s{_diifrsResponseStatus = a});
 
 instance NFData DescribeIdentityIdFormatResponse

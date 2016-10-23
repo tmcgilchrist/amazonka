@@ -109,7 +109,7 @@ instance ToQuery DescribeUploadBuffer where
         toQuery = const mempty
 
 -- | /See:/ 'describeUploadBufferResponse' smart constructor.
-data DescribeUploadBufferResponse = DescribeUploadBufferResponse'
+data DescribeUploadBufferResponse a = DescribeUploadBufferResponse'
     { _dubrsUploadBufferAllocatedInBytes :: !(Maybe Integer)
     , _dubrsGatewayARN                   :: !(Maybe Text)
     , _dubrsDiskIds                      :: !(Maybe [Text])
@@ -132,7 +132,7 @@ data DescribeUploadBufferResponse = DescribeUploadBufferResponse'
 -- * 'dubrsResponseStatus'
 describeUploadBufferResponse
     :: Int -- ^ 'dubrsResponseStatus'
-    -> DescribeUploadBufferResponse
+    -> DescribeUploadBufferResponse (a)
 describeUploadBufferResponse pResponseStatus_ =
     DescribeUploadBufferResponse'
     { _dubrsUploadBufferAllocatedInBytes = Nothing
@@ -143,23 +143,23 @@ describeUploadBufferResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dubrsUploadBufferAllocatedInBytes :: Lens' DescribeUploadBufferResponse (Maybe Integer)
+dubrsUploadBufferAllocatedInBytes :: Lens' (DescribeUploadBufferResponse (a)) (Maybe Integer)
 dubrsUploadBufferAllocatedInBytes = lens _dubrsUploadBufferAllocatedInBytes (\ s a -> s{_dubrsUploadBufferAllocatedInBytes = a});
 
 -- | Undocumented member.
-dubrsGatewayARN :: Lens' DescribeUploadBufferResponse (Maybe Text)
+dubrsGatewayARN :: Lens' (DescribeUploadBufferResponse (a)) (Maybe Text)
 dubrsGatewayARN = lens _dubrsGatewayARN (\ s a -> s{_dubrsGatewayARN = a});
 
 -- | Undocumented member.
-dubrsDiskIds :: Lens' DescribeUploadBufferResponse [Text]
+dubrsDiskIds :: Lens' (DescribeUploadBufferResponse (a)) [Text]
 dubrsDiskIds = lens _dubrsDiskIds (\ s a -> s{_dubrsDiskIds = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-dubrsUploadBufferUsedInBytes :: Lens' DescribeUploadBufferResponse (Maybe Integer)
+dubrsUploadBufferUsedInBytes :: Lens' (DescribeUploadBufferResponse (a)) (Maybe Integer)
 dubrsUploadBufferUsedInBytes = lens _dubrsUploadBufferUsedInBytes (\ s a -> s{_dubrsUploadBufferUsedInBytes = a});
 
 -- | The response status code.
-dubrsResponseStatus :: Lens' DescribeUploadBufferResponse Int
+dubrsResponseStatus :: Lens' (DescribeUploadBufferResponse (a)) Int
 dubrsResponseStatus = lens _dubrsResponseStatus (\ s a -> s{_dubrsResponseStatus = a});
 
 instance NFData DescribeUploadBufferResponse

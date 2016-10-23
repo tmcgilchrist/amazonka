@@ -154,7 +154,7 @@ instance ToQuery DescribeInstanceAttribute where
 -- | Describes an instance attribute.
 --
 -- /See:/ 'describeInstanceAttributeResponse' smart constructor.
-data DescribeInstanceAttributeResponse = DescribeInstanceAttributeResponse'
+data DescribeInstanceAttributeResponse a = DescribeInstanceAttributeResponse'
     { _drsInstanceId                        :: !(Maybe Text)
     , _drsGroups                            :: !(Maybe [GroupIdentifier])
     , _drsEnaSupport                        :: !(Maybe AttributeBooleanValue)
@@ -210,7 +210,7 @@ data DescribeInstanceAttributeResponse = DescribeInstanceAttributeResponse'
 -- * 'drsResponseStatus'
 describeInstanceAttributeResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DescribeInstanceAttributeResponse
+    -> DescribeInstanceAttributeResponse (a)
 describeInstanceAttributeResponse pResponseStatus_ =
     DescribeInstanceAttributeResponse'
     { _drsInstanceId = Nothing
@@ -232,67 +232,67 @@ describeInstanceAttributeResponse pResponseStatus_ =
     }
 
 -- | The ID of the instance.
-drsInstanceId :: Lens' DescribeInstanceAttributeResponse (Maybe Text)
+drsInstanceId :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe Text)
 drsInstanceId = lens _drsInstanceId (\ s a -> s{_drsInstanceId = a});
 
 -- | The security groups associated with the instance.
-drsGroups :: Lens' DescribeInstanceAttributeResponse [GroupIdentifier]
+drsGroups :: Lens' (DescribeInstanceAttributeResponse (a)) [GroupIdentifier]
 drsGroups = lens _drsGroups (\ s a -> s{_drsGroups = a}) . _Default . _Coerce;
 
 -- | Indicates whether enhanced networking with ENA is enabled.
-drsEnaSupport :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeBooleanValue)
+drsEnaSupport :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeBooleanValue)
 drsEnaSupport = lens _drsEnaSupport (\ s a -> s{_drsEnaSupport = a});
 
 -- | Indicates whether source\/destination checking is enabled. A value of 'true' means checking is enabled, and 'false' means checking is disabled. This value must be 'false' for a NAT instance to perform NAT.
-drsSourceDestCheck :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeBooleanValue)
+drsSourceDestCheck :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeBooleanValue)
 drsSourceDestCheck = lens _drsSourceDestCheck (\ s a -> s{_drsSourceDestCheck = a});
 
 -- | If the value is 'true', you can\'t terminate the instance through the Amazon EC2 console, CLI, or API; otherwise, you can.
-drsDisableAPITermination :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeBooleanValue)
+drsDisableAPITermination :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeBooleanValue)
 drsDisableAPITermination = lens _drsDisableAPITermination (\ s a -> s{_drsDisableAPITermination = a});
 
 -- | The RAM disk ID.
-drsRAMDiskId :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeValue)
+drsRAMDiskId :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeValue)
 drsRAMDiskId = lens _drsRAMDiskId (\ s a -> s{_drsRAMDiskId = a});
 
 -- | The kernel ID.
-drsKernelId :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeValue)
+drsKernelId :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeValue)
 drsKernelId = lens _drsKernelId (\ s a -> s{_drsKernelId = a});
 
 -- | The name of the root device (for example, '\/dev\/sda1' or '\/dev\/xvda').
-drsRootDeviceName :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeValue)
+drsRootDeviceName :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeValue)
 drsRootDeviceName = lens _drsRootDeviceName (\ s a -> s{_drsRootDeviceName = a});
 
 -- | The instance type.
-drsInstanceType :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeValue)
+drsInstanceType :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeValue)
 drsInstanceType = lens _drsInstanceType (\ s a -> s{_drsInstanceType = a});
 
 -- | Indicates whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.
-drsSRIOVNetSupport :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeValue)
+drsSRIOVNetSupport :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeValue)
 drsSRIOVNetSupport = lens _drsSRIOVNetSupport (\ s a -> s{_drsSRIOVNetSupport = a});
 
 -- | Indicates whether the instance is optimized for EBS I\/O.
-drsEBSOptimized :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeBooleanValue)
+drsEBSOptimized :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeBooleanValue)
 drsEBSOptimized = lens _drsEBSOptimized (\ s a -> s{_drsEBSOptimized = a});
 
 -- | The user data.
-drsUserData :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeValue)
+drsUserData :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeValue)
 drsUserData = lens _drsUserData (\ s a -> s{_drsUserData = a});
 
 -- | Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown).
-drsInstanceInitiatedShutdownBehavior :: Lens' DescribeInstanceAttributeResponse (Maybe AttributeValue)
+drsInstanceInitiatedShutdownBehavior :: Lens' (DescribeInstanceAttributeResponse (a)) (Maybe AttributeValue)
 drsInstanceInitiatedShutdownBehavior = lens _drsInstanceInitiatedShutdownBehavior (\ s a -> s{_drsInstanceInitiatedShutdownBehavior = a});
 
 -- | A list of product codes.
-drsProductCodes :: Lens' DescribeInstanceAttributeResponse [ProductCode]
+drsProductCodes :: Lens' (DescribeInstanceAttributeResponse (a)) [ProductCode]
 drsProductCodes = lens _drsProductCodes (\ s a -> s{_drsProductCodes = a}) . _Default . _Coerce;
 
 -- | The block device mapping of the instance.
-drsBlockDeviceMappings :: Lens' DescribeInstanceAttributeResponse [InstanceBlockDeviceMapping]
+drsBlockDeviceMappings :: Lens' (DescribeInstanceAttributeResponse (a)) [InstanceBlockDeviceMapping]
 drsBlockDeviceMappings = lens _drsBlockDeviceMappings (\ s a -> s{_drsBlockDeviceMappings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drsResponseStatus :: Lens' DescribeInstanceAttributeResponse Int
+drsResponseStatus :: Lens' (DescribeInstanceAttributeResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DescribeInstanceAttributeResponse

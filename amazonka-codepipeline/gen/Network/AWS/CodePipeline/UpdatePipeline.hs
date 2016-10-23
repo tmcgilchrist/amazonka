@@ -103,7 +103,7 @@ instance ToQuery UpdatePipeline where
 -- | Represents the output of an update pipeline action.
 --
 -- /See:/ 'updatePipelineResponse' smart constructor.
-data UpdatePipelineResponse = UpdatePipelineResponse'
+data UpdatePipelineResponse a = UpdatePipelineResponse'
     { _uprsPipeline       :: !(Maybe PipelineDeclaration)
     , _uprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data UpdatePipelineResponse = UpdatePipelineResponse'
 -- * 'uprsResponseStatus'
 updatePipelineResponse
     :: Int -- ^ 'uprsResponseStatus'
-    -> UpdatePipelineResponse
+    -> UpdatePipelineResponse (a)
 updatePipelineResponse pResponseStatus_ =
     UpdatePipelineResponse'
     { _uprsPipeline = Nothing
@@ -125,11 +125,11 @@ updatePipelineResponse pResponseStatus_ =
     }
 
 -- | The structure of the updated pipeline.
-uprsPipeline :: Lens' UpdatePipelineResponse (Maybe PipelineDeclaration)
+uprsPipeline :: Lens' (UpdatePipelineResponse (a)) (Maybe PipelineDeclaration)
 uprsPipeline = lens _uprsPipeline (\ s a -> s{_uprsPipeline = a});
 
 -- | The response status code.
-uprsResponseStatus :: Lens' UpdatePipelineResponse Int
+uprsResponseStatus :: Lens' (UpdatePipelineResponse (a)) Int
 uprsResponseStatus = lens _uprsResponseStatus (\ s a -> s{_uprsResponseStatus = a});
 
 instance NFData UpdatePipelineResponse

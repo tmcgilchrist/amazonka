@@ -115,7 +115,7 @@ instance ToQuery CancelArchival where
 -- | CancelArchivalOutput
 --
 -- /See:/ 'cancelArchivalResponse' smart constructor.
-data CancelArchivalResponse = CancelArchivalResponse'
+data CancelArchivalResponse a = CancelArchivalResponse'
     { _carsTapeARN        :: !(Maybe Text)
     , _carsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data CancelArchivalResponse = CancelArchivalResponse'
 -- * 'carsResponseStatus'
 cancelArchivalResponse
     :: Int -- ^ 'carsResponseStatus'
-    -> CancelArchivalResponse
+    -> CancelArchivalResponse (a)
 cancelArchivalResponse pResponseStatus_ =
     CancelArchivalResponse'
     { _carsTapeARN = Nothing
@@ -137,11 +137,11 @@ cancelArchivalResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the virtual tape for which archiving was canceled.
-carsTapeARN :: Lens' CancelArchivalResponse (Maybe Text)
+carsTapeARN :: Lens' (CancelArchivalResponse (a)) (Maybe Text)
 carsTapeARN = lens _carsTapeARN (\ s a -> s{_carsTapeARN = a});
 
 -- | The response status code.
-carsResponseStatus :: Lens' CancelArchivalResponse Int
+carsResponseStatus :: Lens' (CancelArchivalResponse (a)) Int
 carsResponseStatus = lens _carsResponseStatus (\ s a -> s{_carsResponseStatus = a});
 
 instance NFData CancelArchivalResponse

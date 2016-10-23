@@ -133,7 +133,7 @@ instance ToQuery DescribeAutoScalingInstances where
 -- | Contains the output of DescribeAutoScalingInstances.
 --
 -- /See:/ 'describeAutoScalingInstancesResponse' smart constructor.
-data DescribeAutoScalingInstancesResponse = DescribeAutoScalingInstancesResponse'
+data DescribeAutoScalingInstancesResponse a = DescribeAutoScalingInstancesResponse'
     { _dasirsNextToken            :: !(Maybe Text)
     , _dasirsAutoScalingInstances :: !(Maybe [AutoScalingInstanceDetails])
     , _dasirsResponseStatus       :: !Int
@@ -150,7 +150,7 @@ data DescribeAutoScalingInstancesResponse = DescribeAutoScalingInstancesResponse
 -- * 'dasirsResponseStatus'
 describeAutoScalingInstancesResponse
     :: Int -- ^ 'dasirsResponseStatus'
-    -> DescribeAutoScalingInstancesResponse
+    -> DescribeAutoScalingInstancesResponse (a)
 describeAutoScalingInstancesResponse pResponseStatus_ =
     DescribeAutoScalingInstancesResponse'
     { _dasirsNextToken = Nothing
@@ -159,15 +159,15 @@ describeAutoScalingInstancesResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dasirsNextToken :: Lens' DescribeAutoScalingInstancesResponse (Maybe Text)
+dasirsNextToken :: Lens' (DescribeAutoScalingInstancesResponse (a)) (Maybe Text)
 dasirsNextToken = lens _dasirsNextToken (\ s a -> s{_dasirsNextToken = a});
 
 -- | The instances.
-dasirsAutoScalingInstances :: Lens' DescribeAutoScalingInstancesResponse [AutoScalingInstanceDetails]
+dasirsAutoScalingInstances :: Lens' (DescribeAutoScalingInstancesResponse (a)) [AutoScalingInstanceDetails]
 dasirsAutoScalingInstances = lens _dasirsAutoScalingInstances (\ s a -> s{_dasirsAutoScalingInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dasirsResponseStatus :: Lens' DescribeAutoScalingInstancesResponse Int
+dasirsResponseStatus :: Lens' (DescribeAutoScalingInstancesResponse (a)) Int
 dasirsResponseStatus = lens _dasirsResponseStatus (\ s a -> s{_dasirsResponseStatus = a});
 
 instance NFData DescribeAutoScalingInstancesResponse

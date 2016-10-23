@@ -116,14 +116,14 @@ instance ToQuery PutNotificationConfiguration where
                  toQueryList "member" _pncNotificationTypes]
 
 -- | /See:/ 'putNotificationConfigurationResponse' smart constructor.
-data PutNotificationConfigurationResponse =
+data PutNotificationConfigurationResponse a =
     PutNotificationConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutNotificationConfigurationResponse' with the minimum fields required to make a request.
 --
 putNotificationConfigurationResponse
-    :: PutNotificationConfigurationResponse
+    :: PutNotificationConfigurationResponse (a)
 putNotificationConfigurationResponse = PutNotificationConfigurationResponse'
 
 instance NFData PutNotificationConfigurationResponse

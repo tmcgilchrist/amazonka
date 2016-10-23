@@ -104,7 +104,7 @@ instance ToQuery ListTagsForVault where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'listTagsForVaultResponse' smart constructor.
-data ListTagsForVaultResponse = ListTagsForVaultResponse'
+data ListTagsForVaultResponse a = ListTagsForVaultResponse'
     { _ltfvrsTags           :: !(Maybe (Map Text Text))
     , _ltfvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data ListTagsForVaultResponse = ListTagsForVaultResponse'
 -- * 'ltfvrsResponseStatus'
 listTagsForVaultResponse
     :: Int -- ^ 'ltfvrsResponseStatus'
-    -> ListTagsForVaultResponse
+    -> ListTagsForVaultResponse (a)
 listTagsForVaultResponse pResponseStatus_ =
     ListTagsForVaultResponse'
     { _ltfvrsTags = Nothing
@@ -126,11 +126,11 @@ listTagsForVaultResponse pResponseStatus_ =
     }
 
 -- | The tags attached to the vault. Each tag is composed of a key and a value.
-ltfvrsTags :: Lens' ListTagsForVaultResponse (HashMap Text Text)
+ltfvrsTags :: Lens' (ListTagsForVaultResponse (a)) (HashMap Text Text)
 ltfvrsTags = lens _ltfvrsTags (\ s a -> s{_ltfvrsTags = a}) . _Default . _Map;
 
 -- | The response status code.
-ltfvrsResponseStatus :: Lens' ListTagsForVaultResponse Int
+ltfvrsResponseStatus :: Lens' (ListTagsForVaultResponse (a)) Int
 ltfvrsResponseStatus = lens _ltfvrsResponseStatus (\ s a -> s{_ltfvrsResponseStatus = a});
 
 instance NFData ListTagsForVaultResponse

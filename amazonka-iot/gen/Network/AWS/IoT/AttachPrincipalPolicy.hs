@@ -99,14 +99,14 @@ instance ToQuery AttachPrincipalPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'attachPrincipalPolicyResponse' smart constructor.
-data AttachPrincipalPolicyResponse =
+data AttachPrincipalPolicyResponse a =
     AttachPrincipalPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AttachPrincipalPolicyResponse' with the minimum fields required to make a request.
 --
 attachPrincipalPolicyResponse
-    :: AttachPrincipalPolicyResponse
+    :: AttachPrincipalPolicyResponse (a)
 attachPrincipalPolicyResponse = AttachPrincipalPolicyResponse'
 
 instance NFData AttachPrincipalPolicyResponse

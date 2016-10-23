@@ -93,7 +93,7 @@ instance ToQuery RebootCluster where
                "ClusterIdentifier" =: _rcClusterIdentifier]
 
 -- | /See:/ 'rebootClusterResponse' smart constructor.
-data RebootClusterResponse = RebootClusterResponse'
+data RebootClusterResponse a = RebootClusterResponse'
     { _rcrsCluster        :: !(Maybe Cluster)
     , _rcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -107,7 +107,7 @@ data RebootClusterResponse = RebootClusterResponse'
 -- * 'rcrsResponseStatus'
 rebootClusterResponse
     :: Int -- ^ 'rcrsResponseStatus'
-    -> RebootClusterResponse
+    -> RebootClusterResponse (a)
 rebootClusterResponse pResponseStatus_ =
     RebootClusterResponse'
     { _rcrsCluster = Nothing
@@ -115,11 +115,11 @@ rebootClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rcrsCluster :: Lens' RebootClusterResponse (Maybe Cluster)
+rcrsCluster :: Lens' (RebootClusterResponse (a)) (Maybe Cluster)
 rcrsCluster = lens _rcrsCluster (\ s a -> s{_rcrsCluster = a});
 
 -- | The response status code.
-rcrsResponseStatus :: Lens' RebootClusterResponse Int
+rcrsResponseStatus :: Lens' (RebootClusterResponse (a)) Int
 rcrsResponseStatus = lens _rcrsResponseStatus (\ s a -> s{_rcrsResponseStatus = a});
 
 instance NFData RebootClusterResponse

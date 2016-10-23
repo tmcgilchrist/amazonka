@@ -118,7 +118,7 @@ instance ToQuery ValidateTemplate where
 -- | The output for < ValidateTemplate> action.
 --
 -- /See:/ 'validateTemplateResponse' smart constructor.
-data ValidateTemplateResponse = ValidateTemplateResponse'
+data ValidateTemplateResponse a = ValidateTemplateResponse'
     { _vtrsCapabilitiesReason :: !(Maybe Text)
     , _vtrsParameters         :: !(Maybe [TemplateParameter])
     , _vtrsDescription        :: !(Maybe Text)
@@ -141,7 +141,7 @@ data ValidateTemplateResponse = ValidateTemplateResponse'
 -- * 'vtrsResponseStatus'
 validateTemplateResponse
     :: Int -- ^ 'vtrsResponseStatus'
-    -> ValidateTemplateResponse
+    -> ValidateTemplateResponse (a)
 validateTemplateResponse pResponseStatus_ =
     ValidateTemplateResponse'
     { _vtrsCapabilitiesReason = Nothing
@@ -152,25 +152,25 @@ validateTemplateResponse pResponseStatus_ =
     }
 
 -- | The list of resources that generated the values in the 'Capabilities' response element.
-vtrsCapabilitiesReason :: Lens' ValidateTemplateResponse (Maybe Text)
+vtrsCapabilitiesReason :: Lens' (ValidateTemplateResponse (a)) (Maybe Text)
 vtrsCapabilitiesReason = lens _vtrsCapabilitiesReason (\ s a -> s{_vtrsCapabilitiesReason = a});
 
 -- | A list of 'TemplateParameter' structures.
-vtrsParameters :: Lens' ValidateTemplateResponse [TemplateParameter]
+vtrsParameters :: Lens' (ValidateTemplateResponse (a)) [TemplateParameter]
 vtrsParameters = lens _vtrsParameters (\ s a -> s{_vtrsParameters = a}) . _Default . _Coerce;
 
 -- | The description found within the template.
-vtrsDescription :: Lens' ValidateTemplateResponse (Maybe Text)
+vtrsDescription :: Lens' (ValidateTemplateResponse (a)) (Maybe Text)
 vtrsDescription = lens _vtrsDescription (\ s a -> s{_vtrsDescription = a});
 
 -- | The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the < CreateStack> or < UpdateStack> actions with your template; otherwise, those actions return an InsufficientCapabilities error.
 --
 -- For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities Acknowledging IAM Resources in AWS CloudFormation Templates>.
-vtrsCapabilities :: Lens' ValidateTemplateResponse [Capability]
+vtrsCapabilities :: Lens' (ValidateTemplateResponse (a)) [Capability]
 vtrsCapabilities = lens _vtrsCapabilities (\ s a -> s{_vtrsCapabilities = a}) . _Default . _Coerce;
 
 -- | The response status code.
-vtrsResponseStatus :: Lens' ValidateTemplateResponse Int
+vtrsResponseStatus :: Lens' (ValidateTemplateResponse (a)) Int
 vtrsResponseStatus = lens _vtrsResponseStatus (\ s a -> s{_vtrsResponseStatus = a});
 
 instance NFData ValidateTemplateResponse

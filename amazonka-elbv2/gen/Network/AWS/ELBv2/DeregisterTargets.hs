@@ -103,7 +103,7 @@ instance ToQuery DeregisterTargets where
 -- | Contains the output of DeregisterTargets.
 --
 -- /See:/ 'deregisterTargetsResponse' smart constructor.
-newtype DeregisterTargetsResponse = DeregisterTargetsResponse'
+newtype DeregisterTargetsResponse a = DeregisterTargetsResponse'
     { _dtsrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -114,14 +114,14 @@ newtype DeregisterTargetsResponse = DeregisterTargetsResponse'
 -- * 'dtsrsResponseStatus'
 deregisterTargetsResponse
     :: Int -- ^ 'dtsrsResponseStatus'
-    -> DeregisterTargetsResponse
+    -> DeregisterTargetsResponse (a)
 deregisterTargetsResponse pResponseStatus_ =
     DeregisterTargetsResponse'
     { _dtsrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dtsrsResponseStatus :: Lens' DeregisterTargetsResponse Int
+dtsrsResponseStatus :: Lens' (DeregisterTargetsResponse (a)) Int
 dtsrsResponseStatus = lens _dtsrsResponseStatus (\ s a -> s{_dtsrsResponseStatus = a});
 
 instance NFData DeregisterTargetsResponse

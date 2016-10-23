@@ -139,7 +139,7 @@ instance ToQuery ValidateConfigurationSettings where
 -- | Provides a list of validation messages.
 --
 -- /See:/ 'validateConfigurationSettingsResponse' smart constructor.
-data ValidateConfigurationSettingsResponse = ValidateConfigurationSettingsResponse'
+data ValidateConfigurationSettingsResponse a = ValidateConfigurationSettingsResponse'
     { _vcsrsMessages       :: !(Maybe [ValidationMessage])
     , _vcsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -153,7 +153,7 @@ data ValidateConfigurationSettingsResponse = ValidateConfigurationSettingsRespon
 -- * 'vcsrsResponseStatus'
 validateConfigurationSettingsResponse
     :: Int -- ^ 'vcsrsResponseStatus'
-    -> ValidateConfigurationSettingsResponse
+    -> ValidateConfigurationSettingsResponse (a)
 validateConfigurationSettingsResponse pResponseStatus_ =
     ValidateConfigurationSettingsResponse'
     { _vcsrsMessages = Nothing
@@ -161,11 +161,11 @@ validateConfigurationSettingsResponse pResponseStatus_ =
     }
 
 -- | A list of < ValidationMessage>.
-vcsrsMessages :: Lens' ValidateConfigurationSettingsResponse [ValidationMessage]
+vcsrsMessages :: Lens' (ValidateConfigurationSettingsResponse (a)) [ValidationMessage]
 vcsrsMessages = lens _vcsrsMessages (\ s a -> s{_vcsrsMessages = a}) . _Default . _Coerce;
 
 -- | The response status code.
-vcsrsResponseStatus :: Lens' ValidateConfigurationSettingsResponse Int
+vcsrsResponseStatus :: Lens' (ValidateConfigurationSettingsResponse (a)) Int
 vcsrsResponseStatus = lens _vcsrsResponseStatus (\ s a -> s{_vcsrsResponseStatus = a});
 
 instance NFData ValidateConfigurationSettingsResponse

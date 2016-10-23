@@ -144,7 +144,7 @@ instance ToQuery ModifyDBSnapshotAttribute where
                "AttributeName" =: _mdsaAttributeName]
 
 -- | /See:/ 'modifyDBSnapshotAttributeResponse' smart constructor.
-data ModifyDBSnapshotAttributeResponse = ModifyDBSnapshotAttributeResponse'
+data ModifyDBSnapshotAttributeResponse a = ModifyDBSnapshotAttributeResponse'
     { _mdsarsDBSnapshotAttributesResult :: !(Maybe DBSnapshotAttributesResult)
     , _mdsarsResponseStatus             :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -158,7 +158,7 @@ data ModifyDBSnapshotAttributeResponse = ModifyDBSnapshotAttributeResponse'
 -- * 'mdsarsResponseStatus'
 modifyDBSnapshotAttributeResponse
     :: Int -- ^ 'mdsarsResponseStatus'
-    -> ModifyDBSnapshotAttributeResponse
+    -> ModifyDBSnapshotAttributeResponse (a)
 modifyDBSnapshotAttributeResponse pResponseStatus_ =
     ModifyDBSnapshotAttributeResponse'
     { _mdsarsDBSnapshotAttributesResult = Nothing
@@ -166,11 +166,11 @@ modifyDBSnapshotAttributeResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mdsarsDBSnapshotAttributesResult :: Lens' ModifyDBSnapshotAttributeResponse (Maybe DBSnapshotAttributesResult)
+mdsarsDBSnapshotAttributesResult :: Lens' (ModifyDBSnapshotAttributeResponse (a)) (Maybe DBSnapshotAttributesResult)
 mdsarsDBSnapshotAttributesResult = lens _mdsarsDBSnapshotAttributesResult (\ s a -> s{_mdsarsDBSnapshotAttributesResult = a});
 
 -- | The response status code.
-mdsarsResponseStatus :: Lens' ModifyDBSnapshotAttributeResponse Int
+mdsarsResponseStatus :: Lens' (ModifyDBSnapshotAttributeResponse (a)) Int
 mdsarsResponseStatus = lens _mdsarsResponseStatus (\ s a -> s{_mdsarsResponseStatus = a});
 
 instance NFData ModifyDBSnapshotAttributeResponse

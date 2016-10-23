@@ -108,7 +108,7 @@ instance ToQuery AcceptVPCPeeringConnection where
 -- | Contains the output of AcceptVpcPeeringConnection.
 --
 -- /See:/ 'acceptVPCPeeringConnectionResponse' smart constructor.
-data AcceptVPCPeeringConnectionResponse = AcceptVPCPeeringConnectionResponse'
+data AcceptVPCPeeringConnectionResponse a = AcceptVPCPeeringConnectionResponse'
     { _avpcrsVPCPeeringConnection :: !(Maybe VPCPeeringConnection)
     , _avpcrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -122,7 +122,7 @@ data AcceptVPCPeeringConnectionResponse = AcceptVPCPeeringConnectionResponse'
 -- * 'avpcrsResponseStatus'
 acceptVPCPeeringConnectionResponse
     :: Int -- ^ 'avpcrsResponseStatus'
-    -> AcceptVPCPeeringConnectionResponse
+    -> AcceptVPCPeeringConnectionResponse (a)
 acceptVPCPeeringConnectionResponse pResponseStatus_ =
     AcceptVPCPeeringConnectionResponse'
     { _avpcrsVPCPeeringConnection = Nothing
@@ -130,11 +130,11 @@ acceptVPCPeeringConnectionResponse pResponseStatus_ =
     }
 
 -- | Information about the VPC peering connection.
-avpcrsVPCPeeringConnection :: Lens' AcceptVPCPeeringConnectionResponse (Maybe VPCPeeringConnection)
+avpcrsVPCPeeringConnection :: Lens' (AcceptVPCPeeringConnectionResponse (a)) (Maybe VPCPeeringConnection)
 avpcrsVPCPeeringConnection = lens _avpcrsVPCPeeringConnection (\ s a -> s{_avpcrsVPCPeeringConnection = a});
 
 -- | The response status code.
-avpcrsResponseStatus :: Lens' AcceptVPCPeeringConnectionResponse Int
+avpcrsResponseStatus :: Lens' (AcceptVPCPeeringConnectionResponse (a)) Int
 avpcrsResponseStatus = lens _avpcrsResponseStatus (\ s a -> s{_avpcrsResponseStatus = a});
 
 instance NFData AcceptVPCPeeringConnectionResponse

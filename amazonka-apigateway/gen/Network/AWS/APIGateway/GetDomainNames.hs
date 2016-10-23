@@ -118,7 +118,7 @@ instance ToQuery GetDomainNames where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Use Client-Side Certificate>
 --
 -- /See:/ 'getDomainNamesResponse' smart constructor.
-data GetDomainNamesResponse = GetDomainNamesResponse'
+data GetDomainNamesResponse a = GetDomainNamesResponse'
     { _gdnrsItems          :: !(Maybe [DomainName])
     , _gdnrsPosition       :: !(Maybe Text)
     , _gdnrsResponseStatus :: !Int
@@ -135,7 +135,7 @@ data GetDomainNamesResponse = GetDomainNamesResponse'
 -- * 'gdnrsResponseStatus'
 getDomainNamesResponse
     :: Int -- ^ 'gdnrsResponseStatus'
-    -> GetDomainNamesResponse
+    -> GetDomainNamesResponse (a)
 getDomainNamesResponse pResponseStatus_ =
     GetDomainNamesResponse'
     { _gdnrsItems = Nothing
@@ -144,15 +144,15 @@ getDomainNamesResponse pResponseStatus_ =
     }
 
 -- | The current page of any < DomainName> resources in the collection of < DomainName> resources.
-gdnrsItems :: Lens' GetDomainNamesResponse [DomainName]
+gdnrsItems :: Lens' (GetDomainNamesResponse (a)) [DomainName]
 gdnrsItems = lens _gdnrsItems (\ s a -> s{_gdnrsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gdnrsPosition :: Lens' GetDomainNamesResponse (Maybe Text)
+gdnrsPosition :: Lens' (GetDomainNamesResponse (a)) (Maybe Text)
 gdnrsPosition = lens _gdnrsPosition (\ s a -> s{_gdnrsPosition = a});
 
 -- | The response status code.
-gdnrsResponseStatus :: Lens' GetDomainNamesResponse Int
+gdnrsResponseStatus :: Lens' (GetDomainNamesResponse (a)) Int
 gdnrsResponseStatus = lens _gdnrsResponseStatus (\ s a -> s{_gdnrsResponseStatus = a});
 
 instance NFData GetDomainNamesResponse

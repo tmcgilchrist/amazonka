@@ -130,7 +130,7 @@ instance ToQuery ModifyOptionGroup where
                "OptionGroupName" =: _mogOptionGroupName]
 
 -- | /See:/ 'modifyOptionGroupResponse' smart constructor.
-data ModifyOptionGroupResponse = ModifyOptionGroupResponse'
+data ModifyOptionGroupResponse a = ModifyOptionGroupResponse'
     { _mogrsOptionGroup    :: !(Maybe OptionGroup)
     , _mogrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -144,7 +144,7 @@ data ModifyOptionGroupResponse = ModifyOptionGroupResponse'
 -- * 'mogrsResponseStatus'
 modifyOptionGroupResponse
     :: Int -- ^ 'mogrsResponseStatus'
-    -> ModifyOptionGroupResponse
+    -> ModifyOptionGroupResponse (a)
 modifyOptionGroupResponse pResponseStatus_ =
     ModifyOptionGroupResponse'
     { _mogrsOptionGroup = Nothing
@@ -152,11 +152,11 @@ modifyOptionGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mogrsOptionGroup :: Lens' ModifyOptionGroupResponse (Maybe OptionGroup)
+mogrsOptionGroup :: Lens' (ModifyOptionGroupResponse (a)) (Maybe OptionGroup)
 mogrsOptionGroup = lens _mogrsOptionGroup (\ s a -> s{_mogrsOptionGroup = a});
 
 -- | The response status code.
-mogrsResponseStatus :: Lens' ModifyOptionGroupResponse Int
+mogrsResponseStatus :: Lens' (ModifyOptionGroupResponse (a)) Int
 mogrsResponseStatus = lens _mogrsResponseStatus (\ s a -> s{_mogrsResponseStatus = a});
 
 instance NFData ModifyOptionGroupResponse

@@ -104,14 +104,14 @@ instance ToQuery DeleteImportedKeyMaterial where
         toQuery = const mempty
 
 -- | /See:/ 'deleteImportedKeyMaterialResponse' smart constructor.
-data DeleteImportedKeyMaterialResponse =
+data DeleteImportedKeyMaterialResponse a =
     DeleteImportedKeyMaterialResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteImportedKeyMaterialResponse' with the minimum fields required to make a request.
 --
 deleteImportedKeyMaterialResponse
-    :: DeleteImportedKeyMaterialResponse
+    :: DeleteImportedKeyMaterialResponse (a)
 deleteImportedKeyMaterialResponse = DeleteImportedKeyMaterialResponse'
 
 instance NFData DeleteImportedKeyMaterialResponse

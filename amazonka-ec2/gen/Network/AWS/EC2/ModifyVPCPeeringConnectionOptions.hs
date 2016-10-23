@@ -141,7 +141,7 @@ instance ToQuery ModifyVPCPeeringConnectionOptions
                  _mvpcoVPCPeeringConnectionId]
 
 -- | /See:/ 'modifyVPCPeeringConnectionOptionsResponse' smart constructor.
-data ModifyVPCPeeringConnectionOptionsResponse = ModifyVPCPeeringConnectionOptionsResponse'
+data ModifyVPCPeeringConnectionOptionsResponse a = ModifyVPCPeeringConnectionOptionsResponse'
     { _mvpcorsRequesterPeeringConnectionOptions :: !(Maybe PeeringConnectionOptions)
     , _mvpcorsAccepterPeeringConnectionOptions  :: !(Maybe PeeringConnectionOptions)
     , _mvpcorsResponseStatus                    :: !Int
@@ -158,7 +158,7 @@ data ModifyVPCPeeringConnectionOptionsResponse = ModifyVPCPeeringConnectionOptio
 -- * 'mvpcorsResponseStatus'
 modifyVPCPeeringConnectionOptionsResponse
     :: Int -- ^ 'mvpcorsResponseStatus'
-    -> ModifyVPCPeeringConnectionOptionsResponse
+    -> ModifyVPCPeeringConnectionOptionsResponse (a)
 modifyVPCPeeringConnectionOptionsResponse pResponseStatus_ =
     ModifyVPCPeeringConnectionOptionsResponse'
     { _mvpcorsRequesterPeeringConnectionOptions = Nothing
@@ -167,15 +167,15 @@ modifyVPCPeeringConnectionOptionsResponse pResponseStatus_ =
     }
 
 -- | Information about the VPC peering connection options for the requester VPC.
-mvpcorsRequesterPeeringConnectionOptions :: Lens' ModifyVPCPeeringConnectionOptionsResponse (Maybe PeeringConnectionOptions)
+mvpcorsRequesterPeeringConnectionOptions :: Lens' (ModifyVPCPeeringConnectionOptionsResponse (a)) (Maybe PeeringConnectionOptions)
 mvpcorsRequesterPeeringConnectionOptions = lens _mvpcorsRequesterPeeringConnectionOptions (\ s a -> s{_mvpcorsRequesterPeeringConnectionOptions = a});
 
 -- | Information about the VPC peering connection options for the accepter VPC.
-mvpcorsAccepterPeeringConnectionOptions :: Lens' ModifyVPCPeeringConnectionOptionsResponse (Maybe PeeringConnectionOptions)
+mvpcorsAccepterPeeringConnectionOptions :: Lens' (ModifyVPCPeeringConnectionOptionsResponse (a)) (Maybe PeeringConnectionOptions)
 mvpcorsAccepterPeeringConnectionOptions = lens _mvpcorsAccepterPeeringConnectionOptions (\ s a -> s{_mvpcorsAccepterPeeringConnectionOptions = a});
 
 -- | The response status code.
-mvpcorsResponseStatus :: Lens' ModifyVPCPeeringConnectionOptionsResponse Int
+mvpcorsResponseStatus :: Lens' (ModifyVPCPeeringConnectionOptionsResponse (a)) Int
 mvpcorsResponseStatus = lens _mvpcorsResponseStatus (\ s a -> s{_mvpcorsResponseStatus = a});
 
 instance NFData

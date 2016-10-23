@@ -486,7 +486,7 @@ instance ToQuery UpdateItem where
 -- | Represents the output of an /UpdateItem/ operation.
 --
 -- /See:/ 'updateItemResponse' smart constructor.
-data UpdateItemResponse = UpdateItemResponse'
+data UpdateItemResponse a = UpdateItemResponse'
     { _uirsItemCollectionMetrics :: !(Maybe ItemCollectionMetrics)
     , _uirsConsumedCapacity      :: !(Maybe ConsumedCapacity)
     , _uirsAttributes            :: !(Maybe (Map Text AttributeValue))
@@ -506,7 +506,7 @@ data UpdateItemResponse = UpdateItemResponse'
 -- * 'uirsResponseStatus'
 updateItemResponse
     :: Int -- ^ 'uirsResponseStatus'
-    -> UpdateItemResponse
+    -> UpdateItemResponse (a)
 updateItemResponse pResponseStatus_ =
     UpdateItemResponse'
     { _uirsItemCollectionMetrics = Nothing
@@ -516,19 +516,19 @@ updateItemResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-uirsItemCollectionMetrics :: Lens' UpdateItemResponse (Maybe ItemCollectionMetrics)
+uirsItemCollectionMetrics :: Lens' (UpdateItemResponse (a)) (Maybe ItemCollectionMetrics)
 uirsItemCollectionMetrics = lens _uirsItemCollectionMetrics (\ s a -> s{_uirsItemCollectionMetrics = a});
 
 -- | Undocumented member.
-uirsConsumedCapacity :: Lens' UpdateItemResponse (Maybe ConsumedCapacity)
+uirsConsumedCapacity :: Lens' (UpdateItemResponse (a)) (Maybe ConsumedCapacity)
 uirsConsumedCapacity = lens _uirsConsumedCapacity (\ s a -> s{_uirsConsumedCapacity = a});
 
 -- | A map of attribute values as they appeared before the /UpdateItem/ operation. This map only appears if /ReturnValues/ was specified as something other than 'NONE' in the request. Each element represents one attribute.
-uirsAttributes :: Lens' UpdateItemResponse (HashMap Text AttributeValue)
+uirsAttributes :: Lens' (UpdateItemResponse (a)) (HashMap Text AttributeValue)
 uirsAttributes = lens _uirsAttributes (\ s a -> s{_uirsAttributes = a}) . _Default . _Map;
 
 -- | The response status code.
-uirsResponseStatus :: Lens' UpdateItemResponse Int
+uirsResponseStatus :: Lens' (UpdateItemResponse (a)) Int
 uirsResponseStatus = lens _uirsResponseStatus (\ s a -> s{_uirsResponseStatus = a});
 
 instance NFData UpdateItemResponse

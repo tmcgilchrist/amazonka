@@ -138,7 +138,7 @@ instance ToQuery CreateOpenIdConnectProvider where
 -- | Contains the response to a successful < CreateOpenIDConnectProvider> request.
 --
 -- /See:/ 'createOpenIdConnectProviderResponse' smart constructor.
-data CreateOpenIdConnectProviderResponse = CreateOpenIdConnectProviderResponse'
+data CreateOpenIdConnectProviderResponse a = CreateOpenIdConnectProviderResponse'
     { _coicprsOpenIdConnectProviderARN :: !(Maybe Text)
     , _coicprsResponseStatus           :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -152,7 +152,7 @@ data CreateOpenIdConnectProviderResponse = CreateOpenIdConnectProviderResponse'
 -- * 'coicprsResponseStatus'
 createOpenIdConnectProviderResponse
     :: Int -- ^ 'coicprsResponseStatus'
-    -> CreateOpenIdConnectProviderResponse
+    -> CreateOpenIdConnectProviderResponse (a)
 createOpenIdConnectProviderResponse pResponseStatus_ =
     CreateOpenIdConnectProviderResponse'
     { _coicprsOpenIdConnectProviderARN = Nothing
@@ -160,11 +160,11 @@ createOpenIdConnectProviderResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the new IAM OpenID Connect provider that is created. For more information, see < OpenIDConnectProviderListEntry>.
-coicprsOpenIdConnectProviderARN :: Lens' CreateOpenIdConnectProviderResponse (Maybe Text)
+coicprsOpenIdConnectProviderARN :: Lens' (CreateOpenIdConnectProviderResponse (a)) (Maybe Text)
 coicprsOpenIdConnectProviderARN = lens _coicprsOpenIdConnectProviderARN (\ s a -> s{_coicprsOpenIdConnectProviderARN = a});
 
 -- | The response status code.
-coicprsResponseStatus :: Lens' CreateOpenIdConnectProviderResponse Int
+coicprsResponseStatus :: Lens' (CreateOpenIdConnectProviderResponse (a)) Int
 coicprsResponseStatus = lens _coicprsResponseStatus (\ s a -> s{_coicprsResponseStatus = a});
 
 instance NFData CreateOpenIdConnectProviderResponse

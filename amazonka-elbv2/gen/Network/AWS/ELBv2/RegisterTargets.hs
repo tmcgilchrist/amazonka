@@ -107,7 +107,7 @@ instance ToQuery RegisterTargets where
 -- | Contains the output of RegisterTargets.
 --
 -- /See:/ 'registerTargetsResponse' smart constructor.
-newtype RegisterTargetsResponse = RegisterTargetsResponse'
+newtype RegisterTargetsResponse a = RegisterTargetsResponse'
     { _rrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -118,14 +118,14 @@ newtype RegisterTargetsResponse = RegisterTargetsResponse'
 -- * 'rrsResponseStatus'
 registerTargetsResponse
     :: Int -- ^ 'rrsResponseStatus'
-    -> RegisterTargetsResponse
+    -> RegisterTargetsResponse (a)
 registerTargetsResponse pResponseStatus_ =
     RegisterTargetsResponse'
     { _rrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-rrsResponseStatus :: Lens' RegisterTargetsResponse Int
+rrsResponseStatus :: Lens' (RegisterTargetsResponse (a)) Int
 rrsResponseStatus = lens _rrsResponseStatus (\ s a -> s{_rrsResponseStatus = a});
 
 instance NFData RegisterTargetsResponse

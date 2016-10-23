@@ -139,7 +139,7 @@ instance ToQuery DescribeTapeArchives where
 -- | DescribeTapeArchivesOutput
 --
 -- /See:/ 'describeTapeArchivesResponse' smart constructor.
-data DescribeTapeArchivesResponse = DescribeTapeArchivesResponse'
+data DescribeTapeArchivesResponse a = DescribeTapeArchivesResponse'
     { _dtarsTapeArchives   :: !(Maybe [TapeArchive])
     , _dtarsMarker         :: !(Maybe Text)
     , _dtarsResponseStatus :: !Int
@@ -156,7 +156,7 @@ data DescribeTapeArchivesResponse = DescribeTapeArchivesResponse'
 -- * 'dtarsResponseStatus'
 describeTapeArchivesResponse
     :: Int -- ^ 'dtarsResponseStatus'
-    -> DescribeTapeArchivesResponse
+    -> DescribeTapeArchivesResponse (a)
 describeTapeArchivesResponse pResponseStatus_ =
     DescribeTapeArchivesResponse'
     { _dtarsTapeArchives = Nothing
@@ -165,15 +165,15 @@ describeTapeArchivesResponse pResponseStatus_ =
     }
 
 -- | An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.
-dtarsTapeArchives :: Lens' DescribeTapeArchivesResponse [TapeArchive]
+dtarsTapeArchives :: Lens' (DescribeTapeArchivesResponse (a)) [TapeArchive]
 dtarsTapeArchives = lens _dtarsTapeArchives (\ s a -> s{_dtarsTapeArchives = a}) . _Default . _Coerce;
 
 -- | An opaque string that indicates the position at which the virtual tapes that were fetched for description ended. Use this marker in your next request to fetch the next set of virtual tapes in the virtual tape shelf (VTS). If there are no more virtual tapes to describe, this field does not appear in the response.
-dtarsMarker :: Lens' DescribeTapeArchivesResponse (Maybe Text)
+dtarsMarker :: Lens' (DescribeTapeArchivesResponse (a)) (Maybe Text)
 dtarsMarker = lens _dtarsMarker (\ s a -> s{_dtarsMarker = a});
 
 -- | The response status code.
-dtarsResponseStatus :: Lens' DescribeTapeArchivesResponse Int
+dtarsResponseStatus :: Lens' (DescribeTapeArchivesResponse (a)) Int
 dtarsResponseStatus = lens _dtarsResponseStatus (\ s a -> s{_dtarsResponseStatus = a});
 
 instance NFData DescribeTapeArchivesResponse

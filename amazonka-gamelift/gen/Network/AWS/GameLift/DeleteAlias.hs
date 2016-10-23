@@ -92,14 +92,14 @@ instance ToQuery DeleteAlias where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAliasResponse' smart constructor.
-data DeleteAliasResponse =
+data DeleteAliasResponse a =
     DeleteAliasResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAliasResponse' with the minimum fields required to make a request.
 --
 deleteAliasResponse
-    :: DeleteAliasResponse
+    :: DeleteAliasResponse (a)
 deleteAliasResponse = DeleteAliasResponse'
 
 instance NFData DeleteAliasResponse

@@ -128,7 +128,7 @@ instance ToQuery DescribeSnapshotAttribute where
 -- | Contains the output of DescribeSnapshotAttribute.
 --
 -- /See:/ 'describeSnapshotAttributeResponse' smart constructor.
-data DescribeSnapshotAttributeResponse = DescribeSnapshotAttributeResponse'
+data DescribeSnapshotAttributeResponse a = DescribeSnapshotAttributeResponse'
     { _dsarsCreateVolumePermissions :: !(Maybe [CreateVolumePermission])
     , _dsarsProductCodes            :: !(Maybe [ProductCode])
     , _dsarsSnapshotId              :: !(Maybe Text)
@@ -148,7 +148,7 @@ data DescribeSnapshotAttributeResponse = DescribeSnapshotAttributeResponse'
 -- * 'dsarsResponseStatus'
 describeSnapshotAttributeResponse
     :: Int -- ^ 'dsarsResponseStatus'
-    -> DescribeSnapshotAttributeResponse
+    -> DescribeSnapshotAttributeResponse (a)
 describeSnapshotAttributeResponse pResponseStatus_ =
     DescribeSnapshotAttributeResponse'
     { _dsarsCreateVolumePermissions = Nothing
@@ -158,19 +158,19 @@ describeSnapshotAttributeResponse pResponseStatus_ =
     }
 
 -- | A list of permissions for creating volumes from the snapshot.
-dsarsCreateVolumePermissions :: Lens' DescribeSnapshotAttributeResponse [CreateVolumePermission]
+dsarsCreateVolumePermissions :: Lens' (DescribeSnapshotAttributeResponse (a)) [CreateVolumePermission]
 dsarsCreateVolumePermissions = lens _dsarsCreateVolumePermissions (\ s a -> s{_dsarsCreateVolumePermissions = a}) . _Default . _Coerce;
 
 -- | A list of product codes.
-dsarsProductCodes :: Lens' DescribeSnapshotAttributeResponse [ProductCode]
+dsarsProductCodes :: Lens' (DescribeSnapshotAttributeResponse (a)) [ProductCode]
 dsarsProductCodes = lens _dsarsProductCodes (\ s a -> s{_dsarsProductCodes = a}) . _Default . _Coerce;
 
 -- | The ID of the EBS snapshot.
-dsarsSnapshotId :: Lens' DescribeSnapshotAttributeResponse (Maybe Text)
+dsarsSnapshotId :: Lens' (DescribeSnapshotAttributeResponse (a)) (Maybe Text)
 dsarsSnapshotId = lens _dsarsSnapshotId (\ s a -> s{_dsarsSnapshotId = a});
 
 -- | The response status code.
-dsarsResponseStatus :: Lens' DescribeSnapshotAttributeResponse Int
+dsarsResponseStatus :: Lens' (DescribeSnapshotAttributeResponse (a)) Int
 dsarsResponseStatus = lens _dsarsResponseStatus (\ s a -> s{_dsarsResponseStatus = a});
 
 instance NFData DescribeSnapshotAttributeResponse

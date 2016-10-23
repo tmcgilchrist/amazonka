@@ -101,7 +101,7 @@ instance ToQuery StopRun where
 -- | Represents the results of your stop run attempt.
 --
 -- /See:/ 'stopRunResponse' smart constructor.
-data StopRunResponse = StopRunResponse'
+data StopRunResponse a = StopRunResponse'
     { _srsRun            :: !(Maybe Run)
     , _srsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data StopRunResponse = StopRunResponse'
 -- * 'srsResponseStatus'
 stopRunResponse
     :: Int -- ^ 'srsResponseStatus'
-    -> StopRunResponse
+    -> StopRunResponse (a)
 stopRunResponse pResponseStatus_ =
     StopRunResponse'
     { _srsRun = Nothing
@@ -123,11 +123,11 @@ stopRunResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-srsRun :: Lens' StopRunResponse (Maybe Run)
+srsRun :: Lens' (StopRunResponse (a)) (Maybe Run)
 srsRun = lens _srsRun (\ s a -> s{_srsRun = a});
 
 -- | The response status code.
-srsResponseStatus :: Lens' StopRunResponse Int
+srsResponseStatus :: Lens' (StopRunResponse (a)) Int
 srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a});
 
 instance NFData StopRunResponse

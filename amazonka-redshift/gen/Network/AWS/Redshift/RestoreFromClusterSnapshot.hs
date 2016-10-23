@@ -369,7 +369,7 @@ instance ToQuery RestoreFromClusterSnapshot where
                "SnapshotIdentifier" =: _rfcsSnapshotIdentifier]
 
 -- | /See:/ 'restoreFromClusterSnapshotResponse' smart constructor.
-data RestoreFromClusterSnapshotResponse = RestoreFromClusterSnapshotResponse'
+data RestoreFromClusterSnapshotResponse a = RestoreFromClusterSnapshotResponse'
     { _rfcsrsCluster        :: !(Maybe Cluster)
     , _rfcsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -383,7 +383,7 @@ data RestoreFromClusterSnapshotResponse = RestoreFromClusterSnapshotResponse'
 -- * 'rfcsrsResponseStatus'
 restoreFromClusterSnapshotResponse
     :: Int -- ^ 'rfcsrsResponseStatus'
-    -> RestoreFromClusterSnapshotResponse
+    -> RestoreFromClusterSnapshotResponse (a)
 restoreFromClusterSnapshotResponse pResponseStatus_ =
     RestoreFromClusterSnapshotResponse'
     { _rfcsrsCluster = Nothing
@@ -391,11 +391,11 @@ restoreFromClusterSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rfcsrsCluster :: Lens' RestoreFromClusterSnapshotResponse (Maybe Cluster)
+rfcsrsCluster :: Lens' (RestoreFromClusterSnapshotResponse (a)) (Maybe Cluster)
 rfcsrsCluster = lens _rfcsrsCluster (\ s a -> s{_rfcsrsCluster = a});
 
 -- | The response status code.
-rfcsrsResponseStatus :: Lens' RestoreFromClusterSnapshotResponse Int
+rfcsrsResponseStatus :: Lens' (RestoreFromClusterSnapshotResponse (a)) Int
 rfcsrsResponseStatus = lens _rfcsrsResponseStatus (\ s a -> s{_rfcsrsResponseStatus = a});
 
 instance NFData RestoreFromClusterSnapshotResponse

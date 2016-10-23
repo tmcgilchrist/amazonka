@@ -104,7 +104,7 @@ instance ToQuery GetRemoteAccessSession where
 -- | Represents the response from the server that lists detailed information about the remote access session.
 --
 -- /See:/ 'getRemoteAccessSessionResponse' smart constructor.
-data GetRemoteAccessSessionResponse = GetRemoteAccessSessionResponse'
+data GetRemoteAccessSessionResponse a = GetRemoteAccessSessionResponse'
     { _grasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
     , _grasrsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data GetRemoteAccessSessionResponse = GetRemoteAccessSessionResponse'
 -- * 'grasrsResponseStatus'
 getRemoteAccessSessionResponse
     :: Int -- ^ 'grasrsResponseStatus'
-    -> GetRemoteAccessSessionResponse
+    -> GetRemoteAccessSessionResponse (a)
 getRemoteAccessSessionResponse pResponseStatus_ =
     GetRemoteAccessSessionResponse'
     { _grasrsRemoteAccessSession = Nothing
@@ -126,11 +126,11 @@ getRemoteAccessSessionResponse pResponseStatus_ =
     }
 
 -- | A container that lists detailed information about the remote access session.
-grasrsRemoteAccessSession :: Lens' GetRemoteAccessSessionResponse (Maybe RemoteAccessSession)
+grasrsRemoteAccessSession :: Lens' (GetRemoteAccessSessionResponse (a)) (Maybe RemoteAccessSession)
 grasrsRemoteAccessSession = lens _grasrsRemoteAccessSession (\ s a -> s{_grasrsRemoteAccessSession = a});
 
 -- | The response status code.
-grasrsResponseStatus :: Lens' GetRemoteAccessSessionResponse Int
+grasrsResponseStatus :: Lens' (GetRemoteAccessSessionResponse (a)) Int
 grasrsResponseStatus = lens _grasrsResponseStatus (\ s a -> s{_grasrsResponseStatus = a});
 
 instance NFData GetRemoteAccessSessionResponse

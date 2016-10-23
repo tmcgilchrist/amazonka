@@ -192,7 +192,7 @@ instance ToQuery SearchGameSessions where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'searchGameSessionsResponse' smart constructor.
-data SearchGameSessionsResponse = SearchGameSessionsResponse'
+data SearchGameSessionsResponse a = SearchGameSessionsResponse'
     { _sgsrsGameSessions   :: !(Maybe [GameSession])
     , _sgsrsNextToken      :: !(Maybe Text)
     , _sgsrsResponseStatus :: !Int
@@ -209,7 +209,7 @@ data SearchGameSessionsResponse = SearchGameSessionsResponse'
 -- * 'sgsrsResponseStatus'
 searchGameSessionsResponse
     :: Int -- ^ 'sgsrsResponseStatus'
-    -> SearchGameSessionsResponse
+    -> SearchGameSessionsResponse (a)
 searchGameSessionsResponse pResponseStatus_ =
     SearchGameSessionsResponse'
     { _sgsrsGameSessions = Nothing
@@ -218,17 +218,17 @@ searchGameSessionsResponse pResponseStatus_ =
     }
 
 -- | Collection of objects containing game session properties for each session matching the request.
-sgsrsGameSessions :: Lens' SearchGameSessionsResponse [GameSession]
+sgsrsGameSessions :: Lens' (SearchGameSessionsResponse (a)) [GameSession]
 sgsrsGameSessions = lens _sgsrsGameSessions (\ s a -> s{_sgsrsGameSessions = a}) . _Default . _Coerce;
 
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-sgsrsNextToken :: Lens' SearchGameSessionsResponse (Maybe Text)
+sgsrsNextToken :: Lens' (SearchGameSessionsResponse (a)) (Maybe Text)
 sgsrsNextToken = lens _sgsrsNextToken (\ s a -> s{_sgsrsNextToken = a});
 
 -- | The response status code.
-sgsrsResponseStatus :: Lens' SearchGameSessionsResponse Int
+sgsrsResponseStatus :: Lens' (SearchGameSessionsResponse (a)) Int
 sgsrsResponseStatus = lens _sgsrsResponseStatus (\ s a -> s{_sgsrsResponseStatus = a});
 
 instance NFData SearchGameSessionsResponse

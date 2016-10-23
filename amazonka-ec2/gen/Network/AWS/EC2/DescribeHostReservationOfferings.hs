@@ -157,7 +157,7 @@ instance ToQuery DescribeHostReservationOfferings
                "MaxResults" =: _dhroMaxResults]
 
 -- | /See:/ 'describeHostReservationOfferingsResponse' smart constructor.
-data DescribeHostReservationOfferingsResponse = DescribeHostReservationOfferingsResponse'
+data DescribeHostReservationOfferingsResponse a = DescribeHostReservationOfferingsResponse'
     { _dhrorsOfferingSet    :: !(Maybe [HostOffering])
     , _dhrorsNextToken      :: !(Maybe Text)
     , _dhrorsResponseStatus :: !Int
@@ -174,7 +174,7 @@ data DescribeHostReservationOfferingsResponse = DescribeHostReservationOfferings
 -- * 'dhrorsResponseStatus'
 describeHostReservationOfferingsResponse
     :: Int -- ^ 'dhrorsResponseStatus'
-    -> DescribeHostReservationOfferingsResponse
+    -> DescribeHostReservationOfferingsResponse (a)
 describeHostReservationOfferingsResponse pResponseStatus_ =
     DescribeHostReservationOfferingsResponse'
     { _dhrorsOfferingSet = Nothing
@@ -183,15 +183,15 @@ describeHostReservationOfferingsResponse pResponseStatus_ =
     }
 
 -- | Information about the offerings.
-dhrorsOfferingSet :: Lens' DescribeHostReservationOfferingsResponse [HostOffering]
+dhrorsOfferingSet :: Lens' (DescribeHostReservationOfferingsResponse (a)) [HostOffering]
 dhrorsOfferingSet = lens _dhrorsOfferingSet (\ s a -> s{_dhrorsOfferingSet = a}) . _Default . _Coerce;
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dhrorsNextToken :: Lens' DescribeHostReservationOfferingsResponse (Maybe Text)
+dhrorsNextToken :: Lens' (DescribeHostReservationOfferingsResponse (a)) (Maybe Text)
 dhrorsNextToken = lens _dhrorsNextToken (\ s a -> s{_dhrorsNextToken = a});
 
 -- | The response status code.
-dhrorsResponseStatus :: Lens' DescribeHostReservationOfferingsResponse Int
+dhrorsResponseStatus :: Lens' (DescribeHostReservationOfferingsResponse (a)) Int
 dhrorsResponseStatus = lens _dhrorsResponseStatus (\ s a -> s{_dhrorsResponseStatus = a});
 
 instance NFData

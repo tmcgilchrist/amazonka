@@ -102,14 +102,14 @@ instance ToQuery PutDeliveryChannel where
         toQuery = const mempty
 
 -- | /See:/ 'putDeliveryChannelResponse' smart constructor.
-data PutDeliveryChannelResponse =
+data PutDeliveryChannelResponse a =
     PutDeliveryChannelResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutDeliveryChannelResponse' with the minimum fields required to make a request.
 --
 putDeliveryChannelResponse
-    :: PutDeliveryChannelResponse
+    :: PutDeliveryChannelResponse (a)
 putDeliveryChannelResponse = PutDeliveryChannelResponse'
 
 instance NFData PutDeliveryChannelResponse

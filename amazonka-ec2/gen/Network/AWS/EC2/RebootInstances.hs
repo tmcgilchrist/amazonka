@@ -99,14 +99,14 @@ instance ToQuery RebootInstances where
                toQueryList "InstanceId" _rebInstanceIds]
 
 -- | /See:/ 'rebootInstancesResponse' smart constructor.
-data RebootInstancesResponse =
+data RebootInstancesResponse a =
     RebootInstancesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RebootInstancesResponse' with the minimum fields required to make a request.
 --
 rebootInstancesResponse
-    :: RebootInstancesResponse
+    :: RebootInstancesResponse (a)
 rebootInstancesResponse = RebootInstancesResponse'
 
 instance NFData RebootInstancesResponse

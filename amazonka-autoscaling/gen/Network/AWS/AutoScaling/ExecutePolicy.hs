@@ -136,14 +136,14 @@ instance ToQuery ExecutePolicy where
                "PolicyName" =: _epPolicyName]
 
 -- | /See:/ 'executePolicyResponse' smart constructor.
-data ExecutePolicyResponse =
+data ExecutePolicyResponse a =
     ExecutePolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ExecutePolicyResponse' with the minimum fields required to make a request.
 --
 executePolicyResponse
-    :: ExecutePolicyResponse
+    :: ExecutePolicyResponse (a)
 executePolicyResponse = ExecutePolicyResponse'
 
 instance NFData ExecutePolicyResponse

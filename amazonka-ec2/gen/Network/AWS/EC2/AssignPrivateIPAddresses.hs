@@ -126,14 +126,14 @@ instance ToQuery AssignPrivateIPAddresses where
                "NetworkInterfaceId" =: _apiaNetworkInterfaceId]
 
 -- | /See:/ 'assignPrivateIPAddressesResponse' smart constructor.
-data AssignPrivateIPAddressesResponse =
+data AssignPrivateIPAddressesResponse a =
     AssignPrivateIPAddressesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AssignPrivateIPAddressesResponse' with the minimum fields required to make a request.
 --
 assignPrivateIPAddressesResponse
-    :: AssignPrivateIPAddressesResponse
+    :: AssignPrivateIPAddressesResponse (a)
 assignPrivateIPAddressesResponse = AssignPrivateIPAddressesResponse'
 
 instance NFData AssignPrivateIPAddressesResponse

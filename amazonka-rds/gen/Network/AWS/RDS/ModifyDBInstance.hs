@@ -648,7 +648,7 @@ instance ToQuery ModifyDBInstance where
                "DBInstanceIdentifier" =: _mdiDBInstanceIdentifier]
 
 -- | /See:/ 'modifyDBInstanceResponse' smart constructor.
-data ModifyDBInstanceResponse = ModifyDBInstanceResponse'
+data ModifyDBInstanceResponse a = ModifyDBInstanceResponse'
     { _mdirsDBInstance     :: !(Maybe DBInstance)
     , _mdirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -662,7 +662,7 @@ data ModifyDBInstanceResponse = ModifyDBInstanceResponse'
 -- * 'mdirsResponseStatus'
 modifyDBInstanceResponse
     :: Int -- ^ 'mdirsResponseStatus'
-    -> ModifyDBInstanceResponse
+    -> ModifyDBInstanceResponse (a)
 modifyDBInstanceResponse pResponseStatus_ =
     ModifyDBInstanceResponse'
     { _mdirsDBInstance = Nothing
@@ -670,11 +670,11 @@ modifyDBInstanceResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mdirsDBInstance :: Lens' ModifyDBInstanceResponse (Maybe DBInstance)
+mdirsDBInstance :: Lens' (ModifyDBInstanceResponse (a)) (Maybe DBInstance)
 mdirsDBInstance = lens _mdirsDBInstance (\ s a -> s{_mdirsDBInstance = a});
 
 -- | The response status code.
-mdirsResponseStatus :: Lens' ModifyDBInstanceResponse Int
+mdirsResponseStatus :: Lens' (ModifyDBInstanceResponse (a)) Int
 mdirsResponseStatus = lens _mdirsResponseStatus (\ s a -> s{_mdirsResponseStatus = a});
 
 instance NFData ModifyDBInstanceResponse

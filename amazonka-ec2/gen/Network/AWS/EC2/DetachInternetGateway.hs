@@ -108,14 +108,14 @@ instance ToQuery DetachInternetGateway where
                "VpcId" =: _digVPCId]
 
 -- | /See:/ 'detachInternetGatewayResponse' smart constructor.
-data DetachInternetGatewayResponse =
+data DetachInternetGatewayResponse a =
     DetachInternetGatewayResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DetachInternetGatewayResponse' with the minimum fields required to make a request.
 --
 detachInternetGatewayResponse
-    :: DetachInternetGatewayResponse
+    :: DetachInternetGatewayResponse (a)
 detachInternetGatewayResponse = DetachInternetGatewayResponse'
 
 instance NFData DetachInternetGatewayResponse

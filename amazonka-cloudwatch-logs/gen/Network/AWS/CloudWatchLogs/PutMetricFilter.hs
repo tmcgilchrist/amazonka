@@ -129,14 +129,14 @@ instance ToQuery PutMetricFilter where
         toQuery = const mempty
 
 -- | /See:/ 'putMetricFilterResponse' smart constructor.
-data PutMetricFilterResponse =
+data PutMetricFilterResponse a =
     PutMetricFilterResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutMetricFilterResponse' with the minimum fields required to make a request.
 --
 putMetricFilterResponse
-    :: PutMetricFilterResponse
+    :: PutMetricFilterResponse (a)
 putMetricFilterResponse = PutMetricFilterResponse'
 
 instance NFData PutMetricFilterResponse

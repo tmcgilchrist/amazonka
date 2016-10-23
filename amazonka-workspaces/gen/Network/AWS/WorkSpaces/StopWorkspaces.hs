@@ -102,7 +102,7 @@ instance ToQuery StopWorkspaces where
         toQuery = const mempty
 
 -- | /See:/ 'stopWorkspacesResponse' smart constructor.
-data StopWorkspacesResponse = StopWorkspacesResponse'
+data StopWorkspacesResponse a = StopWorkspacesResponse'
     { _srsFailedRequests :: !(Maybe [FailedWorkspaceChangeRequest])
     , _srsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data StopWorkspacesResponse = StopWorkspacesResponse'
 -- * 'srsResponseStatus'
 stopWorkspacesResponse
     :: Int -- ^ 'srsResponseStatus'
-    -> StopWorkspacesResponse
+    -> StopWorkspacesResponse (a)
 stopWorkspacesResponse pResponseStatus_ =
     StopWorkspacesResponse'
     { _srsFailedRequests = Nothing
@@ -124,11 +124,11 @@ stopWorkspacesResponse pResponseStatus_ =
     }
 
 -- | The failed requests.
-srsFailedRequests :: Lens' StopWorkspacesResponse [FailedWorkspaceChangeRequest]
+srsFailedRequests :: Lens' (StopWorkspacesResponse (a)) [FailedWorkspaceChangeRequest]
 srsFailedRequests = lens _srsFailedRequests (\ s a -> s{_srsFailedRequests = a}) . _Default . _Coerce;
 
 -- | The response status code.
-srsResponseStatus :: Lens' StopWorkspacesResponse Int
+srsResponseStatus :: Lens' (StopWorkspacesResponse (a)) Int
 srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a});
 
 instance NFData StopWorkspacesResponse

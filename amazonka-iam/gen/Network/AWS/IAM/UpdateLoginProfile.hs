@@ -111,14 +111,14 @@ instance ToQuery UpdateLoginProfile where
                "UserName" =: _ulpUserName]
 
 -- | /See:/ 'updateLoginProfileResponse' smart constructor.
-data UpdateLoginProfileResponse =
+data UpdateLoginProfileResponse a =
     UpdateLoginProfileResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateLoginProfileResponse' with the minimum fields required to make a request.
 --
 updateLoginProfileResponse
-    :: UpdateLoginProfileResponse
+    :: UpdateLoginProfileResponse (a)
 updateLoginProfileResponse = UpdateLoginProfileResponse'
 
 instance NFData UpdateLoginProfileResponse

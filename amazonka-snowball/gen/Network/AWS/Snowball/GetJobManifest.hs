@@ -104,7 +104,7 @@ instance ToQuery GetJobManifest where
         toQuery = const mempty
 
 -- | /See:/ 'getJobManifestResponse' smart constructor.
-data GetJobManifestResponse = GetJobManifestResponse'
+data GetJobManifestResponse a = GetJobManifestResponse'
     { _gjmrsManifestURI    :: !(Maybe Text)
     , _gjmrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data GetJobManifestResponse = GetJobManifestResponse'
 -- * 'gjmrsResponseStatus'
 getJobManifestResponse
     :: Int -- ^ 'gjmrsResponseStatus'
-    -> GetJobManifestResponse
+    -> GetJobManifestResponse (a)
 getJobManifestResponse pResponseStatus_ =
     GetJobManifestResponse'
     { _gjmrsManifestURI = Nothing
@@ -126,11 +126,11 @@ getJobManifestResponse pResponseStatus_ =
     }
 
 -- | The Amazon S3 presigned URL for the manifest file associated with the specified 'JobId' value.
-gjmrsManifestURI :: Lens' GetJobManifestResponse (Maybe Text)
+gjmrsManifestURI :: Lens' (GetJobManifestResponse (a)) (Maybe Text)
 gjmrsManifestURI = lens _gjmrsManifestURI (\ s a -> s{_gjmrsManifestURI = a});
 
 -- | The response status code.
-gjmrsResponseStatus :: Lens' GetJobManifestResponse Int
+gjmrsResponseStatus :: Lens' (GetJobManifestResponse (a)) Int
 gjmrsResponseStatus = lens _gjmrsResponseStatus (\ s a -> s{_gjmrsResponseStatus = a});
 
 instance NFData GetJobManifestResponse

@@ -122,7 +122,7 @@ instance ToQuery DescribeVPCEndpointServices where
 -- | Contains the output of DescribeVpcEndpointServices.
 --
 -- /See:/ 'describeVPCEndpointServicesResponse' smart constructor.
-data DescribeVPCEndpointServicesResponse = DescribeVPCEndpointServicesResponse'
+data DescribeVPCEndpointServicesResponse a = DescribeVPCEndpointServicesResponse'
     { _dvesrsServiceNames   :: !(Maybe [Text])
     , _dvesrsNextToken      :: !(Maybe Text)
     , _dvesrsResponseStatus :: !Int
@@ -139,7 +139,7 @@ data DescribeVPCEndpointServicesResponse = DescribeVPCEndpointServicesResponse'
 -- * 'dvesrsResponseStatus'
 describeVPCEndpointServicesResponse
     :: Int -- ^ 'dvesrsResponseStatus'
-    -> DescribeVPCEndpointServicesResponse
+    -> DescribeVPCEndpointServicesResponse (a)
 describeVPCEndpointServicesResponse pResponseStatus_ =
     DescribeVPCEndpointServicesResponse'
     { _dvesrsServiceNames = Nothing
@@ -148,15 +148,15 @@ describeVPCEndpointServicesResponse pResponseStatus_ =
     }
 
 -- | A list of supported AWS services.
-dvesrsServiceNames :: Lens' DescribeVPCEndpointServicesResponse [Text]
+dvesrsServiceNames :: Lens' (DescribeVPCEndpointServicesResponse (a)) [Text]
 dvesrsServiceNames = lens _dvesrsServiceNames (\ s a -> s{_dvesrsServiceNames = a}) . _Default . _Coerce;
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dvesrsNextToken :: Lens' DescribeVPCEndpointServicesResponse (Maybe Text)
+dvesrsNextToken :: Lens' (DescribeVPCEndpointServicesResponse (a)) (Maybe Text)
 dvesrsNextToken = lens _dvesrsNextToken (\ s a -> s{_dvesrsNextToken = a});
 
 -- | The response status code.
-dvesrsResponseStatus :: Lens' DescribeVPCEndpointServicesResponse Int
+dvesrsResponseStatus :: Lens' (DescribeVPCEndpointServicesResponse (a)) Int
 dvesrsResponseStatus = lens _dvesrsResponseStatus (\ s a -> s{_dvesrsResponseStatus = a});
 
 instance NFData DescribeVPCEndpointServicesResponse

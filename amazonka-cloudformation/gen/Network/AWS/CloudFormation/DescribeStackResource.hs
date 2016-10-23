@@ -118,7 +118,7 @@ instance ToQuery DescribeStackResource where
 -- | The output for a < DescribeStackResource> action.
 --
 -- /See:/ 'describeStackResourceResponse' smart constructor.
-data DescribeStackResourceResponse = DescribeStackResourceResponse'
+data DescribeStackResourceResponse a = DescribeStackResourceResponse'
     { _dsrrsStackResourceDetail :: !(Maybe StackResourceDetail)
     , _dsrrsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data DescribeStackResourceResponse = DescribeStackResourceResponse'
 -- * 'dsrrsResponseStatus'
 describeStackResourceResponse
     :: Int -- ^ 'dsrrsResponseStatus'
-    -> DescribeStackResourceResponse
+    -> DescribeStackResourceResponse (a)
 describeStackResourceResponse pResponseStatus_ =
     DescribeStackResourceResponse'
     { _dsrrsStackResourceDetail = Nothing
@@ -140,11 +140,11 @@ describeStackResourceResponse pResponseStatus_ =
     }
 
 -- | A 'StackResourceDetail' structure containing the description of the specified resource in the specified stack.
-dsrrsStackResourceDetail :: Lens' DescribeStackResourceResponse (Maybe StackResourceDetail)
+dsrrsStackResourceDetail :: Lens' (DescribeStackResourceResponse (a)) (Maybe StackResourceDetail)
 dsrrsStackResourceDetail = lens _dsrrsStackResourceDetail (\ s a -> s{_dsrrsStackResourceDetail = a});
 
 -- | The response status code.
-dsrrsResponseStatus :: Lens' DescribeStackResourceResponse Int
+dsrrsResponseStatus :: Lens' (DescribeStackResourceResponse (a)) Int
 dsrrsResponseStatus = lens _dsrrsResponseStatus (\ s a -> s{_dsrrsResponseStatus = a});
 
 instance NFData DescribeStackResourceResponse

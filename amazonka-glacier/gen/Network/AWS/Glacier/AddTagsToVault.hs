@@ -108,14 +108,14 @@ instance ToQuery AddTagsToVault where
         toQuery = const (mconcat ["operation=add"])
 
 -- | /See:/ 'addTagsToVaultResponse' smart constructor.
-data AddTagsToVaultResponse =
+data AddTagsToVaultResponse a =
     AddTagsToVaultResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddTagsToVaultResponse' with the minimum fields required to make a request.
 --
 addTagsToVaultResponse
-    :: AddTagsToVaultResponse
+    :: AddTagsToVaultResponse (a)
 addTagsToVaultResponse = AddTagsToVaultResponse'
 
 instance NFData AddTagsToVaultResponse

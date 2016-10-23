@@ -106,7 +106,7 @@ instance ToQuery CreateNetworkACL where
 -- | Contains the output of CreateNetworkAcl.
 --
 -- /See:/ 'createNetworkACLResponse' smart constructor.
-data CreateNetworkACLResponse = CreateNetworkACLResponse'
+data CreateNetworkACLResponse a = CreateNetworkACLResponse'
     { _cnarsNetworkACL     :: !(Maybe NetworkACL)
     , _cnarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data CreateNetworkACLResponse = CreateNetworkACLResponse'
 -- * 'cnarsResponseStatus'
 createNetworkACLResponse
     :: Int -- ^ 'cnarsResponseStatus'
-    -> CreateNetworkACLResponse
+    -> CreateNetworkACLResponse (a)
 createNetworkACLResponse pResponseStatus_ =
     CreateNetworkACLResponse'
     { _cnarsNetworkACL = Nothing
@@ -128,11 +128,11 @@ createNetworkACLResponse pResponseStatus_ =
     }
 
 -- | Information about the network ACL.
-cnarsNetworkACL :: Lens' CreateNetworkACLResponse (Maybe NetworkACL)
+cnarsNetworkACL :: Lens' (CreateNetworkACLResponse (a)) (Maybe NetworkACL)
 cnarsNetworkACL = lens _cnarsNetworkACL (\ s a -> s{_cnarsNetworkACL = a});
 
 -- | The response status code.
-cnarsResponseStatus :: Lens' CreateNetworkACLResponse Int
+cnarsResponseStatus :: Lens' (CreateNetworkACLResponse (a)) Int
 cnarsResponseStatus = lens _cnarsResponseStatus (\ s a -> s{_cnarsResponseStatus = a});
 
 instance NFData CreateNetworkACLResponse

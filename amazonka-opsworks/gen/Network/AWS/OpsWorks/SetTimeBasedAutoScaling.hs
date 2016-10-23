@@ -108,14 +108,14 @@ instance ToQuery SetTimeBasedAutoScaling where
         toQuery = const mempty
 
 -- | /See:/ 'setTimeBasedAutoScalingResponse' smart constructor.
-data SetTimeBasedAutoScalingResponse =
+data SetTimeBasedAutoScalingResponse a =
     SetTimeBasedAutoScalingResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetTimeBasedAutoScalingResponse' with the minimum fields required to make a request.
 --
 setTimeBasedAutoScalingResponse
-    :: SetTimeBasedAutoScalingResponse
+    :: SetTimeBasedAutoScalingResponse (a)
 setTimeBasedAutoScalingResponse = SetTimeBasedAutoScalingResponse'
 
 instance NFData SetTimeBasedAutoScalingResponse

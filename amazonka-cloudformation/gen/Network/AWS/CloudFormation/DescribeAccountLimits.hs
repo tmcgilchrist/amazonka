@@ -99,7 +99,7 @@ instance ToQuery DescribeAccountLimits where
 -- | The output for the < DescribeAccountLimits> action.
 --
 -- /See:/ 'describeAccountLimitsResponse' smart constructor.
-data DescribeAccountLimitsResponse = DescribeAccountLimitsResponse'
+data DescribeAccountLimitsResponse a = DescribeAccountLimitsResponse'
     { _dalrsNextToken      :: !(Maybe Text)
     , _dalrsAccountLimits  :: !(Maybe [AccountLimit])
     , _dalrsResponseStatus :: !Int
@@ -116,7 +116,7 @@ data DescribeAccountLimitsResponse = DescribeAccountLimitsResponse'
 -- * 'dalrsResponseStatus'
 describeAccountLimitsResponse
     :: Int -- ^ 'dalrsResponseStatus'
-    -> DescribeAccountLimitsResponse
+    -> DescribeAccountLimitsResponse (a)
 describeAccountLimitsResponse pResponseStatus_ =
     DescribeAccountLimitsResponse'
     { _dalrsNextToken = Nothing
@@ -125,15 +125,15 @@ describeAccountLimitsResponse pResponseStatus_ =
     }
 
 -- | If the output exceeds 1 MB in size, a string that identifies the next page of limits. If no additional page exists, this value is null.
-dalrsNextToken :: Lens' DescribeAccountLimitsResponse (Maybe Text)
+dalrsNextToken :: Lens' (DescribeAccountLimitsResponse (a)) (Maybe Text)
 dalrsNextToken = lens _dalrsNextToken (\ s a -> s{_dalrsNextToken = a});
 
 -- | An account limit structure that contain a list of AWS CloudFormation account limits and their values.
-dalrsAccountLimits :: Lens' DescribeAccountLimitsResponse [AccountLimit]
+dalrsAccountLimits :: Lens' (DescribeAccountLimitsResponse (a)) [AccountLimit]
 dalrsAccountLimits = lens _dalrsAccountLimits (\ s a -> s{_dalrsAccountLimits = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dalrsResponseStatus :: Lens' DescribeAccountLimitsResponse Int
+dalrsResponseStatus :: Lens' (DescribeAccountLimitsResponse (a)) Int
 dalrsResponseStatus = lens _dalrsResponseStatus (\ s a -> s{_dalrsResponseStatus = a});
 
 instance NFData DescribeAccountLimitsResponse

@@ -96,14 +96,14 @@ instance ToQuery DeregisterEcsCluster where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterEcsClusterResponse' smart constructor.
-data DeregisterEcsClusterResponse =
+data DeregisterEcsClusterResponse a =
     DeregisterEcsClusterResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeregisterEcsClusterResponse' with the minimum fields required to make a request.
 --
 deregisterEcsClusterResponse
-    :: DeregisterEcsClusterResponse
+    :: DeregisterEcsClusterResponse (a)
 deregisterEcsClusterResponse = DeregisterEcsClusterResponse'
 
 instance NFData DeregisterEcsClusterResponse

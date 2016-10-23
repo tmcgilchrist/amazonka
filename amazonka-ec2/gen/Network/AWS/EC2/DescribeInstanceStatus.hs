@@ -199,7 +199,7 @@ instance ToQuery DescribeInstanceStatus where
 -- | Contains the output of DescribeInstanceStatus.
 --
 -- /See:/ 'describeInstanceStatusResponse' smart constructor.
-data DescribeInstanceStatusResponse = DescribeInstanceStatusResponse'
+data DescribeInstanceStatusResponse a = DescribeInstanceStatusResponse'
     { _disrsInstanceStatuses :: !(Maybe [InstanceStatus])
     , _disrsNextToken        :: !(Maybe Text)
     , _disrsResponseStatus   :: !Int
@@ -216,7 +216,7 @@ data DescribeInstanceStatusResponse = DescribeInstanceStatusResponse'
 -- * 'disrsResponseStatus'
 describeInstanceStatusResponse
     :: Int -- ^ 'disrsResponseStatus'
-    -> DescribeInstanceStatusResponse
+    -> DescribeInstanceStatusResponse (a)
 describeInstanceStatusResponse pResponseStatus_ =
     DescribeInstanceStatusResponse'
     { _disrsInstanceStatuses = Nothing
@@ -225,15 +225,15 @@ describeInstanceStatusResponse pResponseStatus_ =
     }
 
 -- | One or more instance status descriptions.
-disrsInstanceStatuses :: Lens' DescribeInstanceStatusResponse [InstanceStatus]
+disrsInstanceStatuses :: Lens' (DescribeInstanceStatusResponse (a)) [InstanceStatus]
 disrsInstanceStatuses = lens _disrsInstanceStatuses (\ s a -> s{_disrsInstanceStatuses = a}) . _Default . _Coerce;
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-disrsNextToken :: Lens' DescribeInstanceStatusResponse (Maybe Text)
+disrsNextToken :: Lens' (DescribeInstanceStatusResponse (a)) (Maybe Text)
 disrsNextToken = lens _disrsNextToken (\ s a -> s{_disrsNextToken = a});
 
 -- | The response status code.
-disrsResponseStatus :: Lens' DescribeInstanceStatusResponse Int
+disrsResponseStatus :: Lens' (DescribeInstanceStatusResponse (a)) Int
 disrsResponseStatus = lens _disrsResponseStatus (\ s a -> s{_disrsResponseStatus = a});
 
 instance NFData DescribeInstanceStatusResponse

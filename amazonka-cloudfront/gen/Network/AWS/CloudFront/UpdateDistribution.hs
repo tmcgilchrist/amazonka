@@ -123,7 +123,7 @@ instance ToQuery UpdateDistribution where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'updateDistributionResponse' smart constructor.
-data UpdateDistributionResponse = UpdateDistributionResponse'
+data UpdateDistributionResponse a = UpdateDistributionResponse'
     { _udrsETag           :: !(Maybe Text)
     , _udrsDistribution   :: !(Maybe Distribution)
     , _udrsResponseStatus :: !Int
@@ -140,7 +140,7 @@ data UpdateDistributionResponse = UpdateDistributionResponse'
 -- * 'udrsResponseStatus'
 updateDistributionResponse
     :: Int -- ^ 'udrsResponseStatus'
-    -> UpdateDistributionResponse
+    -> UpdateDistributionResponse (a)
 updateDistributionResponse pResponseStatus_ =
     UpdateDistributionResponse'
     { _udrsETag = Nothing
@@ -149,15 +149,15 @@ updateDistributionResponse pResponseStatus_ =
     }
 
 -- | The current version of the configuration. For example: E2QWRUHAPOMQZL.
-udrsETag :: Lens' UpdateDistributionResponse (Maybe Text)
+udrsETag :: Lens' (UpdateDistributionResponse (a)) (Maybe Text)
 udrsETag = lens _udrsETag (\ s a -> s{_udrsETag = a});
 
 -- | The distribution\'s information.
-udrsDistribution :: Lens' UpdateDistributionResponse (Maybe Distribution)
+udrsDistribution :: Lens' (UpdateDistributionResponse (a)) (Maybe Distribution)
 udrsDistribution = lens _udrsDistribution (\ s a -> s{_udrsDistribution = a});
 
 -- | The response status code.
-udrsResponseStatus :: Lens' UpdateDistributionResponse Int
+udrsResponseStatus :: Lens' (UpdateDistributionResponse (a)) Int
 udrsResponseStatus = lens _udrsResponseStatus (\ s a -> s{_udrsResponseStatus = a});
 
 instance NFData UpdateDistributionResponse

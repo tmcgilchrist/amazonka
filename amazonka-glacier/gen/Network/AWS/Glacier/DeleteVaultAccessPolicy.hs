@@ -99,14 +99,14 @@ instance ToQuery DeleteVaultAccessPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'deleteVaultAccessPolicyResponse' smart constructor.
-data DeleteVaultAccessPolicyResponse =
+data DeleteVaultAccessPolicyResponse a =
     DeleteVaultAccessPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVaultAccessPolicyResponse' with the minimum fields required to make a request.
 --
 deleteVaultAccessPolicyResponse
-    :: DeleteVaultAccessPolicyResponse
+    :: DeleteVaultAccessPolicyResponse (a)
 deleteVaultAccessPolicyResponse = DeleteVaultAccessPolicyResponse'
 
 instance NFData DeleteVaultAccessPolicyResponse

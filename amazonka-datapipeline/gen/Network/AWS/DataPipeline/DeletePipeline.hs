@@ -95,14 +95,14 @@ instance ToQuery DeletePipeline where
         toQuery = const mempty
 
 -- | /See:/ 'deletePipelineResponse' smart constructor.
-data DeletePipelineResponse =
+data DeletePipelineResponse a =
     DeletePipelineResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeletePipelineResponse' with the minimum fields required to make a request.
 --
 deletePipelineResponse
-    :: DeletePipelineResponse
+    :: DeletePipelineResponse (a)
 deletePipelineResponse = DeletePipelineResponse'
 
 instance NFData DeletePipelineResponse

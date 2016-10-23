@@ -86,14 +86,14 @@ instance ToQuery Unsubscribe where
                "SubscriptionArn" =: _uSubscriptionARN]
 
 -- | /See:/ 'unsubscribeResponse' smart constructor.
-data UnsubscribeResponse =
+data UnsubscribeResponse a =
     UnsubscribeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UnsubscribeResponse' with the minimum fields required to make a request.
 --
 unsubscribeResponse
-    :: UnsubscribeResponse
+    :: UnsubscribeResponse (a)
 unsubscribeResponse = UnsubscribeResponse'
 
 instance NFData UnsubscribeResponse

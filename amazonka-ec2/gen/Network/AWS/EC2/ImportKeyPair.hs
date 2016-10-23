@@ -125,7 +125,7 @@ instance ToQuery ImportKeyPair where
 -- | Contains the output of ImportKeyPair.
 --
 -- /See:/ 'importKeyPairResponse' smart constructor.
-data ImportKeyPairResponse = ImportKeyPairResponse'
+data ImportKeyPairResponse a = ImportKeyPairResponse'
     { _ikprsKeyFingerprint :: !(Maybe Text)
     , _ikprsKeyName        :: !(Maybe Text)
     , _ikprsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ImportKeyPairResponse = ImportKeyPairResponse'
 -- * 'ikprsResponseStatus'
 importKeyPairResponse
     :: Int -- ^ 'ikprsResponseStatus'
-    -> ImportKeyPairResponse
+    -> ImportKeyPairResponse (a)
 importKeyPairResponse pResponseStatus_ =
     ImportKeyPairResponse'
     { _ikprsKeyFingerprint = Nothing
@@ -151,15 +151,15 @@ importKeyPairResponse pResponseStatus_ =
     }
 
 -- | The MD5 public key fingerprint as specified in section 4 of RFC 4716.
-ikprsKeyFingerprint :: Lens' ImportKeyPairResponse (Maybe Text)
+ikprsKeyFingerprint :: Lens' (ImportKeyPairResponse (a)) (Maybe Text)
 ikprsKeyFingerprint = lens _ikprsKeyFingerprint (\ s a -> s{_ikprsKeyFingerprint = a});
 
 -- | The key pair name you provided.
-ikprsKeyName :: Lens' ImportKeyPairResponse (Maybe Text)
+ikprsKeyName :: Lens' (ImportKeyPairResponse (a)) (Maybe Text)
 ikprsKeyName = lens _ikprsKeyName (\ s a -> s{_ikprsKeyName = a});
 
 -- | The response status code.
-ikprsResponseStatus :: Lens' ImportKeyPairResponse Int
+ikprsResponseStatus :: Lens' (ImportKeyPairResponse (a)) Int
 ikprsResponseStatus = lens _ikprsResponseStatus (\ s a -> s{_ikprsResponseStatus = a});
 
 instance NFData ImportKeyPairResponse

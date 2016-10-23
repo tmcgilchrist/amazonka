@@ -105,7 +105,7 @@ instance ToQuery CancelJob where
 -- | Output structure for the CancelJob operation.
 --
 -- /See:/ 'cancelJobResponse' smart constructor.
-data CancelJobResponse = CancelJobResponse'
+data CancelJobResponse a = CancelJobResponse'
     { _crsSuccess        :: !(Maybe Bool)
     , _crsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data CancelJobResponse = CancelJobResponse'
 -- * 'crsResponseStatus'
 cancelJobResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CancelJobResponse
+    -> CancelJobResponse (a)
 cancelJobResponse pResponseStatus_ =
     CancelJobResponse'
     { _crsSuccess = Nothing
@@ -127,11 +127,11 @@ cancelJobResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crsSuccess :: Lens' CancelJobResponse (Maybe Bool)
+crsSuccess :: Lens' (CancelJobResponse (a)) (Maybe Bool)
 crsSuccess = lens _crsSuccess (\ s a -> s{_crsSuccess = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CancelJobResponse Int
+crsResponseStatus :: Lens' (CancelJobResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CancelJobResponse

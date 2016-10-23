@@ -90,14 +90,14 @@ instance ToQuery CancelExportTask where
         toQuery = const mempty
 
 -- | /See:/ 'cancelExportTaskResponse' smart constructor.
-data CancelExportTaskResponse =
+data CancelExportTaskResponse a =
     CancelExportTaskResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CancelExportTaskResponse' with the minimum fields required to make a request.
 --
 cancelExportTaskResponse
-    :: CancelExportTaskResponse
+    :: CancelExportTaskResponse (a)
 cancelExportTaskResponse = CancelExportTaskResponse'
 
 instance NFData CancelExportTaskResponse

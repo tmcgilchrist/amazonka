@@ -88,7 +88,7 @@ instance ToQuery GetBucketLogging where
         toQuery = const (mconcat ["logging"])
 
 -- | /See:/ 'getBucketLoggingResponse' smart constructor.
-data GetBucketLoggingResponse = GetBucketLoggingResponse'
+data GetBucketLoggingResponse a = GetBucketLoggingResponse'
     { _gblrsLoggingEnabled :: !(Maybe LoggingEnabled)
     , _gblrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -102,7 +102,7 @@ data GetBucketLoggingResponse = GetBucketLoggingResponse'
 -- * 'gblrsResponseStatus'
 getBucketLoggingResponse
     :: Int -- ^ 'gblrsResponseStatus'
-    -> GetBucketLoggingResponse
+    -> GetBucketLoggingResponse (a)
 getBucketLoggingResponse pResponseStatus_ =
     GetBucketLoggingResponse'
     { _gblrsLoggingEnabled = Nothing
@@ -110,11 +110,11 @@ getBucketLoggingResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gblrsLoggingEnabled :: Lens' GetBucketLoggingResponse (Maybe LoggingEnabled)
+gblrsLoggingEnabled :: Lens' (GetBucketLoggingResponse (a)) (Maybe LoggingEnabled)
 gblrsLoggingEnabled = lens _gblrsLoggingEnabled (\ s a -> s{_gblrsLoggingEnabled = a});
 
 -- | The response status code.
-gblrsResponseStatus :: Lens' GetBucketLoggingResponse Int
+gblrsResponseStatus :: Lens' (GetBucketLoggingResponse (a)) Int
 gblrsResponseStatus = lens _gblrsResponseStatus (\ s a -> s{_gblrsResponseStatus = a});
 
 instance NFData GetBucketLoggingResponse

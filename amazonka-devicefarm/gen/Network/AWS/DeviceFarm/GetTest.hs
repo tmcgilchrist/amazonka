@@ -101,7 +101,7 @@ instance ToQuery GetTest where
 -- | Represents the result of a get test request.
 --
 -- /See:/ 'getTestResponse' smart constructor.
-data GetTestResponse = GetTestResponse'
+data GetTestResponse a = GetTestResponse'
     { _gtrsTest           :: !(Maybe Test)
     , _gtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetTestResponse = GetTestResponse'
 -- * 'gtrsResponseStatus'
 getTestResponse
     :: Int -- ^ 'gtrsResponseStatus'
-    -> GetTestResponse
+    -> GetTestResponse (a)
 getTestResponse pResponseStatus_ =
     GetTestResponse'
     { _gtrsTest = Nothing
@@ -123,11 +123,11 @@ getTestResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gtrsTest :: Lens' GetTestResponse (Maybe Test)
+gtrsTest :: Lens' (GetTestResponse (a)) (Maybe Test)
 gtrsTest = lens _gtrsTest (\ s a -> s{_gtrsTest = a});
 
 -- | The response status code.
-gtrsResponseStatus :: Lens' GetTestResponse Int
+gtrsResponseStatus :: Lens' (GetTestResponse (a)) Int
 gtrsResponseStatus = lens _gtrsResponseStatus (\ s a -> s{_gtrsResponseStatus = a});
 
 instance NFData GetTestResponse

@@ -95,7 +95,7 @@ instance ToQuery GetStackPolicy where
 -- | The output for the < GetStackPolicy> action.
 --
 -- /See:/ 'getStackPolicyResponse' smart constructor.
-data GetStackPolicyResponse = GetStackPolicyResponse'
+data GetStackPolicyResponse a = GetStackPolicyResponse'
     { _gsprsStackPolicyBody :: !(Maybe Text)
     , _gsprsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -109,7 +109,7 @@ data GetStackPolicyResponse = GetStackPolicyResponse'
 -- * 'gsprsResponseStatus'
 getStackPolicyResponse
     :: Int -- ^ 'gsprsResponseStatus'
-    -> GetStackPolicyResponse
+    -> GetStackPolicyResponse (a)
 getStackPolicyResponse pResponseStatus_ =
     GetStackPolicyResponse'
     { _gsprsStackPolicyBody = Nothing
@@ -117,11 +117,11 @@ getStackPolicyResponse pResponseStatus_ =
     }
 
 -- | Structure containing the stack policy body. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html Prevent Updates to Stack Resources> in the AWS CloudFormation User Guide.)
-gsprsStackPolicyBody :: Lens' GetStackPolicyResponse (Maybe Text)
+gsprsStackPolicyBody :: Lens' (GetStackPolicyResponse (a)) (Maybe Text)
 gsprsStackPolicyBody = lens _gsprsStackPolicyBody (\ s a -> s{_gsprsStackPolicyBody = a});
 
 -- | The response status code.
-gsprsResponseStatus :: Lens' GetStackPolicyResponse Int
+gsprsResponseStatus :: Lens' (GetStackPolicyResponse (a)) Int
 gsprsResponseStatus = lens _gsprsResponseStatus (\ s a -> s{_gsprsResponseStatus = a});
 
 instance NFData GetStackPolicyResponse

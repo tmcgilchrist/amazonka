@@ -107,7 +107,7 @@ instance ToQuery DisableGateway where
 -- | DisableGatewayOutput
 --
 -- /See:/ 'disableGatewayResponse' smart constructor.
-data DisableGatewayResponse = DisableGatewayResponse'
+data DisableGatewayResponse a = DisableGatewayResponse'
     { _disrsGatewayARN     :: !(Maybe Text)
     , _disrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DisableGatewayResponse = DisableGatewayResponse'
 -- * 'disrsResponseStatus'
 disableGatewayResponse
     :: Int -- ^ 'disrsResponseStatus'
-    -> DisableGatewayResponse
+    -> DisableGatewayResponse (a)
 disableGatewayResponse pResponseStatus_ =
     DisableGatewayResponse'
     { _disrsGatewayARN = Nothing
@@ -129,11 +129,11 @@ disableGatewayResponse pResponseStatus_ =
     }
 
 -- | The unique Amazon Resource Name of the disabled gateway.
-disrsGatewayARN :: Lens' DisableGatewayResponse (Maybe Text)
+disrsGatewayARN :: Lens' (DisableGatewayResponse (a)) (Maybe Text)
 disrsGatewayARN = lens _disrsGatewayARN (\ s a -> s{_disrsGatewayARN = a});
 
 -- | The response status code.
-disrsResponseStatus :: Lens' DisableGatewayResponse Int
+disrsResponseStatus :: Lens' (DisableGatewayResponse (a)) Int
 disrsResponseStatus = lens _disrsResponseStatus (\ s a -> s{_disrsResponseStatus = a});
 
 instance NFData DisableGatewayResponse

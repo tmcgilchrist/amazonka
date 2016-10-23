@@ -207,7 +207,7 @@ instance ToQuery GetItem where
 -- | Represents the output of a /GetItem/ operation.
 --
 -- /See:/ 'getItemResponse' smart constructor.
-data GetItemResponse = GetItemResponse'
+data GetItemResponse a = GetItemResponse'
     { _girsConsumedCapacity :: !(Maybe ConsumedCapacity)
     , _girsItem             :: !(Maybe (Map Text AttributeValue))
     , _girsResponseStatus   :: !Int
@@ -224,7 +224,7 @@ data GetItemResponse = GetItemResponse'
 -- * 'girsResponseStatus'
 getItemResponse
     :: Int -- ^ 'girsResponseStatus'
-    -> GetItemResponse
+    -> GetItemResponse (a)
 getItemResponse pResponseStatus_ =
     GetItemResponse'
     { _girsConsumedCapacity = Nothing
@@ -233,15 +233,15 @@ getItemResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-girsConsumedCapacity :: Lens' GetItemResponse (Maybe ConsumedCapacity)
+girsConsumedCapacity :: Lens' (GetItemResponse (a)) (Maybe ConsumedCapacity)
 girsConsumedCapacity = lens _girsConsumedCapacity (\ s a -> s{_girsConsumedCapacity = a});
 
 -- | A map of attribute names to /AttributeValue/ objects, as specified by /AttributesToGet/.
-girsItem :: Lens' GetItemResponse (HashMap Text AttributeValue)
+girsItem :: Lens' (GetItemResponse (a)) (HashMap Text AttributeValue)
 girsItem = lens _girsItem (\ s a -> s{_girsItem = a}) . _Default . _Map;
 
 -- | The response status code.
-girsResponseStatus :: Lens' GetItemResponse Int
+girsResponseStatus :: Lens' (GetItemResponse (a)) Int
 girsResponseStatus = lens _girsResponseStatus (\ s a -> s{_girsResponseStatus = a});
 
 instance NFData GetItemResponse

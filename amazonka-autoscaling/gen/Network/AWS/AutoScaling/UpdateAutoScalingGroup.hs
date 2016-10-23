@@ -239,14 +239,14 @@ instance ToQuery UpdateAutoScalingGroup where
                "AutoScalingGroupName" =: _uasgAutoScalingGroupName]
 
 -- | /See:/ 'updateAutoScalingGroupResponse' smart constructor.
-data UpdateAutoScalingGroupResponse =
+data UpdateAutoScalingGroupResponse a =
     UpdateAutoScalingGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateAutoScalingGroupResponse' with the minimum fields required to make a request.
 --
 updateAutoScalingGroupResponse
-    :: UpdateAutoScalingGroupResponse
+    :: UpdateAutoScalingGroupResponse (a)
 updateAutoScalingGroupResponse = UpdateAutoScalingGroupResponse'
 
 instance NFData UpdateAutoScalingGroupResponse

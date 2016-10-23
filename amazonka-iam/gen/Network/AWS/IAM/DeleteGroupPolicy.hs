@@ -101,14 +101,14 @@ instance ToQuery DeleteGroupPolicy where
                "PolicyName" =: _dPolicyName]
 
 -- | /See:/ 'deleteGroupPolicyResponse' smart constructor.
-data DeleteGroupPolicyResponse =
+data DeleteGroupPolicyResponse a =
     DeleteGroupPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteGroupPolicyResponse' with the minimum fields required to make a request.
 --
 deleteGroupPolicyResponse
-    :: DeleteGroupPolicyResponse
+    :: DeleteGroupPolicyResponse (a)
 deleteGroupPolicyResponse = DeleteGroupPolicyResponse'
 
 instance NFData DeleteGroupPolicyResponse

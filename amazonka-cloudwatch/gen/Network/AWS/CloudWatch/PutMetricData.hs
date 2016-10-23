@@ -104,14 +104,14 @@ instance ToQuery PutMetricData where
                "MetricData" =: toQueryList "member" _pmdMetricData]
 
 -- | /See:/ 'putMetricDataResponse' smart constructor.
-data PutMetricDataResponse =
+data PutMetricDataResponse a =
     PutMetricDataResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutMetricDataResponse' with the minimum fields required to make a request.
 --
 putMetricDataResponse
-    :: PutMetricDataResponse
+    :: PutMetricDataResponse (a)
 putMetricDataResponse = PutMetricDataResponse'
 
 instance NFData PutMetricDataResponse

@@ -130,7 +130,7 @@ instance ToQuery GetRecords where
 -- | Represents the output for < GetRecords>.
 --
 -- /See:/ 'getRecordsResponse' smart constructor.
-data GetRecordsResponse = GetRecordsResponse'
+data GetRecordsResponse a = GetRecordsResponse'
     { _grrsNextShardIterator  :: !(Maybe Text)
     , _grrsMillisBehindLatest :: !(Maybe Nat)
     , _grrsResponseStatus     :: !Int
@@ -150,7 +150,7 @@ data GetRecordsResponse = GetRecordsResponse'
 -- * 'grrsRecords'
 getRecordsResponse
     :: Int -- ^ 'grrsResponseStatus'
-    -> GetRecordsResponse
+    -> GetRecordsResponse (a)
 getRecordsResponse pResponseStatus_ =
     GetRecordsResponse'
     { _grrsNextShardIterator = Nothing
@@ -160,19 +160,19 @@ getRecordsResponse pResponseStatus_ =
     }
 
 -- | The next position in the shard from which to start sequentially reading data records. If set to 'null', the shard has been closed and the requested iterator will not return any more data.
-grrsNextShardIterator :: Lens' GetRecordsResponse (Maybe Text)
+grrsNextShardIterator :: Lens' (GetRecordsResponse (a)) (Maybe Text)
 grrsNextShardIterator = lens _grrsNextShardIterator (\ s a -> s{_grrsNextShardIterator = a});
 
 -- | The number of milliseconds the < GetRecords> response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates record processing is caught up, and there are no new records to process at this moment.
-grrsMillisBehindLatest :: Lens' GetRecordsResponse (Maybe Natural)
+grrsMillisBehindLatest :: Lens' (GetRecordsResponse (a)) (Maybe Natural)
 grrsMillisBehindLatest = lens _grrsMillisBehindLatest (\ s a -> s{_grrsMillisBehindLatest = a}) . mapping _Nat;
 
 -- | The response status code.
-grrsResponseStatus :: Lens' GetRecordsResponse Int
+grrsResponseStatus :: Lens' (GetRecordsResponse (a)) Int
 grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a});
 
 -- | The data records retrieved from the shard.
-grrsRecords :: Lens' GetRecordsResponse [Record]
+grrsRecords :: Lens' (GetRecordsResponse (a)) [Record]
 grrsRecords = lens _grrsRecords (\ s a -> s{_grrsRecords = a}) . _Coerce;
 
 instance NFData GetRecordsResponse

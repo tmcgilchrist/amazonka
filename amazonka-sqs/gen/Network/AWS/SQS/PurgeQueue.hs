@@ -92,14 +92,14 @@ instance ToQuery PurgeQueue where
                "QueueUrl" =: _pqQueueURL]
 
 -- | /See:/ 'purgeQueueResponse' smart constructor.
-data PurgeQueueResponse =
+data PurgeQueueResponse a =
     PurgeQueueResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PurgeQueueResponse' with the minimum fields required to make a request.
 --
 purgeQueueResponse
-    :: PurgeQueueResponse
+    :: PurgeQueueResponse (a)
 purgeQueueResponse = PurgeQueueResponse'
 
 instance NFData PurgeQueueResponse

@@ -105,7 +105,7 @@ instance ToQuery DeleteChangeSet where
 -- | The output for the < DeleteChangeSet> action.
 --
 -- /See:/ 'deleteChangeSetResponse' smart constructor.
-newtype DeleteChangeSetResponse = DeleteChangeSetResponse'
+newtype DeleteChangeSetResponse a = DeleteChangeSetResponse'
     { _dcsrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -116,14 +116,14 @@ newtype DeleteChangeSetResponse = DeleteChangeSetResponse'
 -- * 'dcsrsResponseStatus'
 deleteChangeSetResponse
     :: Int -- ^ 'dcsrsResponseStatus'
-    -> DeleteChangeSetResponse
+    -> DeleteChangeSetResponse (a)
 deleteChangeSetResponse pResponseStatus_ =
     DeleteChangeSetResponse'
     { _dcsrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dcsrsResponseStatus :: Lens' DeleteChangeSetResponse Int
+dcsrsResponseStatus :: Lens' (DeleteChangeSetResponse (a)) Int
 dcsrsResponseStatus = lens _dcsrsResponseStatus (\ s a -> s{_dcsrsResponseStatus = a});
 
 instance NFData DeleteChangeSetResponse

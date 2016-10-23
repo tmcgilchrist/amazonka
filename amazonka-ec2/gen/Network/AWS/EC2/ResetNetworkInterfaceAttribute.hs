@@ -111,14 +111,14 @@ instance ToQuery ResetNetworkInterfaceAttribute where
                "NetworkInterfaceId" =: _rniaNetworkInterfaceId]
 
 -- | /See:/ 'resetNetworkInterfaceAttributeResponse' smart constructor.
-data ResetNetworkInterfaceAttributeResponse =
+data ResetNetworkInterfaceAttributeResponse a =
     ResetNetworkInterfaceAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ResetNetworkInterfaceAttributeResponse' with the minimum fields required to make a request.
 --
 resetNetworkInterfaceAttributeResponse
-    :: ResetNetworkInterfaceAttributeResponse
+    :: ResetNetworkInterfaceAttributeResponse (a)
 resetNetworkInterfaceAttributeResponse =
     ResetNetworkInterfaceAttributeResponse'
 

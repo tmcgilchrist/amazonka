@@ -149,7 +149,7 @@ instance ToQuery CreateVPNConnection where
 -- | Contains the output of CreateVpnConnection.
 --
 -- /See:/ 'createVPNConnectionResponse' smart constructor.
-data CreateVPNConnectionResponse = CreateVPNConnectionResponse'
+data CreateVPNConnectionResponse a = CreateVPNConnectionResponse'
     { _cvcrsVPNConnection  :: !(Maybe VPNConnection)
     , _cvcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -163,7 +163,7 @@ data CreateVPNConnectionResponse = CreateVPNConnectionResponse'
 -- * 'cvcrsResponseStatus'
 createVPNConnectionResponse
     :: Int -- ^ 'cvcrsResponseStatus'
-    -> CreateVPNConnectionResponse
+    -> CreateVPNConnectionResponse (a)
 createVPNConnectionResponse pResponseStatus_ =
     CreateVPNConnectionResponse'
     { _cvcrsVPNConnection = Nothing
@@ -171,11 +171,11 @@ createVPNConnectionResponse pResponseStatus_ =
     }
 
 -- | Information about the VPN connection.
-cvcrsVPNConnection :: Lens' CreateVPNConnectionResponse (Maybe VPNConnection)
+cvcrsVPNConnection :: Lens' (CreateVPNConnectionResponse (a)) (Maybe VPNConnection)
 cvcrsVPNConnection = lens _cvcrsVPNConnection (\ s a -> s{_cvcrsVPNConnection = a});
 
 -- | The response status code.
-cvcrsResponseStatus :: Lens' CreateVPNConnectionResponse Int
+cvcrsResponseStatus :: Lens' (CreateVPNConnectionResponse (a)) Int
 cvcrsResponseStatus = lens _cvcrsResponseStatus (\ s a -> s{_cvcrsResponseStatus = a});
 
 instance NFData CreateVPNConnectionResponse

@@ -175,7 +175,7 @@ instance ToQuery ListObjects where
                "delimiter" =: _loDelimiter]
 
 -- | /See:/ 'listObjectsResponse' smart constructor.
-data ListObjectsResponse = ListObjectsResponse'
+data ListObjectsResponse a = ListObjectsResponse'
     { _lorsContents       :: !(Maybe [Object])
     , _lorsPrefix         :: !(Maybe Text)
     , _lorsCommonPrefixes :: !(Maybe [CommonPrefix])
@@ -216,7 +216,7 @@ data ListObjectsResponse = ListObjectsResponse'
 -- * 'lorsResponseStatus'
 listObjectsResponse
     :: Int -- ^ 'lorsResponseStatus'
-    -> ListObjectsResponse
+    -> ListObjectsResponse (a)
 listObjectsResponse pResponseStatus_ =
     ListObjectsResponse'
     { _lorsContents = Nothing
@@ -233,47 +233,47 @@ listObjectsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-lorsContents :: Lens' ListObjectsResponse [Object]
+lorsContents :: Lens' (ListObjectsResponse (a)) [Object]
 lorsContents = lens _lorsContents (\ s a -> s{_lorsContents = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-lorsPrefix :: Lens' ListObjectsResponse (Maybe Text)
+lorsPrefix :: Lens' (ListObjectsResponse (a)) (Maybe Text)
 lorsPrefix = lens _lorsPrefix (\ s a -> s{_lorsPrefix = a});
 
 -- | Undocumented member.
-lorsCommonPrefixes :: Lens' ListObjectsResponse [CommonPrefix]
+lorsCommonPrefixes :: Lens' (ListObjectsResponse (a)) [CommonPrefix]
 lorsCommonPrefixes = lens _lorsCommonPrefixes (\ s a -> s{_lorsCommonPrefixes = a}) . _Default . _Coerce;
 
 -- | Encoding type used by Amazon S3 to encode object keys in the response.
-lorsEncodingType :: Lens' ListObjectsResponse (Maybe EncodingType)
+lorsEncodingType :: Lens' (ListObjectsResponse (a)) (Maybe EncodingType)
 lorsEncodingType = lens _lorsEncodingType (\ s a -> s{_lorsEncodingType = a});
 
 -- | Undocumented member.
-lorsName :: Lens' ListObjectsResponse (Maybe BucketName)
+lorsName :: Lens' (ListObjectsResponse (a)) (Maybe BucketName)
 lorsName = lens _lorsName (\ s a -> s{_lorsName = a});
 
 -- | Undocumented member.
-lorsMarker :: Lens' ListObjectsResponse (Maybe Text)
+lorsMarker :: Lens' (ListObjectsResponse (a)) (Maybe Text)
 lorsMarker = lens _lorsMarker (\ s a -> s{_lorsMarker = a});
 
 -- | When response is truncated (the IsTruncated element value in the response is true), you can use the key name in this field as marker in the subsequent request to get next set of objects. Amazon S3 lists objects in alphabetical order Note: This element is returned only if you have delimiter request parameter specified. If response does not include the NextMaker and it is truncated, you can use the value of the last Key in the response as the marker in the subsequent request to get the next set of object keys.
-lorsNextMarker :: Lens' ListObjectsResponse (Maybe Text)
+lorsNextMarker :: Lens' (ListObjectsResponse (a)) (Maybe Text)
 lorsNextMarker = lens _lorsNextMarker (\ s a -> s{_lorsNextMarker = a});
 
 -- | Undocumented member.
-lorsMaxKeys :: Lens' ListObjectsResponse (Maybe Int)
+lorsMaxKeys :: Lens' (ListObjectsResponse (a)) (Maybe Int)
 lorsMaxKeys = lens _lorsMaxKeys (\ s a -> s{_lorsMaxKeys = a});
 
 -- | A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria.
-lorsIsTruncated :: Lens' ListObjectsResponse (Maybe Bool)
+lorsIsTruncated :: Lens' (ListObjectsResponse (a)) (Maybe Bool)
 lorsIsTruncated = lens _lorsIsTruncated (\ s a -> s{_lorsIsTruncated = a});
 
 -- | Undocumented member.
-lorsDelimiter :: Lens' ListObjectsResponse (Maybe Delimiter)
+lorsDelimiter :: Lens' (ListObjectsResponse (a)) (Maybe Delimiter)
 lorsDelimiter = lens _lorsDelimiter (\ s a -> s{_lorsDelimiter = a});
 
 -- | The response status code.
-lorsResponseStatus :: Lens' ListObjectsResponse Int
+lorsResponseStatus :: Lens' (ListObjectsResponse (a)) Int
 lorsResponseStatus = lens _lorsResponseStatus (\ s a -> s{_lorsResponseStatus = a});
 
 instance NFData ListObjectsResponse

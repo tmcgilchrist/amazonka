@@ -414,7 +414,7 @@ instance ToQuery RestoreDBInstanceToPointInTime where
                  _rditpitTargetDBInstanceIdentifier]
 
 -- | /See:/ 'restoreDBInstanceToPointInTimeResponse' smart constructor.
-data RestoreDBInstanceToPointInTimeResponse = RestoreDBInstanceToPointInTimeResponse'
+data RestoreDBInstanceToPointInTimeResponse a = RestoreDBInstanceToPointInTimeResponse'
     { _rditpitrsDBInstance     :: !(Maybe DBInstance)
     , _rditpitrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -428,7 +428,7 @@ data RestoreDBInstanceToPointInTimeResponse = RestoreDBInstanceToPointInTimeResp
 -- * 'rditpitrsResponseStatus'
 restoreDBInstanceToPointInTimeResponse
     :: Int -- ^ 'rditpitrsResponseStatus'
-    -> RestoreDBInstanceToPointInTimeResponse
+    -> RestoreDBInstanceToPointInTimeResponse (a)
 restoreDBInstanceToPointInTimeResponse pResponseStatus_ =
     RestoreDBInstanceToPointInTimeResponse'
     { _rditpitrsDBInstance = Nothing
@@ -436,11 +436,11 @@ restoreDBInstanceToPointInTimeResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rditpitrsDBInstance :: Lens' RestoreDBInstanceToPointInTimeResponse (Maybe DBInstance)
+rditpitrsDBInstance :: Lens' (RestoreDBInstanceToPointInTimeResponse (a)) (Maybe DBInstance)
 rditpitrsDBInstance = lens _rditpitrsDBInstance (\ s a -> s{_rditpitrsDBInstance = a});
 
 -- | The response status code.
-rditpitrsResponseStatus :: Lens' RestoreDBInstanceToPointInTimeResponse Int
+rditpitrsResponseStatus :: Lens' (RestoreDBInstanceToPointInTimeResponse (a)) Int
 rditpitrsResponseStatus = lens _rditpitrsResponseStatus (\ s a -> s{_rditpitrsResponseStatus = a});
 
 instance NFData

@@ -97,14 +97,14 @@ instance ToQuery DeleteDBSubnetGroup where
                "DBSubnetGroupName" =: _ddbsgDBSubnetGroupName]
 
 -- | /See:/ 'deleteDBSubnetGroupResponse' smart constructor.
-data DeleteDBSubnetGroupResponse =
+data DeleteDBSubnetGroupResponse a =
     DeleteDBSubnetGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteDBSubnetGroupResponse' with the minimum fields required to make a request.
 --
 deleteDBSubnetGroupResponse
-    :: DeleteDBSubnetGroupResponse
+    :: DeleteDBSubnetGroupResponse (a)
 deleteDBSubnetGroupResponse = DeleteDBSubnetGroupResponse'
 
 instance NFData DeleteDBSubnetGroupResponse

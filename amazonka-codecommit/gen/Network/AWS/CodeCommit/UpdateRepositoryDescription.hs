@@ -110,14 +110,14 @@ instance ToQuery UpdateRepositoryDescription where
         toQuery = const mempty
 
 -- | /See:/ 'updateRepositoryDescriptionResponse' smart constructor.
-data UpdateRepositoryDescriptionResponse =
+data UpdateRepositoryDescriptionResponse a =
     UpdateRepositoryDescriptionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateRepositoryDescriptionResponse' with the minimum fields required to make a request.
 --
 updateRepositoryDescriptionResponse
-    :: UpdateRepositoryDescriptionResponse
+    :: UpdateRepositoryDescriptionResponse (a)
 updateRepositoryDescriptionResponse = UpdateRepositoryDescriptionResponse'
 
 instance NFData UpdateRepositoryDescriptionResponse

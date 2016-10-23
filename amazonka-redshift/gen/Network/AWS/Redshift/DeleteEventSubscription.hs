@@ -89,14 +89,14 @@ instance ToQuery DeleteEventSubscription where
                "SubscriptionName" =: _desSubscriptionName]
 
 -- | /See:/ 'deleteEventSubscriptionResponse' smart constructor.
-data DeleteEventSubscriptionResponse =
+data DeleteEventSubscriptionResponse a =
     DeleteEventSubscriptionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteEventSubscriptionResponse' with the minimum fields required to make a request.
 --
 deleteEventSubscriptionResponse
-    :: DeleteEventSubscriptionResponse
+    :: DeleteEventSubscriptionResponse (a)
 deleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'
 
 instance NFData DeleteEventSubscriptionResponse

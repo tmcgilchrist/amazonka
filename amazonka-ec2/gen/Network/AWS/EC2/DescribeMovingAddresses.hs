@@ -144,7 +144,7 @@ instance ToQuery DescribeMovingAddresses where
 -- | Contains the output of DescribeMovingAddresses.
 --
 -- /See:/ 'describeMovingAddressesResponse' smart constructor.
-data DescribeMovingAddressesResponse = DescribeMovingAddressesResponse'
+data DescribeMovingAddressesResponse a = DescribeMovingAddressesResponse'
     { _dmarsMovingAddressStatuses :: !(Maybe [MovingAddressStatus])
     , _dmarsNextToken             :: !(Maybe Text)
     , _dmarsResponseStatus        :: !Int
@@ -161,7 +161,7 @@ data DescribeMovingAddressesResponse = DescribeMovingAddressesResponse'
 -- * 'dmarsResponseStatus'
 describeMovingAddressesResponse
     :: Int -- ^ 'dmarsResponseStatus'
-    -> DescribeMovingAddressesResponse
+    -> DescribeMovingAddressesResponse (a)
 describeMovingAddressesResponse pResponseStatus_ =
     DescribeMovingAddressesResponse'
     { _dmarsMovingAddressStatuses = Nothing
@@ -170,15 +170,15 @@ describeMovingAddressesResponse pResponseStatus_ =
     }
 
 -- | The status for each Elastic IP address.
-dmarsMovingAddressStatuses :: Lens' DescribeMovingAddressesResponse [MovingAddressStatus]
+dmarsMovingAddressStatuses :: Lens' (DescribeMovingAddressesResponse (a)) [MovingAddressStatus]
 dmarsMovingAddressStatuses = lens _dmarsMovingAddressStatuses (\ s a -> s{_dmarsMovingAddressStatuses = a}) . _Default . _Coerce;
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dmarsNextToken :: Lens' DescribeMovingAddressesResponse (Maybe Text)
+dmarsNextToken :: Lens' (DescribeMovingAddressesResponse (a)) (Maybe Text)
 dmarsNextToken = lens _dmarsNextToken (\ s a -> s{_dmarsNextToken = a});
 
 -- | The response status code.
-dmarsResponseStatus :: Lens' DescribeMovingAddressesResponse Int
+dmarsResponseStatus :: Lens' (DescribeMovingAddressesResponse (a)) Int
 dmarsResponseStatus = lens _dmarsResponseStatus (\ s a -> s{_dmarsResponseStatus = a});
 
 instance NFData DescribeMovingAddressesResponse

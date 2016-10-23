@@ -161,7 +161,7 @@ instance ToQuery DescribeAlarmHistory where
 -- | The output for < DescribeAlarmHistory>.
 --
 -- /See:/ 'describeAlarmHistoryResponse' smart constructor.
-data DescribeAlarmHistoryResponse = DescribeAlarmHistoryResponse'
+data DescribeAlarmHistoryResponse a = DescribeAlarmHistoryResponse'
     { _dahrsAlarmHistoryItems :: !(Maybe [AlarmHistoryItem])
     , _dahrsNextToken         :: !(Maybe Text)
     , _dahrsResponseStatus    :: !Int
@@ -178,7 +178,7 @@ data DescribeAlarmHistoryResponse = DescribeAlarmHistoryResponse'
 -- * 'dahrsResponseStatus'
 describeAlarmHistoryResponse
     :: Int -- ^ 'dahrsResponseStatus'
-    -> DescribeAlarmHistoryResponse
+    -> DescribeAlarmHistoryResponse (a)
 describeAlarmHistoryResponse pResponseStatus_ =
     DescribeAlarmHistoryResponse'
     { _dahrsAlarmHistoryItems = Nothing
@@ -187,15 +187,15 @@ describeAlarmHistoryResponse pResponseStatus_ =
     }
 
 -- | A list of alarm histories in JSON format.
-dahrsAlarmHistoryItems :: Lens' DescribeAlarmHistoryResponse [AlarmHistoryItem]
+dahrsAlarmHistoryItems :: Lens' (DescribeAlarmHistoryResponse (a)) [AlarmHistoryItem]
 dahrsAlarmHistoryItems = lens _dahrsAlarmHistoryItems (\ s a -> s{_dahrsAlarmHistoryItems = a}) . _Default . _Coerce;
 
 -- | A string that marks the start of the next batch of returned results.
-dahrsNextToken :: Lens' DescribeAlarmHistoryResponse (Maybe Text)
+dahrsNextToken :: Lens' (DescribeAlarmHistoryResponse (a)) (Maybe Text)
 dahrsNextToken = lens _dahrsNextToken (\ s a -> s{_dahrsNextToken = a});
 
 -- | The response status code.
-dahrsResponseStatus :: Lens' DescribeAlarmHistoryResponse Int
+dahrsResponseStatus :: Lens' (DescribeAlarmHistoryResponse (a)) Int
 dahrsResponseStatus = lens _dahrsResponseStatus (\ s a -> s{_dahrsResponseStatus = a});
 
 instance NFData DescribeAlarmHistoryResponse

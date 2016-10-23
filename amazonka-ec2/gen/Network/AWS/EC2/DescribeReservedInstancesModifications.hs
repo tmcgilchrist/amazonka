@@ -170,7 +170,7 @@ instance ToQuery
 -- | Contains the output of DescribeReservedInstancesModifications.
 --
 -- /See:/ 'describeReservedInstancesModificationsResponse' smart constructor.
-data DescribeReservedInstancesModificationsResponse = DescribeReservedInstancesModificationsResponse'
+data DescribeReservedInstancesModificationsResponse a = DescribeReservedInstancesModificationsResponse'
     { _drimrsNextToken                      :: !(Maybe Text)
     , _drimrsReservedInstancesModifications :: !(Maybe [ReservedInstancesModification])
     , _drimrsResponseStatus                 :: !Int
@@ -187,7 +187,7 @@ data DescribeReservedInstancesModificationsResponse = DescribeReservedInstancesM
 -- * 'drimrsResponseStatus'
 describeReservedInstancesModificationsResponse
     :: Int -- ^ 'drimrsResponseStatus'
-    -> DescribeReservedInstancesModificationsResponse
+    -> DescribeReservedInstancesModificationsResponse (a)
 describeReservedInstancesModificationsResponse pResponseStatus_ =
     DescribeReservedInstancesModificationsResponse'
     { _drimrsNextToken = Nothing
@@ -196,15 +196,15 @@ describeReservedInstancesModificationsResponse pResponseStatus_ =
     }
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-drimrsNextToken :: Lens' DescribeReservedInstancesModificationsResponse (Maybe Text)
+drimrsNextToken :: Lens' (DescribeReservedInstancesModificationsResponse (a)) (Maybe Text)
 drimrsNextToken = lens _drimrsNextToken (\ s a -> s{_drimrsNextToken = a});
 
 -- | The Reserved Instance modification information.
-drimrsReservedInstancesModifications :: Lens' DescribeReservedInstancesModificationsResponse [ReservedInstancesModification]
+drimrsReservedInstancesModifications :: Lens' (DescribeReservedInstancesModificationsResponse (a)) [ReservedInstancesModification]
 drimrsReservedInstancesModifications = lens _drimrsReservedInstancesModifications (\ s a -> s{_drimrsReservedInstancesModifications = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drimrsResponseStatus :: Lens' DescribeReservedInstancesModificationsResponse Int
+drimrsResponseStatus :: Lens' (DescribeReservedInstancesModificationsResponse (a)) Int
 drimrsResponseStatus = lens _drimrsResponseStatus (\ s a -> s{_drimrsResponseStatus = a});
 
 instance NFData

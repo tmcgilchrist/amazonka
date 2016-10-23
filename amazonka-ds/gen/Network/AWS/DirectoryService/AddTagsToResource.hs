@@ -108,7 +108,7 @@ instance ToQuery AddTagsToResource where
         toQuery = const mempty
 
 -- | /See:/ 'addTagsToResourceResponse' smart constructor.
-newtype AddTagsToResourceResponse = AddTagsToResourceResponse'
+newtype AddTagsToResourceResponse a = AddTagsToResourceResponse'
     { _attrrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -119,14 +119,14 @@ newtype AddTagsToResourceResponse = AddTagsToResourceResponse'
 -- * 'attrrsResponseStatus'
 addTagsToResourceResponse
     :: Int -- ^ 'attrrsResponseStatus'
-    -> AddTagsToResourceResponse
+    -> AddTagsToResourceResponse (a)
 addTagsToResourceResponse pResponseStatus_ =
     AddTagsToResourceResponse'
     { _attrrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-attrrsResponseStatus :: Lens' AddTagsToResourceResponse Int
+attrrsResponseStatus :: Lens' (AddTagsToResourceResponse (a)) Int
 attrrsResponseStatus = lens _attrrsResponseStatus (\ s a -> s{_attrrsResponseStatus = a});
 
 instance NFData AddTagsToResourceResponse

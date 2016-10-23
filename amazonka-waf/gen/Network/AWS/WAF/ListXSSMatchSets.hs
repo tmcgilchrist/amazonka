@@ -116,7 +116,7 @@ instance ToQuery ListXSSMatchSets where
 -- | The response to a < ListXssMatchSets> request.
 --
 -- /See:/ 'listXSSMatchSetsResponse' smart constructor.
-data ListXSSMatchSetsResponse = ListXSSMatchSetsResponse'
+data ListXSSMatchSetsResponse a = ListXSSMatchSetsResponse'
     { _lxmsrsXSSMatchSets   :: !(Maybe [XSSMatchSetSummary])
     , _lxmsrsNextMarker     :: !(Maybe Text)
     , _lxmsrsResponseStatus :: !Int
@@ -133,7 +133,7 @@ data ListXSSMatchSetsResponse = ListXSSMatchSetsResponse'
 -- * 'lxmsrsResponseStatus'
 listXSSMatchSetsResponse
     :: Int -- ^ 'lxmsrsResponseStatus'
-    -> ListXSSMatchSetsResponse
+    -> ListXSSMatchSetsResponse (a)
 listXSSMatchSetsResponse pResponseStatus_ =
     ListXSSMatchSetsResponse'
     { _lxmsrsXSSMatchSets = Nothing
@@ -142,15 +142,15 @@ listXSSMatchSetsResponse pResponseStatus_ =
     }
 
 -- | An array of < XssMatchSetSummary> objects.
-lxmsrsXSSMatchSets :: Lens' ListXSSMatchSetsResponse [XSSMatchSetSummary]
+lxmsrsXSSMatchSets :: Lens' (ListXSSMatchSetsResponse (a)) [XSSMatchSetSummary]
 lxmsrsXSSMatchSets = lens _lxmsrsXSSMatchSets (\ s a -> s{_lxmsrsXSSMatchSets = a}) . _Default . _Coerce;
 
 -- | If you have more < XssMatchSet> objects than the number that you specified for 'Limit' in the request, the response includes a 'NextMarker' value. To list more 'XssMatchSet' objects, submit another 'ListXssMatchSets' request, and specify the 'NextMarker' value from the response in the 'NextMarker' value in the next request.
-lxmsrsNextMarker :: Lens' ListXSSMatchSetsResponse (Maybe Text)
+lxmsrsNextMarker :: Lens' (ListXSSMatchSetsResponse (a)) (Maybe Text)
 lxmsrsNextMarker = lens _lxmsrsNextMarker (\ s a -> s{_lxmsrsNextMarker = a});
 
 -- | The response status code.
-lxmsrsResponseStatus :: Lens' ListXSSMatchSetsResponse Int
+lxmsrsResponseStatus :: Lens' (ListXSSMatchSetsResponse (a)) Int
 lxmsrsResponseStatus = lens _lxmsrsResponseStatus (\ s a -> s{_lxmsrsResponseStatus = a});
 
 instance NFData ListXSSMatchSetsResponse

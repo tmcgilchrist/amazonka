@@ -97,7 +97,7 @@ instance ToQuery DeleteDocument where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDocumentResponse' smart constructor.
-newtype DeleteDocumentResponse = DeleteDocumentResponse'
+newtype DeleteDocumentResponse a = DeleteDocumentResponse'
     { _ddrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -108,14 +108,14 @@ newtype DeleteDocumentResponse = DeleteDocumentResponse'
 -- * 'ddrsResponseStatus'
 deleteDocumentResponse
     :: Int -- ^ 'ddrsResponseStatus'
-    -> DeleteDocumentResponse
+    -> DeleteDocumentResponse (a)
 deleteDocumentResponse pResponseStatus_ =
     DeleteDocumentResponse'
     { _ddrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ddrsResponseStatus :: Lens' DeleteDocumentResponse Int
+ddrsResponseStatus :: Lens' (DeleteDocumentResponse (a)) Int
 ddrsResponseStatus = lens _ddrsResponseStatus (\ s a -> s{_ddrsResponseStatus = a});
 
 instance NFData DeleteDocumentResponse

@@ -123,7 +123,7 @@ instance ToQuery AbortMultipartUpload where
           = mconcat ["uploadId" =: _amuUploadId]
 
 -- | /See:/ 'abortMultipartUploadResponse' smart constructor.
-data AbortMultipartUploadResponse = AbortMultipartUploadResponse'
+data AbortMultipartUploadResponse a = AbortMultipartUploadResponse'
     { _amursRequestCharged :: !(Maybe RequestCharged)
     , _amursResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data AbortMultipartUploadResponse = AbortMultipartUploadResponse'
 -- * 'amursResponseStatus'
 abortMultipartUploadResponse
     :: Int -- ^ 'amursResponseStatus'
-    -> AbortMultipartUploadResponse
+    -> AbortMultipartUploadResponse (a)
 abortMultipartUploadResponse pResponseStatus_ =
     AbortMultipartUploadResponse'
     { _amursRequestCharged = Nothing
@@ -145,11 +145,11 @@ abortMultipartUploadResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-amursRequestCharged :: Lens' AbortMultipartUploadResponse (Maybe RequestCharged)
+amursRequestCharged :: Lens' (AbortMultipartUploadResponse (a)) (Maybe RequestCharged)
 amursRequestCharged = lens _amursRequestCharged (\ s a -> s{_amursRequestCharged = a});
 
 -- | The response status code.
-amursResponseStatus :: Lens' AbortMultipartUploadResponse Int
+amursResponseStatus :: Lens' (AbortMultipartUploadResponse (a)) Int
 amursResponseStatus = lens _amursResponseStatus (\ s a -> s{_amursResponseStatus = a});
 
 instance NFData AbortMultipartUploadResponse

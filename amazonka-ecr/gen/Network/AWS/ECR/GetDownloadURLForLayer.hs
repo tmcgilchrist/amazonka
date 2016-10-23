@@ -126,7 +126,7 @@ instance ToQuery GetDownloadURLForLayer where
         toQuery = const mempty
 
 -- | /See:/ 'getDownloadURLForLayerResponse' smart constructor.
-data GetDownloadURLForLayerResponse = GetDownloadURLForLayerResponse'
+data GetDownloadURLForLayerResponse a = GetDownloadURLForLayerResponse'
     { _gduflrsLayerDigest    :: !(Maybe Text)
     , _gduflrsDownloadURL    :: !(Maybe Text)
     , _gduflrsResponseStatus :: !Int
@@ -143,7 +143,7 @@ data GetDownloadURLForLayerResponse = GetDownloadURLForLayerResponse'
 -- * 'gduflrsResponseStatus'
 getDownloadURLForLayerResponse
     :: Int -- ^ 'gduflrsResponseStatus'
-    -> GetDownloadURLForLayerResponse
+    -> GetDownloadURLForLayerResponse (a)
 getDownloadURLForLayerResponse pResponseStatus_ =
     GetDownloadURLForLayerResponse'
     { _gduflrsLayerDigest = Nothing
@@ -152,15 +152,15 @@ getDownloadURLForLayerResponse pResponseStatus_ =
     }
 
 -- | The digest of the image layer to download.
-gduflrsLayerDigest :: Lens' GetDownloadURLForLayerResponse (Maybe Text)
+gduflrsLayerDigest :: Lens' (GetDownloadURLForLayerResponse (a)) (Maybe Text)
 gduflrsLayerDigest = lens _gduflrsLayerDigest (\ s a -> s{_gduflrsLayerDigest = a});
 
 -- | The pre-signed Amazon S3 download URL for the requested layer.
-gduflrsDownloadURL :: Lens' GetDownloadURLForLayerResponse (Maybe Text)
+gduflrsDownloadURL :: Lens' (GetDownloadURLForLayerResponse (a)) (Maybe Text)
 gduflrsDownloadURL = lens _gduflrsDownloadURL (\ s a -> s{_gduflrsDownloadURL = a});
 
 -- | The response status code.
-gduflrsResponseStatus :: Lens' GetDownloadURLForLayerResponse Int
+gduflrsResponseStatus :: Lens' (GetDownloadURLForLayerResponse (a)) Int
 gduflrsResponseStatus = lens _gduflrsResponseStatus (\ s a -> s{_gduflrsResponseStatus = a});
 
 instance NFData GetDownloadURLForLayerResponse

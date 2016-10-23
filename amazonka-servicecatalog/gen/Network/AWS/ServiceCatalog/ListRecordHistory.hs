@@ -140,7 +140,7 @@ instance ToQuery ListRecordHistory where
         toQuery = const mempty
 
 -- | /See:/ 'listRecordHistoryResponse' smart constructor.
-data ListRecordHistoryResponse = ListRecordHistoryResponse'
+data ListRecordHistoryResponse a = ListRecordHistoryResponse'
     { _lrhrsNextPageToken  :: !(Maybe Text)
     , _lrhrsRecordDetails  :: !(Maybe [RecordDetail])
     , _lrhrsResponseStatus :: !Int
@@ -157,7 +157,7 @@ data ListRecordHistoryResponse = ListRecordHistoryResponse'
 -- * 'lrhrsResponseStatus'
 listRecordHistoryResponse
     :: Int -- ^ 'lrhrsResponseStatus'
-    -> ListRecordHistoryResponse
+    -> ListRecordHistoryResponse (a)
 listRecordHistoryResponse pResponseStatus_ =
     ListRecordHistoryResponse'
     { _lrhrsNextPageToken = Nothing
@@ -166,15 +166,15 @@ listRecordHistoryResponse pResponseStatus_ =
     }
 
 -- | The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
-lrhrsNextPageToken :: Lens' ListRecordHistoryResponse (Maybe Text)
+lrhrsNextPageToken :: Lens' (ListRecordHistoryResponse (a)) (Maybe Text)
 lrhrsNextPageToken = lens _lrhrsNextPageToken (\ s a -> s{_lrhrsNextPageToken = a});
 
 -- | A list of record detail objects, listed in reverse chronological order.
-lrhrsRecordDetails :: Lens' ListRecordHistoryResponse [RecordDetail]
+lrhrsRecordDetails :: Lens' (ListRecordHistoryResponse (a)) [RecordDetail]
 lrhrsRecordDetails = lens _lrhrsRecordDetails (\ s a -> s{_lrhrsRecordDetails = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lrhrsResponseStatus :: Lens' ListRecordHistoryResponse Int
+lrhrsResponseStatus :: Lens' (ListRecordHistoryResponse (a)) Int
 lrhrsResponseStatus = lens _lrhrsResponseStatus (\ s a -> s{_lrhrsResponseStatus = a});
 
 instance NFData ListRecordHistoryResponse

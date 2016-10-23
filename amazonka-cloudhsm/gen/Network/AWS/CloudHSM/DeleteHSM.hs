@@ -101,7 +101,7 @@ instance ToQuery DeleteHSM where
 -- | Contains the output of the < DeleteHsm> operation.
 --
 -- /See:/ 'deleteHSMResponse' smart constructor.
-data DeleteHSMResponse = DeleteHSMResponse'
+data DeleteHSMResponse a = DeleteHSMResponse'
     { _dhsmrsResponseStatus :: !Int
     , _dhsmrsStatus         :: !Text
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data DeleteHSMResponse = DeleteHSMResponse'
 deleteHSMResponse
     :: Int -- ^ 'dhsmrsResponseStatus'
     -> Text -- ^ 'dhsmrsStatus'
-    -> DeleteHSMResponse
+    -> DeleteHSMResponse (a)
 deleteHSMResponse pResponseStatus_ pStatus_ =
     DeleteHSMResponse'
     { _dhsmrsResponseStatus = pResponseStatus_
@@ -124,11 +124,11 @@ deleteHSMResponse pResponseStatus_ pStatus_ =
     }
 
 -- | The response status code.
-dhsmrsResponseStatus :: Lens' DeleteHSMResponse Int
+dhsmrsResponseStatus :: Lens' (DeleteHSMResponse (a)) Int
 dhsmrsResponseStatus = lens _dhsmrsResponseStatus (\ s a -> s{_dhsmrsResponseStatus = a});
 
 -- | The status of the operation.
-dhsmrsStatus :: Lens' DeleteHSMResponse Text
+dhsmrsStatus :: Lens' (DeleteHSMResponse (a)) Text
 dhsmrsStatus = lens _dhsmrsStatus (\ s a -> s{_dhsmrsStatus = a});
 
 instance NFData DeleteHSMResponse

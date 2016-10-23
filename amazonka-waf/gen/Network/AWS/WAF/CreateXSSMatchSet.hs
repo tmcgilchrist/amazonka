@@ -125,7 +125,7 @@ instance ToQuery CreateXSSMatchSet where
 -- | The response to a 'CreateXssMatchSet' request.
 --
 -- /See:/ 'createXSSMatchSetResponse' smart constructor.
-data CreateXSSMatchSetResponse = CreateXSSMatchSetResponse'
+data CreateXSSMatchSetResponse a = CreateXSSMatchSetResponse'
     { _cxmsrsXSSMatchSet    :: !(Maybe XSSMatchSet)
     , _cxmsrsChangeToken    :: !(Maybe Text)
     , _cxmsrsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data CreateXSSMatchSetResponse = CreateXSSMatchSetResponse'
 -- * 'cxmsrsResponseStatus'
 createXSSMatchSetResponse
     :: Int -- ^ 'cxmsrsResponseStatus'
-    -> CreateXSSMatchSetResponse
+    -> CreateXSSMatchSetResponse (a)
 createXSSMatchSetResponse pResponseStatus_ =
     CreateXSSMatchSetResponse'
     { _cxmsrsXSSMatchSet = Nothing
@@ -151,15 +151,15 @@ createXSSMatchSetResponse pResponseStatus_ =
     }
 
 -- | An < XssMatchSet>.
-cxmsrsXSSMatchSet :: Lens' CreateXSSMatchSetResponse (Maybe XSSMatchSet)
+cxmsrsXSSMatchSet :: Lens' (CreateXSSMatchSetResponse (a)) (Maybe XSSMatchSet)
 cxmsrsXSSMatchSet = lens _cxmsrsXSSMatchSet (\ s a -> s{_cxmsrsXSSMatchSet = a});
 
 -- | The 'ChangeToken' that you used to submit the 'CreateXssMatchSet' request. You can also use this value to query the status of the request. For more information, see < GetChangeTokenStatus>.
-cxmsrsChangeToken :: Lens' CreateXSSMatchSetResponse (Maybe Text)
+cxmsrsChangeToken :: Lens' (CreateXSSMatchSetResponse (a)) (Maybe Text)
 cxmsrsChangeToken = lens _cxmsrsChangeToken (\ s a -> s{_cxmsrsChangeToken = a});
 
 -- | The response status code.
-cxmsrsResponseStatus :: Lens' CreateXSSMatchSetResponse Int
+cxmsrsResponseStatus :: Lens' (CreateXSSMatchSetResponse (a)) Int
 cxmsrsResponseStatus = lens _cxmsrsResponseStatus (\ s a -> s{_cxmsrsResponseStatus = a});
 
 instance NFData CreateXSSMatchSetResponse

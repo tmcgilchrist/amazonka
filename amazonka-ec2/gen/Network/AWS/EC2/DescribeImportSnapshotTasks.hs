@@ -141,7 +141,7 @@ instance ToQuery DescribeImportSnapshotTasks where
 -- | Contains the output for DescribeImportSnapshotTasks.
 --
 -- /See:/ 'describeImportSnapshotTasksResponse' smart constructor.
-data DescribeImportSnapshotTasksResponse = DescribeImportSnapshotTasksResponse'
+data DescribeImportSnapshotTasksResponse a = DescribeImportSnapshotTasksResponse'
     { _distrsNextToken           :: !(Maybe Text)
     , _distrsImportSnapshotTasks :: !(Maybe [ImportSnapshotTask])
     , _distrsResponseStatus      :: !Int
@@ -158,7 +158,7 @@ data DescribeImportSnapshotTasksResponse = DescribeImportSnapshotTasksResponse'
 -- * 'distrsResponseStatus'
 describeImportSnapshotTasksResponse
     :: Int -- ^ 'distrsResponseStatus'
-    -> DescribeImportSnapshotTasksResponse
+    -> DescribeImportSnapshotTasksResponse (a)
 describeImportSnapshotTasksResponse pResponseStatus_ =
     DescribeImportSnapshotTasksResponse'
     { _distrsNextToken = Nothing
@@ -167,15 +167,15 @@ describeImportSnapshotTasksResponse pResponseStatus_ =
     }
 
 -- | The token to use to get the next page of results. This value is 'null' when there are no more results to return.
-distrsNextToken :: Lens' DescribeImportSnapshotTasksResponse (Maybe Text)
+distrsNextToken :: Lens' (DescribeImportSnapshotTasksResponse (a)) (Maybe Text)
 distrsNextToken = lens _distrsNextToken (\ s a -> s{_distrsNextToken = a});
 
 -- | A list of zero or more import snapshot tasks that are currently active or were completed or canceled in the previous 7 days.
-distrsImportSnapshotTasks :: Lens' DescribeImportSnapshotTasksResponse [ImportSnapshotTask]
+distrsImportSnapshotTasks :: Lens' (DescribeImportSnapshotTasksResponse (a)) [ImportSnapshotTask]
 distrsImportSnapshotTasks = lens _distrsImportSnapshotTasks (\ s a -> s{_distrsImportSnapshotTasks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-distrsResponseStatus :: Lens' DescribeImportSnapshotTasksResponse Int
+distrsResponseStatus :: Lens' (DescribeImportSnapshotTasksResponse (a)) Int
 distrsResponseStatus = lens _distrsResponseStatus (\ s a -> s{_distrsResponseStatus = a});
 
 instance NFData DescribeImportSnapshotTasksResponse

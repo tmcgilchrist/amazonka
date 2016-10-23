@@ -152,7 +152,7 @@ instance ToQuery DescribeSnapshotCopyGrants where
 -- |
 --
 -- /See:/ 'describeSnapshotCopyGrantsResponse' smart constructor.
-data DescribeSnapshotCopyGrantsResponse = DescribeSnapshotCopyGrantsResponse'
+data DescribeSnapshotCopyGrantsResponse a = DescribeSnapshotCopyGrantsResponse'
     { _dscgrsSnapshotCopyGrants :: !(Maybe [SnapshotCopyGrant])
     , _dscgrsMarker             :: !(Maybe Text)
     , _dscgrsResponseStatus     :: !Int
@@ -169,7 +169,7 @@ data DescribeSnapshotCopyGrantsResponse = DescribeSnapshotCopyGrantsResponse'
 -- * 'dscgrsResponseStatus'
 describeSnapshotCopyGrantsResponse
     :: Int -- ^ 'dscgrsResponseStatus'
-    -> DescribeSnapshotCopyGrantsResponse
+    -> DescribeSnapshotCopyGrantsResponse (a)
 describeSnapshotCopyGrantsResponse pResponseStatus_ =
     DescribeSnapshotCopyGrantsResponse'
     { _dscgrsSnapshotCopyGrants = Nothing
@@ -178,17 +178,17 @@ describeSnapshotCopyGrantsResponse pResponseStatus_ =
     }
 
 -- | The list of 'SnapshotCopyGrant' objects.
-dscgrsSnapshotCopyGrants :: Lens' DescribeSnapshotCopyGrantsResponse [SnapshotCopyGrant]
+dscgrsSnapshotCopyGrants :: Lens' (DescribeSnapshotCopyGrantsResponse (a)) [SnapshotCopyGrant]
 dscgrsSnapshotCopyGrants = lens _dscgrsSnapshotCopyGrants (\ s a -> s{_dscgrsSnapshotCopyGrants = a}) . _Default . _Coerce;
 
 -- | An optional parameter that specifies the starting point to return a set of response records. When the results of a 'DescribeSnapshotCopyGrant' request exceed the value specified in 'MaxRecords', AWS returns a value in the 'Marker' field of the response. You can retrieve the next set of response records by providing the returned marker value in the 'Marker' parameter and retrying the request.
 --
 -- Constraints: You can specify either the __SnapshotCopyGrantName__ parameter or the __Marker__ parameter, but not both.
-dscgrsMarker :: Lens' DescribeSnapshotCopyGrantsResponse (Maybe Text)
+dscgrsMarker :: Lens' (DescribeSnapshotCopyGrantsResponse (a)) (Maybe Text)
 dscgrsMarker = lens _dscgrsMarker (\ s a -> s{_dscgrsMarker = a});
 
 -- | The response status code.
-dscgrsResponseStatus :: Lens' DescribeSnapshotCopyGrantsResponse Int
+dscgrsResponseStatus :: Lens' (DescribeSnapshotCopyGrantsResponse (a)) Int
 dscgrsResponseStatus = lens _dscgrsResponseStatus (\ s a -> s{_dscgrsResponseStatus = a});
 
 instance NFData DescribeSnapshotCopyGrantsResponse

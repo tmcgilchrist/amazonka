@@ -117,7 +117,7 @@ instance ToQuery CreatePlayerSession where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'createPlayerSessionResponse' smart constructor.
-data CreatePlayerSessionResponse = CreatePlayerSessionResponse'
+data CreatePlayerSessionResponse a = CreatePlayerSessionResponse'
     { _cpsrsPlayerSession  :: !(Maybe PlayerSession)
     , _cpsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data CreatePlayerSessionResponse = CreatePlayerSessionResponse'
 -- * 'cpsrsResponseStatus'
 createPlayerSessionResponse
     :: Int -- ^ 'cpsrsResponseStatus'
-    -> CreatePlayerSessionResponse
+    -> CreatePlayerSessionResponse (a)
 createPlayerSessionResponse pResponseStatus_ =
     CreatePlayerSessionResponse'
     { _cpsrsPlayerSession = Nothing
@@ -139,11 +139,11 @@ createPlayerSessionResponse pResponseStatus_ =
     }
 
 -- | Object containing the newly created player session record.
-cpsrsPlayerSession :: Lens' CreatePlayerSessionResponse (Maybe PlayerSession)
+cpsrsPlayerSession :: Lens' (CreatePlayerSessionResponse (a)) (Maybe PlayerSession)
 cpsrsPlayerSession = lens _cpsrsPlayerSession (\ s a -> s{_cpsrsPlayerSession = a});
 
 -- | The response status code.
-cpsrsResponseStatus :: Lens' CreatePlayerSessionResponse Int
+cpsrsResponseStatus :: Lens' (CreatePlayerSessionResponse (a)) Int
 cpsrsResponseStatus = lens _cpsrsResponseStatus (\ s a -> s{_cpsrsResponseStatus = a});
 
 instance NFData CreatePlayerSessionResponse

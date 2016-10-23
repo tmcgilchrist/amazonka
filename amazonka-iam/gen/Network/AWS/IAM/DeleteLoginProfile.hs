@@ -89,14 +89,14 @@ instance ToQuery DeleteLoginProfile where
                "UserName" =: _dlpUserName]
 
 -- | /See:/ 'deleteLoginProfileResponse' smart constructor.
-data DeleteLoginProfileResponse =
+data DeleteLoginProfileResponse a =
     DeleteLoginProfileResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteLoginProfileResponse' with the minimum fields required to make a request.
 --
 deleteLoginProfileResponse
-    :: DeleteLoginProfileResponse
+    :: DeleteLoginProfileResponse (a)
 deleteLoginProfileResponse = DeleteLoginProfileResponse'
 
 instance NFData DeleteLoginProfileResponse

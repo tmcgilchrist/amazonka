@@ -187,7 +187,7 @@ instance ToQuery ListApplicationRevisions where
 -- | Represents the output of a list application revisions operation.
 --
 -- /See:/ 'listApplicationRevisionsResponse' smart constructor.
-data ListApplicationRevisionsResponse = ListApplicationRevisionsResponse'
+data ListApplicationRevisionsResponse a = ListApplicationRevisionsResponse'
     { _larrsNextToken      :: !(Maybe Text)
     , _larrsRevisions      :: !(Maybe [RevisionLocation])
     , _larrsResponseStatus :: !Int
@@ -204,7 +204,7 @@ data ListApplicationRevisionsResponse = ListApplicationRevisionsResponse'
 -- * 'larrsResponseStatus'
 listApplicationRevisionsResponse
     :: Int -- ^ 'larrsResponseStatus'
-    -> ListApplicationRevisionsResponse
+    -> ListApplicationRevisionsResponse (a)
 listApplicationRevisionsResponse pResponseStatus_ =
     ListApplicationRevisionsResponse'
     { _larrsNextToken = Nothing
@@ -213,15 +213,15 @@ listApplicationRevisionsResponse pResponseStatus_ =
     }
 
 -- | If a large amount of information is returned, an identifier will also be returned. It can be used in a subsequent list application revisions call to return the next set of application revisions in the list.
-larrsNextToken :: Lens' ListApplicationRevisionsResponse (Maybe Text)
+larrsNextToken :: Lens' (ListApplicationRevisionsResponse (a)) (Maybe Text)
 larrsNextToken = lens _larrsNextToken (\ s a -> s{_larrsNextToken = a});
 
 -- | A list of locations that contain the matching revisions.
-larrsRevisions :: Lens' ListApplicationRevisionsResponse [RevisionLocation]
+larrsRevisions :: Lens' (ListApplicationRevisionsResponse (a)) [RevisionLocation]
 larrsRevisions = lens _larrsRevisions (\ s a -> s{_larrsRevisions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-larrsResponseStatus :: Lens' ListApplicationRevisionsResponse Int
+larrsResponseStatus :: Lens' (ListApplicationRevisionsResponse (a)) Int
 larrsResponseStatus = lens _larrsResponseStatus (\ s a -> s{_larrsResponseStatus = a});
 
 instance NFData ListApplicationRevisionsResponse

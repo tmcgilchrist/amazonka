@@ -101,7 +101,7 @@ instance ToQuery GetSuite where
 -- | Represents the result of a get suite request.
 --
 -- /See:/ 'getSuiteResponse' smart constructor.
-data GetSuiteResponse = GetSuiteResponse'
+data GetSuiteResponse a = GetSuiteResponse'
     { _gsrsSuite          :: !(Maybe Suite)
     , _gsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetSuiteResponse = GetSuiteResponse'
 -- * 'gsrsResponseStatus'
 getSuiteResponse
     :: Int -- ^ 'gsrsResponseStatus'
-    -> GetSuiteResponse
+    -> GetSuiteResponse (a)
 getSuiteResponse pResponseStatus_ =
     GetSuiteResponse'
     { _gsrsSuite = Nothing
@@ -123,11 +123,11 @@ getSuiteResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gsrsSuite :: Lens' GetSuiteResponse (Maybe Suite)
+gsrsSuite :: Lens' (GetSuiteResponse (a)) (Maybe Suite)
 gsrsSuite = lens _gsrsSuite (\ s a -> s{_gsrsSuite = a});
 
 -- | The response status code.
-gsrsResponseStatus :: Lens' GetSuiteResponse Int
+gsrsResponseStatus :: Lens' (GetSuiteResponse (a)) Int
 gsrsResponseStatus = lens _gsrsResponseStatus (\ s a -> s{_gsrsResponseStatus = a});
 
 instance NFData GetSuiteResponse

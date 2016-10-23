@@ -123,7 +123,7 @@ instance ToQuery DeleteChapCredentials where
 -- | A JSON object containing the following fields:
 --
 -- /See:/ 'deleteChapCredentialsResponse' smart constructor.
-data DeleteChapCredentialsResponse = DeleteChapCredentialsResponse'
+data DeleteChapCredentialsResponse a = DeleteChapCredentialsResponse'
     { _drsTargetARN      :: !(Maybe Text)
     , _drsInitiatorName  :: !(Maybe Text)
     , _drsResponseStatus :: !Int
@@ -140,7 +140,7 @@ data DeleteChapCredentialsResponse = DeleteChapCredentialsResponse'
 -- * 'drsResponseStatus'
 deleteChapCredentialsResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteChapCredentialsResponse
+    -> DeleteChapCredentialsResponse (a)
 deleteChapCredentialsResponse pResponseStatus_ =
     DeleteChapCredentialsResponse'
     { _drsTargetARN = Nothing
@@ -149,15 +149,15 @@ deleteChapCredentialsResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the target.
-drsTargetARN :: Lens' DeleteChapCredentialsResponse (Maybe Text)
+drsTargetARN :: Lens' (DeleteChapCredentialsResponse (a)) (Maybe Text)
 drsTargetARN = lens _drsTargetARN (\ s a -> s{_drsTargetARN = a});
 
 -- | The iSCSI initiator that connects to the target.
-drsInitiatorName :: Lens' DeleteChapCredentialsResponse (Maybe Text)
+drsInitiatorName :: Lens' (DeleteChapCredentialsResponse (a)) (Maybe Text)
 drsInitiatorName = lens _drsInitiatorName (\ s a -> s{_drsInitiatorName = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteChapCredentialsResponse Int
+drsResponseStatus :: Lens' (DeleteChapCredentialsResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteChapCredentialsResponse

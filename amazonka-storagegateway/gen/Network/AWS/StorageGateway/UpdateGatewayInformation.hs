@@ -127,7 +127,7 @@ instance ToQuery UpdateGatewayInformation where
 -- | A JSON object containing the ARN of the gateway that was updated.
 --
 -- /See:/ 'updateGatewayInformationResponse' smart constructor.
-data UpdateGatewayInformationResponse = UpdateGatewayInformationResponse'
+data UpdateGatewayInformationResponse a = UpdateGatewayInformationResponse'
     { _ugirsGatewayARN     :: !(Maybe Text)
     , _ugirsGatewayName    :: !(Maybe Text)
     , _ugirsResponseStatus :: !Int
@@ -144,7 +144,7 @@ data UpdateGatewayInformationResponse = UpdateGatewayInformationResponse'
 -- * 'ugirsResponseStatus'
 updateGatewayInformationResponse
     :: Int -- ^ 'ugirsResponseStatus'
-    -> UpdateGatewayInformationResponse
+    -> UpdateGatewayInformationResponse (a)
 updateGatewayInformationResponse pResponseStatus_ =
     UpdateGatewayInformationResponse'
     { _ugirsGatewayARN = Nothing
@@ -153,15 +153,15 @@ updateGatewayInformationResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ugirsGatewayARN :: Lens' UpdateGatewayInformationResponse (Maybe Text)
+ugirsGatewayARN :: Lens' (UpdateGatewayInformationResponse (a)) (Maybe Text)
 ugirsGatewayARN = lens _ugirsGatewayARN (\ s a -> s{_ugirsGatewayARN = a});
 
 -- | Undocumented member.
-ugirsGatewayName :: Lens' UpdateGatewayInformationResponse (Maybe Text)
+ugirsGatewayName :: Lens' (UpdateGatewayInformationResponse (a)) (Maybe Text)
 ugirsGatewayName = lens _ugirsGatewayName (\ s a -> s{_ugirsGatewayName = a});
 
 -- | The response status code.
-ugirsResponseStatus :: Lens' UpdateGatewayInformationResponse Int
+ugirsResponseStatus :: Lens' (UpdateGatewayInformationResponse (a)) Int
 ugirsResponseStatus = lens _ugirsResponseStatus (\ s a -> s{_ugirsResponseStatus = a});
 
 instance NFData UpdateGatewayInformationResponse

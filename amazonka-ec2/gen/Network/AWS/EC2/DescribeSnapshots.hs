@@ -218,7 +218,7 @@ instance ToQuery DescribeSnapshots where
 -- | Contains the output of DescribeSnapshots.
 --
 -- /See:/ 'describeSnapshotsResponse' smart constructor.
-data DescribeSnapshotsResponse = DescribeSnapshotsResponse'
+data DescribeSnapshotsResponse a = DescribeSnapshotsResponse'
     { _dssrsNextToken      :: !(Maybe Text)
     , _dssrsSnapshots      :: !(Maybe [Snapshot])
     , _dssrsResponseStatus :: !Int
@@ -235,7 +235,7 @@ data DescribeSnapshotsResponse = DescribeSnapshotsResponse'
 -- * 'dssrsResponseStatus'
 describeSnapshotsResponse
     :: Int -- ^ 'dssrsResponseStatus'
-    -> DescribeSnapshotsResponse
+    -> DescribeSnapshotsResponse (a)
 describeSnapshotsResponse pResponseStatus_ =
     DescribeSnapshotsResponse'
     { _dssrsNextToken = Nothing
@@ -244,15 +244,15 @@ describeSnapshotsResponse pResponseStatus_ =
     }
 
 -- | The 'NextToken' value to include in a future 'DescribeSnapshots' request. When the results of a 'DescribeSnapshots' request exceed 'MaxResults', this value can be used to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dssrsNextToken :: Lens' DescribeSnapshotsResponse (Maybe Text)
+dssrsNextToken :: Lens' (DescribeSnapshotsResponse (a)) (Maybe Text)
 dssrsNextToken = lens _dssrsNextToken (\ s a -> s{_dssrsNextToken = a});
 
 -- | Information about the snapshots.
-dssrsSnapshots :: Lens' DescribeSnapshotsResponse [Snapshot]
+dssrsSnapshots :: Lens' (DescribeSnapshotsResponse (a)) [Snapshot]
 dssrsSnapshots = lens _dssrsSnapshots (\ s a -> s{_dssrsSnapshots = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dssrsResponseStatus :: Lens' DescribeSnapshotsResponse Int
+dssrsResponseStatus :: Lens' (DescribeSnapshotsResponse (a)) Int
 dssrsResponseStatus = lens _dssrsResponseStatus (\ s a -> s{_dssrsResponseStatus = a});
 
 instance NFData DescribeSnapshotsResponse

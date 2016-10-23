@@ -119,14 +119,14 @@ instance ToQuery DeprecateActivityType where
         toQuery = const mempty
 
 -- | /See:/ 'deprecateActivityTypeResponse' smart constructor.
-data DeprecateActivityTypeResponse =
+data DeprecateActivityTypeResponse a =
     DeprecateActivityTypeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeprecateActivityTypeResponse' with the minimum fields required to make a request.
 --
 deprecateActivityTypeResponse
-    :: DeprecateActivityTypeResponse
+    :: DeprecateActivityTypeResponse (a)
 deprecateActivityTypeResponse = DeprecateActivityTypeResponse'
 
 instance NFData DeprecateActivityTypeResponse

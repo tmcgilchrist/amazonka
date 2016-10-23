@@ -125,7 +125,7 @@ instance ToQuery CreateAssociation where
         toQuery = const mempty
 
 -- | /See:/ 'createAssociationResponse' smart constructor.
-data CreateAssociationResponse = CreateAssociationResponse'
+data CreateAssociationResponse a = CreateAssociationResponse'
     { _crsAssociationDescription :: !(Maybe AssociationDescription)
     , _crsResponseStatus         :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -139,7 +139,7 @@ data CreateAssociationResponse = CreateAssociationResponse'
 -- * 'crsResponseStatus'
 createAssociationResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CreateAssociationResponse
+    -> CreateAssociationResponse (a)
 createAssociationResponse pResponseStatus_ =
     CreateAssociationResponse'
     { _crsAssociationDescription = Nothing
@@ -147,11 +147,11 @@ createAssociationResponse pResponseStatus_ =
     }
 
 -- | Information about the association.
-crsAssociationDescription :: Lens' CreateAssociationResponse (Maybe AssociationDescription)
+crsAssociationDescription :: Lens' (CreateAssociationResponse (a)) (Maybe AssociationDescription)
 crsAssociationDescription = lens _crsAssociationDescription (\ s a -> s{_crsAssociationDescription = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CreateAssociationResponse Int
+crsResponseStatus :: Lens' (CreateAssociationResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CreateAssociationResponse

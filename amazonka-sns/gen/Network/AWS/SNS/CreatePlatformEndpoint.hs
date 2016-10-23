@@ -134,7 +134,7 @@ instance ToQuery CreatePlatformEndpoint where
 -- | Response from CreateEndpoint action.
 --
 -- /See:/ 'createPlatformEndpointResponse' smart constructor.
-data CreatePlatformEndpointResponse = CreatePlatformEndpointResponse'
+data CreatePlatformEndpointResponse a = CreatePlatformEndpointResponse'
     { _cpersEndpointARN    :: !(Maybe Text)
     , _cpersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -148,7 +148,7 @@ data CreatePlatformEndpointResponse = CreatePlatformEndpointResponse'
 -- * 'cpersResponseStatus'
 createPlatformEndpointResponse
     :: Int -- ^ 'cpersResponseStatus'
-    -> CreatePlatformEndpointResponse
+    -> CreatePlatformEndpointResponse (a)
 createPlatformEndpointResponse pResponseStatus_ =
     CreatePlatformEndpointResponse'
     { _cpersEndpointARN = Nothing
@@ -156,11 +156,11 @@ createPlatformEndpointResponse pResponseStatus_ =
     }
 
 -- | EndpointArn returned from CreateEndpoint action.
-cpersEndpointARN :: Lens' CreatePlatformEndpointResponse (Maybe Text)
+cpersEndpointARN :: Lens' (CreatePlatformEndpointResponse (a)) (Maybe Text)
 cpersEndpointARN = lens _cpersEndpointARN (\ s a -> s{_cpersEndpointARN = a});
 
 -- | The response status code.
-cpersResponseStatus :: Lens' CreatePlatformEndpointResponse Int
+cpersResponseStatus :: Lens' (CreatePlatformEndpointResponse (a)) Int
 cpersResponseStatus = lens _cpersResponseStatus (\ s a -> s{_cpersResponseStatus = a});
 
 instance NFData CreatePlatformEndpointResponse

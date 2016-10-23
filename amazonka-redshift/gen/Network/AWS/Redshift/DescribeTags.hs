@@ -172,7 +172,7 @@ instance ToQuery DescribeTags where
 -- |
 --
 -- /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse = DescribeTagsResponse'
+data DescribeTagsResponse a = DescribeTagsResponse'
     { _dtrsMarker          :: !(Maybe Text)
     , _dtrsTaggedResources :: !(Maybe [TaggedResource])
     , _dtrsResponseStatus  :: !Int
@@ -189,7 +189,7 @@ data DescribeTagsResponse = DescribeTagsResponse'
 -- * 'dtrsResponseStatus'
 describeTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
-    -> DescribeTagsResponse
+    -> DescribeTagsResponse (a)
 describeTagsResponse pResponseStatus_ =
     DescribeTagsResponse'
     { _dtrsMarker = Nothing
@@ -198,15 +198,15 @@ describeTagsResponse pResponseStatus_ =
     }
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dtrsMarker :: Lens' DescribeTagsResponse (Maybe Text)
+dtrsMarker :: Lens' (DescribeTagsResponse (a)) (Maybe Text)
 dtrsMarker = lens _dtrsMarker (\ s a -> s{_dtrsMarker = a});
 
 -- | A list of tags with their associated resources.
-dtrsTaggedResources :: Lens' DescribeTagsResponse [TaggedResource]
+dtrsTaggedResources :: Lens' (DescribeTagsResponse (a)) [TaggedResource]
 dtrsTaggedResources = lens _dtrsTaggedResources (\ s a -> s{_dtrsTaggedResources = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtrsResponseStatus :: Lens' DescribeTagsResponse Int
+dtrsResponseStatus :: Lens' (DescribeTagsResponse (a)) Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a});
 
 instance NFData DescribeTagsResponse

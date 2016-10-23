@@ -117,7 +117,7 @@ instance ToQuery ApplySecurityGroupsToLoadBalancer
 -- | Contains the output of ApplySecurityGroupsToLoadBalancer.
 --
 -- /See:/ 'applySecurityGroupsToLoadBalancerResponse' smart constructor.
-data ApplySecurityGroupsToLoadBalancerResponse = ApplySecurityGroupsToLoadBalancerResponse'
+data ApplySecurityGroupsToLoadBalancerResponse a = ApplySecurityGroupsToLoadBalancerResponse'
     { _asgtlbrsSecurityGroups :: !(Maybe [Text])
     , _asgtlbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data ApplySecurityGroupsToLoadBalancerResponse = ApplySecurityGroupsToLoadBalanc
 -- * 'asgtlbrsResponseStatus'
 applySecurityGroupsToLoadBalancerResponse
     :: Int -- ^ 'asgtlbrsResponseStatus'
-    -> ApplySecurityGroupsToLoadBalancerResponse
+    -> ApplySecurityGroupsToLoadBalancerResponse (a)
 applySecurityGroupsToLoadBalancerResponse pResponseStatus_ =
     ApplySecurityGroupsToLoadBalancerResponse'
     { _asgtlbrsSecurityGroups = Nothing
@@ -139,11 +139,11 @@ applySecurityGroupsToLoadBalancerResponse pResponseStatus_ =
     }
 
 -- | The IDs of the security groups associated with the load balancer.
-asgtlbrsSecurityGroups :: Lens' ApplySecurityGroupsToLoadBalancerResponse [Text]
+asgtlbrsSecurityGroups :: Lens' (ApplySecurityGroupsToLoadBalancerResponse (a)) [Text]
 asgtlbrsSecurityGroups = lens _asgtlbrsSecurityGroups (\ s a -> s{_asgtlbrsSecurityGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-asgtlbrsResponseStatus :: Lens' ApplySecurityGroupsToLoadBalancerResponse Int
+asgtlbrsResponseStatus :: Lens' (ApplySecurityGroupsToLoadBalancerResponse (a)) Int
 asgtlbrsResponseStatus = lens _asgtlbrsResponseStatus (\ s a -> s{_asgtlbrsResponseStatus = a});
 
 instance NFData

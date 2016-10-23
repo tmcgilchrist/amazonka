@@ -88,14 +88,14 @@ instance ToQuery DeleteRole where
                "RoleName" =: _drRoleName]
 
 -- | /See:/ 'deleteRoleResponse' smart constructor.
-data DeleteRoleResponse =
+data DeleteRoleResponse a =
     DeleteRoleResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteRoleResponse' with the minimum fields required to make a request.
 --
 deleteRoleResponse
-    :: DeleteRoleResponse
+    :: DeleteRoleResponse (a)
 deleteRoleResponse = DeleteRoleResponse'
 
 instance NFData DeleteRoleResponse

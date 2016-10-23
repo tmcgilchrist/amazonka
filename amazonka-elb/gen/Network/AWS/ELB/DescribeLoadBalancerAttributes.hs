@@ -101,7 +101,7 @@ instance ToQuery DescribeLoadBalancerAttributes where
 -- | Contains the output of DescribeLoadBalancerAttributes.
 --
 -- /See:/ 'describeLoadBalancerAttributesResponse' smart constructor.
-data DescribeLoadBalancerAttributesResponse = DescribeLoadBalancerAttributesResponse'
+data DescribeLoadBalancerAttributesResponse a = DescribeLoadBalancerAttributesResponse'
     { _dlbarsLoadBalancerAttributes :: !(Maybe LoadBalancerAttributes)
     , _dlbarsResponseStatus         :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data DescribeLoadBalancerAttributesResponse = DescribeLoadBalancerAttributesResp
 -- * 'dlbarsResponseStatus'
 describeLoadBalancerAttributesResponse
     :: Int -- ^ 'dlbarsResponseStatus'
-    -> DescribeLoadBalancerAttributesResponse
+    -> DescribeLoadBalancerAttributesResponse (a)
 describeLoadBalancerAttributesResponse pResponseStatus_ =
     DescribeLoadBalancerAttributesResponse'
     { _dlbarsLoadBalancerAttributes = Nothing
@@ -123,11 +123,11 @@ describeLoadBalancerAttributesResponse pResponseStatus_ =
     }
 
 -- | Information about the load balancer attributes.
-dlbarsLoadBalancerAttributes :: Lens' DescribeLoadBalancerAttributesResponse (Maybe LoadBalancerAttributes)
+dlbarsLoadBalancerAttributes :: Lens' (DescribeLoadBalancerAttributesResponse (a)) (Maybe LoadBalancerAttributes)
 dlbarsLoadBalancerAttributes = lens _dlbarsLoadBalancerAttributes (\ s a -> s{_dlbarsLoadBalancerAttributes = a});
 
 -- | The response status code.
-dlbarsResponseStatus :: Lens' DescribeLoadBalancerAttributesResponse Int
+dlbarsResponseStatus :: Lens' (DescribeLoadBalancerAttributesResponse (a)) Int
 dlbarsResponseStatus = lens _dlbarsResponseStatus (\ s a -> s{_dlbarsResponseStatus = a});
 
 instance NFData

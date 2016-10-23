@@ -121,7 +121,7 @@ instance ToQuery DescribeVPCAttribute where
 -- | Contains the output of DescribeVpcAttribute.
 --
 -- /See:/ 'describeVPCAttributeResponse' smart constructor.
-data DescribeVPCAttributeResponse = DescribeVPCAttributeResponse'
+data DescribeVPCAttributeResponse a = DescribeVPCAttributeResponse'
     { _dvpcarsEnableDNSHostnames :: !(Maybe AttributeBooleanValue)
     , _dvpcarsEnableDNSSupport   :: !(Maybe AttributeBooleanValue)
     , _dvpcarsVPCId              :: !(Maybe Text)
@@ -141,7 +141,7 @@ data DescribeVPCAttributeResponse = DescribeVPCAttributeResponse'
 -- * 'dvpcarsResponseStatus'
 describeVPCAttributeResponse
     :: Int -- ^ 'dvpcarsResponseStatus'
-    -> DescribeVPCAttributeResponse
+    -> DescribeVPCAttributeResponse (a)
 describeVPCAttributeResponse pResponseStatus_ =
     DescribeVPCAttributeResponse'
     { _dvpcarsEnableDNSHostnames = Nothing
@@ -151,19 +151,19 @@ describeVPCAttributeResponse pResponseStatus_ =
     }
 
 -- | Indicates whether the instances launched in the VPC get DNS hostnames. If this attribute is 'true', instances in the VPC get DNS hostnames; otherwise, they do not.
-dvpcarsEnableDNSHostnames :: Lens' DescribeVPCAttributeResponse (Maybe AttributeBooleanValue)
+dvpcarsEnableDNSHostnames :: Lens' (DescribeVPCAttributeResponse (a)) (Maybe AttributeBooleanValue)
 dvpcarsEnableDNSHostnames = lens _dvpcarsEnableDNSHostnames (\ s a -> s{_dvpcarsEnableDNSHostnames = a});
 
 -- | Indicates whether DNS resolution is enabled for the VPC. If this attribute is 'true', the Amazon DNS server resolves DNS hostnames for your instances to their corresponding IP addresses; otherwise, it does not.
-dvpcarsEnableDNSSupport :: Lens' DescribeVPCAttributeResponse (Maybe AttributeBooleanValue)
+dvpcarsEnableDNSSupport :: Lens' (DescribeVPCAttributeResponse (a)) (Maybe AttributeBooleanValue)
 dvpcarsEnableDNSSupport = lens _dvpcarsEnableDNSSupport (\ s a -> s{_dvpcarsEnableDNSSupport = a});
 
 -- | The ID of the VPC.
-dvpcarsVPCId :: Lens' DescribeVPCAttributeResponse (Maybe Text)
+dvpcarsVPCId :: Lens' (DescribeVPCAttributeResponse (a)) (Maybe Text)
 dvpcarsVPCId = lens _dvpcarsVPCId (\ s a -> s{_dvpcarsVPCId = a});
 
 -- | The response status code.
-dvpcarsResponseStatus :: Lens' DescribeVPCAttributeResponse Int
+dvpcarsResponseStatus :: Lens' (DescribeVPCAttributeResponse (a)) Int
 dvpcarsResponseStatus = lens _dvpcarsResponseStatus (\ s a -> s{_dvpcarsResponseStatus = a});
 
 instance NFData DescribeVPCAttributeResponse

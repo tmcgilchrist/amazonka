@@ -170,7 +170,7 @@ instance ToQuery PutRecord where
 -- | Represents the output for 'PutRecord'.
 --
 -- /See:/ 'putRecordResponse' smart constructor.
-data PutRecordResponse = PutRecordResponse'
+data PutRecordResponse a = PutRecordResponse'
     { _prrsResponseStatus :: !Int
     , _prrsShardId        :: !Text
     , _prrsSequenceNumber :: !Text
@@ -189,7 +189,7 @@ putRecordResponse
     :: Int -- ^ 'prrsResponseStatus'
     -> Text -- ^ 'prrsShardId'
     -> Text -- ^ 'prrsSequenceNumber'
-    -> PutRecordResponse
+    -> PutRecordResponse (a)
 putRecordResponse pResponseStatus_ pShardId_ pSequenceNumber_ =
     PutRecordResponse'
     { _prrsResponseStatus = pResponseStatus_
@@ -198,15 +198,15 @@ putRecordResponse pResponseStatus_ pShardId_ pSequenceNumber_ =
     }
 
 -- | The response status code.
-prrsResponseStatus :: Lens' PutRecordResponse Int
+prrsResponseStatus :: Lens' (PutRecordResponse (a)) Int
 prrsResponseStatus = lens _prrsResponseStatus (\ s a -> s{_prrsResponseStatus = a});
 
 -- | The shard ID of the shard where the data record was placed.
-prrsShardId :: Lens' PutRecordResponse Text
+prrsShardId :: Lens' (PutRecordResponse (a)) Text
 prrsShardId = lens _prrsShardId (\ s a -> s{_prrsShardId = a});
 
 -- | The sequence number identifier that was assigned to the put data record. The sequence number for the record is unique across all records in the stream. A sequence number is the identifier associated with every record put into the stream.
-prrsSequenceNumber :: Lens' PutRecordResponse Text
+prrsSequenceNumber :: Lens' (PutRecordResponse (a)) Text
 prrsSequenceNumber = lens _prrsSequenceNumber (\ s a -> s{_prrsSequenceNumber = a});
 
 instance NFData PutRecordResponse

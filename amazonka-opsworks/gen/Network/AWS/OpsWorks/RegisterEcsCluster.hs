@@ -116,7 +116,7 @@ instance ToQuery RegisterEcsCluster where
 -- | Contains the response to a 'RegisterEcsCluster' request.
 --
 -- /See:/ 'registerEcsClusterResponse' smart constructor.
-data RegisterEcsClusterResponse = RegisterEcsClusterResponse'
+data RegisterEcsClusterResponse a = RegisterEcsClusterResponse'
     { _recrsEcsClusterARN  :: !(Maybe Text)
     , _recrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data RegisterEcsClusterResponse = RegisterEcsClusterResponse'
 -- * 'recrsResponseStatus'
 registerEcsClusterResponse
     :: Int -- ^ 'recrsResponseStatus'
-    -> RegisterEcsClusterResponse
+    -> RegisterEcsClusterResponse (a)
 registerEcsClusterResponse pResponseStatus_ =
     RegisterEcsClusterResponse'
     { _recrsEcsClusterARN = Nothing
@@ -138,11 +138,11 @@ registerEcsClusterResponse pResponseStatus_ =
     }
 
 -- | The cluster\'s ARN.
-recrsEcsClusterARN :: Lens' RegisterEcsClusterResponse (Maybe Text)
+recrsEcsClusterARN :: Lens' (RegisterEcsClusterResponse (a)) (Maybe Text)
 recrsEcsClusterARN = lens _recrsEcsClusterARN (\ s a -> s{_recrsEcsClusterARN = a});
 
 -- | The response status code.
-recrsResponseStatus :: Lens' RegisterEcsClusterResponse Int
+recrsResponseStatus :: Lens' (RegisterEcsClusterResponse (a)) Int
 recrsResponseStatus = lens _recrsResponseStatus (\ s a -> s{_recrsResponseStatus = a});
 
 instance NFData RegisterEcsClusterResponse

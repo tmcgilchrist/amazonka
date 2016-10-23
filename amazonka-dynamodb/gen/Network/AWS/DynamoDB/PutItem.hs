@@ -390,7 +390,7 @@ instance ToQuery PutItem where
 -- | Represents the output of a /PutItem/ operation.
 --
 -- /See:/ 'putItemResponse' smart constructor.
-data PutItemResponse = PutItemResponse'
+data PutItemResponse a = PutItemResponse'
     { _pirsItemCollectionMetrics :: !(Maybe ItemCollectionMetrics)
     , _pirsConsumedCapacity      :: !(Maybe ConsumedCapacity)
     , _pirsAttributes            :: !(Maybe (Map Text AttributeValue))
@@ -410,7 +410,7 @@ data PutItemResponse = PutItemResponse'
 -- * 'pirsResponseStatus'
 putItemResponse
     :: Int -- ^ 'pirsResponseStatus'
-    -> PutItemResponse
+    -> PutItemResponse (a)
 putItemResponse pResponseStatus_ =
     PutItemResponse'
     { _pirsItemCollectionMetrics = Nothing
@@ -429,19 +429,19 @@ putItemResponse pResponseStatus_ =
 --
 --     The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
 --
-pirsItemCollectionMetrics :: Lens' PutItemResponse (Maybe ItemCollectionMetrics)
+pirsItemCollectionMetrics :: Lens' (PutItemResponse (a)) (Maybe ItemCollectionMetrics)
 pirsItemCollectionMetrics = lens _pirsItemCollectionMetrics (\ s a -> s{_pirsItemCollectionMetrics = a});
 
 -- | Undocumented member.
-pirsConsumedCapacity :: Lens' PutItemResponse (Maybe ConsumedCapacity)
+pirsConsumedCapacity :: Lens' (PutItemResponse (a)) (Maybe ConsumedCapacity)
 pirsConsumedCapacity = lens _pirsConsumedCapacity (\ s a -> s{_pirsConsumedCapacity = a});
 
 -- | The attribute values as they appeared before the /PutItem/ operation, but only if /ReturnValues/ is specified as 'ALL_OLD' in the request. Each element consists of an attribute name and an attribute value.
-pirsAttributes :: Lens' PutItemResponse (HashMap Text AttributeValue)
+pirsAttributes :: Lens' (PutItemResponse (a)) (HashMap Text AttributeValue)
 pirsAttributes = lens _pirsAttributes (\ s a -> s{_pirsAttributes = a}) . _Default . _Map;
 
 -- | The response status code.
-pirsResponseStatus :: Lens' PutItemResponse Int
+pirsResponseStatus :: Lens' (PutItemResponse (a)) Int
 pirsResponseStatus = lens _pirsResponseStatus (\ s a -> s{_pirsResponseStatus = a});
 
 instance NFData PutItemResponse

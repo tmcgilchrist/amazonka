@@ -192,7 +192,7 @@ instance ToQuery DescribeOrderableDBInstanceOptions
 -- | Contains the result of a successful invocation of the < DescribeOrderableDBInstanceOptions> action.
 --
 -- /See:/ 'describeOrderableDBInstanceOptionsResponse' smart constructor.
-data DescribeOrderableDBInstanceOptionsResponse = DescribeOrderableDBInstanceOptionsResponse'
+data DescribeOrderableDBInstanceOptionsResponse a = DescribeOrderableDBInstanceOptionsResponse'
     { _dodiorsOrderableDBInstanceOptions :: !(Maybe [OrderableDBInstanceOption])
     , _dodiorsMarker                     :: !(Maybe Text)
     , _dodiorsResponseStatus             :: !Int
@@ -209,7 +209,7 @@ data DescribeOrderableDBInstanceOptionsResponse = DescribeOrderableDBInstanceOpt
 -- * 'dodiorsResponseStatus'
 describeOrderableDBInstanceOptionsResponse
     :: Int -- ^ 'dodiorsResponseStatus'
-    -> DescribeOrderableDBInstanceOptionsResponse
+    -> DescribeOrderableDBInstanceOptionsResponse (a)
 describeOrderableDBInstanceOptionsResponse pResponseStatus_ =
     DescribeOrderableDBInstanceOptionsResponse'
     { _dodiorsOrderableDBInstanceOptions = Nothing
@@ -218,15 +218,15 @@ describeOrderableDBInstanceOptionsResponse pResponseStatus_ =
     }
 
 -- | An < OrderableDBInstanceOption> structure containing information about orderable options for the DB instance.
-dodiorsOrderableDBInstanceOptions :: Lens' DescribeOrderableDBInstanceOptionsResponse [OrderableDBInstanceOption]
+dodiorsOrderableDBInstanceOptions :: Lens' (DescribeOrderableDBInstanceOptionsResponse (a)) [OrderableDBInstanceOption]
 dodiorsOrderableDBInstanceOptions = lens _dodiorsOrderableDBInstanceOptions (\ s a -> s{_dodiorsOrderableDBInstanceOptions = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous OrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords' .
-dodiorsMarker :: Lens' DescribeOrderableDBInstanceOptionsResponse (Maybe Text)
+dodiorsMarker :: Lens' (DescribeOrderableDBInstanceOptionsResponse (a)) (Maybe Text)
 dodiorsMarker = lens _dodiorsMarker (\ s a -> s{_dodiorsMarker = a});
 
 -- | The response status code.
-dodiorsResponseStatus :: Lens' DescribeOrderableDBInstanceOptionsResponse Int
+dodiorsResponseStatus :: Lens' (DescribeOrderableDBInstanceOptionsResponse (a)) Int
 dodiorsResponseStatus = lens _dodiorsResponseStatus (\ s a -> s{_dodiorsResponseStatus = a});
 
 instance NFData

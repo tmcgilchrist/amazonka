@@ -118,7 +118,7 @@ instance ToQuery GetUsagePlans where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans>
 --
 -- /See:/ 'getUsagePlansResponse' smart constructor.
-data GetUsagePlansResponse = GetUsagePlansResponse'
+data GetUsagePlansResponse a = GetUsagePlansResponse'
     { _guprsItems          :: !(Maybe [UsagePlan])
     , _guprsPosition       :: !(Maybe Text)
     , _guprsResponseStatus :: !Int
@@ -135,7 +135,7 @@ data GetUsagePlansResponse = GetUsagePlansResponse'
 -- * 'guprsResponseStatus'
 getUsagePlansResponse
     :: Int -- ^ 'guprsResponseStatus'
-    -> GetUsagePlansResponse
+    -> GetUsagePlansResponse (a)
 getUsagePlansResponse pResponseStatus_ =
     GetUsagePlansResponse'
     { _guprsItems = Nothing
@@ -144,15 +144,15 @@ getUsagePlansResponse pResponseStatus_ =
     }
 
 -- | Gets the current item when enumerating the collection of < UsagePlan>.
-guprsItems :: Lens' GetUsagePlansResponse [UsagePlan]
+guprsItems :: Lens' (GetUsagePlansResponse (a)) [UsagePlan]
 guprsItems = lens _guprsItems (\ s a -> s{_guprsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-guprsPosition :: Lens' GetUsagePlansResponse (Maybe Text)
+guprsPosition :: Lens' (GetUsagePlansResponse (a)) (Maybe Text)
 guprsPosition = lens _guprsPosition (\ s a -> s{_guprsPosition = a});
 
 -- | The response status code.
-guprsResponseStatus :: Lens' GetUsagePlansResponse Int
+guprsResponseStatus :: Lens' (GetUsagePlansResponse (a)) Int
 guprsResponseStatus = lens _guprsResponseStatus (\ s a -> s{_guprsResponseStatus = a});
 
 instance NFData GetUsagePlansResponse

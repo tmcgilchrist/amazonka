@@ -108,14 +108,14 @@ instance ToQuery RevokeGrant where
         toQuery = const mempty
 
 -- | /See:/ 'revokeGrantResponse' smart constructor.
-data RevokeGrantResponse =
+data RevokeGrantResponse a =
     RevokeGrantResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RevokeGrantResponse' with the minimum fields required to make a request.
 --
 revokeGrantResponse
-    :: RevokeGrantResponse
+    :: RevokeGrantResponse (a)
 revokeGrantResponse = RevokeGrantResponse'
 
 instance NFData RevokeGrantResponse

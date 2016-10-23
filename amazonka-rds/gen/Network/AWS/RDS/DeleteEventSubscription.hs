@@ -95,7 +95,7 @@ instance ToQuery DeleteEventSubscription where
                "SubscriptionName" =: _desSubscriptionName]
 
 -- | /See:/ 'deleteEventSubscriptionResponse' smart constructor.
-data DeleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'
+data DeleteEventSubscriptionResponse a = DeleteEventSubscriptionResponse'
     { _drsEventSubscription :: !(Maybe EventSubscription)
     , _drsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -109,7 +109,7 @@ data DeleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'
 -- * 'drsResponseStatus'
 deleteEventSubscriptionResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteEventSubscriptionResponse
+    -> DeleteEventSubscriptionResponse (a)
 deleteEventSubscriptionResponse pResponseStatus_ =
     DeleteEventSubscriptionResponse'
     { _drsEventSubscription = Nothing
@@ -117,11 +117,11 @@ deleteEventSubscriptionResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-drsEventSubscription :: Lens' DeleteEventSubscriptionResponse (Maybe EventSubscription)
+drsEventSubscription :: Lens' (DeleteEventSubscriptionResponse (a)) (Maybe EventSubscription)
 drsEventSubscription = lens _drsEventSubscription (\ s a -> s{_drsEventSubscription = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteEventSubscriptionResponse Int
+drsResponseStatus :: Lens' (DeleteEventSubscriptionResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteEventSubscriptionResponse

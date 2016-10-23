@@ -107,14 +107,14 @@ instance ToQuery PutJobFailureResult where
         toQuery = const mempty
 
 -- | /See:/ 'putJobFailureResultResponse' smart constructor.
-data PutJobFailureResultResponse =
+data PutJobFailureResultResponse a =
     PutJobFailureResultResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutJobFailureResultResponse' with the minimum fields required to make a request.
 --
 putJobFailureResultResponse
-    :: PutJobFailureResultResponse
+    :: PutJobFailureResultResponse (a)
 putJobFailureResultResponse = PutJobFailureResultResponse'
 
 instance NFData PutJobFailureResultResponse

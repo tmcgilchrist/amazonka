@@ -353,7 +353,7 @@ instance ToQuery PutObject where
         toQuery = const mempty
 
 -- | /See:/ 'putObjectResponse' smart constructor.
-data PutObjectResponse = PutObjectResponse'
+data PutObjectResponse a = PutObjectResponse'
     { _porsRequestCharged       :: !(Maybe RequestCharged)
     , _porsETag                 :: !(Maybe ETag)
     , _porsVersionId            :: !(Maybe ObjectVersionId)
@@ -388,7 +388,7 @@ data PutObjectResponse = PutObjectResponse'
 -- * 'porsResponseStatus'
 putObjectResponse
     :: Int -- ^ 'porsResponseStatus'
-    -> PutObjectResponse
+    -> PutObjectResponse (a)
 putObjectResponse pResponseStatus_ =
     PutObjectResponse'
     { _porsRequestCharged = Nothing
@@ -403,39 +403,39 @@ putObjectResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-porsRequestCharged :: Lens' PutObjectResponse (Maybe RequestCharged)
+porsRequestCharged :: Lens' (PutObjectResponse (a)) (Maybe RequestCharged)
 porsRequestCharged = lens _porsRequestCharged (\ s a -> s{_porsRequestCharged = a});
 
 -- | Entity tag for the uploaded object.
-porsETag :: Lens' PutObjectResponse (Maybe ETag)
+porsETag :: Lens' (PutObjectResponse (a)) (Maybe ETag)
 porsETag = lens _porsETag (\ s a -> s{_porsETag = a});
 
 -- | Version of the object.
-porsVersionId :: Lens' PutObjectResponse (Maybe ObjectVersionId)
+porsVersionId :: Lens' (PutObjectResponse (a)) (Maybe ObjectVersionId)
 porsVersionId = lens _porsVersionId (\ s a -> s{_porsVersionId = a});
 
 -- | If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
-porsExpiration :: Lens' PutObjectResponse (Maybe Text)
+porsExpiration :: Lens' (PutObjectResponse (a)) (Maybe Text)
 porsExpiration = lens _porsExpiration (\ s a -> s{_porsExpiration = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
-porsSSECustomerAlgorithm :: Lens' PutObjectResponse (Maybe Text)
+porsSSECustomerAlgorithm :: Lens' (PutObjectResponse (a)) (Maybe Text)
 porsSSECustomerAlgorithm = lens _porsSSECustomerAlgorithm (\ s a -> s{_porsSSECustomerAlgorithm = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-porsSSECustomerKeyMD5 :: Lens' PutObjectResponse (Maybe Text)
+porsSSECustomerKeyMD5 :: Lens' (PutObjectResponse (a)) (Maybe Text)
 porsSSECustomerKeyMD5 = lens _porsSSECustomerKeyMD5 (\ s a -> s{_porsSSECustomerKeyMD5 = a});
 
 -- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-porsSSEKMSKeyId :: Lens' PutObjectResponse (Maybe Text)
+porsSSEKMSKeyId :: Lens' (PutObjectResponse (a)) (Maybe Text)
 porsSSEKMSKeyId = lens _porsSSEKMSKeyId (\ s a -> s{_porsSSEKMSKeyId = a}) . mapping _Sensitive;
 
 -- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
-porsServerSideEncryption :: Lens' PutObjectResponse (Maybe ServerSideEncryption)
+porsServerSideEncryption :: Lens' (PutObjectResponse (a)) (Maybe ServerSideEncryption)
 porsServerSideEncryption = lens _porsServerSideEncryption (\ s a -> s{_porsServerSideEncryption = a});
 
 -- | The response status code.
-porsResponseStatus :: Lens' PutObjectResponse Int
+porsResponseStatus :: Lens' (PutObjectResponse (a)) Int
 porsResponseStatus = lens _porsResponseStatus (\ s a -> s{_porsResponseStatus = a});
 
 instance NFData PutObjectResponse

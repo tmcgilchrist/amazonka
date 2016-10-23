@@ -88,14 +88,14 @@ instance ToQuery DeleteOptionGroup where
                "OptionGroupName" =: _dOptionGroupName]
 
 -- | /See:/ 'deleteOptionGroupResponse' smart constructor.
-data DeleteOptionGroupResponse =
+data DeleteOptionGroupResponse a =
     DeleteOptionGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteOptionGroupResponse' with the minimum fields required to make a request.
 --
 deleteOptionGroupResponse
-    :: DeleteOptionGroupResponse
+    :: DeleteOptionGroupResponse (a)
 deleteOptionGroupResponse = DeleteOptionGroupResponse'
 
 instance NFData DeleteOptionGroupResponse

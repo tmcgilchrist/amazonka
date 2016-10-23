@@ -106,7 +106,7 @@ instance ToQuery MoveAddressToVPC where
 -- | Contains the output of MoveAddressToVpc.
 --
 -- /See:/ 'moveAddressToVPCResponse' smart constructor.
-data MoveAddressToVPCResponse = MoveAddressToVPCResponse'
+data MoveAddressToVPCResponse a = MoveAddressToVPCResponse'
     { _matvrsStatus         :: !(Maybe AddressStatus)
     , _matvrsAllocationId   :: !(Maybe Text)
     , _matvrsResponseStatus :: !Int
@@ -123,7 +123,7 @@ data MoveAddressToVPCResponse = MoveAddressToVPCResponse'
 -- * 'matvrsResponseStatus'
 moveAddressToVPCResponse
     :: Int -- ^ 'matvrsResponseStatus'
-    -> MoveAddressToVPCResponse
+    -> MoveAddressToVPCResponse (a)
 moveAddressToVPCResponse pResponseStatus_ =
     MoveAddressToVPCResponse'
     { _matvrsStatus = Nothing
@@ -132,15 +132,15 @@ moveAddressToVPCResponse pResponseStatus_ =
     }
 
 -- | The status of the move of the IP address.
-matvrsStatus :: Lens' MoveAddressToVPCResponse (Maybe AddressStatus)
+matvrsStatus :: Lens' (MoveAddressToVPCResponse (a)) (Maybe AddressStatus)
 matvrsStatus = lens _matvrsStatus (\ s a -> s{_matvrsStatus = a});
 
 -- | The allocation ID for the Elastic IP address.
-matvrsAllocationId :: Lens' MoveAddressToVPCResponse (Maybe Text)
+matvrsAllocationId :: Lens' (MoveAddressToVPCResponse (a)) (Maybe Text)
 matvrsAllocationId = lens _matvrsAllocationId (\ s a -> s{_matvrsAllocationId = a});
 
 -- | The response status code.
-matvrsResponseStatus :: Lens' MoveAddressToVPCResponse Int
+matvrsResponseStatus :: Lens' (MoveAddressToVPCResponse (a)) Int
 matvrsResponseStatus = lens _matvrsResponseStatus (\ s a -> s{_matvrsResponseStatus = a});
 
 instance NFData MoveAddressToVPCResponse

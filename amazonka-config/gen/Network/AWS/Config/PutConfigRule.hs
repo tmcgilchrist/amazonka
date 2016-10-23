@@ -106,14 +106,14 @@ instance ToQuery PutConfigRule where
         toQuery = const mempty
 
 -- | /See:/ 'putConfigRuleResponse' smart constructor.
-data PutConfigRuleResponse =
+data PutConfigRuleResponse a =
     PutConfigRuleResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutConfigRuleResponse' with the minimum fields required to make a request.
 --
 putConfigRuleResponse
-    :: PutConfigRuleResponse
+    :: PutConfigRuleResponse (a)
 putConfigRuleResponse = PutConfigRuleResponse'
 
 instance NFData PutConfigRuleResponse

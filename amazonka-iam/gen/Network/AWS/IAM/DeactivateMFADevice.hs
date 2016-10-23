@@ -102,14 +102,14 @@ instance ToQuery DeactivateMFADevice where
                "SerialNumber" =: _dmdSerialNumber]
 
 -- | /See:/ 'deactivateMFADeviceResponse' smart constructor.
-data DeactivateMFADeviceResponse =
+data DeactivateMFADeviceResponse a =
     DeactivateMFADeviceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeactivateMFADeviceResponse' with the minimum fields required to make a request.
 --
 deactivateMFADeviceResponse
-    :: DeactivateMFADeviceResponse
+    :: DeactivateMFADeviceResponse (a)
 deactivateMFADeviceResponse = DeactivateMFADeviceResponse'
 
 instance NFData DeactivateMFADeviceResponse

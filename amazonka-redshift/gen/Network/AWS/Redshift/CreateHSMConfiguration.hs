@@ -164,7 +164,7 @@ instance ToQuery CreateHSMConfiguration where
                  _chcHSMServerPublicCertificate]
 
 -- | /See:/ 'createHSMConfigurationResponse' smart constructor.
-data CreateHSMConfigurationResponse = CreateHSMConfigurationResponse'
+data CreateHSMConfigurationResponse a = CreateHSMConfigurationResponse'
     { _chcrsHSMConfiguration :: !(Maybe HSMConfiguration)
     , _chcrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -178,7 +178,7 @@ data CreateHSMConfigurationResponse = CreateHSMConfigurationResponse'
 -- * 'chcrsResponseStatus'
 createHSMConfigurationResponse
     :: Int -- ^ 'chcrsResponseStatus'
-    -> CreateHSMConfigurationResponse
+    -> CreateHSMConfigurationResponse (a)
 createHSMConfigurationResponse pResponseStatus_ =
     CreateHSMConfigurationResponse'
     { _chcrsHSMConfiguration = Nothing
@@ -186,11 +186,11 @@ createHSMConfigurationResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-chcrsHSMConfiguration :: Lens' CreateHSMConfigurationResponse (Maybe HSMConfiguration)
+chcrsHSMConfiguration :: Lens' (CreateHSMConfigurationResponse (a)) (Maybe HSMConfiguration)
 chcrsHSMConfiguration = lens _chcrsHSMConfiguration (\ s a -> s{_chcrsHSMConfiguration = a});
 
 -- | The response status code.
-chcrsResponseStatus :: Lens' CreateHSMConfigurationResponse Int
+chcrsResponseStatus :: Lens' (CreateHSMConfigurationResponse (a)) Int
 chcrsResponseStatus = lens _chcrsResponseStatus (\ s a -> s{_chcrsResponseStatus = a});
 
 instance NFData CreateHSMConfigurationResponse

@@ -157,7 +157,7 @@ instance ToQuery DescribeClassicLinkInstances where
 -- | Contains the output of DescribeClassicLinkInstances.
 --
 -- /See:/ 'describeClassicLinkInstancesResponse' smart constructor.
-data DescribeClassicLinkInstancesResponse = DescribeClassicLinkInstancesResponse'
+data DescribeClassicLinkInstancesResponse a = DescribeClassicLinkInstancesResponse'
     { _dclirsNextToken      :: !(Maybe Text)
     , _dclirsInstances      :: !(Maybe [ClassicLinkInstance])
     , _dclirsResponseStatus :: !Int
@@ -174,7 +174,7 @@ data DescribeClassicLinkInstancesResponse = DescribeClassicLinkInstancesResponse
 -- * 'dclirsResponseStatus'
 describeClassicLinkInstancesResponse
     :: Int -- ^ 'dclirsResponseStatus'
-    -> DescribeClassicLinkInstancesResponse
+    -> DescribeClassicLinkInstancesResponse (a)
 describeClassicLinkInstancesResponse pResponseStatus_ =
     DescribeClassicLinkInstancesResponse'
     { _dclirsNextToken = Nothing
@@ -183,15 +183,15 @@ describeClassicLinkInstancesResponse pResponseStatus_ =
     }
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dclirsNextToken :: Lens' DescribeClassicLinkInstancesResponse (Maybe Text)
+dclirsNextToken :: Lens' (DescribeClassicLinkInstancesResponse (a)) (Maybe Text)
 dclirsNextToken = lens _dclirsNextToken (\ s a -> s{_dclirsNextToken = a});
 
 -- | Information about one or more linked EC2-Classic instances.
-dclirsInstances :: Lens' DescribeClassicLinkInstancesResponse [ClassicLinkInstance]
+dclirsInstances :: Lens' (DescribeClassicLinkInstancesResponse (a)) [ClassicLinkInstance]
 dclirsInstances = lens _dclirsInstances (\ s a -> s{_dclirsInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dclirsResponseStatus :: Lens' DescribeClassicLinkInstancesResponse Int
+dclirsResponseStatus :: Lens' (DescribeClassicLinkInstancesResponse (a)) Int
 dclirsResponseStatus = lens _dclirsResponseStatus (\ s a -> s{_dclirsResponseStatus = a});
 
 instance NFData DescribeClassicLinkInstancesResponse

@@ -93,14 +93,14 @@ instance ToQuery StartStack where
         toQuery = const mempty
 
 -- | /See:/ 'startStackResponse' smart constructor.
-data StartStackResponse =
+data StartStackResponse a =
     StartStackResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'StartStackResponse' with the minimum fields required to make a request.
 --
 startStackResponse
-    :: StartStackResponse
+    :: StartStackResponse (a)
 startStackResponse = StartStackResponse'
 
 instance NFData StartStackResponse

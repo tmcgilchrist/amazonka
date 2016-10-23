@@ -195,14 +195,14 @@ instance ToQuery UpdateAccountPasswordPolicy where
                  _uappAllowUsersToChangePassword]
 
 -- | /See:/ 'updateAccountPasswordPolicyResponse' smart constructor.
-data UpdateAccountPasswordPolicyResponse =
+data UpdateAccountPasswordPolicyResponse a =
     UpdateAccountPasswordPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateAccountPasswordPolicyResponse' with the minimum fields required to make a request.
 --
 updateAccountPasswordPolicyResponse
-    :: UpdateAccountPasswordPolicyResponse
+    :: UpdateAccountPasswordPolicyResponse (a)
 updateAccountPasswordPolicyResponse = UpdateAccountPasswordPolicyResponse'
 
 instance NFData UpdateAccountPasswordPolicyResponse

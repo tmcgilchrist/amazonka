@@ -137,7 +137,7 @@ instance ToQuery DescribeWorkspaceBundles where
 -- | Contains the results of the < DescribeWorkspaceBundles> operation.
 --
 -- /See:/ 'describeWorkspaceBundlesResponse' smart constructor.
-data DescribeWorkspaceBundlesResponse = DescribeWorkspaceBundlesResponse'
+data DescribeWorkspaceBundlesResponse a = DescribeWorkspaceBundlesResponse'
     { _dwbrsBundles        :: !(Maybe [WorkspaceBundle])
     , _dwbrsNextToken      :: !(Maybe Text)
     , _dwbrsResponseStatus :: !Int
@@ -154,7 +154,7 @@ data DescribeWorkspaceBundlesResponse = DescribeWorkspaceBundlesResponse'
 -- * 'dwbrsResponseStatus'
 describeWorkspaceBundlesResponse
     :: Int -- ^ 'dwbrsResponseStatus'
-    -> DescribeWorkspaceBundlesResponse
+    -> DescribeWorkspaceBundlesResponse (a)
 describeWorkspaceBundlesResponse pResponseStatus_ =
     DescribeWorkspaceBundlesResponse'
     { _dwbrsBundles = Nothing
@@ -163,15 +163,15 @@ describeWorkspaceBundlesResponse pResponseStatus_ =
     }
 
 -- | An array of structures that contain information about the bundles.
-dwbrsBundles :: Lens' DescribeWorkspaceBundlesResponse [WorkspaceBundle]
+dwbrsBundles :: Lens' (DescribeWorkspaceBundlesResponse (a)) [WorkspaceBundle]
 dwbrsBundles = lens _dwbrsBundles (\ s a -> s{_dwbrsBundles = a}) . _Default . _Coerce;
 
 -- | If not null, more results are available. Pass this value for the 'NextToken' parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.
-dwbrsNextToken :: Lens' DescribeWorkspaceBundlesResponse (Maybe Text)
+dwbrsNextToken :: Lens' (DescribeWorkspaceBundlesResponse (a)) (Maybe Text)
 dwbrsNextToken = lens _dwbrsNextToken (\ s a -> s{_dwbrsNextToken = a});
 
 -- | The response status code.
-dwbrsResponseStatus :: Lens' DescribeWorkspaceBundlesResponse Int
+dwbrsResponseStatus :: Lens' (DescribeWorkspaceBundlesResponse (a)) Int
 dwbrsResponseStatus = lens _dwbrsResponseStatus (\ s a -> s{_dwbrsResponseStatus = a});
 
 instance NFData DescribeWorkspaceBundlesResponse

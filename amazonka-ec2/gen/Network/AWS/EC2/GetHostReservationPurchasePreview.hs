@@ -117,7 +117,7 @@ instance ToQuery GetHostReservationPurchasePreview
                toQueryList "HostIdSet" _ghrppHostIdSet]
 
 -- | /See:/ 'getHostReservationPurchasePreviewResponse' smart constructor.
-data GetHostReservationPurchasePreviewResponse = GetHostReservationPurchasePreviewResponse'
+data GetHostReservationPurchasePreviewResponse a = GetHostReservationPurchasePreviewResponse'
     { _ghrpprsCurrencyCode      :: !(Maybe CurrencyCodeValues)
     , _ghrpprsTotalHourlyPrice  :: !(Maybe Text)
     , _ghrpprsTotalUpfrontPrice :: !(Maybe Text)
@@ -140,7 +140,7 @@ data GetHostReservationPurchasePreviewResponse = GetHostReservationPurchasePrevi
 -- * 'ghrpprsResponseStatus'
 getHostReservationPurchasePreviewResponse
     :: Int -- ^ 'ghrpprsResponseStatus'
-    -> GetHostReservationPurchasePreviewResponse
+    -> GetHostReservationPurchasePreviewResponse (a)
 getHostReservationPurchasePreviewResponse pResponseStatus_ =
     GetHostReservationPurchasePreviewResponse'
     { _ghrpprsCurrencyCode = Nothing
@@ -151,23 +151,23 @@ getHostReservationPurchasePreviewResponse pResponseStatus_ =
     }
 
 -- | The currency in which the 'totalUpfrontPrice' and 'totalHourlyPrice' amounts are specified. At this time, the only supported currency is 'USD'.
-ghrpprsCurrencyCode :: Lens' GetHostReservationPurchasePreviewResponse (Maybe CurrencyCodeValues)
+ghrpprsCurrencyCode :: Lens' (GetHostReservationPurchasePreviewResponse (a)) (Maybe CurrencyCodeValues)
 ghrpprsCurrencyCode = lens _ghrpprsCurrencyCode (\ s a -> s{_ghrpprsCurrencyCode = a});
 
 -- | The potential total hourly price of the reservation per hour.
-ghrpprsTotalHourlyPrice :: Lens' GetHostReservationPurchasePreviewResponse (Maybe Text)
+ghrpprsTotalHourlyPrice :: Lens' (GetHostReservationPurchasePreviewResponse (a)) (Maybe Text)
 ghrpprsTotalHourlyPrice = lens _ghrpprsTotalHourlyPrice (\ s a -> s{_ghrpprsTotalHourlyPrice = a});
 
 -- | The potential total upfront price. This is billed immediately.
-ghrpprsTotalUpfrontPrice :: Lens' GetHostReservationPurchasePreviewResponse (Maybe Text)
+ghrpprsTotalUpfrontPrice :: Lens' (GetHostReservationPurchasePreviewResponse (a)) (Maybe Text)
 ghrpprsTotalUpfrontPrice = lens _ghrpprsTotalUpfrontPrice (\ s a -> s{_ghrpprsTotalUpfrontPrice = a});
 
 -- | The purchase information of the Dedicated Host Reservation and the Dedicated Hosts associated with it.
-ghrpprsPurchase :: Lens' GetHostReservationPurchasePreviewResponse [Purchase]
+ghrpprsPurchase :: Lens' (GetHostReservationPurchasePreviewResponse (a)) [Purchase]
 ghrpprsPurchase = lens _ghrpprsPurchase (\ s a -> s{_ghrpprsPurchase = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ghrpprsResponseStatus :: Lens' GetHostReservationPurchasePreviewResponse Int
+ghrpprsResponseStatus :: Lens' (GetHostReservationPurchasePreviewResponse (a)) Int
 ghrpprsResponseStatus = lens _ghrpprsResponseStatus (\ s a -> s{_ghrpprsResponseStatus = a});
 
 instance NFData

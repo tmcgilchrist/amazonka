@@ -104,7 +104,7 @@ instance ToQuery DescribeFleetPortSettings where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeFleetPortSettingsResponse' smart constructor.
-data DescribeFleetPortSettingsResponse = DescribeFleetPortSettingsResponse'
+data DescribeFleetPortSettingsResponse a = DescribeFleetPortSettingsResponse'
     { _dfpsrsInboundPermissions :: !(Maybe [IPPermission])
     , _dfpsrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data DescribeFleetPortSettingsResponse = DescribeFleetPortSettingsResponse'
 -- * 'dfpsrsResponseStatus'
 describeFleetPortSettingsResponse
     :: Int -- ^ 'dfpsrsResponseStatus'
-    -> DescribeFleetPortSettingsResponse
+    -> DescribeFleetPortSettingsResponse (a)
 describeFleetPortSettingsResponse pResponseStatus_ =
     DescribeFleetPortSettingsResponse'
     { _dfpsrsInboundPermissions = Nothing
@@ -126,11 +126,11 @@ describeFleetPortSettingsResponse pResponseStatus_ =
     }
 
 -- | Object containing port settings for the requested fleet ID.
-dfpsrsInboundPermissions :: Lens' DescribeFleetPortSettingsResponse [IPPermission]
+dfpsrsInboundPermissions :: Lens' (DescribeFleetPortSettingsResponse (a)) [IPPermission]
 dfpsrsInboundPermissions = lens _dfpsrsInboundPermissions (\ s a -> s{_dfpsrsInboundPermissions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dfpsrsResponseStatus :: Lens' DescribeFleetPortSettingsResponse Int
+dfpsrsResponseStatus :: Lens' (DescribeFleetPortSettingsResponse (a)) Int
 dfpsrsResponseStatus = lens _dfpsrsResponseStatus (\ s a -> s{_dfpsrsResponseStatus = a});
 
 instance NFData DescribeFleetPortSettingsResponse

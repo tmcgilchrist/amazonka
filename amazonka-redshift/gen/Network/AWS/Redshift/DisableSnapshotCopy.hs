@@ -98,7 +98,7 @@ instance ToQuery DisableSnapshotCopy where
                "ClusterIdentifier" =: _dscClusterIdentifier]
 
 -- | /See:/ 'disableSnapshotCopyResponse' smart constructor.
-data DisableSnapshotCopyResponse = DisableSnapshotCopyResponse'
+data DisableSnapshotCopyResponse a = DisableSnapshotCopyResponse'
     { _dscrsCluster        :: !(Maybe Cluster)
     , _dscrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -112,7 +112,7 @@ data DisableSnapshotCopyResponse = DisableSnapshotCopyResponse'
 -- * 'dscrsResponseStatus'
 disableSnapshotCopyResponse
     :: Int -- ^ 'dscrsResponseStatus'
-    -> DisableSnapshotCopyResponse
+    -> DisableSnapshotCopyResponse (a)
 disableSnapshotCopyResponse pResponseStatus_ =
     DisableSnapshotCopyResponse'
     { _dscrsCluster = Nothing
@@ -120,11 +120,11 @@ disableSnapshotCopyResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dscrsCluster :: Lens' DisableSnapshotCopyResponse (Maybe Cluster)
+dscrsCluster :: Lens' (DisableSnapshotCopyResponse (a)) (Maybe Cluster)
 dscrsCluster = lens _dscrsCluster (\ s a -> s{_dscrsCluster = a});
 
 -- | The response status code.
-dscrsResponseStatus :: Lens' DisableSnapshotCopyResponse Int
+dscrsResponseStatus :: Lens' (DisableSnapshotCopyResponse (a)) Int
 dscrsResponseStatus = lens _dscrsResponseStatus (\ s a -> s{_dscrsResponseStatus = a});
 
 instance NFData DisableSnapshotCopyResponse

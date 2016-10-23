@@ -111,7 +111,7 @@ instance ToQuery AttachLoadBalancers where
 -- | Contains the output of AttachLoadBalancers.
 --
 -- /See:/ 'attachLoadBalancersResponse' smart constructor.
-newtype AttachLoadBalancersResponse = AttachLoadBalancersResponse'
+newtype AttachLoadBalancersResponse a = AttachLoadBalancersResponse'
     { _albrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -122,14 +122,14 @@ newtype AttachLoadBalancersResponse = AttachLoadBalancersResponse'
 -- * 'albrsResponseStatus'
 attachLoadBalancersResponse
     :: Int -- ^ 'albrsResponseStatus'
-    -> AttachLoadBalancersResponse
+    -> AttachLoadBalancersResponse (a)
 attachLoadBalancersResponse pResponseStatus_ =
     AttachLoadBalancersResponse'
     { _albrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-albrsResponseStatus :: Lens' AttachLoadBalancersResponse Int
+albrsResponseStatus :: Lens' (AttachLoadBalancersResponse (a)) Int
 albrsResponseStatus = lens _albrsResponseStatus (\ s a -> s{_albrsResponseStatus = a});
 
 instance NFData AttachLoadBalancersResponse

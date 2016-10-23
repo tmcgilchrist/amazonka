@@ -120,7 +120,7 @@ instance ToQuery RetrieveTapeRecoveryPoint where
 -- | RetrieveTapeRecoveryPointOutput
 --
 -- /See:/ 'retrieveTapeRecoveryPointResponse' smart constructor.
-data RetrieveTapeRecoveryPointResponse = RetrieveTapeRecoveryPointResponse'
+data RetrieveTapeRecoveryPointResponse a = RetrieveTapeRecoveryPointResponse'
     { _rtrprsTapeARN        :: !(Maybe Text)
     , _rtrprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data RetrieveTapeRecoveryPointResponse = RetrieveTapeRecoveryPointResponse'
 -- * 'rtrprsResponseStatus'
 retrieveTapeRecoveryPointResponse
     :: Int -- ^ 'rtrprsResponseStatus'
-    -> RetrieveTapeRecoveryPointResponse
+    -> RetrieveTapeRecoveryPointResponse (a)
 retrieveTapeRecoveryPointResponse pResponseStatus_ =
     RetrieveTapeRecoveryPointResponse'
     { _rtrprsTapeARN = Nothing
@@ -142,11 +142,11 @@ retrieveTapeRecoveryPointResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the virtual tape for which the recovery point was retrieved.
-rtrprsTapeARN :: Lens' RetrieveTapeRecoveryPointResponse (Maybe Text)
+rtrprsTapeARN :: Lens' (RetrieveTapeRecoveryPointResponse (a)) (Maybe Text)
 rtrprsTapeARN = lens _rtrprsTapeARN (\ s a -> s{_rtrprsTapeARN = a});
 
 -- | The response status code.
-rtrprsResponseStatus :: Lens' RetrieveTapeRecoveryPointResponse Int
+rtrprsResponseStatus :: Lens' (RetrieveTapeRecoveryPointResponse (a)) Int
 rtrprsResponseStatus = lens _rtrprsResponseStatus (\ s a -> s{_rtrprsResponseStatus = a});
 
 instance NFData RetrieveTapeRecoveryPointResponse

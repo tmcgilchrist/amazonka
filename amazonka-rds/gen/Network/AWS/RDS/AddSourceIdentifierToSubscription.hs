@@ -122,7 +122,7 @@ instance ToQuery AddSourceIdentifierToSubscription
                "SourceIdentifier" =: _asitsSourceIdentifier]
 
 -- | /See:/ 'addSourceIdentifierToSubscriptionResponse' smart constructor.
-data AddSourceIdentifierToSubscriptionResponse = AddSourceIdentifierToSubscriptionResponse'
+data AddSourceIdentifierToSubscriptionResponse a = AddSourceIdentifierToSubscriptionResponse'
     { _asitsrsEventSubscription :: !(Maybe EventSubscription)
     , _asitsrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data AddSourceIdentifierToSubscriptionResponse = AddSourceIdentifierToSubscripti
 -- * 'asitsrsResponseStatus'
 addSourceIdentifierToSubscriptionResponse
     :: Int -- ^ 'asitsrsResponseStatus'
-    -> AddSourceIdentifierToSubscriptionResponse
+    -> AddSourceIdentifierToSubscriptionResponse (a)
 addSourceIdentifierToSubscriptionResponse pResponseStatus_ =
     AddSourceIdentifierToSubscriptionResponse'
     { _asitsrsEventSubscription = Nothing
@@ -144,11 +144,11 @@ addSourceIdentifierToSubscriptionResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-asitsrsEventSubscription :: Lens' AddSourceIdentifierToSubscriptionResponse (Maybe EventSubscription)
+asitsrsEventSubscription :: Lens' (AddSourceIdentifierToSubscriptionResponse (a)) (Maybe EventSubscription)
 asitsrsEventSubscription = lens _asitsrsEventSubscription (\ s a -> s{_asitsrsEventSubscription = a});
 
 -- | The response status code.
-asitsrsResponseStatus :: Lens' AddSourceIdentifierToSubscriptionResponse Int
+asitsrsResponseStatus :: Lens' (AddSourceIdentifierToSubscriptionResponse (a)) Int
 asitsrsResponseStatus = lens _asitsrsResponseStatus (\ s a -> s{_asitsrsResponseStatus = a});
 
 instance NFData

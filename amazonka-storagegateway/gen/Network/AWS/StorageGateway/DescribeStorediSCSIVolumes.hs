@@ -103,7 +103,7 @@ instance ToQuery DescribeStorediSCSIVolumes where
         toQuery = const mempty
 
 -- | /See:/ 'describeStorediSCSIVolumesResponse' smart constructor.
-data DescribeStorediSCSIVolumesResponse = DescribeStorediSCSIVolumesResponse'
+data DescribeStorediSCSIVolumesResponse a = DescribeStorediSCSIVolumesResponse'
     { _dsscsivrsStorediSCSIVolumes :: !(Maybe [StorediSCSIVolume])
     , _dsscsivrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data DescribeStorediSCSIVolumesResponse = DescribeStorediSCSIVolumesResponse'
 -- * 'dsscsivrsResponseStatus'
 describeStorediSCSIVolumesResponse
     :: Int -- ^ 'dsscsivrsResponseStatus'
-    -> DescribeStorediSCSIVolumesResponse
+    -> DescribeStorediSCSIVolumesResponse (a)
 describeStorediSCSIVolumesResponse pResponseStatus_ =
     DescribeStorediSCSIVolumesResponse'
     { _dsscsivrsStorediSCSIVolumes = Nothing
@@ -125,11 +125,11 @@ describeStorediSCSIVolumesResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dsscsivrsStorediSCSIVolumes :: Lens' DescribeStorediSCSIVolumesResponse [StorediSCSIVolume]
+dsscsivrsStorediSCSIVolumes :: Lens' (DescribeStorediSCSIVolumesResponse (a)) [StorediSCSIVolume]
 dsscsivrsStorediSCSIVolumes = lens _dsscsivrsStorediSCSIVolumes (\ s a -> s{_dsscsivrsStorediSCSIVolumes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsscsivrsResponseStatus :: Lens' DescribeStorediSCSIVolumesResponse Int
+dsscsivrsResponseStatus :: Lens' (DescribeStorediSCSIVolumesResponse (a)) Int
 dsscsivrsResponseStatus = lens _dsscsivrsResponseStatus (\ s a -> s{_dsscsivrsResponseStatus = a});
 
 instance NFData DescribeStorediSCSIVolumesResponse

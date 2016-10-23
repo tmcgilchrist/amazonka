@@ -121,14 +121,14 @@ instance ToQuery DeleteCustomActionType where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCustomActionTypeResponse' smart constructor.
-data DeleteCustomActionTypeResponse =
+data DeleteCustomActionTypeResponse a =
     DeleteCustomActionTypeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteCustomActionTypeResponse' with the minimum fields required to make a request.
 --
 deleteCustomActionTypeResponse
-    :: DeleteCustomActionTypeResponse
+    :: DeleteCustomActionTypeResponse (a)
 deleteCustomActionTypeResponse = DeleteCustomActionTypeResponse'
 
 instance NFData DeleteCustomActionTypeResponse

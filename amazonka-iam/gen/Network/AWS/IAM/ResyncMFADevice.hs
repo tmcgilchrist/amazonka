@@ -127,14 +127,14 @@ instance ToQuery ResyncMFADevice where
                "AuthenticationCode2" =: _rmdAuthenticationCode2]
 
 -- | /See:/ 'resyncMFADeviceResponse' smart constructor.
-data ResyncMFADeviceResponse =
+data ResyncMFADeviceResponse a =
     ResyncMFADeviceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ResyncMFADeviceResponse' with the minimum fields required to make a request.
 --
 resyncMFADeviceResponse
-    :: ResyncMFADeviceResponse
+    :: ResyncMFADeviceResponse (a)
 resyncMFADeviceResponse = ResyncMFADeviceResponse'
 
 instance NFData ResyncMFADeviceResponse

@@ -150,7 +150,7 @@ instance ToQuery DescribeAddresses where
 -- | Contains the output of DescribeAddresses.
 --
 -- /See:/ 'describeAddressesResponse' smart constructor.
-data DescribeAddressesResponse = DescribeAddressesResponse'
+data DescribeAddressesResponse a = DescribeAddressesResponse'
     { _darsAddresses      :: !(Maybe [Address])
     , _darsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -164,7 +164,7 @@ data DescribeAddressesResponse = DescribeAddressesResponse'
 -- * 'darsResponseStatus'
 describeAddressesResponse
     :: Int -- ^ 'darsResponseStatus'
-    -> DescribeAddressesResponse
+    -> DescribeAddressesResponse (a)
 describeAddressesResponse pResponseStatus_ =
     DescribeAddressesResponse'
     { _darsAddresses = Nothing
@@ -172,11 +172,11 @@ describeAddressesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more Elastic IP addresses.
-darsAddresses :: Lens' DescribeAddressesResponse [Address]
+darsAddresses :: Lens' (DescribeAddressesResponse (a)) [Address]
 darsAddresses = lens _darsAddresses (\ s a -> s{_darsAddresses = a}) . _Default . _Coerce;
 
 -- | The response status code.
-darsResponseStatus :: Lens' DescribeAddressesResponse Int
+darsResponseStatus :: Lens' (DescribeAddressesResponse (a)) Int
 darsResponseStatus = lens _darsResponseStatus (\ s a -> s{_darsResponseStatus = a});
 
 instance NFData DescribeAddressesResponse

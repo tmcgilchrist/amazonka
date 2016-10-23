@@ -100,14 +100,14 @@ instance ToQuery EnableVGWRoutePropagation where
                "GatewayId" =: _evrpGatewayId]
 
 -- | /See:/ 'enableVGWRoutePropagationResponse' smart constructor.
-data EnableVGWRoutePropagationResponse =
+data EnableVGWRoutePropagationResponse a =
     EnableVGWRoutePropagationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'EnableVGWRoutePropagationResponse' with the minimum fields required to make a request.
 --
 enableVGWRoutePropagationResponse
-    :: EnableVGWRoutePropagationResponse
+    :: EnableVGWRoutePropagationResponse (a)
 enableVGWRoutePropagationResponse = EnableVGWRoutePropagationResponse'
 
 instance NFData EnableVGWRoutePropagationResponse

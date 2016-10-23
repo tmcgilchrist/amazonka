@@ -133,7 +133,7 @@ instance ToQuery PutRecordBatch where
 -- | Contains the output of < PutRecordBatch>.
 --
 -- /See:/ 'putRecordBatchResponse' smart constructor.
-data PutRecordBatchResponse = PutRecordBatchResponse'
+data PutRecordBatchResponse a = PutRecordBatchResponse'
     { _prbrsResponseStatus   :: !Int
     , _prbrsFailedPutCount   :: !Nat
     , _prbrsRequestResponses :: !(List1 PutRecordBatchResponseEntry)
@@ -152,7 +152,7 @@ putRecordBatchResponse
     :: Int -- ^ 'prbrsResponseStatus'
     -> Natural -- ^ 'prbrsFailedPutCount'
     -> NonEmpty PutRecordBatchResponseEntry -- ^ 'prbrsRequestResponses'
-    -> PutRecordBatchResponse
+    -> PutRecordBatchResponse (a)
 putRecordBatchResponse pResponseStatus_ pFailedPutCount_ pRequestResponses_ =
     PutRecordBatchResponse'
     { _prbrsResponseStatus = pResponseStatus_
@@ -161,15 +161,15 @@ putRecordBatchResponse pResponseStatus_ pFailedPutCount_ pRequestResponses_ =
     }
 
 -- | The response status code.
-prbrsResponseStatus :: Lens' PutRecordBatchResponse Int
+prbrsResponseStatus :: Lens' (PutRecordBatchResponse (a)) Int
 prbrsResponseStatus = lens _prbrsResponseStatus (\ s a -> s{_prbrsResponseStatus = a});
 
 -- | The number of unsuccessfully written records.
-prbrsFailedPutCount :: Lens' PutRecordBatchResponse Natural
+prbrsFailedPutCount :: Lens' (PutRecordBatchResponse (a)) Natural
 prbrsFailedPutCount = lens _prbrsFailedPutCount (\ s a -> s{_prbrsFailedPutCount = a}) . _Nat;
 
 -- | The results for the individual records. The index of each element matches the same index in which records were sent.
-prbrsRequestResponses :: Lens' PutRecordBatchResponse (NonEmpty PutRecordBatchResponseEntry)
+prbrsRequestResponses :: Lens' (PutRecordBatchResponse (a)) (NonEmpty PutRecordBatchResponseEntry)
 prbrsRequestResponses = lens _prbrsRequestResponses (\ s a -> s{_prbrsRequestResponses = a}) . _List1;
 
 instance NFData PutRecordBatchResponse

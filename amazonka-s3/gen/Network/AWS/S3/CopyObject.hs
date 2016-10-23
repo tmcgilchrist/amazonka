@@ -424,7 +424,7 @@ instance ToQuery CopyObject where
         toQuery = const mempty
 
 -- | /See:/ 'copyObjectResponse' smart constructor.
-data CopyObjectResponse = CopyObjectResponse'
+data CopyObjectResponse a = CopyObjectResponse'
     { _corsRequestCharged       :: !(Maybe RequestCharged)
     , _corsVersionId            :: !(Maybe ObjectVersionId)
     , _corsExpiration           :: !(Maybe Text)
@@ -462,7 +462,7 @@ data CopyObjectResponse = CopyObjectResponse'
 -- * 'corsResponseStatus'
 copyObjectResponse
     :: Int -- ^ 'corsResponseStatus'
-    -> CopyObjectResponse
+    -> CopyObjectResponse (a)
 copyObjectResponse pResponseStatus_ =
     CopyObjectResponse'
     { _corsRequestCharged = Nothing
@@ -478,43 +478,43 @@ copyObjectResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-corsRequestCharged :: Lens' CopyObjectResponse (Maybe RequestCharged)
+corsRequestCharged :: Lens' (CopyObjectResponse (a)) (Maybe RequestCharged)
 corsRequestCharged = lens _corsRequestCharged (\ s a -> s{_corsRequestCharged = a});
 
 -- | Version ID of the newly created copy.
-corsVersionId :: Lens' CopyObjectResponse (Maybe ObjectVersionId)
+corsVersionId :: Lens' (CopyObjectResponse (a)) (Maybe ObjectVersionId)
 corsVersionId = lens _corsVersionId (\ s a -> s{_corsVersionId = a});
 
 -- | If the object expiration is configured, the response includes this header.
-corsExpiration :: Lens' CopyObjectResponse (Maybe Text)
+corsExpiration :: Lens' (CopyObjectResponse (a)) (Maybe Text)
 corsExpiration = lens _corsExpiration (\ s a -> s{_corsExpiration = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
-corsSSECustomerAlgorithm :: Lens' CopyObjectResponse (Maybe Text)
+corsSSECustomerAlgorithm :: Lens' (CopyObjectResponse (a)) (Maybe Text)
 corsSSECustomerAlgorithm = lens _corsSSECustomerAlgorithm (\ s a -> s{_corsSSECustomerAlgorithm = a});
 
 -- | Undocumented member.
-corsCopySourceVersionId :: Lens' CopyObjectResponse (Maybe Text)
+corsCopySourceVersionId :: Lens' (CopyObjectResponse (a)) (Maybe Text)
 corsCopySourceVersionId = lens _corsCopySourceVersionId (\ s a -> s{_corsCopySourceVersionId = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-corsSSECustomerKeyMD5 :: Lens' CopyObjectResponse (Maybe Text)
+corsSSECustomerKeyMD5 :: Lens' (CopyObjectResponse (a)) (Maybe Text)
 corsSSECustomerKeyMD5 = lens _corsSSECustomerKeyMD5 (\ s a -> s{_corsSSECustomerKeyMD5 = a});
 
 -- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-corsSSEKMSKeyId :: Lens' CopyObjectResponse (Maybe Text)
+corsSSEKMSKeyId :: Lens' (CopyObjectResponse (a)) (Maybe Text)
 corsSSEKMSKeyId = lens _corsSSEKMSKeyId (\ s a -> s{_corsSSEKMSKeyId = a}) . mapping _Sensitive;
 
 -- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
-corsServerSideEncryption :: Lens' CopyObjectResponse (Maybe ServerSideEncryption)
+corsServerSideEncryption :: Lens' (CopyObjectResponse (a)) (Maybe ServerSideEncryption)
 corsServerSideEncryption = lens _corsServerSideEncryption (\ s a -> s{_corsServerSideEncryption = a});
 
 -- | Undocumented member.
-corsCopyObjectResult :: Lens' CopyObjectResponse (Maybe CopyObjectResult)
+corsCopyObjectResult :: Lens' (CopyObjectResponse (a)) (Maybe CopyObjectResult)
 corsCopyObjectResult = lens _corsCopyObjectResult (\ s a -> s{_corsCopyObjectResult = a});
 
 -- | The response status code.
-corsResponseStatus :: Lens' CopyObjectResponse Int
+corsResponseStatus :: Lens' (CopyObjectResponse (a)) Int
 corsResponseStatus = lens _corsResponseStatus (\ s a -> s{_corsResponseStatus = a});
 
 instance NFData CopyObjectResponse

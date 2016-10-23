@@ -215,7 +215,7 @@ instance ToQuery DescribeClusterSnapshots where
 -- | Contains the output from the < DescribeClusterSnapshots> action.
 --
 -- /See:/ 'describeClusterSnapshotsResponse' smart constructor.
-data DescribeClusterSnapshotsResponse = DescribeClusterSnapshotsResponse'
+data DescribeClusterSnapshotsResponse a = DescribeClusterSnapshotsResponse'
     { _dcssrsSnapshots      :: !(Maybe [Snapshot])
     , _dcssrsMarker         :: !(Maybe Text)
     , _dcssrsResponseStatus :: !Int
@@ -232,7 +232,7 @@ data DescribeClusterSnapshotsResponse = DescribeClusterSnapshotsResponse'
 -- * 'dcssrsResponseStatus'
 describeClusterSnapshotsResponse
     :: Int -- ^ 'dcssrsResponseStatus'
-    -> DescribeClusterSnapshotsResponse
+    -> DescribeClusterSnapshotsResponse (a)
 describeClusterSnapshotsResponse pResponseStatus_ =
     DescribeClusterSnapshotsResponse'
     { _dcssrsSnapshots = Nothing
@@ -241,15 +241,15 @@ describeClusterSnapshotsResponse pResponseStatus_ =
     }
 
 -- | A list of < Snapshot> instances.
-dcssrsSnapshots :: Lens' DescribeClusterSnapshotsResponse [Snapshot]
+dcssrsSnapshots :: Lens' (DescribeClusterSnapshotsResponse (a)) [Snapshot]
 dcssrsSnapshots = lens _dcssrsSnapshots (\ s a -> s{_dcssrsSnapshots = a}) . _Default . _Coerce;
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dcssrsMarker :: Lens' DescribeClusterSnapshotsResponse (Maybe Text)
+dcssrsMarker :: Lens' (DescribeClusterSnapshotsResponse (a)) (Maybe Text)
 dcssrsMarker = lens _dcssrsMarker (\ s a -> s{_dcssrsMarker = a});
 
 -- | The response status code.
-dcssrsResponseStatus :: Lens' DescribeClusterSnapshotsResponse Int
+dcssrsResponseStatus :: Lens' (DescribeClusterSnapshotsResponse (a)) Int
 dcssrsResponseStatus = lens _dcssrsResponseStatus (\ s a -> s{_dcssrsResponseStatus = a});
 
 instance NFData DescribeClusterSnapshotsResponse

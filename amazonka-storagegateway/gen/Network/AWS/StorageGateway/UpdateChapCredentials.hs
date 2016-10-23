@@ -159,7 +159,7 @@ instance ToQuery UpdateChapCredentials where
 -- | A JSON object containing the following fields:
 --
 -- /See:/ 'updateChapCredentialsResponse' smart constructor.
-data UpdateChapCredentialsResponse = UpdateChapCredentialsResponse'
+data UpdateChapCredentialsResponse a = UpdateChapCredentialsResponse'
     { _uccrsTargetARN      :: !(Maybe Text)
     , _uccrsInitiatorName  :: !(Maybe Text)
     , _uccrsResponseStatus :: !Int
@@ -176,7 +176,7 @@ data UpdateChapCredentialsResponse = UpdateChapCredentialsResponse'
 -- * 'uccrsResponseStatus'
 updateChapCredentialsResponse
     :: Int -- ^ 'uccrsResponseStatus'
-    -> UpdateChapCredentialsResponse
+    -> UpdateChapCredentialsResponse (a)
 updateChapCredentialsResponse pResponseStatus_ =
     UpdateChapCredentialsResponse'
     { _uccrsTargetARN = Nothing
@@ -185,15 +185,15 @@ updateChapCredentialsResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the target. This is the same target specified in the request.
-uccrsTargetARN :: Lens' UpdateChapCredentialsResponse (Maybe Text)
+uccrsTargetARN :: Lens' (UpdateChapCredentialsResponse (a)) (Maybe Text)
 uccrsTargetARN = lens _uccrsTargetARN (\ s a -> s{_uccrsTargetARN = a});
 
 -- | The iSCSI initiator that connects to the target. This is the same initiator name specified in the request.
-uccrsInitiatorName :: Lens' UpdateChapCredentialsResponse (Maybe Text)
+uccrsInitiatorName :: Lens' (UpdateChapCredentialsResponse (a)) (Maybe Text)
 uccrsInitiatorName = lens _uccrsInitiatorName (\ s a -> s{_uccrsInitiatorName = a});
 
 -- | The response status code.
-uccrsResponseStatus :: Lens' UpdateChapCredentialsResponse Int
+uccrsResponseStatus :: Lens' (UpdateChapCredentialsResponse (a)) Int
 uccrsResponseStatus = lens _uccrsResponseStatus (\ s a -> s{_uccrsResponseStatus = a});
 
 instance NFData UpdateChapCredentialsResponse

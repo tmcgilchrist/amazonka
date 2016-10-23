@@ -520,7 +520,7 @@ instance ToQuery Query where
 -- | Represents the output of a /Query/ operation.
 --
 -- /See:/ 'queryResponse' smart constructor.
-data QueryResponse = QueryResponse'
+data QueryResponse a = QueryResponse'
     { _qrsLastEvaluatedKey :: !(Maybe (Map Text AttributeValue))
     , _qrsCount            :: !(Maybe Int)
     , _qrsScannedCount     :: !(Maybe Int)
@@ -546,7 +546,7 @@ data QueryResponse = QueryResponse'
 -- * 'qrsResponseStatus'
 queryResponse
     :: Int -- ^ 'qrsResponseStatus'
-    -> QueryResponse
+    -> QueryResponse (a)
 queryResponse pResponseStatus_ =
     QueryResponse'
     { _qrsLastEvaluatedKey = Nothing
@@ -562,7 +562,7 @@ queryResponse pResponseStatus_ =
 -- If /LastEvaluatedKey/ is empty, then the \"last page\" of results has been processed and there is no more data to be retrieved.
 --
 -- If /LastEvaluatedKey/ is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when /LastEvaluatedKey/ is empty.
-qrsLastEvaluatedKey :: Lens' QueryResponse (HashMap Text AttributeValue)
+qrsLastEvaluatedKey :: Lens' (QueryResponse (a)) (HashMap Text AttributeValue)
 qrsLastEvaluatedKey = lens _qrsLastEvaluatedKey (\ s a -> s{_qrsLastEvaluatedKey = a}) . _Default . _Map;
 
 -- | The number of items in the response.
@@ -570,25 +570,25 @@ qrsLastEvaluatedKey = lens _qrsLastEvaluatedKey (\ s a -> s{_qrsLastEvaluatedKey
 -- If you used a /QueryFilter/ in the request, then /Count/ is the number of items returned after the filter was applied, and /ScannedCount/ is the number of matching items before the filter was applied.
 --
 -- If you did not use a filter in the request, then /Count/ and /ScannedCount/ are the same.
-qrsCount :: Lens' QueryResponse (Maybe Int)
+qrsCount :: Lens' (QueryResponse (a)) (Maybe Int)
 qrsCount = lens _qrsCount (\ s a -> s{_qrsCount = a});
 
 -- | The number of items evaluated, before any /QueryFilter/ is applied. A high /ScannedCount/ value with few, or no, /Count/ results indicates an inefficient /Query/ operation. For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count Count and ScannedCount> in the /Amazon DynamoDB Developer Guide/.
 --
 -- If you did not use a filter in the request, then /ScannedCount/ is the same as /Count/.
-qrsScannedCount :: Lens' QueryResponse (Maybe Int)
+qrsScannedCount :: Lens' (QueryResponse (a)) (Maybe Int)
 qrsScannedCount = lens _qrsScannedCount (\ s a -> s{_qrsScannedCount = a});
 
 -- | An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.
-qrsItems :: Lens' QueryResponse [HashMap Text AttributeValue]
+qrsItems :: Lens' (QueryResponse (a)) [HashMap Text AttributeValue]
 qrsItems = lens _qrsItems (\ s a -> s{_qrsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-qrsConsumedCapacity :: Lens' QueryResponse (Maybe ConsumedCapacity)
+qrsConsumedCapacity :: Lens' (QueryResponse (a)) (Maybe ConsumedCapacity)
 qrsConsumedCapacity = lens _qrsConsumedCapacity (\ s a -> s{_qrsConsumedCapacity = a});
 
 -- | The response status code.
-qrsResponseStatus :: Lens' QueryResponse Int
+qrsResponseStatus :: Lens' (QueryResponse (a)) Int
 qrsResponseStatus = lens _qrsResponseStatus (\ s a -> s{_qrsResponseStatus = a});
 
 instance NFData QueryResponse

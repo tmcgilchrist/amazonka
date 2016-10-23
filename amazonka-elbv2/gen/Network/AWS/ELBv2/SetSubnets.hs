@@ -107,7 +107,7 @@ instance ToQuery SetSubnets where
 -- | Contains the output of SetSubnets.
 --
 -- /See:/ 'setSubnetsResponse' smart constructor.
-data SetSubnetsResponse = SetSubnetsResponse'
+data SetSubnetsResponse a = SetSubnetsResponse'
     { _ssrsAvailabilityZones :: !(Maybe [AvailabilityZone])
     , _ssrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data SetSubnetsResponse = SetSubnetsResponse'
 -- * 'ssrsResponseStatus'
 setSubnetsResponse
     :: Int -- ^ 'ssrsResponseStatus'
-    -> SetSubnetsResponse
+    -> SetSubnetsResponse (a)
 setSubnetsResponse pResponseStatus_ =
     SetSubnetsResponse'
     { _ssrsAvailabilityZones = Nothing
@@ -129,11 +129,11 @@ setSubnetsResponse pResponseStatus_ =
     }
 
 -- | Information about the subnet and Availability Zone.
-ssrsAvailabilityZones :: Lens' SetSubnetsResponse [AvailabilityZone]
+ssrsAvailabilityZones :: Lens' (SetSubnetsResponse (a)) [AvailabilityZone]
 ssrsAvailabilityZones = lens _ssrsAvailabilityZones (\ s a -> s{_ssrsAvailabilityZones = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ssrsResponseStatus :: Lens' SetSubnetsResponse Int
+ssrsResponseStatus :: Lens' (SetSubnetsResponse (a)) Int
 ssrsResponseStatus = lens _ssrsResponseStatus (\ s a -> s{_ssrsResponseStatus = a});
 
 instance NFData SetSubnetsResponse

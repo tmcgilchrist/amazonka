@@ -97,14 +97,14 @@ instance ToQuery ModifySubnetAttribute where
                "SubnetId" =: _msaSubnetId]
 
 -- | /See:/ 'modifySubnetAttributeResponse' smart constructor.
-data ModifySubnetAttributeResponse =
+data ModifySubnetAttributeResponse a =
     ModifySubnetAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifySubnetAttributeResponse' with the minimum fields required to make a request.
 --
 modifySubnetAttributeResponse
-    :: ModifySubnetAttributeResponse
+    :: ModifySubnetAttributeResponse (a)
 modifySubnetAttributeResponse = ModifySubnetAttributeResponse'
 
 instance NFData ModifySubnetAttributeResponse

@@ -118,7 +118,7 @@ instance ToQuery GetDeploymentGroup where
 -- | Represents the output of a get deployment group operation.
 --
 -- /See:/ 'getDeploymentGroupResponse' smart constructor.
-data GetDeploymentGroupResponse = GetDeploymentGroupResponse'
+data GetDeploymentGroupResponse a = GetDeploymentGroupResponse'
     { _gdgrsDeploymentGroupInfo :: !(Maybe DeploymentGroupInfo)
     , _gdgrsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data GetDeploymentGroupResponse = GetDeploymentGroupResponse'
 -- * 'gdgrsResponseStatus'
 getDeploymentGroupResponse
     :: Int -- ^ 'gdgrsResponseStatus'
-    -> GetDeploymentGroupResponse
+    -> GetDeploymentGroupResponse (a)
 getDeploymentGroupResponse pResponseStatus_ =
     GetDeploymentGroupResponse'
     { _gdgrsDeploymentGroupInfo = Nothing
@@ -140,11 +140,11 @@ getDeploymentGroupResponse pResponseStatus_ =
     }
 
 -- | Information about the deployment group.
-gdgrsDeploymentGroupInfo :: Lens' GetDeploymentGroupResponse (Maybe DeploymentGroupInfo)
+gdgrsDeploymentGroupInfo :: Lens' (GetDeploymentGroupResponse (a)) (Maybe DeploymentGroupInfo)
 gdgrsDeploymentGroupInfo = lens _gdgrsDeploymentGroupInfo (\ s a -> s{_gdgrsDeploymentGroupInfo = a});
 
 -- | The response status code.
-gdgrsResponseStatus :: Lens' GetDeploymentGroupResponse Int
+gdgrsResponseStatus :: Lens' (GetDeploymentGroupResponse (a)) Int
 gdgrsResponseStatus = lens _gdgrsResponseStatus (\ s a -> s{_gdgrsResponseStatus = a});
 
 instance NFData GetDeploymentGroupResponse

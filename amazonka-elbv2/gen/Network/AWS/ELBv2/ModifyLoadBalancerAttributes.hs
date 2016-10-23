@@ -113,7 +113,7 @@ instance ToQuery ModifyLoadBalancerAttributes where
 -- | Contains the output of ModifyLoadBalancerAttributes.
 --
 -- /See:/ 'modifyLoadBalancerAttributesResponse' smart constructor.
-data ModifyLoadBalancerAttributesResponse = ModifyLoadBalancerAttributesResponse'
+data ModifyLoadBalancerAttributesResponse a = ModifyLoadBalancerAttributesResponse'
     { _mlbarsAttributes     :: !(Maybe [LoadBalancerAttribute])
     , _mlbarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data ModifyLoadBalancerAttributesResponse = ModifyLoadBalancerAttributesResponse
 -- * 'mlbarsResponseStatus'
 modifyLoadBalancerAttributesResponse
     :: Int -- ^ 'mlbarsResponseStatus'
-    -> ModifyLoadBalancerAttributesResponse
+    -> ModifyLoadBalancerAttributesResponse (a)
 modifyLoadBalancerAttributesResponse pResponseStatus_ =
     ModifyLoadBalancerAttributesResponse'
     { _mlbarsAttributes = Nothing
@@ -135,11 +135,11 @@ modifyLoadBalancerAttributesResponse pResponseStatus_ =
     }
 
 -- | Information about the load balancer attributes.
-mlbarsAttributes :: Lens' ModifyLoadBalancerAttributesResponse [LoadBalancerAttribute]
+mlbarsAttributes :: Lens' (ModifyLoadBalancerAttributesResponse (a)) [LoadBalancerAttribute]
 mlbarsAttributes = lens _mlbarsAttributes (\ s a -> s{_mlbarsAttributes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-mlbarsResponseStatus :: Lens' ModifyLoadBalancerAttributesResponse Int
+mlbarsResponseStatus :: Lens' (ModifyLoadBalancerAttributesResponse (a)) Int
 mlbarsResponseStatus = lens _mlbarsResponseStatus (\ s a -> s{_mlbarsResponseStatus = a});
 
 instance NFData ModifyLoadBalancerAttributesResponse

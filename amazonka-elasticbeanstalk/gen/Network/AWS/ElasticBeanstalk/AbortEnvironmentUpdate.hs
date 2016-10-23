@@ -98,14 +98,14 @@ instance ToQuery AbortEnvironmentUpdate where
                "EnvironmentId" =: _aeuEnvironmentId]
 
 -- | /See:/ 'abortEnvironmentUpdateResponse' smart constructor.
-data AbortEnvironmentUpdateResponse =
+data AbortEnvironmentUpdateResponse a =
     AbortEnvironmentUpdateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AbortEnvironmentUpdateResponse' with the minimum fields required to make a request.
 --
 abortEnvironmentUpdateResponse
-    :: AbortEnvironmentUpdateResponse
+    :: AbortEnvironmentUpdateResponse (a)
 abortEnvironmentUpdateResponse = AbortEnvironmentUpdateResponse'
 
 instance NFData AbortEnvironmentUpdateResponse

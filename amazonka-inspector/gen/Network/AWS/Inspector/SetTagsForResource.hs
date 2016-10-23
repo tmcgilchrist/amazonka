@@ -104,14 +104,14 @@ instance ToQuery SetTagsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'setTagsForResourceResponse' smart constructor.
-data SetTagsForResourceResponse =
+data SetTagsForResourceResponse a =
     SetTagsForResourceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetTagsForResourceResponse' with the minimum fields required to make a request.
 --
 setTagsForResourceResponse
-    :: SetTagsForResourceResponse
+    :: SetTagsForResourceResponse (a)
 setTagsForResourceResponse = SetTagsForResourceResponse'
 
 instance NFData SetTagsForResourceResponse

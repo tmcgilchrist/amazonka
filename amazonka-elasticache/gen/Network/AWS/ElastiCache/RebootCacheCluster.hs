@@ -109,7 +109,7 @@ instance ToQuery RebootCacheCluster where
                  toQueryList "CacheNodeId" _rccCacheNodeIdsToReboot]
 
 -- | /See:/ 'rebootCacheClusterResponse' smart constructor.
-data RebootCacheClusterResponse = RebootCacheClusterResponse'
+data RebootCacheClusterResponse a = RebootCacheClusterResponse'
     { _rccrsCacheCluster   :: !(Maybe CacheCluster)
     , _rccrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -123,7 +123,7 @@ data RebootCacheClusterResponse = RebootCacheClusterResponse'
 -- * 'rccrsResponseStatus'
 rebootCacheClusterResponse
     :: Int -- ^ 'rccrsResponseStatus'
-    -> RebootCacheClusterResponse
+    -> RebootCacheClusterResponse (a)
 rebootCacheClusterResponse pResponseStatus_ =
     RebootCacheClusterResponse'
     { _rccrsCacheCluster = Nothing
@@ -131,11 +131,11 @@ rebootCacheClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rccrsCacheCluster :: Lens' RebootCacheClusterResponse (Maybe CacheCluster)
+rccrsCacheCluster :: Lens' (RebootCacheClusterResponse (a)) (Maybe CacheCluster)
 rccrsCacheCluster = lens _rccrsCacheCluster (\ s a -> s{_rccrsCacheCluster = a});
 
 -- | The response status code.
-rccrsResponseStatus :: Lens' RebootCacheClusterResponse Int
+rccrsResponseStatus :: Lens' (RebootCacheClusterResponse (a)) Int
 rccrsResponseStatus = lens _rccrsResponseStatus (\ s a -> s{_rccrsResponseStatus = a});
 
 instance NFData RebootCacheClusterResponse

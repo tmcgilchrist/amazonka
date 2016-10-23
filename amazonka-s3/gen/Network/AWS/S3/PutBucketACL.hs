@@ -168,14 +168,14 @@ instance ToQuery PutBucketACL where
         toQuery = const (mconcat ["acl"])
 
 -- | /See:/ 'putBucketACLResponse' smart constructor.
-data PutBucketACLResponse =
+data PutBucketACLResponse a =
     PutBucketACLResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketACLResponse' with the minimum fields required to make a request.
 --
 putBucketACLResponse
-    :: PutBucketACLResponse
+    :: PutBucketACLResponse (a)
 putBucketACLResponse = PutBucketACLResponse'
 
 instance NFData PutBucketACLResponse

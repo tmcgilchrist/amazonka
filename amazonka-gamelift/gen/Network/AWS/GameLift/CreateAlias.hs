@@ -126,7 +126,7 @@ instance ToQuery CreateAlias where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'createAliasResponse' smart constructor.
-data CreateAliasResponse = CreateAliasResponse'
+data CreateAliasResponse a = CreateAliasResponse'
     { _carsAlias          :: !(Maybe Alias)
     , _carsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data CreateAliasResponse = CreateAliasResponse'
 -- * 'carsResponseStatus'
 createAliasResponse
     :: Int -- ^ 'carsResponseStatus'
-    -> CreateAliasResponse
+    -> CreateAliasResponse (a)
 createAliasResponse pResponseStatus_ =
     CreateAliasResponse'
     { _carsAlias = Nothing
@@ -148,11 +148,11 @@ createAliasResponse pResponseStatus_ =
     }
 
 -- | Object containing the newly created alias record.
-carsAlias :: Lens' CreateAliasResponse (Maybe Alias)
+carsAlias :: Lens' (CreateAliasResponse (a)) (Maybe Alias)
 carsAlias = lens _carsAlias (\ s a -> s{_carsAlias = a});
 
 -- | The response status code.
-carsResponseStatus :: Lens' CreateAliasResponse Int
+carsResponseStatus :: Lens' (CreateAliasResponse (a)) Int
 carsResponseStatus = lens _carsResponseStatus (\ s a -> s{_carsResponseStatus = a});
 
 instance NFData CreateAliasResponse

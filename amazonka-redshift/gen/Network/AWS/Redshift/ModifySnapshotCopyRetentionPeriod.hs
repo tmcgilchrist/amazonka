@@ -117,7 +117,7 @@ instance ToQuery ModifySnapshotCopyRetentionPeriod
                "RetentionPeriod" =: _mscrpRetentionPeriod]
 
 -- | /See:/ 'modifySnapshotCopyRetentionPeriodResponse' smart constructor.
-data ModifySnapshotCopyRetentionPeriodResponse = ModifySnapshotCopyRetentionPeriodResponse'
+data ModifySnapshotCopyRetentionPeriodResponse a = ModifySnapshotCopyRetentionPeriodResponse'
     { _mscrprsCluster        :: !(Maybe Cluster)
     , _mscrprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data ModifySnapshotCopyRetentionPeriodResponse = ModifySnapshotCopyRetentionPeri
 -- * 'mscrprsResponseStatus'
 modifySnapshotCopyRetentionPeriodResponse
     :: Int -- ^ 'mscrprsResponseStatus'
-    -> ModifySnapshotCopyRetentionPeriodResponse
+    -> ModifySnapshotCopyRetentionPeriodResponse (a)
 modifySnapshotCopyRetentionPeriodResponse pResponseStatus_ =
     ModifySnapshotCopyRetentionPeriodResponse'
     { _mscrprsCluster = Nothing
@@ -139,11 +139,11 @@ modifySnapshotCopyRetentionPeriodResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mscrprsCluster :: Lens' ModifySnapshotCopyRetentionPeriodResponse (Maybe Cluster)
+mscrprsCluster :: Lens' (ModifySnapshotCopyRetentionPeriodResponse (a)) (Maybe Cluster)
 mscrprsCluster = lens _mscrprsCluster (\ s a -> s{_mscrprsCluster = a});
 
 -- | The response status code.
-mscrprsResponseStatus :: Lens' ModifySnapshotCopyRetentionPeriodResponse Int
+mscrprsResponseStatus :: Lens' (ModifySnapshotCopyRetentionPeriodResponse (a)) Int
 mscrprsResponseStatus = lens _mscrprsResponseStatus (\ s a -> s{_mscrprsResponseStatus = a});
 
 instance NFData

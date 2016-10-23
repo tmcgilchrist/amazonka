@@ -145,7 +145,7 @@ instance ToQuery DescribeDBClusters where
 -- | Contains the result of a successful invocation of the < DescribeDBClusters> action.
 --
 -- /See:/ 'describeDBClustersResponse' smart constructor.
-data DescribeDBClustersResponse = DescribeDBClustersResponse'
+data DescribeDBClustersResponse a = DescribeDBClustersResponse'
     { _ddcrsDBClusters     :: !(Maybe [DBCluster])
     , _ddcrsMarker         :: !(Maybe Text)
     , _ddcrsResponseStatus :: !Int
@@ -162,7 +162,7 @@ data DescribeDBClustersResponse = DescribeDBClustersResponse'
 -- * 'ddcrsResponseStatus'
 describeDBClustersResponse
     :: Int -- ^ 'ddcrsResponseStatus'
-    -> DescribeDBClustersResponse
+    -> DescribeDBClustersResponse (a)
 describeDBClustersResponse pResponseStatus_ =
     DescribeDBClustersResponse'
     { _ddcrsDBClusters = Nothing
@@ -171,15 +171,15 @@ describeDBClustersResponse pResponseStatus_ =
     }
 
 -- | Contains a list of DB clusters for the user.
-ddcrsDBClusters :: Lens' DescribeDBClustersResponse [DBCluster]
+ddcrsDBClusters :: Lens' (DescribeDBClustersResponse (a)) [DBCluster]
 ddcrsDBClusters = lens _ddcrsDBClusters (\ s a -> s{_ddcrsDBClusters = a}) . _Default . _Coerce;
 
 -- | A pagination token that can be used in a subsequent DescribeDBClusters request.
-ddcrsMarker :: Lens' DescribeDBClustersResponse (Maybe Text)
+ddcrsMarker :: Lens' (DescribeDBClustersResponse (a)) (Maybe Text)
 ddcrsMarker = lens _ddcrsMarker (\ s a -> s{_ddcrsMarker = a});
 
 -- | The response status code.
-ddcrsResponseStatus :: Lens' DescribeDBClustersResponse Int
+ddcrsResponseStatus :: Lens' (DescribeDBClustersResponse (a)) Int
 ddcrsResponseStatus = lens _ddcrsResponseStatus (\ s a -> s{_ddcrsResponseStatus = a});
 
 instance NFData DescribeDBClustersResponse

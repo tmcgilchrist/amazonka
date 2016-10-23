@@ -119,14 +119,14 @@ instance ToQuery DeleteAttributes where
                "ItemName" =: _daItemName]
 
 -- | /See:/ 'deleteAttributesResponse' smart constructor.
-data DeleteAttributesResponse =
+data DeleteAttributesResponse a =
     DeleteAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAttributesResponse' with the minimum fields required to make a request.
 --
 deleteAttributesResponse
-    :: DeleteAttributesResponse
+    :: DeleteAttributesResponse (a)
 deleteAttributesResponse = DeleteAttributesResponse'
 
 instance NFData DeleteAttributesResponse

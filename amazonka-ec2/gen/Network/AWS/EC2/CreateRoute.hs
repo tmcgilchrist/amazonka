@@ -178,7 +178,7 @@ instance ToQuery CreateRoute where
 -- | Contains the output of CreateRoute.
 --
 -- /See:/ 'createRouteResponse' smart constructor.
-data CreateRouteResponse = CreateRouteResponse'
+data CreateRouteResponse a = CreateRouteResponse'
     { _crrsReturn         :: !(Maybe Bool)
     , _crrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -192,7 +192,7 @@ data CreateRouteResponse = CreateRouteResponse'
 -- * 'crrsResponseStatus'
 createRouteResponse
     :: Int -- ^ 'crrsResponseStatus'
-    -> CreateRouteResponse
+    -> CreateRouteResponse (a)
 createRouteResponse pResponseStatus_ =
     CreateRouteResponse'
     { _crrsReturn = Nothing
@@ -200,11 +200,11 @@ createRouteResponse pResponseStatus_ =
     }
 
 -- | Returns 'true' if the request succeeds; otherwise, it returns an error.
-crrsReturn :: Lens' CreateRouteResponse (Maybe Bool)
+crrsReturn :: Lens' (CreateRouteResponse (a)) (Maybe Bool)
 crrsReturn = lens _crrsReturn (\ s a -> s{_crrsReturn = a});
 
 -- | The response status code.
-crrsResponseStatus :: Lens' CreateRouteResponse Int
+crrsResponseStatus :: Lens' (CreateRouteResponse (a)) Int
 crrsResponseStatus = lens _crrsResponseStatus (\ s a -> s{_crrsResponseStatus = a});
 
 instance NFData CreateRouteResponse

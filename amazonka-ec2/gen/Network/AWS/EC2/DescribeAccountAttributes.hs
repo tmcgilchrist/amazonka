@@ -122,7 +122,7 @@ instance ToQuery DescribeAccountAttributes where
 -- | Contains the output of DescribeAccountAttributes.
 --
 -- /See:/ 'describeAccountAttributesResponse' smart constructor.
-data DescribeAccountAttributesResponse = DescribeAccountAttributesResponse'
+data DescribeAccountAttributesResponse a = DescribeAccountAttributesResponse'
     { _daarsAccountAttributes :: !(Maybe [AccountAttribute])
     , _daarsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data DescribeAccountAttributesResponse = DescribeAccountAttributesResponse'
 -- * 'daarsResponseStatus'
 describeAccountAttributesResponse
     :: Int -- ^ 'daarsResponseStatus'
-    -> DescribeAccountAttributesResponse
+    -> DescribeAccountAttributesResponse (a)
 describeAccountAttributesResponse pResponseStatus_ =
     DescribeAccountAttributesResponse'
     { _daarsAccountAttributes = Nothing
@@ -144,11 +144,11 @@ describeAccountAttributesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more account attributes.
-daarsAccountAttributes :: Lens' DescribeAccountAttributesResponse [AccountAttribute]
+daarsAccountAttributes :: Lens' (DescribeAccountAttributesResponse (a)) [AccountAttribute]
 daarsAccountAttributes = lens _daarsAccountAttributes (\ s a -> s{_daarsAccountAttributes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-daarsResponseStatus :: Lens' DescribeAccountAttributesResponse Int
+daarsResponseStatus :: Lens' (DescribeAccountAttributesResponse (a)) Int
 daarsResponseStatus = lens _daarsResponseStatus (\ s a -> s{_daarsResponseStatus = a});
 
 instance NFData DescribeAccountAttributesResponse

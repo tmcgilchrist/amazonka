@@ -101,7 +101,7 @@ instance ToQuery DescribeAlias where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeAliasResponse' smart constructor.
-data DescribeAliasResponse = DescribeAliasResponse'
+data DescribeAliasResponse a = DescribeAliasResponse'
     { _darsAlias          :: !(Maybe Alias)
     , _darsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data DescribeAliasResponse = DescribeAliasResponse'
 -- * 'darsResponseStatus'
 describeAliasResponse
     :: Int -- ^ 'darsResponseStatus'
-    -> DescribeAliasResponse
+    -> DescribeAliasResponse (a)
 describeAliasResponse pResponseStatus_ =
     DescribeAliasResponse'
     { _darsAlias = Nothing
@@ -123,11 +123,11 @@ describeAliasResponse pResponseStatus_ =
     }
 
 -- | Object containing the requested alias.
-darsAlias :: Lens' DescribeAliasResponse (Maybe Alias)
+darsAlias :: Lens' (DescribeAliasResponse (a)) (Maybe Alias)
 darsAlias = lens _darsAlias (\ s a -> s{_darsAlias = a});
 
 -- | The response status code.
-darsResponseStatus :: Lens' DescribeAliasResponse Int
+darsResponseStatus :: Lens' (DescribeAliasResponse (a)) Int
 darsResponseStatus = lens _darsResponseStatus (\ s a -> s{_darsResponseStatus = a});
 
 instance NFData DescribeAliasResponse

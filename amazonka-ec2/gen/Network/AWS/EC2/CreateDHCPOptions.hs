@@ -117,7 +117,7 @@ instance ToQuery CreateDHCPOptions where
 -- | Contains the output of CreateDhcpOptions.
 --
 -- /See:/ 'createDHCPOptionsResponse' smart constructor.
-data CreateDHCPOptionsResponse = CreateDHCPOptionsResponse'
+data CreateDHCPOptionsResponse a = CreateDHCPOptionsResponse'
     { _cdorsDHCPOptions    :: !(Maybe DHCPOptions)
     , _cdorsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data CreateDHCPOptionsResponse = CreateDHCPOptionsResponse'
 -- * 'cdorsResponseStatus'
 createDHCPOptionsResponse
     :: Int -- ^ 'cdorsResponseStatus'
-    -> CreateDHCPOptionsResponse
+    -> CreateDHCPOptionsResponse (a)
 createDHCPOptionsResponse pResponseStatus_ =
     CreateDHCPOptionsResponse'
     { _cdorsDHCPOptions = Nothing
@@ -139,11 +139,11 @@ createDHCPOptionsResponse pResponseStatus_ =
     }
 
 -- | A set of DHCP options.
-cdorsDHCPOptions :: Lens' CreateDHCPOptionsResponse (Maybe DHCPOptions)
+cdorsDHCPOptions :: Lens' (CreateDHCPOptionsResponse (a)) (Maybe DHCPOptions)
 cdorsDHCPOptions = lens _cdorsDHCPOptions (\ s a -> s{_cdorsDHCPOptions = a});
 
 -- | The response status code.
-cdorsResponseStatus :: Lens' CreateDHCPOptionsResponse Int
+cdorsResponseStatus :: Lens' (CreateDHCPOptionsResponse (a)) Int
 cdorsResponseStatus = lens _cdorsResponseStatus (\ s a -> s{_cdorsResponseStatus = a});
 
 instance NFData CreateDHCPOptionsResponse

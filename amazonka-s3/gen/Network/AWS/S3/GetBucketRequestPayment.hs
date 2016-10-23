@@ -89,7 +89,7 @@ instance ToQuery GetBucketRequestPayment where
         toQuery = const (mconcat ["requestPayment"])
 
 -- | /See:/ 'getBucketRequestPaymentResponse' smart constructor.
-data GetBucketRequestPaymentResponse = GetBucketRequestPaymentResponse'
+data GetBucketRequestPaymentResponse a = GetBucketRequestPaymentResponse'
     { _gbrprsPayer          :: !(Maybe Payer)
     , _gbrprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetBucketRequestPaymentResponse = GetBucketRequestPaymentResponse'
 -- * 'gbrprsResponseStatus'
 getBucketRequestPaymentResponse
     :: Int -- ^ 'gbrprsResponseStatus'
-    -> GetBucketRequestPaymentResponse
+    -> GetBucketRequestPaymentResponse (a)
 getBucketRequestPaymentResponse pResponseStatus_ =
     GetBucketRequestPaymentResponse'
     { _gbrprsPayer = Nothing
@@ -111,11 +111,11 @@ getBucketRequestPaymentResponse pResponseStatus_ =
     }
 
 -- | Specifies who pays for the download and request fees.
-gbrprsPayer :: Lens' GetBucketRequestPaymentResponse (Maybe Payer)
+gbrprsPayer :: Lens' (GetBucketRequestPaymentResponse (a)) (Maybe Payer)
 gbrprsPayer = lens _gbrprsPayer (\ s a -> s{_gbrprsPayer = a});
 
 -- | The response status code.
-gbrprsResponseStatus :: Lens' GetBucketRequestPaymentResponse Int
+gbrprsResponseStatus :: Lens' (GetBucketRequestPaymentResponse (a)) Int
 gbrprsResponseStatus = lens _gbrprsResponseStatus (\ s a -> s{_gbrprsResponseStatus = a});
 
 instance NFData GetBucketRequestPaymentResponse

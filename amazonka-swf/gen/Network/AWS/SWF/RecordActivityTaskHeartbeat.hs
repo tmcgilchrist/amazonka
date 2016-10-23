@@ -135,7 +135,7 @@ instance ToQuery RecordActivityTaskHeartbeat where
 -- | Status information about an activity task.
 --
 -- /See:/ 'recordActivityTaskHeartbeatResponse' smart constructor.
-data RecordActivityTaskHeartbeatResponse = RecordActivityTaskHeartbeatResponse'
+data RecordActivityTaskHeartbeatResponse a = RecordActivityTaskHeartbeatResponse'
     { _rathrsResponseStatus  :: !Int
     , _rathrsCancelRequested :: !Bool
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -150,7 +150,7 @@ data RecordActivityTaskHeartbeatResponse = RecordActivityTaskHeartbeatResponse'
 recordActivityTaskHeartbeatResponse
     :: Int -- ^ 'rathrsResponseStatus'
     -> Bool -- ^ 'rathrsCancelRequested'
-    -> RecordActivityTaskHeartbeatResponse
+    -> RecordActivityTaskHeartbeatResponse (a)
 recordActivityTaskHeartbeatResponse pResponseStatus_ pCancelRequested_ =
     RecordActivityTaskHeartbeatResponse'
     { _rathrsResponseStatus = pResponseStatus_
@@ -158,11 +158,11 @@ recordActivityTaskHeartbeatResponse pResponseStatus_ pCancelRequested_ =
     }
 
 -- | The response status code.
-rathrsResponseStatus :: Lens' RecordActivityTaskHeartbeatResponse Int
+rathrsResponseStatus :: Lens' (RecordActivityTaskHeartbeatResponse (a)) Int
 rathrsResponseStatus = lens _rathrsResponseStatus (\ s a -> s{_rathrsResponseStatus = a});
 
 -- | Set to 'true' if cancellation of the task is requested.
-rathrsCancelRequested :: Lens' RecordActivityTaskHeartbeatResponse Bool
+rathrsCancelRequested :: Lens' (RecordActivityTaskHeartbeatResponse (a)) Bool
 rathrsCancelRequested = lens _rathrsCancelRequested (\ s a -> s{_rathrsCancelRequested = a});
 
 instance NFData RecordActivityTaskHeartbeatResponse

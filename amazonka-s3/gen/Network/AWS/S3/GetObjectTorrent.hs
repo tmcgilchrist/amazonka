@@ -111,10 +111,10 @@ instance ToQuery GetObjectTorrent where
         toQuery = const (mconcat ["torrent"])
 
 -- | /See:/ 'getObjectTorrentResponse' smart constructor.
-data GetObjectTorrentResponse = GetObjectTorrentResponse'
+data GetObjectTorrentResponse a = GetObjectTorrentResponse'
     { _gotrsRequestCharged :: !(Maybe RequestCharged)
     , _gotrsResponseStatus :: !Int
-    , _gotrsBody           :: !RsBody
+    , _gotrsBody           :: !a
     } deriving (Show,Generic)
 
 -- | Creates a value of 'GetObjectTorrentResponse' with the minimum fields required to make a request.
@@ -128,8 +128,8 @@ data GetObjectTorrentResponse = GetObjectTorrentResponse'
 -- * 'gotrsBody'
 getObjectTorrentResponse
     :: Int -- ^ 'gotrsResponseStatus'
-    -> RsBody -- ^ 'gotrsBody'
-    -> GetObjectTorrentResponse
+    -> a -- ^ 'gotrsBody'
+    -> GetObjectTorrentResponse (a)
 getObjectTorrentResponse pResponseStatus_ pBody_ =
     GetObjectTorrentResponse'
     { _gotrsRequestCharged = Nothing
@@ -138,13 +138,13 @@ getObjectTorrentResponse pResponseStatus_ pBody_ =
     }
 
 -- | Undocumented member.
-gotrsRequestCharged :: Lens' GetObjectTorrentResponse (Maybe RequestCharged)
+gotrsRequestCharged :: Lens' (GetObjectTorrentResponse (a)) (Maybe RequestCharged)
 gotrsRequestCharged = lens _gotrsRequestCharged (\ s a -> s{_gotrsRequestCharged = a});
 
 -- | The response status code.
-gotrsResponseStatus :: Lens' GetObjectTorrentResponse Int
+gotrsResponseStatus :: Lens' (GetObjectTorrentResponse (a)) Int
 gotrsResponseStatus = lens _gotrsResponseStatus (\ s a -> s{_gotrsResponseStatus = a});
 
 -- | Undocumented member.
-gotrsBody :: Lens' GetObjectTorrentResponse RsBody
+gotrsBody :: Lens' (GetObjectTorrentResponse (a)) a
 gotrsBody = lens _gotrsBody (\ s a -> s{_gotrsBody = a});

@@ -137,7 +137,7 @@ instance ToQuery GetStatus where
 -- | Output structure for the GetStatus operation.
 --
 -- /See:/ 'getStatusResponse' smart constructor.
-data GetStatusResponse = GetStatusResponse'
+data GetStatusResponse a = GetStatusResponse'
     { _gsrsCarrier               :: !(Maybe Text)
     , _gsrsTrackingNumber        :: !(Maybe Text)
     , _gsrsSignature             :: !(Maybe Text)
@@ -196,7 +196,7 @@ data GetStatusResponse = GetStatusResponse'
 -- * 'gsrsResponseStatus'
 getStatusResponse
     :: Int -- ^ 'gsrsResponseStatus'
-    -> GetStatusResponse
+    -> GetStatusResponse (a)
 getStatusResponse pResponseStatus_ =
     GetStatusResponse'
     { _gsrsCarrier = Nothing
@@ -219,71 +219,71 @@ getStatusResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gsrsCarrier :: Lens' GetStatusResponse (Maybe Text)
+gsrsCarrier :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsCarrier = lens _gsrsCarrier (\ s a -> s{_gsrsCarrier = a});
 
 -- | Undocumented member.
-gsrsTrackingNumber :: Lens' GetStatusResponse (Maybe Text)
+gsrsTrackingNumber :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsTrackingNumber = lens _gsrsTrackingNumber (\ s a -> s{_gsrsTrackingNumber = a});
 
 -- | Undocumented member.
-gsrsSignature :: Lens' GetStatusResponse (Maybe Text)
+gsrsSignature :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsSignature = lens _gsrsSignature (\ s a -> s{_gsrsSignature = a});
 
 -- | Undocumented member.
-gsrsJobType :: Lens' GetStatusResponse (Maybe JobType)
+gsrsJobType :: Lens' (GetStatusResponse (a)) (Maybe JobType)
 gsrsJobType = lens _gsrsJobType (\ s a -> s{_gsrsJobType = a});
 
 -- | Undocumented member.
-gsrsJobId :: Lens' GetStatusResponse (Maybe Text)
+gsrsJobId :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsJobId = lens _gsrsJobId (\ s a -> s{_gsrsJobId = a});
 
 -- | Undocumented member.
-gsrsSignatureFileContents :: Lens' GetStatusResponse (Maybe Text)
+gsrsSignatureFileContents :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsSignatureFileContents = lens _gsrsSignatureFileContents (\ s a -> s{_gsrsSignatureFileContents = a});
 
 -- | Undocumented member.
-gsrsErrorCount :: Lens' GetStatusResponse (Maybe Int)
+gsrsErrorCount :: Lens' (GetStatusResponse (a)) (Maybe Int)
 gsrsErrorCount = lens _gsrsErrorCount (\ s a -> s{_gsrsErrorCount = a});
 
 -- | Undocumented member.
-gsrsCurrentManifest :: Lens' GetStatusResponse (Maybe Text)
+gsrsCurrentManifest :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsCurrentManifest = lens _gsrsCurrentManifest (\ s a -> s{_gsrsCurrentManifest = a});
 
 -- | Undocumented member.
-gsrsArtifactList :: Lens' GetStatusResponse [Artifact]
+gsrsArtifactList :: Lens' (GetStatusResponse (a)) [Artifact]
 gsrsArtifactList = lens _gsrsArtifactList (\ s a -> s{_gsrsArtifactList = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gsrsLogBucket :: Lens' GetStatusResponse (Maybe Text)
+gsrsLogBucket :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsLogBucket = lens _gsrsLogBucket (\ s a -> s{_gsrsLogBucket = a});
 
 -- | Undocumented member.
-gsrsCreationDate :: Lens' GetStatusResponse (Maybe UTCTime)
+gsrsCreationDate :: Lens' (GetStatusResponse (a)) (Maybe UTCTime)
 gsrsCreationDate = lens _gsrsCreationDate (\ s a -> s{_gsrsCreationDate = a}) . mapping _Time;
 
 -- | Undocumented member.
-gsrsProgressCode :: Lens' GetStatusResponse (Maybe Text)
+gsrsProgressCode :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsProgressCode = lens _gsrsProgressCode (\ s a -> s{_gsrsProgressCode = a});
 
 -- | Undocumented member.
-gsrsLocationCode :: Lens' GetStatusResponse (Maybe Text)
+gsrsLocationCode :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsLocationCode = lens _gsrsLocationCode (\ s a -> s{_gsrsLocationCode = a});
 
 -- | Undocumented member.
-gsrsLogKey :: Lens' GetStatusResponse (Maybe Text)
+gsrsLogKey :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsLogKey = lens _gsrsLogKey (\ s a -> s{_gsrsLogKey = a});
 
 -- | Undocumented member.
-gsrsLocationMessage :: Lens' GetStatusResponse (Maybe Text)
+gsrsLocationMessage :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsLocationMessage = lens _gsrsLocationMessage (\ s a -> s{_gsrsLocationMessage = a});
 
 -- | Undocumented member.
-gsrsProgressMessage :: Lens' GetStatusResponse (Maybe Text)
+gsrsProgressMessage :: Lens' (GetStatusResponse (a)) (Maybe Text)
 gsrsProgressMessage = lens _gsrsProgressMessage (\ s a -> s{_gsrsProgressMessage = a});
 
 -- | The response status code.
-gsrsResponseStatus :: Lens' GetStatusResponse Int
+gsrsResponseStatus :: Lens' (GetStatusResponse (a)) Int
 gsrsResponseStatus = lens _gsrsResponseStatus (\ s a -> s{_gsrsResponseStatus = a});
 
 instance NFData GetStatusResponse

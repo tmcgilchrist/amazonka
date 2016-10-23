@@ -117,7 +117,7 @@ instance ToQuery RebuildWorkspaces where
 -- | Contains the results of the < RebuildWorkspaces> operation.
 --
 -- /See:/ 'rebuildWorkspacesResponse' smart constructor.
-data RebuildWorkspacesResponse = RebuildWorkspacesResponse'
+data RebuildWorkspacesResponse a = RebuildWorkspacesResponse'
     { _rwrsFailedRequests :: !(Maybe [FailedWorkspaceChangeRequest])
     , _rwrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data RebuildWorkspacesResponse = RebuildWorkspacesResponse'
 -- * 'rwrsResponseStatus'
 rebuildWorkspacesResponse
     :: Int -- ^ 'rwrsResponseStatus'
-    -> RebuildWorkspacesResponse
+    -> RebuildWorkspacesResponse (a)
 rebuildWorkspacesResponse pResponseStatus_ =
     RebuildWorkspacesResponse'
     { _rwrsFailedRequests = Nothing
@@ -139,11 +139,11 @@ rebuildWorkspacesResponse pResponseStatus_ =
     }
 
 -- | An array of structures representing any WorkSpaces that could not be rebuilt.
-rwrsFailedRequests :: Lens' RebuildWorkspacesResponse [FailedWorkspaceChangeRequest]
+rwrsFailedRequests :: Lens' (RebuildWorkspacesResponse (a)) [FailedWorkspaceChangeRequest]
 rwrsFailedRequests = lens _rwrsFailedRequests (\ s a -> s{_rwrsFailedRequests = a}) . _Default . _Coerce;
 
 -- | The response status code.
-rwrsResponseStatus :: Lens' RebuildWorkspacesResponse Int
+rwrsResponseStatus :: Lens' (RebuildWorkspacesResponse (a)) Int
 rwrsResponseStatus = lens _rwrsResponseStatus (\ s a -> s{_rwrsResponseStatus = a});
 
 instance NFData RebuildWorkspacesResponse

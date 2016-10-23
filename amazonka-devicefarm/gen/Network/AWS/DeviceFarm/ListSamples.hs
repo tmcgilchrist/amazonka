@@ -125,7 +125,7 @@ instance ToQuery ListSamples where
 -- | Represents the result of a list samples request.
 --
 -- /See:/ 'listSamplesResponse' smart constructor.
-data ListSamplesResponse = ListSamplesResponse'
+data ListSamplesResponse a = ListSamplesResponse'
     { _lrsNextToken      :: !(Maybe Text)
     , _lrsSamples        :: !(Maybe [Sample])
     , _lrsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ListSamplesResponse = ListSamplesResponse'
 -- * 'lrsResponseStatus'
 listSamplesResponse
     :: Int -- ^ 'lrsResponseStatus'
-    -> ListSamplesResponse
+    -> ListSamplesResponse (a)
 listSamplesResponse pResponseStatus_ =
     ListSamplesResponse'
     { _lrsNextToken = Nothing
@@ -151,15 +151,15 @@ listSamplesResponse pResponseStatus_ =
     }
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-lrsNextToken :: Lens' ListSamplesResponse (Maybe Text)
+lrsNextToken :: Lens' (ListSamplesResponse (a)) (Maybe Text)
 lrsNextToken = lens _lrsNextToken (\ s a -> s{_lrsNextToken = a});
 
 -- | Information about the samples.
-lrsSamples :: Lens' ListSamplesResponse [Sample]
+lrsSamples :: Lens' (ListSamplesResponse (a)) [Sample]
 lrsSamples = lens _lrsSamples (\ s a -> s{_lrsSamples = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lrsResponseStatus :: Lens' ListSamplesResponse Int
+lrsResponseStatus :: Lens' (ListSamplesResponse (a)) Int
 lrsResponseStatus = lens _lrsResponseStatus (\ s a -> s{_lrsResponseStatus = a});
 
 instance NFData ListSamplesResponse

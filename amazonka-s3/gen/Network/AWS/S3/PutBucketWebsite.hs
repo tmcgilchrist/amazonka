@@ -108,14 +108,14 @@ instance ToQuery PutBucketWebsite where
         toQuery = const (mconcat ["website"])
 
 -- | /See:/ 'putBucketWebsiteResponse' smart constructor.
-data PutBucketWebsiteResponse =
+data PutBucketWebsiteResponse a =
     PutBucketWebsiteResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketWebsiteResponse' with the minimum fields required to make a request.
 --
 putBucketWebsiteResponse
-    :: PutBucketWebsiteResponse
+    :: PutBucketWebsiteResponse (a)
 putBucketWebsiteResponse = PutBucketWebsiteResponse'
 
 instance NFData PutBucketWebsiteResponse

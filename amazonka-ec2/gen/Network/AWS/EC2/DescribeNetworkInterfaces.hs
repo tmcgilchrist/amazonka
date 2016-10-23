@@ -193,7 +193,7 @@ instance ToQuery DescribeNetworkInterfaces where
 -- | Contains the output of DescribeNetworkInterfaces.
 --
 -- /See:/ 'describeNetworkInterfacesResponse' smart constructor.
-data DescribeNetworkInterfacesResponse = DescribeNetworkInterfacesResponse'
+data DescribeNetworkInterfacesResponse a = DescribeNetworkInterfacesResponse'
     { _dnirsNetworkInterfaces :: !(Maybe [NetworkInterface])
     , _dnirsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -207,7 +207,7 @@ data DescribeNetworkInterfacesResponse = DescribeNetworkInterfacesResponse'
 -- * 'dnirsResponseStatus'
 describeNetworkInterfacesResponse
     :: Int -- ^ 'dnirsResponseStatus'
-    -> DescribeNetworkInterfacesResponse
+    -> DescribeNetworkInterfacesResponse (a)
 describeNetworkInterfacesResponse pResponseStatus_ =
     DescribeNetworkInterfacesResponse'
     { _dnirsNetworkInterfaces = Nothing
@@ -215,11 +215,11 @@ describeNetworkInterfacesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more network interfaces.
-dnirsNetworkInterfaces :: Lens' DescribeNetworkInterfacesResponse [NetworkInterface]
+dnirsNetworkInterfaces :: Lens' (DescribeNetworkInterfacesResponse (a)) [NetworkInterface]
 dnirsNetworkInterfaces = lens _dnirsNetworkInterfaces (\ s a -> s{_dnirsNetworkInterfaces = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dnirsResponseStatus :: Lens' DescribeNetworkInterfacesResponse Int
+dnirsResponseStatus :: Lens' (DescribeNetworkInterfacesResponse (a)) Int
 dnirsResponseStatus = lens _dnirsResponseStatus (\ s a -> s{_dnirsResponseStatus = a});
 
 instance NFData DescribeNetworkInterfacesResponse

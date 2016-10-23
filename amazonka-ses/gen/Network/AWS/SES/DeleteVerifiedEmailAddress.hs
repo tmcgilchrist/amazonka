@@ -93,14 +93,14 @@ instance ToQuery DeleteVerifiedEmailAddress where
                "EmailAddress" =: _dveaEmailAddress]
 
 -- | /See:/ 'deleteVerifiedEmailAddressResponse' smart constructor.
-data DeleteVerifiedEmailAddressResponse =
+data DeleteVerifiedEmailAddressResponse a =
     DeleteVerifiedEmailAddressResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVerifiedEmailAddressResponse' with the minimum fields required to make a request.
 --
 deleteVerifiedEmailAddressResponse
-    :: DeleteVerifiedEmailAddressResponse
+    :: DeleteVerifiedEmailAddressResponse (a)
 deleteVerifiedEmailAddressResponse = DeleteVerifiedEmailAddressResponse'
 
 instance NFData DeleteVerifiedEmailAddressResponse

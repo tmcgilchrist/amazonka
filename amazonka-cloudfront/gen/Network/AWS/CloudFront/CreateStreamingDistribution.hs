@@ -103,7 +103,7 @@ instance ToQuery CreateStreamingDistribution where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'createStreamingDistributionResponse' smart constructor.
-data CreateStreamingDistributionResponse = CreateStreamingDistributionResponse'
+data CreateStreamingDistributionResponse a = CreateStreamingDistributionResponse'
     { _csdrsETag                  :: !(Maybe Text)
     , _csdrsLocation              :: !(Maybe Text)
     , _csdrsStreamingDistribution :: !(Maybe StreamingDistribution)
@@ -123,7 +123,7 @@ data CreateStreamingDistributionResponse = CreateStreamingDistributionResponse'
 -- * 'csdrsResponseStatus'
 createStreamingDistributionResponse
     :: Int -- ^ 'csdrsResponseStatus'
-    -> CreateStreamingDistributionResponse
+    -> CreateStreamingDistributionResponse (a)
 createStreamingDistributionResponse pResponseStatus_ =
     CreateStreamingDistributionResponse'
     { _csdrsETag = Nothing
@@ -133,19 +133,19 @@ createStreamingDistributionResponse pResponseStatus_ =
     }
 
 -- | The current version of the streaming distribution created.
-csdrsETag :: Lens' CreateStreamingDistributionResponse (Maybe Text)
+csdrsETag :: Lens' (CreateStreamingDistributionResponse (a)) (Maybe Text)
 csdrsETag = lens _csdrsETag (\ s a -> s{_csdrsETag = a});
 
 -- | The fully qualified URI of the new streaming distribution resource just created. For example: https:\/\/cloudfront.amazonaws.com\/2010-11-01\/streaming-distribution\/EGTXBD79H29TRA8.
-csdrsLocation :: Lens' CreateStreamingDistributionResponse (Maybe Text)
+csdrsLocation :: Lens' (CreateStreamingDistributionResponse (a)) (Maybe Text)
 csdrsLocation = lens _csdrsLocation (\ s a -> s{_csdrsLocation = a});
 
 -- | The streaming distribution\'s information.
-csdrsStreamingDistribution :: Lens' CreateStreamingDistributionResponse (Maybe StreamingDistribution)
+csdrsStreamingDistribution :: Lens' (CreateStreamingDistributionResponse (a)) (Maybe StreamingDistribution)
 csdrsStreamingDistribution = lens _csdrsStreamingDistribution (\ s a -> s{_csdrsStreamingDistribution = a});
 
 -- | The response status code.
-csdrsResponseStatus :: Lens' CreateStreamingDistributionResponse Int
+csdrsResponseStatus :: Lens' (CreateStreamingDistributionResponse (a)) Int
 csdrsResponseStatus = lens _csdrsResponseStatus (\ s a -> s{_csdrsResponseStatus = a});
 
 instance NFData CreateStreamingDistributionResponse

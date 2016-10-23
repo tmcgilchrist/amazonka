@@ -116,7 +116,7 @@ instance ToQuery CreateVPNGateway where
 -- | Contains the output of CreateVpnGateway.
 --
 -- /See:/ 'createVPNGatewayResponse' smart constructor.
-data CreateVPNGatewayResponse = CreateVPNGatewayResponse'
+data CreateVPNGatewayResponse a = CreateVPNGatewayResponse'
     { _cvgrsVPNGateway     :: !(Maybe VPNGateway)
     , _cvgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data CreateVPNGatewayResponse = CreateVPNGatewayResponse'
 -- * 'cvgrsResponseStatus'
 createVPNGatewayResponse
     :: Int -- ^ 'cvgrsResponseStatus'
-    -> CreateVPNGatewayResponse
+    -> CreateVPNGatewayResponse (a)
 createVPNGatewayResponse pResponseStatus_ =
     CreateVPNGatewayResponse'
     { _cvgrsVPNGateway = Nothing
@@ -138,11 +138,11 @@ createVPNGatewayResponse pResponseStatus_ =
     }
 
 -- | Information about the virtual private gateway.
-cvgrsVPNGateway :: Lens' CreateVPNGatewayResponse (Maybe VPNGateway)
+cvgrsVPNGateway :: Lens' (CreateVPNGatewayResponse (a)) (Maybe VPNGateway)
 cvgrsVPNGateway = lens _cvgrsVPNGateway (\ s a -> s{_cvgrsVPNGateway = a});
 
 -- | The response status code.
-cvgrsResponseStatus :: Lens' CreateVPNGatewayResponse Int
+cvgrsResponseStatus :: Lens' (CreateVPNGatewayResponse (a)) Int
 cvgrsResponseStatus = lens _cvgrsResponseStatus (\ s a -> s{_cvgrsResponseStatus = a});
 
 instance NFData CreateVPNGatewayResponse

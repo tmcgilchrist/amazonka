@@ -162,7 +162,7 @@ instance ToQuery CreateTrust where
 -- | The result of a CreateTrust request.
 --
 -- /See:/ 'createTrustResponse' smart constructor.
-data CreateTrustResponse = CreateTrustResponse'
+data CreateTrustResponse a = CreateTrustResponse'
     { _ctrsTrustId        :: !(Maybe Text)
     , _ctrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -176,7 +176,7 @@ data CreateTrustResponse = CreateTrustResponse'
 -- * 'ctrsResponseStatus'
 createTrustResponse
     :: Int -- ^ 'ctrsResponseStatus'
-    -> CreateTrustResponse
+    -> CreateTrustResponse (a)
 createTrustResponse pResponseStatus_ =
     CreateTrustResponse'
     { _ctrsTrustId = Nothing
@@ -184,11 +184,11 @@ createTrustResponse pResponseStatus_ =
     }
 
 -- | A unique identifier for the trust relationship that was created.
-ctrsTrustId :: Lens' CreateTrustResponse (Maybe Text)
+ctrsTrustId :: Lens' (CreateTrustResponse (a)) (Maybe Text)
 ctrsTrustId = lens _ctrsTrustId (\ s a -> s{_ctrsTrustId = a});
 
 -- | The response status code.
-ctrsResponseStatus :: Lens' CreateTrustResponse Int
+ctrsResponseStatus :: Lens' (CreateTrustResponse (a)) Int
 ctrsResponseStatus = lens _ctrsResponseStatus (\ s a -> s{_ctrsResponseStatus = a});
 
 instance NFData CreateTrustResponse

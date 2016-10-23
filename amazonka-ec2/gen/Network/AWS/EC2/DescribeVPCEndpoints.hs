@@ -152,7 +152,7 @@ instance ToQuery DescribeVPCEndpoints where
 -- | Contains the output of DescribeVpcEndpoints.
 --
 -- /See:/ 'describeVPCEndpointsResponse' smart constructor.
-data DescribeVPCEndpointsResponse = DescribeVPCEndpointsResponse'
+data DescribeVPCEndpointsResponse a = DescribeVPCEndpointsResponse'
     { _dvpcersNextToken      :: !(Maybe Text)
     , _dvpcersVPCEndpoints   :: !(Maybe [VPCEndpoint])
     , _dvpcersResponseStatus :: !Int
@@ -169,7 +169,7 @@ data DescribeVPCEndpointsResponse = DescribeVPCEndpointsResponse'
 -- * 'dvpcersResponseStatus'
 describeVPCEndpointsResponse
     :: Int -- ^ 'dvpcersResponseStatus'
-    -> DescribeVPCEndpointsResponse
+    -> DescribeVPCEndpointsResponse (a)
 describeVPCEndpointsResponse pResponseStatus_ =
     DescribeVPCEndpointsResponse'
     { _dvpcersNextToken = Nothing
@@ -178,15 +178,15 @@ describeVPCEndpointsResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dvpcersNextToken :: Lens' DescribeVPCEndpointsResponse (Maybe Text)
+dvpcersNextToken :: Lens' (DescribeVPCEndpointsResponse (a)) (Maybe Text)
 dvpcersNextToken = lens _dvpcersNextToken (\ s a -> s{_dvpcersNextToken = a});
 
 -- | Information about the endpoints.
-dvpcersVPCEndpoints :: Lens' DescribeVPCEndpointsResponse [VPCEndpoint]
+dvpcersVPCEndpoints :: Lens' (DescribeVPCEndpointsResponse (a)) [VPCEndpoint]
 dvpcersVPCEndpoints = lens _dvpcersVPCEndpoints (\ s a -> s{_dvpcersVPCEndpoints = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvpcersResponseStatus :: Lens' DescribeVPCEndpointsResponse Int
+dvpcersResponseStatus :: Lens' (DescribeVPCEndpointsResponse (a)) Int
 dvpcersResponseStatus = lens _dvpcersResponseStatus (\ s a -> s{_dvpcersResponseStatus = a});
 
 instance NFData DescribeVPCEndpointsResponse

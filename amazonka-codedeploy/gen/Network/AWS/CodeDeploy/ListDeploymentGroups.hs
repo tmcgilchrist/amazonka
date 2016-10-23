@@ -119,7 +119,7 @@ instance ToQuery ListDeploymentGroups where
 -- | Represents the output of a list deployment groups operation.
 --
 -- /See:/ 'listDeploymentGroupsResponse' smart constructor.
-data ListDeploymentGroupsResponse = ListDeploymentGroupsResponse'
+data ListDeploymentGroupsResponse a = ListDeploymentGroupsResponse'
     { _ldgrsNextToken        :: !(Maybe Text)
     , _ldgrsApplicationName  :: !(Maybe Text)
     , _ldgrsDeploymentGroups :: !(Maybe [Text])
@@ -139,7 +139,7 @@ data ListDeploymentGroupsResponse = ListDeploymentGroupsResponse'
 -- * 'ldgrsResponseStatus'
 listDeploymentGroupsResponse
     :: Int -- ^ 'ldgrsResponseStatus'
-    -> ListDeploymentGroupsResponse
+    -> ListDeploymentGroupsResponse (a)
 listDeploymentGroupsResponse pResponseStatus_ =
     ListDeploymentGroupsResponse'
     { _ldgrsNextToken = Nothing
@@ -149,19 +149,19 @@ listDeploymentGroupsResponse pResponseStatus_ =
     }
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment groups call to return the next set of deployment groups in the list.
-ldgrsNextToken :: Lens' ListDeploymentGroupsResponse (Maybe Text)
+ldgrsNextToken :: Lens' (ListDeploymentGroupsResponse (a)) (Maybe Text)
 ldgrsNextToken = lens _ldgrsNextToken (\ s a -> s{_ldgrsNextToken = a});
 
 -- | The application name.
-ldgrsApplicationName :: Lens' ListDeploymentGroupsResponse (Maybe Text)
+ldgrsApplicationName :: Lens' (ListDeploymentGroupsResponse (a)) (Maybe Text)
 ldgrsApplicationName = lens _ldgrsApplicationName (\ s a -> s{_ldgrsApplicationName = a});
 
 -- | A list of corresponding deployment group names.
-ldgrsDeploymentGroups :: Lens' ListDeploymentGroupsResponse [Text]
+ldgrsDeploymentGroups :: Lens' (ListDeploymentGroupsResponse (a)) [Text]
 ldgrsDeploymentGroups = lens _ldgrsDeploymentGroups (\ s a -> s{_ldgrsDeploymentGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ldgrsResponseStatus :: Lens' ListDeploymentGroupsResponse Int
+ldgrsResponseStatus :: Lens' (ListDeploymentGroupsResponse (a)) Int
 ldgrsResponseStatus = lens _ldgrsResponseStatus (\ s a -> s{_ldgrsResponseStatus = a});
 
 instance NFData ListDeploymentGroupsResponse

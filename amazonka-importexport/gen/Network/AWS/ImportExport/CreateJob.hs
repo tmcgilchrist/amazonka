@@ -149,7 +149,7 @@ instance ToQuery CreateJob where
 -- | Output structure for the CreateJob operation.
 --
 -- /See:/ 'createJobResponse' smart constructor.
-data CreateJobResponse = CreateJobResponse'
+data CreateJobResponse a = CreateJobResponse'
     { _cjrsSignature             :: !(Maybe Text)
     , _cjrsJobType               :: !(Maybe JobType)
     , _cjrsJobId                 :: !(Maybe Text)
@@ -178,7 +178,7 @@ data CreateJobResponse = CreateJobResponse'
 -- * 'cjrsResponseStatus'
 createJobResponse
     :: Int -- ^ 'cjrsResponseStatus'
-    -> CreateJobResponse
+    -> CreateJobResponse (a)
 createJobResponse pResponseStatus_ =
     CreateJobResponse'
     { _cjrsSignature = Nothing
@@ -191,31 +191,31 @@ createJobResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cjrsSignature :: Lens' CreateJobResponse (Maybe Text)
+cjrsSignature :: Lens' (CreateJobResponse (a)) (Maybe Text)
 cjrsSignature = lens _cjrsSignature (\ s a -> s{_cjrsSignature = a});
 
 -- | Undocumented member.
-cjrsJobType :: Lens' CreateJobResponse (Maybe JobType)
+cjrsJobType :: Lens' (CreateJobResponse (a)) (Maybe JobType)
 cjrsJobType = lens _cjrsJobType (\ s a -> s{_cjrsJobType = a});
 
 -- | Undocumented member.
-cjrsJobId :: Lens' CreateJobResponse (Maybe Text)
+cjrsJobId :: Lens' (CreateJobResponse (a)) (Maybe Text)
 cjrsJobId = lens _cjrsJobId (\ s a -> s{_cjrsJobId = a});
 
 -- | Undocumented member.
-cjrsSignatureFileContents :: Lens' CreateJobResponse (Maybe Text)
+cjrsSignatureFileContents :: Lens' (CreateJobResponse (a)) (Maybe Text)
 cjrsSignatureFileContents = lens _cjrsSignatureFileContents (\ s a -> s{_cjrsSignatureFileContents = a});
 
 -- | Undocumented member.
-cjrsWarningMessage :: Lens' CreateJobResponse (Maybe Text)
+cjrsWarningMessage :: Lens' (CreateJobResponse (a)) (Maybe Text)
 cjrsWarningMessage = lens _cjrsWarningMessage (\ s a -> s{_cjrsWarningMessage = a});
 
 -- | Undocumented member.
-cjrsArtifactList :: Lens' CreateJobResponse [Artifact]
+cjrsArtifactList :: Lens' (CreateJobResponse (a)) [Artifact]
 cjrsArtifactList = lens _cjrsArtifactList (\ s a -> s{_cjrsArtifactList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-cjrsResponseStatus :: Lens' CreateJobResponse Int
+cjrsResponseStatus :: Lens' (CreateJobResponse (a)) Int
 cjrsResponseStatus = lens _cjrsResponseStatus (\ s a -> s{_cjrsResponseStatus = a});
 
 instance NFData CreateJobResponse

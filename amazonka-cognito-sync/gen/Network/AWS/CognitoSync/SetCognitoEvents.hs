@@ -106,14 +106,14 @@ instance ToQuery SetCognitoEvents where
         toQuery = const mempty
 
 -- | /See:/ 'setCognitoEventsResponse' smart constructor.
-data SetCognitoEventsResponse =
+data SetCognitoEventsResponse a =
     SetCognitoEventsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetCognitoEventsResponse' with the minimum fields required to make a request.
 --
 setCognitoEventsResponse
-    :: SetCognitoEventsResponse
+    :: SetCognitoEventsResponse (a)
 setCognitoEventsResponse = SetCognitoEventsResponse'
 
 instance NFData SetCognitoEventsResponse

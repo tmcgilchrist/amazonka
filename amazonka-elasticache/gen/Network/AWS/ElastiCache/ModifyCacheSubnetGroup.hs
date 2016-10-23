@@ -122,7 +122,7 @@ instance ToQuery ModifyCacheSubnetGroup where
                "CacheSubnetGroupName" =: _mcsgCacheSubnetGroupName]
 
 -- | /See:/ 'modifyCacheSubnetGroupResponse' smart constructor.
-data ModifyCacheSubnetGroupResponse = ModifyCacheSubnetGroupResponse'
+data ModifyCacheSubnetGroupResponse a = ModifyCacheSubnetGroupResponse'
     { _mcsgrsCacheSubnetGroup :: !(Maybe CacheSubnetGroup)
     , _mcsgrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data ModifyCacheSubnetGroupResponse = ModifyCacheSubnetGroupResponse'
 -- * 'mcsgrsResponseStatus'
 modifyCacheSubnetGroupResponse
     :: Int -- ^ 'mcsgrsResponseStatus'
-    -> ModifyCacheSubnetGroupResponse
+    -> ModifyCacheSubnetGroupResponse (a)
 modifyCacheSubnetGroupResponse pResponseStatus_ =
     ModifyCacheSubnetGroupResponse'
     { _mcsgrsCacheSubnetGroup = Nothing
@@ -144,11 +144,11 @@ modifyCacheSubnetGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mcsgrsCacheSubnetGroup :: Lens' ModifyCacheSubnetGroupResponse (Maybe CacheSubnetGroup)
+mcsgrsCacheSubnetGroup :: Lens' (ModifyCacheSubnetGroupResponse (a)) (Maybe CacheSubnetGroup)
 mcsgrsCacheSubnetGroup = lens _mcsgrsCacheSubnetGroup (\ s a -> s{_mcsgrsCacheSubnetGroup = a});
 
 -- | The response status code.
-mcsgrsResponseStatus :: Lens' ModifyCacheSubnetGroupResponse Int
+mcsgrsResponseStatus :: Lens' (ModifyCacheSubnetGroupResponse (a)) Int
 mcsgrsResponseStatus = lens _mcsgrsResponseStatus (\ s a -> s{_mcsgrsResponseStatus = a});
 
 instance NFData ModifyCacheSubnetGroupResponse

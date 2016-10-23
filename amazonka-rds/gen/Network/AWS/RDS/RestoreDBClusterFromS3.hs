@@ -422,7 +422,7 @@ instance ToQuery RestoreDBClusterFromS3 where
                "S3IngestionRoleArn" =: _rdcfsS3IngestionRoleARN]
 
 -- | /See:/ 'restoreDBClusterFromS3Response' smart constructor.
-data RestoreDBClusterFromS3Response = RestoreDBClusterFromS3Response'
+data RestoreDBClusterFromS3Response a = RestoreDBClusterFromS3Response'
     { _rdcfsrsDBCluster      :: !(Maybe DBCluster)
     , _rdcfsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -436,7 +436,7 @@ data RestoreDBClusterFromS3Response = RestoreDBClusterFromS3Response'
 -- * 'rdcfsrsResponseStatus'
 restoreDBClusterFromS3Response
     :: Int -- ^ 'rdcfsrsResponseStatus'
-    -> RestoreDBClusterFromS3Response
+    -> RestoreDBClusterFromS3Response (a)
 restoreDBClusterFromS3Response pResponseStatus_ =
     RestoreDBClusterFromS3Response'
     { _rdcfsrsDBCluster = Nothing
@@ -444,11 +444,11 @@ restoreDBClusterFromS3Response pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rdcfsrsDBCluster :: Lens' RestoreDBClusterFromS3Response (Maybe DBCluster)
+rdcfsrsDBCluster :: Lens' (RestoreDBClusterFromS3Response (a)) (Maybe DBCluster)
 rdcfsrsDBCluster = lens _rdcfsrsDBCluster (\ s a -> s{_rdcfsrsDBCluster = a});
 
 -- | The response status code.
-rdcfsrsResponseStatus :: Lens' RestoreDBClusterFromS3Response Int
+rdcfsrsResponseStatus :: Lens' (RestoreDBClusterFromS3Response (a)) Int
 rdcfsrsResponseStatus = lens _rdcfsrsResponseStatus (\ s a -> s{_rdcfsrsResponseStatus = a});
 
 instance NFData RestoreDBClusterFromS3Response

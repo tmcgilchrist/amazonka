@@ -127,7 +127,7 @@ instance ToQuery EvaluateExpression where
 -- | Contains the output of EvaluateExpression.
 --
 -- /See:/ 'evaluateExpressionResponse' smart constructor.
-data EvaluateExpressionResponse = EvaluateExpressionResponse'
+data EvaluateExpressionResponse a = EvaluateExpressionResponse'
     { _eersResponseStatus      :: !Int
     , _eersEvaluatedExpression :: !Text
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -142,7 +142,7 @@ data EvaluateExpressionResponse = EvaluateExpressionResponse'
 evaluateExpressionResponse
     :: Int -- ^ 'eersResponseStatus'
     -> Text -- ^ 'eersEvaluatedExpression'
-    -> EvaluateExpressionResponse
+    -> EvaluateExpressionResponse (a)
 evaluateExpressionResponse pResponseStatus_ pEvaluatedExpression_ =
     EvaluateExpressionResponse'
     { _eersResponseStatus = pResponseStatus_
@@ -150,11 +150,11 @@ evaluateExpressionResponse pResponseStatus_ pEvaluatedExpression_ =
     }
 
 -- | The response status code.
-eersResponseStatus :: Lens' EvaluateExpressionResponse Int
+eersResponseStatus :: Lens' (EvaluateExpressionResponse (a)) Int
 eersResponseStatus = lens _eersResponseStatus (\ s a -> s{_eersResponseStatus = a});
 
 -- | The evaluated expression.
-eersEvaluatedExpression :: Lens' EvaluateExpressionResponse Text
+eersEvaluatedExpression :: Lens' (EvaluateExpressionResponse (a)) Text
 eersEvaluatedExpression = lens _eersEvaluatedExpression (\ s a -> s{_eersEvaluatedExpression = a});
 
 instance NFData EvaluateExpressionResponse

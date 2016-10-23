@@ -219,7 +219,7 @@ instance ToQuery CreateTargetGroup where
 -- | Contains the output of CreateTargetGroup.
 --
 -- /See:/ 'createTargetGroupResponse' smart constructor.
-data CreateTargetGroupResponse = CreateTargetGroupResponse'
+data CreateTargetGroupResponse a = CreateTargetGroupResponse'
     { _ctgrsTargetGroups   :: !(Maybe [TargetGroup])
     , _ctgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -233,7 +233,7 @@ data CreateTargetGroupResponse = CreateTargetGroupResponse'
 -- * 'ctgrsResponseStatus'
 createTargetGroupResponse
     :: Int -- ^ 'ctgrsResponseStatus'
-    -> CreateTargetGroupResponse
+    -> CreateTargetGroupResponse (a)
 createTargetGroupResponse pResponseStatus_ =
     CreateTargetGroupResponse'
     { _ctgrsTargetGroups = Nothing
@@ -241,11 +241,11 @@ createTargetGroupResponse pResponseStatus_ =
     }
 
 -- | Information about the target group.
-ctgrsTargetGroups :: Lens' CreateTargetGroupResponse [TargetGroup]
+ctgrsTargetGroups :: Lens' (CreateTargetGroupResponse (a)) [TargetGroup]
 ctgrsTargetGroups = lens _ctgrsTargetGroups (\ s a -> s{_ctgrsTargetGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ctgrsResponseStatus :: Lens' CreateTargetGroupResponse Int
+ctgrsResponseStatus :: Lens' (CreateTargetGroupResponse (a)) Int
 ctgrsResponseStatus = lens _ctgrsResponseStatus (\ s a -> s{_ctgrsResponseStatus = a});
 
 instance NFData CreateTargetGroupResponse

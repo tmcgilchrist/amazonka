@@ -146,7 +146,7 @@ instance ToQuery GetQueueAttributes where
 -- | A list of returned queue attributes.
 --
 -- /See:/ 'getQueueAttributesResponse' smart constructor.
-data GetQueueAttributesResponse = GetQueueAttributesResponse'
+data GetQueueAttributesResponse a = GetQueueAttributesResponse'
     { _gqarsAttributes     :: !(Maybe (Map QueueAttributeName Text))
     , _gqarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -160,7 +160,7 @@ data GetQueueAttributesResponse = GetQueueAttributesResponse'
 -- * 'gqarsResponseStatus'
 getQueueAttributesResponse
     :: Int -- ^ 'gqarsResponseStatus'
-    -> GetQueueAttributesResponse
+    -> GetQueueAttributesResponse (a)
 getQueueAttributesResponse pResponseStatus_ =
     GetQueueAttributesResponse'
     { _gqarsAttributes = Nothing
@@ -168,11 +168,11 @@ getQueueAttributesResponse pResponseStatus_ =
     }
 
 -- | A map of attributes to the respective values.
-gqarsAttributes :: Lens' GetQueueAttributesResponse (HashMap QueueAttributeName Text)
+gqarsAttributes :: Lens' (GetQueueAttributesResponse (a)) (HashMap QueueAttributeName Text)
 gqarsAttributes = lens _gqarsAttributes (\ s a -> s{_gqarsAttributes = a}) . _Default . _Map;
 
 -- | The response status code.
-gqarsResponseStatus :: Lens' GetQueueAttributesResponse Int
+gqarsResponseStatus :: Lens' (GetQueueAttributesResponse (a)) Int
 gqarsResponseStatus = lens _gqarsResponseStatus (\ s a -> s{_gqarsResponseStatus = a});
 
 instance NFData GetQueueAttributesResponse

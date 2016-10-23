@@ -81,14 +81,14 @@ instance ToQuery DeleteBucketCORS where
         toQuery = const (mconcat ["cors"])
 
 -- | /See:/ 'deleteBucketCORSResponse' smart constructor.
-data DeleteBucketCORSResponse =
+data DeleteBucketCORSResponse a =
     DeleteBucketCORSResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteBucketCORSResponse' with the minimum fields required to make a request.
 --
 deleteBucketCORSResponse
-    :: DeleteBucketCORSResponse
+    :: DeleteBucketCORSResponse (a)
 deleteBucketCORSResponse = DeleteBucketCORSResponse'
 
 instance NFData DeleteBucketCORSResponse

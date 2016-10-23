@@ -140,7 +140,7 @@ instance ToQuery PutActionRevision where
 -- | Represents the output of a put action revision action.
 --
 -- /See:/ 'putActionRevisionResponse' smart constructor.
-data PutActionRevisionResponse = PutActionRevisionResponse'
+data PutActionRevisionResponse a = PutActionRevisionResponse'
     { _prsNewRevision         :: !(Maybe Bool)
     , _prsPipelineExecutionId :: !(Maybe Text)
     , _prsResponseStatus      :: !Int
@@ -157,7 +157,7 @@ data PutActionRevisionResponse = PutActionRevisionResponse'
 -- * 'prsResponseStatus'
 putActionRevisionResponse
     :: Int -- ^ 'prsResponseStatus'
-    -> PutActionRevisionResponse
+    -> PutActionRevisionResponse (a)
 putActionRevisionResponse pResponseStatus_ =
     PutActionRevisionResponse'
     { _prsNewRevision = Nothing
@@ -166,15 +166,15 @@ putActionRevisionResponse pResponseStatus_ =
     }
 
 -- | Indicates whether the artifact revision was previously used in an execution of the specified pipeline.
-prsNewRevision :: Lens' PutActionRevisionResponse (Maybe Bool)
+prsNewRevision :: Lens' (PutActionRevisionResponse (a)) (Maybe Bool)
 prsNewRevision = lens _prsNewRevision (\ s a -> s{_prsNewRevision = a});
 
 -- | The ID of the current workflow state of the pipeline.
-prsPipelineExecutionId :: Lens' PutActionRevisionResponse (Maybe Text)
+prsPipelineExecutionId :: Lens' (PutActionRevisionResponse (a)) (Maybe Text)
 prsPipelineExecutionId = lens _prsPipelineExecutionId (\ s a -> s{_prsPipelineExecutionId = a});
 
 -- | The response status code.
-prsResponseStatus :: Lens' PutActionRevisionResponse Int
+prsResponseStatus :: Lens' (PutActionRevisionResponse (a)) Int
 prsResponseStatus = lens _prsResponseStatus (\ s a -> s{_prsResponseStatus = a});
 
 instance NFData PutActionRevisionResponse

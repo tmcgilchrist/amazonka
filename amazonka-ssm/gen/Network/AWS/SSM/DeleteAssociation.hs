@@ -110,7 +110,7 @@ instance ToQuery DeleteAssociation where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAssociationResponse' smart constructor.
-newtype DeleteAssociationResponse = DeleteAssociationResponse'
+newtype DeleteAssociationResponse a = DeleteAssociationResponse'
     { _delrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -121,14 +121,14 @@ newtype DeleteAssociationResponse = DeleteAssociationResponse'
 -- * 'delrsResponseStatus'
 deleteAssociationResponse
     :: Int -- ^ 'delrsResponseStatus'
-    -> DeleteAssociationResponse
+    -> DeleteAssociationResponse (a)
 deleteAssociationResponse pResponseStatus_ =
     DeleteAssociationResponse'
     { _delrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-delrsResponseStatus :: Lens' DeleteAssociationResponse Int
+delrsResponseStatus :: Lens' (DeleteAssociationResponse (a)) Int
 delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a});
 
 instance NFData DeleteAssociationResponse

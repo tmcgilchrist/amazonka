@@ -126,7 +126,7 @@ instance ToQuery DescribeLimits where
 -- | Represents the output of a /DescribeLimits/ operation.
 --
 -- /See:/ 'describeLimitsResponse' smart constructor.
-data DescribeLimitsResponse = DescribeLimitsResponse'
+data DescribeLimitsResponse a = DescribeLimitsResponse'
     { _dlrsTableMaxWriteCapacityUnits   :: !(Maybe Nat)
     , _dlrsTableMaxReadCapacityUnits    :: !(Maybe Nat)
     , _dlrsAccountMaxWriteCapacityUnits :: !(Maybe Nat)
@@ -149,7 +149,7 @@ data DescribeLimitsResponse = DescribeLimitsResponse'
 -- * 'dlrsResponseStatus'
 describeLimitsResponse
     :: Int -- ^ 'dlrsResponseStatus'
-    -> DescribeLimitsResponse
+    -> DescribeLimitsResponse (a)
 describeLimitsResponse pResponseStatus_ =
     DescribeLimitsResponse'
     { _dlrsTableMaxWriteCapacityUnits = Nothing
@@ -160,23 +160,23 @@ describeLimitsResponse pResponseStatus_ =
     }
 
 -- | The maximum write capacity units that your account allows you to provision for a new table that you are creating in this region, including the write capacity units provisioned for its global secondary indexes (GSIs).
-dlrsTableMaxWriteCapacityUnits :: Lens' DescribeLimitsResponse (Maybe Natural)
+dlrsTableMaxWriteCapacityUnits :: Lens' (DescribeLimitsResponse (a)) (Maybe Natural)
 dlrsTableMaxWriteCapacityUnits = lens _dlrsTableMaxWriteCapacityUnits (\ s a -> s{_dlrsTableMaxWriteCapacityUnits = a}) . mapping _Nat;
 
 -- | The maximum read capacity units that your account allows you to provision for a new table that you are creating in this region, including the read capacity units provisioned for its global secondary indexes (GSIs).
-dlrsTableMaxReadCapacityUnits :: Lens' DescribeLimitsResponse (Maybe Natural)
+dlrsTableMaxReadCapacityUnits :: Lens' (DescribeLimitsResponse (a)) (Maybe Natural)
 dlrsTableMaxReadCapacityUnits = lens _dlrsTableMaxReadCapacityUnits (\ s a -> s{_dlrsTableMaxReadCapacityUnits = a}) . mapping _Nat;
 
 -- | The maximum total write capacity units that your account allows you to provision across all of your tables in this region.
-dlrsAccountMaxWriteCapacityUnits :: Lens' DescribeLimitsResponse (Maybe Natural)
+dlrsAccountMaxWriteCapacityUnits :: Lens' (DescribeLimitsResponse (a)) (Maybe Natural)
 dlrsAccountMaxWriteCapacityUnits = lens _dlrsAccountMaxWriteCapacityUnits (\ s a -> s{_dlrsAccountMaxWriteCapacityUnits = a}) . mapping _Nat;
 
 -- | The maximum total read capacity units that your account allows you to provision across all of your tables in this region.
-dlrsAccountMaxReadCapacityUnits :: Lens' DescribeLimitsResponse (Maybe Natural)
+dlrsAccountMaxReadCapacityUnits :: Lens' (DescribeLimitsResponse (a)) (Maybe Natural)
 dlrsAccountMaxReadCapacityUnits = lens _dlrsAccountMaxReadCapacityUnits (\ s a -> s{_dlrsAccountMaxReadCapacityUnits = a}) . mapping _Nat;
 
 -- | The response status code.
-dlrsResponseStatus :: Lens' DescribeLimitsResponse Int
+dlrsResponseStatus :: Lens' (DescribeLimitsResponse (a)) Int
 dlrsResponseStatus = lens _dlrsResponseStatus (\ s a -> s{_dlrsResponseStatus = a});
 
 instance NFData DescribeLimitsResponse

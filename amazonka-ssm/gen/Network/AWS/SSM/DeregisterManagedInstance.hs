@@ -99,7 +99,7 @@ instance ToQuery DeregisterManagedInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterManagedInstanceResponse' smart constructor.
-newtype DeregisterManagedInstanceResponse = DeregisterManagedInstanceResponse'
+newtype DeregisterManagedInstanceResponse a = DeregisterManagedInstanceResponse'
     { _dmirsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -110,14 +110,14 @@ newtype DeregisterManagedInstanceResponse = DeregisterManagedInstanceResponse'
 -- * 'dmirsResponseStatus'
 deregisterManagedInstanceResponse
     :: Int -- ^ 'dmirsResponseStatus'
-    -> DeregisterManagedInstanceResponse
+    -> DeregisterManagedInstanceResponse (a)
 deregisterManagedInstanceResponse pResponseStatus_ =
     DeregisterManagedInstanceResponse'
     { _dmirsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dmirsResponseStatus :: Lens' DeregisterManagedInstanceResponse Int
+dmirsResponseStatus :: Lens' (DeregisterManagedInstanceResponse (a)) Int
 dmirsResponseStatus = lens _dmirsResponseStatus (\ s a -> s{_dmirsResponseStatus = a});
 
 instance NFData DeregisterManagedInstanceResponse

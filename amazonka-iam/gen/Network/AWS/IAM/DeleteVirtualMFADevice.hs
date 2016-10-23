@@ -91,14 +91,14 @@ instance ToQuery DeleteVirtualMFADevice where
                "SerialNumber" =: _dvmdSerialNumber]
 
 -- | /See:/ 'deleteVirtualMFADeviceResponse' smart constructor.
-data DeleteVirtualMFADeviceResponse =
+data DeleteVirtualMFADeviceResponse a =
     DeleteVirtualMFADeviceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVirtualMFADeviceResponse' with the minimum fields required to make a request.
 --
 deleteVirtualMFADeviceResponse
-    :: DeleteVirtualMFADeviceResponse
+    :: DeleteVirtualMFADeviceResponse (a)
 deleteVirtualMFADeviceResponse = DeleteVirtualMFADeviceResponse'
 
 instance NFData DeleteVirtualMFADeviceResponse

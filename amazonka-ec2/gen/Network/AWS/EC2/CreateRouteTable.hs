@@ -106,7 +106,7 @@ instance ToQuery CreateRouteTable where
 -- | Contains the output of CreateRouteTable.
 --
 -- /See:/ 'createRouteTableResponse' smart constructor.
-data CreateRouteTableResponse = CreateRouteTableResponse'
+data CreateRouteTableResponse a = CreateRouteTableResponse'
     { _crtrsRouteTable     :: !(Maybe RouteTable)
     , _crtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data CreateRouteTableResponse = CreateRouteTableResponse'
 -- * 'crtrsResponseStatus'
 createRouteTableResponse
     :: Int -- ^ 'crtrsResponseStatus'
-    -> CreateRouteTableResponse
+    -> CreateRouteTableResponse (a)
 createRouteTableResponse pResponseStatus_ =
     CreateRouteTableResponse'
     { _crtrsRouteTable = Nothing
@@ -128,11 +128,11 @@ createRouteTableResponse pResponseStatus_ =
     }
 
 -- | Information about the route table.
-crtrsRouteTable :: Lens' CreateRouteTableResponse (Maybe RouteTable)
+crtrsRouteTable :: Lens' (CreateRouteTableResponse (a)) (Maybe RouteTable)
 crtrsRouteTable = lens _crtrsRouteTable (\ s a -> s{_crtrsRouteTable = a});
 
 -- | The response status code.
-crtrsResponseStatus :: Lens' CreateRouteTableResponse Int
+crtrsResponseStatus :: Lens' (CreateRouteTableResponse (a)) Int
 crtrsResponseStatus = lens _crtrsResponseStatus (\ s a -> s{_crtrsResponseStatus = a});
 
 instance NFData CreateRouteTableResponse

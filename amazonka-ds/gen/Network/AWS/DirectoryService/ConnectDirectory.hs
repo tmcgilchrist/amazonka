@@ -157,7 +157,7 @@ instance ToQuery ConnectDirectory where
 -- | Contains the results of the < ConnectDirectory> operation.
 --
 -- /See:/ 'connectDirectoryResponse' smart constructor.
-data ConnectDirectoryResponse = ConnectDirectoryResponse'
+data ConnectDirectoryResponse a = ConnectDirectoryResponse'
     { _cdrsDirectoryId    :: !(Maybe Text)
     , _cdrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -171,7 +171,7 @@ data ConnectDirectoryResponse = ConnectDirectoryResponse'
 -- * 'cdrsResponseStatus'
 connectDirectoryResponse
     :: Int -- ^ 'cdrsResponseStatus'
-    -> ConnectDirectoryResponse
+    -> ConnectDirectoryResponse (a)
 connectDirectoryResponse pResponseStatus_ =
     ConnectDirectoryResponse'
     { _cdrsDirectoryId = Nothing
@@ -179,11 +179,11 @@ connectDirectoryResponse pResponseStatus_ =
     }
 
 -- | The identifier of the new directory.
-cdrsDirectoryId :: Lens' ConnectDirectoryResponse (Maybe Text)
+cdrsDirectoryId :: Lens' (ConnectDirectoryResponse (a)) (Maybe Text)
 cdrsDirectoryId = lens _cdrsDirectoryId (\ s a -> s{_cdrsDirectoryId = a});
 
 -- | The response status code.
-cdrsResponseStatus :: Lens' ConnectDirectoryResponse Int
+cdrsResponseStatus :: Lens' (ConnectDirectoryResponse (a)) Int
 cdrsResponseStatus = lens _cdrsResponseStatus (\ s a -> s{_cdrsResponseStatus = a});
 
 instance NFData ConnectDirectoryResponse

@@ -214,7 +214,7 @@ instance ToQuery DescribeEvents where
 -- | Contains the result of a successful invocation of the < DescribeEvents> action.
 --
 -- /See:/ 'describeEventsResponse' smart constructor.
-data DescribeEventsResponse = DescribeEventsResponse'
+data DescribeEventsResponse a = DescribeEventsResponse'
     { _dersEvents         :: !(Maybe [Event])
     , _dersMarker         :: !(Maybe Text)
     , _dersResponseStatus :: !Int
@@ -231,7 +231,7 @@ data DescribeEventsResponse = DescribeEventsResponse'
 -- * 'dersResponseStatus'
 describeEventsResponse
     :: Int -- ^ 'dersResponseStatus'
-    -> DescribeEventsResponse
+    -> DescribeEventsResponse (a)
 describeEventsResponse pResponseStatus_ =
     DescribeEventsResponse'
     { _dersEvents = Nothing
@@ -240,15 +240,15 @@ describeEventsResponse pResponseStatus_ =
     }
 
 -- | A list of < Event> instances.
-dersEvents :: Lens' DescribeEventsResponse [Event]
+dersEvents :: Lens' (DescribeEventsResponse (a)) [Event]
 dersEvents = lens _dersEvents (\ s a -> s{_dersEvents = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous Events request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords' .
-dersMarker :: Lens' DescribeEventsResponse (Maybe Text)
+dersMarker :: Lens' (DescribeEventsResponse (a)) (Maybe Text)
 dersMarker = lens _dersMarker (\ s a -> s{_dersMarker = a});
 
 -- | The response status code.
-dersResponseStatus :: Lens' DescribeEventsResponse Int
+dersResponseStatus :: Lens' (DescribeEventsResponse (a)) Int
 dersResponseStatus = lens _dersResponseStatus (\ s a -> s{_dersResponseStatus = a});
 
 instance NFData DescribeEventsResponse

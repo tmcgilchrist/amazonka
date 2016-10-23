@@ -105,14 +105,14 @@ instance ToQuery ForgetDevice where
         toQuery = const mempty
 
 -- | /See:/ 'forgetDeviceResponse' smart constructor.
-data ForgetDeviceResponse =
+data ForgetDeviceResponse a =
     ForgetDeviceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ForgetDeviceResponse' with the minimum fields required to make a request.
 --
 forgetDeviceResponse
-    :: ForgetDeviceResponse
+    :: ForgetDeviceResponse (a)
 forgetDeviceResponse = ForgetDeviceResponse'
 
 instance NFData ForgetDeviceResponse

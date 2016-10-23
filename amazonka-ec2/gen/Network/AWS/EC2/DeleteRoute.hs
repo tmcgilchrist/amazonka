@@ -107,14 +107,14 @@ instance ToQuery DeleteRoute where
                "DestinationCidrBlock" =: _drDestinationCIdRBlock]
 
 -- | /See:/ 'deleteRouteResponse' smart constructor.
-data DeleteRouteResponse =
+data DeleteRouteResponse a =
     DeleteRouteResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteRouteResponse' with the minimum fields required to make a request.
 --
 deleteRouteResponse
-    :: DeleteRouteResponse
+    :: DeleteRouteResponse (a)
 deleteRouteResponse = DeleteRouteResponse'
 
 instance NFData DeleteRouteResponse

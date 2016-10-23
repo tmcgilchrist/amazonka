@@ -111,7 +111,7 @@ instance ToQuery DescribeBandwidthRateLimit where
 -- | A JSON object containing the following fields:
 --
 -- /See:/ 'describeBandwidthRateLimitResponse' smart constructor.
-data DescribeBandwidthRateLimitResponse = DescribeBandwidthRateLimitResponse'
+data DescribeBandwidthRateLimitResponse a = DescribeBandwidthRateLimitResponse'
     { _dbrlrsGatewayARN                           :: !(Maybe Text)
     , _dbrlrsAverageUploadRateLimitInBitsPerSec   :: !(Maybe Nat)
     , _dbrlrsAverageDownloadRateLimitInBitsPerSec :: !(Maybe Nat)
@@ -131,7 +131,7 @@ data DescribeBandwidthRateLimitResponse = DescribeBandwidthRateLimitResponse'
 -- * 'dbrlrsResponseStatus'
 describeBandwidthRateLimitResponse
     :: Int -- ^ 'dbrlrsResponseStatus'
-    -> DescribeBandwidthRateLimitResponse
+    -> DescribeBandwidthRateLimitResponse (a)
 describeBandwidthRateLimitResponse pResponseStatus_ =
     DescribeBandwidthRateLimitResponse'
     { _dbrlrsGatewayARN = Nothing
@@ -141,19 +141,19 @@ describeBandwidthRateLimitResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dbrlrsGatewayARN :: Lens' DescribeBandwidthRateLimitResponse (Maybe Text)
+dbrlrsGatewayARN :: Lens' (DescribeBandwidthRateLimitResponse (a)) (Maybe Text)
 dbrlrsGatewayARN = lens _dbrlrsGatewayARN (\ s a -> s{_dbrlrsGatewayARN = a});
 
 -- | The average upload bandwidth rate limit in bits per second. This field does not appear in the response if the upload rate limit is not set.
-dbrlrsAverageUploadRateLimitInBitsPerSec :: Lens' DescribeBandwidthRateLimitResponse (Maybe Natural)
+dbrlrsAverageUploadRateLimitInBitsPerSec :: Lens' (DescribeBandwidthRateLimitResponse (a)) (Maybe Natural)
 dbrlrsAverageUploadRateLimitInBitsPerSec = lens _dbrlrsAverageUploadRateLimitInBitsPerSec (\ s a -> s{_dbrlrsAverageUploadRateLimitInBitsPerSec = a}) . mapping _Nat;
 
 -- | The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.
-dbrlrsAverageDownloadRateLimitInBitsPerSec :: Lens' DescribeBandwidthRateLimitResponse (Maybe Natural)
+dbrlrsAverageDownloadRateLimitInBitsPerSec :: Lens' (DescribeBandwidthRateLimitResponse (a)) (Maybe Natural)
 dbrlrsAverageDownloadRateLimitInBitsPerSec = lens _dbrlrsAverageDownloadRateLimitInBitsPerSec (\ s a -> s{_dbrlrsAverageDownloadRateLimitInBitsPerSec = a}) . mapping _Nat;
 
 -- | The response status code.
-dbrlrsResponseStatus :: Lens' DescribeBandwidthRateLimitResponse Int
+dbrlrsResponseStatus :: Lens' (DescribeBandwidthRateLimitResponse (a)) Int
 dbrlrsResponseStatus = lens _dbrlrsResponseStatus (\ s a -> s{_dbrlrsResponseStatus = a});
 
 instance NFData DescribeBandwidthRateLimitResponse

@@ -128,7 +128,7 @@ instance ToQuery DescribeActivityType where
 -- | Detailed information about an activity type.
 --
 -- /See:/ 'describeActivityTypeResponse' smart constructor.
-data DescribeActivityTypeResponse = DescribeActivityTypeResponse'
+data DescribeActivityTypeResponse a = DescribeActivityTypeResponse'
     { _datrsResponseStatus :: !Int
     , _datrsTypeInfo       :: !ActivityTypeInfo
     , _datrsConfiguration  :: !ActivityTypeConfiguration
@@ -147,7 +147,7 @@ describeActivityTypeResponse
     :: Int -- ^ 'datrsResponseStatus'
     -> ActivityTypeInfo -- ^ 'datrsTypeInfo'
     -> ActivityTypeConfiguration -- ^ 'datrsConfiguration'
-    -> DescribeActivityTypeResponse
+    -> DescribeActivityTypeResponse (a)
 describeActivityTypeResponse pResponseStatus_ pTypeInfo_ pConfiguration_ =
     DescribeActivityTypeResponse'
     { _datrsResponseStatus = pResponseStatus_
@@ -156,7 +156,7 @@ describeActivityTypeResponse pResponseStatus_ pTypeInfo_ pConfiguration_ =
     }
 
 -- | The response status code.
-datrsResponseStatus :: Lens' DescribeActivityTypeResponse Int
+datrsResponseStatus :: Lens' (DescribeActivityTypeResponse (a)) Int
 datrsResponseStatus = lens _datrsResponseStatus (\ s a -> s{_datrsResponseStatus = a});
 
 -- | General information about the activity type.
@@ -165,11 +165,11 @@ datrsResponseStatus = lens _datrsResponseStatus (\ s a -> s{_datrsResponseStatus
 --
 -- -   __REGISTERED__: The type is registered and available. Workers supporting this type should be running.
 -- -   __DEPRECATED__: The type was deprecated using < DeprecateActivityType>, but is still in use. You should keep workers supporting this type running. You cannot create new tasks of this type.
-datrsTypeInfo :: Lens' DescribeActivityTypeResponse ActivityTypeInfo
+datrsTypeInfo :: Lens' (DescribeActivityTypeResponse (a)) ActivityTypeInfo
 datrsTypeInfo = lens _datrsTypeInfo (\ s a -> s{_datrsTypeInfo = a});
 
 -- | The configuration settings registered with the activity type.
-datrsConfiguration :: Lens' DescribeActivityTypeResponse ActivityTypeConfiguration
+datrsConfiguration :: Lens' (DescribeActivityTypeResponse (a)) ActivityTypeConfiguration
 datrsConfiguration = lens _datrsConfiguration (\ s a -> s{_datrsConfiguration = a});
 
 instance NFData DescribeActivityTypeResponse

@@ -126,7 +126,7 @@ instance ToQuery ListFleets where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'listFleetsResponse' smart constructor.
-data ListFleetsResponse = ListFleetsResponse'
+data ListFleetsResponse a = ListFleetsResponse'
     { _lfrsNextToken      :: !(Maybe Text)
     , _lfrsFleetIds       :: !(Maybe (List1 Text))
     , _lfrsResponseStatus :: !Int
@@ -143,7 +143,7 @@ data ListFleetsResponse = ListFleetsResponse'
 -- * 'lfrsResponseStatus'
 listFleetsResponse
     :: Int -- ^ 'lfrsResponseStatus'
-    -> ListFleetsResponse
+    -> ListFleetsResponse (a)
 listFleetsResponse pResponseStatus_ =
     ListFleetsResponse'
     { _lfrsNextToken = Nothing
@@ -154,15 +154,15 @@ listFleetsResponse pResponseStatus_ =
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-lfrsNextToken :: Lens' ListFleetsResponse (Maybe Text)
+lfrsNextToken :: Lens' (ListFleetsResponse (a)) (Maybe Text)
 lfrsNextToken = lens _lfrsNextToken (\ s a -> s{_lfrsNextToken = a});
 
 -- | Set of fleet IDs matching the list request. You can retrieve additional information about all returned fleets by passing this result set to a call to < DescribeFleetAttributes>, < DescribeFleetCapacity>, and < DescribeFleetUtilization>.
-lfrsFleetIds :: Lens' ListFleetsResponse (Maybe (NonEmpty Text))
+lfrsFleetIds :: Lens' (ListFleetsResponse (a)) (Maybe (NonEmpty Text))
 lfrsFleetIds = lens _lfrsFleetIds (\ s a -> s{_lfrsFleetIds = a}) . mapping _List1;
 
 -- | The response status code.
-lfrsResponseStatus :: Lens' ListFleetsResponse Int
+lfrsResponseStatus :: Lens' (ListFleetsResponse (a)) Int
 lfrsResponseStatus = lens _lfrsResponseStatus (\ s a -> s{_lfrsResponseStatus = a});
 
 instance NFData ListFleetsResponse

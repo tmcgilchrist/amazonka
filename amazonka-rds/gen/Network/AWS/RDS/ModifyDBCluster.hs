@@ -260,7 +260,7 @@ instance ToQuery ModifyDBCluster where
                "DBClusterIdentifier" =: _mdcDBClusterIdentifier]
 
 -- | /See:/ 'modifyDBClusterResponse' smart constructor.
-data ModifyDBClusterResponse = ModifyDBClusterResponse'
+data ModifyDBClusterResponse a = ModifyDBClusterResponse'
     { _mdcrsDBCluster      :: !(Maybe DBCluster)
     , _mdcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -274,7 +274,7 @@ data ModifyDBClusterResponse = ModifyDBClusterResponse'
 -- * 'mdcrsResponseStatus'
 modifyDBClusterResponse
     :: Int -- ^ 'mdcrsResponseStatus'
-    -> ModifyDBClusterResponse
+    -> ModifyDBClusterResponse (a)
 modifyDBClusterResponse pResponseStatus_ =
     ModifyDBClusterResponse'
     { _mdcrsDBCluster = Nothing
@@ -282,11 +282,11 @@ modifyDBClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mdcrsDBCluster :: Lens' ModifyDBClusterResponse (Maybe DBCluster)
+mdcrsDBCluster :: Lens' (ModifyDBClusterResponse (a)) (Maybe DBCluster)
 mdcrsDBCluster = lens _mdcrsDBCluster (\ s a -> s{_mdcrsDBCluster = a});
 
 -- | The response status code.
-mdcrsResponseStatus :: Lens' ModifyDBClusterResponse Int
+mdcrsResponseStatus :: Lens' (ModifyDBClusterResponse (a)) Int
 mdcrsResponseStatus = lens _mdcrsResponseStatus (\ s a -> s{_mdcrsResponseStatus = a});
 
 instance NFData ModifyDBClusterResponse

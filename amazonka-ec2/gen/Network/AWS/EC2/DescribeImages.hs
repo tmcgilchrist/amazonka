@@ -201,7 +201,7 @@ instance ToQuery DescribeImages where
 -- | Contains the output of DescribeImages.
 --
 -- /See:/ 'describeImagesResponse' smart constructor.
-data DescribeImagesResponse = DescribeImagesResponse'
+data DescribeImagesResponse a = DescribeImagesResponse'
     { _desrsImages         :: !(Maybe [Image])
     , _desrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -215,7 +215,7 @@ data DescribeImagesResponse = DescribeImagesResponse'
 -- * 'desrsResponseStatus'
 describeImagesResponse
     :: Int -- ^ 'desrsResponseStatus'
-    -> DescribeImagesResponse
+    -> DescribeImagesResponse (a)
 describeImagesResponse pResponseStatus_ =
     DescribeImagesResponse'
     { _desrsImages = Nothing
@@ -223,11 +223,11 @@ describeImagesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more images.
-desrsImages :: Lens' DescribeImagesResponse [Image]
+desrsImages :: Lens' (DescribeImagesResponse (a)) [Image]
 desrsImages = lens _desrsImages (\ s a -> s{_desrsImages = a}) . _Default . _Coerce;
 
 -- | The response status code.
-desrsResponseStatus :: Lens' DescribeImagesResponse Int
+desrsResponseStatus :: Lens' (DescribeImagesResponse (a)) Int
 desrsResponseStatus = lens _desrsResponseStatus (\ s a -> s{_desrsResponseStatus = a});
 
 instance NFData DescribeImagesResponse

@@ -129,7 +129,7 @@ instance ToQuery ListInvalidations where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'listInvalidationsResponse' smart constructor.
-data ListInvalidationsResponse = ListInvalidationsResponse'
+data ListInvalidationsResponse a = ListInvalidationsResponse'
     { _lirsResponseStatus   :: !Int
     , _lirsInvalidationList :: !InvalidationList
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -144,7 +144,7 @@ data ListInvalidationsResponse = ListInvalidationsResponse'
 listInvalidationsResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> InvalidationList -- ^ 'lirsInvalidationList'
-    -> ListInvalidationsResponse
+    -> ListInvalidationsResponse (a)
 listInvalidationsResponse pResponseStatus_ pInvalidationList_ =
     ListInvalidationsResponse'
     { _lirsResponseStatus = pResponseStatus_
@@ -152,11 +152,11 @@ listInvalidationsResponse pResponseStatus_ pInvalidationList_ =
     }
 
 -- | The response status code.
-lirsResponseStatus :: Lens' ListInvalidationsResponse Int
+lirsResponseStatus :: Lens' (ListInvalidationsResponse (a)) Int
 lirsResponseStatus = lens _lirsResponseStatus (\ s a -> s{_lirsResponseStatus = a});
 
 -- | Information about invalidation batches.
-lirsInvalidationList :: Lens' ListInvalidationsResponse InvalidationList
+lirsInvalidationList :: Lens' (ListInvalidationsResponse (a)) InvalidationList
 lirsInvalidationList = lens _lirsInvalidationList (\ s a -> s{_lirsInvalidationList = a});
 
 instance NFData ListInvalidationsResponse

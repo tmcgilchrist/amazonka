@@ -131,7 +131,7 @@ instance ToQuery CreateDBSubnetGroup where
                  toQueryList "SubnetIdentifier" _cdbsgSubnetIds]
 
 -- | /See:/ 'createDBSubnetGroupResponse' smart constructor.
-data CreateDBSubnetGroupResponse = CreateDBSubnetGroupResponse'
+data CreateDBSubnetGroupResponse a = CreateDBSubnetGroupResponse'
     { _cdsgrsDBSubnetGroup  :: !(Maybe DBSubnetGroup)
     , _cdsgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -145,7 +145,7 @@ data CreateDBSubnetGroupResponse = CreateDBSubnetGroupResponse'
 -- * 'cdsgrsResponseStatus'
 createDBSubnetGroupResponse
     :: Int -- ^ 'cdsgrsResponseStatus'
-    -> CreateDBSubnetGroupResponse
+    -> CreateDBSubnetGroupResponse (a)
 createDBSubnetGroupResponse pResponseStatus_ =
     CreateDBSubnetGroupResponse'
     { _cdsgrsDBSubnetGroup = Nothing
@@ -153,11 +153,11 @@ createDBSubnetGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdsgrsDBSubnetGroup :: Lens' CreateDBSubnetGroupResponse (Maybe DBSubnetGroup)
+cdsgrsDBSubnetGroup :: Lens' (CreateDBSubnetGroupResponse (a)) (Maybe DBSubnetGroup)
 cdsgrsDBSubnetGroup = lens _cdsgrsDBSubnetGroup (\ s a -> s{_cdsgrsDBSubnetGroup = a});
 
 -- | The response status code.
-cdsgrsResponseStatus :: Lens' CreateDBSubnetGroupResponse Int
+cdsgrsResponseStatus :: Lens' (CreateDBSubnetGroupResponse (a)) Int
 cdsgrsResponseStatus = lens _cdsgrsResponseStatus (\ s a -> s{_cdsgrsResponseStatus = a});
 
 instance NFData CreateDBSubnetGroupResponse

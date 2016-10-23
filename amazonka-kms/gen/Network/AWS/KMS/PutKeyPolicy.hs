@@ -152,14 +152,14 @@ instance ToQuery PutKeyPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putKeyPolicyResponse' smart constructor.
-data PutKeyPolicyResponse =
+data PutKeyPolicyResponse a =
     PutKeyPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutKeyPolicyResponse' with the minimum fields required to make a request.
 --
 putKeyPolicyResponse
-    :: PutKeyPolicyResponse
+    :: PutKeyPolicyResponse (a)
 putKeyPolicyResponse = PutKeyPolicyResponse'
 
 instance NFData PutKeyPolicyResponse

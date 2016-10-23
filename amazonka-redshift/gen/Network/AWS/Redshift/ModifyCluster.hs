@@ -338,7 +338,7 @@ instance ToQuery ModifyCluster where
                "ClusterIdentifier" =: _mcClusterIdentifier]
 
 -- | /See:/ 'modifyClusterResponse' smart constructor.
-data ModifyClusterResponse = ModifyClusterResponse'
+data ModifyClusterResponse a = ModifyClusterResponse'
     { _mcrsCluster        :: !(Maybe Cluster)
     , _mcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -352,7 +352,7 @@ data ModifyClusterResponse = ModifyClusterResponse'
 -- * 'mcrsResponseStatus'
 modifyClusterResponse
     :: Int -- ^ 'mcrsResponseStatus'
-    -> ModifyClusterResponse
+    -> ModifyClusterResponse (a)
 modifyClusterResponse pResponseStatus_ =
     ModifyClusterResponse'
     { _mcrsCluster = Nothing
@@ -360,11 +360,11 @@ modifyClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mcrsCluster :: Lens' ModifyClusterResponse (Maybe Cluster)
+mcrsCluster :: Lens' (ModifyClusterResponse (a)) (Maybe Cluster)
 mcrsCluster = lens _mcrsCluster (\ s a -> s{_mcrsCluster = a});
 
 -- | The response status code.
-mcrsResponseStatus :: Lens' ModifyClusterResponse Int
+mcrsResponseStatus :: Lens' (ModifyClusterResponse (a)) Int
 mcrsResponseStatus = lens _mcrsResponseStatus (\ s a -> s{_mcrsResponseStatus = a});
 
 instance NFData ModifyClusterResponse

@@ -109,7 +109,7 @@ instance ToQuery DescribeEC2InstanceLimits where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeEC2InstanceLimitsResponse' smart constructor.
-data DescribeEC2InstanceLimitsResponse = DescribeEC2InstanceLimitsResponse'
+data DescribeEC2InstanceLimitsResponse a = DescribeEC2InstanceLimitsResponse'
     { _deilrsEC2InstanceLimits :: !(Maybe [EC2InstanceLimit])
     , _deilrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -123,7 +123,7 @@ data DescribeEC2InstanceLimitsResponse = DescribeEC2InstanceLimitsResponse'
 -- * 'deilrsResponseStatus'
 describeEC2InstanceLimitsResponse
     :: Int -- ^ 'deilrsResponseStatus'
-    -> DescribeEC2InstanceLimitsResponse
+    -> DescribeEC2InstanceLimitsResponse (a)
 describeEC2InstanceLimitsResponse pResponseStatus_ =
     DescribeEC2InstanceLimitsResponse'
     { _deilrsEC2InstanceLimits = Nothing
@@ -131,11 +131,11 @@ describeEC2InstanceLimitsResponse pResponseStatus_ =
     }
 
 -- | Object containing the maximum number of instances for the specified instance type.
-deilrsEC2InstanceLimits :: Lens' DescribeEC2InstanceLimitsResponse [EC2InstanceLimit]
+deilrsEC2InstanceLimits :: Lens' (DescribeEC2InstanceLimitsResponse (a)) [EC2InstanceLimit]
 deilrsEC2InstanceLimits = lens _deilrsEC2InstanceLimits (\ s a -> s{_deilrsEC2InstanceLimits = a}) . _Default . _Coerce;
 
 -- | The response status code.
-deilrsResponseStatus :: Lens' DescribeEC2InstanceLimitsResponse Int
+deilrsResponseStatus :: Lens' (DescribeEC2InstanceLimitsResponse (a)) Int
 deilrsResponseStatus = lens _deilrsResponseStatus (\ s a -> s{_deilrsResponseStatus = a});
 
 instance NFData DescribeEC2InstanceLimitsResponse

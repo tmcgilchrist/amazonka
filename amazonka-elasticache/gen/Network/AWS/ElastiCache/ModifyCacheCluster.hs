@@ -383,7 +383,7 @@ instance ToQuery ModifyCacheCluster where
                "CacheClusterId" =: _mccCacheClusterId]
 
 -- | /See:/ 'modifyCacheClusterResponse' smart constructor.
-data ModifyCacheClusterResponse = ModifyCacheClusterResponse'
+data ModifyCacheClusterResponse a = ModifyCacheClusterResponse'
     { _mccrsCacheCluster   :: !(Maybe CacheCluster)
     , _mccrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -397,7 +397,7 @@ data ModifyCacheClusterResponse = ModifyCacheClusterResponse'
 -- * 'mccrsResponseStatus'
 modifyCacheClusterResponse
     :: Int -- ^ 'mccrsResponseStatus'
-    -> ModifyCacheClusterResponse
+    -> ModifyCacheClusterResponse (a)
 modifyCacheClusterResponse pResponseStatus_ =
     ModifyCacheClusterResponse'
     { _mccrsCacheCluster = Nothing
@@ -405,11 +405,11 @@ modifyCacheClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mccrsCacheCluster :: Lens' ModifyCacheClusterResponse (Maybe CacheCluster)
+mccrsCacheCluster :: Lens' (ModifyCacheClusterResponse (a)) (Maybe CacheCluster)
 mccrsCacheCluster = lens _mccrsCacheCluster (\ s a -> s{_mccrsCacheCluster = a});
 
 -- | The response status code.
-mccrsResponseStatus :: Lens' ModifyCacheClusterResponse Int
+mccrsResponseStatus :: Lens' (ModifyCacheClusterResponse (a)) Int
 mccrsResponseStatus = lens _mccrsResponseStatus (\ s a -> s{_mccrsResponseStatus = a});
 
 instance NFData ModifyCacheClusterResponse

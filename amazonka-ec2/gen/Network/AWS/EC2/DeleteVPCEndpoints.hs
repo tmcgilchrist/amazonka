@@ -107,7 +107,7 @@ instance ToQuery DeleteVPCEndpoints where
 -- | Contains the output of DeleteVpcEndpoints.
 --
 -- /See:/ 'deleteVPCEndpointsResponse' smart constructor.
-data DeleteVPCEndpointsResponse = DeleteVPCEndpointsResponse'
+data DeleteVPCEndpointsResponse a = DeleteVPCEndpointsResponse'
     { _dversUnsuccessful   :: !(Maybe [UnsuccessfulItem])
     , _dversResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DeleteVPCEndpointsResponse = DeleteVPCEndpointsResponse'
 -- * 'dversResponseStatus'
 deleteVPCEndpointsResponse
     :: Int -- ^ 'dversResponseStatus'
-    -> DeleteVPCEndpointsResponse
+    -> DeleteVPCEndpointsResponse (a)
 deleteVPCEndpointsResponse pResponseStatus_ =
     DeleteVPCEndpointsResponse'
     { _dversUnsuccessful = Nothing
@@ -129,11 +129,11 @@ deleteVPCEndpointsResponse pResponseStatus_ =
     }
 
 -- | Information about the endpoints that were not successfully deleted.
-dversUnsuccessful :: Lens' DeleteVPCEndpointsResponse [UnsuccessfulItem]
+dversUnsuccessful :: Lens' (DeleteVPCEndpointsResponse (a)) [UnsuccessfulItem]
 dversUnsuccessful = lens _dversUnsuccessful (\ s a -> s{_dversUnsuccessful = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dversResponseStatus :: Lens' DeleteVPCEndpointsResponse Int
+dversResponseStatus :: Lens' (DeleteVPCEndpointsResponse (a)) Int
 dversResponseStatus = lens _dversResponseStatus (\ s a -> s{_dversResponseStatus = a});
 
 instance NFData DeleteVPCEndpointsResponse

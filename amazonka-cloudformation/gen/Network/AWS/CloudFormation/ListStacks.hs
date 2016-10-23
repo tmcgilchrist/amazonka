@@ -120,7 +120,7 @@ instance ToQuery ListStacks where
 -- | The output for < ListStacks> action.
 --
 -- /See:/ 'listStacksResponse' smart constructor.
-data ListStacksResponse = ListStacksResponse'
+data ListStacksResponse a = ListStacksResponse'
     { _lsrsNextToken      :: !(Maybe Text)
     , _lsrsStackSummaries :: !(Maybe [StackSummary])
     , _lsrsResponseStatus :: !Int
@@ -137,7 +137,7 @@ data ListStacksResponse = ListStacksResponse'
 -- * 'lsrsResponseStatus'
 listStacksResponse
     :: Int -- ^ 'lsrsResponseStatus'
-    -> ListStacksResponse
+    -> ListStacksResponse (a)
 listStacksResponse pResponseStatus_ =
     ListStacksResponse'
     { _lsrsNextToken = Nothing
@@ -146,15 +146,15 @@ listStacksResponse pResponseStatus_ =
     }
 
 -- | If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.
-lsrsNextToken :: Lens' ListStacksResponse (Maybe Text)
+lsrsNextToken :: Lens' (ListStacksResponse (a)) (Maybe Text)
 lsrsNextToken = lens _lsrsNextToken (\ s a -> s{_lsrsNextToken = a});
 
 -- | A list of 'StackSummary' structures containing information about the specified stacks.
-lsrsStackSummaries :: Lens' ListStacksResponse [StackSummary]
+lsrsStackSummaries :: Lens' (ListStacksResponse (a)) [StackSummary]
 lsrsStackSummaries = lens _lsrsStackSummaries (\ s a -> s{_lsrsStackSummaries = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lsrsResponseStatus :: Lens' ListStacksResponse Int
+lsrsResponseStatus :: Lens' (ListStacksResponse (a)) Int
 lsrsResponseStatus = lens _lsrsResponseStatus (\ s a -> s{_lsrsResponseStatus = a});
 
 instance NFData ListStacksResponse

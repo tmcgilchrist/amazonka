@@ -110,14 +110,14 @@ instance ToQuery AssignInstance where
         toQuery = const mempty
 
 -- | /See:/ 'assignInstanceResponse' smart constructor.
-data AssignInstanceResponse =
+data AssignInstanceResponse a =
     AssignInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AssignInstanceResponse' with the minimum fields required to make a request.
 --
 assignInstanceResponse
-    :: AssignInstanceResponse
+    :: AssignInstanceResponse (a)
 assignInstanceResponse = AssignInstanceResponse'
 
 instance NFData AssignInstanceResponse

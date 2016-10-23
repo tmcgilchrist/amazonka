@@ -113,7 +113,7 @@ instance ToQuery GetPipeline where
 -- | Represents the output of a get pipeline action.
 --
 -- /See:/ 'getPipelineResponse' smart constructor.
-data GetPipelineResponse = GetPipelineResponse'
+data GetPipelineResponse a = GetPipelineResponse'
     { _gprsPipeline       :: !(Maybe PipelineDeclaration)
     , _gprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data GetPipelineResponse = GetPipelineResponse'
 -- * 'gprsResponseStatus'
 getPipelineResponse
     :: Int -- ^ 'gprsResponseStatus'
-    -> GetPipelineResponse
+    -> GetPipelineResponse (a)
 getPipelineResponse pResponseStatus_ =
     GetPipelineResponse'
     { _gprsPipeline = Nothing
@@ -135,11 +135,11 @@ getPipelineResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gprsPipeline :: Lens' GetPipelineResponse (Maybe PipelineDeclaration)
+gprsPipeline :: Lens' (GetPipelineResponse (a)) (Maybe PipelineDeclaration)
 gprsPipeline = lens _gprsPipeline (\ s a -> s{_gprsPipeline = a});
 
 -- | The response status code.
-gprsResponseStatus :: Lens' GetPipelineResponse Int
+gprsResponseStatus :: Lens' (GetPipelineResponse (a)) Int
 gprsResponseStatus = lens _gprsResponseStatus (\ s a -> s{_gprsResponseStatus = a});
 
 instance NFData GetPipelineResponse

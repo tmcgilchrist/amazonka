@@ -233,7 +233,7 @@ instance ToQuery DescribeEvaluations where
 -- | Represents the query results from a 'DescribeEvaluations' operation. The content is essentially a list of 'Evaluation'.
 --
 -- /See:/ 'describeEvaluationsResponse' smart constructor.
-data DescribeEvaluationsResponse = DescribeEvaluationsResponse'
+data DescribeEvaluationsResponse a = DescribeEvaluationsResponse'
     { _desrsResults        :: !(Maybe [Evaluation])
     , _desrsNextToken      :: !(Maybe Text)
     , _desrsResponseStatus :: !Int
@@ -250,7 +250,7 @@ data DescribeEvaluationsResponse = DescribeEvaluationsResponse'
 -- * 'desrsResponseStatus'
 describeEvaluationsResponse
     :: Int -- ^ 'desrsResponseStatus'
-    -> DescribeEvaluationsResponse
+    -> DescribeEvaluationsResponse (a)
 describeEvaluationsResponse pResponseStatus_ =
     DescribeEvaluationsResponse'
     { _desrsResults = Nothing
@@ -259,15 +259,15 @@ describeEvaluationsResponse pResponseStatus_ =
     }
 
 -- | A list of 'Evaluation' that meet the search criteria.
-desrsResults :: Lens' DescribeEvaluationsResponse [Evaluation]
+desrsResults :: Lens' (DescribeEvaluationsResponse (a)) [Evaluation]
 desrsResults = lens _desrsResults (\ s a -> s{_desrsResults = a}) . _Default . _Coerce;
 
 -- | The ID of the next page in the paginated results that indicates at least one more page follows.
-desrsNextToken :: Lens' DescribeEvaluationsResponse (Maybe Text)
+desrsNextToken :: Lens' (DescribeEvaluationsResponse (a)) (Maybe Text)
 desrsNextToken = lens _desrsNextToken (\ s a -> s{_desrsNextToken = a});
 
 -- | The response status code.
-desrsResponseStatus :: Lens' DescribeEvaluationsResponse Int
+desrsResponseStatus :: Lens' (DescribeEvaluationsResponse (a)) Int
 desrsResponseStatus = lens _desrsResponseStatus (\ s a -> s{_desrsResponseStatus = a});
 
 instance NFData DescribeEvaluationsResponse

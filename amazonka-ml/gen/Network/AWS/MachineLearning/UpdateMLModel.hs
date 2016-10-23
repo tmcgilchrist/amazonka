@@ -127,7 +127,7 @@ instance ToQuery UpdateMLModel where
 -- You can see the updated content by using the 'GetMLModel' operation.
 --
 -- /See:/ 'updateMLModelResponse' smart constructor.
-data UpdateMLModelResponse = UpdateMLModelResponse'
+data UpdateMLModelResponse a = UpdateMLModelResponse'
     { _umlmrsMLModelId      :: !(Maybe Text)
     , _umlmrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data UpdateMLModelResponse = UpdateMLModelResponse'
 -- * 'umlmrsResponseStatus'
 updateMLModelResponse
     :: Int -- ^ 'umlmrsResponseStatus'
-    -> UpdateMLModelResponse
+    -> UpdateMLModelResponse (a)
 updateMLModelResponse pResponseStatus_ =
     UpdateMLModelResponse'
     { _umlmrsMLModelId = Nothing
@@ -149,11 +149,11 @@ updateMLModelResponse pResponseStatus_ =
     }
 
 -- | The ID assigned to the 'MLModel' during creation. This value should be identical to the value of the 'MLModelID' in the request.
-umlmrsMLModelId :: Lens' UpdateMLModelResponse (Maybe Text)
+umlmrsMLModelId :: Lens' (UpdateMLModelResponse (a)) (Maybe Text)
 umlmrsMLModelId = lens _umlmrsMLModelId (\ s a -> s{_umlmrsMLModelId = a});
 
 -- | The response status code.
-umlmrsResponseStatus :: Lens' UpdateMLModelResponse Int
+umlmrsResponseStatus :: Lens' (UpdateMLModelResponse (a)) Int
 umlmrsResponseStatus = lens _umlmrsResponseStatus (\ s a -> s{_umlmrsResponseStatus = a});
 
 instance NFData UpdateMLModelResponse

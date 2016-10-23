@@ -161,7 +161,7 @@ instance ToQuery DescribeReservedInstances where
 -- | Contains the output for DescribeReservedInstances.
 --
 -- /See:/ 'describeReservedInstancesResponse' smart constructor.
-data DescribeReservedInstancesResponse = DescribeReservedInstancesResponse'
+data DescribeReservedInstancesResponse a = DescribeReservedInstancesResponse'
     { _drirsReservedInstances :: !(Maybe [ReservedInstances])
     , _drirsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -175,7 +175,7 @@ data DescribeReservedInstancesResponse = DescribeReservedInstancesResponse'
 -- * 'drirsResponseStatus'
 describeReservedInstancesResponse
     :: Int -- ^ 'drirsResponseStatus'
-    -> DescribeReservedInstancesResponse
+    -> DescribeReservedInstancesResponse (a)
 describeReservedInstancesResponse pResponseStatus_ =
     DescribeReservedInstancesResponse'
     { _drirsReservedInstances = Nothing
@@ -183,11 +183,11 @@ describeReservedInstancesResponse pResponseStatus_ =
     }
 
 -- | A list of Reserved Instances.
-drirsReservedInstances :: Lens' DescribeReservedInstancesResponse [ReservedInstances]
+drirsReservedInstances :: Lens' (DescribeReservedInstancesResponse (a)) [ReservedInstances]
 drirsReservedInstances = lens _drirsReservedInstances (\ s a -> s{_drirsReservedInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drirsResponseStatus :: Lens' DescribeReservedInstancesResponse Int
+drirsResponseStatus :: Lens' (DescribeReservedInstancesResponse (a)) Int
 drirsResponseStatus = lens _drirsResponseStatus (\ s a -> s{_drirsResponseStatus = a});
 
 instance NFData DescribeReservedInstancesResponse

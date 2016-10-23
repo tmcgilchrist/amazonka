@@ -113,7 +113,7 @@ instance ToQuery DescribeEnvironmentResources where
 -- | Result message containing a list of environment resource descriptions.
 --
 -- /See:/ 'describeEnvironmentResourcesResponse' smart constructor.
-data DescribeEnvironmentResourcesResponse = DescribeEnvironmentResourcesResponse'
+data DescribeEnvironmentResourcesResponse a = DescribeEnvironmentResourcesResponse'
     { _derrsEnvironmentResources :: !(Maybe EnvironmentResourceDescription)
     , _derrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data DescribeEnvironmentResourcesResponse = DescribeEnvironmentResourcesResponse
 -- * 'derrsResponseStatus'
 describeEnvironmentResourcesResponse
     :: Int -- ^ 'derrsResponseStatus'
-    -> DescribeEnvironmentResourcesResponse
+    -> DescribeEnvironmentResourcesResponse (a)
 describeEnvironmentResourcesResponse pResponseStatus_ =
     DescribeEnvironmentResourcesResponse'
     { _derrsEnvironmentResources = Nothing
@@ -135,11 +135,11 @@ describeEnvironmentResourcesResponse pResponseStatus_ =
     }
 
 -- | A list of < EnvironmentResourceDescription>.
-derrsEnvironmentResources :: Lens' DescribeEnvironmentResourcesResponse (Maybe EnvironmentResourceDescription)
+derrsEnvironmentResources :: Lens' (DescribeEnvironmentResourcesResponse (a)) (Maybe EnvironmentResourceDescription)
 derrsEnvironmentResources = lens _derrsEnvironmentResources (\ s a -> s{_derrsEnvironmentResources = a});
 
 -- | The response status code.
-derrsResponseStatus :: Lens' DescribeEnvironmentResourcesResponse Int
+derrsResponseStatus :: Lens' (DescribeEnvironmentResourcesResponse (a)) Int
 derrsResponseStatus = lens _derrsResponseStatus (\ s a -> s{_derrsResponseStatus = a});
 
 instance NFData DescribeEnvironmentResourcesResponse

@@ -161,7 +161,7 @@ instance ToQuery AssociateAddress where
 -- | Contains the output of AssociateAddress.
 --
 -- /See:/ 'associateAddressResponse' smart constructor.
-data AssociateAddressResponse = AssociateAddressResponse'
+data AssociateAddressResponse a = AssociateAddressResponse'
     { _arsAssociationId  :: !(Maybe Text)
     , _arsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -175,7 +175,7 @@ data AssociateAddressResponse = AssociateAddressResponse'
 -- * 'arsResponseStatus'
 associateAddressResponse
     :: Int -- ^ 'arsResponseStatus'
-    -> AssociateAddressResponse
+    -> AssociateAddressResponse (a)
 associateAddressResponse pResponseStatus_ =
     AssociateAddressResponse'
     { _arsAssociationId = Nothing
@@ -183,11 +183,11 @@ associateAddressResponse pResponseStatus_ =
     }
 
 -- | [EC2-VPC] The ID that represents the association of the Elastic IP address with an instance.
-arsAssociationId :: Lens' AssociateAddressResponse (Maybe Text)
+arsAssociationId :: Lens' (AssociateAddressResponse (a)) (Maybe Text)
 arsAssociationId = lens _arsAssociationId (\ s a -> s{_arsAssociationId = a});
 
 -- | The response status code.
-arsResponseStatus :: Lens' AssociateAddressResponse Int
+arsResponseStatus :: Lens' (AssociateAddressResponse (a)) Int
 arsResponseStatus = lens _arsResponseStatus (\ s a -> s{_arsResponseStatus = a});
 
 instance NFData AssociateAddressResponse

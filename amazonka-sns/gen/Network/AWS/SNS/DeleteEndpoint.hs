@@ -88,14 +88,14 @@ instance ToQuery DeleteEndpoint where
                "EndpointArn" =: _deEndpointARN]
 
 -- | /See:/ 'deleteEndpointResponse' smart constructor.
-data DeleteEndpointResponse =
+data DeleteEndpointResponse a =
     DeleteEndpointResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteEndpointResponse' with the minimum fields required to make a request.
 --
 deleteEndpointResponse
-    :: DeleteEndpointResponse
+    :: DeleteEndpointResponse (a)
 deleteEndpointResponse = DeleteEndpointResponse'
 
 instance NFData DeleteEndpointResponse

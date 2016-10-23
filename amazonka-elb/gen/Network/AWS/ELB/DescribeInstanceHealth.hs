@@ -110,7 +110,7 @@ instance ToQuery DescribeInstanceHealth where
 -- | Contains the output for DescribeInstanceHealth.
 --
 -- /See:/ 'describeInstanceHealthResponse' smart constructor.
-data DescribeInstanceHealthResponse = DescribeInstanceHealthResponse'
+data DescribeInstanceHealthResponse a = DescribeInstanceHealthResponse'
     { _dihrsInstanceStates :: !(Maybe [InstanceState])
     , _dihrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -124,7 +124,7 @@ data DescribeInstanceHealthResponse = DescribeInstanceHealthResponse'
 -- * 'dihrsResponseStatus'
 describeInstanceHealthResponse
     :: Int -- ^ 'dihrsResponseStatus'
-    -> DescribeInstanceHealthResponse
+    -> DescribeInstanceHealthResponse (a)
 describeInstanceHealthResponse pResponseStatus_ =
     DescribeInstanceHealthResponse'
     { _dihrsInstanceStates = Nothing
@@ -132,11 +132,11 @@ describeInstanceHealthResponse pResponseStatus_ =
     }
 
 -- | Information about the health of the instances.
-dihrsInstanceStates :: Lens' DescribeInstanceHealthResponse [InstanceState]
+dihrsInstanceStates :: Lens' (DescribeInstanceHealthResponse (a)) [InstanceState]
 dihrsInstanceStates = lens _dihrsInstanceStates (\ s a -> s{_dihrsInstanceStates = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dihrsResponseStatus :: Lens' DescribeInstanceHealthResponse Int
+dihrsResponseStatus :: Lens' (DescribeInstanceHealthResponse (a)) Int
 dihrsResponseStatus = lens _dihrsResponseStatus (\ s a -> s{_dihrsResponseStatus = a});
 
 instance NFData DescribeInstanceHealthResponse

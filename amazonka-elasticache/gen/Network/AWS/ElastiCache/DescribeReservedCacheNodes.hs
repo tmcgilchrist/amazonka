@@ -216,7 +216,7 @@ instance ToQuery DescribeReservedCacheNodes where
 -- | Represents the output of a /DescribeReservedCacheNodes/ action.
 --
 -- /See:/ 'describeReservedCacheNodesResponse' smart constructor.
-data DescribeReservedCacheNodesResponse = DescribeReservedCacheNodesResponse'
+data DescribeReservedCacheNodesResponse a = DescribeReservedCacheNodesResponse'
     { _drcnrsMarker             :: !(Maybe Text)
     , _drcnrsReservedCacheNodes :: !(Maybe [ReservedCacheNode])
     , _drcnrsResponseStatus     :: !Int
@@ -233,7 +233,7 @@ data DescribeReservedCacheNodesResponse = DescribeReservedCacheNodesResponse'
 -- * 'drcnrsResponseStatus'
 describeReservedCacheNodesResponse
     :: Int -- ^ 'drcnrsResponseStatus'
-    -> DescribeReservedCacheNodesResponse
+    -> DescribeReservedCacheNodesResponse (a)
 describeReservedCacheNodesResponse pResponseStatus_ =
     DescribeReservedCacheNodesResponse'
     { _drcnrsMarker = Nothing
@@ -242,15 +242,15 @@ describeReservedCacheNodesResponse pResponseStatus_ =
     }
 
 -- | Provides an identifier to allow retrieval of paginated results.
-drcnrsMarker :: Lens' DescribeReservedCacheNodesResponse (Maybe Text)
+drcnrsMarker :: Lens' (DescribeReservedCacheNodesResponse (a)) (Maybe Text)
 drcnrsMarker = lens _drcnrsMarker (\ s a -> s{_drcnrsMarker = a});
 
 -- | A list of reserved cache nodes. Each element in the list contains detailed information about one node.
-drcnrsReservedCacheNodes :: Lens' DescribeReservedCacheNodesResponse [ReservedCacheNode]
+drcnrsReservedCacheNodes :: Lens' (DescribeReservedCacheNodesResponse (a)) [ReservedCacheNode]
 drcnrsReservedCacheNodes = lens _drcnrsReservedCacheNodes (\ s a -> s{_drcnrsReservedCacheNodes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drcnrsResponseStatus :: Lens' DescribeReservedCacheNodesResponse Int
+drcnrsResponseStatus :: Lens' (DescribeReservedCacheNodesResponse (a)) Int
 drcnrsResponseStatus = lens _drcnrsResponseStatus (\ s a -> s{_drcnrsResponseStatus = a});
 
 instance NFData DescribeReservedCacheNodesResponse

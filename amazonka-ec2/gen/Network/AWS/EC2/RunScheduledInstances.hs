@@ -145,7 +145,7 @@ instance ToQuery RunScheduledInstances where
 -- | Contains the output of RunScheduledInstances.
 --
 -- /See:/ 'runScheduledInstancesResponse' smart constructor.
-data RunScheduledInstancesResponse = RunScheduledInstancesResponse'
+data RunScheduledInstancesResponse a = RunScheduledInstancesResponse'
     { _rrsInstanceIdSet  :: !(Maybe [Text])
     , _rrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -159,7 +159,7 @@ data RunScheduledInstancesResponse = RunScheduledInstancesResponse'
 -- * 'rrsResponseStatus'
 runScheduledInstancesResponse
     :: Int -- ^ 'rrsResponseStatus'
-    -> RunScheduledInstancesResponse
+    -> RunScheduledInstancesResponse (a)
 runScheduledInstancesResponse pResponseStatus_ =
     RunScheduledInstancesResponse'
     { _rrsInstanceIdSet = Nothing
@@ -167,11 +167,11 @@ runScheduledInstancesResponse pResponseStatus_ =
     }
 
 -- | The IDs of the newly launched instances.
-rrsInstanceIdSet :: Lens' RunScheduledInstancesResponse [Text]
+rrsInstanceIdSet :: Lens' (RunScheduledInstancesResponse (a)) [Text]
 rrsInstanceIdSet = lens _rrsInstanceIdSet (\ s a -> s{_rrsInstanceIdSet = a}) . _Default . _Coerce;
 
 -- | The response status code.
-rrsResponseStatus :: Lens' RunScheduledInstancesResponse Int
+rrsResponseStatus :: Lens' (RunScheduledInstancesResponse (a)) Int
 rrsResponseStatus = lens _rrsResponseStatus (\ s a -> s{_rrsResponseStatus = a});
 
 instance NFData RunScheduledInstancesResponse

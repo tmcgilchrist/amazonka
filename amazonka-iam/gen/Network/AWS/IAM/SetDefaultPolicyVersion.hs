@@ -106,14 +106,14 @@ instance ToQuery SetDefaultPolicyVersion where
                "VersionId" =: _sdpvVersionId]
 
 -- | /See:/ 'setDefaultPolicyVersionResponse' smart constructor.
-data SetDefaultPolicyVersionResponse =
+data SetDefaultPolicyVersionResponse a =
     SetDefaultPolicyVersionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetDefaultPolicyVersionResponse' with the minimum fields required to make a request.
 --
 setDefaultPolicyVersionResponse
-    :: SetDefaultPolicyVersionResponse
+    :: SetDefaultPolicyVersionResponse (a)
 setDefaultPolicyVersionResponse = SetDefaultPolicyVersionResponse'
 
 instance NFData SetDefaultPolicyVersionResponse

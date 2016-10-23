@@ -105,7 +105,7 @@ instance ToQuery ListVolumeInitiators where
 -- | ListVolumeInitiatorsOutput
 --
 -- /See:/ 'listVolumeInitiatorsResponse' smart constructor.
-data ListVolumeInitiatorsResponse = ListVolumeInitiatorsResponse'
+data ListVolumeInitiatorsResponse a = ListVolumeInitiatorsResponse'
     { _lvirsInitiators     :: !(Maybe [Text])
     , _lvirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data ListVolumeInitiatorsResponse = ListVolumeInitiatorsResponse'
 -- * 'lvirsResponseStatus'
 listVolumeInitiatorsResponse
     :: Int -- ^ 'lvirsResponseStatus'
-    -> ListVolumeInitiatorsResponse
+    -> ListVolumeInitiatorsResponse (a)
 listVolumeInitiatorsResponse pResponseStatus_ =
     ListVolumeInitiatorsResponse'
     { _lvirsInitiators = Nothing
@@ -127,11 +127,11 @@ listVolumeInitiatorsResponse pResponseStatus_ =
     }
 
 -- | The host names and port numbers of all iSCSI initiators that are connected to the gateway.
-lvirsInitiators :: Lens' ListVolumeInitiatorsResponse [Text]
+lvirsInitiators :: Lens' (ListVolumeInitiatorsResponse (a)) [Text]
 lvirsInitiators = lens _lvirsInitiators (\ s a -> s{_lvirsInitiators = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lvirsResponseStatus :: Lens' ListVolumeInitiatorsResponse Int
+lvirsResponseStatus :: Lens' (ListVolumeInitiatorsResponse (a)) Int
 lvirsResponseStatus = lens _lvirsResponseStatus (\ s a -> s{_lvirsResponseStatus = a});
 
 instance NFData ListVolumeInitiatorsResponse

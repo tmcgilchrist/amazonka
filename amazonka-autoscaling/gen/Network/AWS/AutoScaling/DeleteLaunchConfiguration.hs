@@ -92,14 +92,14 @@ instance ToQuery DeleteLaunchConfiguration where
                  _dlcLaunchConfigurationName]
 
 -- | /See:/ 'deleteLaunchConfigurationResponse' smart constructor.
-data DeleteLaunchConfigurationResponse =
+data DeleteLaunchConfigurationResponse a =
     DeleteLaunchConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteLaunchConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteLaunchConfigurationResponse
-    :: DeleteLaunchConfigurationResponse
+    :: DeleteLaunchConfigurationResponse (a)
 deleteLaunchConfigurationResponse = DeleteLaunchConfigurationResponse'
 
 instance NFData DeleteLaunchConfigurationResponse

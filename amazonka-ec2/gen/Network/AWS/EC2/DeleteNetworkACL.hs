@@ -96,14 +96,14 @@ instance ToQuery DeleteNetworkACL where
                "NetworkAclId" =: _dnaNetworkACLId]
 
 -- | /See:/ 'deleteNetworkACLResponse' smart constructor.
-data DeleteNetworkACLResponse =
+data DeleteNetworkACLResponse a =
     DeleteNetworkACLResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteNetworkACLResponse' with the minimum fields required to make a request.
 --
 deleteNetworkACLResponse
-    :: DeleteNetworkACLResponse
+    :: DeleteNetworkACLResponse (a)
 deleteNetworkACLResponse = DeleteNetworkACLResponse'
 
 instance NFData DeleteNetworkACLResponse

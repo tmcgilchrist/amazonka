@@ -132,14 +132,14 @@ instance ToQuery RequestCancelWorkflowExecution where
         toQuery = const mempty
 
 -- | /See:/ 'requestCancelWorkflowExecutionResponse' smart constructor.
-data RequestCancelWorkflowExecutionResponse =
+data RequestCancelWorkflowExecutionResponse a =
     RequestCancelWorkflowExecutionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RequestCancelWorkflowExecutionResponse' with the minimum fields required to make a request.
 --
 requestCancelWorkflowExecutionResponse
-    :: RequestCancelWorkflowExecutionResponse
+    :: RequestCancelWorkflowExecutionResponse (a)
 requestCancelWorkflowExecutionResponse =
     RequestCancelWorkflowExecutionResponse'
 

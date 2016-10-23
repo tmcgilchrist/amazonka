@@ -104,7 +104,7 @@ instance ToQuery StopRemoteAccessSession where
 -- | Represents the response from the server that describes the remote access session when AWS Device Farm stops the session.
 --
 -- /See:/ 'stopRemoteAccessSessionResponse' smart constructor.
-data StopRemoteAccessSessionResponse = StopRemoteAccessSessionResponse'
+data StopRemoteAccessSessionResponse a = StopRemoteAccessSessionResponse'
     { _srasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
     , _srasrsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data StopRemoteAccessSessionResponse = StopRemoteAccessSessionResponse'
 -- * 'srasrsResponseStatus'
 stopRemoteAccessSessionResponse
     :: Int -- ^ 'srasrsResponseStatus'
-    -> StopRemoteAccessSessionResponse
+    -> StopRemoteAccessSessionResponse (a)
 stopRemoteAccessSessionResponse pResponseStatus_ =
     StopRemoteAccessSessionResponse'
     { _srasrsRemoteAccessSession = Nothing
@@ -126,11 +126,11 @@ stopRemoteAccessSessionResponse pResponseStatus_ =
     }
 
 -- | A container representing the metadata from the service about the remote access session you are stopping.
-srasrsRemoteAccessSession :: Lens' StopRemoteAccessSessionResponse (Maybe RemoteAccessSession)
+srasrsRemoteAccessSession :: Lens' (StopRemoteAccessSessionResponse (a)) (Maybe RemoteAccessSession)
 srasrsRemoteAccessSession = lens _srasrsRemoteAccessSession (\ s a -> s{_srasrsRemoteAccessSession = a});
 
 -- | The response status code.
-srasrsResponseStatus :: Lens' StopRemoteAccessSessionResponse Int
+srasrsResponseStatus :: Lens' (StopRemoteAccessSessionResponse (a)) Int
 srasrsResponseStatus = lens _srasrsResponseStatus (\ s a -> s{_srasrsResponseStatus = a});
 
 instance NFData StopRemoteAccessSessionResponse

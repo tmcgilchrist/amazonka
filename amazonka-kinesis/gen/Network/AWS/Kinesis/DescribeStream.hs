@@ -152,7 +152,7 @@ instance ToQuery DescribeStream where
 -- | Represents the output for 'DescribeStream'.
 --
 -- /See:/ 'describeStreamResponse' smart constructor.
-data DescribeStreamResponse = DescribeStreamResponse'
+data DescribeStreamResponse a = DescribeStreamResponse'
     { _dsrsResponseStatus    :: !Int
     , _dsrsStreamDescription :: !StreamDescription
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -167,7 +167,7 @@ data DescribeStreamResponse = DescribeStreamResponse'
 describeStreamResponse
     :: Int -- ^ 'dsrsResponseStatus'
     -> StreamDescription -- ^ 'dsrsStreamDescription'
-    -> DescribeStreamResponse
+    -> DescribeStreamResponse (a)
 describeStreamResponse pResponseStatus_ pStreamDescription_ =
     DescribeStreamResponse'
     { _dsrsResponseStatus = pResponseStatus_
@@ -175,11 +175,11 @@ describeStreamResponse pResponseStatus_ pStreamDescription_ =
     }
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DescribeStreamResponse Int
+dsrsResponseStatus :: Lens' (DescribeStreamResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 -- | The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and states whether there are more shards available.
-dsrsStreamDescription :: Lens' DescribeStreamResponse StreamDescription
+dsrsStreamDescription :: Lens' (DescribeStreamResponse (a)) StreamDescription
 dsrsStreamDescription = lens _dsrsStreamDescription (\ s a -> s{_dsrsStreamDescription = a});
 
 instance NFData DescribeStreamResponse

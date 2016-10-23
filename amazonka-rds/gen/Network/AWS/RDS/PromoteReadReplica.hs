@@ -148,7 +148,7 @@ instance ToQuery PromoteReadReplica where
                "DBInstanceIdentifier" =: _prrDBInstanceIdentifier]
 
 -- | /See:/ 'promoteReadReplicaResponse' smart constructor.
-data PromoteReadReplicaResponse = PromoteReadReplicaResponse'
+data PromoteReadReplicaResponse a = PromoteReadReplicaResponse'
     { _prrrsDBInstance     :: !(Maybe DBInstance)
     , _prrrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -162,7 +162,7 @@ data PromoteReadReplicaResponse = PromoteReadReplicaResponse'
 -- * 'prrrsResponseStatus'
 promoteReadReplicaResponse
     :: Int -- ^ 'prrrsResponseStatus'
-    -> PromoteReadReplicaResponse
+    -> PromoteReadReplicaResponse (a)
 promoteReadReplicaResponse pResponseStatus_ =
     PromoteReadReplicaResponse'
     { _prrrsDBInstance = Nothing
@@ -170,11 +170,11 @@ promoteReadReplicaResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-prrrsDBInstance :: Lens' PromoteReadReplicaResponse (Maybe DBInstance)
+prrrsDBInstance :: Lens' (PromoteReadReplicaResponse (a)) (Maybe DBInstance)
 prrrsDBInstance = lens _prrrsDBInstance (\ s a -> s{_prrrsDBInstance = a});
 
 -- | The response status code.
-prrrsResponseStatus :: Lens' PromoteReadReplicaResponse Int
+prrrsResponseStatus :: Lens' (PromoteReadReplicaResponse (a)) Int
 prrrsResponseStatus = lens _prrrsResponseStatus (\ s a -> s{_prrrsResponseStatus = a});
 
 instance NFData PromoteReadReplicaResponse

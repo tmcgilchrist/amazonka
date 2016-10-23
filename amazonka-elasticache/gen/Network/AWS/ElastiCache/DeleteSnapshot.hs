@@ -93,7 +93,7 @@ instance ToQuery DeleteSnapshot where
                "SnapshotName" =: _dSnapshotName]
 
 -- | /See:/ 'deleteSnapshotResponse' smart constructor.
-data DeleteSnapshotResponse = DeleteSnapshotResponse'
+data DeleteSnapshotResponse a = DeleteSnapshotResponse'
     { _dsrsSnapshot       :: !(Maybe Snapshot)
     , _dsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -107,7 +107,7 @@ data DeleteSnapshotResponse = DeleteSnapshotResponse'
 -- * 'dsrsResponseStatus'
 deleteSnapshotResponse
     :: Int -- ^ 'dsrsResponseStatus'
-    -> DeleteSnapshotResponse
+    -> DeleteSnapshotResponse (a)
 deleteSnapshotResponse pResponseStatus_ =
     DeleteSnapshotResponse'
     { _dsrsSnapshot = Nothing
@@ -115,11 +115,11 @@ deleteSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dsrsSnapshot :: Lens' DeleteSnapshotResponse (Maybe Snapshot)
+dsrsSnapshot :: Lens' (DeleteSnapshotResponse (a)) (Maybe Snapshot)
 dsrsSnapshot = lens _dsrsSnapshot (\ s a -> s{_dsrsSnapshot = a});
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DeleteSnapshotResponse Int
+dsrsResponseStatus :: Lens' (DeleteSnapshotResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 instance NFData DeleteSnapshotResponse

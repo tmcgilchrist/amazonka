@@ -92,14 +92,14 @@ instance ToQuery DeleteOpenIdConnectProvider where
                  _doicpOpenIdConnectProviderARN]
 
 -- | /See:/ 'deleteOpenIdConnectProviderResponse' smart constructor.
-data DeleteOpenIdConnectProviderResponse =
+data DeleteOpenIdConnectProviderResponse a =
     DeleteOpenIdConnectProviderResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteOpenIdConnectProviderResponse' with the minimum fields required to make a request.
 --
 deleteOpenIdConnectProviderResponse
-    :: DeleteOpenIdConnectProviderResponse
+    :: DeleteOpenIdConnectProviderResponse (a)
 deleteOpenIdConnectProviderResponse = DeleteOpenIdConnectProviderResponse'
 
 instance NFData DeleteOpenIdConnectProviderResponse

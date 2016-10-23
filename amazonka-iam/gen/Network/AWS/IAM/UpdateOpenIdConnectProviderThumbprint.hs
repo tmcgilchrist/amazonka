@@ -114,14 +114,14 @@ instance ToQuery
                  toQueryList "member" _uoicptThumbprintList]
 
 -- | /See:/ 'updateOpenIdConnectProviderThumbprintResponse' smart constructor.
-data UpdateOpenIdConnectProviderThumbprintResponse =
+data UpdateOpenIdConnectProviderThumbprintResponse a =
     UpdateOpenIdConnectProviderThumbprintResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateOpenIdConnectProviderThumbprintResponse' with the minimum fields required to make a request.
 --
 updateOpenIdConnectProviderThumbprintResponse
-    :: UpdateOpenIdConnectProviderThumbprintResponse
+    :: UpdateOpenIdConnectProviderThumbprintResponse (a)
 updateOpenIdConnectProviderThumbprintResponse =
     UpdateOpenIdConnectProviderThumbprintResponse'
 

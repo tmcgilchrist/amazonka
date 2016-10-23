@@ -114,14 +114,14 @@ instance ToQuery SubscribeToEvent where
         toQuery = const mempty
 
 -- | /See:/ 'subscribeToEventResponse' smart constructor.
-data SubscribeToEventResponse =
+data SubscribeToEventResponse a =
     SubscribeToEventResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SubscribeToEventResponse' with the minimum fields required to make a request.
 --
 subscribeToEventResponse
-    :: SubscribeToEventResponse
+    :: SubscribeToEventResponse (a)
 subscribeToEventResponse = SubscribeToEventResponse'
 
 instance NFData SubscribeToEventResponse

@@ -147,7 +147,7 @@ instance ToQuery DescribeDBSubnetGroups where
 -- | Contains the result of a successful invocation of the < DescribeDBSubnetGroups> action.
 --
 -- /See:/ 'describeDBSubnetGroupsResponse' smart constructor.
-data DescribeDBSubnetGroupsResponse = DescribeDBSubnetGroupsResponse'
+data DescribeDBSubnetGroupsResponse a = DescribeDBSubnetGroupsResponse'
     { _ddsgrsDBSubnetGroups :: !(Maybe [DBSubnetGroup])
     , _ddsgrsMarker         :: !(Maybe Text)
     , _ddsgrsResponseStatus :: !Int
@@ -164,7 +164,7 @@ data DescribeDBSubnetGroupsResponse = DescribeDBSubnetGroupsResponse'
 -- * 'ddsgrsResponseStatus'
 describeDBSubnetGroupsResponse
     :: Int -- ^ 'ddsgrsResponseStatus'
-    -> DescribeDBSubnetGroupsResponse
+    -> DescribeDBSubnetGroupsResponse (a)
 describeDBSubnetGroupsResponse pResponseStatus_ =
     DescribeDBSubnetGroupsResponse'
     { _ddsgrsDBSubnetGroups = Nothing
@@ -173,15 +173,15 @@ describeDBSubnetGroupsResponse pResponseStatus_ =
     }
 
 -- | A list of < DBSubnetGroup> instances.
-ddsgrsDBSubnetGroups :: Lens' DescribeDBSubnetGroupsResponse [DBSubnetGroup]
+ddsgrsDBSubnetGroups :: Lens' (DescribeDBSubnetGroupsResponse (a)) [DBSubnetGroup]
 ddsgrsDBSubnetGroups = lens _ddsgrsDBSubnetGroups (\ s a -> s{_ddsgrsDBSubnetGroups = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddsgrsMarker :: Lens' DescribeDBSubnetGroupsResponse (Maybe Text)
+ddsgrsMarker :: Lens' (DescribeDBSubnetGroupsResponse (a)) (Maybe Text)
 ddsgrsMarker = lens _ddsgrsMarker (\ s a -> s{_ddsgrsMarker = a});
 
 -- | The response status code.
-ddsgrsResponseStatus :: Lens' DescribeDBSubnetGroupsResponse Int
+ddsgrsResponseStatus :: Lens' (DescribeDBSubnetGroupsResponse (a)) Int
 ddsgrsResponseStatus = lens _ddsgrsResponseStatus (\ s a -> s{_ddsgrsResponseStatus = a});
 
 instance NFData DescribeDBSubnetGroupsResponse

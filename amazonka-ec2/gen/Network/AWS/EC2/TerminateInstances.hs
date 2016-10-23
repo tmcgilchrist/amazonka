@@ -115,7 +115,7 @@ instance ToQuery TerminateInstances where
 -- | Contains the output of TerminateInstances.
 --
 -- /See:/ 'terminateInstancesResponse' smart constructor.
-data TerminateInstancesResponse = TerminateInstancesResponse'
+data TerminateInstancesResponse a = TerminateInstancesResponse'
     { _tirsTerminatingInstances :: !(Maybe [InstanceStateChange])
     , _tirsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data TerminateInstancesResponse = TerminateInstancesResponse'
 -- * 'tirsResponseStatus'
 terminateInstancesResponse
     :: Int -- ^ 'tirsResponseStatus'
-    -> TerminateInstancesResponse
+    -> TerminateInstancesResponse (a)
 terminateInstancesResponse pResponseStatus_ =
     TerminateInstancesResponse'
     { _tirsTerminatingInstances = Nothing
@@ -137,11 +137,11 @@ terminateInstancesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more terminated instances.
-tirsTerminatingInstances :: Lens' TerminateInstancesResponse [InstanceStateChange]
+tirsTerminatingInstances :: Lens' (TerminateInstancesResponse (a)) [InstanceStateChange]
 tirsTerminatingInstances = lens _tirsTerminatingInstances (\ s a -> s{_tirsTerminatingInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-tirsResponseStatus :: Lens' TerminateInstancesResponse Int
+tirsResponseStatus :: Lens' (TerminateInstancesResponse (a)) Int
 tirsResponseStatus = lens _tirsResponseStatus (\ s a -> s{_tirsResponseStatus = a});
 
 instance NFData TerminateInstancesResponse

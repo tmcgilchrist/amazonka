@@ -196,7 +196,7 @@ instance ToQuery DescribeDBEngineVersions where
 -- | Contains the result of a successful invocation of the < DescribeDBEngineVersions> action.
 --
 -- /See:/ 'describeDBEngineVersionsResponse' smart constructor.
-data DescribeDBEngineVersionsResponse = DescribeDBEngineVersionsResponse'
+data DescribeDBEngineVersionsResponse a = DescribeDBEngineVersionsResponse'
     { _ddevrsMarker           :: !(Maybe Text)
     , _ddevrsDBEngineVersions :: !(Maybe [DBEngineVersion])
     , _ddevrsResponseStatus   :: !Int
@@ -213,7 +213,7 @@ data DescribeDBEngineVersionsResponse = DescribeDBEngineVersionsResponse'
 -- * 'ddevrsResponseStatus'
 describeDBEngineVersionsResponse
     :: Int -- ^ 'ddevrsResponseStatus'
-    -> DescribeDBEngineVersionsResponse
+    -> DescribeDBEngineVersionsResponse (a)
 describeDBEngineVersionsResponse pResponseStatus_ =
     DescribeDBEngineVersionsResponse'
     { _ddevrsMarker = Nothing
@@ -222,15 +222,15 @@ describeDBEngineVersionsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddevrsMarker :: Lens' DescribeDBEngineVersionsResponse (Maybe Text)
+ddevrsMarker :: Lens' (DescribeDBEngineVersionsResponse (a)) (Maybe Text)
 ddevrsMarker = lens _ddevrsMarker (\ s a -> s{_ddevrsMarker = a});
 
 -- | A list of 'DBEngineVersion' elements.
-ddevrsDBEngineVersions :: Lens' DescribeDBEngineVersionsResponse [DBEngineVersion]
+ddevrsDBEngineVersions :: Lens' (DescribeDBEngineVersionsResponse (a)) [DBEngineVersion]
 ddevrsDBEngineVersions = lens _ddevrsDBEngineVersions (\ s a -> s{_ddevrsDBEngineVersions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddevrsResponseStatus :: Lens' DescribeDBEngineVersionsResponse Int
+ddevrsResponseStatus :: Lens' (DescribeDBEngineVersionsResponse (a)) Int
 ddevrsResponseStatus = lens _ddevrsResponseStatus (\ s a -> s{_ddevrsResponseStatus = a});
 
 instance NFData DescribeDBEngineVersionsResponse

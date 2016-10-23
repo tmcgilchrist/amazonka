@@ -163,7 +163,7 @@ instance ToQuery DownloadDBLogFilePortion where
 -- | This data type is used as a response element to < DownloadDBLogFilePortion>.
 --
 -- /See:/ 'downloadDBLogFilePortionResponse' smart constructor.
-data DownloadDBLogFilePortionResponse = DownloadDBLogFilePortionResponse'
+data DownloadDBLogFilePortionResponse a = DownloadDBLogFilePortionResponse'
     { _ddlfprsLogFileData           :: !(Maybe Text)
     , _ddlfprsAdditionalDataPending :: !(Maybe Bool)
     , _ddlfprsMarker                :: !(Maybe Text)
@@ -183,7 +183,7 @@ data DownloadDBLogFilePortionResponse = DownloadDBLogFilePortionResponse'
 -- * 'ddlfprsResponseStatus'
 downloadDBLogFilePortionResponse
     :: Int -- ^ 'ddlfprsResponseStatus'
-    -> DownloadDBLogFilePortionResponse
+    -> DownloadDBLogFilePortionResponse (a)
 downloadDBLogFilePortionResponse pResponseStatus_ =
     DownloadDBLogFilePortionResponse'
     { _ddlfprsLogFileData = Nothing
@@ -193,19 +193,19 @@ downloadDBLogFilePortionResponse pResponseStatus_ =
     }
 
 -- | Entries from the specified log file.
-ddlfprsLogFileData :: Lens' DownloadDBLogFilePortionResponse (Maybe Text)
+ddlfprsLogFileData :: Lens' (DownloadDBLogFilePortionResponse (a)) (Maybe Text)
 ddlfprsLogFileData = lens _ddlfprsLogFileData (\ s a -> s{_ddlfprsLogFileData = a});
 
 -- | Boolean value that if true, indicates there is more data to be downloaded.
-ddlfprsAdditionalDataPending :: Lens' DownloadDBLogFilePortionResponse (Maybe Bool)
+ddlfprsAdditionalDataPending :: Lens' (DownloadDBLogFilePortionResponse (a)) (Maybe Bool)
 ddlfprsAdditionalDataPending = lens _ddlfprsAdditionalDataPending (\ s a -> s{_ddlfprsAdditionalDataPending = a});
 
 -- | A pagination token that can be used in a subsequent DownloadDBLogFilePortion request.
-ddlfprsMarker :: Lens' DownloadDBLogFilePortionResponse (Maybe Text)
+ddlfprsMarker :: Lens' (DownloadDBLogFilePortionResponse (a)) (Maybe Text)
 ddlfprsMarker = lens _ddlfprsMarker (\ s a -> s{_ddlfprsMarker = a});
 
 -- | The response status code.
-ddlfprsResponseStatus :: Lens' DownloadDBLogFilePortionResponse Int
+ddlfprsResponseStatus :: Lens' (DownloadDBLogFilePortionResponse (a)) Int
 ddlfprsResponseStatus = lens _ddlfprsResponseStatus (\ s a -> s{_ddlfprsResponseStatus = a});
 
 instance NFData DownloadDBLogFilePortionResponse

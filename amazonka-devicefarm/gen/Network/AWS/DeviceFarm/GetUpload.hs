@@ -101,7 +101,7 @@ instance ToQuery GetUpload where
 -- | Represents the result of a get upload request.
 --
 -- /See:/ 'getUploadResponse' smart constructor.
-data GetUploadResponse = GetUploadResponse'
+data GetUploadResponse a = GetUploadResponse'
     { _gursUpload         :: !(Maybe Upload)
     , _gursResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetUploadResponse = GetUploadResponse'
 -- * 'gursResponseStatus'
 getUploadResponse
     :: Int -- ^ 'gursResponseStatus'
-    -> GetUploadResponse
+    -> GetUploadResponse (a)
 getUploadResponse pResponseStatus_ =
     GetUploadResponse'
     { _gursUpload = Nothing
@@ -123,11 +123,11 @@ getUploadResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gursUpload :: Lens' GetUploadResponse (Maybe Upload)
+gursUpload :: Lens' (GetUploadResponse (a)) (Maybe Upload)
 gursUpload = lens _gursUpload (\ s a -> s{_gursUpload = a});
 
 -- | The response status code.
-gursResponseStatus :: Lens' GetUploadResponse Int
+gursResponseStatus :: Lens' (GetUploadResponse (a)) Int
 gursResponseStatus = lens _gursResponseStatus (\ s a -> s{_gursResponseStatus = a});
 
 instance NFData GetUploadResponse

@@ -112,7 +112,7 @@ instance ToQuery AttachLoadBalancerToSubnets where
 -- | Contains the output of AttachLoadBalancerToSubnets.
 --
 -- /See:/ 'attachLoadBalancerToSubnetsResponse' smart constructor.
-data AttachLoadBalancerToSubnetsResponse = AttachLoadBalancerToSubnetsResponse'
+data AttachLoadBalancerToSubnetsResponse a = AttachLoadBalancerToSubnetsResponse'
     { _albtsrsSubnets        :: !(Maybe [Text])
     , _albtsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -126,7 +126,7 @@ data AttachLoadBalancerToSubnetsResponse = AttachLoadBalancerToSubnetsResponse'
 -- * 'albtsrsResponseStatus'
 attachLoadBalancerToSubnetsResponse
     :: Int -- ^ 'albtsrsResponseStatus'
-    -> AttachLoadBalancerToSubnetsResponse
+    -> AttachLoadBalancerToSubnetsResponse (a)
 attachLoadBalancerToSubnetsResponse pResponseStatus_ =
     AttachLoadBalancerToSubnetsResponse'
     { _albtsrsSubnets = Nothing
@@ -134,11 +134,11 @@ attachLoadBalancerToSubnetsResponse pResponseStatus_ =
     }
 
 -- | The IDs of the subnets attached to the load balancer.
-albtsrsSubnets :: Lens' AttachLoadBalancerToSubnetsResponse [Text]
+albtsrsSubnets :: Lens' (AttachLoadBalancerToSubnetsResponse (a)) [Text]
 albtsrsSubnets = lens _albtsrsSubnets (\ s a -> s{_albtsrsSubnets = a}) . _Default . _Coerce;
 
 -- | The response status code.
-albtsrsResponseStatus :: Lens' AttachLoadBalancerToSubnetsResponse Int
+albtsrsResponseStatus :: Lens' (AttachLoadBalancerToSubnetsResponse (a)) Int
 albtsrsResponseStatus = lens _albtsrsResponseStatus (\ s a -> s{_albtsrsResponseStatus = a});
 
 instance NFData AttachLoadBalancerToSubnetsResponse

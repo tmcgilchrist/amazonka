@@ -100,7 +100,7 @@ instance ToQuery CreateAddress where
         toQuery = const mempty
 
 -- | /See:/ 'createAddressResponse' smart constructor.
-data CreateAddressResponse = CreateAddressResponse'
+data CreateAddressResponse a = CreateAddressResponse'
     { _carsAddressId      :: !(Maybe Text)
     , _carsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -114,7 +114,7 @@ data CreateAddressResponse = CreateAddressResponse'
 -- * 'carsResponseStatus'
 createAddressResponse
     :: Int -- ^ 'carsResponseStatus'
-    -> CreateAddressResponse
+    -> CreateAddressResponse (a)
 createAddressResponse pResponseStatus_ =
     CreateAddressResponse'
     { _carsAddressId = Nothing
@@ -122,11 +122,11 @@ createAddressResponse pResponseStatus_ =
     }
 
 -- | The automatically generated ID for a specific address. You\'ll use this ID when you create a job to specify which address you want the Snowball for that job shipped to.
-carsAddressId :: Lens' CreateAddressResponse (Maybe Text)
+carsAddressId :: Lens' (CreateAddressResponse (a)) (Maybe Text)
 carsAddressId = lens _carsAddressId (\ s a -> s{_carsAddressId = a});
 
 -- | The response status code.
-carsResponseStatus :: Lens' CreateAddressResponse Int
+carsResponseStatus :: Lens' (CreateAddressResponse (a)) Int
 carsResponseStatus = lens _carsResponseStatus (\ s a -> s{_carsResponseStatus = a});
 
 instance NFData CreateAddressResponse

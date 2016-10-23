@@ -120,7 +120,7 @@ instance ToQuery ModifyHAPG where
         toQuery = const mempty
 
 -- | /See:/ 'modifyHAPGResponse' smart constructor.
-data ModifyHAPGResponse = ModifyHAPGResponse'
+data ModifyHAPGResponse a = ModifyHAPGResponse'
     { _mhrsHAPGARN        :: !(Maybe Text)
     , _mhrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data ModifyHAPGResponse = ModifyHAPGResponse'
 -- * 'mhrsResponseStatus'
 modifyHAPGResponse
     :: Int -- ^ 'mhrsResponseStatus'
-    -> ModifyHAPGResponse
+    -> ModifyHAPGResponse (a)
 modifyHAPGResponse pResponseStatus_ =
     ModifyHAPGResponse'
     { _mhrsHAPGARN = Nothing
@@ -142,11 +142,11 @@ modifyHAPGResponse pResponseStatus_ =
     }
 
 -- | The ARN of the high-availability partition group.
-mhrsHAPGARN :: Lens' ModifyHAPGResponse (Maybe Text)
+mhrsHAPGARN :: Lens' (ModifyHAPGResponse (a)) (Maybe Text)
 mhrsHAPGARN = lens _mhrsHAPGARN (\ s a -> s{_mhrsHAPGARN = a});
 
 -- | The response status code.
-mhrsResponseStatus :: Lens' ModifyHAPGResponse Int
+mhrsResponseStatus :: Lens' (ModifyHAPGResponse (a)) Int
 mhrsResponseStatus = lens _mhrsResponseStatus (\ s a -> s{_mhrsResponseStatus = a});
 
 instance NFData ModifyHAPGResponse

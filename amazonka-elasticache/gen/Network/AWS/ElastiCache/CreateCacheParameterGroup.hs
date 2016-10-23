@@ -122,7 +122,7 @@ instance ToQuery CreateCacheParameterGroup where
                "Description" =: _ccpgDescription]
 
 -- | /See:/ 'createCacheParameterGroupResponse' smart constructor.
-data CreateCacheParameterGroupResponse = CreateCacheParameterGroupResponse'
+data CreateCacheParameterGroupResponse a = CreateCacheParameterGroupResponse'
     { _ccpgrsCacheParameterGroup :: !(Maybe CacheParameterGroup)
     , _ccpgrsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data CreateCacheParameterGroupResponse = CreateCacheParameterGroupResponse'
 -- * 'ccpgrsResponseStatus'
 createCacheParameterGroupResponse
     :: Int -- ^ 'ccpgrsResponseStatus'
-    -> CreateCacheParameterGroupResponse
+    -> CreateCacheParameterGroupResponse (a)
 createCacheParameterGroupResponse pResponseStatus_ =
     CreateCacheParameterGroupResponse'
     { _ccpgrsCacheParameterGroup = Nothing
@@ -144,11 +144,11 @@ createCacheParameterGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ccpgrsCacheParameterGroup :: Lens' CreateCacheParameterGroupResponse (Maybe CacheParameterGroup)
+ccpgrsCacheParameterGroup :: Lens' (CreateCacheParameterGroupResponse (a)) (Maybe CacheParameterGroup)
 ccpgrsCacheParameterGroup = lens _ccpgrsCacheParameterGroup (\ s a -> s{_ccpgrsCacheParameterGroup = a});
 
 -- | The response status code.
-ccpgrsResponseStatus :: Lens' CreateCacheParameterGroupResponse Int
+ccpgrsResponseStatus :: Lens' (CreateCacheParameterGroupResponse (a)) Int
 ccpgrsResponseStatus = lens _ccpgrsResponseStatus (\ s a -> s{_ccpgrsResponseStatus = a});
 
 instance NFData CreateCacheParameterGroupResponse

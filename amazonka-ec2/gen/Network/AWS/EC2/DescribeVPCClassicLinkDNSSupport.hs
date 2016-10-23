@@ -124,7 +124,7 @@ instance ToQuery DescribeVPCClassicLinkDNSSupport
 -- | Contains the output of DescribeVpcClassicLinkDnsSupport.
 --
 -- /See:/ 'describeVPCClassicLinkDNSSupportResponse' smart constructor.
-data DescribeVPCClassicLinkDNSSupportResponse = DescribeVPCClassicLinkDNSSupportResponse'
+data DescribeVPCClassicLinkDNSSupportResponse a = DescribeVPCClassicLinkDNSSupportResponse'
     { _dvpccldnssrsVPCs           :: !(Maybe [ClassicLinkDNSSupport])
     , _dvpccldnssrsNextToken      :: !(Maybe Text)
     , _dvpccldnssrsResponseStatus :: !Int
@@ -141,7 +141,7 @@ data DescribeVPCClassicLinkDNSSupportResponse = DescribeVPCClassicLinkDNSSupport
 -- * 'dvpccldnssrsResponseStatus'
 describeVPCClassicLinkDNSSupportResponse
     :: Int -- ^ 'dvpccldnssrsResponseStatus'
-    -> DescribeVPCClassicLinkDNSSupportResponse
+    -> DescribeVPCClassicLinkDNSSupportResponse (a)
 describeVPCClassicLinkDNSSupportResponse pResponseStatus_ =
     DescribeVPCClassicLinkDNSSupportResponse'
     { _dvpccldnssrsVPCs = Nothing
@@ -150,15 +150,15 @@ describeVPCClassicLinkDNSSupportResponse pResponseStatus_ =
     }
 
 -- | Information about the ClassicLink DNS support status of the VPCs.
-dvpccldnssrsVPCs :: Lens' DescribeVPCClassicLinkDNSSupportResponse [ClassicLinkDNSSupport]
+dvpccldnssrsVPCs :: Lens' (DescribeVPCClassicLinkDNSSupportResponse (a)) [ClassicLinkDNSSupport]
 dvpccldnssrsVPCs = lens _dvpccldnssrsVPCs (\ s a -> s{_dvpccldnssrsVPCs = a}) . _Default . _Coerce;
 
 -- | The token to use when requesting the next set of items.
-dvpccldnssrsNextToken :: Lens' DescribeVPCClassicLinkDNSSupportResponse (Maybe Text)
+dvpccldnssrsNextToken :: Lens' (DescribeVPCClassicLinkDNSSupportResponse (a)) (Maybe Text)
 dvpccldnssrsNextToken = lens _dvpccldnssrsNextToken (\ s a -> s{_dvpccldnssrsNextToken = a});
 
 -- | The response status code.
-dvpccldnssrsResponseStatus :: Lens' DescribeVPCClassicLinkDNSSupportResponse Int
+dvpccldnssrsResponseStatus :: Lens' (DescribeVPCClassicLinkDNSSupportResponse (a)) Int
 dvpccldnssrsResponseStatus = lens _dvpccldnssrsResponseStatus (\ s a -> s{_dvpccldnssrsResponseStatus = a});
 
 instance NFData

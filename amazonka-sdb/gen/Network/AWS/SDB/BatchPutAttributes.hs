@@ -113,14 +113,14 @@ instance ToQuery BatchPutAttributes where
                toQueryList "Item" _bpaItems]
 
 -- | /See:/ 'batchPutAttributesResponse' smart constructor.
-data BatchPutAttributesResponse =
+data BatchPutAttributesResponse a =
     BatchPutAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'BatchPutAttributesResponse' with the minimum fields required to make a request.
 --
 batchPutAttributesResponse
-    :: BatchPutAttributesResponse
+    :: BatchPutAttributesResponse (a)
 batchPutAttributesResponse = BatchPutAttributesResponse'
 
 instance NFData BatchPutAttributesResponse

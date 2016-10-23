@@ -126,7 +126,7 @@ instance ToQuery CreateClusterSnapshot where
                "ClusterIdentifier" =: _ccsClusterIdentifier]
 
 -- | /See:/ 'createClusterSnapshotResponse' smart constructor.
-data CreateClusterSnapshotResponse = CreateClusterSnapshotResponse'
+data CreateClusterSnapshotResponse a = CreateClusterSnapshotResponse'
     { _crersSnapshot       :: !(Maybe Snapshot)
     , _crersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data CreateClusterSnapshotResponse = CreateClusterSnapshotResponse'
 -- * 'crersResponseStatus'
 createClusterSnapshotResponse
     :: Int -- ^ 'crersResponseStatus'
-    -> CreateClusterSnapshotResponse
+    -> CreateClusterSnapshotResponse (a)
 createClusterSnapshotResponse pResponseStatus_ =
     CreateClusterSnapshotResponse'
     { _crersSnapshot = Nothing
@@ -148,11 +148,11 @@ createClusterSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crersSnapshot :: Lens' CreateClusterSnapshotResponse (Maybe Snapshot)
+crersSnapshot :: Lens' (CreateClusterSnapshotResponse (a)) (Maybe Snapshot)
 crersSnapshot = lens _crersSnapshot (\ s a -> s{_crersSnapshot = a});
 
 -- | The response status code.
-crersResponseStatus :: Lens' CreateClusterSnapshotResponse Int
+crersResponseStatus :: Lens' (CreateClusterSnapshotResponse (a)) Int
 crersResponseStatus = lens _crersResponseStatus (\ s a -> s{_crersResponseStatus = a});
 
 instance NFData CreateClusterSnapshotResponse

@@ -123,7 +123,7 @@ instance ToQuery UpdateAssociationStatus where
         toQuery = const mempty
 
 -- | /See:/ 'updateAssociationStatusResponse' smart constructor.
-data UpdateAssociationStatusResponse = UpdateAssociationStatusResponse'
+data UpdateAssociationStatusResponse a = UpdateAssociationStatusResponse'
     { _uasrsAssociationDescription :: !(Maybe AssociationDescription)
     , _uasrsResponseStatus         :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data UpdateAssociationStatusResponse = UpdateAssociationStatusResponse'
 -- * 'uasrsResponseStatus'
 updateAssociationStatusResponse
     :: Int -- ^ 'uasrsResponseStatus'
-    -> UpdateAssociationStatusResponse
+    -> UpdateAssociationStatusResponse (a)
 updateAssociationStatusResponse pResponseStatus_ =
     UpdateAssociationStatusResponse'
     { _uasrsAssociationDescription = Nothing
@@ -145,11 +145,11 @@ updateAssociationStatusResponse pResponseStatus_ =
     }
 
 -- | Information about the association.
-uasrsAssociationDescription :: Lens' UpdateAssociationStatusResponse (Maybe AssociationDescription)
+uasrsAssociationDescription :: Lens' (UpdateAssociationStatusResponse (a)) (Maybe AssociationDescription)
 uasrsAssociationDescription = lens _uasrsAssociationDescription (\ s a -> s{_uasrsAssociationDescription = a});
 
 -- | The response status code.
-uasrsResponseStatus :: Lens' UpdateAssociationStatusResponse Int
+uasrsResponseStatus :: Lens' (UpdateAssociationStatusResponse (a)) Int
 uasrsResponseStatus = lens _uasrsResponseStatus (\ s a -> s{_uasrsResponseStatus = a});
 
 instance NFData UpdateAssociationStatusResponse

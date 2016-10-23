@@ -106,14 +106,14 @@ instance ToQuery AddRoleToInstanceProfile where
                "RoleName" =: _artipRoleName]
 
 -- | /See:/ 'addRoleToInstanceProfileResponse' smart constructor.
-data AddRoleToInstanceProfileResponse =
+data AddRoleToInstanceProfileResponse a =
     AddRoleToInstanceProfileResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddRoleToInstanceProfileResponse' with the minimum fields required to make a request.
 --
 addRoleToInstanceProfileResponse
-    :: AddRoleToInstanceProfileResponse
+    :: AddRoleToInstanceProfileResponse (a)
 addRoleToInstanceProfileResponse = AddRoleToInstanceProfileResponse'
 
 instance NFData AddRoleToInstanceProfileResponse

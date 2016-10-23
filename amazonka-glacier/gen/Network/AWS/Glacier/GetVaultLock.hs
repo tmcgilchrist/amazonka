@@ -122,7 +122,7 @@ instance ToQuery GetVaultLock where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'getVaultLockResponse' smart constructor.
-data GetVaultLockResponse = GetVaultLockResponse'
+data GetVaultLockResponse a = GetVaultLockResponse'
     { _gvlrsState          :: !(Maybe Text)
     , _gvlrsExpirationDate :: !(Maybe Text)
     , _gvlrsCreationDate   :: !(Maybe Text)
@@ -145,7 +145,7 @@ data GetVaultLockResponse = GetVaultLockResponse'
 -- * 'gvlrsResponseStatus'
 getVaultLockResponse
     :: Int -- ^ 'gvlrsResponseStatus'
-    -> GetVaultLockResponse
+    -> GetVaultLockResponse (a)
 getVaultLockResponse pResponseStatus_ =
     GetVaultLockResponse'
     { _gvlrsState = Nothing
@@ -156,23 +156,23 @@ getVaultLockResponse pResponseStatus_ =
     }
 
 -- | The state of the vault lock. 'InProgress' or 'Locked'.
-gvlrsState :: Lens' GetVaultLockResponse (Maybe Text)
+gvlrsState :: Lens' (GetVaultLockResponse (a)) (Maybe Text)
 gvlrsState = lens _gvlrsState (\ s a -> s{_gvlrsState = a});
 
 -- | The UTC date and time at which the lock ID expires. This value can be 'null' if the vault lock is in a 'Locked' state.
-gvlrsExpirationDate :: Lens' GetVaultLockResponse (Maybe Text)
+gvlrsExpirationDate :: Lens' (GetVaultLockResponse (a)) (Maybe Text)
 gvlrsExpirationDate = lens _gvlrsExpirationDate (\ s a -> s{_gvlrsExpirationDate = a});
 
 -- | The UTC date and time at which the vault lock was put into the 'InProgress' state.
-gvlrsCreationDate :: Lens' GetVaultLockResponse (Maybe Text)
+gvlrsCreationDate :: Lens' (GetVaultLockResponse (a)) (Maybe Text)
 gvlrsCreationDate = lens _gvlrsCreationDate (\ s a -> s{_gvlrsCreationDate = a});
 
 -- | The vault lock policy as a JSON string, which uses \"\\\" as an escape character.
-gvlrsPolicy :: Lens' GetVaultLockResponse (Maybe Text)
+gvlrsPolicy :: Lens' (GetVaultLockResponse (a)) (Maybe Text)
 gvlrsPolicy = lens _gvlrsPolicy (\ s a -> s{_gvlrsPolicy = a});
 
 -- | The response status code.
-gvlrsResponseStatus :: Lens' GetVaultLockResponse Int
+gvlrsResponseStatus :: Lens' (GetVaultLockResponse (a)) Int
 gvlrsResponseStatus = lens _gvlrsResponseStatus (\ s a -> s{_gvlrsResponseStatus = a});
 
 instance NFData GetVaultLockResponse

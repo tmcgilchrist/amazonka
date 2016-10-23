@@ -114,7 +114,7 @@ instance ToQuery
                "SourceIdentifier" =: _rsifsSourceIdentifier]
 
 -- | /See:/ 'removeSourceIdentifierFromSubscriptionResponse' smart constructor.
-data RemoveSourceIdentifierFromSubscriptionResponse = RemoveSourceIdentifierFromSubscriptionResponse'
+data RemoveSourceIdentifierFromSubscriptionResponse a = RemoveSourceIdentifierFromSubscriptionResponse'
     { _rsifsrsEventSubscription :: !(Maybe EventSubscription)
     , _rsifsrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data RemoveSourceIdentifierFromSubscriptionResponse = RemoveSourceIdentifierFrom
 -- * 'rsifsrsResponseStatus'
 removeSourceIdentifierFromSubscriptionResponse
     :: Int -- ^ 'rsifsrsResponseStatus'
-    -> RemoveSourceIdentifierFromSubscriptionResponse
+    -> RemoveSourceIdentifierFromSubscriptionResponse (a)
 removeSourceIdentifierFromSubscriptionResponse pResponseStatus_ =
     RemoveSourceIdentifierFromSubscriptionResponse'
     { _rsifsrsEventSubscription = Nothing
@@ -136,11 +136,11 @@ removeSourceIdentifierFromSubscriptionResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rsifsrsEventSubscription :: Lens' RemoveSourceIdentifierFromSubscriptionResponse (Maybe EventSubscription)
+rsifsrsEventSubscription :: Lens' (RemoveSourceIdentifierFromSubscriptionResponse (a)) (Maybe EventSubscription)
 rsifsrsEventSubscription = lens _rsifsrsEventSubscription (\ s a -> s{_rsifsrsEventSubscription = a});
 
 -- | The response status code.
-rsifsrsResponseStatus :: Lens' RemoveSourceIdentifierFromSubscriptionResponse Int
+rsifsrsResponseStatus :: Lens' (RemoveSourceIdentifierFromSubscriptionResponse (a)) Int
 rsifsrsResponseStatus = lens _rsifsrsResponseStatus (\ s a -> s{_rsifsrsResponseStatus = a});
 
 instance NFData

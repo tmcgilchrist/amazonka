@@ -123,7 +123,7 @@ instance ToQuery PurchaseScheduledInstances where
 -- | Contains the output of PurchaseScheduledInstances.
 --
 -- /See:/ 'purchaseScheduledInstancesResponse' smart constructor.
-data PurchaseScheduledInstancesResponse = PurchaseScheduledInstancesResponse'
+data PurchaseScheduledInstancesResponse a = PurchaseScheduledInstancesResponse'
     { _psirsScheduledInstanceSet :: !(Maybe [ScheduledInstance])
     , _psirsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data PurchaseScheduledInstancesResponse = PurchaseScheduledInstancesResponse'
 -- * 'psirsResponseStatus'
 purchaseScheduledInstancesResponse
     :: Int -- ^ 'psirsResponseStatus'
-    -> PurchaseScheduledInstancesResponse
+    -> PurchaseScheduledInstancesResponse (a)
 purchaseScheduledInstancesResponse pResponseStatus_ =
     PurchaseScheduledInstancesResponse'
     { _psirsScheduledInstanceSet = Nothing
@@ -145,11 +145,11 @@ purchaseScheduledInstancesResponse pResponseStatus_ =
     }
 
 -- | Information about the Scheduled Instances.
-psirsScheduledInstanceSet :: Lens' PurchaseScheduledInstancesResponse [ScheduledInstance]
+psirsScheduledInstanceSet :: Lens' (PurchaseScheduledInstancesResponse (a)) [ScheduledInstance]
 psirsScheduledInstanceSet = lens _psirsScheduledInstanceSet (\ s a -> s{_psirsScheduledInstanceSet = a}) . _Default . _Coerce;
 
 -- | The response status code.
-psirsResponseStatus :: Lens' PurchaseScheduledInstancesResponse Int
+psirsResponseStatus :: Lens' (PurchaseScheduledInstancesResponse (a)) Int
 psirsResponseStatus = lens _psirsResponseStatus (\ s a -> s{_psirsResponseStatus = a});
 
 instance NFData PurchaseScheduledInstancesResponse

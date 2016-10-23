@@ -93,14 +93,14 @@ instance ToQuery RebootInstance where
         toQuery = const mempty
 
 -- | /See:/ 'rebootInstanceResponse' smart constructor.
-data RebootInstanceResponse =
+data RebootInstanceResponse a =
     RebootInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RebootInstanceResponse' with the minimum fields required to make a request.
 --
 rebootInstanceResponse
-    :: RebootInstanceResponse
+    :: RebootInstanceResponse (a)
 rebootInstanceResponse = RebootInstanceResponse'
 
 instance NFData RebootInstanceResponse

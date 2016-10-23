@@ -125,7 +125,7 @@ instance ToQuery ListRuns where
 -- | Represents the result of a list runs request.
 --
 -- /See:/ 'listRunsResponse' smart constructor.
-data ListRunsResponse = ListRunsResponse'
+data ListRunsResponse a = ListRunsResponse'
     { _lrrsRuns           :: !(Maybe [Run])
     , _lrrsNextToken      :: !(Maybe Text)
     , _lrrsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ListRunsResponse = ListRunsResponse'
 -- * 'lrrsResponseStatus'
 listRunsResponse
     :: Int -- ^ 'lrrsResponseStatus'
-    -> ListRunsResponse
+    -> ListRunsResponse (a)
 listRunsResponse pResponseStatus_ =
     ListRunsResponse'
     { _lrrsRuns = Nothing
@@ -151,15 +151,15 @@ listRunsResponse pResponseStatus_ =
     }
 
 -- | Information about the runs.
-lrrsRuns :: Lens' ListRunsResponse [Run]
+lrrsRuns :: Lens' (ListRunsResponse (a)) [Run]
 lrrsRuns = lens _lrrsRuns (\ s a -> s{_lrrsRuns = a}) . _Default . _Coerce;
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-lrrsNextToken :: Lens' ListRunsResponse (Maybe Text)
+lrrsNextToken :: Lens' (ListRunsResponse (a)) (Maybe Text)
 lrrsNextToken = lens _lrrsNextToken (\ s a -> s{_lrrsNextToken = a});
 
 -- | The response status code.
-lrrsResponseStatus :: Lens' ListRunsResponse Int
+lrrsResponseStatus :: Lens' (ListRunsResponse (a)) Int
 lrrsResponseStatus = lens _lrrsResponseStatus (\ s a -> s{_lrrsResponseStatus = a});
 
 instance NFData ListRunsResponse

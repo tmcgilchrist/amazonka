@@ -114,14 +114,14 @@ instance ToQuery IncreaseStreamRetentionPeriod where
         toQuery = const mempty
 
 -- | /See:/ 'increaseStreamRetentionPeriodResponse' smart constructor.
-data IncreaseStreamRetentionPeriodResponse =
+data IncreaseStreamRetentionPeriodResponse a =
     IncreaseStreamRetentionPeriodResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'IncreaseStreamRetentionPeriodResponse' with the minimum fields required to make a request.
 --
 increaseStreamRetentionPeriodResponse
-    :: IncreaseStreamRetentionPeriodResponse
+    :: IncreaseStreamRetentionPeriodResponse (a)
 increaseStreamRetentionPeriodResponse = IncreaseStreamRetentionPeriodResponse'
 
 instance NFData IncreaseStreamRetentionPeriodResponse

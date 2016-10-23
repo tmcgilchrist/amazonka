@@ -202,7 +202,7 @@ instance ToQuery CreateDeploymentGroup where
 -- | Represents the output of a create deployment group operation.
 --
 -- /See:/ 'createDeploymentGroupResponse' smart constructor.
-data CreateDeploymentGroupResponse = CreateDeploymentGroupResponse'
+data CreateDeploymentGroupResponse a = CreateDeploymentGroupResponse'
     { _cdgrsDeploymentGroupId :: !(Maybe Text)
     , _cdgrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -216,7 +216,7 @@ data CreateDeploymentGroupResponse = CreateDeploymentGroupResponse'
 -- * 'cdgrsResponseStatus'
 createDeploymentGroupResponse
     :: Int -- ^ 'cdgrsResponseStatus'
-    -> CreateDeploymentGroupResponse
+    -> CreateDeploymentGroupResponse (a)
 createDeploymentGroupResponse pResponseStatus_ =
     CreateDeploymentGroupResponse'
     { _cdgrsDeploymentGroupId = Nothing
@@ -224,11 +224,11 @@ createDeploymentGroupResponse pResponseStatus_ =
     }
 
 -- | A unique deployment group ID.
-cdgrsDeploymentGroupId :: Lens' CreateDeploymentGroupResponse (Maybe Text)
+cdgrsDeploymentGroupId :: Lens' (CreateDeploymentGroupResponse (a)) (Maybe Text)
 cdgrsDeploymentGroupId = lens _cdgrsDeploymentGroupId (\ s a -> s{_cdgrsDeploymentGroupId = a});
 
 -- | The response status code.
-cdgrsResponseStatus :: Lens' CreateDeploymentGroupResponse Int
+cdgrsResponseStatus :: Lens' (CreateDeploymentGroupResponse (a)) Int
 cdgrsResponseStatus = lens _cdgrsResponseStatus (\ s a -> s{_cdgrsResponseStatus = a});
 
 instance NFData CreateDeploymentGroupResponse

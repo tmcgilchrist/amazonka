@@ -110,14 +110,14 @@ instance ToQuery ModifyVolumeAttribute where
                "DryRun" =: _mvaDryRun, "VolumeId" =: _mvaVolumeId]
 
 -- | /See:/ 'modifyVolumeAttributeResponse' smart constructor.
-data ModifyVolumeAttributeResponse =
+data ModifyVolumeAttributeResponse a =
     ModifyVolumeAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyVolumeAttributeResponse' with the minimum fields required to make a request.
 --
 modifyVolumeAttributeResponse
-    :: ModifyVolumeAttributeResponse
+    :: ModifyVolumeAttributeResponse (a)
 modifyVolumeAttributeResponse = ModifyVolumeAttributeResponse'
 
 instance NFData ModifyVolumeAttributeResponse

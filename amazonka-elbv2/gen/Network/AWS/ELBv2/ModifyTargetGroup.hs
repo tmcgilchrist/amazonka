@@ -182,7 +182,7 @@ instance ToQuery ModifyTargetGroup where
 -- | Contains the output of ModifyTargetGroup.
 --
 -- /See:/ 'modifyTargetGroupResponse' smart constructor.
-data ModifyTargetGroupResponse = ModifyTargetGroupResponse'
+data ModifyTargetGroupResponse a = ModifyTargetGroupResponse'
     { _mtgrsTargetGroups   :: !(Maybe [TargetGroup])
     , _mtgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -196,7 +196,7 @@ data ModifyTargetGroupResponse = ModifyTargetGroupResponse'
 -- * 'mtgrsResponseStatus'
 modifyTargetGroupResponse
     :: Int -- ^ 'mtgrsResponseStatus'
-    -> ModifyTargetGroupResponse
+    -> ModifyTargetGroupResponse (a)
 modifyTargetGroupResponse pResponseStatus_ =
     ModifyTargetGroupResponse'
     { _mtgrsTargetGroups = Nothing
@@ -204,11 +204,11 @@ modifyTargetGroupResponse pResponseStatus_ =
     }
 
 -- | Information about the target group.
-mtgrsTargetGroups :: Lens' ModifyTargetGroupResponse [TargetGroup]
+mtgrsTargetGroups :: Lens' (ModifyTargetGroupResponse (a)) [TargetGroup]
 mtgrsTargetGroups = lens _mtgrsTargetGroups (\ s a -> s{_mtgrsTargetGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-mtgrsResponseStatus :: Lens' ModifyTargetGroupResponse Int
+mtgrsResponseStatus :: Lens' (ModifyTargetGroupResponse (a)) Int
 mtgrsResponseStatus = lens _mtgrsResponseStatus (\ s a -> s{_mtgrsResponseStatus = a});
 
 instance NFData ModifyTargetGroupResponse

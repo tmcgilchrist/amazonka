@@ -101,7 +101,7 @@ instance ToQuery GetDevice where
 -- | Represents the result of a get device request.
 --
 -- /See:/ 'getDeviceResponse' smart constructor.
-data GetDeviceResponse = GetDeviceResponse'
+data GetDeviceResponse a = GetDeviceResponse'
     { _gdrsDevice         :: !(Maybe Device)
     , _gdrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetDeviceResponse = GetDeviceResponse'
 -- * 'gdrsResponseStatus'
 getDeviceResponse
     :: Int -- ^ 'gdrsResponseStatus'
-    -> GetDeviceResponse
+    -> GetDeviceResponse (a)
 getDeviceResponse pResponseStatus_ =
     GetDeviceResponse'
     { _gdrsDevice = Nothing
@@ -123,11 +123,11 @@ getDeviceResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gdrsDevice :: Lens' GetDeviceResponse (Maybe Device)
+gdrsDevice :: Lens' (GetDeviceResponse (a)) (Maybe Device)
 gdrsDevice = lens _gdrsDevice (\ s a -> s{_gdrsDevice = a});
 
 -- | The response status code.
-gdrsResponseStatus :: Lens' GetDeviceResponse Int
+gdrsResponseStatus :: Lens' (GetDeviceResponse (a)) Int
 gdrsResponseStatus = lens _gdrsResponseStatus (\ s a -> s{_gdrsResponseStatus = a});
 
 instance NFData GetDeviceResponse

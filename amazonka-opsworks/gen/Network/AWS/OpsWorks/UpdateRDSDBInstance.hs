@@ -116,14 +116,14 @@ instance ToQuery UpdateRDSDBInstance where
         toQuery = const mempty
 
 -- | /See:/ 'updateRDSDBInstanceResponse' smart constructor.
-data UpdateRDSDBInstanceResponse =
+data UpdateRDSDBInstanceResponse a =
     UpdateRDSDBInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateRDSDBInstanceResponse' with the minimum fields required to make a request.
 --
 updateRDSDBInstanceResponse
-    :: UpdateRDSDBInstanceResponse
+    :: UpdateRDSDBInstanceResponse (a)
 updateRDSDBInstanceResponse = UpdateRDSDBInstanceResponse'
 
 instance NFData UpdateRDSDBInstanceResponse

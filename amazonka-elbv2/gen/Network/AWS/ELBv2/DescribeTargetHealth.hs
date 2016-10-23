@@ -109,7 +109,7 @@ instance ToQuery DescribeTargetHealth where
 -- | Contains the output of DescribeTargetHealth.
 --
 -- /See:/ 'describeTargetHealthResponse' smart constructor.
-data DescribeTargetHealthResponse = DescribeTargetHealthResponse'
+data DescribeTargetHealthResponse a = DescribeTargetHealthResponse'
     { _dthrsTargetHealthDescriptions :: !(Maybe [TargetHealthDescription])
     , _dthrsResponseStatus           :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -123,7 +123,7 @@ data DescribeTargetHealthResponse = DescribeTargetHealthResponse'
 -- * 'dthrsResponseStatus'
 describeTargetHealthResponse
     :: Int -- ^ 'dthrsResponseStatus'
-    -> DescribeTargetHealthResponse
+    -> DescribeTargetHealthResponse (a)
 describeTargetHealthResponse pResponseStatus_ =
     DescribeTargetHealthResponse'
     { _dthrsTargetHealthDescriptions = Nothing
@@ -131,11 +131,11 @@ describeTargetHealthResponse pResponseStatus_ =
     }
 
 -- | Information about the health of the targets.
-dthrsTargetHealthDescriptions :: Lens' DescribeTargetHealthResponse [TargetHealthDescription]
+dthrsTargetHealthDescriptions :: Lens' (DescribeTargetHealthResponse (a)) [TargetHealthDescription]
 dthrsTargetHealthDescriptions = lens _dthrsTargetHealthDescriptions (\ s a -> s{_dthrsTargetHealthDescriptions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dthrsResponseStatus :: Lens' DescribeTargetHealthResponse Int
+dthrsResponseStatus :: Lens' (DescribeTargetHealthResponse (a)) Int
 dthrsResponseStatus = lens _dthrsResponseStatus (\ s a -> s{_dthrsResponseStatus = a});
 
 instance NFData DescribeTargetHealthResponse

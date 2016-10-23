@@ -140,7 +140,7 @@ instance ToQuery DeleteDBCluster where
                "DBClusterIdentifier" =: _ddbcDBClusterIdentifier]
 
 -- | /See:/ 'deleteDBClusterResponse' smart constructor.
-data DeleteDBClusterResponse = DeleteDBClusterResponse'
+data DeleteDBClusterResponse a = DeleteDBClusterResponse'
     { _ddbcrsDBCluster      :: !(Maybe DBCluster)
     , _ddbcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -154,7 +154,7 @@ data DeleteDBClusterResponse = DeleteDBClusterResponse'
 -- * 'ddbcrsResponseStatus'
 deleteDBClusterResponse
     :: Int -- ^ 'ddbcrsResponseStatus'
-    -> DeleteDBClusterResponse
+    -> DeleteDBClusterResponse (a)
 deleteDBClusterResponse pResponseStatus_ =
     DeleteDBClusterResponse'
     { _ddbcrsDBCluster = Nothing
@@ -162,11 +162,11 @@ deleteDBClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ddbcrsDBCluster :: Lens' DeleteDBClusterResponse (Maybe DBCluster)
+ddbcrsDBCluster :: Lens' (DeleteDBClusterResponse (a)) (Maybe DBCluster)
 ddbcrsDBCluster = lens _ddbcrsDBCluster (\ s a -> s{_ddbcrsDBCluster = a});
 
 -- | The response status code.
-ddbcrsResponseStatus :: Lens' DeleteDBClusterResponse Int
+ddbcrsResponseStatus :: Lens' (DeleteDBClusterResponse (a)) Int
 ddbcrsResponseStatus = lens _ddbcrsResponseStatus (\ s a -> s{_ddbcrsResponseStatus = a});
 
 instance NFData DeleteDBClusterResponse

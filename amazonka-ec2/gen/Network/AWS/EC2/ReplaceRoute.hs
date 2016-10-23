@@ -159,14 +159,14 @@ instance ToQuery ReplaceRoute where
                "DestinationCidrBlock" =: _rrDestinationCIdRBlock]
 
 -- | /See:/ 'replaceRouteResponse' smart constructor.
-data ReplaceRouteResponse =
+data ReplaceRouteResponse a =
     ReplaceRouteResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ReplaceRouteResponse' with the minimum fields required to make a request.
 --
 replaceRouteResponse
-    :: ReplaceRouteResponse
+    :: ReplaceRouteResponse (a)
 replaceRouteResponse = ReplaceRouteResponse'
 
 instance NFData ReplaceRouteResponse

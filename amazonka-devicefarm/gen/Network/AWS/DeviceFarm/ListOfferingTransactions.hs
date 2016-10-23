@@ -106,7 +106,7 @@ instance ToQuery ListOfferingTransactions where
 -- | Returns the transaction log of the specified offerings.
 --
 -- /See:/ 'listOfferingTransactionsResponse' smart constructor.
-data ListOfferingTransactionsResponse = ListOfferingTransactionsResponse'
+data ListOfferingTransactionsResponse a = ListOfferingTransactionsResponse'
     { _lotrsOfferingTransactions :: !(Maybe [OfferingTransaction])
     , _lotrsNextToken            :: !(Maybe Text)
     , _lotrsResponseStatus       :: !Int
@@ -123,7 +123,7 @@ data ListOfferingTransactionsResponse = ListOfferingTransactionsResponse'
 -- * 'lotrsResponseStatus'
 listOfferingTransactionsResponse
     :: Int -- ^ 'lotrsResponseStatus'
-    -> ListOfferingTransactionsResponse
+    -> ListOfferingTransactionsResponse (a)
 listOfferingTransactionsResponse pResponseStatus_ =
     ListOfferingTransactionsResponse'
     { _lotrsOfferingTransactions = Nothing
@@ -132,15 +132,15 @@ listOfferingTransactionsResponse pResponseStatus_ =
     }
 
 -- | The audit log of subscriptions you have purchased and modified through AWS Device Farm.
-lotrsOfferingTransactions :: Lens' ListOfferingTransactionsResponse [OfferingTransaction]
+lotrsOfferingTransactions :: Lens' (ListOfferingTransactionsResponse (a)) [OfferingTransaction]
 lotrsOfferingTransactions = lens _lotrsOfferingTransactions (\ s a -> s{_lotrsOfferingTransactions = a}) . _Default . _Coerce;
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
-lotrsNextToken :: Lens' ListOfferingTransactionsResponse (Maybe Text)
+lotrsNextToken :: Lens' (ListOfferingTransactionsResponse (a)) (Maybe Text)
 lotrsNextToken = lens _lotrsNextToken (\ s a -> s{_lotrsNextToken = a});
 
 -- | The response status code.
-lotrsResponseStatus :: Lens' ListOfferingTransactionsResponse Int
+lotrsResponseStatus :: Lens' (ListOfferingTransactionsResponse (a)) Int
 lotrsResponseStatus = lens _lotrsResponseStatus (\ s a -> s{_lotrsResponseStatus = a});
 
 instance NFData ListOfferingTransactionsResponse

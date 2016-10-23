@@ -153,7 +153,7 @@ instance ToQuery DescribeTargetGroups where
 -- | Contains the output of DescribeTargetGroups.
 --
 -- /See:/ 'describeTargetGroupsResponse' smart constructor.
-data DescribeTargetGroupsResponse = DescribeTargetGroupsResponse'
+data DescribeTargetGroupsResponse a = DescribeTargetGroupsResponse'
     { _dtgsrsNextMarker     :: !(Maybe Text)
     , _dtgsrsTargetGroups   :: !(Maybe [TargetGroup])
     , _dtgsrsResponseStatus :: !Int
@@ -170,7 +170,7 @@ data DescribeTargetGroupsResponse = DescribeTargetGroupsResponse'
 -- * 'dtgsrsResponseStatus'
 describeTargetGroupsResponse
     :: Int -- ^ 'dtgsrsResponseStatus'
-    -> DescribeTargetGroupsResponse
+    -> DescribeTargetGroupsResponse (a)
 describeTargetGroupsResponse pResponseStatus_ =
     DescribeTargetGroupsResponse'
     { _dtgsrsNextMarker = Nothing
@@ -179,15 +179,15 @@ describeTargetGroupsResponse pResponseStatus_ =
     }
 
 -- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
-dtgsrsNextMarker :: Lens' DescribeTargetGroupsResponse (Maybe Text)
+dtgsrsNextMarker :: Lens' (DescribeTargetGroupsResponse (a)) (Maybe Text)
 dtgsrsNextMarker = lens _dtgsrsNextMarker (\ s a -> s{_dtgsrsNextMarker = a});
 
 -- | Information about the target groups.
-dtgsrsTargetGroups :: Lens' DescribeTargetGroupsResponse [TargetGroup]
+dtgsrsTargetGroups :: Lens' (DescribeTargetGroupsResponse (a)) [TargetGroup]
 dtgsrsTargetGroups = lens _dtgsrsTargetGroups (\ s a -> s{_dtgsrsTargetGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtgsrsResponseStatus :: Lens' DescribeTargetGroupsResponse Int
+dtgsrsResponseStatus :: Lens' (DescribeTargetGroupsResponse (a)) Int
 dtgsrsResponseStatus = lens _dtgsrsResponseStatus (\ s a -> s{_dtgsrsResponseStatus = a});
 
 instance NFData DescribeTargetGroupsResponse

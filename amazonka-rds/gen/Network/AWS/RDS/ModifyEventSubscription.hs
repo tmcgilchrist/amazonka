@@ -142,7 +142,7 @@ instance ToQuery ModifyEventSubscription where
                "SubscriptionName" =: _mesSubscriptionName]
 
 -- | /See:/ 'modifyEventSubscriptionResponse' smart constructor.
-data ModifyEventSubscriptionResponse = ModifyEventSubscriptionResponse'
+data ModifyEventSubscriptionResponse a = ModifyEventSubscriptionResponse'
     { _mesrsEventSubscription :: !(Maybe EventSubscription)
     , _mesrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -156,7 +156,7 @@ data ModifyEventSubscriptionResponse = ModifyEventSubscriptionResponse'
 -- * 'mesrsResponseStatus'
 modifyEventSubscriptionResponse
     :: Int -- ^ 'mesrsResponseStatus'
-    -> ModifyEventSubscriptionResponse
+    -> ModifyEventSubscriptionResponse (a)
 modifyEventSubscriptionResponse pResponseStatus_ =
     ModifyEventSubscriptionResponse'
     { _mesrsEventSubscription = Nothing
@@ -164,11 +164,11 @@ modifyEventSubscriptionResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mesrsEventSubscription :: Lens' ModifyEventSubscriptionResponse (Maybe EventSubscription)
+mesrsEventSubscription :: Lens' (ModifyEventSubscriptionResponse (a)) (Maybe EventSubscription)
 mesrsEventSubscription = lens _mesrsEventSubscription (\ s a -> s{_mesrsEventSubscription = a});
 
 -- | The response status code.
-mesrsResponseStatus :: Lens' ModifyEventSubscriptionResponse Int
+mesrsResponseStatus :: Lens' (ModifyEventSubscriptionResponse (a)) Int
 mesrsResponseStatus = lens _mesrsResponseStatus (\ s a -> s{_mesrsResponseStatus = a});
 
 instance NFData ModifyEventSubscriptionResponse

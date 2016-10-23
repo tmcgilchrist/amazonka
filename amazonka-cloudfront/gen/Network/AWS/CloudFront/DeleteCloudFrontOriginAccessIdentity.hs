@@ -103,14 +103,14 @@ instance ToQuery DeleteCloudFrontOriginAccessIdentity
         toQuery = const mempty
 
 -- | /See:/ 'deleteCloudFrontOriginAccessIdentityResponse' smart constructor.
-data DeleteCloudFrontOriginAccessIdentityResponse =
+data DeleteCloudFrontOriginAccessIdentityResponse a =
     DeleteCloudFrontOriginAccessIdentityResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteCloudFrontOriginAccessIdentityResponse' with the minimum fields required to make a request.
 --
 deleteCloudFrontOriginAccessIdentityResponse
-    :: DeleteCloudFrontOriginAccessIdentityResponse
+    :: DeleteCloudFrontOriginAccessIdentityResponse (a)
 deleteCloudFrontOriginAccessIdentityResponse =
     DeleteCloudFrontOriginAccessIdentityResponse'
 

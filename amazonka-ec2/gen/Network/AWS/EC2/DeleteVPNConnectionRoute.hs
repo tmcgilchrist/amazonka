@@ -100,14 +100,14 @@ instance ToQuery DeleteVPNConnectionRoute where
                "DestinationCidrBlock" =: _dvcrDestinationCIdRBlock]
 
 -- | /See:/ 'deleteVPNConnectionRouteResponse' smart constructor.
-data DeleteVPNConnectionRouteResponse =
+data DeleteVPNConnectionRouteResponse a =
     DeleteVPNConnectionRouteResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVPNConnectionRouteResponse' with the minimum fields required to make a request.
 --
 deleteVPNConnectionRouteResponse
-    :: DeleteVPNConnectionRouteResponse
+    :: DeleteVPNConnectionRouteResponse (a)
 deleteVPNConnectionRouteResponse = DeleteVPNConnectionRouteResponse'
 
 instance NFData DeleteVPNConnectionRouteResponse

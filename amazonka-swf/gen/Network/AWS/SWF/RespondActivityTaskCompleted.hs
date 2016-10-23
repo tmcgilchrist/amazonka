@@ -122,14 +122,14 @@ instance ToQuery RespondActivityTaskCompleted where
         toQuery = const mempty
 
 -- | /See:/ 'respondActivityTaskCompletedResponse' smart constructor.
-data RespondActivityTaskCompletedResponse =
+data RespondActivityTaskCompletedResponse a =
     RespondActivityTaskCompletedResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RespondActivityTaskCompletedResponse' with the minimum fields required to make a request.
 --
 respondActivityTaskCompletedResponse
-    :: RespondActivityTaskCompletedResponse
+    :: RespondActivityTaskCompletedResponse (a)
 respondActivityTaskCompletedResponse = RespondActivityTaskCompletedResponse'
 
 instance NFData RespondActivityTaskCompletedResponse

@@ -206,7 +206,7 @@ instance ToQuery DescribeSpotPriceHistory where
 -- | Contains the output of DescribeSpotPriceHistory.
 --
 -- /See:/ 'describeSpotPriceHistoryResponse' smart constructor.
-data DescribeSpotPriceHistoryResponse = DescribeSpotPriceHistoryResponse'
+data DescribeSpotPriceHistoryResponse a = DescribeSpotPriceHistoryResponse'
     { _dsphrsNextToken        :: !(Maybe Text)
     , _dsphrsSpotPriceHistory :: !(Maybe [SpotPrice])
     , _dsphrsResponseStatus   :: !Int
@@ -223,7 +223,7 @@ data DescribeSpotPriceHistoryResponse = DescribeSpotPriceHistoryResponse'
 -- * 'dsphrsResponseStatus'
 describeSpotPriceHistoryResponse
     :: Int -- ^ 'dsphrsResponseStatus'
-    -> DescribeSpotPriceHistoryResponse
+    -> DescribeSpotPriceHistoryResponse (a)
 describeSpotPriceHistoryResponse pResponseStatus_ =
     DescribeSpotPriceHistoryResponse'
     { _dsphrsNextToken = Nothing
@@ -232,15 +232,15 @@ describeSpotPriceHistoryResponse pResponseStatus_ =
     }
 
 -- | The token required to retrieve the next set of results. This value is 'null' when there are no more results to return.
-dsphrsNextToken :: Lens' DescribeSpotPriceHistoryResponse (Maybe Text)
+dsphrsNextToken :: Lens' (DescribeSpotPriceHistoryResponse (a)) (Maybe Text)
 dsphrsNextToken = lens _dsphrsNextToken (\ s a -> s{_dsphrsNextToken = a});
 
 -- | The historical Spot prices.
-dsphrsSpotPriceHistory :: Lens' DescribeSpotPriceHistoryResponse [SpotPrice]
+dsphrsSpotPriceHistory :: Lens' (DescribeSpotPriceHistoryResponse (a)) [SpotPrice]
 dsphrsSpotPriceHistory = lens _dsphrsSpotPriceHistory (\ s a -> s{_dsphrsSpotPriceHistory = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsphrsResponseStatus :: Lens' DescribeSpotPriceHistoryResponse Int
+dsphrsResponseStatus :: Lens' (DescribeSpotPriceHistoryResponse (a)) Int
 dsphrsResponseStatus = lens _dsphrsResponseStatus (\ s a -> s{_dsphrsResponseStatus = a});
 
 instance NFData DescribeSpotPriceHistoryResponse

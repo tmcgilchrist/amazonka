@@ -143,7 +143,7 @@ instance ToQuery GetExport where
 -- | The binary blob response to < GetExport>, which contains the generated SDK.
 --
 -- /See:/ 'getExportResponse' smart constructor.
-data GetExportResponse = GetExportResponse'
+data GetExportResponse a = GetExportResponse'
     { _gersBody               :: !(Maybe (HashMap Text Value))
     , _gersContentDisposition :: !(Maybe Text)
     , _gersContentType        :: !(Maybe Text)
@@ -163,7 +163,7 @@ data GetExportResponse = GetExportResponse'
 -- * 'gersResponseStatus'
 getExportResponse
     :: Int -- ^ 'gersResponseStatus'
-    -> GetExportResponse
+    -> GetExportResponse (a)
 getExportResponse pResponseStatus_ =
     GetExportResponse'
     { _gersBody = Nothing
@@ -173,19 +173,19 @@ getExportResponse pResponseStatus_ =
     }
 
 -- | The binary blob response to < GetExport>, which contains the export.
-gersBody :: Lens' GetExportResponse (Maybe (HashMap Text Value))
+gersBody :: Lens' (GetExportResponse (a)) (Maybe (HashMap Text Value))
 gersBody = lens _gersBody (\ s a -> s{_gersBody = a});
 
 -- | The content-disposition header value in the HTTP response.
-gersContentDisposition :: Lens' GetExportResponse (Maybe Text)
+gersContentDisposition :: Lens' (GetExportResponse (a)) (Maybe Text)
 gersContentDisposition = lens _gersContentDisposition (\ s a -> s{_gersContentDisposition = a});
 
 -- | The content-type header value in the HTTP response. This will correspond to a valid \'accept\' type in the request.
-gersContentType :: Lens' GetExportResponse (Maybe Text)
+gersContentType :: Lens' (GetExportResponse (a)) (Maybe Text)
 gersContentType = lens _gersContentType (\ s a -> s{_gersContentType = a});
 
 -- | The response status code.
-gersResponseStatus :: Lens' GetExportResponse Int
+gersResponseStatus :: Lens' (GetExportResponse (a)) Int
 gersResponseStatus = lens _gersResponseStatus (\ s a -> s{_gersResponseStatus = a});
 
 instance NFData GetExportResponse

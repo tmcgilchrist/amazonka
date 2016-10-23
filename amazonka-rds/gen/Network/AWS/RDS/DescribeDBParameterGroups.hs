@@ -154,7 +154,7 @@ instance ToQuery DescribeDBParameterGroups where
 -- | Contains the result of a successful invocation of the < DescribeDBParameterGroups> action.
 --
 -- /See:/ 'describeDBParameterGroupsResponse' smart constructor.
-data DescribeDBParameterGroupsResponse = DescribeDBParameterGroupsResponse'
+data DescribeDBParameterGroupsResponse a = DescribeDBParameterGroupsResponse'
     { _ddpgrsMarker            :: !(Maybe Text)
     , _ddpgrsDBParameterGroups :: !(Maybe [DBParameterGroup])
     , _ddpgrsResponseStatus    :: !Int
@@ -171,7 +171,7 @@ data DescribeDBParameterGroupsResponse = DescribeDBParameterGroupsResponse'
 -- * 'ddpgrsResponseStatus'
 describeDBParameterGroupsResponse
     :: Int -- ^ 'ddpgrsResponseStatus'
-    -> DescribeDBParameterGroupsResponse
+    -> DescribeDBParameterGroupsResponse (a)
 describeDBParameterGroupsResponse pResponseStatus_ =
     DescribeDBParameterGroupsResponse'
     { _ddpgrsMarker = Nothing
@@ -180,15 +180,15 @@ describeDBParameterGroupsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddpgrsMarker :: Lens' DescribeDBParameterGroupsResponse (Maybe Text)
+ddpgrsMarker :: Lens' (DescribeDBParameterGroupsResponse (a)) (Maybe Text)
 ddpgrsMarker = lens _ddpgrsMarker (\ s a -> s{_ddpgrsMarker = a});
 
 -- | A list of < DBParameterGroup> instances.
-ddpgrsDBParameterGroups :: Lens' DescribeDBParameterGroupsResponse [DBParameterGroup]
+ddpgrsDBParameterGroups :: Lens' (DescribeDBParameterGroupsResponse (a)) [DBParameterGroup]
 ddpgrsDBParameterGroups = lens _ddpgrsDBParameterGroups (\ s a -> s{_ddpgrsDBParameterGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddpgrsResponseStatus :: Lens' DescribeDBParameterGroupsResponse Int
+ddpgrsResponseStatus :: Lens' (DescribeDBParameterGroupsResponse (a)) Int
 ddpgrsResponseStatus = lens _ddpgrsResponseStatus (\ s a -> s{_ddpgrsResponseStatus = a});
 
 instance NFData DescribeDBParameterGroupsResponse

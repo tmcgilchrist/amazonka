@@ -116,7 +116,7 @@ instance ToQuery UpdateVTLDeviceType where
 -- | UpdateVTLDeviceTypeOutput
 --
 -- /See:/ 'updateVTLDeviceTypeResponse' smart constructor.
-data UpdateVTLDeviceTypeResponse = UpdateVTLDeviceTypeResponse'
+data UpdateVTLDeviceTypeResponse a = UpdateVTLDeviceTypeResponse'
     { _uvtldtrsVTLDeviceARN   :: !(Maybe Text)
     , _uvtldtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data UpdateVTLDeviceTypeResponse = UpdateVTLDeviceTypeResponse'
 -- * 'uvtldtrsResponseStatus'
 updateVTLDeviceTypeResponse
     :: Int -- ^ 'uvtldtrsResponseStatus'
-    -> UpdateVTLDeviceTypeResponse
+    -> UpdateVTLDeviceTypeResponse (a)
 updateVTLDeviceTypeResponse pResponseStatus_ =
     UpdateVTLDeviceTypeResponse'
     { _uvtldtrsVTLDeviceARN = Nothing
@@ -138,11 +138,11 @@ updateVTLDeviceTypeResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the medium changer you have selected.
-uvtldtrsVTLDeviceARN :: Lens' UpdateVTLDeviceTypeResponse (Maybe Text)
+uvtldtrsVTLDeviceARN :: Lens' (UpdateVTLDeviceTypeResponse (a)) (Maybe Text)
 uvtldtrsVTLDeviceARN = lens _uvtldtrsVTLDeviceARN (\ s a -> s{_uvtldtrsVTLDeviceARN = a});
 
 -- | The response status code.
-uvtldtrsResponseStatus :: Lens' UpdateVTLDeviceTypeResponse Int
+uvtldtrsResponseStatus :: Lens' (UpdateVTLDeviceTypeResponse (a)) Int
 uvtldtrsResponseStatus = lens _uvtldtrsResponseStatus (\ s a -> s{_uvtldtrsResponseStatus = a});
 
 instance NFData UpdateVTLDeviceTypeResponse

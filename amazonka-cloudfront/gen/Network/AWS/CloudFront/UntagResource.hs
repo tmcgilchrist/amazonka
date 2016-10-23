@@ -101,14 +101,14 @@ instance ToQuery UntagResource where
               ["Resource" =: _urResource, "Operation=Untag"]
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-data UntagResourceResponse =
+data UntagResourceResponse a =
     UntagResourceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
 untagResourceResponse
-    :: UntagResourceResponse
+    :: UntagResourceResponse (a)
 untagResourceResponse = UntagResourceResponse'
 
 instance NFData UntagResourceResponse

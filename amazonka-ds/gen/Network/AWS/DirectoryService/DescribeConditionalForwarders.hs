@@ -120,7 +120,7 @@ instance ToQuery DescribeConditionalForwarders where
 -- | The result of a DescribeConditionalForwarder request.
 --
 -- /See:/ 'describeConditionalForwardersResponse' smart constructor.
-data DescribeConditionalForwardersResponse = DescribeConditionalForwardersResponse'
+data DescribeConditionalForwardersResponse a = DescribeConditionalForwardersResponse'
     { _dcfrsConditionalForwarders :: !(Maybe [ConditionalForwarder])
     , _dcfrsResponseStatus        :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data DescribeConditionalForwardersResponse = DescribeConditionalForwardersRespon
 -- * 'dcfrsResponseStatus'
 describeConditionalForwardersResponse
     :: Int -- ^ 'dcfrsResponseStatus'
-    -> DescribeConditionalForwardersResponse
+    -> DescribeConditionalForwardersResponse (a)
 describeConditionalForwardersResponse pResponseStatus_ =
     DescribeConditionalForwardersResponse'
     { _dcfrsConditionalForwarders = Nothing
@@ -142,11 +142,11 @@ describeConditionalForwardersResponse pResponseStatus_ =
     }
 
 -- | The list of conditional forwarders that have been created.
-dcfrsConditionalForwarders :: Lens' DescribeConditionalForwardersResponse [ConditionalForwarder]
+dcfrsConditionalForwarders :: Lens' (DescribeConditionalForwardersResponse (a)) [ConditionalForwarder]
 dcfrsConditionalForwarders = lens _dcfrsConditionalForwarders (\ s a -> s{_dcfrsConditionalForwarders = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcfrsResponseStatus :: Lens' DescribeConditionalForwardersResponse Int
+dcfrsResponseStatus :: Lens' (DescribeConditionalForwardersResponse (a)) Int
 dcfrsResponseStatus = lens _dcfrsResponseStatus (\ s a -> s{_dcfrsResponseStatus = a});
 
 instance NFData DescribeConditionalForwardersResponse

@@ -429,7 +429,7 @@ instance ToQuery CreateReplicationGroup where
                  _crgReplicationGroupDescription]
 
 -- | /See:/ 'createReplicationGroupResponse' smart constructor.
-data CreateReplicationGroupResponse = CreateReplicationGroupResponse'
+data CreateReplicationGroupResponse a = CreateReplicationGroupResponse'
     { _crgrsReplicationGroup :: !(Maybe ReplicationGroup)
     , _crgrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -443,7 +443,7 @@ data CreateReplicationGroupResponse = CreateReplicationGroupResponse'
 -- * 'crgrsResponseStatus'
 createReplicationGroupResponse
     :: Int -- ^ 'crgrsResponseStatus'
-    -> CreateReplicationGroupResponse
+    -> CreateReplicationGroupResponse (a)
 createReplicationGroupResponse pResponseStatus_ =
     CreateReplicationGroupResponse'
     { _crgrsReplicationGroup = Nothing
@@ -451,11 +451,11 @@ createReplicationGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crgrsReplicationGroup :: Lens' CreateReplicationGroupResponse (Maybe ReplicationGroup)
+crgrsReplicationGroup :: Lens' (CreateReplicationGroupResponse (a)) (Maybe ReplicationGroup)
 crgrsReplicationGroup = lens _crgrsReplicationGroup (\ s a -> s{_crgrsReplicationGroup = a});
 
 -- | The response status code.
-crgrsResponseStatus :: Lens' CreateReplicationGroupResponse Int
+crgrsResponseStatus :: Lens' (CreateReplicationGroupResponse (a)) Int
 crgrsResponseStatus = lens _crgrsResponseStatus (\ s a -> s{_crgrsResponseStatus = a});
 
 instance NFData CreateReplicationGroupResponse

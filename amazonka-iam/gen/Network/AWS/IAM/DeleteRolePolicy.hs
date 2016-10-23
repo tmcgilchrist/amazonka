@@ -101,14 +101,14 @@ instance ToQuery DeleteRolePolicy where
                "PolicyName" =: _delPolicyName]
 
 -- | /See:/ 'deleteRolePolicyResponse' smart constructor.
-data DeleteRolePolicyResponse =
+data DeleteRolePolicyResponse a =
     DeleteRolePolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteRolePolicyResponse' with the minimum fields required to make a request.
 --
 deleteRolePolicyResponse
-    :: DeleteRolePolicyResponse
+    :: DeleteRolePolicyResponse (a)
 deleteRolePolicyResponse = DeleteRolePolicyResponse'
 
 instance NFData DeleteRolePolicyResponse

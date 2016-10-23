@@ -113,7 +113,7 @@ instance ToQuery RenewOffering where
 -- | The result of a renewal offering.
 --
 -- /See:/ 'renewOfferingResponse' smart constructor.
-data RenewOfferingResponse = RenewOfferingResponse'
+data RenewOfferingResponse a = RenewOfferingResponse'
     { _rorsOfferingTransaction :: !(Maybe OfferingTransaction)
     , _rorsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data RenewOfferingResponse = RenewOfferingResponse'
 -- * 'rorsResponseStatus'
 renewOfferingResponse
     :: Int -- ^ 'rorsResponseStatus'
-    -> RenewOfferingResponse
+    -> RenewOfferingResponse (a)
 renewOfferingResponse pResponseStatus_ =
     RenewOfferingResponse'
     { _rorsOfferingTransaction = Nothing
@@ -135,11 +135,11 @@ renewOfferingResponse pResponseStatus_ =
     }
 
 -- | Represents the status of the offering transaction for the renewal.
-rorsOfferingTransaction :: Lens' RenewOfferingResponse (Maybe OfferingTransaction)
+rorsOfferingTransaction :: Lens' (RenewOfferingResponse (a)) (Maybe OfferingTransaction)
 rorsOfferingTransaction = lens _rorsOfferingTransaction (\ s a -> s{_rorsOfferingTransaction = a});
 
 -- | The response status code.
-rorsResponseStatus :: Lens' RenewOfferingResponse Int
+rorsResponseStatus :: Lens' (RenewOfferingResponse (a)) Int
 rorsResponseStatus = lens _rorsResponseStatus (\ s a -> s{_rorsResponseStatus = a});
 
 instance NFData RenewOfferingResponse

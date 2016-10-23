@@ -83,14 +83,14 @@ instance ToQuery DeleteBucketReplication where
         toQuery = const (mconcat ["replication"])
 
 -- | /See:/ 'deleteBucketReplicationResponse' smart constructor.
-data DeleteBucketReplicationResponse =
+data DeleteBucketReplicationResponse a =
     DeleteBucketReplicationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteBucketReplicationResponse' with the minimum fields required to make a request.
 --
 deleteBucketReplicationResponse
-    :: DeleteBucketReplicationResponse
+    :: DeleteBucketReplicationResponse (a)
 deleteBucketReplicationResponse = DeleteBucketReplicationResponse'
 
 instance NFData DeleteBucketReplicationResponse

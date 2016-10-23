@@ -147,7 +147,7 @@ instance ToQuery DescribeDefaultClusterParameters
                "ParameterGroupFamily" =: _ddcpParameterGroupFamily]
 
 -- | /See:/ 'describeDefaultClusterParametersResponse' smart constructor.
-data DescribeDefaultClusterParametersResponse = DescribeDefaultClusterParametersResponse'
+data DescribeDefaultClusterParametersResponse a = DescribeDefaultClusterParametersResponse'
     { _ddcprsResponseStatus           :: !Int
     , _ddcprsDefaultClusterParameters :: !DefaultClusterParameters
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -162,7 +162,7 @@ data DescribeDefaultClusterParametersResponse = DescribeDefaultClusterParameters
 describeDefaultClusterParametersResponse
     :: Int -- ^ 'ddcprsResponseStatus'
     -> DefaultClusterParameters -- ^ 'ddcprsDefaultClusterParameters'
-    -> DescribeDefaultClusterParametersResponse
+    -> DescribeDefaultClusterParametersResponse (a)
 describeDefaultClusterParametersResponse pResponseStatus_ pDefaultClusterParameters_ =
     DescribeDefaultClusterParametersResponse'
     { _ddcprsResponseStatus = pResponseStatus_
@@ -170,11 +170,11 @@ describeDefaultClusterParametersResponse pResponseStatus_ pDefaultClusterParamet
     }
 
 -- | The response status code.
-ddcprsResponseStatus :: Lens' DescribeDefaultClusterParametersResponse Int
+ddcprsResponseStatus :: Lens' (DescribeDefaultClusterParametersResponse (a)) Int
 ddcprsResponseStatus = lens _ddcprsResponseStatus (\ s a -> s{_ddcprsResponseStatus = a});
 
 -- | Undocumented member.
-ddcprsDefaultClusterParameters :: Lens' DescribeDefaultClusterParametersResponse DefaultClusterParameters
+ddcprsDefaultClusterParameters :: Lens' (DescribeDefaultClusterParametersResponse (a)) DefaultClusterParameters
 ddcprsDefaultClusterParameters = lens _ddcprsDefaultClusterParameters (\ s a -> s{_ddcprsDefaultClusterParameters = a});
 
 instance NFData

@@ -118,14 +118,14 @@ instance ToQuery CreateBranch where
         toQuery = const mempty
 
 -- | /See:/ 'createBranchResponse' smart constructor.
-data CreateBranchResponse =
+data CreateBranchResponse a =
     CreateBranchResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateBranchResponse' with the minimum fields required to make a request.
 --
 createBranchResponse
-    :: CreateBranchResponse
+    :: CreateBranchResponse (a)
 createBranchResponse = CreateBranchResponse'
 
 instance NFData CreateBranchResponse

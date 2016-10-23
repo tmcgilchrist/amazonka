@@ -105,7 +105,7 @@ instance ToQuery ListApplications where
 -- | Represents the output of a list applications operation.
 --
 -- /See:/ 'listApplicationsResponse' smart constructor.
-data ListApplicationsResponse = ListApplicationsResponse'
+data ListApplicationsResponse a = ListApplicationsResponse'
     { _larsNextToken      :: !(Maybe Text)
     , _larsApplications   :: !(Maybe [Text])
     , _larsResponseStatus :: !Int
@@ -122,7 +122,7 @@ data ListApplicationsResponse = ListApplicationsResponse'
 -- * 'larsResponseStatus'
 listApplicationsResponse
     :: Int -- ^ 'larsResponseStatus'
-    -> ListApplicationsResponse
+    -> ListApplicationsResponse (a)
 listApplicationsResponse pResponseStatus_ =
     ListApplicationsResponse'
     { _larsNextToken = Nothing
@@ -131,15 +131,15 @@ listApplicationsResponse pResponseStatus_ =
     }
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list applications call to return the next set of applications, will also be returned. in the list.
-larsNextToken :: Lens' ListApplicationsResponse (Maybe Text)
+larsNextToken :: Lens' (ListApplicationsResponse (a)) (Maybe Text)
 larsNextToken = lens _larsNextToken (\ s a -> s{_larsNextToken = a});
 
 -- | A list of application names.
-larsApplications :: Lens' ListApplicationsResponse [Text]
+larsApplications :: Lens' (ListApplicationsResponse (a)) [Text]
 larsApplications = lens _larsApplications (\ s a -> s{_larsApplications = a}) . _Default . _Coerce;
 
 -- | The response status code.
-larsResponseStatus :: Lens' ListApplicationsResponse Int
+larsResponseStatus :: Lens' (ListApplicationsResponse (a)) Int
 larsResponseStatus = lens _larsResponseStatus (\ s a -> s{_larsResponseStatus = a});
 
 instance NFData ListApplicationsResponse

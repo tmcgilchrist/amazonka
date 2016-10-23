@@ -135,7 +135,7 @@ instance ToQuery RevokeClusterSecurityGroupIngress
                  _rcsgiClusterSecurityGroupName]
 
 -- | /See:/ 'revokeClusterSecurityGroupIngressResponse' smart constructor.
-data RevokeClusterSecurityGroupIngressResponse = RevokeClusterSecurityGroupIngressResponse'
+data RevokeClusterSecurityGroupIngressResponse a = RevokeClusterSecurityGroupIngressResponse'
     { _rcsgirsClusterSecurityGroup :: !(Maybe ClusterSecurityGroup)
     , _rcsgirsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -149,7 +149,7 @@ data RevokeClusterSecurityGroupIngressResponse = RevokeClusterSecurityGroupIngre
 -- * 'rcsgirsResponseStatus'
 revokeClusterSecurityGroupIngressResponse
     :: Int -- ^ 'rcsgirsResponseStatus'
-    -> RevokeClusterSecurityGroupIngressResponse
+    -> RevokeClusterSecurityGroupIngressResponse (a)
 revokeClusterSecurityGroupIngressResponse pResponseStatus_ =
     RevokeClusterSecurityGroupIngressResponse'
     { _rcsgirsClusterSecurityGroup = Nothing
@@ -157,11 +157,11 @@ revokeClusterSecurityGroupIngressResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rcsgirsClusterSecurityGroup :: Lens' RevokeClusterSecurityGroupIngressResponse (Maybe ClusterSecurityGroup)
+rcsgirsClusterSecurityGroup :: Lens' (RevokeClusterSecurityGroupIngressResponse (a)) (Maybe ClusterSecurityGroup)
 rcsgirsClusterSecurityGroup = lens _rcsgirsClusterSecurityGroup (\ s a -> s{_rcsgirsClusterSecurityGroup = a});
 
 -- | The response status code.
-rcsgirsResponseStatus :: Lens' RevokeClusterSecurityGroupIngressResponse Int
+rcsgirsResponseStatus :: Lens' (RevokeClusterSecurityGroupIngressResponse (a)) Int
 rcsgirsResponseStatus = lens _rcsgirsResponseStatus (\ s a -> s{_rcsgirsResponseStatus = a});
 
 instance NFData

@@ -135,7 +135,7 @@ instance ToQuery CreateDevicePool where
 -- | Represents the result of a create device pool request.
 --
 -- /See:/ 'createDevicePoolResponse' smart constructor.
-data CreateDevicePoolResponse = CreateDevicePoolResponse'
+data CreateDevicePoolResponse a = CreateDevicePoolResponse'
     { _cdprsDevicePool     :: !(Maybe DevicePool)
     , _cdprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -149,7 +149,7 @@ data CreateDevicePoolResponse = CreateDevicePoolResponse'
 -- * 'cdprsResponseStatus'
 createDevicePoolResponse
     :: Int -- ^ 'cdprsResponseStatus'
-    -> CreateDevicePoolResponse
+    -> CreateDevicePoolResponse (a)
 createDevicePoolResponse pResponseStatus_ =
     CreateDevicePoolResponse'
     { _cdprsDevicePool = Nothing
@@ -157,11 +157,11 @@ createDevicePoolResponse pResponseStatus_ =
     }
 
 -- | The newly created device pool.
-cdprsDevicePool :: Lens' CreateDevicePoolResponse (Maybe DevicePool)
+cdprsDevicePool :: Lens' (CreateDevicePoolResponse (a)) (Maybe DevicePool)
 cdprsDevicePool = lens _cdprsDevicePool (\ s a -> s{_cdprsDevicePool = a});
 
 -- | The response status code.
-cdprsResponseStatus :: Lens' CreateDevicePoolResponse Int
+cdprsResponseStatus :: Lens' (CreateDevicePoolResponse (a)) Int
 cdprsResponseStatus = lens _cdprsResponseStatus (\ s a -> s{_cdprsResponseStatus = a});
 
 instance NFData CreateDevicePoolResponse

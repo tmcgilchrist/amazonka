@@ -125,7 +125,7 @@ instance ToQuery ActivatePipeline where
 -- | Contains the output of ActivatePipeline.
 --
 -- /See:/ 'activatePipelineResponse' smart constructor.
-newtype ActivatePipelineResponse = ActivatePipelineResponse'
+newtype ActivatePipelineResponse a = ActivatePipelineResponse'
     { _aprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -136,14 +136,14 @@ newtype ActivatePipelineResponse = ActivatePipelineResponse'
 -- * 'aprsResponseStatus'
 activatePipelineResponse
     :: Int -- ^ 'aprsResponseStatus'
-    -> ActivatePipelineResponse
+    -> ActivatePipelineResponse (a)
 activatePipelineResponse pResponseStatus_ =
     ActivatePipelineResponse'
     { _aprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-aprsResponseStatus :: Lens' ActivatePipelineResponse Int
+aprsResponseStatus :: Lens' (ActivatePipelineResponse (a)) Int
 aprsResponseStatus = lens _aprsResponseStatus (\ s a -> s{_aprsResponseStatus = a});
 
 instance NFData ActivatePipelineResponse

@@ -127,7 +127,7 @@ instance ToQuery DescribeElasticIPs where
 -- | Contains the response to a 'DescribeElasticIps' request.
 --
 -- /See:/ 'describeElasticIPsResponse' smart constructor.
-data DescribeElasticIPsResponse = DescribeElasticIPsResponse'
+data DescribeElasticIPsResponse a = DescribeElasticIPsResponse'
     { _deirsElasticIPs     :: !(Maybe [ElasticIP])
     , _deirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data DescribeElasticIPsResponse = DescribeElasticIPsResponse'
 -- * 'deirsResponseStatus'
 describeElasticIPsResponse
     :: Int -- ^ 'deirsResponseStatus'
-    -> DescribeElasticIPsResponse
+    -> DescribeElasticIPsResponse (a)
 describeElasticIPsResponse pResponseStatus_ =
     DescribeElasticIPsResponse'
     { _deirsElasticIPs = Nothing
@@ -149,11 +149,11 @@ describeElasticIPsResponse pResponseStatus_ =
     }
 
 -- | An 'ElasticIps' object that describes the specified Elastic IP addresses.
-deirsElasticIPs :: Lens' DescribeElasticIPsResponse [ElasticIP]
+deirsElasticIPs :: Lens' (DescribeElasticIPsResponse (a)) [ElasticIP]
 deirsElasticIPs = lens _deirsElasticIPs (\ s a -> s{_deirsElasticIPs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-deirsResponseStatus :: Lens' DescribeElasticIPsResponse Int
+deirsResponseStatus :: Lens' (DescribeElasticIPsResponse (a)) Int
 deirsResponseStatus = lens _deirsResponseStatus (\ s a -> s{_deirsResponseStatus = a});
 
 instance NFData DescribeElasticIPsResponse

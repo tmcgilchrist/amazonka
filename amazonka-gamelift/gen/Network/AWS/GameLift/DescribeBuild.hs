@@ -101,7 +101,7 @@ instance ToQuery DescribeBuild where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeBuildResponse' smart constructor.
-data DescribeBuildResponse = DescribeBuildResponse'
+data DescribeBuildResponse a = DescribeBuildResponse'
     { _dbrsBuild          :: !(Maybe Build)
     , _dbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data DescribeBuildResponse = DescribeBuildResponse'
 -- * 'dbrsResponseStatus'
 describeBuildResponse
     :: Int -- ^ 'dbrsResponseStatus'
-    -> DescribeBuildResponse
+    -> DescribeBuildResponse (a)
 describeBuildResponse pResponseStatus_ =
     DescribeBuildResponse'
     { _dbrsBuild = Nothing
@@ -123,11 +123,11 @@ describeBuildResponse pResponseStatus_ =
     }
 
 -- | Set of properties describing the requested build.
-dbrsBuild :: Lens' DescribeBuildResponse (Maybe Build)
+dbrsBuild :: Lens' (DescribeBuildResponse (a)) (Maybe Build)
 dbrsBuild = lens _dbrsBuild (\ s a -> s{_dbrsBuild = a});
 
 -- | The response status code.
-dbrsResponseStatus :: Lens' DescribeBuildResponse Int
+dbrsResponseStatus :: Lens' (DescribeBuildResponse (a)) Int
 dbrsResponseStatus = lens _dbrsResponseStatus (\ s a -> s{_dbrsResponseStatus = a});
 
 instance NFData DescribeBuildResponse

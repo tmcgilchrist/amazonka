@@ -135,7 +135,7 @@ instance ToQuery DescribeVPCs where
 -- | Contains the output of DescribeVpcs.
 --
 -- /See:/ 'describeVPCsResponse' smart constructor.
-data DescribeVPCsResponse = DescribeVPCsResponse'
+data DescribeVPCsResponse a = DescribeVPCsResponse'
     { _dvrsVPCs           :: !(Maybe [VPC])
     , _dvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -149,7 +149,7 @@ data DescribeVPCsResponse = DescribeVPCsResponse'
 -- * 'dvrsResponseStatus'
 describeVPCsResponse
     :: Int -- ^ 'dvrsResponseStatus'
-    -> DescribeVPCsResponse
+    -> DescribeVPCsResponse (a)
 describeVPCsResponse pResponseStatus_ =
     DescribeVPCsResponse'
     { _dvrsVPCs = Nothing
@@ -157,11 +157,11 @@ describeVPCsResponse pResponseStatus_ =
     }
 
 -- | Information about one or more VPCs.
-dvrsVPCs :: Lens' DescribeVPCsResponse [VPC]
+dvrsVPCs :: Lens' (DescribeVPCsResponse (a)) [VPC]
 dvrsVPCs = lens _dvrsVPCs (\ s a -> s{_dvrsVPCs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvrsResponseStatus :: Lens' DescribeVPCsResponse Int
+dvrsResponseStatus :: Lens' (DescribeVPCsResponse (a)) Int
 dvrsResponseStatus = lens _dvrsResponseStatus (\ s a -> s{_dvrsResponseStatus = a});
 
 instance NFData DescribeVPCsResponse

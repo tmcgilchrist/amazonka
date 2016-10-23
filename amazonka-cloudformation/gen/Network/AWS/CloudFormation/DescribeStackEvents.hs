@@ -127,7 +127,7 @@ instance ToQuery DescribeStackEvents where
 -- | The output for a < DescribeStackEvents> action.
 --
 -- /See:/ 'describeStackEventsResponse' smart constructor.
-data DescribeStackEventsResponse = DescribeStackEventsResponse'
+data DescribeStackEventsResponse a = DescribeStackEventsResponse'
     { _dsersNextToken      :: !(Maybe Text)
     , _dsersStackEvents    :: !(Maybe [StackEvent])
     , _dsersResponseStatus :: !Int
@@ -144,7 +144,7 @@ data DescribeStackEventsResponse = DescribeStackEventsResponse'
 -- * 'dsersResponseStatus'
 describeStackEventsResponse
     :: Int -- ^ 'dsersResponseStatus'
-    -> DescribeStackEventsResponse
+    -> DescribeStackEventsResponse (a)
 describeStackEventsResponse pResponseStatus_ =
     DescribeStackEventsResponse'
     { _dsersNextToken = Nothing
@@ -153,15 +153,15 @@ describeStackEventsResponse pResponseStatus_ =
     }
 
 -- | If the output exceeds 1 MB in size, a string that identifies the next page of events. If no additional page exists, this value is null.
-dsersNextToken :: Lens' DescribeStackEventsResponse (Maybe Text)
+dsersNextToken :: Lens' (DescribeStackEventsResponse (a)) (Maybe Text)
 dsersNextToken = lens _dsersNextToken (\ s a -> s{_dsersNextToken = a});
 
 -- | A list of 'StackEvents' structures.
-dsersStackEvents :: Lens' DescribeStackEventsResponse [StackEvent]
+dsersStackEvents :: Lens' (DescribeStackEventsResponse (a)) [StackEvent]
 dsersStackEvents = lens _dsersStackEvents (\ s a -> s{_dsersStackEvents = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsersResponseStatus :: Lens' DescribeStackEventsResponse Int
+dsersResponseStatus :: Lens' (DescribeStackEventsResponse (a)) Int
 dsersResponseStatus = lens _dsersResponseStatus (\ s a -> s{_dsersResponseStatus = a});
 
 instance NFData DescribeStackEventsResponse

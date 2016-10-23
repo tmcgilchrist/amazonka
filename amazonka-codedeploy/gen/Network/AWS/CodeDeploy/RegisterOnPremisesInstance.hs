@@ -108,14 +108,14 @@ instance ToQuery RegisterOnPremisesInstance where
         toQuery = const mempty
 
 -- | /See:/ 'registerOnPremisesInstanceResponse' smart constructor.
-data RegisterOnPremisesInstanceResponse =
+data RegisterOnPremisesInstanceResponse a =
     RegisterOnPremisesInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RegisterOnPremisesInstanceResponse' with the minimum fields required to make a request.
 --
 registerOnPremisesInstanceResponse
-    :: RegisterOnPremisesInstanceResponse
+    :: RegisterOnPremisesInstanceResponse (a)
 registerOnPremisesInstanceResponse = RegisterOnPremisesInstanceResponse'
 
 instance NFData RegisterOnPremisesInstanceResponse

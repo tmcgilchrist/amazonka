@@ -148,7 +148,7 @@ instance ToQuery CopyDBParameterGroup where
                  _cdpgTargetDBParameterGroupDescription]
 
 -- | /See:/ 'copyDBParameterGroupResponse' smart constructor.
-data CopyDBParameterGroupResponse = CopyDBParameterGroupResponse'
+data CopyDBParameterGroupResponse a = CopyDBParameterGroupResponse'
     { _cdbpgrsDBParameterGroup :: !(Maybe DBParameterGroup)
     , _cdbpgrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -162,7 +162,7 @@ data CopyDBParameterGroupResponse = CopyDBParameterGroupResponse'
 -- * 'cdbpgrsResponseStatus'
 copyDBParameterGroupResponse
     :: Int -- ^ 'cdbpgrsResponseStatus'
-    -> CopyDBParameterGroupResponse
+    -> CopyDBParameterGroupResponse (a)
 copyDBParameterGroupResponse pResponseStatus_ =
     CopyDBParameterGroupResponse'
     { _cdbpgrsDBParameterGroup = Nothing
@@ -170,11 +170,11 @@ copyDBParameterGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdbpgrsDBParameterGroup :: Lens' CopyDBParameterGroupResponse (Maybe DBParameterGroup)
+cdbpgrsDBParameterGroup :: Lens' (CopyDBParameterGroupResponse (a)) (Maybe DBParameterGroup)
 cdbpgrsDBParameterGroup = lens _cdbpgrsDBParameterGroup (\ s a -> s{_cdbpgrsDBParameterGroup = a});
 
 -- | The response status code.
-cdbpgrsResponseStatus :: Lens' CopyDBParameterGroupResponse Int
+cdbpgrsResponseStatus :: Lens' (CopyDBParameterGroupResponse (a)) Int
 cdbpgrsResponseStatus = lens _cdbpgrsResponseStatus (\ s a -> s{_cdbpgrsResponseStatus = a});
 
 instance NFData CopyDBParameterGroupResponse

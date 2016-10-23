@@ -127,7 +127,7 @@ instance ToQuery CreateLBCookieStickinessPolicy where
 -- | Contains the output for CreateLBCookieStickinessPolicy.
 --
 -- /See:/ 'createLBCookieStickinessPolicyResponse' smart constructor.
-newtype CreateLBCookieStickinessPolicyResponse = CreateLBCookieStickinessPolicyResponse'
+newtype CreateLBCookieStickinessPolicyResponse a = CreateLBCookieStickinessPolicyResponse'
     { _clbcsprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -138,14 +138,14 @@ newtype CreateLBCookieStickinessPolicyResponse = CreateLBCookieStickinessPolicyR
 -- * 'clbcsprsResponseStatus'
 createLBCookieStickinessPolicyResponse
     :: Int -- ^ 'clbcsprsResponseStatus'
-    -> CreateLBCookieStickinessPolicyResponse
+    -> CreateLBCookieStickinessPolicyResponse (a)
 createLBCookieStickinessPolicyResponse pResponseStatus_ =
     CreateLBCookieStickinessPolicyResponse'
     { _clbcsprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-clbcsprsResponseStatus :: Lens' CreateLBCookieStickinessPolicyResponse Int
+clbcsprsResponseStatus :: Lens' (CreateLBCookieStickinessPolicyResponse (a)) Int
 clbcsprsResponseStatus = lens _clbcsprsResponseStatus (\ s a -> s{_clbcsprsResponseStatus = a});
 
 instance NFData

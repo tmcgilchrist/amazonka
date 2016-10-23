@@ -96,7 +96,7 @@ instance ToQuery GetDistributionConfig where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'getDistributionConfigResponse' smart constructor.
-data GetDistributionConfigResponse = GetDistributionConfigResponse'
+data GetDistributionConfigResponse a = GetDistributionConfigResponse'
     { _gdcrsETag               :: !(Maybe Text)
     , _gdcrsDistributionConfig :: !(Maybe DistributionConfig)
     , _gdcrsResponseStatus     :: !Int
@@ -113,7 +113,7 @@ data GetDistributionConfigResponse = GetDistributionConfigResponse'
 -- * 'gdcrsResponseStatus'
 getDistributionConfigResponse
     :: Int -- ^ 'gdcrsResponseStatus'
-    -> GetDistributionConfigResponse
+    -> GetDistributionConfigResponse (a)
 getDistributionConfigResponse pResponseStatus_ =
     GetDistributionConfigResponse'
     { _gdcrsETag = Nothing
@@ -122,15 +122,15 @@ getDistributionConfigResponse pResponseStatus_ =
     }
 
 -- | The current version of the configuration. For example: E2QWRUHAPOMQZL.
-gdcrsETag :: Lens' GetDistributionConfigResponse (Maybe Text)
+gdcrsETag :: Lens' (GetDistributionConfigResponse (a)) (Maybe Text)
 gdcrsETag = lens _gdcrsETag (\ s a -> s{_gdcrsETag = a});
 
 -- | The distribution\'s configuration information.
-gdcrsDistributionConfig :: Lens' GetDistributionConfigResponse (Maybe DistributionConfig)
+gdcrsDistributionConfig :: Lens' (GetDistributionConfigResponse (a)) (Maybe DistributionConfig)
 gdcrsDistributionConfig = lens _gdcrsDistributionConfig (\ s a -> s{_gdcrsDistributionConfig = a});
 
 -- | The response status code.
-gdcrsResponseStatus :: Lens' GetDistributionConfigResponse Int
+gdcrsResponseStatus :: Lens' (GetDistributionConfigResponse (a)) Int
 gdcrsResponseStatus = lens _gdcrsResponseStatus (\ s a -> s{_gdcrsResponseStatus = a});
 
 instance NFData GetDistributionConfigResponse

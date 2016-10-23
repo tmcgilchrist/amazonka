@@ -100,14 +100,14 @@ instance ToQuery DeleteAccessKey where
                "AccessKeyId" =: _dakAccessKeyId]
 
 -- | /See:/ 'deleteAccessKeyResponse' smart constructor.
-data DeleteAccessKeyResponse =
+data DeleteAccessKeyResponse a =
     DeleteAccessKeyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAccessKeyResponse' with the minimum fields required to make a request.
 --
 deleteAccessKeyResponse
-    :: DeleteAccessKeyResponse
+    :: DeleteAccessKeyResponse (a)
 deleteAccessKeyResponse = DeleteAccessKeyResponse'
 
 instance NFData DeleteAccessKeyResponse

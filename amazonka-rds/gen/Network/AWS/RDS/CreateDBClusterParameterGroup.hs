@@ -151,7 +151,7 @@ instance ToQuery CreateDBClusterParameterGroup where
                "Description" =: _cdcpgDescription]
 
 -- | /See:/ 'createDBClusterParameterGroupResponse' smart constructor.
-data CreateDBClusterParameterGroupResponse = CreateDBClusterParameterGroupResponse'
+data CreateDBClusterParameterGroupResponse a = CreateDBClusterParameterGroupResponse'
     { _cdbcpgrsDBClusterParameterGroup :: !(Maybe DBClusterParameterGroup)
     , _cdbcpgrsResponseStatus          :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -165,7 +165,7 @@ data CreateDBClusterParameterGroupResponse = CreateDBClusterParameterGroupRespon
 -- * 'cdbcpgrsResponseStatus'
 createDBClusterParameterGroupResponse
     :: Int -- ^ 'cdbcpgrsResponseStatus'
-    -> CreateDBClusterParameterGroupResponse
+    -> CreateDBClusterParameterGroupResponse (a)
 createDBClusterParameterGroupResponse pResponseStatus_ =
     CreateDBClusterParameterGroupResponse'
     { _cdbcpgrsDBClusterParameterGroup = Nothing
@@ -173,11 +173,11 @@ createDBClusterParameterGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdbcpgrsDBClusterParameterGroup :: Lens' CreateDBClusterParameterGroupResponse (Maybe DBClusterParameterGroup)
+cdbcpgrsDBClusterParameterGroup :: Lens' (CreateDBClusterParameterGroupResponse (a)) (Maybe DBClusterParameterGroup)
 cdbcpgrsDBClusterParameterGroup = lens _cdbcpgrsDBClusterParameterGroup (\ s a -> s{_cdbcpgrsDBClusterParameterGroup = a});
 
 -- | The response status code.
-cdbcpgrsResponseStatus :: Lens' CreateDBClusterParameterGroupResponse Int
+cdbcpgrsResponseStatus :: Lens' (CreateDBClusterParameterGroupResponse (a)) Int
 cdbcpgrsResponseStatus = lens _cdbcpgrsResponseStatus (\ s a -> s{_cdbcpgrsResponseStatus = a});
 
 instance NFData CreateDBClusterParameterGroupResponse

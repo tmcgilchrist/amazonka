@@ -164,7 +164,7 @@ instance ToQuery DescribeOptionGroups where
 -- | List of option groups.
 --
 -- /See:/ 'describeOptionGroupsResponse' smart constructor.
-data DescribeOptionGroupsResponse = DescribeOptionGroupsResponse'
+data DescribeOptionGroupsResponse a = DescribeOptionGroupsResponse'
     { _dogrsMarker           :: !(Maybe Text)
     , _dogrsOptionGroupsList :: !(Maybe [OptionGroup])
     , _dogrsResponseStatus   :: !Int
@@ -181,7 +181,7 @@ data DescribeOptionGroupsResponse = DescribeOptionGroupsResponse'
 -- * 'dogrsResponseStatus'
 describeOptionGroupsResponse
     :: Int -- ^ 'dogrsResponseStatus'
-    -> DescribeOptionGroupsResponse
+    -> DescribeOptionGroupsResponse (a)
 describeOptionGroupsResponse pResponseStatus_ =
     DescribeOptionGroupsResponse'
     { _dogrsMarker = Nothing
@@ -190,15 +190,15 @@ describeOptionGroupsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-dogrsMarker :: Lens' DescribeOptionGroupsResponse (Maybe Text)
+dogrsMarker :: Lens' (DescribeOptionGroupsResponse (a)) (Maybe Text)
 dogrsMarker = lens _dogrsMarker (\ s a -> s{_dogrsMarker = a});
 
 -- | List of option groups.
-dogrsOptionGroupsList :: Lens' DescribeOptionGroupsResponse [OptionGroup]
+dogrsOptionGroupsList :: Lens' (DescribeOptionGroupsResponse (a)) [OptionGroup]
 dogrsOptionGroupsList = lens _dogrsOptionGroupsList (\ s a -> s{_dogrsOptionGroupsList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dogrsResponseStatus :: Lens' DescribeOptionGroupsResponse Int
+dogrsResponseStatus :: Lens' (DescribeOptionGroupsResponse (a)) Int
 dogrsResponseStatus = lens _dogrsResponseStatus (\ s a -> s{_dogrsResponseStatus = a});
 
 instance NFData DescribeOptionGroupsResponse

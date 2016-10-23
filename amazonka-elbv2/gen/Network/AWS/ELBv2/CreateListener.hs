@@ -154,7 +154,7 @@ instance ToQuery CreateListener where
 -- | Contains the output of CreateListener.
 --
 -- /See:/ 'createListenerResponse' smart constructor.
-data CreateListenerResponse = CreateListenerResponse'
+data CreateListenerResponse a = CreateListenerResponse'
     { _clrsListeners      :: !(Maybe [Listener])
     , _clrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -168,7 +168,7 @@ data CreateListenerResponse = CreateListenerResponse'
 -- * 'clrsResponseStatus'
 createListenerResponse
     :: Int -- ^ 'clrsResponseStatus'
-    -> CreateListenerResponse
+    -> CreateListenerResponse (a)
 createListenerResponse pResponseStatus_ =
     CreateListenerResponse'
     { _clrsListeners = Nothing
@@ -176,11 +176,11 @@ createListenerResponse pResponseStatus_ =
     }
 
 -- | Information about the listener.
-clrsListeners :: Lens' CreateListenerResponse [Listener]
+clrsListeners :: Lens' (CreateListenerResponse (a)) [Listener]
 clrsListeners = lens _clrsListeners (\ s a -> s{_clrsListeners = a}) . _Default . _Coerce;
 
 -- | The response status code.
-clrsResponseStatus :: Lens' CreateListenerResponse Int
+clrsResponseStatus :: Lens' (CreateListenerResponse (a)) Int
 clrsResponseStatus = lens _clrsResponseStatus (\ s a -> s{_clrsResponseStatus = a});
 
 instance NFData CreateListenerResponse

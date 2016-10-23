@@ -96,7 +96,7 @@ instance ToQuery CancelJob where
         toQuery = const mempty
 
 -- | /See:/ 'cancelJobResponse' smart constructor.
-newtype CancelJobResponse = CancelJobResponse'
+newtype CancelJobResponse a = CancelJobResponse'
     { _crsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -107,14 +107,14 @@ newtype CancelJobResponse = CancelJobResponse'
 -- * 'crsResponseStatus'
 cancelJobResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CancelJobResponse
+    -> CancelJobResponse (a)
 cancelJobResponse pResponseStatus_ =
     CancelJobResponse'
     { _crsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-crsResponseStatus :: Lens' CancelJobResponse Int
+crsResponseStatus :: Lens' (CancelJobResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CancelJobResponse

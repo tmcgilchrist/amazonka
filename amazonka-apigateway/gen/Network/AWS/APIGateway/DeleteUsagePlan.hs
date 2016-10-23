@@ -86,14 +86,14 @@ instance ToQuery DeleteUsagePlan where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUsagePlanResponse' smart constructor.
-data DeleteUsagePlanResponse =
+data DeleteUsagePlanResponse a =
     DeleteUsagePlanResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteUsagePlanResponse' with the minimum fields required to make a request.
 --
 deleteUsagePlanResponse
-    :: DeleteUsagePlanResponse
+    :: DeleteUsagePlanResponse (a)
 deleteUsagePlanResponse = DeleteUsagePlanResponse'
 
 instance NFData DeleteUsagePlanResponse

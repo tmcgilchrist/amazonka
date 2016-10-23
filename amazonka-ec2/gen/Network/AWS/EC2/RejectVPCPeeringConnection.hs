@@ -108,7 +108,7 @@ instance ToQuery RejectVPCPeeringConnection where
 -- | Contains the output of RejectVpcPeeringConnection.
 --
 -- /See:/ 'rejectVPCPeeringConnectionResponse' smart constructor.
-data RejectVPCPeeringConnectionResponse = RejectVPCPeeringConnectionResponse'
+data RejectVPCPeeringConnectionResponse a = RejectVPCPeeringConnectionResponse'
     { _rvpcrsReturn         :: !(Maybe Bool)
     , _rvpcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -122,7 +122,7 @@ data RejectVPCPeeringConnectionResponse = RejectVPCPeeringConnectionResponse'
 -- * 'rvpcrsResponseStatus'
 rejectVPCPeeringConnectionResponse
     :: Int -- ^ 'rvpcrsResponseStatus'
-    -> RejectVPCPeeringConnectionResponse
+    -> RejectVPCPeeringConnectionResponse (a)
 rejectVPCPeeringConnectionResponse pResponseStatus_ =
     RejectVPCPeeringConnectionResponse'
     { _rvpcrsReturn = Nothing
@@ -130,11 +130,11 @@ rejectVPCPeeringConnectionResponse pResponseStatus_ =
     }
 
 -- | Returns 'true' if the request succeeds; otherwise, it returns an error.
-rvpcrsReturn :: Lens' RejectVPCPeeringConnectionResponse (Maybe Bool)
+rvpcrsReturn :: Lens' (RejectVPCPeeringConnectionResponse (a)) (Maybe Bool)
 rvpcrsReturn = lens _rvpcrsReturn (\ s a -> s{_rvpcrsReturn = a});
 
 -- | The response status code.
-rvpcrsResponseStatus :: Lens' RejectVPCPeeringConnectionResponse Int
+rvpcrsResponseStatus :: Lens' (RejectVPCPeeringConnectionResponse (a)) Int
 rvpcrsResponseStatus = lens _rvpcrsResponseStatus (\ s a -> s{_rvpcrsResponseStatus = a});
 
 instance NFData RejectVPCPeeringConnectionResponse

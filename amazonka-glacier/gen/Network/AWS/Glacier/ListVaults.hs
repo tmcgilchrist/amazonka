@@ -130,7 +130,7 @@ instance ToQuery ListVaults where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'listVaultsResponse' smart constructor.
-data ListVaultsResponse = ListVaultsResponse'
+data ListVaultsResponse a = ListVaultsResponse'
     { _lvrsMarker         :: !(Maybe Text)
     , _lvrsVaultList      :: !(Maybe [DescribeVaultOutput])
     , _lvrsResponseStatus :: !Int
@@ -147,7 +147,7 @@ data ListVaultsResponse = ListVaultsResponse'
 -- * 'lvrsResponseStatus'
 listVaultsResponse
     :: Int -- ^ 'lvrsResponseStatus'
-    -> ListVaultsResponse
+    -> ListVaultsResponse (a)
 listVaultsResponse pResponseStatus_ =
     ListVaultsResponse'
     { _lvrsMarker = Nothing
@@ -156,15 +156,15 @@ listVaultsResponse pResponseStatus_ =
     }
 
 -- | The vault ARN at which to continue pagination of the results. You use the marker in another List Vaults request to obtain more vaults in the list.
-lvrsMarker :: Lens' ListVaultsResponse (Maybe Text)
+lvrsMarker :: Lens' (ListVaultsResponse (a)) (Maybe Text)
 lvrsMarker = lens _lvrsMarker (\ s a -> s{_lvrsMarker = a});
 
 -- | List of vaults.
-lvrsVaultList :: Lens' ListVaultsResponse [DescribeVaultOutput]
+lvrsVaultList :: Lens' (ListVaultsResponse (a)) [DescribeVaultOutput]
 lvrsVaultList = lens _lvrsVaultList (\ s a -> s{_lvrsVaultList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lvrsResponseStatus :: Lens' ListVaultsResponse Int
+lvrsResponseStatus :: Lens' (ListVaultsResponse (a)) Int
 lvrsResponseStatus = lens _lvrsResponseStatus (\ s a -> s{_lvrsResponseStatus = a});
 
 instance NFData ListVaultsResponse

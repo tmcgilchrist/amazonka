@@ -119,7 +119,7 @@ instance ToQuery CreateRepository where
 -- | Represents the output of a create repository operation.
 --
 -- /See:/ 'createRepositoryResponse' smart constructor.
-data CreateRepositoryResponse = CreateRepositoryResponse'
+data CreateRepositoryResponse a = CreateRepositoryResponse'
     { _crrsRepositoryMetadata :: !(Maybe RepositoryMetadata)
     , _crrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data CreateRepositoryResponse = CreateRepositoryResponse'
 -- * 'crrsResponseStatus'
 createRepositoryResponse
     :: Int -- ^ 'crrsResponseStatus'
-    -> CreateRepositoryResponse
+    -> CreateRepositoryResponse (a)
 createRepositoryResponse pResponseStatus_ =
     CreateRepositoryResponse'
     { _crrsRepositoryMetadata = Nothing
@@ -141,11 +141,11 @@ createRepositoryResponse pResponseStatus_ =
     }
 
 -- | Information about the newly created repository.
-crrsRepositoryMetadata :: Lens' CreateRepositoryResponse (Maybe RepositoryMetadata)
+crrsRepositoryMetadata :: Lens' (CreateRepositoryResponse (a)) (Maybe RepositoryMetadata)
 crrsRepositoryMetadata = lens _crrsRepositoryMetadata (\ s a -> s{_crrsRepositoryMetadata = a});
 
 -- | The response status code.
-crrsResponseStatus :: Lens' CreateRepositoryResponse Int
+crrsResponseStatus :: Lens' (CreateRepositoryResponse (a)) Int
 crrsResponseStatus = lens _crrsResponseStatus (\ s a -> s{_crrsResponseStatus = a});
 
 instance NFData CreateRepositoryResponse

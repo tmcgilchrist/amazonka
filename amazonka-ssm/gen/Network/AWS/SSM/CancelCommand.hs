@@ -111,7 +111,7 @@ instance ToQuery CancelCommand where
 -- | Whether or not the command was successfully canceled. There is no guarantee that a request can be canceled.
 --
 -- /See:/ 'cancelCommandResponse' smart constructor.
-newtype CancelCommandResponse = CancelCommandResponse'
+newtype CancelCommandResponse a = CancelCommandResponse'
     { _ccrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -122,14 +122,14 @@ newtype CancelCommandResponse = CancelCommandResponse'
 -- * 'ccrsResponseStatus'
 cancelCommandResponse
     :: Int -- ^ 'ccrsResponseStatus'
-    -> CancelCommandResponse
+    -> CancelCommandResponse (a)
 cancelCommandResponse pResponseStatus_ =
     CancelCommandResponse'
     { _ccrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ccrsResponseStatus :: Lens' CancelCommandResponse Int
+ccrsResponseStatus :: Lens' (CancelCommandResponse (a)) Int
 ccrsResponseStatus = lens _ccrsResponseStatus (\ s a -> s{_ccrsResponseStatus = a});
 
 instance NFData CancelCommandResponse

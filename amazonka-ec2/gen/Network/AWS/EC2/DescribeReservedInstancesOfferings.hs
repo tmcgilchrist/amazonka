@@ -279,7 +279,7 @@ instance ToQuery DescribeReservedInstancesOfferings
 -- | Contains the output of DescribeReservedInstancesOfferings.
 --
 -- /See:/ 'describeReservedInstancesOfferingsResponse' smart constructor.
-data DescribeReservedInstancesOfferingsResponse = DescribeReservedInstancesOfferingsResponse'
+data DescribeReservedInstancesOfferingsResponse a = DescribeReservedInstancesOfferingsResponse'
     { _driorsNextToken                  :: !(Maybe Text)
     , _driorsReservedInstancesOfferings :: !(Maybe [ReservedInstancesOffering])
     , _driorsResponseStatus             :: !Int
@@ -296,7 +296,7 @@ data DescribeReservedInstancesOfferingsResponse = DescribeReservedInstancesOffer
 -- * 'driorsResponseStatus'
 describeReservedInstancesOfferingsResponse
     :: Int -- ^ 'driorsResponseStatus'
-    -> DescribeReservedInstancesOfferingsResponse
+    -> DescribeReservedInstancesOfferingsResponse (a)
 describeReservedInstancesOfferingsResponse pResponseStatus_ =
     DescribeReservedInstancesOfferingsResponse'
     { _driorsNextToken = Nothing
@@ -305,15 +305,15 @@ describeReservedInstancesOfferingsResponse pResponseStatus_ =
     }
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-driorsNextToken :: Lens' DescribeReservedInstancesOfferingsResponse (Maybe Text)
+driorsNextToken :: Lens' (DescribeReservedInstancesOfferingsResponse (a)) (Maybe Text)
 driorsNextToken = lens _driorsNextToken (\ s a -> s{_driorsNextToken = a});
 
 -- | A list of Reserved Instances offerings.
-driorsReservedInstancesOfferings :: Lens' DescribeReservedInstancesOfferingsResponse [ReservedInstancesOffering]
+driorsReservedInstancesOfferings :: Lens' (DescribeReservedInstancesOfferingsResponse (a)) [ReservedInstancesOffering]
 driorsReservedInstancesOfferings = lens _driorsReservedInstancesOfferings (\ s a -> s{_driorsReservedInstancesOfferings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-driorsResponseStatus :: Lens' DescribeReservedInstancesOfferingsResponse Int
+driorsResponseStatus :: Lens' (DescribeReservedInstancesOfferingsResponse (a)) Int
 driorsResponseStatus = lens _driorsResponseStatus (\ s a -> s{_driorsResponseStatus = a});
 
 instance NFData

@@ -141,7 +141,7 @@ instance ToQuery GetAPIKeys where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html Use API Keys>
 --
 -- /See:/ 'getAPIKeysResponse' smart constructor.
-data GetAPIKeysResponse = GetAPIKeysResponse'
+data GetAPIKeysResponse a = GetAPIKeysResponse'
     { _gakrsItems          :: !(Maybe [APIKey])
     , _gakrsWarnings       :: !(Maybe [Text])
     , _gakrsPosition       :: !(Maybe Text)
@@ -161,7 +161,7 @@ data GetAPIKeysResponse = GetAPIKeysResponse'
 -- * 'gakrsResponseStatus'
 getAPIKeysResponse
     :: Int -- ^ 'gakrsResponseStatus'
-    -> GetAPIKeysResponse
+    -> GetAPIKeysResponse (a)
 getAPIKeysResponse pResponseStatus_ =
     GetAPIKeysResponse'
     { _gakrsItems = Nothing
@@ -171,19 +171,19 @@ getAPIKeysResponse pResponseStatus_ =
     }
 
 -- | The current page of any < ApiKey> resources in the collection of < ApiKey> resources.
-gakrsItems :: Lens' GetAPIKeysResponse [APIKey]
+gakrsItems :: Lens' (GetAPIKeysResponse (a)) [APIKey]
 gakrsItems = lens _gakrsItems (\ s a -> s{_gakrsItems = a}) . _Default . _Coerce;
 
 -- | A list of warning messages logged during the import of API keys when the 'failOnWarnings' option is set to true.
-gakrsWarnings :: Lens' GetAPIKeysResponse [Text]
+gakrsWarnings :: Lens' (GetAPIKeysResponse (a)) [Text]
 gakrsWarnings = lens _gakrsWarnings (\ s a -> s{_gakrsWarnings = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gakrsPosition :: Lens' GetAPIKeysResponse (Maybe Text)
+gakrsPosition :: Lens' (GetAPIKeysResponse (a)) (Maybe Text)
 gakrsPosition = lens _gakrsPosition (\ s a -> s{_gakrsPosition = a});
 
 -- | The response status code.
-gakrsResponseStatus :: Lens' GetAPIKeysResponse Int
+gakrsResponseStatus :: Lens' (GetAPIKeysResponse (a)) Int
 gakrsResponseStatus = lens _gakrsResponseStatus (\ s a -> s{_gakrsResponseStatus = a});
 
 instance NFData GetAPIKeysResponse

@@ -132,7 +132,7 @@ instance ToQuery
 -- | Contains the output of SetLoadBalancerPoliciesForBackendServer.
 --
 -- /See:/ 'setLoadBalancerPoliciesForBackendServerResponse' smart constructor.
-newtype SetLoadBalancerPoliciesForBackendServerResponse = SetLoadBalancerPoliciesForBackendServerResponse'
+newtype SetLoadBalancerPoliciesForBackendServerResponse a = SetLoadBalancerPoliciesForBackendServerResponse'
     { _slbpfbsrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -143,14 +143,14 @@ newtype SetLoadBalancerPoliciesForBackendServerResponse = SetLoadBalancerPolicie
 -- * 'slbpfbsrsResponseStatus'
 setLoadBalancerPoliciesForBackendServerResponse
     :: Int -- ^ 'slbpfbsrsResponseStatus'
-    -> SetLoadBalancerPoliciesForBackendServerResponse
+    -> SetLoadBalancerPoliciesForBackendServerResponse (a)
 setLoadBalancerPoliciesForBackendServerResponse pResponseStatus_ =
     SetLoadBalancerPoliciesForBackendServerResponse'
     { _slbpfbsrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-slbpfbsrsResponseStatus :: Lens' SetLoadBalancerPoliciesForBackendServerResponse Int
+slbpfbsrsResponseStatus :: Lens' (SetLoadBalancerPoliciesForBackendServerResponse (a)) Int
 slbpfbsrsResponseStatus = lens _slbpfbsrsResponseStatus (\ s a -> s{_slbpfbsrsResponseStatus = a});
 
 instance NFData

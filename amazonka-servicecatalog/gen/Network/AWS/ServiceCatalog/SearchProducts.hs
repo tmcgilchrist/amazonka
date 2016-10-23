@@ -164,7 +164,7 @@ instance ToQuery SearchProducts where
         toQuery = const mempty
 
 -- | /See:/ 'searchProductsResponse' smart constructor.
-data SearchProductsResponse = SearchProductsResponse'
+data SearchProductsResponse a = SearchProductsResponse'
     { _sprsNextPageToken           :: !(Maybe Text)
     , _sprsProductViewAggregations :: !(Maybe (Map Text [ProductViewAggregationValue]))
     , _sprsProductViewSummaries    :: !(Maybe [ProductViewSummary])
@@ -184,7 +184,7 @@ data SearchProductsResponse = SearchProductsResponse'
 -- * 'sprsResponseStatus'
 searchProductsResponse
     :: Int -- ^ 'sprsResponseStatus'
-    -> SearchProductsResponse
+    -> SearchProductsResponse (a)
 searchProductsResponse pResponseStatus_ =
     SearchProductsResponse'
     { _sprsNextPageToken = Nothing
@@ -194,19 +194,19 @@ searchProductsResponse pResponseStatus_ =
     }
 
 -- | The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
-sprsNextPageToken :: Lens' SearchProductsResponse (Maybe Text)
+sprsNextPageToken :: Lens' (SearchProductsResponse (a)) (Maybe Text)
 sprsNextPageToken = lens _sprsNextPageToken (\ s a -> s{_sprsNextPageToken = a});
 
 -- | A list of the product view aggregation value objects.
-sprsProductViewAggregations :: Lens' SearchProductsResponse (HashMap Text [ProductViewAggregationValue])
+sprsProductViewAggregations :: Lens' (SearchProductsResponse (a)) (HashMap Text [ProductViewAggregationValue])
 sprsProductViewAggregations = lens _sprsProductViewAggregations (\ s a -> s{_sprsProductViewAggregations = a}) . _Default . _Map;
 
 -- | A list of the product view summary objects.
-sprsProductViewSummaries :: Lens' SearchProductsResponse [ProductViewSummary]
+sprsProductViewSummaries :: Lens' (SearchProductsResponse (a)) [ProductViewSummary]
 sprsProductViewSummaries = lens _sprsProductViewSummaries (\ s a -> s{_sprsProductViewSummaries = a}) . _Default . _Coerce;
 
 -- | The response status code.
-sprsResponseStatus :: Lens' SearchProductsResponse Int
+sprsResponseStatus :: Lens' (SearchProductsResponse (a)) Int
 sprsResponseStatus = lens _sprsResponseStatus (\ s a -> s{_sprsResponseStatus = a});
 
 instance NFData SearchProductsResponse

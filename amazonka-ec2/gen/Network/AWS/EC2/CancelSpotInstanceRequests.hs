@@ -111,7 +111,7 @@ instance ToQuery CancelSpotInstanceRequests where
 -- | Contains the output of CancelSpotInstanceRequests.
 --
 -- /See:/ 'cancelSpotInstanceRequestsResponse' smart constructor.
-data CancelSpotInstanceRequestsResponse = CancelSpotInstanceRequestsResponse'
+data CancelSpotInstanceRequestsResponse a = CancelSpotInstanceRequestsResponse'
     { _csirrsCancelledSpotInstanceRequests :: !(Maybe [CancelledSpotInstanceRequest])
     , _csirrsResponseStatus                :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -125,7 +125,7 @@ data CancelSpotInstanceRequestsResponse = CancelSpotInstanceRequestsResponse'
 -- * 'csirrsResponseStatus'
 cancelSpotInstanceRequestsResponse
     :: Int -- ^ 'csirrsResponseStatus'
-    -> CancelSpotInstanceRequestsResponse
+    -> CancelSpotInstanceRequestsResponse (a)
 cancelSpotInstanceRequestsResponse pResponseStatus_ =
     CancelSpotInstanceRequestsResponse'
     { _csirrsCancelledSpotInstanceRequests = Nothing
@@ -133,11 +133,11 @@ cancelSpotInstanceRequestsResponse pResponseStatus_ =
     }
 
 -- | One or more Spot instance requests.
-csirrsCancelledSpotInstanceRequests :: Lens' CancelSpotInstanceRequestsResponse [CancelledSpotInstanceRequest]
+csirrsCancelledSpotInstanceRequests :: Lens' (CancelSpotInstanceRequestsResponse (a)) [CancelledSpotInstanceRequest]
 csirrsCancelledSpotInstanceRequests = lens _csirrsCancelledSpotInstanceRequests (\ s a -> s{_csirrsCancelledSpotInstanceRequests = a}) . _Default . _Coerce;
 
 -- | The response status code.
-csirrsResponseStatus :: Lens' CancelSpotInstanceRequestsResponse Int
+csirrsResponseStatus :: Lens' (CancelSpotInstanceRequestsResponse (a)) Int
 csirrsResponseStatus = lens _csirrsResponseStatus (\ s a -> s{_csirrsResponseStatus = a});
 
 instance NFData CancelSpotInstanceRequestsResponse

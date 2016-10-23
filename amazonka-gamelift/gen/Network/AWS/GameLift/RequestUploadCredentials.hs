@@ -110,7 +110,7 @@ instance ToQuery RequestUploadCredentials where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'requestUploadCredentialsResponse' smart constructor.
-data RequestUploadCredentialsResponse = RequestUploadCredentialsResponse'
+data RequestUploadCredentialsResponse a = RequestUploadCredentialsResponse'
     { _rucrsStorageLocation   :: !(Maybe S3Location)
     , _rucrsUploadCredentials :: !(Maybe (Sensitive AWSCredentials))
     , _rucrsResponseStatus    :: !Int
@@ -127,7 +127,7 @@ data RequestUploadCredentialsResponse = RequestUploadCredentialsResponse'
 -- * 'rucrsResponseStatus'
 requestUploadCredentialsResponse
     :: Int -- ^ 'rucrsResponseStatus'
-    -> RequestUploadCredentialsResponse
+    -> RequestUploadCredentialsResponse (a)
 requestUploadCredentialsResponse pResponseStatus_ =
     RequestUploadCredentialsResponse'
     { _rucrsStorageLocation = Nothing
@@ -136,15 +136,15 @@ requestUploadCredentialsResponse pResponseStatus_ =
     }
 
 -- | Amazon S3 path and key, identifying where the game build files are stored.
-rucrsStorageLocation :: Lens' RequestUploadCredentialsResponse (Maybe S3Location)
+rucrsStorageLocation :: Lens' (RequestUploadCredentialsResponse (a)) (Maybe S3Location)
 rucrsStorageLocation = lens _rucrsStorageLocation (\ s a -> s{_rucrsStorageLocation = a});
 
 -- | AWS credentials required when uploading a game build to the storage location. These credentials have a limited lifespan and are valid only for the build they were issued for.
-rucrsUploadCredentials :: Lens' RequestUploadCredentialsResponse (Maybe AWSCredentials)
+rucrsUploadCredentials :: Lens' (RequestUploadCredentialsResponse (a)) (Maybe AWSCredentials)
 rucrsUploadCredentials = lens _rucrsUploadCredentials (\ s a -> s{_rucrsUploadCredentials = a}) . mapping _Sensitive;
 
 -- | The response status code.
-rucrsResponseStatus :: Lens' RequestUploadCredentialsResponse Int
+rucrsResponseStatus :: Lens' (RequestUploadCredentialsResponse (a)) Int
 rucrsResponseStatus = lens _rucrsResponseStatus (\ s a -> s{_rucrsResponseStatus = a});
 
 instance NFData RequestUploadCredentialsResponse

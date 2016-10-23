@@ -105,7 +105,7 @@ instance ToQuery DescribeCachediSCSIVolumes where
 -- | A JSON object containing the following fields:
 --
 -- /See:/ 'describeCachediSCSIVolumesResponse' smart constructor.
-data DescribeCachediSCSIVolumesResponse = DescribeCachediSCSIVolumesResponse'
+data DescribeCachediSCSIVolumesResponse a = DescribeCachediSCSIVolumesResponse'
     { _dcscsivrsCachediSCSIVolumes :: !(Maybe [CachediSCSIVolume])
     , _dcscsivrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data DescribeCachediSCSIVolumesResponse = DescribeCachediSCSIVolumesResponse'
 -- * 'dcscsivrsResponseStatus'
 describeCachediSCSIVolumesResponse
     :: Int -- ^ 'dcscsivrsResponseStatus'
-    -> DescribeCachediSCSIVolumesResponse
+    -> DescribeCachediSCSIVolumesResponse (a)
 describeCachediSCSIVolumesResponse pResponseStatus_ =
     DescribeCachediSCSIVolumesResponse'
     { _dcscsivrsCachediSCSIVolumes = Nothing
@@ -127,11 +127,11 @@ describeCachediSCSIVolumesResponse pResponseStatus_ =
     }
 
 -- | An array of objects where each object contains metadata about one cached volume.
-dcscsivrsCachediSCSIVolumes :: Lens' DescribeCachediSCSIVolumesResponse [CachediSCSIVolume]
+dcscsivrsCachediSCSIVolumes :: Lens' (DescribeCachediSCSIVolumesResponse (a)) [CachediSCSIVolume]
 dcscsivrsCachediSCSIVolumes = lens _dcscsivrsCachediSCSIVolumes (\ s a -> s{_dcscsivrsCachediSCSIVolumes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcscsivrsResponseStatus :: Lens' DescribeCachediSCSIVolumesResponse Int
+dcscsivrsResponseStatus :: Lens' (DescribeCachediSCSIVolumesResponse (a)) Int
 dcscsivrsResponseStatus = lens _dcscsivrsResponseStatus (\ s a -> s{_dcscsivrsResponseStatus = a});
 
 instance NFData DescribeCachediSCSIVolumesResponse

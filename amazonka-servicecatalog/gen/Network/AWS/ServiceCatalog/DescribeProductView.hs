@@ -124,7 +124,7 @@ instance ToQuery DescribeProductView where
         toQuery = const mempty
 
 -- | /See:/ 'describeProductViewResponse' smart constructor.
-data DescribeProductViewResponse = DescribeProductViewResponse'
+data DescribeProductViewResponse a = DescribeProductViewResponse'
     { _dpvrsProductViewSummary    :: !(Maybe ProductViewSummary)
     , _dpvrsProvisioningArtifacts :: !(Maybe [ProvisioningArtifact])
     , _dpvrsResponseStatus        :: !Int
@@ -141,7 +141,7 @@ data DescribeProductViewResponse = DescribeProductViewResponse'
 -- * 'dpvrsResponseStatus'
 describeProductViewResponse
     :: Int -- ^ 'dpvrsResponseStatus'
-    -> DescribeProductViewResponse
+    -> DescribeProductViewResponse (a)
 describeProductViewResponse pResponseStatus_ =
     DescribeProductViewResponse'
     { _dpvrsProductViewSummary = Nothing
@@ -150,15 +150,15 @@ describeProductViewResponse pResponseStatus_ =
     }
 
 -- | The summary metadata about the specified product.
-dpvrsProductViewSummary :: Lens' DescribeProductViewResponse (Maybe ProductViewSummary)
+dpvrsProductViewSummary :: Lens' (DescribeProductViewResponse (a)) (Maybe ProductViewSummary)
 dpvrsProductViewSummary = lens _dpvrsProductViewSummary (\ s a -> s{_dpvrsProductViewSummary = a});
 
 -- | A list of provisioning artifact objects for the specified product. The 'ProvisioningArtifacts' represent the ways in which the specified product can be provisioned.
-dpvrsProvisioningArtifacts :: Lens' DescribeProductViewResponse [ProvisioningArtifact]
+dpvrsProvisioningArtifacts :: Lens' (DescribeProductViewResponse (a)) [ProvisioningArtifact]
 dpvrsProvisioningArtifacts = lens _dpvrsProvisioningArtifacts (\ s a -> s{_dpvrsProvisioningArtifacts = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dpvrsResponseStatus :: Lens' DescribeProductViewResponse Int
+dpvrsResponseStatus :: Lens' (DescribeProductViewResponse (a)) Int
 dpvrsResponseStatus = lens _dpvrsResponseStatus (\ s a -> s{_dpvrsResponseStatus = a});
 
 instance NFData DescribeProductViewResponse

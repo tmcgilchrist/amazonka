@@ -105,7 +105,7 @@ instance ToQuery DeleteDataSource where
 -- | Represents the output of a 'DeleteDataSource' operation.
 --
 -- /See:/ 'deleteDataSourceResponse' smart constructor.
-data DeleteDataSourceResponse = DeleteDataSourceResponse'
+data DeleteDataSourceResponse a = DeleteDataSourceResponse'
     { _ddsrsDataSourceId   :: !(Maybe Text)
     , _ddsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data DeleteDataSourceResponse = DeleteDataSourceResponse'
 -- * 'ddsrsResponseStatus'
 deleteDataSourceResponse
     :: Int -- ^ 'ddsrsResponseStatus'
-    -> DeleteDataSourceResponse
+    -> DeleteDataSourceResponse (a)
 deleteDataSourceResponse pResponseStatus_ =
     DeleteDataSourceResponse'
     { _ddsrsDataSourceId = Nothing
@@ -127,11 +127,11 @@ deleteDataSourceResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the 'DataSource'. This value should be identical to the value of the 'DataSourceID' in the request.
-ddsrsDataSourceId :: Lens' DeleteDataSourceResponse (Maybe Text)
+ddsrsDataSourceId :: Lens' (DeleteDataSourceResponse (a)) (Maybe Text)
 ddsrsDataSourceId = lens _ddsrsDataSourceId (\ s a -> s{_ddsrsDataSourceId = a});
 
 -- | The response status code.
-ddsrsResponseStatus :: Lens' DeleteDataSourceResponse Int
+ddsrsResponseStatus :: Lens' (DeleteDataSourceResponse (a)) Int
 ddsrsResponseStatus = lens _ddsrsResponseStatus (\ s a -> s{_ddsrsResponseStatus = a});
 
 instance NFData DeleteDataSourceResponse

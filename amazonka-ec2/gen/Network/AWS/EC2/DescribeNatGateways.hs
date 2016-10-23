@@ -141,7 +141,7 @@ instance ToQuery DescribeNatGateways where
 -- | Contains the output of DescribeNatGateways.
 --
 -- /See:/ 'describeNatGatewaysResponse' smart constructor.
-data DescribeNatGatewaysResponse = DescribeNatGatewaysResponse'
+data DescribeNatGatewaysResponse a = DescribeNatGatewaysResponse'
     { _dngrsNatGateways    :: !(Maybe [NatGateway])
     , _dngrsNextToken      :: !(Maybe Text)
     , _dngrsResponseStatus :: !Int
@@ -158,7 +158,7 @@ data DescribeNatGatewaysResponse = DescribeNatGatewaysResponse'
 -- * 'dngrsResponseStatus'
 describeNatGatewaysResponse
     :: Int -- ^ 'dngrsResponseStatus'
-    -> DescribeNatGatewaysResponse
+    -> DescribeNatGatewaysResponse (a)
 describeNatGatewaysResponse pResponseStatus_ =
     DescribeNatGatewaysResponse'
     { _dngrsNatGateways = Nothing
@@ -167,15 +167,15 @@ describeNatGatewaysResponse pResponseStatus_ =
     }
 
 -- | Information about the NAT gateways.
-dngrsNatGateways :: Lens' DescribeNatGatewaysResponse [NatGateway]
+dngrsNatGateways :: Lens' (DescribeNatGatewaysResponse (a)) [NatGateway]
 dngrsNatGateways = lens _dngrsNatGateways (\ s a -> s{_dngrsNatGateways = a}) . _Default . _Coerce;
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dngrsNextToken :: Lens' DescribeNatGatewaysResponse (Maybe Text)
+dngrsNextToken :: Lens' (DescribeNatGatewaysResponse (a)) (Maybe Text)
 dngrsNextToken = lens _dngrsNextToken (\ s a -> s{_dngrsNextToken = a});
 
 -- | The response status code.
-dngrsResponseStatus :: Lens' DescribeNatGatewaysResponse Int
+dngrsResponseStatus :: Lens' (DescribeNatGatewaysResponse (a)) Int
 dngrsResponseStatus = lens _dngrsResponseStatus (\ s a -> s{_dngrsResponseStatus = a});
 
 instance NFData DescribeNatGatewaysResponse

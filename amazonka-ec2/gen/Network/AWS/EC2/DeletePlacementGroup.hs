@@ -96,14 +96,14 @@ instance ToQuery DeletePlacementGroup where
                "DryRun" =: _dpgDryRun, "GroupName" =: _dpgGroupName]
 
 -- | /See:/ 'deletePlacementGroupResponse' smart constructor.
-data DeletePlacementGroupResponse =
+data DeletePlacementGroupResponse a =
     DeletePlacementGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeletePlacementGroupResponse' with the minimum fields required to make a request.
 --
 deletePlacementGroupResponse
-    :: DeletePlacementGroupResponse
+    :: DeletePlacementGroupResponse (a)
 deletePlacementGroupResponse = DeletePlacementGroupResponse'
 
 instance NFData DeletePlacementGroupResponse

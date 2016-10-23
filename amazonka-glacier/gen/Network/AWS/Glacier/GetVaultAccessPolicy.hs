@@ -105,7 +105,7 @@ instance ToQuery GetVaultAccessPolicy where
 -- | Output for GetVaultAccessPolicy.
 --
 -- /See:/ 'getVaultAccessPolicyResponse' smart constructor.
-data GetVaultAccessPolicyResponse = GetVaultAccessPolicyResponse'
+data GetVaultAccessPolicyResponse a = GetVaultAccessPolicyResponse'
     { _gvaprsPolicy         :: !(Maybe VaultAccessPolicy)
     , _gvaprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data GetVaultAccessPolicyResponse = GetVaultAccessPolicyResponse'
 -- * 'gvaprsResponseStatus'
 getVaultAccessPolicyResponse
     :: Int -- ^ 'gvaprsResponseStatus'
-    -> GetVaultAccessPolicyResponse
+    -> GetVaultAccessPolicyResponse (a)
 getVaultAccessPolicyResponse pResponseStatus_ =
     GetVaultAccessPolicyResponse'
     { _gvaprsPolicy = Nothing
@@ -127,11 +127,11 @@ getVaultAccessPolicyResponse pResponseStatus_ =
     }
 
 -- | Contains the returned vault access policy as a JSON string.
-gvaprsPolicy :: Lens' GetVaultAccessPolicyResponse (Maybe VaultAccessPolicy)
+gvaprsPolicy :: Lens' (GetVaultAccessPolicyResponse (a)) (Maybe VaultAccessPolicy)
 gvaprsPolicy = lens _gvaprsPolicy (\ s a -> s{_gvaprsPolicy = a});
 
 -- | The response status code.
-gvaprsResponseStatus :: Lens' GetVaultAccessPolicyResponse Int
+gvaprsResponseStatus :: Lens' (GetVaultAccessPolicyResponse (a)) Int
 gvaprsResponseStatus = lens _gvaprsResponseStatus (\ s a -> s{_gvaprsResponseStatus = a});
 
 instance NFData GetVaultAccessPolicyResponse

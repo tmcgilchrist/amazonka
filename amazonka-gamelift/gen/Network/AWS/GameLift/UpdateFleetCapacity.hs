@@ -138,7 +138,7 @@ instance ToQuery UpdateFleetCapacity where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'updateFleetCapacityResponse' smart constructor.
-data UpdateFleetCapacityResponse = UpdateFleetCapacityResponse'
+data UpdateFleetCapacityResponse a = UpdateFleetCapacityResponse'
     { _ufcrsFleetId        :: !(Maybe Text)
     , _ufcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -152,7 +152,7 @@ data UpdateFleetCapacityResponse = UpdateFleetCapacityResponse'
 -- * 'ufcrsResponseStatus'
 updateFleetCapacityResponse
     :: Int -- ^ 'ufcrsResponseStatus'
-    -> UpdateFleetCapacityResponse
+    -> UpdateFleetCapacityResponse (a)
 updateFleetCapacityResponse pResponseStatus_ =
     UpdateFleetCapacityResponse'
     { _ufcrsFleetId = Nothing
@@ -160,11 +160,11 @@ updateFleetCapacityResponse pResponseStatus_ =
     }
 
 -- | Unique identifier for the updated fleet.
-ufcrsFleetId :: Lens' UpdateFleetCapacityResponse (Maybe Text)
+ufcrsFleetId :: Lens' (UpdateFleetCapacityResponse (a)) (Maybe Text)
 ufcrsFleetId = lens _ufcrsFleetId (\ s a -> s{_ufcrsFleetId = a});
 
 -- | The response status code.
-ufcrsResponseStatus :: Lens' UpdateFleetCapacityResponse Int
+ufcrsResponseStatus :: Lens' (UpdateFleetCapacityResponse (a)) Int
 ufcrsResponseStatus = lens _ufcrsResponseStatus (\ s a -> s{_ufcrsResponseStatus = a});
 
 instance NFData UpdateFleetCapacityResponse

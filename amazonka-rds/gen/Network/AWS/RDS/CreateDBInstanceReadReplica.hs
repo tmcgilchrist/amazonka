@@ -306,7 +306,7 @@ instance ToQuery CreateDBInstanceReadReplica where
                  _cdirrSourceDBInstanceIdentifier]
 
 -- | /See:/ 'createDBInstanceReadReplicaResponse' smart constructor.
-data CreateDBInstanceReadReplicaResponse = CreateDBInstanceReadReplicaResponse'
+data CreateDBInstanceReadReplicaResponse a = CreateDBInstanceReadReplicaResponse'
     { _cdirrrsDBInstance     :: !(Maybe DBInstance)
     , _cdirrrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -320,7 +320,7 @@ data CreateDBInstanceReadReplicaResponse = CreateDBInstanceReadReplicaResponse'
 -- * 'cdirrrsResponseStatus'
 createDBInstanceReadReplicaResponse
     :: Int -- ^ 'cdirrrsResponseStatus'
-    -> CreateDBInstanceReadReplicaResponse
+    -> CreateDBInstanceReadReplicaResponse (a)
 createDBInstanceReadReplicaResponse pResponseStatus_ =
     CreateDBInstanceReadReplicaResponse'
     { _cdirrrsDBInstance = Nothing
@@ -328,11 +328,11 @@ createDBInstanceReadReplicaResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdirrrsDBInstance :: Lens' CreateDBInstanceReadReplicaResponse (Maybe DBInstance)
+cdirrrsDBInstance :: Lens' (CreateDBInstanceReadReplicaResponse (a)) (Maybe DBInstance)
 cdirrrsDBInstance = lens _cdirrrsDBInstance (\ s a -> s{_cdirrrsDBInstance = a});
 
 -- | The response status code.
-cdirrrsResponseStatus :: Lens' CreateDBInstanceReadReplicaResponse Int
+cdirrrsResponseStatus :: Lens' (CreateDBInstanceReadReplicaResponse (a)) Int
 cdirrrsResponseStatus = lens _cdirrrsResponseStatus (\ s a -> s{_cdirrrsResponseStatus = a});
 
 instance NFData CreateDBInstanceReadReplicaResponse

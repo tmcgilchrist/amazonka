@@ -215,7 +215,7 @@ instance ToQuery DescribeReservedCacheNodesOfferings
 -- | Represents the output of a /DescribeReservedCacheNodesOfferings/ action.
 --
 -- /See:/ 'describeReservedCacheNodesOfferingsResponse' smart constructor.
-data DescribeReservedCacheNodesOfferingsResponse = DescribeReservedCacheNodesOfferingsResponse'
+data DescribeReservedCacheNodesOfferingsResponse a = DescribeReservedCacheNodesOfferingsResponse'
     { _drcnorsMarker                      :: !(Maybe Text)
     , _drcnorsReservedCacheNodesOfferings :: !(Maybe [ReservedCacheNodesOffering])
     , _drcnorsResponseStatus              :: !Int
@@ -232,7 +232,7 @@ data DescribeReservedCacheNodesOfferingsResponse = DescribeReservedCacheNodesOff
 -- * 'drcnorsResponseStatus'
 describeReservedCacheNodesOfferingsResponse
     :: Int -- ^ 'drcnorsResponseStatus'
-    -> DescribeReservedCacheNodesOfferingsResponse
+    -> DescribeReservedCacheNodesOfferingsResponse (a)
 describeReservedCacheNodesOfferingsResponse pResponseStatus_ =
     DescribeReservedCacheNodesOfferingsResponse'
     { _drcnorsMarker = Nothing
@@ -241,15 +241,15 @@ describeReservedCacheNodesOfferingsResponse pResponseStatus_ =
     }
 
 -- | Provides an identifier to allow retrieval of paginated results.
-drcnorsMarker :: Lens' DescribeReservedCacheNodesOfferingsResponse (Maybe Text)
+drcnorsMarker :: Lens' (DescribeReservedCacheNodesOfferingsResponse (a)) (Maybe Text)
 drcnorsMarker = lens _drcnorsMarker (\ s a -> s{_drcnorsMarker = a});
 
 -- | A list of reserved cache node offerings. Each element in the list contains detailed information about one offering.
-drcnorsReservedCacheNodesOfferings :: Lens' DescribeReservedCacheNodesOfferingsResponse [ReservedCacheNodesOffering]
+drcnorsReservedCacheNodesOfferings :: Lens' (DescribeReservedCacheNodesOfferingsResponse (a)) [ReservedCacheNodesOffering]
 drcnorsReservedCacheNodesOfferings = lens _drcnorsReservedCacheNodesOfferings (\ s a -> s{_drcnorsReservedCacheNodesOfferings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drcnorsResponseStatus :: Lens' DescribeReservedCacheNodesOfferingsResponse Int
+drcnorsResponseStatus :: Lens' (DescribeReservedCacheNodesOfferingsResponse (a)) Int
 drcnorsResponseStatus = lens _drcnorsResponseStatus (\ s a -> s{_drcnorsResponseStatus = a});
 
 instance NFData

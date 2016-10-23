@@ -107,7 +107,7 @@ instance ToQuery DeleteRealtimeEndpoint where
 -- The result contains the 'MLModelId' and the endpoint information for the 'MLModel'.
 --
 -- /See:/ 'deleteRealtimeEndpointResponse' smart constructor.
-data DeleteRealtimeEndpointResponse = DeleteRealtimeEndpointResponse'
+data DeleteRealtimeEndpointResponse a = DeleteRealtimeEndpointResponse'
     { _drersRealtimeEndpointInfo :: !(Maybe RealtimeEndpointInfo)
     , _drersMLModelId            :: !(Maybe Text)
     , _drersResponseStatus       :: !Int
@@ -124,7 +124,7 @@ data DeleteRealtimeEndpointResponse = DeleteRealtimeEndpointResponse'
 -- * 'drersResponseStatus'
 deleteRealtimeEndpointResponse
     :: Int -- ^ 'drersResponseStatus'
-    -> DeleteRealtimeEndpointResponse
+    -> DeleteRealtimeEndpointResponse (a)
 deleteRealtimeEndpointResponse pResponseStatus_ =
     DeleteRealtimeEndpointResponse'
     { _drersRealtimeEndpointInfo = Nothing
@@ -133,15 +133,15 @@ deleteRealtimeEndpointResponse pResponseStatus_ =
     }
 
 -- | The endpoint information of the 'MLModel'
-drersRealtimeEndpointInfo :: Lens' DeleteRealtimeEndpointResponse (Maybe RealtimeEndpointInfo)
+drersRealtimeEndpointInfo :: Lens' (DeleteRealtimeEndpointResponse (a)) (Maybe RealtimeEndpointInfo)
 drersRealtimeEndpointInfo = lens _drersRealtimeEndpointInfo (\ s a -> s{_drersRealtimeEndpointInfo = a});
 
 -- | A user-supplied ID that uniquely identifies the 'MLModel'. This value should be identical to the value of the 'MLModelId' in the request.
-drersMLModelId :: Lens' DeleteRealtimeEndpointResponse (Maybe Text)
+drersMLModelId :: Lens' (DeleteRealtimeEndpointResponse (a)) (Maybe Text)
 drersMLModelId = lens _drersMLModelId (\ s a -> s{_drersMLModelId = a});
 
 -- | The response status code.
-drersResponseStatus :: Lens' DeleteRealtimeEndpointResponse Int
+drersResponseStatus :: Lens' (DeleteRealtimeEndpointResponse (a)) Int
 drersResponseStatus = lens _drersResponseStatus (\ s a -> s{_drersResponseStatus = a});
 
 instance NFData DeleteRealtimeEndpointResponse

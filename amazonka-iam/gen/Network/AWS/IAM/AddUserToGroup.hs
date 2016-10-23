@@ -99,14 +99,14 @@ instance ToQuery AddUserToGroup where
                "UserName" =: _autgUserName]
 
 -- | /See:/ 'addUserToGroupResponse' smart constructor.
-data AddUserToGroupResponse =
+data AddUserToGroupResponse a =
     AddUserToGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddUserToGroupResponse' with the minimum fields required to make a request.
 --
 addUserToGroupResponse
-    :: AddUserToGroupResponse
+    :: AddUserToGroupResponse (a)
 addUserToGroupResponse = AddUserToGroupResponse'
 
 instance NFData AddUserToGroupResponse

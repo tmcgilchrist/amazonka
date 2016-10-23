@@ -93,14 +93,14 @@ instance ToQuery StopStack where
         toQuery = const mempty
 
 -- | /See:/ 'stopStackResponse' smart constructor.
-data StopStackResponse =
+data StopStackResponse a =
     StopStackResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'StopStackResponse' with the minimum fields required to make a request.
 --
 stopStackResponse
-    :: StopStackResponse
+    :: StopStackResponse (a)
 stopStackResponse = StopStackResponse'
 
 instance NFData StopStackResponse

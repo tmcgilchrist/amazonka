@@ -107,7 +107,7 @@ instance ToQuery DeleteLoadBalancerPolicy where
 -- | Contains the output of DeleteLoadBalancerPolicy.
 --
 -- /See:/ 'deleteLoadBalancerPolicyResponse' smart constructor.
-newtype DeleteLoadBalancerPolicyResponse = DeleteLoadBalancerPolicyResponse'
+newtype DeleteLoadBalancerPolicyResponse a = DeleteLoadBalancerPolicyResponse'
     { _delrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -118,14 +118,14 @@ newtype DeleteLoadBalancerPolicyResponse = DeleteLoadBalancerPolicyResponse'
 -- * 'delrsResponseStatus'
 deleteLoadBalancerPolicyResponse
     :: Int -- ^ 'delrsResponseStatus'
-    -> DeleteLoadBalancerPolicyResponse
+    -> DeleteLoadBalancerPolicyResponse (a)
 deleteLoadBalancerPolicyResponse pResponseStatus_ =
     DeleteLoadBalancerPolicyResponse'
     { _delrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-delrsResponseStatus :: Lens' DeleteLoadBalancerPolicyResponse Int
+delrsResponseStatus :: Lens' (DeleteLoadBalancerPolicyResponse (a)) Int
 delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a});
 
 instance NFData DeleteLoadBalancerPolicyResponse

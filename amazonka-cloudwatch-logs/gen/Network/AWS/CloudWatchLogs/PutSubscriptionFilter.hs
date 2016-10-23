@@ -156,14 +156,14 @@ instance ToQuery PutSubscriptionFilter where
         toQuery = const mempty
 
 -- | /See:/ 'putSubscriptionFilterResponse' smart constructor.
-data PutSubscriptionFilterResponse =
+data PutSubscriptionFilterResponse a =
     PutSubscriptionFilterResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutSubscriptionFilterResponse' with the minimum fields required to make a request.
 --
 putSubscriptionFilterResponse
-    :: PutSubscriptionFilterResponse
+    :: PutSubscriptionFilterResponse (a)
 putSubscriptionFilterResponse = PutSubscriptionFilterResponse'
 
 instance NFData PutSubscriptionFilterResponse

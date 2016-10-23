@@ -105,7 +105,7 @@ instance ToQuery BatchGetApplications where
 -- | Represents the output of a batch get applications operation.
 --
 -- /See:/ 'batchGetApplicationsResponse' smart constructor.
-data BatchGetApplicationsResponse = BatchGetApplicationsResponse'
+data BatchGetApplicationsResponse a = BatchGetApplicationsResponse'
     { _bgarsApplicationsInfo :: !(Maybe [ApplicationInfo])
     , _bgarsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data BatchGetApplicationsResponse = BatchGetApplicationsResponse'
 -- * 'bgarsResponseStatus'
 batchGetApplicationsResponse
     :: Int -- ^ 'bgarsResponseStatus'
-    -> BatchGetApplicationsResponse
+    -> BatchGetApplicationsResponse (a)
 batchGetApplicationsResponse pResponseStatus_ =
     BatchGetApplicationsResponse'
     { _bgarsApplicationsInfo = Nothing
@@ -127,11 +127,11 @@ batchGetApplicationsResponse pResponseStatus_ =
     }
 
 -- | Information about the applications.
-bgarsApplicationsInfo :: Lens' BatchGetApplicationsResponse [ApplicationInfo]
+bgarsApplicationsInfo :: Lens' (BatchGetApplicationsResponse (a)) [ApplicationInfo]
 bgarsApplicationsInfo = lens _bgarsApplicationsInfo (\ s a -> s{_bgarsApplicationsInfo = a}) . _Default . _Coerce;
 
 -- | The response status code.
-bgarsResponseStatus :: Lens' BatchGetApplicationsResponse Int
+bgarsResponseStatus :: Lens' (BatchGetApplicationsResponse (a)) Int
 bgarsResponseStatus = lens _bgarsResponseStatus (\ s a -> s{_bgarsResponseStatus = a});
 
 instance NFData BatchGetApplicationsResponse

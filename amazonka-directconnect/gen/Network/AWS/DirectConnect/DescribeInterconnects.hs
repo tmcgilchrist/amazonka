@@ -107,7 +107,7 @@ instance ToQuery DescribeInterconnects where
 -- | A structure containing a list of interconnects.
 --
 -- /See:/ 'describeInterconnectsResponse' smart constructor.
-data DescribeInterconnectsResponse = DescribeInterconnectsResponse'
+data DescribeInterconnectsResponse a = DescribeInterconnectsResponse'
     { _dirsInterconnects  :: !(Maybe [Interconnect])
     , _dirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DescribeInterconnectsResponse = DescribeInterconnectsResponse'
 -- * 'dirsResponseStatus'
 describeInterconnectsResponse
     :: Int -- ^ 'dirsResponseStatus'
-    -> DescribeInterconnectsResponse
+    -> DescribeInterconnectsResponse (a)
 describeInterconnectsResponse pResponseStatus_ =
     DescribeInterconnectsResponse'
     { _dirsInterconnects = Nothing
@@ -129,11 +129,11 @@ describeInterconnectsResponse pResponseStatus_ =
     }
 
 -- | A list of interconnects.
-dirsInterconnects :: Lens' DescribeInterconnectsResponse [Interconnect]
+dirsInterconnects :: Lens' (DescribeInterconnectsResponse (a)) [Interconnect]
 dirsInterconnects = lens _dirsInterconnects (\ s a -> s{_dirsInterconnects = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dirsResponseStatus :: Lens' DescribeInterconnectsResponse Int
+dirsResponseStatus :: Lens' (DescribeInterconnectsResponse (a)) Int
 dirsResponseStatus = lens _dirsResponseStatus (\ s a -> s{_dirsResponseStatus = a});
 
 instance NFData DescribeInterconnectsResponse

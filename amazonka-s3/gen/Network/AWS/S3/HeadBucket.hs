@@ -81,14 +81,14 @@ instance ToQuery HeadBucket where
         toQuery = const mempty
 
 -- | /See:/ 'headBucketResponse' smart constructor.
-data HeadBucketResponse =
+data HeadBucketResponse a =
     HeadBucketResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'HeadBucketResponse' with the minimum fields required to make a request.
 --
 headBucketResponse
-    :: HeadBucketResponse
+    :: HeadBucketResponse (a)
 headBucketResponse = HeadBucketResponse'
 
 instance NFData HeadBucketResponse

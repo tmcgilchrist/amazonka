@@ -96,14 +96,14 @@ instance ToQuery DeleteRouteTable where
                "RouteTableId" =: _drtrRouteTableId]
 
 -- | /See:/ 'deleteRouteTableResponse' smart constructor.
-data DeleteRouteTableResponse =
+data DeleteRouteTableResponse a =
     DeleteRouteTableResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteRouteTableResponse' with the minimum fields required to make a request.
 --
 deleteRouteTableResponse
-    :: DeleteRouteTableResponse
+    :: DeleteRouteTableResponse (a)
 deleteRouteTableResponse = DeleteRouteTableResponse'
 
 instance NFData DeleteRouteTableResponse

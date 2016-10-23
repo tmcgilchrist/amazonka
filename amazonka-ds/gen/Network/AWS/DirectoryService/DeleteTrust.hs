@@ -115,7 +115,7 @@ instance ToQuery DeleteTrust where
 -- | The result of a DeleteTrust request.
 --
 -- /See:/ 'deleteTrustResponse' smart constructor.
-data DeleteTrustResponse = DeleteTrustResponse'
+data DeleteTrustResponse a = DeleteTrustResponse'
     { _dttrsTrustId        :: !(Maybe Text)
     , _dttrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data DeleteTrustResponse = DeleteTrustResponse'
 -- * 'dttrsResponseStatus'
 deleteTrustResponse
     :: Int -- ^ 'dttrsResponseStatus'
-    -> DeleteTrustResponse
+    -> DeleteTrustResponse (a)
 deleteTrustResponse pResponseStatus_ =
     DeleteTrustResponse'
     { _dttrsTrustId = Nothing
@@ -137,11 +137,11 @@ deleteTrustResponse pResponseStatus_ =
     }
 
 -- | The Trust ID of the trust relationship that was deleted.
-dttrsTrustId :: Lens' DeleteTrustResponse (Maybe Text)
+dttrsTrustId :: Lens' (DeleteTrustResponse (a)) (Maybe Text)
 dttrsTrustId = lens _dttrsTrustId (\ s a -> s{_dttrsTrustId = a});
 
 -- | The response status code.
-dttrsResponseStatus :: Lens' DeleteTrustResponse Int
+dttrsResponseStatus :: Lens' (DeleteTrustResponse (a)) Int
 dttrsResponseStatus = lens _dttrsResponseStatus (\ s a -> s{_dttrsResponseStatus = a});
 
 instance NFData DeleteTrustResponse

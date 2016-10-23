@@ -140,7 +140,7 @@ instance ToQuery DescribeSnapshots where
 -- | Contains the results of the < DescribeSnapshots> operation.
 --
 -- /See:/ 'describeSnapshotsResponse' smart constructor.
-data DescribeSnapshotsResponse = DescribeSnapshotsResponse'
+data DescribeSnapshotsResponse a = DescribeSnapshotsResponse'
     { _dssrsNextToken      :: !(Maybe Text)
     , _dssrsSnapshots      :: !(Maybe [Snapshot])
     , _dssrsResponseStatus :: !Int
@@ -157,7 +157,7 @@ data DescribeSnapshotsResponse = DescribeSnapshotsResponse'
 -- * 'dssrsResponseStatus'
 describeSnapshotsResponse
     :: Int -- ^ 'dssrsResponseStatus'
-    -> DescribeSnapshotsResponse
+    -> DescribeSnapshotsResponse (a)
 describeSnapshotsResponse pResponseStatus_ =
     DescribeSnapshotsResponse'
     { _dssrsNextToken = Nothing
@@ -166,17 +166,17 @@ describeSnapshotsResponse pResponseStatus_ =
     }
 
 -- | If not null, more results are available. Pass this value in the /NextToken/ member of a subsequent call to < DescribeSnapshots>.
-dssrsNextToken :: Lens' DescribeSnapshotsResponse (Maybe Text)
+dssrsNextToken :: Lens' (DescribeSnapshotsResponse (a)) (Maybe Text)
 dssrsNextToken = lens _dssrsNextToken (\ s a -> s{_dssrsNextToken = a});
 
 -- | The list of < Snapshot> objects that were retrieved.
 --
 -- It is possible that this list contains less than the number of items specified in the /Limit/ member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.
-dssrsSnapshots :: Lens' DescribeSnapshotsResponse [Snapshot]
+dssrsSnapshots :: Lens' (DescribeSnapshotsResponse (a)) [Snapshot]
 dssrsSnapshots = lens _dssrsSnapshots (\ s a -> s{_dssrsSnapshots = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dssrsResponseStatus :: Lens' DescribeSnapshotsResponse Int
+dssrsResponseStatus :: Lens' (DescribeSnapshotsResponse (a)) Int
 dssrsResponseStatus = lens _dssrsResponseStatus (\ s a -> s{_dssrsResponseStatus = a});
 
 instance NFData DescribeSnapshotsResponse

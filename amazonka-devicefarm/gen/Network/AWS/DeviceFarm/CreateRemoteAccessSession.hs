@@ -137,7 +137,7 @@ instance ToQuery CreateRemoteAccessSession where
 -- | Represents the server response from a request to create a remote access session.
 --
 -- /See:/ 'createRemoteAccessSessionResponse' smart constructor.
-data CreateRemoteAccessSessionResponse = CreateRemoteAccessSessionResponse'
+data CreateRemoteAccessSessionResponse a = CreateRemoteAccessSessionResponse'
     { _crasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
     , _crasrsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -151,7 +151,7 @@ data CreateRemoteAccessSessionResponse = CreateRemoteAccessSessionResponse'
 -- * 'crasrsResponseStatus'
 createRemoteAccessSessionResponse
     :: Int -- ^ 'crasrsResponseStatus'
-    -> CreateRemoteAccessSessionResponse
+    -> CreateRemoteAccessSessionResponse (a)
 createRemoteAccessSessionResponse pResponseStatus_ =
     CreateRemoteAccessSessionResponse'
     { _crasrsRemoteAccessSession = Nothing
@@ -159,11 +159,11 @@ createRemoteAccessSessionResponse pResponseStatus_ =
     }
 
 -- | A container that describes the remote access session when the request to create a remote access session is sent.
-crasrsRemoteAccessSession :: Lens' CreateRemoteAccessSessionResponse (Maybe RemoteAccessSession)
+crasrsRemoteAccessSession :: Lens' (CreateRemoteAccessSessionResponse (a)) (Maybe RemoteAccessSession)
 crasrsRemoteAccessSession = lens _crasrsRemoteAccessSession (\ s a -> s{_crasrsRemoteAccessSession = a});
 
 -- | The response status code.
-crasrsResponseStatus :: Lens' CreateRemoteAccessSessionResponse Int
+crasrsResponseStatus :: Lens' (CreateRemoteAccessSessionResponse (a)) Int
 crasrsResponseStatus = lens _crasrsResponseStatus (\ s a -> s{_crasrsResponseStatus = a});
 
 instance NFData CreateRemoteAccessSessionResponse

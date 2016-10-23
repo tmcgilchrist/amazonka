@@ -96,7 +96,7 @@ instance ToQuery RotateEncryptionKey where
                "ClusterIdentifier" =: _rekClusterIdentifier]
 
 -- | /See:/ 'rotateEncryptionKeyResponse' smart constructor.
-data RotateEncryptionKeyResponse = RotateEncryptionKeyResponse'
+data RotateEncryptionKeyResponse a = RotateEncryptionKeyResponse'
     { _rekrsCluster        :: !(Maybe Cluster)
     , _rekrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -110,7 +110,7 @@ data RotateEncryptionKeyResponse = RotateEncryptionKeyResponse'
 -- * 'rekrsResponseStatus'
 rotateEncryptionKeyResponse
     :: Int -- ^ 'rekrsResponseStatus'
-    -> RotateEncryptionKeyResponse
+    -> RotateEncryptionKeyResponse (a)
 rotateEncryptionKeyResponse pResponseStatus_ =
     RotateEncryptionKeyResponse'
     { _rekrsCluster = Nothing
@@ -118,11 +118,11 @@ rotateEncryptionKeyResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rekrsCluster :: Lens' RotateEncryptionKeyResponse (Maybe Cluster)
+rekrsCluster :: Lens' (RotateEncryptionKeyResponse (a)) (Maybe Cluster)
 rekrsCluster = lens _rekrsCluster (\ s a -> s{_rekrsCluster = a});
 
 -- | The response status code.
-rekrsResponseStatus :: Lens' RotateEncryptionKeyResponse Int
+rekrsResponseStatus :: Lens' (RotateEncryptionKeyResponse (a)) Int
 rekrsResponseStatus = lens _rekrsResponseStatus (\ s a -> s{_rekrsResponseStatus = a});
 
 instance NFData RotateEncryptionKeyResponse

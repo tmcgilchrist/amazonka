@@ -96,7 +96,7 @@ instance ToQuery GetStreamingDistribution where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'getStreamingDistributionResponse' smart constructor.
-data GetStreamingDistributionResponse = GetStreamingDistributionResponse'
+data GetStreamingDistributionResponse a = GetStreamingDistributionResponse'
     { _gsdrsETag                  :: !(Maybe Text)
     , _gsdrsStreamingDistribution :: !(Maybe StreamingDistribution)
     , _gsdrsResponseStatus        :: !Int
@@ -113,7 +113,7 @@ data GetStreamingDistributionResponse = GetStreamingDistributionResponse'
 -- * 'gsdrsResponseStatus'
 getStreamingDistributionResponse
     :: Int -- ^ 'gsdrsResponseStatus'
-    -> GetStreamingDistributionResponse
+    -> GetStreamingDistributionResponse (a)
 getStreamingDistributionResponse pResponseStatus_ =
     GetStreamingDistributionResponse'
     { _gsdrsETag = Nothing
@@ -122,15 +122,15 @@ getStreamingDistributionResponse pResponseStatus_ =
     }
 
 -- | The current version of the streaming distribution\'s information. For example: E2QWRUHAPOMQZL.
-gsdrsETag :: Lens' GetStreamingDistributionResponse (Maybe Text)
+gsdrsETag :: Lens' (GetStreamingDistributionResponse (a)) (Maybe Text)
 gsdrsETag = lens _gsdrsETag (\ s a -> s{_gsdrsETag = a});
 
 -- | The streaming distribution\'s information.
-gsdrsStreamingDistribution :: Lens' GetStreamingDistributionResponse (Maybe StreamingDistribution)
+gsdrsStreamingDistribution :: Lens' (GetStreamingDistributionResponse (a)) (Maybe StreamingDistribution)
 gsdrsStreamingDistribution = lens _gsdrsStreamingDistribution (\ s a -> s{_gsdrsStreamingDistribution = a});
 
 -- | The response status code.
-gsdrsResponseStatus :: Lens' GetStreamingDistributionResponse Int
+gsdrsResponseStatus :: Lens' (GetStreamingDistributionResponse (a)) Int
 gsdrsResponseStatus = lens _gsdrsResponseStatus (\ s a -> s{_gsdrsResponseStatus = a});
 
 instance NFData GetStreamingDistributionResponse

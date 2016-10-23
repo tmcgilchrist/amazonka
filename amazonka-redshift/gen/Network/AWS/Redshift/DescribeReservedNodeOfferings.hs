@@ -140,7 +140,7 @@ instance ToQuery DescribeReservedNodeOfferings where
 -- |
 --
 -- /See:/ 'describeReservedNodeOfferingsResponse' smart constructor.
-data DescribeReservedNodeOfferingsResponse = DescribeReservedNodeOfferingsResponse'
+data DescribeReservedNodeOfferingsResponse a = DescribeReservedNodeOfferingsResponse'
     { _drnorsReservedNodeOfferings :: !(Maybe [ReservedNodeOffering])
     , _drnorsMarker                :: !(Maybe Text)
     , _drnorsResponseStatus        :: !Int
@@ -157,7 +157,7 @@ data DescribeReservedNodeOfferingsResponse = DescribeReservedNodeOfferingsRespon
 -- * 'drnorsResponseStatus'
 describeReservedNodeOfferingsResponse
     :: Int -- ^ 'drnorsResponseStatus'
-    -> DescribeReservedNodeOfferingsResponse
+    -> DescribeReservedNodeOfferingsResponse (a)
 describeReservedNodeOfferingsResponse pResponseStatus_ =
     DescribeReservedNodeOfferingsResponse'
     { _drnorsReservedNodeOfferings = Nothing
@@ -166,15 +166,15 @@ describeReservedNodeOfferingsResponse pResponseStatus_ =
     }
 
 -- | A list of 'ReservedNodeOffering' objects.
-drnorsReservedNodeOfferings :: Lens' DescribeReservedNodeOfferingsResponse [ReservedNodeOffering]
+drnorsReservedNodeOfferings :: Lens' (DescribeReservedNodeOfferingsResponse (a)) [ReservedNodeOffering]
 drnorsReservedNodeOfferings = lens _drnorsReservedNodeOfferings (\ s a -> s{_drnorsReservedNodeOfferings = a}) . _Default . _Coerce;
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-drnorsMarker :: Lens' DescribeReservedNodeOfferingsResponse (Maybe Text)
+drnorsMarker :: Lens' (DescribeReservedNodeOfferingsResponse (a)) (Maybe Text)
 drnorsMarker = lens _drnorsMarker (\ s a -> s{_drnorsMarker = a});
 
 -- | The response status code.
-drnorsResponseStatus :: Lens' DescribeReservedNodeOfferingsResponse Int
+drnorsResponseStatus :: Lens' (DescribeReservedNodeOfferingsResponse (a)) Int
 drnorsResponseStatus = lens _drnorsResponseStatus (\ s a -> s{_drnorsResponseStatus = a});
 
 instance NFData DescribeReservedNodeOfferingsResponse

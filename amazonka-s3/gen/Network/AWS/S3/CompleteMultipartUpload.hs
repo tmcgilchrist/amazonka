@@ -153,7 +153,7 @@ instance ToQuery CompleteMultipartUpload where
           = mconcat ["uploadId" =: _cUploadId]
 
 -- | /See:/ 'completeMultipartUploadResponse' smart constructor.
-data CompleteMultipartUploadResponse = CompleteMultipartUploadResponse'
+data CompleteMultipartUploadResponse a = CompleteMultipartUploadResponse'
     { _crsRequestCharged       :: !(Maybe RequestCharged)
     , _crsETag                 :: !(Maybe ETag)
     , _crsVersionId            :: !(Maybe ObjectVersionId)
@@ -191,7 +191,7 @@ data CompleteMultipartUploadResponse = CompleteMultipartUploadResponse'
 -- * 'crsResponseStatus'
 completeMultipartUploadResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CompleteMultipartUploadResponse
+    -> CompleteMultipartUploadResponse (a)
 completeMultipartUploadResponse pResponseStatus_ =
     CompleteMultipartUploadResponse'
     { _crsRequestCharged = Nothing
@@ -207,43 +207,43 @@ completeMultipartUploadResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crsRequestCharged :: Lens' CompleteMultipartUploadResponse (Maybe RequestCharged)
+crsRequestCharged :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe RequestCharged)
 crsRequestCharged = lens _crsRequestCharged (\ s a -> s{_crsRequestCharged = a});
 
 -- | Entity tag of the object.
-crsETag :: Lens' CompleteMultipartUploadResponse (Maybe ETag)
+crsETag :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe ETag)
 crsETag = lens _crsETag (\ s a -> s{_crsETag = a});
 
 -- | Version of the object.
-crsVersionId :: Lens' CompleteMultipartUploadResponse (Maybe ObjectVersionId)
+crsVersionId :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe ObjectVersionId)
 crsVersionId = lens _crsVersionId (\ s a -> s{_crsVersionId = a});
 
 -- | Undocumented member.
-crsLocation :: Lens' CompleteMultipartUploadResponse (Maybe Text)
+crsLocation :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe Text)
 crsLocation = lens _crsLocation (\ s a -> s{_crsLocation = a});
 
 -- | If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
-crsExpiration :: Lens' CompleteMultipartUploadResponse (Maybe Text)
+crsExpiration :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe Text)
 crsExpiration = lens _crsExpiration (\ s a -> s{_crsExpiration = a});
 
 -- | Undocumented member.
-crsBucket :: Lens' CompleteMultipartUploadResponse (Maybe BucketName)
+crsBucket :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe BucketName)
 crsBucket = lens _crsBucket (\ s a -> s{_crsBucket = a});
 
 -- | Undocumented member.
-crsKey :: Lens' CompleteMultipartUploadResponse (Maybe ObjectKey)
+crsKey :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe ObjectKey)
 crsKey = lens _crsKey (\ s a -> s{_crsKey = a});
 
 -- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-crsSSEKMSKeyId :: Lens' CompleteMultipartUploadResponse (Maybe Text)
+crsSSEKMSKeyId :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe Text)
 crsSSEKMSKeyId = lens _crsSSEKMSKeyId (\ s a -> s{_crsSSEKMSKeyId = a}) . mapping _Sensitive;
 
 -- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
-crsServerSideEncryption :: Lens' CompleteMultipartUploadResponse (Maybe ServerSideEncryption)
+crsServerSideEncryption :: Lens' (CompleteMultipartUploadResponse (a)) (Maybe ServerSideEncryption)
 crsServerSideEncryption = lens _crsServerSideEncryption (\ s a -> s{_crsServerSideEncryption = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CompleteMultipartUploadResponse Int
+crsResponseStatus :: Lens' (CompleteMultipartUploadResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CompleteMultipartUploadResponse

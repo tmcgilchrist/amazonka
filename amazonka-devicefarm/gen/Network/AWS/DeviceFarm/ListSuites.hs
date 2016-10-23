@@ -125,7 +125,7 @@ instance ToQuery ListSuites where
 -- | Represents the result of a list suites request.
 --
 -- /See:/ 'listSuitesResponse' smart constructor.
-data ListSuitesResponse = ListSuitesResponse'
+data ListSuitesResponse a = ListSuitesResponse'
     { _lsrsNextToken      :: !(Maybe Text)
     , _lsrsSuites         :: !(Maybe [Suite])
     , _lsrsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ListSuitesResponse = ListSuitesResponse'
 -- * 'lsrsResponseStatus'
 listSuitesResponse
     :: Int -- ^ 'lsrsResponseStatus'
-    -> ListSuitesResponse
+    -> ListSuitesResponse (a)
 listSuitesResponse pResponseStatus_ =
     ListSuitesResponse'
     { _lsrsNextToken = Nothing
@@ -151,15 +151,15 @@ listSuitesResponse pResponseStatus_ =
     }
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-lsrsNextToken :: Lens' ListSuitesResponse (Maybe Text)
+lsrsNextToken :: Lens' (ListSuitesResponse (a)) (Maybe Text)
 lsrsNextToken = lens _lsrsNextToken (\ s a -> s{_lsrsNextToken = a});
 
 -- | Information about the suites.
-lsrsSuites :: Lens' ListSuitesResponse [Suite]
+lsrsSuites :: Lens' (ListSuitesResponse (a)) [Suite]
 lsrsSuites = lens _lsrsSuites (\ s a -> s{_lsrsSuites = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lsrsResponseStatus :: Lens' ListSuitesResponse Int
+lsrsResponseStatus :: Lens' (ListSuitesResponse (a)) Int
 lsrsResponseStatus = lens _lsrsResponseStatus (\ s a -> s{_lsrsResponseStatus = a});
 
 instance NFData ListSuitesResponse

@@ -153,7 +153,7 @@ instance ToQuery DescribeCacheParameters where
 -- | Represents the output of a /DescribeCacheParameters/ action.
 --
 -- /See:/ 'describeCacheParametersResponse' smart constructor.
-data DescribeCacheParametersResponse = DescribeCacheParametersResponse'
+data DescribeCacheParametersResponse a = DescribeCacheParametersResponse'
     { _dcprsCacheNodeTypeSpecificParameters :: !(Maybe [CacheNodeTypeSpecificParameter])
     , _dcprsMarker                          :: !(Maybe Text)
     , _dcprsParameters                      :: !(Maybe [Parameter])
@@ -173,7 +173,7 @@ data DescribeCacheParametersResponse = DescribeCacheParametersResponse'
 -- * 'dcprsResponseStatus'
 describeCacheParametersResponse
     :: Int -- ^ 'dcprsResponseStatus'
-    -> DescribeCacheParametersResponse
+    -> DescribeCacheParametersResponse (a)
 describeCacheParametersResponse pResponseStatus_ =
     DescribeCacheParametersResponse'
     { _dcprsCacheNodeTypeSpecificParameters = Nothing
@@ -183,19 +183,19 @@ describeCacheParametersResponse pResponseStatus_ =
     }
 
 -- | A list of parameters specific to a particular cache node type. Each element in the list contains detailed information about one parameter.
-dcprsCacheNodeTypeSpecificParameters :: Lens' DescribeCacheParametersResponse [CacheNodeTypeSpecificParameter]
+dcprsCacheNodeTypeSpecificParameters :: Lens' (DescribeCacheParametersResponse (a)) [CacheNodeTypeSpecificParameter]
 dcprsCacheNodeTypeSpecificParameters = lens _dcprsCacheNodeTypeSpecificParameters (\ s a -> s{_dcprsCacheNodeTypeSpecificParameters = a}) . _Default . _Coerce;
 
 -- | Provides an identifier to allow retrieval of paginated results.
-dcprsMarker :: Lens' DescribeCacheParametersResponse (Maybe Text)
+dcprsMarker :: Lens' (DescribeCacheParametersResponse (a)) (Maybe Text)
 dcprsMarker = lens _dcprsMarker (\ s a -> s{_dcprsMarker = a});
 
 -- | A list of < Parameter> instances.
-dcprsParameters :: Lens' DescribeCacheParametersResponse [Parameter]
+dcprsParameters :: Lens' (DescribeCacheParametersResponse (a)) [Parameter]
 dcprsParameters = lens _dcprsParameters (\ s a -> s{_dcprsParameters = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcprsResponseStatus :: Lens' DescribeCacheParametersResponse Int
+dcprsResponseStatus :: Lens' (DescribeCacheParametersResponse (a)) Int
 dcprsResponseStatus = lens _dcprsResponseStatus (\ s a -> s{_dcprsResponseStatus = a});
 
 instance NFData DescribeCacheParametersResponse

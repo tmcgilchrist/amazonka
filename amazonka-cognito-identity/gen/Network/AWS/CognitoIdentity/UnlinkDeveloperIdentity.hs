@@ -136,14 +136,14 @@ instance ToQuery UnlinkDeveloperIdentity where
         toQuery = const mempty
 
 -- | /See:/ 'unlinkDeveloperIdentityResponse' smart constructor.
-data UnlinkDeveloperIdentityResponse =
+data UnlinkDeveloperIdentityResponse a =
     UnlinkDeveloperIdentityResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UnlinkDeveloperIdentityResponse' with the minimum fields required to make a request.
 --
 unlinkDeveloperIdentityResponse
-    :: UnlinkDeveloperIdentityResponse
+    :: UnlinkDeveloperIdentityResponse (a)
 unlinkDeveloperIdentityResponse = UnlinkDeveloperIdentityResponse'
 
 instance NFData UnlinkDeveloperIdentityResponse

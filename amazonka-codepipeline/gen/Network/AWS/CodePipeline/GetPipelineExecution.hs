@@ -117,7 +117,7 @@ instance ToQuery GetPipelineExecution where
 -- | Represents the output of a get pipeline execution action.
 --
 -- /See:/ 'getPipelineExecutionResponse' smart constructor.
-data GetPipelineExecutionResponse = GetPipelineExecutionResponse'
+data GetPipelineExecutionResponse a = GetPipelineExecutionResponse'
     { _gpersPipelineExecution :: !(Maybe PipelineExecution)
     , _gpersResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data GetPipelineExecutionResponse = GetPipelineExecutionResponse'
 -- * 'gpersResponseStatus'
 getPipelineExecutionResponse
     :: Int -- ^ 'gpersResponseStatus'
-    -> GetPipelineExecutionResponse
+    -> GetPipelineExecutionResponse (a)
 getPipelineExecutionResponse pResponseStatus_ =
     GetPipelineExecutionResponse'
     { _gpersPipelineExecution = Nothing
@@ -139,11 +139,11 @@ getPipelineExecutionResponse pResponseStatus_ =
     }
 
 -- | Represents information about the execution of a pipeline.
-gpersPipelineExecution :: Lens' GetPipelineExecutionResponse (Maybe PipelineExecution)
+gpersPipelineExecution :: Lens' (GetPipelineExecutionResponse (a)) (Maybe PipelineExecution)
 gpersPipelineExecution = lens _gpersPipelineExecution (\ s a -> s{_gpersPipelineExecution = a});
 
 -- | The response status code.
-gpersResponseStatus :: Lens' GetPipelineExecutionResponse Int
+gpersResponseStatus :: Lens' (GetPipelineExecutionResponse (a)) Int
 gpersResponseStatus = lens _gpersResponseStatus (\ s a -> s{_gpersResponseStatus = a});
 
 instance NFData GetPipelineExecutionResponse

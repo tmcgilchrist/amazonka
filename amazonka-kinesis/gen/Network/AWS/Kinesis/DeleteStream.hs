@@ -103,14 +103,14 @@ instance ToQuery DeleteStream where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStreamResponse' smart constructor.
-data DeleteStreamResponse =
+data DeleteStreamResponse a =
     DeleteStreamResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteStreamResponse' with the minimum fields required to make a request.
 --
 deleteStreamResponse
-    :: DeleteStreamResponse
+    :: DeleteStreamResponse (a)
 deleteStreamResponse = DeleteStreamResponse'
 
 instance NFData DeleteStreamResponse

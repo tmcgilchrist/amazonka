@@ -86,14 +86,14 @@ instance ToQuery EnableAlarmActions where
                "AlarmNames" =: toQueryList "member" _eaaAlarmNames]
 
 -- | /See:/ 'enableAlarmActionsResponse' smart constructor.
-data EnableAlarmActionsResponse =
+data EnableAlarmActionsResponse a =
     EnableAlarmActionsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'EnableAlarmActionsResponse' with the minimum fields required to make a request.
 --
 enableAlarmActionsResponse
-    :: EnableAlarmActionsResponse
+    :: EnableAlarmActionsResponse (a)
 enableAlarmActionsResponse = EnableAlarmActionsResponse'
 
 instance NFData EnableAlarmActionsResponse

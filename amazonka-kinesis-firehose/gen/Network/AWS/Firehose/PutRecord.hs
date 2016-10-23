@@ -127,7 +127,7 @@ instance ToQuery PutRecord where
 -- | Contains the output of < PutRecord>.
 --
 -- /See:/ 'putRecordResponse' smart constructor.
-data PutRecordResponse = PutRecordResponse'
+data PutRecordResponse a = PutRecordResponse'
     { _prrsResponseStatus :: !Int
     , _prrsRecordId       :: !Text
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -142,7 +142,7 @@ data PutRecordResponse = PutRecordResponse'
 putRecordResponse
     :: Int -- ^ 'prrsResponseStatus'
     -> Text -- ^ 'prrsRecordId'
-    -> PutRecordResponse
+    -> PutRecordResponse (a)
 putRecordResponse pResponseStatus_ pRecordId_ =
     PutRecordResponse'
     { _prrsResponseStatus = pResponseStatus_
@@ -150,11 +150,11 @@ putRecordResponse pResponseStatus_ pRecordId_ =
     }
 
 -- | The response status code.
-prrsResponseStatus :: Lens' PutRecordResponse Int
+prrsResponseStatus :: Lens' (PutRecordResponse (a)) Int
 prrsResponseStatus = lens _prrsResponseStatus (\ s a -> s{_prrsResponseStatus = a});
 
 -- | The ID of the record.
-prrsRecordId :: Lens' PutRecordResponse Text
+prrsRecordId :: Lens' (PutRecordResponse (a)) Text
 prrsRecordId = lens _prrsRecordId (\ s a -> s{_prrsRecordId = a});
 
 instance NFData PutRecordResponse

@@ -133,7 +133,7 @@ instance ToQuery InitiateVaultLock where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'initiateVaultLockResponse' smart constructor.
-data InitiateVaultLockResponse = InitiateVaultLockResponse'
+data InitiateVaultLockResponse a = InitiateVaultLockResponse'
     { _ivlrsLockId         :: !(Maybe Text)
     , _ivlrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -147,7 +147,7 @@ data InitiateVaultLockResponse = InitiateVaultLockResponse'
 -- * 'ivlrsResponseStatus'
 initiateVaultLockResponse
     :: Int -- ^ 'ivlrsResponseStatus'
-    -> InitiateVaultLockResponse
+    -> InitiateVaultLockResponse (a)
 initiateVaultLockResponse pResponseStatus_ =
     InitiateVaultLockResponse'
     { _ivlrsLockId = Nothing
@@ -155,11 +155,11 @@ initiateVaultLockResponse pResponseStatus_ =
     }
 
 -- | The lock ID, which is used to complete the vault locking process.
-ivlrsLockId :: Lens' InitiateVaultLockResponse (Maybe Text)
+ivlrsLockId :: Lens' (InitiateVaultLockResponse (a)) (Maybe Text)
 ivlrsLockId = lens _ivlrsLockId (\ s a -> s{_ivlrsLockId = a});
 
 -- | The response status code.
-ivlrsResponseStatus :: Lens' InitiateVaultLockResponse Int
+ivlrsResponseStatus :: Lens' (InitiateVaultLockResponse (a)) Int
 ivlrsResponseStatus = lens _ivlrsResponseStatus (\ s a -> s{_ivlrsResponseStatus = a});
 
 instance NFData InitiateVaultLockResponse

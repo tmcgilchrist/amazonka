@@ -258,7 +258,7 @@ instance ToQuery RestoreDBClusterFromSnapshot where
                "Engine" =: _rdbcfsEngine]
 
 -- | /See:/ 'restoreDBClusterFromSnapshotResponse' smart constructor.
-data RestoreDBClusterFromSnapshotResponse = RestoreDBClusterFromSnapshotResponse'
+data RestoreDBClusterFromSnapshotResponse a = RestoreDBClusterFromSnapshotResponse'
     { _rdbcfsrsDBCluster      :: !(Maybe DBCluster)
     , _rdbcfsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -272,7 +272,7 @@ data RestoreDBClusterFromSnapshotResponse = RestoreDBClusterFromSnapshotResponse
 -- * 'rdbcfsrsResponseStatus'
 restoreDBClusterFromSnapshotResponse
     :: Int -- ^ 'rdbcfsrsResponseStatus'
-    -> RestoreDBClusterFromSnapshotResponse
+    -> RestoreDBClusterFromSnapshotResponse (a)
 restoreDBClusterFromSnapshotResponse pResponseStatus_ =
     RestoreDBClusterFromSnapshotResponse'
     { _rdbcfsrsDBCluster = Nothing
@@ -280,11 +280,11 @@ restoreDBClusterFromSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rdbcfsrsDBCluster :: Lens' RestoreDBClusterFromSnapshotResponse (Maybe DBCluster)
+rdbcfsrsDBCluster :: Lens' (RestoreDBClusterFromSnapshotResponse (a)) (Maybe DBCluster)
 rdbcfsrsDBCluster = lens _rdbcfsrsDBCluster (\ s a -> s{_rdbcfsrsDBCluster = a});
 
 -- | The response status code.
-rdbcfsrsResponseStatus :: Lens' RestoreDBClusterFromSnapshotResponse Int
+rdbcfsrsResponseStatus :: Lens' (RestoreDBClusterFromSnapshotResponse (a)) Int
 rdbcfsrsResponseStatus = lens _rdbcfsrsResponseStatus (\ s a -> s{_rdbcfsrsResponseStatus = a});
 
 instance NFData RestoreDBClusterFromSnapshotResponse

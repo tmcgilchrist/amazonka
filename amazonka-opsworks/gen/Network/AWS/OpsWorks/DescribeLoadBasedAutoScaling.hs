@@ -108,7 +108,7 @@ instance ToQuery DescribeLoadBasedAutoScaling where
 -- | Contains the response to a 'DescribeLoadBasedAutoScaling' request.
 --
 -- /See:/ 'describeLoadBasedAutoScalingResponse' smart constructor.
-data DescribeLoadBasedAutoScalingResponse = DescribeLoadBasedAutoScalingResponse'
+data DescribeLoadBasedAutoScalingResponse a = DescribeLoadBasedAutoScalingResponse'
     { _dlbasrsLoadBasedAutoScalingConfigurations :: !(Maybe [LoadBasedAutoScalingConfiguration])
     , _dlbasrsResponseStatus                     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -122,7 +122,7 @@ data DescribeLoadBasedAutoScalingResponse = DescribeLoadBasedAutoScalingResponse
 -- * 'dlbasrsResponseStatus'
 describeLoadBasedAutoScalingResponse
     :: Int -- ^ 'dlbasrsResponseStatus'
-    -> DescribeLoadBasedAutoScalingResponse
+    -> DescribeLoadBasedAutoScalingResponse (a)
 describeLoadBasedAutoScalingResponse pResponseStatus_ =
     DescribeLoadBasedAutoScalingResponse'
     { _dlbasrsLoadBasedAutoScalingConfigurations = Nothing
@@ -130,11 +130,11 @@ describeLoadBasedAutoScalingResponse pResponseStatus_ =
     }
 
 -- | An array of 'LoadBasedAutoScalingConfiguration' objects that describe each layer\'s configuration.
-dlbasrsLoadBasedAutoScalingConfigurations :: Lens' DescribeLoadBasedAutoScalingResponse [LoadBasedAutoScalingConfiguration]
+dlbasrsLoadBasedAutoScalingConfigurations :: Lens' (DescribeLoadBasedAutoScalingResponse (a)) [LoadBasedAutoScalingConfiguration]
 dlbasrsLoadBasedAutoScalingConfigurations = lens _dlbasrsLoadBasedAutoScalingConfigurations (\ s a -> s{_dlbasrsLoadBasedAutoScalingConfigurations = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlbasrsResponseStatus :: Lens' DescribeLoadBasedAutoScalingResponse Int
+dlbasrsResponseStatus :: Lens' (DescribeLoadBasedAutoScalingResponse (a)) Int
 dlbasrsResponseStatus = lens _dlbasrsResponseStatus (\ s a -> s{_dlbasrsResponseStatus = a});
 
 instance NFData DescribeLoadBasedAutoScalingResponse

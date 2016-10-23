@@ -119,7 +119,7 @@ instance ToQuery GetConsoleScreenshot where
 -- | Contains the output of the request.
 --
 -- /See:/ 'getConsoleScreenshotResponse' smart constructor.
-data GetConsoleScreenshotResponse = GetConsoleScreenshotResponse'
+data GetConsoleScreenshotResponse a = GetConsoleScreenshotResponse'
     { _gcsrsInstanceId     :: !(Maybe Text)
     , _gcsrsImageData      :: !(Maybe Text)
     , _gcsrsResponseStatus :: !Int
@@ -136,7 +136,7 @@ data GetConsoleScreenshotResponse = GetConsoleScreenshotResponse'
 -- * 'gcsrsResponseStatus'
 getConsoleScreenshotResponse
     :: Int -- ^ 'gcsrsResponseStatus'
-    -> GetConsoleScreenshotResponse
+    -> GetConsoleScreenshotResponse (a)
 getConsoleScreenshotResponse pResponseStatus_ =
     GetConsoleScreenshotResponse'
     { _gcsrsInstanceId = Nothing
@@ -145,15 +145,15 @@ getConsoleScreenshotResponse pResponseStatus_ =
     }
 
 -- | The ID of the instance.
-gcsrsInstanceId :: Lens' GetConsoleScreenshotResponse (Maybe Text)
+gcsrsInstanceId :: Lens' (GetConsoleScreenshotResponse (a)) (Maybe Text)
 gcsrsInstanceId = lens _gcsrsInstanceId (\ s a -> s{_gcsrsInstanceId = a});
 
 -- | The data that comprises the image.
-gcsrsImageData :: Lens' GetConsoleScreenshotResponse (Maybe Text)
+gcsrsImageData :: Lens' (GetConsoleScreenshotResponse (a)) (Maybe Text)
 gcsrsImageData = lens _gcsrsImageData (\ s a -> s{_gcsrsImageData = a});
 
 -- | The response status code.
-gcsrsResponseStatus :: Lens' GetConsoleScreenshotResponse Int
+gcsrsResponseStatus :: Lens' (GetConsoleScreenshotResponse (a)) Int
 gcsrsResponseStatus = lens _gcsrsResponseStatus (\ s a -> s{_gcsrsResponseStatus = a});
 
 instance NFData GetConsoleScreenshotResponse

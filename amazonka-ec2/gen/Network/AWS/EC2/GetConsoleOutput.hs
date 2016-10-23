@@ -117,7 +117,7 @@ instance ToQuery GetConsoleOutput where
 -- | Contains the output of GetConsoleOutput.
 --
 -- /See:/ 'getConsoleOutputResponse' smart constructor.
-data GetConsoleOutputResponse = GetConsoleOutputResponse'
+data GetConsoleOutputResponse a = GetConsoleOutputResponse'
     { _gcorsInstanceId     :: !(Maybe Text)
     , _gcorsOutput         :: !(Maybe Text)
     , _gcorsTimestamp      :: !(Maybe ISO8601)
@@ -137,7 +137,7 @@ data GetConsoleOutputResponse = GetConsoleOutputResponse'
 -- * 'gcorsResponseStatus'
 getConsoleOutputResponse
     :: Int -- ^ 'gcorsResponseStatus'
-    -> GetConsoleOutputResponse
+    -> GetConsoleOutputResponse (a)
 getConsoleOutputResponse pResponseStatus_ =
     GetConsoleOutputResponse'
     { _gcorsInstanceId = Nothing
@@ -147,19 +147,19 @@ getConsoleOutputResponse pResponseStatus_ =
     }
 
 -- | The ID of the instance.
-gcorsInstanceId :: Lens' GetConsoleOutputResponse (Maybe Text)
+gcorsInstanceId :: Lens' (GetConsoleOutputResponse (a)) (Maybe Text)
 gcorsInstanceId = lens _gcorsInstanceId (\ s a -> s{_gcorsInstanceId = a});
 
 -- | The console output, Base64-encoded. If using a command line tool, the tool decodes the output for you.
-gcorsOutput :: Lens' GetConsoleOutputResponse (Maybe Text)
+gcorsOutput :: Lens' (GetConsoleOutputResponse (a)) (Maybe Text)
 gcorsOutput = lens _gcorsOutput (\ s a -> s{_gcorsOutput = a});
 
 -- | The time the output was last updated.
-gcorsTimestamp :: Lens' GetConsoleOutputResponse (Maybe UTCTime)
+gcorsTimestamp :: Lens' (GetConsoleOutputResponse (a)) (Maybe UTCTime)
 gcorsTimestamp = lens _gcorsTimestamp (\ s a -> s{_gcorsTimestamp = a}) . mapping _Time;
 
 -- | The response status code.
-gcorsResponseStatus :: Lens' GetConsoleOutputResponse Int
+gcorsResponseStatus :: Lens' (GetConsoleOutputResponse (a)) Int
 gcorsResponseStatus = lens _gcorsResponseStatus (\ s a -> s{_gcorsResponseStatus = a});
 
 instance NFData GetConsoleOutputResponse

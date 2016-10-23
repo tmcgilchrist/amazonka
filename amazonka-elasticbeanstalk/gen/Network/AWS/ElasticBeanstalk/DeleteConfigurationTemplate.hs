@@ -102,14 +102,14 @@ instance ToQuery DeleteConfigurationTemplate where
                "TemplateName" =: _dctTemplateName]
 
 -- | /See:/ 'deleteConfigurationTemplateResponse' smart constructor.
-data DeleteConfigurationTemplateResponse =
+data DeleteConfigurationTemplateResponse a =
     DeleteConfigurationTemplateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteConfigurationTemplateResponse' with the minimum fields required to make a request.
 --
 deleteConfigurationTemplateResponse
-    :: DeleteConfigurationTemplateResponse
+    :: DeleteConfigurationTemplateResponse (a)
 deleteConfigurationTemplateResponse = DeleteConfigurationTemplateResponse'
 
 instance NFData DeleteConfigurationTemplateResponse

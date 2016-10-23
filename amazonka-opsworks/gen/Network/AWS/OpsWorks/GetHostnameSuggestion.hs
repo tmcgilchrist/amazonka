@@ -106,7 +106,7 @@ instance ToQuery GetHostnameSuggestion where
 -- | Contains the response to a 'GetHostnameSuggestion' request.
 --
 -- /See:/ 'getHostnameSuggestionResponse' smart constructor.
-data GetHostnameSuggestionResponse = GetHostnameSuggestionResponse'
+data GetHostnameSuggestionResponse a = GetHostnameSuggestionResponse'
     { _ghsrsHostname       :: !(Maybe Text)
     , _ghsrsLayerId        :: !(Maybe Text)
     , _ghsrsResponseStatus :: !Int
@@ -123,7 +123,7 @@ data GetHostnameSuggestionResponse = GetHostnameSuggestionResponse'
 -- * 'ghsrsResponseStatus'
 getHostnameSuggestionResponse
     :: Int -- ^ 'ghsrsResponseStatus'
-    -> GetHostnameSuggestionResponse
+    -> GetHostnameSuggestionResponse (a)
 getHostnameSuggestionResponse pResponseStatus_ =
     GetHostnameSuggestionResponse'
     { _ghsrsHostname = Nothing
@@ -132,15 +132,15 @@ getHostnameSuggestionResponse pResponseStatus_ =
     }
 
 -- | The generated host name.
-ghsrsHostname :: Lens' GetHostnameSuggestionResponse (Maybe Text)
+ghsrsHostname :: Lens' (GetHostnameSuggestionResponse (a)) (Maybe Text)
 ghsrsHostname = lens _ghsrsHostname (\ s a -> s{_ghsrsHostname = a});
 
 -- | The layer ID.
-ghsrsLayerId :: Lens' GetHostnameSuggestionResponse (Maybe Text)
+ghsrsLayerId :: Lens' (GetHostnameSuggestionResponse (a)) (Maybe Text)
 ghsrsLayerId = lens _ghsrsLayerId (\ s a -> s{_ghsrsLayerId = a});
 
 -- | The response status code.
-ghsrsResponseStatus :: Lens' GetHostnameSuggestionResponse Int
+ghsrsResponseStatus :: Lens' (GetHostnameSuggestionResponse (a)) Int
 ghsrsResponseStatus = lens _ghsrsResponseStatus (\ s a -> s{_ghsrsResponseStatus = a});
 
 instance NFData GetHostnameSuggestionResponse

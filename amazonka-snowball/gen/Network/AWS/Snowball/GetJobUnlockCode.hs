@@ -102,7 +102,7 @@ instance ToQuery GetJobUnlockCode where
         toQuery = const mempty
 
 -- | /See:/ 'getJobUnlockCodeResponse' smart constructor.
-data GetJobUnlockCodeResponse = GetJobUnlockCodeResponse'
+data GetJobUnlockCodeResponse a = GetJobUnlockCodeResponse'
     { _gjucrsUnlockCode     :: !(Maybe Text)
     , _gjucrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data GetJobUnlockCodeResponse = GetJobUnlockCodeResponse'
 -- * 'gjucrsResponseStatus'
 getJobUnlockCodeResponse
     :: Int -- ^ 'gjucrsResponseStatus'
-    -> GetJobUnlockCodeResponse
+    -> GetJobUnlockCodeResponse (a)
 getJobUnlockCodeResponse pResponseStatus_ =
     GetJobUnlockCodeResponse'
     { _gjucrsUnlockCode = Nothing
@@ -124,11 +124,11 @@ getJobUnlockCodeResponse pResponseStatus_ =
     }
 
 -- | The 'UnlockCode' value for the specified job. The 'UnlockCode' value can be accessed for up to 90 days after the job has been created.
-gjucrsUnlockCode :: Lens' GetJobUnlockCodeResponse (Maybe Text)
+gjucrsUnlockCode :: Lens' (GetJobUnlockCodeResponse (a)) (Maybe Text)
 gjucrsUnlockCode = lens _gjucrsUnlockCode (\ s a -> s{_gjucrsUnlockCode = a});
 
 -- | The response status code.
-gjucrsResponseStatus :: Lens' GetJobUnlockCodeResponse Int
+gjucrsResponseStatus :: Lens' (GetJobUnlockCodeResponse (a)) Int
 gjucrsResponseStatus = lens _gjucrsResponseStatus (\ s a -> s{_gjucrsResponseStatus = a});
 
 instance NFData GetJobUnlockCodeResponse

@@ -253,7 +253,7 @@ instance ToQuery HeadObject where
           = mconcat ["versionId" =: _hoVersionId]
 
 -- | /See:/ 'headObjectResponse' smart constructor.
-data HeadObjectResponse = HeadObjectResponse'
+data HeadObjectResponse a = HeadObjectResponse'
     { _horsRequestCharged          :: !(Maybe RequestCharged)
     , _horsETag                    :: !(Maybe ETag)
     , _horsVersionId               :: !(Maybe ObjectVersionId)
@@ -336,7 +336,7 @@ data HeadObjectResponse = HeadObjectResponse'
 -- * 'horsResponseStatus'
 headObjectResponse
     :: Int -- ^ 'horsResponseStatus'
-    -> HeadObjectResponse
+    -> HeadObjectResponse (a)
 headObjectResponse pResponseStatus_ =
     HeadObjectResponse'
     { _horsRequestCharged = Nothing
@@ -367,103 +367,103 @@ headObjectResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-horsRequestCharged :: Lens' HeadObjectResponse (Maybe RequestCharged)
+horsRequestCharged :: Lens' (HeadObjectResponse (a)) (Maybe RequestCharged)
 horsRequestCharged = lens _horsRequestCharged (\ s a -> s{_horsRequestCharged = a});
 
 -- | An ETag is an opaque identifier assigned by a web server to a specific version of a resource found at a URL
-horsETag :: Lens' HeadObjectResponse (Maybe ETag)
+horsETag :: Lens' (HeadObjectResponse (a)) (Maybe ETag)
 horsETag = lens _horsETag (\ s a -> s{_horsETag = a});
 
 -- | Version of the object.
-horsVersionId :: Lens' HeadObjectResponse (Maybe ObjectVersionId)
+horsVersionId :: Lens' (HeadObjectResponse (a)) (Maybe ObjectVersionId)
 horsVersionId = lens _horsVersionId (\ s a -> s{_horsVersionId = a});
 
 -- | Size of the body in bytes.
-horsContentLength :: Lens' HeadObjectResponse (Maybe Integer)
+horsContentLength :: Lens' (HeadObjectResponse (a)) (Maybe Integer)
 horsContentLength = lens _horsContentLength (\ s a -> s{_horsContentLength = a});
 
 -- | The date and time at which the object is no longer cacheable.
-horsExpires :: Lens' HeadObjectResponse (Maybe UTCTime)
+horsExpires :: Lens' (HeadObjectResponse (a)) (Maybe UTCTime)
 horsExpires = lens _horsExpires (\ s a -> s{_horsExpires = a}) . mapping _Time;
 
 -- | Provides information about object restoration operation and expiration time of the restored object copy.
-horsRestore :: Lens' HeadObjectResponse (Maybe Text)
+horsRestore :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsRestore = lens _horsRestore (\ s a -> s{_horsRestore = a});
 
 -- | If the object expiration is configured (see PUT Bucket lifecycle), the response includes this header. It includes the expiry-date and rule-id key value pairs providing object expiration information. The value of the rule-id is URL encoded.
-horsExpiration :: Lens' HeadObjectResponse (Maybe Text)
+horsExpiration :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsExpiration = lens _horsExpiration (\ s a -> s{_horsExpiration = a});
 
 -- | Specifies whether the object retrieved was (true) or was not (false) a Delete Marker. If false, this response header does not appear in the response.
-horsDeleteMarker :: Lens' HeadObjectResponse (Maybe Bool)
+horsDeleteMarker :: Lens' (HeadObjectResponse (a)) (Maybe Bool)
 horsDeleteMarker = lens _horsDeleteMarker (\ s a -> s{_horsDeleteMarker = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
-horsSSECustomerAlgorithm :: Lens' HeadObjectResponse (Maybe Text)
+horsSSECustomerAlgorithm :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsSSECustomerAlgorithm = lens _horsSSECustomerAlgorithm (\ s a -> s{_horsSSECustomerAlgorithm = a});
 
 -- | This is set to the number of metadata entries not returned in x-amz-meta headers. This can happen if you create metadata using an API like SOAP that supports more flexible metadata than the REST API. For example, using SOAP, you can create metadata whose values are not legal HTTP headers.
-horsMissingMeta :: Lens' HeadObjectResponse (Maybe Int)
+horsMissingMeta :: Lens' (HeadObjectResponse (a)) (Maybe Int)
 horsMissingMeta = lens _horsMissingMeta (\ s a -> s{_horsMissingMeta = a});
 
 -- | If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
-horsWebsiteRedirectLocation :: Lens' HeadObjectResponse (Maybe Text)
+horsWebsiteRedirectLocation :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsWebsiteRedirectLocation = lens _horsWebsiteRedirectLocation (\ s a -> s{_horsWebsiteRedirectLocation = a});
 
 -- | Undocumented member.
-horsAcceptRanges :: Lens' HeadObjectResponse (Maybe Text)
+horsAcceptRanges :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsAcceptRanges = lens _horsAcceptRanges (\ s a -> s{_horsAcceptRanges = a});
 
 -- | Undocumented member.
-horsStorageClass :: Lens' HeadObjectResponse (Maybe StorageClass)
+horsStorageClass :: Lens' (HeadObjectResponse (a)) (Maybe StorageClass)
 horsStorageClass = lens _horsStorageClass (\ s a -> s{_horsStorageClass = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-horsSSECustomerKeyMD5 :: Lens' HeadObjectResponse (Maybe Text)
+horsSSECustomerKeyMD5 :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsSSECustomerKeyMD5 = lens _horsSSECustomerKeyMD5 (\ s a -> s{_horsSSECustomerKeyMD5 = a});
 
 -- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-horsSSEKMSKeyId :: Lens' HeadObjectResponse (Maybe Text)
+horsSSEKMSKeyId :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsSSEKMSKeyId = lens _horsSSEKMSKeyId (\ s a -> s{_horsSSEKMSKeyId = a}) . mapping _Sensitive;
 
 -- | Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
-horsContentEncoding :: Lens' HeadObjectResponse (Maybe Text)
+horsContentEncoding :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsContentEncoding = lens _horsContentEncoding (\ s a -> s{_horsContentEncoding = a});
 
 -- | A map of metadata to store with the object in S3.
-horsMetadata :: Lens' HeadObjectResponse (HashMap Text Text)
+horsMetadata :: Lens' (HeadObjectResponse (a)) (HashMap Text Text)
 horsMetadata = lens _horsMetadata (\ s a -> s{_horsMetadata = a}) . _Map;
 
 -- | Undocumented member.
-horsReplicationStatus :: Lens' HeadObjectResponse (Maybe ReplicationStatus)
+horsReplicationStatus :: Lens' (HeadObjectResponse (a)) (Maybe ReplicationStatus)
 horsReplicationStatus = lens _horsReplicationStatus (\ s a -> s{_horsReplicationStatus = a});
 
 -- | Specifies caching behavior along the request\/reply chain.
-horsCacheControl :: Lens' HeadObjectResponse (Maybe Text)
+horsCacheControl :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsCacheControl = lens _horsCacheControl (\ s a -> s{_horsCacheControl = a});
 
 -- | The language the content is in.
-horsContentLanguage :: Lens' HeadObjectResponse (Maybe Text)
+horsContentLanguage :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsContentLanguage = lens _horsContentLanguage (\ s a -> s{_horsContentLanguage = a});
 
 -- | Last modified date of the object
-horsLastModified :: Lens' HeadObjectResponse (Maybe UTCTime)
+horsLastModified :: Lens' (HeadObjectResponse (a)) (Maybe UTCTime)
 horsLastModified = lens _horsLastModified (\ s a -> s{_horsLastModified = a}) . mapping _Time;
 
 -- | Specifies presentational information for the object.
-horsContentDisposition :: Lens' HeadObjectResponse (Maybe Text)
+horsContentDisposition :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsContentDisposition = lens _horsContentDisposition (\ s a -> s{_horsContentDisposition = a});
 
 -- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
-horsServerSideEncryption :: Lens' HeadObjectResponse (Maybe ServerSideEncryption)
+horsServerSideEncryption :: Lens' (HeadObjectResponse (a)) (Maybe ServerSideEncryption)
 horsServerSideEncryption = lens _horsServerSideEncryption (\ s a -> s{_horsServerSideEncryption = a});
 
 -- | A standard MIME type describing the format of the object data.
-horsContentType :: Lens' HeadObjectResponse (Maybe Text)
+horsContentType :: Lens' (HeadObjectResponse (a)) (Maybe Text)
 horsContentType = lens _horsContentType (\ s a -> s{_horsContentType = a});
 
 -- | The response status code.
-horsResponseStatus :: Lens' HeadObjectResponse Int
+horsResponseStatus :: Lens' (HeadObjectResponse (a)) Int
 horsResponseStatus = lens _horsResponseStatus (\ s a -> s{_horsResponseStatus = a});
 
 instance NFData HeadObjectResponse

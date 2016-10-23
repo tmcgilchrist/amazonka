@@ -110,7 +110,7 @@ instance ToQuery RemoveTagsFromResource where
         toQuery = const mempty
 
 -- | /See:/ 'removeTagsFromResourceResponse' smart constructor.
-newtype RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'
+newtype RemoveTagsFromResourceResponse a = RemoveTagsFromResourceResponse'
     { _rtfrrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -121,14 +121,14 @@ newtype RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'
 -- * 'rtfrrsResponseStatus'
 removeTagsFromResourceResponse
     :: Int -- ^ 'rtfrrsResponseStatus'
-    -> RemoveTagsFromResourceResponse
+    -> RemoveTagsFromResourceResponse (a)
 removeTagsFromResourceResponse pResponseStatus_ =
     RemoveTagsFromResourceResponse'
     { _rtfrrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-rtfrrsResponseStatus :: Lens' RemoveTagsFromResourceResponse Int
+rtfrrsResponseStatus :: Lens' (RemoveTagsFromResourceResponse (a)) Int
 rtfrrsResponseStatus = lens _rtfrrsResponseStatus (\ s a -> s{_rtfrrsResponseStatus = a});
 
 instance NFData RemoveTagsFromResourceResponse

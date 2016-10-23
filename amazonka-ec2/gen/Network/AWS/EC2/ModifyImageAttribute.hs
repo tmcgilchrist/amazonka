@@ -181,14 +181,14 @@ instance ToQuery ModifyImageAttribute where
                "DryRun" =: _miaDryRun, "ImageId" =: _miaImageId]
 
 -- | /See:/ 'modifyImageAttributeResponse' smart constructor.
-data ModifyImageAttributeResponse =
+data ModifyImageAttributeResponse a =
     ModifyImageAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyImageAttributeResponse' with the minimum fields required to make a request.
 --
 modifyImageAttributeResponse
-    :: ModifyImageAttributeResponse
+    :: ModifyImageAttributeResponse (a)
 modifyImageAttributeResponse = ModifyImageAttributeResponse'
 
 instance NFData ModifyImageAttributeResponse

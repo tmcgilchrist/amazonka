@@ -131,14 +131,14 @@ instance ToQuery MergeShards where
         toQuery = const mempty
 
 -- | /See:/ 'mergeShardsResponse' smart constructor.
-data MergeShardsResponse =
+data MergeShardsResponse a =
     MergeShardsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'MergeShardsResponse' with the minimum fields required to make a request.
 --
 mergeShardsResponse
-    :: MergeShardsResponse
+    :: MergeShardsResponse (a)
 mergeShardsResponse = MergeShardsResponse'
 
 instance NFData MergeShardsResponse

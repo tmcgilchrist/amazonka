@@ -93,14 +93,14 @@ instance ToQuery DeregisterVolume where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterVolumeResponse' smart constructor.
-data DeregisterVolumeResponse =
+data DeregisterVolumeResponse a =
     DeregisterVolumeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeregisterVolumeResponse' with the minimum fields required to make a request.
 --
 deregisterVolumeResponse
-    :: DeregisterVolumeResponse
+    :: DeregisterVolumeResponse (a)
 deregisterVolumeResponse = DeregisterVolumeResponse'
 
 instance NFData DeregisterVolumeResponse

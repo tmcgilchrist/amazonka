@@ -128,7 +128,7 @@ instance ToQuery DescribeTableRestoreStatus where
                "MaxRecords" =: _dtrssMaxRecords]
 
 -- | /See:/ 'describeTableRestoreStatusResponse' smart constructor.
-data DescribeTableRestoreStatusResponse = DescribeTableRestoreStatusResponse'
+data DescribeTableRestoreStatusResponse a = DescribeTableRestoreStatusResponse'
     { _dtrsrsMarker                    :: !(Maybe Text)
     , _dtrsrsTableRestoreStatusDetails :: !(Maybe [TableRestoreStatus])
     , _dtrsrsResponseStatus            :: !Int
@@ -145,7 +145,7 @@ data DescribeTableRestoreStatusResponse = DescribeTableRestoreStatusResponse'
 -- * 'dtrsrsResponseStatus'
 describeTableRestoreStatusResponse
     :: Int -- ^ 'dtrsrsResponseStatus'
-    -> DescribeTableRestoreStatusResponse
+    -> DescribeTableRestoreStatusResponse (a)
 describeTableRestoreStatusResponse pResponseStatus_ =
     DescribeTableRestoreStatusResponse'
     { _dtrsrsMarker = Nothing
@@ -154,15 +154,15 @@ describeTableRestoreStatusResponse pResponseStatus_ =
     }
 
 -- | A pagination token that can be used in a subsequent < DescribeTableRestoreStatus> request.
-dtrsrsMarker :: Lens' DescribeTableRestoreStatusResponse (Maybe Text)
+dtrsrsMarker :: Lens' (DescribeTableRestoreStatusResponse (a)) (Maybe Text)
 dtrsrsMarker = lens _dtrsrsMarker (\ s a -> s{_dtrsrsMarker = a});
 
 -- | A list of status details for one or more table restore requests.
-dtrsrsTableRestoreStatusDetails :: Lens' DescribeTableRestoreStatusResponse [TableRestoreStatus]
+dtrsrsTableRestoreStatusDetails :: Lens' (DescribeTableRestoreStatusResponse (a)) [TableRestoreStatus]
 dtrsrsTableRestoreStatusDetails = lens _dtrsrsTableRestoreStatusDetails (\ s a -> s{_dtrsrsTableRestoreStatusDetails = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtrsrsResponseStatus :: Lens' DescribeTableRestoreStatusResponse Int
+dtrsrsResponseStatus :: Lens' (DescribeTableRestoreStatusResponse (a)) Int
 dtrsrsResponseStatus = lens _dtrsrsResponseStatus (\ s a -> s{_dtrsrsResponseStatus = a});
 
 instance NFData DescribeTableRestoreStatusResponse

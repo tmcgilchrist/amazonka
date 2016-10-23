@@ -134,7 +134,7 @@ instance ToQuery DeleteObject where
           = mconcat ["versionId" =: _doVersionId]
 
 -- | /See:/ 'deleteObjectResponse' smart constructor.
-data DeleteObjectResponse = DeleteObjectResponse'
+data DeleteObjectResponse a = DeleteObjectResponse'
     { _dorsRequestCharged :: !(Maybe RequestCharged)
     , _dorsVersionId      :: !(Maybe ObjectVersionId)
     , _dorsDeleteMarker   :: !(Maybe Bool)
@@ -154,7 +154,7 @@ data DeleteObjectResponse = DeleteObjectResponse'
 -- * 'dorsResponseStatus'
 deleteObjectResponse
     :: Int -- ^ 'dorsResponseStatus'
-    -> DeleteObjectResponse
+    -> DeleteObjectResponse (a)
 deleteObjectResponse pResponseStatus_ =
     DeleteObjectResponse'
     { _dorsRequestCharged = Nothing
@@ -164,19 +164,19 @@ deleteObjectResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dorsRequestCharged :: Lens' DeleteObjectResponse (Maybe RequestCharged)
+dorsRequestCharged :: Lens' (DeleteObjectResponse (a)) (Maybe RequestCharged)
 dorsRequestCharged = lens _dorsRequestCharged (\ s a -> s{_dorsRequestCharged = a});
 
 -- | Returns the version ID of the delete marker created as a result of the DELETE operation.
-dorsVersionId :: Lens' DeleteObjectResponse (Maybe ObjectVersionId)
+dorsVersionId :: Lens' (DeleteObjectResponse (a)) (Maybe ObjectVersionId)
 dorsVersionId = lens _dorsVersionId (\ s a -> s{_dorsVersionId = a});
 
 -- | Specifies whether the versioned object that was permanently deleted was (true) or was not (false) a delete marker.
-dorsDeleteMarker :: Lens' DeleteObjectResponse (Maybe Bool)
+dorsDeleteMarker :: Lens' (DeleteObjectResponse (a)) (Maybe Bool)
 dorsDeleteMarker = lens _dorsDeleteMarker (\ s a -> s{_dorsDeleteMarker = a});
 
 -- | The response status code.
-dorsResponseStatus :: Lens' DeleteObjectResponse Int
+dorsResponseStatus :: Lens' (DeleteObjectResponse (a)) Int
 dorsResponseStatus = lens _dorsResponseStatus (\ s a -> s{_dorsResponseStatus = a});
 
 instance NFData DeleteObjectResponse

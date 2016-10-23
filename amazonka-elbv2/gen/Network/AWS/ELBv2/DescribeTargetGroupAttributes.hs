@@ -102,7 +102,7 @@ instance ToQuery DescribeTargetGroupAttributes where
 -- | Contains the output of DescribeTargetGroupAttributes.
 --
 -- /See:/ 'describeTargetGroupAttributesResponse' smart constructor.
-data DescribeTargetGroupAttributesResponse = DescribeTargetGroupAttributesResponse'
+data DescribeTargetGroupAttributesResponse a = DescribeTargetGroupAttributesResponse'
     { _dtgarsAttributes     :: !(Maybe [TargetGroupAttribute])
     , _dtgarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data DescribeTargetGroupAttributesResponse = DescribeTargetGroupAttributesRespon
 -- * 'dtgarsResponseStatus'
 describeTargetGroupAttributesResponse
     :: Int -- ^ 'dtgarsResponseStatus'
-    -> DescribeTargetGroupAttributesResponse
+    -> DescribeTargetGroupAttributesResponse (a)
 describeTargetGroupAttributesResponse pResponseStatus_ =
     DescribeTargetGroupAttributesResponse'
     { _dtgarsAttributes = Nothing
@@ -124,11 +124,11 @@ describeTargetGroupAttributesResponse pResponseStatus_ =
     }
 
 -- | Information about the target group attributes
-dtgarsAttributes :: Lens' DescribeTargetGroupAttributesResponse [TargetGroupAttribute]
+dtgarsAttributes :: Lens' (DescribeTargetGroupAttributesResponse (a)) [TargetGroupAttribute]
 dtgarsAttributes = lens _dtgarsAttributes (\ s a -> s{_dtgarsAttributes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtgarsResponseStatus :: Lens' DescribeTargetGroupAttributesResponse Int
+dtgarsResponseStatus :: Lens' (DescribeTargetGroupAttributesResponse (a)) Int
 dtgarsResponseStatus = lens _dtgarsResponseStatus (\ s a -> s{_dtgarsResponseStatus = a});
 
 instance NFData DescribeTargetGroupAttributesResponse

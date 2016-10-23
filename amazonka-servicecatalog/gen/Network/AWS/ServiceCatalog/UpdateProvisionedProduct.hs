@@ -185,7 +185,7 @@ instance ToQuery UpdateProvisionedProduct where
         toQuery = const mempty
 
 -- | /See:/ 'updateProvisionedProductResponse' smart constructor.
-data UpdateProvisionedProductResponse = UpdateProvisionedProductResponse'
+data UpdateProvisionedProductResponse a = UpdateProvisionedProductResponse'
     { _upprsRecordDetail   :: !(Maybe RecordDetail)
     , _upprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -199,7 +199,7 @@ data UpdateProvisionedProductResponse = UpdateProvisionedProductResponse'
 -- * 'upprsResponseStatus'
 updateProvisionedProductResponse
     :: Int -- ^ 'upprsResponseStatus'
-    -> UpdateProvisionedProductResponse
+    -> UpdateProvisionedProductResponse (a)
 updateProvisionedProductResponse pResponseStatus_ =
     UpdateProvisionedProductResponse'
     { _upprsRecordDetail = Nothing
@@ -207,11 +207,11 @@ updateProvisionedProductResponse pResponseStatus_ =
     }
 
 -- | The detailed result of the < UpdateProvisionedProduct> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.
-upprsRecordDetail :: Lens' UpdateProvisionedProductResponse (Maybe RecordDetail)
+upprsRecordDetail :: Lens' (UpdateProvisionedProductResponse (a)) (Maybe RecordDetail)
 upprsRecordDetail = lens _upprsRecordDetail (\ s a -> s{_upprsRecordDetail = a});
 
 -- | The response status code.
-upprsResponseStatus :: Lens' UpdateProvisionedProductResponse Int
+upprsResponseStatus :: Lens' (UpdateProvisionedProductResponse (a)) Int
 upprsResponseStatus = lens _upprsResponseStatus (\ s a -> s{_upprsResponseStatus = a});
 
 instance NFData UpdateProvisionedProductResponse

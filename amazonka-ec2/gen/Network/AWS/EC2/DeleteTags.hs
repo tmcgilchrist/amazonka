@@ -107,14 +107,14 @@ instance ToQuery DeleteTags where
                toQueryList "ResourceId" _dtsResources]
 
 -- | /See:/ 'deleteTagsResponse' smart constructor.
-data DeleteTagsResponse =
+data DeleteTagsResponse a =
     DeleteTagsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteTagsResponse' with the minimum fields required to make a request.
 --
 deleteTagsResponse
-    :: DeleteTagsResponse
+    :: DeleteTagsResponse (a)
 deleteTagsResponse = DeleteTagsResponse'
 
 instance NFData DeleteTagsResponse

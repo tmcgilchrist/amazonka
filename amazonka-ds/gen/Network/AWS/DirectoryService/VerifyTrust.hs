@@ -104,7 +104,7 @@ instance ToQuery VerifyTrust where
 -- | Result of a VerifyTrust request.
 --
 -- /See:/ 'verifyTrustResponse' smart constructor.
-data VerifyTrustResponse = VerifyTrustResponse'
+data VerifyTrustResponse a = VerifyTrustResponse'
     { _vtrsTrustId        :: !(Maybe Text)
     , _vtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data VerifyTrustResponse = VerifyTrustResponse'
 -- * 'vtrsResponseStatus'
 verifyTrustResponse
     :: Int -- ^ 'vtrsResponseStatus'
-    -> VerifyTrustResponse
+    -> VerifyTrustResponse (a)
 verifyTrustResponse pResponseStatus_ =
     VerifyTrustResponse'
     { _vtrsTrustId = Nothing
@@ -126,11 +126,11 @@ verifyTrustResponse pResponseStatus_ =
     }
 
 -- | The unique Trust ID of the trust relationship that was verified.
-vtrsTrustId :: Lens' VerifyTrustResponse (Maybe Text)
+vtrsTrustId :: Lens' (VerifyTrustResponse (a)) (Maybe Text)
 vtrsTrustId = lens _vtrsTrustId (\ s a -> s{_vtrsTrustId = a});
 
 -- | The response status code.
-vtrsResponseStatus :: Lens' VerifyTrustResponse Int
+vtrsResponseStatus :: Lens' (VerifyTrustResponse (a)) Int
 vtrsResponseStatus = lens _vtrsResponseStatus (\ s a -> s{_vtrsResponseStatus = a});
 
 instance NFData VerifyTrustResponse

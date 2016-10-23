@@ -155,7 +155,7 @@ instance ToQuery ScheduleRun where
 -- | Represents the result of a schedule run request.
 --
 -- /See:/ 'scheduleRunResponse' smart constructor.
-data ScheduleRunResponse = ScheduleRunResponse'
+data ScheduleRunResponse a = ScheduleRunResponse'
     { _srrsRun            :: !(Maybe Run)
     , _srrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -169,7 +169,7 @@ data ScheduleRunResponse = ScheduleRunResponse'
 -- * 'srrsResponseStatus'
 scheduleRunResponse
     :: Int -- ^ 'srrsResponseStatus'
-    -> ScheduleRunResponse
+    -> ScheduleRunResponse (a)
 scheduleRunResponse pResponseStatus_ =
     ScheduleRunResponse'
     { _srrsRun = Nothing
@@ -177,11 +177,11 @@ scheduleRunResponse pResponseStatus_ =
     }
 
 -- | Information about the scheduled run.
-srrsRun :: Lens' ScheduleRunResponse (Maybe Run)
+srrsRun :: Lens' (ScheduleRunResponse (a)) (Maybe Run)
 srrsRun = lens _srrsRun (\ s a -> s{_srrsRun = a});
 
 -- | The response status code.
-srrsResponseStatus :: Lens' ScheduleRunResponse Int
+srrsResponseStatus :: Lens' (ScheduleRunResponse (a)) Int
 srrsResponseStatus = lens _srrsResponseStatus (\ s a -> s{_srrsResponseStatus = a});
 
 instance NFData ScheduleRunResponse

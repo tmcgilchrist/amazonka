@@ -102,14 +102,14 @@ instance ToQuery CreateVPNConnectionRoute where
                "DestinationCidrBlock" =: _cvcrDestinationCIdRBlock]
 
 -- | /See:/ 'createVPNConnectionRouteResponse' smart constructor.
-data CreateVPNConnectionRouteResponse =
+data CreateVPNConnectionRouteResponse a =
     CreateVPNConnectionRouteResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateVPNConnectionRouteResponse' with the minimum fields required to make a request.
 --
 createVPNConnectionRouteResponse
-    :: CreateVPNConnectionRouteResponse
+    :: CreateVPNConnectionRouteResponse (a)
 createVPNConnectionRouteResponse = CreateVPNConnectionRouteResponse'
 
 instance NFData CreateVPNConnectionRouteResponse

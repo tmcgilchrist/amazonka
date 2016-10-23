@@ -112,7 +112,7 @@ instance ToQuery UpdateProject where
 -- | Represents the result of an update project request.
 --
 -- /See:/ 'updateProjectResponse' smart constructor.
-data UpdateProjectResponse = UpdateProjectResponse'
+data UpdateProjectResponse a = UpdateProjectResponse'
     { _uprsProject        :: !(Maybe Project)
     , _uprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -126,7 +126,7 @@ data UpdateProjectResponse = UpdateProjectResponse'
 -- * 'uprsResponseStatus'
 updateProjectResponse
     :: Int -- ^ 'uprsResponseStatus'
-    -> UpdateProjectResponse
+    -> UpdateProjectResponse (a)
 updateProjectResponse pResponseStatus_ =
     UpdateProjectResponse'
     { _uprsProject = Nothing
@@ -134,11 +134,11 @@ updateProjectResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-uprsProject :: Lens' UpdateProjectResponse (Maybe Project)
+uprsProject :: Lens' (UpdateProjectResponse (a)) (Maybe Project)
 uprsProject = lens _uprsProject (\ s a -> s{_uprsProject = a});
 
 -- | The response status code.
-uprsResponseStatus :: Lens' UpdateProjectResponse Int
+uprsResponseStatus :: Lens' (UpdateProjectResponse (a)) Int
 uprsResponseStatus = lens _uprsResponseStatus (\ s a -> s{_uprsResponseStatus = a});
 
 instance NFData UpdateProjectResponse

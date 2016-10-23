@@ -141,7 +141,7 @@ instance ToQuery ListAliases where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'listAliasesResponse' smart constructor.
-data ListAliasesResponse = ListAliasesResponse'
+data ListAliasesResponse a = ListAliasesResponse'
     { _larsAliases        :: !(Maybe [Alias])
     , _larsNextToken      :: !(Maybe Text)
     , _larsResponseStatus :: !Int
@@ -158,7 +158,7 @@ data ListAliasesResponse = ListAliasesResponse'
 -- * 'larsResponseStatus'
 listAliasesResponse
     :: Int -- ^ 'larsResponseStatus'
-    -> ListAliasesResponse
+    -> ListAliasesResponse (a)
 listAliasesResponse pResponseStatus_ =
     ListAliasesResponse'
     { _larsAliases = Nothing
@@ -167,17 +167,17 @@ listAliasesResponse pResponseStatus_ =
     }
 
 -- | Collection of alias records that match the list request.
-larsAliases :: Lens' ListAliasesResponse [Alias]
+larsAliases :: Lens' (ListAliasesResponse (a)) [Alias]
 larsAliases = lens _larsAliases (\ s a -> s{_larsAliases = a}) . _Default . _Coerce;
 
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-larsNextToken :: Lens' ListAliasesResponse (Maybe Text)
+larsNextToken :: Lens' (ListAliasesResponse (a)) (Maybe Text)
 larsNextToken = lens _larsNextToken (\ s a -> s{_larsNextToken = a});
 
 -- | The response status code.
-larsResponseStatus :: Lens' ListAliasesResponse Int
+larsResponseStatus :: Lens' (ListAliasesResponse (a)) Int
 larsResponseStatus = lens _larsResponseStatus (\ s a -> s{_larsResponseStatus = a});
 
 instance NFData ListAliasesResponse

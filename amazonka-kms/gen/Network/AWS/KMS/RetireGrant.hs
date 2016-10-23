@@ -127,14 +127,14 @@ instance ToQuery RetireGrant where
         toQuery = const mempty
 
 -- | /See:/ 'retireGrantResponse' smart constructor.
-data RetireGrantResponse =
+data RetireGrantResponse a =
     RetireGrantResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RetireGrantResponse' with the minimum fields required to make a request.
 --
 retireGrantResponse
-    :: RetireGrantResponse
+    :: RetireGrantResponse (a)
 retireGrantResponse = RetireGrantResponse'
 
 instance NFData RetireGrantResponse

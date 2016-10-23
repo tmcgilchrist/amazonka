@@ -115,7 +115,7 @@ instance ToQuery DeregisterEventTopic where
 -- | The result of a DeregisterEventTopic request.
 --
 -- /See:/ 'deregisterEventTopicResponse' smart constructor.
-newtype DeregisterEventTopicResponse = DeregisterEventTopicResponse'
+newtype DeregisterEventTopicResponse a = DeregisterEventTopicResponse'
     { _derrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -126,14 +126,14 @@ newtype DeregisterEventTopicResponse = DeregisterEventTopicResponse'
 -- * 'derrsResponseStatus'
 deregisterEventTopicResponse
     :: Int -- ^ 'derrsResponseStatus'
-    -> DeregisterEventTopicResponse
+    -> DeregisterEventTopicResponse (a)
 deregisterEventTopicResponse pResponseStatus_ =
     DeregisterEventTopicResponse'
     { _derrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-derrsResponseStatus :: Lens' DeregisterEventTopicResponse Int
+derrsResponseStatus :: Lens' (DeregisterEventTopicResponse (a)) Int
 derrsResponseStatus = lens _derrsResponseStatus (\ s a -> s{_derrsResponseStatus = a});
 
 instance NFData DeregisterEventTopicResponse

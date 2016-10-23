@@ -225,7 +225,7 @@ instance ToQuery DescribeDBClusterSnapshots where
 -- | Provides a list of DB cluster snapshots for the user as the result of a call to the < DescribeDBClusterSnapshots> action.
 --
 -- /See:/ 'describeDBClusterSnapshotsResponse' smart constructor.
-data DescribeDBClusterSnapshotsResponse = DescribeDBClusterSnapshotsResponse'
+data DescribeDBClusterSnapshotsResponse a = DescribeDBClusterSnapshotsResponse'
     { _ddbcsrsMarker             :: !(Maybe Text)
     , _ddbcsrsDBClusterSnapshots :: !(Maybe [DBClusterSnapshot])
     , _ddbcsrsResponseStatus     :: !Int
@@ -242,7 +242,7 @@ data DescribeDBClusterSnapshotsResponse = DescribeDBClusterSnapshotsResponse'
 -- * 'ddbcsrsResponseStatus'
 describeDBClusterSnapshotsResponse
     :: Int -- ^ 'ddbcsrsResponseStatus'
-    -> DescribeDBClusterSnapshotsResponse
+    -> DescribeDBClusterSnapshotsResponse (a)
 describeDBClusterSnapshotsResponse pResponseStatus_ =
     DescribeDBClusterSnapshotsResponse'
     { _ddbcsrsMarker = Nothing
@@ -251,15 +251,15 @@ describeDBClusterSnapshotsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous < DescribeDBClusterSnapshots> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddbcsrsMarker :: Lens' DescribeDBClusterSnapshotsResponse (Maybe Text)
+ddbcsrsMarker :: Lens' (DescribeDBClusterSnapshotsResponse (a)) (Maybe Text)
 ddbcsrsMarker = lens _ddbcsrsMarker (\ s a -> s{_ddbcsrsMarker = a});
 
 -- | Provides a list of DB cluster snapshots for the user.
-ddbcsrsDBClusterSnapshots :: Lens' DescribeDBClusterSnapshotsResponse [DBClusterSnapshot]
+ddbcsrsDBClusterSnapshots :: Lens' (DescribeDBClusterSnapshotsResponse (a)) [DBClusterSnapshot]
 ddbcsrsDBClusterSnapshots = lens _ddbcsrsDBClusterSnapshots (\ s a -> s{_ddbcsrsDBClusterSnapshots = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddbcsrsResponseStatus :: Lens' DescribeDBClusterSnapshotsResponse Int
+ddbcsrsResponseStatus :: Lens' (DescribeDBClusterSnapshotsResponse (a)) Int
 ddbcsrsResponseStatus = lens _ddbcsrsResponseStatus (\ s a -> s{_ddbcsrsResponseStatus = a});
 
 instance NFData DescribeDBClusterSnapshotsResponse

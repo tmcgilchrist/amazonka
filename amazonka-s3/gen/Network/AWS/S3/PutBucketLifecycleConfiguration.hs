@@ -104,14 +104,14 @@ instance ToQuery PutBucketLifecycleConfiguration
         toQuery = const (mconcat ["lifecycle"])
 
 -- | /See:/ 'putBucketLifecycleConfigurationResponse' smart constructor.
-data PutBucketLifecycleConfigurationResponse =
+data PutBucketLifecycleConfigurationResponse a =
     PutBucketLifecycleConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketLifecycleConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketLifecycleConfigurationResponse
-    :: PutBucketLifecycleConfigurationResponse
+    :: PutBucketLifecycleConfigurationResponse (a)
 putBucketLifecycleConfigurationResponse =
     PutBucketLifecycleConfigurationResponse'
 

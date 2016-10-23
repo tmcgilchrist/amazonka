@@ -91,14 +91,14 @@ instance ToQuery VerifyEmailAddress where
                "EmailAddress" =: _veaEmailAddress]
 
 -- | /See:/ 'verifyEmailAddressResponse' smart constructor.
-data VerifyEmailAddressResponse =
+data VerifyEmailAddressResponse a =
     VerifyEmailAddressResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'VerifyEmailAddressResponse' with the minimum fields required to make a request.
 --
 verifyEmailAddressResponse
-    :: VerifyEmailAddressResponse
+    :: VerifyEmailAddressResponse (a)
 verifyEmailAddressResponse = VerifyEmailAddressResponse'
 
 instance NFData VerifyEmailAddressResponse

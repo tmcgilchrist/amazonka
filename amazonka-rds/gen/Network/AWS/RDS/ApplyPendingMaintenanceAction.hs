@@ -132,7 +132,7 @@ instance ToQuery ApplyPendingMaintenanceAction where
                "OptInType" =: _apmaOptInType]
 
 -- | /See:/ 'applyPendingMaintenanceActionResponse' smart constructor.
-data ApplyPendingMaintenanceActionResponse = ApplyPendingMaintenanceActionResponse'
+data ApplyPendingMaintenanceActionResponse a = ApplyPendingMaintenanceActionResponse'
     { _apmarsResourcePendingMaintenanceActions :: !(Maybe ResourcePendingMaintenanceActions)
     , _apmarsResponseStatus                    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -146,7 +146,7 @@ data ApplyPendingMaintenanceActionResponse = ApplyPendingMaintenanceActionRespon
 -- * 'apmarsResponseStatus'
 applyPendingMaintenanceActionResponse
     :: Int -- ^ 'apmarsResponseStatus'
-    -> ApplyPendingMaintenanceActionResponse
+    -> ApplyPendingMaintenanceActionResponse (a)
 applyPendingMaintenanceActionResponse pResponseStatus_ =
     ApplyPendingMaintenanceActionResponse'
     { _apmarsResourcePendingMaintenanceActions = Nothing
@@ -154,11 +154,11 @@ applyPendingMaintenanceActionResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-apmarsResourcePendingMaintenanceActions :: Lens' ApplyPendingMaintenanceActionResponse (Maybe ResourcePendingMaintenanceActions)
+apmarsResourcePendingMaintenanceActions :: Lens' (ApplyPendingMaintenanceActionResponse (a)) (Maybe ResourcePendingMaintenanceActions)
 apmarsResourcePendingMaintenanceActions = lens _apmarsResourcePendingMaintenanceActions (\ s a -> s{_apmarsResourcePendingMaintenanceActions = a});
 
 -- | The response status code.
-apmarsResponseStatus :: Lens' ApplyPendingMaintenanceActionResponse Int
+apmarsResponseStatus :: Lens' (ApplyPendingMaintenanceActionResponse (a)) Int
 apmarsResponseStatus = lens _apmarsResponseStatus (\ s a -> s{_apmarsResponseStatus = a});
 
 instance NFData ApplyPendingMaintenanceActionResponse

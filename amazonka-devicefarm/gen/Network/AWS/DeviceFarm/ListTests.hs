@@ -125,7 +125,7 @@ instance ToQuery ListTests where
 -- | Represents the result of a list tests request.
 --
 -- /See:/ 'listTestsResponse' smart constructor.
-data ListTestsResponse = ListTestsResponse'
+data ListTestsResponse a = ListTestsResponse'
     { _ltrsTests          :: !(Maybe [Test])
     , _ltrsNextToken      :: !(Maybe Text)
     , _ltrsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ListTestsResponse = ListTestsResponse'
 -- * 'ltrsResponseStatus'
 listTestsResponse
     :: Int -- ^ 'ltrsResponseStatus'
-    -> ListTestsResponse
+    -> ListTestsResponse (a)
 listTestsResponse pResponseStatus_ =
     ListTestsResponse'
     { _ltrsTests = Nothing
@@ -151,15 +151,15 @@ listTestsResponse pResponseStatus_ =
     }
 
 -- | Information about the tests.
-ltrsTests :: Lens' ListTestsResponse [Test]
+ltrsTests :: Lens' (ListTestsResponse (a)) [Test]
 ltrsTests = lens _ltrsTests (\ s a -> s{_ltrsTests = a}) . _Default . _Coerce;
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-ltrsNextToken :: Lens' ListTestsResponse (Maybe Text)
+ltrsNextToken :: Lens' (ListTestsResponse (a)) (Maybe Text)
 ltrsNextToken = lens _ltrsNextToken (\ s a -> s{_ltrsNextToken = a});
 
 -- | The response status code.
-ltrsResponseStatus :: Lens' ListTestsResponse Int
+ltrsResponseStatus :: Lens' (ListTestsResponse (a)) Int
 ltrsResponseStatus = lens _ltrsResponseStatus (\ s a -> s{_ltrsResponseStatus = a});
 
 instance NFData ListTestsResponse

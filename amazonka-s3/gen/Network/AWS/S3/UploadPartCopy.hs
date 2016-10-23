@@ -279,7 +279,7 @@ instance ToQuery UploadPartCopy where
                "uploadId" =: _upcUploadId]
 
 -- | /See:/ 'uploadPartCopyResponse' smart constructor.
-data UploadPartCopyResponse = UploadPartCopyResponse'
+data UploadPartCopyResponse a = UploadPartCopyResponse'
     { _upcrsRequestCharged       :: !(Maybe RequestCharged)
     , _upcrsCopyPartResult       :: !(Maybe CopyPartResult)
     , _upcrsSSECustomerAlgorithm :: !(Maybe Text)
@@ -311,7 +311,7 @@ data UploadPartCopyResponse = UploadPartCopyResponse'
 -- * 'upcrsResponseStatus'
 uploadPartCopyResponse
     :: Int -- ^ 'upcrsResponseStatus'
-    -> UploadPartCopyResponse
+    -> UploadPartCopyResponse (a)
 uploadPartCopyResponse pResponseStatus_ =
     UploadPartCopyResponse'
     { _upcrsRequestCharged = Nothing
@@ -325,35 +325,35 @@ uploadPartCopyResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-upcrsRequestCharged :: Lens' UploadPartCopyResponse (Maybe RequestCharged)
+upcrsRequestCharged :: Lens' (UploadPartCopyResponse (a)) (Maybe RequestCharged)
 upcrsRequestCharged = lens _upcrsRequestCharged (\ s a -> s{_upcrsRequestCharged = a});
 
 -- | Undocumented member.
-upcrsCopyPartResult :: Lens' UploadPartCopyResponse (Maybe CopyPartResult)
+upcrsCopyPartResult :: Lens' (UploadPartCopyResponse (a)) (Maybe CopyPartResult)
 upcrsCopyPartResult = lens _upcrsCopyPartResult (\ s a -> s{_upcrsCopyPartResult = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
-upcrsSSECustomerAlgorithm :: Lens' UploadPartCopyResponse (Maybe Text)
+upcrsSSECustomerAlgorithm :: Lens' (UploadPartCopyResponse (a)) (Maybe Text)
 upcrsSSECustomerAlgorithm = lens _upcrsSSECustomerAlgorithm (\ s a -> s{_upcrsSSECustomerAlgorithm = a});
 
 -- | The version of the source object that was copied, if you have enabled versioning on the source bucket.
-upcrsCopySourceVersionId :: Lens' UploadPartCopyResponse (Maybe Text)
+upcrsCopySourceVersionId :: Lens' (UploadPartCopyResponse (a)) (Maybe Text)
 upcrsCopySourceVersionId = lens _upcrsCopySourceVersionId (\ s a -> s{_upcrsCopySourceVersionId = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-upcrsSSECustomerKeyMD5 :: Lens' UploadPartCopyResponse (Maybe Text)
+upcrsSSECustomerKeyMD5 :: Lens' (UploadPartCopyResponse (a)) (Maybe Text)
 upcrsSSECustomerKeyMD5 = lens _upcrsSSECustomerKeyMD5 (\ s a -> s{_upcrsSSECustomerKeyMD5 = a});
 
 -- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-upcrsSSEKMSKeyId :: Lens' UploadPartCopyResponse (Maybe Text)
+upcrsSSEKMSKeyId :: Lens' (UploadPartCopyResponse (a)) (Maybe Text)
 upcrsSSEKMSKeyId = lens _upcrsSSEKMSKeyId (\ s a -> s{_upcrsSSEKMSKeyId = a}) . mapping _Sensitive;
 
 -- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
-upcrsServerSideEncryption :: Lens' UploadPartCopyResponse (Maybe ServerSideEncryption)
+upcrsServerSideEncryption :: Lens' (UploadPartCopyResponse (a)) (Maybe ServerSideEncryption)
 upcrsServerSideEncryption = lens _upcrsServerSideEncryption (\ s a -> s{_upcrsServerSideEncryption = a});
 
 -- | The response status code.
-upcrsResponseStatus :: Lens' UploadPartCopyResponse Int
+upcrsResponseStatus :: Lens' (UploadPartCopyResponse (a)) Int
 upcrsResponseStatus = lens _upcrsResponseStatus (\ s a -> s{_upcrsResponseStatus = a});
 
 instance NFData UploadPartCopyResponse

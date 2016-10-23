@@ -123,7 +123,7 @@ instance ToQuery DescribeProduct where
         toQuery = const mempty
 
 -- | /See:/ 'describeProductResponse' smart constructor.
-data DescribeProductResponse = DescribeProductResponse'
+data DescribeProductResponse a = DescribeProductResponse'
     { _dprsProductViewSummary    :: !(Maybe ProductViewSummary)
     , _dprsProvisioningArtifacts :: !(Maybe [ProvisioningArtifact])
     , _dprsResponseStatus        :: !Int
@@ -140,7 +140,7 @@ data DescribeProductResponse = DescribeProductResponse'
 -- * 'dprsResponseStatus'
 describeProductResponse
     :: Int -- ^ 'dprsResponseStatus'
-    -> DescribeProductResponse
+    -> DescribeProductResponse (a)
 describeProductResponse pResponseStatus_ =
     DescribeProductResponse'
     { _dprsProductViewSummary = Nothing
@@ -149,15 +149,15 @@ describeProductResponse pResponseStatus_ =
     }
 
 -- | The summary metadata about the specified product.
-dprsProductViewSummary :: Lens' DescribeProductResponse (Maybe ProductViewSummary)
+dprsProductViewSummary :: Lens' (DescribeProductResponse (a)) (Maybe ProductViewSummary)
 dprsProductViewSummary = lens _dprsProductViewSummary (\ s a -> s{_dprsProductViewSummary = a});
 
 -- | A list of provisioning artifact objects for the specified product. The 'ProvisioningArtifacts' parameter represent the ways the specified product can be provisioned.
-dprsProvisioningArtifacts :: Lens' DescribeProductResponse [ProvisioningArtifact]
+dprsProvisioningArtifacts :: Lens' (DescribeProductResponse (a)) [ProvisioningArtifact]
 dprsProvisioningArtifacts = lens _dprsProvisioningArtifacts (\ s a -> s{_dprsProvisioningArtifacts = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dprsResponseStatus :: Lens' DescribeProductResponse Int
+dprsResponseStatus :: Lens' (DescribeProductResponse (a)) Int
 dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a});
 
 instance NFData DescribeProductResponse

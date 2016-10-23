@@ -101,14 +101,14 @@ instance ToQuery ModifyIdFormat where
                "UseLongIds" =: _mifUseLongIds]
 
 -- | /See:/ 'modifyIdFormatResponse' smart constructor.
-data ModifyIdFormatResponse =
+data ModifyIdFormatResponse a =
     ModifyIdFormatResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyIdFormatResponse' with the minimum fields required to make a request.
 --
 modifyIdFormatResponse
-    :: ModifyIdFormatResponse
+    :: ModifyIdFormatResponse (a)
 modifyIdFormatResponse = ModifyIdFormatResponse'
 
 instance NFData ModifyIdFormatResponse

@@ -125,14 +125,14 @@ instance ToQuery SetPlatformApplicationAttributes
                  toQueryMap "entry" "key" "value" _spaaAttributes]
 
 -- | /See:/ 'setPlatformApplicationAttributesResponse' smart constructor.
-data SetPlatformApplicationAttributesResponse =
+data SetPlatformApplicationAttributesResponse a =
     SetPlatformApplicationAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetPlatformApplicationAttributesResponse' with the minimum fields required to make a request.
 --
 setPlatformApplicationAttributesResponse
-    :: SetPlatformApplicationAttributesResponse
+    :: SetPlatformApplicationAttributesResponse (a)
 setPlatformApplicationAttributesResponse =
     SetPlatformApplicationAttributesResponse'
 

@@ -166,7 +166,7 @@ instance ToQuery GetShardIterator where
 -- | Represents the output for 'GetShardIterator'.
 --
 -- /See:/ 'getShardIteratorResponse' smart constructor.
-data GetShardIteratorResponse = GetShardIteratorResponse'
+data GetShardIteratorResponse a = GetShardIteratorResponse'
     { _gsirsShardIterator  :: !(Maybe Text)
     , _gsirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -180,7 +180,7 @@ data GetShardIteratorResponse = GetShardIteratorResponse'
 -- * 'gsirsResponseStatus'
 getShardIteratorResponse
     :: Int -- ^ 'gsirsResponseStatus'
-    -> GetShardIteratorResponse
+    -> GetShardIteratorResponse (a)
 getShardIteratorResponse pResponseStatus_ =
     GetShardIteratorResponse'
     { _gsirsShardIterator = Nothing
@@ -188,11 +188,11 @@ getShardIteratorResponse pResponseStatus_ =
     }
 
 -- | The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.
-gsirsShardIterator :: Lens' GetShardIteratorResponse (Maybe Text)
+gsirsShardIterator :: Lens' (GetShardIteratorResponse (a)) (Maybe Text)
 gsirsShardIterator = lens _gsirsShardIterator (\ s a -> s{_gsirsShardIterator = a});
 
 -- | The response status code.
-gsirsResponseStatus :: Lens' GetShardIteratorResponse Int
+gsirsResponseStatus :: Lens' (GetShardIteratorResponse (a)) Int
 gsirsResponseStatus = lens _gsirsResponseStatus (\ s a -> s{_gsirsResponseStatus = a});
 
 instance NFData GetShardIteratorResponse

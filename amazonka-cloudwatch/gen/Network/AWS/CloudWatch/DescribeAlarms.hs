@@ -159,7 +159,7 @@ instance ToQuery DescribeAlarms where
 -- | The output for < DescribeAlarms>.
 --
 -- /See:/ 'describeAlarmsResponse' smart constructor.
-data DescribeAlarmsResponse = DescribeAlarmsResponse'
+data DescribeAlarmsResponse a = DescribeAlarmsResponse'
     { _darsMetricAlarms   :: !(Maybe [MetricAlarm])
     , _darsNextToken      :: !(Maybe Text)
     , _darsResponseStatus :: !Int
@@ -176,7 +176,7 @@ data DescribeAlarmsResponse = DescribeAlarmsResponse'
 -- * 'darsResponseStatus'
 describeAlarmsResponse
     :: Int -- ^ 'darsResponseStatus'
-    -> DescribeAlarmsResponse
+    -> DescribeAlarmsResponse (a)
 describeAlarmsResponse pResponseStatus_ =
     DescribeAlarmsResponse'
     { _darsMetricAlarms = Nothing
@@ -185,15 +185,15 @@ describeAlarmsResponse pResponseStatus_ =
     }
 
 -- | A list of information for the specified alarms.
-darsMetricAlarms :: Lens' DescribeAlarmsResponse [MetricAlarm]
+darsMetricAlarms :: Lens' (DescribeAlarmsResponse (a)) [MetricAlarm]
 darsMetricAlarms = lens _darsMetricAlarms (\ s a -> s{_darsMetricAlarms = a}) . _Default . _Coerce;
 
 -- | A string that marks the start of the next batch of returned results.
-darsNextToken :: Lens' DescribeAlarmsResponse (Maybe Text)
+darsNextToken :: Lens' (DescribeAlarmsResponse (a)) (Maybe Text)
 darsNextToken = lens _darsNextToken (\ s a -> s{_darsNextToken = a});
 
 -- | The response status code.
-darsResponseStatus :: Lens' DescribeAlarmsResponse Int
+darsResponseStatus :: Lens' (DescribeAlarmsResponse (a)) Int
 darsResponseStatus = lens _darsResponseStatus (\ s a -> s{_darsResponseStatus = a});
 
 instance NFData DescribeAlarmsResponse

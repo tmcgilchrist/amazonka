@@ -124,7 +124,7 @@ instance ToQuery EnableSSO where
 -- | Contains the results of the < EnableSso> operation.
 --
 -- /See:/ 'enableSSOResponse' smart constructor.
-newtype EnableSSOResponse = EnableSSOResponse'
+newtype EnableSSOResponse a = EnableSSOResponse'
     { _esrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -135,14 +135,14 @@ newtype EnableSSOResponse = EnableSSOResponse'
 -- * 'esrsResponseStatus'
 enableSSOResponse
     :: Int -- ^ 'esrsResponseStatus'
-    -> EnableSSOResponse
+    -> EnableSSOResponse (a)
 enableSSOResponse pResponseStatus_ =
     EnableSSOResponse'
     { _esrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-esrsResponseStatus :: Lens' EnableSSOResponse Int
+esrsResponseStatus :: Lens' (EnableSSOResponse (a)) Int
 esrsResponseStatus = lens _esrsResponseStatus (\ s a -> s{_esrsResponseStatus = a});
 
 instance NFData EnableSSOResponse

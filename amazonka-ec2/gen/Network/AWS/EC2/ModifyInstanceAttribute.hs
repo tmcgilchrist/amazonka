@@ -249,14 +249,14 @@ instance ToQuery ModifyInstanceAttribute where
                "DryRun" =: _mDryRun, "InstanceId" =: _mInstanceId]
 
 -- | /See:/ 'modifyInstanceAttributeResponse' smart constructor.
-data ModifyInstanceAttributeResponse =
+data ModifyInstanceAttributeResponse a =
     ModifyInstanceAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyInstanceAttributeResponse' with the minimum fields required to make a request.
 --
 modifyInstanceAttributeResponse
-    :: ModifyInstanceAttributeResponse
+    :: ModifyInstanceAttributeResponse (a)
 modifyInstanceAttributeResponse = ModifyInstanceAttributeResponse'
 
 instance NFData ModifyInstanceAttributeResponse

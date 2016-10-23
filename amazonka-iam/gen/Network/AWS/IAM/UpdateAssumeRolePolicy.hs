@@ -102,14 +102,14 @@ instance ToQuery UpdateAssumeRolePolicy where
                "PolicyDocument" =: _uarpPolicyDocument]
 
 -- | /See:/ 'updateAssumeRolePolicyResponse' smart constructor.
-data UpdateAssumeRolePolicyResponse =
+data UpdateAssumeRolePolicyResponse a =
     UpdateAssumeRolePolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateAssumeRolePolicyResponse' with the minimum fields required to make a request.
 --
 updateAssumeRolePolicyResponse
-    :: UpdateAssumeRolePolicyResponse
+    :: UpdateAssumeRolePolicyResponse (a)
 updateAssumeRolePolicyResponse = UpdateAssumeRolePolicyResponse'
 
 instance NFData UpdateAssumeRolePolicyResponse

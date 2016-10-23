@@ -108,14 +108,14 @@ instance ToQuery PutBucketCORS where
         toQuery = const (mconcat ["cors"])
 
 -- | /See:/ 'putBucketCORSResponse' smart constructor.
-data PutBucketCORSResponse =
+data PutBucketCORSResponse a =
     PutBucketCORSResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketCORSResponse' with the minimum fields required to make a request.
 --
 putBucketCORSResponse
-    :: PutBucketCORSResponse
+    :: PutBucketCORSResponse (a)
 putBucketCORSResponse = PutBucketCORSResponse'
 
 instance NFData PutBucketCORSResponse

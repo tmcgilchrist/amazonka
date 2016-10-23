@@ -107,7 +107,7 @@ instance ToQuery DescribeDBClusterSnapshotAttributes
                  _ddcsaDBClusterSnapshotIdentifier]
 
 -- | /See:/ 'describeDBClusterSnapshotAttributesResponse' smart constructor.
-data DescribeDBClusterSnapshotAttributesResponse = DescribeDBClusterSnapshotAttributesResponse'
+data DescribeDBClusterSnapshotAttributesResponse a = DescribeDBClusterSnapshotAttributesResponse'
     { _ddcsarsDBClusterSnapshotAttributesResult :: !(Maybe DBClusterSnapshotAttributesResult)
     , _ddcsarsResponseStatus                    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DescribeDBClusterSnapshotAttributesResponse = DescribeDBClusterSnapshotAttr
 -- * 'ddcsarsResponseStatus'
 describeDBClusterSnapshotAttributesResponse
     :: Int -- ^ 'ddcsarsResponseStatus'
-    -> DescribeDBClusterSnapshotAttributesResponse
+    -> DescribeDBClusterSnapshotAttributesResponse (a)
 describeDBClusterSnapshotAttributesResponse pResponseStatus_ =
     DescribeDBClusterSnapshotAttributesResponse'
     { _ddcsarsDBClusterSnapshotAttributesResult = Nothing
@@ -129,11 +129,11 @@ describeDBClusterSnapshotAttributesResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ddcsarsDBClusterSnapshotAttributesResult :: Lens' DescribeDBClusterSnapshotAttributesResponse (Maybe DBClusterSnapshotAttributesResult)
+ddcsarsDBClusterSnapshotAttributesResult :: Lens' (DescribeDBClusterSnapshotAttributesResponse (a)) (Maybe DBClusterSnapshotAttributesResult)
 ddcsarsDBClusterSnapshotAttributesResult = lens _ddcsarsDBClusterSnapshotAttributesResult (\ s a -> s{_ddcsarsDBClusterSnapshotAttributesResult = a});
 
 -- | The response status code.
-ddcsarsResponseStatus :: Lens' DescribeDBClusterSnapshotAttributesResponse Int
+ddcsarsResponseStatus :: Lens' (DescribeDBClusterSnapshotAttributesResponse (a)) Int
 ddcsarsResponseStatus = lens _ddcsarsResponseStatus (\ s a -> s{_ddcsarsResponseStatus = a});
 
 instance NFData

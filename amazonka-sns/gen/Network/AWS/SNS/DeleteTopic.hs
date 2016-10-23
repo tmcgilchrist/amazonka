@@ -84,14 +84,14 @@ instance ToQuery DeleteTopic where
                "TopicArn" =: _dtTopicARN]
 
 -- | /See:/ 'deleteTopicResponse' smart constructor.
-data DeleteTopicResponse =
+data DeleteTopicResponse a =
     DeleteTopicResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteTopicResponse' with the minimum fields required to make a request.
 --
 deleteTopicResponse
-    :: DeleteTopicResponse
+    :: DeleteTopicResponse (a)
 deleteTopicResponse = DeleteTopicResponse'
 
 instance NFData DeleteTopicResponse

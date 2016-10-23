@@ -109,7 +109,7 @@ instance ToQuery DetachLoadBalancers where
 -- | Contains the output for DetachLoadBalancers.
 --
 -- /See:/ 'detachLoadBalancersResponse' smart constructor.
-newtype DetachLoadBalancersResponse = DetachLoadBalancersResponse'
+newtype DetachLoadBalancersResponse a = DetachLoadBalancersResponse'
     { _dlbsrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -120,14 +120,14 @@ newtype DetachLoadBalancersResponse = DetachLoadBalancersResponse'
 -- * 'dlbsrsResponseStatus'
 detachLoadBalancersResponse
     :: Int -- ^ 'dlbsrsResponseStatus'
-    -> DetachLoadBalancersResponse
+    -> DetachLoadBalancersResponse (a)
 detachLoadBalancersResponse pResponseStatus_ =
     DetachLoadBalancersResponse'
     { _dlbsrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dlbsrsResponseStatus :: Lens' DetachLoadBalancersResponse Int
+dlbsrsResponseStatus :: Lens' (DetachLoadBalancersResponse (a)) Int
 dlbsrsResponseStatus = lens _dlbsrsResponseStatus (\ s a -> s{_dlbsrsResponseStatus = a});
 
 instance NFData DetachLoadBalancersResponse

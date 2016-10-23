@@ -121,7 +121,7 @@ instance ToQuery DescribeSSLPolicies where
 -- | Contains the output of DescribeSSLPolicies.
 --
 -- /See:/ 'describeSSLPoliciesResponse' smart constructor.
-data DescribeSSLPoliciesResponse = DescribeSSLPoliciesResponse'
+data DescribeSSLPoliciesResponse a = DescribeSSLPoliciesResponse'
     { _dsprsSSLPolicies    :: !(Maybe [SSLPolicy])
     , _dsprsNextMarker     :: !(Maybe Text)
     , _dsprsResponseStatus :: !Int
@@ -138,7 +138,7 @@ data DescribeSSLPoliciesResponse = DescribeSSLPoliciesResponse'
 -- * 'dsprsResponseStatus'
 describeSSLPoliciesResponse
     :: Int -- ^ 'dsprsResponseStatus'
-    -> DescribeSSLPoliciesResponse
+    -> DescribeSSLPoliciesResponse (a)
 describeSSLPoliciesResponse pResponseStatus_ =
     DescribeSSLPoliciesResponse'
     { _dsprsSSLPolicies = Nothing
@@ -147,15 +147,15 @@ describeSSLPoliciesResponse pResponseStatus_ =
     }
 
 -- | Information about the policies.
-dsprsSSLPolicies :: Lens' DescribeSSLPoliciesResponse [SSLPolicy]
+dsprsSSLPolicies :: Lens' (DescribeSSLPoliciesResponse (a)) [SSLPolicy]
 dsprsSSLPolicies = lens _dsprsSSLPolicies (\ s a -> s{_dsprsSSLPolicies = a}) . _Default . _Coerce;
 
 -- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
-dsprsNextMarker :: Lens' DescribeSSLPoliciesResponse (Maybe Text)
+dsprsNextMarker :: Lens' (DescribeSSLPoliciesResponse (a)) (Maybe Text)
 dsprsNextMarker = lens _dsprsNextMarker (\ s a -> s{_dsprsNextMarker = a});
 
 -- | The response status code.
-dsprsResponseStatus :: Lens' DescribeSSLPoliciesResponse Int
+dsprsResponseStatus :: Lens' (DescribeSSLPoliciesResponse (a)) Int
 dsprsResponseStatus = lens _dsprsResponseStatus (\ s a -> s{_dsprsResponseStatus = a});
 
 instance NFData DescribeSSLPoliciesResponse

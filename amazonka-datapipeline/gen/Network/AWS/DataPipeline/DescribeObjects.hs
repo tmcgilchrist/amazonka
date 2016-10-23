@@ -148,7 +148,7 @@ instance ToQuery DescribeObjects where
 -- | Contains the output of DescribeObjects.
 --
 -- /See:/ 'describeObjectsResponse' smart constructor.
-data DescribeObjectsResponse = DescribeObjectsResponse'
+data DescribeObjectsResponse a = DescribeObjectsResponse'
     { _dorsHasMoreResults  :: !(Maybe Bool)
     , _dorsMarker          :: !(Maybe Text)
     , _dorsResponseStatus  :: !Int
@@ -168,7 +168,7 @@ data DescribeObjectsResponse = DescribeObjectsResponse'
 -- * 'dorsPipelineObjects'
 describeObjectsResponse
     :: Int -- ^ 'dorsResponseStatus'
-    -> DescribeObjectsResponse
+    -> DescribeObjectsResponse (a)
 describeObjectsResponse pResponseStatus_ =
     DescribeObjectsResponse'
     { _dorsHasMoreResults = Nothing
@@ -178,19 +178,19 @@ describeObjectsResponse pResponseStatus_ =
     }
 
 -- | Indicates whether there are more results to return.
-dorsHasMoreResults :: Lens' DescribeObjectsResponse (Maybe Bool)
+dorsHasMoreResults :: Lens' (DescribeObjectsResponse (a)) (Maybe Bool)
 dorsHasMoreResults = lens _dorsHasMoreResults (\ s a -> s{_dorsHasMoreResults = a});
 
 -- | The starting point for the next page of results. To view the next page of results, call 'DescribeObjects' again with this marker value. If the value is null, there are no more results.
-dorsMarker :: Lens' DescribeObjectsResponse (Maybe Text)
+dorsMarker :: Lens' (DescribeObjectsResponse (a)) (Maybe Text)
 dorsMarker = lens _dorsMarker (\ s a -> s{_dorsMarker = a});
 
 -- | The response status code.
-dorsResponseStatus :: Lens' DescribeObjectsResponse Int
+dorsResponseStatus :: Lens' (DescribeObjectsResponse (a)) Int
 dorsResponseStatus = lens _dorsResponseStatus (\ s a -> s{_dorsResponseStatus = a});
 
 -- | An array of object definitions.
-dorsPipelineObjects :: Lens' DescribeObjectsResponse [PipelineObject]
+dorsPipelineObjects :: Lens' (DescribeObjectsResponse (a)) [PipelineObject]
 dorsPipelineObjects = lens _dorsPipelineObjects (\ s a -> s{_dorsPipelineObjects = a}) . _Coerce;
 
 instance NFData DescribeObjectsResponse

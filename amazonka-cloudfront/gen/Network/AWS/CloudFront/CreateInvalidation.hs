@@ -114,7 +114,7 @@ instance ToQuery CreateInvalidation where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'createInvalidationResponse' smart constructor.
-data CreateInvalidationResponse = CreateInvalidationResponse'
+data CreateInvalidationResponse a = CreateInvalidationResponse'
     { _cirsInvalidation   :: !(Maybe Invalidation)
     , _cirsLocation       :: !(Maybe Text)
     , _cirsResponseStatus :: !Int
@@ -131,7 +131,7 @@ data CreateInvalidationResponse = CreateInvalidationResponse'
 -- * 'cirsResponseStatus'
 createInvalidationResponse
     :: Int -- ^ 'cirsResponseStatus'
-    -> CreateInvalidationResponse
+    -> CreateInvalidationResponse (a)
 createInvalidationResponse pResponseStatus_ =
     CreateInvalidationResponse'
     { _cirsInvalidation = Nothing
@@ -140,15 +140,15 @@ createInvalidationResponse pResponseStatus_ =
     }
 
 -- | The invalidation\'s information.
-cirsInvalidation :: Lens' CreateInvalidationResponse (Maybe Invalidation)
+cirsInvalidation :: Lens' (CreateInvalidationResponse (a)) (Maybe Invalidation)
 cirsInvalidation = lens _cirsInvalidation (\ s a -> s{_cirsInvalidation = a});
 
 -- | The fully qualified URI of the distribution and invalidation batch request, including the Invalidation ID.
-cirsLocation :: Lens' CreateInvalidationResponse (Maybe Text)
+cirsLocation :: Lens' (CreateInvalidationResponse (a)) (Maybe Text)
 cirsLocation = lens _cirsLocation (\ s a -> s{_cirsLocation = a});
 
 -- | The response status code.
-cirsResponseStatus :: Lens' CreateInvalidationResponse Int
+cirsResponseStatus :: Lens' (CreateInvalidationResponse (a)) Int
 cirsResponseStatus = lens _cirsResponseStatus (\ s a -> s{_cirsResponseStatus = a});
 
 instance NFData CreateInvalidationResponse

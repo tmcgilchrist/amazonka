@@ -118,14 +118,14 @@ instance ToQuery PutUserPolicy where
                "PolicyDocument" =: _pupPolicyDocument]
 
 -- | /See:/ 'putUserPolicyResponse' smart constructor.
-data PutUserPolicyResponse =
+data PutUserPolicyResponse a =
     PutUserPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutUserPolicyResponse' with the minimum fields required to make a request.
 --
 putUserPolicyResponse
-    :: PutUserPolicyResponse
+    :: PutUserPolicyResponse (a)
 putUserPolicyResponse = PutUserPolicyResponse'
 
 instance NFData PutUserPolicyResponse

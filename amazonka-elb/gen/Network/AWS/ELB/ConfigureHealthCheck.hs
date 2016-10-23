@@ -109,7 +109,7 @@ instance ToQuery ConfigureHealthCheck where
 -- | Contains the output of ConfigureHealthCheck.
 --
 -- /See:/ 'configureHealthCheckResponse' smart constructor.
-data ConfigureHealthCheckResponse = ConfigureHealthCheckResponse'
+data ConfigureHealthCheckResponse a = ConfigureHealthCheckResponse'
     { _chcrsHealthCheck    :: !(Maybe HealthCheck)
     , _chcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -123,7 +123,7 @@ data ConfigureHealthCheckResponse = ConfigureHealthCheckResponse'
 -- * 'chcrsResponseStatus'
 configureHealthCheckResponse
     :: Int -- ^ 'chcrsResponseStatus'
-    -> ConfigureHealthCheckResponse
+    -> ConfigureHealthCheckResponse (a)
 configureHealthCheckResponse pResponseStatus_ =
     ConfigureHealthCheckResponse'
     { _chcrsHealthCheck = Nothing
@@ -131,11 +131,11 @@ configureHealthCheckResponse pResponseStatus_ =
     }
 
 -- | The updated health check.
-chcrsHealthCheck :: Lens' ConfigureHealthCheckResponse (Maybe HealthCheck)
+chcrsHealthCheck :: Lens' (ConfigureHealthCheckResponse (a)) (Maybe HealthCheck)
 chcrsHealthCheck = lens _chcrsHealthCheck (\ s a -> s{_chcrsHealthCheck = a});
 
 -- | The response status code.
-chcrsResponseStatus :: Lens' ConfigureHealthCheckResponse Int
+chcrsResponseStatus :: Lens' (ConfigureHealthCheckResponse (a)) Int
 chcrsResponseStatus = lens _chcrsResponseStatus (\ s a -> s{_chcrsResponseStatus = a});
 
 instance NFData ConfigureHealthCheckResponse

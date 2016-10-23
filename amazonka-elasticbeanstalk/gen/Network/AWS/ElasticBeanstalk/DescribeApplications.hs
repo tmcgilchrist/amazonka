@@ -99,7 +99,7 @@ instance ToQuery DescribeApplications where
 -- | Result message containing a list of application descriptions.
 --
 -- /See:/ 'describeApplicationsResponse' smart constructor.
-data DescribeApplicationsResponse = DescribeApplicationsResponse'
+data DescribeApplicationsResponse a = DescribeApplicationsResponse'
     { _darsApplications   :: !(Maybe [ApplicationDescription])
     , _darsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -113,7 +113,7 @@ data DescribeApplicationsResponse = DescribeApplicationsResponse'
 -- * 'darsResponseStatus'
 describeApplicationsResponse
     :: Int -- ^ 'darsResponseStatus'
-    -> DescribeApplicationsResponse
+    -> DescribeApplicationsResponse (a)
 describeApplicationsResponse pResponseStatus_ =
     DescribeApplicationsResponse'
     { _darsApplications = Nothing
@@ -121,11 +121,11 @@ describeApplicationsResponse pResponseStatus_ =
     }
 
 -- | This parameter contains a list of < ApplicationDescription>.
-darsApplications :: Lens' DescribeApplicationsResponse [ApplicationDescription]
+darsApplications :: Lens' (DescribeApplicationsResponse (a)) [ApplicationDescription]
 darsApplications = lens _darsApplications (\ s a -> s{_darsApplications = a}) . _Default . _Coerce;
 
 -- | The response status code.
-darsResponseStatus :: Lens' DescribeApplicationsResponse Int
+darsResponseStatus :: Lens' (DescribeApplicationsResponse (a)) Int
 darsResponseStatus = lens _darsResponseStatus (\ s a -> s{_darsResponseStatus = a});
 
 instance NFData DescribeApplicationsResponse

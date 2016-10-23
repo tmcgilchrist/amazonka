@@ -123,7 +123,7 @@ instance ToQuery UpdateRuntimeConfiguration where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'updateRuntimeConfigurationResponse' smart constructor.
-data UpdateRuntimeConfigurationResponse = UpdateRuntimeConfigurationResponse'
+data UpdateRuntimeConfigurationResponse a = UpdateRuntimeConfigurationResponse'
     { _urcrsRuntimeConfiguration :: !(Maybe RuntimeConfiguration)
     , _urcrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data UpdateRuntimeConfigurationResponse = UpdateRuntimeConfigurationResponse'
 -- * 'urcrsResponseStatus'
 updateRuntimeConfigurationResponse
     :: Int -- ^ 'urcrsResponseStatus'
-    -> UpdateRuntimeConfigurationResponse
+    -> UpdateRuntimeConfigurationResponse (a)
 updateRuntimeConfigurationResponse pResponseStatus_ =
     UpdateRuntimeConfigurationResponse'
     { _urcrsRuntimeConfiguration = Nothing
@@ -145,11 +145,11 @@ updateRuntimeConfigurationResponse pResponseStatus_ =
     }
 
 -- | The runtime configuration currently in force. If the update was successful, this object matches the one in the request.
-urcrsRuntimeConfiguration :: Lens' UpdateRuntimeConfigurationResponse (Maybe RuntimeConfiguration)
+urcrsRuntimeConfiguration :: Lens' (UpdateRuntimeConfigurationResponse (a)) (Maybe RuntimeConfiguration)
 urcrsRuntimeConfiguration = lens _urcrsRuntimeConfiguration (\ s a -> s{_urcrsRuntimeConfiguration = a});
 
 -- | The response status code.
-urcrsResponseStatus :: Lens' UpdateRuntimeConfigurationResponse Int
+urcrsResponseStatus :: Lens' (UpdateRuntimeConfigurationResponse (a)) Int
 urcrsResponseStatus = lens _urcrsResponseStatus (\ s a -> s{_urcrsResponseStatus = a});
 
 instance NFData UpdateRuntimeConfigurationResponse

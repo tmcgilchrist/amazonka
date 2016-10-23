@@ -204,7 +204,7 @@ instance ToQuery DescribeSpotInstanceRequests where
 -- | Contains the output of DescribeSpotInstanceRequests.
 --
 -- /See:/ 'describeSpotInstanceRequestsResponse' smart constructor.
-data DescribeSpotInstanceRequestsResponse = DescribeSpotInstanceRequestsResponse'
+data DescribeSpotInstanceRequestsResponse a = DescribeSpotInstanceRequestsResponse'
     { _dsirrsSpotInstanceRequests :: !(Maybe [SpotInstanceRequest])
     , _dsirrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -218,7 +218,7 @@ data DescribeSpotInstanceRequestsResponse = DescribeSpotInstanceRequestsResponse
 -- * 'dsirrsResponseStatus'
 describeSpotInstanceRequestsResponse
     :: Int -- ^ 'dsirrsResponseStatus'
-    -> DescribeSpotInstanceRequestsResponse
+    -> DescribeSpotInstanceRequestsResponse (a)
 describeSpotInstanceRequestsResponse pResponseStatus_ =
     DescribeSpotInstanceRequestsResponse'
     { _dsirrsSpotInstanceRequests = Nothing
@@ -226,11 +226,11 @@ describeSpotInstanceRequestsResponse pResponseStatus_ =
     }
 
 -- | One or more Spot instance requests.
-dsirrsSpotInstanceRequests :: Lens' DescribeSpotInstanceRequestsResponse [SpotInstanceRequest]
+dsirrsSpotInstanceRequests :: Lens' (DescribeSpotInstanceRequestsResponse (a)) [SpotInstanceRequest]
 dsirrsSpotInstanceRequests = lens _dsirrsSpotInstanceRequests (\ s a -> s{_dsirrsSpotInstanceRequests = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsirrsResponseStatus :: Lens' DescribeSpotInstanceRequestsResponse Int
+dsirrsResponseStatus :: Lens' (DescribeSpotInstanceRequestsResponse (a)) Int
 dsirrsResponseStatus = lens _dsirrsResponseStatus (\ s a -> s{_dsirrsResponseStatus = a});
 
 instance NFData DescribeSpotInstanceRequestsResponse

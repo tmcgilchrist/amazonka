@@ -102,14 +102,14 @@ instance ToQuery DeleteDBSecurityGroup where
                "DBSecurityGroupName" =: _ddsgDBSecurityGroupName]
 
 -- | /See:/ 'deleteDBSecurityGroupResponse' smart constructor.
-data DeleteDBSecurityGroupResponse =
+data DeleteDBSecurityGroupResponse a =
     DeleteDBSecurityGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteDBSecurityGroupResponse' with the minimum fields required to make a request.
 --
 deleteDBSecurityGroupResponse
-    :: DeleteDBSecurityGroupResponse
+    :: DeleteDBSecurityGroupResponse (a)
 deleteDBSecurityGroupResponse = DeleteDBSecurityGroupResponse'
 
 instance NFData DeleteDBSecurityGroupResponse

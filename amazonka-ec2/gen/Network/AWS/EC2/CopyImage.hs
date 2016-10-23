@@ -169,7 +169,7 @@ instance ToQuery CopyImage where
 -- | Contains the output of CopyImage.
 --
 -- /See:/ 'copyImageResponse' smart constructor.
-data CopyImageResponse = CopyImageResponse'
+data CopyImageResponse a = CopyImageResponse'
     { _coprsImageId        :: !(Maybe Text)
     , _coprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -183,7 +183,7 @@ data CopyImageResponse = CopyImageResponse'
 -- * 'coprsResponseStatus'
 copyImageResponse
     :: Int -- ^ 'coprsResponseStatus'
-    -> CopyImageResponse
+    -> CopyImageResponse (a)
 copyImageResponse pResponseStatus_ =
     CopyImageResponse'
     { _coprsImageId = Nothing
@@ -191,11 +191,11 @@ copyImageResponse pResponseStatus_ =
     }
 
 -- | The ID of the new AMI.
-coprsImageId :: Lens' CopyImageResponse (Maybe Text)
+coprsImageId :: Lens' (CopyImageResponse (a)) (Maybe Text)
 coprsImageId = lens _coprsImageId (\ s a -> s{_coprsImageId = a});
 
 -- | The response status code.
-coprsResponseStatus :: Lens' CopyImageResponse Int
+coprsResponseStatus :: Lens' (CopyImageResponse (a)) Int
 coprsResponseStatus = lens _coprsResponseStatus (\ s a -> s{_coprsResponseStatus = a});
 
 instance NFData CopyImageResponse

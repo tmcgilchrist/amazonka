@@ -103,14 +103,14 @@ instance ToQuery AttachGroupPolicy where
                "PolicyArn" =: _agpPolicyARN]
 
 -- | /See:/ 'attachGroupPolicyResponse' smart constructor.
-data AttachGroupPolicyResponse =
+data AttachGroupPolicyResponse a =
     AttachGroupPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AttachGroupPolicyResponse' with the minimum fields required to make a request.
 --
 attachGroupPolicyResponse
-    :: AttachGroupPolicyResponse
+    :: AttachGroupPolicyResponse (a)
 attachGroupPolicyResponse = AttachGroupPolicyResponse'
 
 instance NFData AttachGroupPolicyResponse

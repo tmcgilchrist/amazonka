@@ -125,7 +125,7 @@ instance ToQuery PollForJobs where
 -- | Represents the output of a poll for jobs action.
 --
 -- /See:/ 'pollForJobsResponse' smart constructor.
-data PollForJobsResponse = PollForJobsResponse'
+data PollForJobsResponse a = PollForJobsResponse'
     { _pfjrsJobs           :: !(Maybe [Job])
     , _pfjrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -139,7 +139,7 @@ data PollForJobsResponse = PollForJobsResponse'
 -- * 'pfjrsResponseStatus'
 pollForJobsResponse
     :: Int -- ^ 'pfjrsResponseStatus'
-    -> PollForJobsResponse
+    -> PollForJobsResponse (a)
 pollForJobsResponse pResponseStatus_ =
     PollForJobsResponse'
     { _pfjrsJobs = Nothing
@@ -147,11 +147,11 @@ pollForJobsResponse pResponseStatus_ =
     }
 
 -- | Information about the jobs to take action on.
-pfjrsJobs :: Lens' PollForJobsResponse [Job]
+pfjrsJobs :: Lens' (PollForJobsResponse (a)) [Job]
 pfjrsJobs = lens _pfjrsJobs (\ s a -> s{_pfjrsJobs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-pfjrsResponseStatus :: Lens' PollForJobsResponse Int
+pfjrsResponseStatus :: Lens' (PollForJobsResponse (a)) Int
 pfjrsResponseStatus = lens _pfjrsResponseStatus (\ s a -> s{_pfjrsResponseStatus = a});
 
 instance NFData PollForJobsResponse

@@ -106,7 +106,7 @@ instance ToQuery DetachLoadBalancerTargetGroups where
                  toQueryList "member" _dlbtgTargetGroupARNs]
 
 -- | /See:/ 'detachLoadBalancerTargetGroupsResponse' smart constructor.
-newtype DetachLoadBalancerTargetGroupsResponse = DetachLoadBalancerTargetGroupsResponse'
+newtype DetachLoadBalancerTargetGroupsResponse a = DetachLoadBalancerTargetGroupsResponse'
     { _dlbtgrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -117,14 +117,14 @@ newtype DetachLoadBalancerTargetGroupsResponse = DetachLoadBalancerTargetGroupsR
 -- * 'dlbtgrsResponseStatus'
 detachLoadBalancerTargetGroupsResponse
     :: Int -- ^ 'dlbtgrsResponseStatus'
-    -> DetachLoadBalancerTargetGroupsResponse
+    -> DetachLoadBalancerTargetGroupsResponse (a)
 detachLoadBalancerTargetGroupsResponse pResponseStatus_ =
     DetachLoadBalancerTargetGroupsResponse'
     { _dlbtgrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dlbtgrsResponseStatus :: Lens' DetachLoadBalancerTargetGroupsResponse Int
+dlbtgrsResponseStatus :: Lens' (DetachLoadBalancerTargetGroupsResponse (a)) Int
 dlbtgrsResponseStatus = lens _dlbtgrsResponseStatus (\ s a -> s{_dlbtgrsResponseStatus = a});
 
 instance NFData

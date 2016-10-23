@@ -169,7 +169,7 @@ instance ToQuery InitiateJob where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'initiateJobResponse' smart constructor.
-data InitiateJobResponse = InitiateJobResponse'
+data InitiateJobResponse a = InitiateJobResponse'
     { _ijrsJobId          :: !(Maybe Text)
     , _ijrsLocation       :: !(Maybe Text)
     , _ijrsResponseStatus :: !Int
@@ -186,7 +186,7 @@ data InitiateJobResponse = InitiateJobResponse'
 -- * 'ijrsResponseStatus'
 initiateJobResponse
     :: Int -- ^ 'ijrsResponseStatus'
-    -> InitiateJobResponse
+    -> InitiateJobResponse (a)
 initiateJobResponse pResponseStatus_ =
     InitiateJobResponse'
     { _ijrsJobId = Nothing
@@ -195,15 +195,15 @@ initiateJobResponse pResponseStatus_ =
     }
 
 -- | The ID of the job.
-ijrsJobId :: Lens' InitiateJobResponse (Maybe Text)
+ijrsJobId :: Lens' (InitiateJobResponse (a)) (Maybe Text)
 ijrsJobId = lens _ijrsJobId (\ s a -> s{_ijrsJobId = a});
 
 -- | The relative URI path of the job.
-ijrsLocation :: Lens' InitiateJobResponse (Maybe Text)
+ijrsLocation :: Lens' (InitiateJobResponse (a)) (Maybe Text)
 ijrsLocation = lens _ijrsLocation (\ s a -> s{_ijrsLocation = a});
 
 -- | The response status code.
-ijrsResponseStatus :: Lens' InitiateJobResponse Int
+ijrsResponseStatus :: Lens' (InitiateJobResponse (a)) Int
 ijrsResponseStatus = lens _ijrsResponseStatus (\ s a -> s{_ijrsResponseStatus = a});
 
 instance NFData InitiateJobResponse

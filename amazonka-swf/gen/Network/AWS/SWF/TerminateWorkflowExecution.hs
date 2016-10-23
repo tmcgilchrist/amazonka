@@ -170,14 +170,14 @@ instance ToQuery TerminateWorkflowExecution where
         toQuery = const mempty
 
 -- | /See:/ 'terminateWorkflowExecutionResponse' smart constructor.
-data TerminateWorkflowExecutionResponse =
+data TerminateWorkflowExecutionResponse a =
     TerminateWorkflowExecutionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'TerminateWorkflowExecutionResponse' with the minimum fields required to make a request.
 --
 terminateWorkflowExecutionResponse
-    :: TerminateWorkflowExecutionResponse
+    :: TerminateWorkflowExecutionResponse (a)
 terminateWorkflowExecutionResponse = TerminateWorkflowExecutionResponse'
 
 instance NFData TerminateWorkflowExecutionResponse

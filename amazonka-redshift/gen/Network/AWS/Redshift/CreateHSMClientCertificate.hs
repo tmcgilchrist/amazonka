@@ -110,7 +110,7 @@ instance ToQuery CreateHSMClientCertificate where
                  _chccHSMClientCertificateIdentifier]
 
 -- | /See:/ 'createHSMClientCertificateResponse' smart constructor.
-data CreateHSMClientCertificateResponse = CreateHSMClientCertificateResponse'
+data CreateHSMClientCertificateResponse a = CreateHSMClientCertificateResponse'
     { _chccrsHSMClientCertificate :: !(Maybe HSMClientCertificate)
     , _chccrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -124,7 +124,7 @@ data CreateHSMClientCertificateResponse = CreateHSMClientCertificateResponse'
 -- * 'chccrsResponseStatus'
 createHSMClientCertificateResponse
     :: Int -- ^ 'chccrsResponseStatus'
-    -> CreateHSMClientCertificateResponse
+    -> CreateHSMClientCertificateResponse (a)
 createHSMClientCertificateResponse pResponseStatus_ =
     CreateHSMClientCertificateResponse'
     { _chccrsHSMClientCertificate = Nothing
@@ -132,11 +132,11 @@ createHSMClientCertificateResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-chccrsHSMClientCertificate :: Lens' CreateHSMClientCertificateResponse (Maybe HSMClientCertificate)
+chccrsHSMClientCertificate :: Lens' (CreateHSMClientCertificateResponse (a)) (Maybe HSMClientCertificate)
 chccrsHSMClientCertificate = lens _chccrsHSMClientCertificate (\ s a -> s{_chccrsHSMClientCertificate = a});
 
 -- | The response status code.
-chccrsResponseStatus :: Lens' CreateHSMClientCertificateResponse Int
+chccrsResponseStatus :: Lens' (CreateHSMClientCertificateResponse (a)) Int
 chccrsResponseStatus = lens _chccrsResponseStatus (\ s a -> s{_chccrsResponseStatus = a});
 
 instance NFData CreateHSMClientCertificateResponse

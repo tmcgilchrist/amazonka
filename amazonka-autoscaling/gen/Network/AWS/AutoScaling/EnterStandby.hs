@@ -122,7 +122,7 @@ instance ToQuery EnterStandby where
 -- | Contains the output of EnterStandby.
 --
 -- /See:/ 'enterStandbyResponse' smart constructor.
-data EnterStandbyResponse = EnterStandbyResponse'
+data EnterStandbyResponse a = EnterStandbyResponse'
     { _ersActivities     :: !(Maybe [Activity])
     , _ersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data EnterStandbyResponse = EnterStandbyResponse'
 -- * 'ersResponseStatus'
 enterStandbyResponse
     :: Int -- ^ 'ersResponseStatus'
-    -> EnterStandbyResponse
+    -> EnterStandbyResponse (a)
 enterStandbyResponse pResponseStatus_ =
     EnterStandbyResponse'
     { _ersActivities = Nothing
@@ -144,11 +144,11 @@ enterStandbyResponse pResponseStatus_ =
     }
 
 -- | The activities related to moving instances into 'Standby' mode.
-ersActivities :: Lens' EnterStandbyResponse [Activity]
+ersActivities :: Lens' (EnterStandbyResponse (a)) [Activity]
 ersActivities = lens _ersActivities (\ s a -> s{_ersActivities = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ersResponseStatus :: Lens' EnterStandbyResponse Int
+ersResponseStatus :: Lens' (EnterStandbyResponse (a)) Int
 ersResponseStatus = lens _ersResponseStatus (\ s a -> s{_ersResponseStatus = a});
 
 instance NFData EnterStandbyResponse

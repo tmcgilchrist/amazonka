@@ -95,14 +95,14 @@ instance ToQuery DeleteVPC where
                "DryRun" =: _delDryRun, "VpcId" =: _delVPCId]
 
 -- | /See:/ 'deleteVPCResponse' smart constructor.
-data DeleteVPCResponse =
+data DeleteVPCResponse a =
     DeleteVPCResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVPCResponse' with the minimum fields required to make a request.
 --
 deleteVPCResponse
-    :: DeleteVPCResponse
+    :: DeleteVPCResponse (a)
 deleteVPCResponse = DeleteVPCResponse'
 
 instance NFData DeleteVPCResponse

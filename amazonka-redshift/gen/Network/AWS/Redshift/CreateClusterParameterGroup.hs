@@ -144,7 +144,7 @@ instance ToQuery CreateClusterParameterGroup where
                "Description" =: _ccpgDescription]
 
 -- | /See:/ 'createClusterParameterGroupResponse' smart constructor.
-data CreateClusterParameterGroupResponse = CreateClusterParameterGroupResponse'
+data CreateClusterParameterGroupResponse a = CreateClusterParameterGroupResponse'
     { _ccpgrsClusterParameterGroup :: !(Maybe ClusterParameterGroup)
     , _ccpgrsResponseStatus        :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -158,7 +158,7 @@ data CreateClusterParameterGroupResponse = CreateClusterParameterGroupResponse'
 -- * 'ccpgrsResponseStatus'
 createClusterParameterGroupResponse
     :: Int -- ^ 'ccpgrsResponseStatus'
-    -> CreateClusterParameterGroupResponse
+    -> CreateClusterParameterGroupResponse (a)
 createClusterParameterGroupResponse pResponseStatus_ =
     CreateClusterParameterGroupResponse'
     { _ccpgrsClusterParameterGroup = Nothing
@@ -166,11 +166,11 @@ createClusterParameterGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ccpgrsClusterParameterGroup :: Lens' CreateClusterParameterGroupResponse (Maybe ClusterParameterGroup)
+ccpgrsClusterParameterGroup :: Lens' (CreateClusterParameterGroupResponse (a)) (Maybe ClusterParameterGroup)
 ccpgrsClusterParameterGroup = lens _ccpgrsClusterParameterGroup (\ s a -> s{_ccpgrsClusterParameterGroup = a});
 
 -- | The response status code.
-ccpgrsResponseStatus :: Lens' CreateClusterParameterGroupResponse Int
+ccpgrsResponseStatus :: Lens' (CreateClusterParameterGroupResponse (a)) Int
 ccpgrsResponseStatus = lens _ccpgrsResponseStatus (\ s a -> s{_ccpgrsResponseStatus = a});
 
 instance NFData CreateClusterParameterGroupResponse

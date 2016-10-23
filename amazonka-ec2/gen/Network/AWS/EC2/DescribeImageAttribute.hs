@@ -139,7 +139,7 @@ instance ToQuery DescribeImageAttribute where
 -- | Describes an image attribute.
 --
 -- /See:/ 'describeImageAttributeResponse' smart constructor.
-data DescribeImageAttributeResponse = DescribeImageAttributeResponse'
+data DescribeImageAttributeResponse a = DescribeImageAttributeResponse'
     { _diarsLaunchPermissions   :: !(Maybe [LaunchPermission])
     , _diarsRAMDiskId           :: !(Maybe AttributeValue)
     , _diarsKernelId            :: !(Maybe AttributeValue)
@@ -174,7 +174,7 @@ data DescribeImageAttributeResponse = DescribeImageAttributeResponse'
 -- * 'diarsResponseStatus'
 describeImageAttributeResponse
     :: Int -- ^ 'diarsResponseStatus'
-    -> DescribeImageAttributeResponse
+    -> DescribeImageAttributeResponse (a)
 describeImageAttributeResponse pResponseStatus_ =
     DescribeImageAttributeResponse'
     { _diarsLaunchPermissions = Nothing
@@ -189,39 +189,39 @@ describeImageAttributeResponse pResponseStatus_ =
     }
 
 -- | One or more launch permissions.
-diarsLaunchPermissions :: Lens' DescribeImageAttributeResponse [LaunchPermission]
+diarsLaunchPermissions :: Lens' (DescribeImageAttributeResponse (a)) [LaunchPermission]
 diarsLaunchPermissions = lens _diarsLaunchPermissions (\ s a -> s{_diarsLaunchPermissions = a}) . _Default . _Coerce;
 
 -- | The RAM disk ID.
-diarsRAMDiskId :: Lens' DescribeImageAttributeResponse (Maybe AttributeValue)
+diarsRAMDiskId :: Lens' (DescribeImageAttributeResponse (a)) (Maybe AttributeValue)
 diarsRAMDiskId = lens _diarsRAMDiskId (\ s a -> s{_diarsRAMDiskId = a});
 
 -- | The kernel ID.
-diarsKernelId :: Lens' DescribeImageAttributeResponse (Maybe AttributeValue)
+diarsKernelId :: Lens' (DescribeImageAttributeResponse (a)) (Maybe AttributeValue)
 diarsKernelId = lens _diarsKernelId (\ s a -> s{_diarsKernelId = a});
 
 -- | Indicates whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.
-diarsSRIOVNetSupport :: Lens' DescribeImageAttributeResponse (Maybe AttributeValue)
+diarsSRIOVNetSupport :: Lens' (DescribeImageAttributeResponse (a)) (Maybe AttributeValue)
 diarsSRIOVNetSupport = lens _diarsSRIOVNetSupport (\ s a -> s{_diarsSRIOVNetSupport = a});
 
 -- | The ID of the AMI.
-diarsImageId :: Lens' DescribeImageAttributeResponse (Maybe Text)
+diarsImageId :: Lens' (DescribeImageAttributeResponse (a)) (Maybe Text)
 diarsImageId = lens _diarsImageId (\ s a -> s{_diarsImageId = a});
 
 -- | One or more product codes.
-diarsProductCodes :: Lens' DescribeImageAttributeResponse [ProductCode]
+diarsProductCodes :: Lens' (DescribeImageAttributeResponse (a)) [ProductCode]
 diarsProductCodes = lens _diarsProductCodes (\ s a -> s{_diarsProductCodes = a}) . _Default . _Coerce;
 
 -- | A description for the AMI.
-diarsDescription :: Lens' DescribeImageAttributeResponse (Maybe AttributeValue)
+diarsDescription :: Lens' (DescribeImageAttributeResponse (a)) (Maybe AttributeValue)
 diarsDescription = lens _diarsDescription (\ s a -> s{_diarsDescription = a});
 
 -- | One or more block device mapping entries.
-diarsBlockDeviceMappings :: Lens' DescribeImageAttributeResponse [BlockDeviceMapping]
+diarsBlockDeviceMappings :: Lens' (DescribeImageAttributeResponse (a)) [BlockDeviceMapping]
 diarsBlockDeviceMappings = lens _diarsBlockDeviceMappings (\ s a -> s{_diarsBlockDeviceMappings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-diarsResponseStatus :: Lens' DescribeImageAttributeResponse Int
+diarsResponseStatus :: Lens' (DescribeImageAttributeResponse (a)) Int
 diarsResponseStatus = lens _diarsResponseStatus (\ s a -> s{_diarsResponseStatus = a});
 
 instance NFData DescribeImageAttributeResponse

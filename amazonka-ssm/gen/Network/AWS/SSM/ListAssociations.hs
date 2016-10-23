@@ -134,7 +134,7 @@ instance ToQuery ListAssociations where
         toQuery = const mempty
 
 -- | /See:/ 'listAssociationsResponse' smart constructor.
-data ListAssociationsResponse = ListAssociationsResponse'
+data ListAssociationsResponse a = ListAssociationsResponse'
     { _larsNextToken      :: !(Maybe Text)
     , _larsAssociations   :: !(Maybe [Association])
     , _larsResponseStatus :: !Int
@@ -151,7 +151,7 @@ data ListAssociationsResponse = ListAssociationsResponse'
 -- * 'larsResponseStatus'
 listAssociationsResponse
     :: Int -- ^ 'larsResponseStatus'
-    -> ListAssociationsResponse
+    -> ListAssociationsResponse (a)
 listAssociationsResponse pResponseStatus_ =
     ListAssociationsResponse'
     { _larsNextToken = Nothing
@@ -160,15 +160,15 @@ listAssociationsResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-larsNextToken :: Lens' ListAssociationsResponse (Maybe Text)
+larsNextToken :: Lens' (ListAssociationsResponse (a)) (Maybe Text)
 larsNextToken = lens _larsNextToken (\ s a -> s{_larsNextToken = a});
 
 -- | The associations.
-larsAssociations :: Lens' ListAssociationsResponse [Association]
+larsAssociations :: Lens' (ListAssociationsResponse (a)) [Association]
 larsAssociations = lens _larsAssociations (\ s a -> s{_larsAssociations = a}) . _Default . _Coerce;
 
 -- | The response status code.
-larsResponseStatus :: Lens' ListAssociationsResponse Int
+larsResponseStatus :: Lens' (ListAssociationsResponse (a)) Int
 larsResponseStatus = lens _larsResponseStatus (\ s a -> s{_larsResponseStatus = a});
 
 instance NFData ListAssociationsResponse

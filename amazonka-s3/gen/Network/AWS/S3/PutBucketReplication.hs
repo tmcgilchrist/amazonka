@@ -109,14 +109,14 @@ instance ToQuery PutBucketReplication where
         toQuery = const (mconcat ["replication"])
 
 -- | /See:/ 'putBucketReplicationResponse' smart constructor.
-data PutBucketReplicationResponse =
+data PutBucketReplicationResponse a =
     PutBucketReplicationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketReplicationResponse' with the minimum fields required to make a request.
 --
 putBucketReplicationResponse
-    :: PutBucketReplicationResponse
+    :: PutBucketReplicationResponse (a)
 putBucketReplicationResponse = PutBucketReplicationResponse'
 
 instance NFData PutBucketReplicationResponse

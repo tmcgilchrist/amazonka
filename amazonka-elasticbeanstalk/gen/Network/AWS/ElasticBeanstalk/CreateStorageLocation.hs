@@ -83,7 +83,7 @@ instance ToQuery CreateStorageLocation where
 -- | Results of a < CreateStorageLocationResult> call.
 --
 -- /See:/ 'createStorageLocationResponse' smart constructor.
-data CreateStorageLocationResponse = CreateStorageLocationResponse'
+data CreateStorageLocationResponse a = CreateStorageLocationResponse'
     { _cslrsS3Bucket       :: !(Maybe Text)
     , _cslrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -97,7 +97,7 @@ data CreateStorageLocationResponse = CreateStorageLocationResponse'
 -- * 'cslrsResponseStatus'
 createStorageLocationResponse
     :: Int -- ^ 'cslrsResponseStatus'
-    -> CreateStorageLocationResponse
+    -> CreateStorageLocationResponse (a)
 createStorageLocationResponse pResponseStatus_ =
     CreateStorageLocationResponse'
     { _cslrsS3Bucket = Nothing
@@ -105,11 +105,11 @@ createStorageLocationResponse pResponseStatus_ =
     }
 
 -- | The name of the Amazon S3 bucket created.
-cslrsS3Bucket :: Lens' CreateStorageLocationResponse (Maybe Text)
+cslrsS3Bucket :: Lens' (CreateStorageLocationResponse (a)) (Maybe Text)
 cslrsS3Bucket = lens _cslrsS3Bucket (\ s a -> s{_cslrsS3Bucket = a});
 
 -- | The response status code.
-cslrsResponseStatus :: Lens' CreateStorageLocationResponse Int
+cslrsResponseStatus :: Lens' (CreateStorageLocationResponse (a)) Int
 cslrsResponseStatus = lens _cslrsResponseStatus (\ s a -> s{_cslrsResponseStatus = a});
 
 instance NFData CreateStorageLocationResponse

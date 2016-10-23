@@ -127,7 +127,7 @@ instance ToQuery
 -- | Contains the output of SetLoadBalancerListenerSSLCertificate.
 --
 -- /See:/ 'setLoadBalancerListenerSSLCertificateResponse' smart constructor.
-newtype SetLoadBalancerListenerSSLCertificateResponse = SetLoadBalancerListenerSSLCertificateResponse'
+newtype SetLoadBalancerListenerSSLCertificateResponse a = SetLoadBalancerListenerSSLCertificateResponse'
     { _slblscrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -138,14 +138,14 @@ newtype SetLoadBalancerListenerSSLCertificateResponse = SetLoadBalancerListenerS
 -- * 'slblscrsResponseStatus'
 setLoadBalancerListenerSSLCertificateResponse
     :: Int -- ^ 'slblscrsResponseStatus'
-    -> SetLoadBalancerListenerSSLCertificateResponse
+    -> SetLoadBalancerListenerSSLCertificateResponse (a)
 setLoadBalancerListenerSSLCertificateResponse pResponseStatus_ =
     SetLoadBalancerListenerSSLCertificateResponse'
     { _slblscrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-slblscrsResponseStatus :: Lens' SetLoadBalancerListenerSSLCertificateResponse Int
+slblscrsResponseStatus :: Lens' (SetLoadBalancerListenerSSLCertificateResponse (a)) Int
 slblscrsResponseStatus = lens _slblscrsResponseStatus (\ s a -> s{_slblscrsResponseStatus = a});
 
 instance NFData

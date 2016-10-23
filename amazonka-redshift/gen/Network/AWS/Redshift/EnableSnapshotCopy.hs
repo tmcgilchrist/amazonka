@@ -133,7 +133,7 @@ instance ToQuery EnableSnapshotCopy where
                "DestinationRegion" =: _escDestinationRegion]
 
 -- | /See:/ 'enableSnapshotCopyResponse' smart constructor.
-data EnableSnapshotCopyResponse = EnableSnapshotCopyResponse'
+data EnableSnapshotCopyResponse a = EnableSnapshotCopyResponse'
     { _escrsCluster        :: !(Maybe Cluster)
     , _escrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -147,7 +147,7 @@ data EnableSnapshotCopyResponse = EnableSnapshotCopyResponse'
 -- * 'escrsResponseStatus'
 enableSnapshotCopyResponse
     :: Int -- ^ 'escrsResponseStatus'
-    -> EnableSnapshotCopyResponse
+    -> EnableSnapshotCopyResponse (a)
 enableSnapshotCopyResponse pResponseStatus_ =
     EnableSnapshotCopyResponse'
     { _escrsCluster = Nothing
@@ -155,11 +155,11 @@ enableSnapshotCopyResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-escrsCluster :: Lens' EnableSnapshotCopyResponse (Maybe Cluster)
+escrsCluster :: Lens' (EnableSnapshotCopyResponse (a)) (Maybe Cluster)
 escrsCluster = lens _escrsCluster (\ s a -> s{_escrsCluster = a});
 
 -- | The response status code.
-escrsResponseStatus :: Lens' EnableSnapshotCopyResponse Int
+escrsResponseStatus :: Lens' (EnableSnapshotCopyResponse (a)) Int
 escrsResponseStatus = lens _escrsResponseStatus (\ s a -> s{_escrsResponseStatus = a});
 
 instance NFData EnableSnapshotCopyResponse

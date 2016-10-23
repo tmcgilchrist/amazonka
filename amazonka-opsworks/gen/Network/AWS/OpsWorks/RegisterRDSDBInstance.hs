@@ -129,14 +129,14 @@ instance ToQuery RegisterRDSDBInstance where
         toQuery = const mempty
 
 -- | /See:/ 'registerRDSDBInstanceResponse' smart constructor.
-data RegisterRDSDBInstanceResponse =
+data RegisterRDSDBInstanceResponse a =
     RegisterRDSDBInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RegisterRDSDBInstanceResponse' with the minimum fields required to make a request.
 --
 registerRDSDBInstanceResponse
-    :: RegisterRDSDBInstanceResponse
+    :: RegisterRDSDBInstanceResponse (a)
 registerRDSDBInstanceResponse = RegisterRDSDBInstanceResponse'
 
 instance NFData RegisterRDSDBInstanceResponse

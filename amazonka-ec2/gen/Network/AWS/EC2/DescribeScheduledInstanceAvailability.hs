@@ -194,7 +194,7 @@ instance ToQuery
 -- | Contains the output of DescribeScheduledInstanceAvailability.
 --
 -- /See:/ 'describeScheduledInstanceAvailabilityResponse' smart constructor.
-data DescribeScheduledInstanceAvailabilityResponse = DescribeScheduledInstanceAvailabilityResponse'
+data DescribeScheduledInstanceAvailabilityResponse a = DescribeScheduledInstanceAvailabilityResponse'
     { _dsiarsScheduledInstanceAvailabilitySet :: !(Maybe [ScheduledInstanceAvailability])
     , _dsiarsNextToken                        :: !(Maybe Text)
     , _dsiarsResponseStatus                   :: !Int
@@ -211,7 +211,7 @@ data DescribeScheduledInstanceAvailabilityResponse = DescribeScheduledInstanceAv
 -- * 'dsiarsResponseStatus'
 describeScheduledInstanceAvailabilityResponse
     :: Int -- ^ 'dsiarsResponseStatus'
-    -> DescribeScheduledInstanceAvailabilityResponse
+    -> DescribeScheduledInstanceAvailabilityResponse (a)
 describeScheduledInstanceAvailabilityResponse pResponseStatus_ =
     DescribeScheduledInstanceAvailabilityResponse'
     { _dsiarsScheduledInstanceAvailabilitySet = Nothing
@@ -220,15 +220,15 @@ describeScheduledInstanceAvailabilityResponse pResponseStatus_ =
     }
 
 -- | Information about the available Scheduled Instances.
-dsiarsScheduledInstanceAvailabilitySet :: Lens' DescribeScheduledInstanceAvailabilityResponse [ScheduledInstanceAvailability]
+dsiarsScheduledInstanceAvailabilitySet :: Lens' (DescribeScheduledInstanceAvailabilityResponse (a)) [ScheduledInstanceAvailability]
 dsiarsScheduledInstanceAvailabilitySet = lens _dsiarsScheduledInstanceAvailabilitySet (\ s a -> s{_dsiarsScheduledInstanceAvailabilitySet = a}) . _Default . _Coerce;
 
 -- | The token required to retrieve the next set of results. This value is 'null' when there are no more results to return.
-dsiarsNextToken :: Lens' DescribeScheduledInstanceAvailabilityResponse (Maybe Text)
+dsiarsNextToken :: Lens' (DescribeScheduledInstanceAvailabilityResponse (a)) (Maybe Text)
 dsiarsNextToken = lens _dsiarsNextToken (\ s a -> s{_dsiarsNextToken = a});
 
 -- | The response status code.
-dsiarsResponseStatus :: Lens' DescribeScheduledInstanceAvailabilityResponse Int
+dsiarsResponseStatus :: Lens' (DescribeScheduledInstanceAvailabilityResponse (a)) Int
 dsiarsResponseStatus = lens _dsiarsResponseStatus (\ s a -> s{_dsiarsResponseStatus = a});
 
 instance NFData

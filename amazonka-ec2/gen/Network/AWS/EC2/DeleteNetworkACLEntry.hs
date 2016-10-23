@@ -119,14 +119,14 @@ instance ToQuery DeleteNetworkACLEntry where
                "Egress" =: _dnaeEgress]
 
 -- | /See:/ 'deleteNetworkACLEntryResponse' smart constructor.
-data DeleteNetworkACLEntryResponse =
+data DeleteNetworkACLEntryResponse a =
     DeleteNetworkACLEntryResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteNetworkACLEntryResponse' with the minimum fields required to make a request.
 --
 deleteNetworkACLEntryResponse
-    :: DeleteNetworkACLEntryResponse
+    :: DeleteNetworkACLEntryResponse (a)
 deleteNetworkACLEntryResponse = DeleteNetworkACLEntryResponse'
 
 instance NFData DeleteNetworkACLEntryResponse

@@ -95,14 +95,14 @@ instance ToQuery EnableVolumeIO where
                "DryRun" =: _evioDryRun, "VolumeId" =: _evioVolumeId]
 
 -- | /See:/ 'enableVolumeIOResponse' smart constructor.
-data EnableVolumeIOResponse =
+data EnableVolumeIOResponse a =
     EnableVolumeIOResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'EnableVolumeIOResponse' with the minimum fields required to make a request.
 --
 enableVolumeIOResponse
-    :: EnableVolumeIOResponse
+    :: EnableVolumeIOResponse (a)
 enableVolumeIOResponse = EnableVolumeIOResponse'
 
 instance NFData EnableVolumeIOResponse

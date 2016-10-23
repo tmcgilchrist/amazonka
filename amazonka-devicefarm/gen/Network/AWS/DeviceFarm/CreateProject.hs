@@ -101,7 +101,7 @@ instance ToQuery CreateProject where
 -- | Represents the result of a create project request.
 --
 -- /See:/ 'createProjectResponse' smart constructor.
-data CreateProjectResponse = CreateProjectResponse'
+data CreateProjectResponse a = CreateProjectResponse'
     { _cprsProject        :: !(Maybe Project)
     , _cprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data CreateProjectResponse = CreateProjectResponse'
 -- * 'cprsResponseStatus'
 createProjectResponse
     :: Int -- ^ 'cprsResponseStatus'
-    -> CreateProjectResponse
+    -> CreateProjectResponse (a)
 createProjectResponse pResponseStatus_ =
     CreateProjectResponse'
     { _cprsProject = Nothing
@@ -123,11 +123,11 @@ createProjectResponse pResponseStatus_ =
     }
 
 -- | The newly created project.
-cprsProject :: Lens' CreateProjectResponse (Maybe Project)
+cprsProject :: Lens' (CreateProjectResponse (a)) (Maybe Project)
 cprsProject = lens _cprsProject (\ s a -> s{_cprsProject = a});
 
 -- | The response status code.
-cprsResponseStatus :: Lens' CreateProjectResponse Int
+cprsResponseStatus :: Lens' (CreateProjectResponse (a)) Int
 cprsResponseStatus = lens _cprsResponseStatus (\ s a -> s{_cprsResponseStatus = a});
 
 instance NFData CreateProjectResponse

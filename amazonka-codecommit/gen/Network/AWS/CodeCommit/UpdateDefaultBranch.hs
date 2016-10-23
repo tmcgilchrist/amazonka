@@ -109,14 +109,14 @@ instance ToQuery UpdateDefaultBranch where
         toQuery = const mempty
 
 -- | /See:/ 'updateDefaultBranchResponse' smart constructor.
-data UpdateDefaultBranchResponse =
+data UpdateDefaultBranchResponse a =
     UpdateDefaultBranchResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateDefaultBranchResponse' with the minimum fields required to make a request.
 --
 updateDefaultBranchResponse
-    :: UpdateDefaultBranchResponse
+    :: UpdateDefaultBranchResponse (a)
 updateDefaultBranchResponse = UpdateDefaultBranchResponse'
 
 instance NFData UpdateDefaultBranchResponse

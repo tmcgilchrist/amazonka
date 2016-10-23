@@ -134,7 +134,7 @@ instance ToQuery DescribeCacheSubnetGroups where
 -- | Represents the output of a /DescribeCacheSubnetGroups/ action.
 --
 -- /See:/ 'describeCacheSubnetGroupsResponse' smart constructor.
-data DescribeCacheSubnetGroupsResponse = DescribeCacheSubnetGroupsResponse'
+data DescribeCacheSubnetGroupsResponse a = DescribeCacheSubnetGroupsResponse'
     { _dcsgrsMarker            :: !(Maybe Text)
     , _dcsgrsCacheSubnetGroups :: !(Maybe [CacheSubnetGroup])
     , _dcsgrsResponseStatus    :: !Int
@@ -151,7 +151,7 @@ data DescribeCacheSubnetGroupsResponse = DescribeCacheSubnetGroupsResponse'
 -- * 'dcsgrsResponseStatus'
 describeCacheSubnetGroupsResponse
     :: Int -- ^ 'dcsgrsResponseStatus'
-    -> DescribeCacheSubnetGroupsResponse
+    -> DescribeCacheSubnetGroupsResponse (a)
 describeCacheSubnetGroupsResponse pResponseStatus_ =
     DescribeCacheSubnetGroupsResponse'
     { _dcsgrsMarker = Nothing
@@ -160,15 +160,15 @@ describeCacheSubnetGroupsResponse pResponseStatus_ =
     }
 
 -- | Provides an identifier to allow retrieval of paginated results.
-dcsgrsMarker :: Lens' DescribeCacheSubnetGroupsResponse (Maybe Text)
+dcsgrsMarker :: Lens' (DescribeCacheSubnetGroupsResponse (a)) (Maybe Text)
 dcsgrsMarker = lens _dcsgrsMarker (\ s a -> s{_dcsgrsMarker = a});
 
 -- | A list of cache subnet groups. Each element in the list contains detailed information about one group.
-dcsgrsCacheSubnetGroups :: Lens' DescribeCacheSubnetGroupsResponse [CacheSubnetGroup]
+dcsgrsCacheSubnetGroups :: Lens' (DescribeCacheSubnetGroupsResponse (a)) [CacheSubnetGroup]
 dcsgrsCacheSubnetGroups = lens _dcsgrsCacheSubnetGroups (\ s a -> s{_dcsgrsCacheSubnetGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcsgrsResponseStatus :: Lens' DescribeCacheSubnetGroupsResponse Int
+dcsgrsResponseStatus :: Lens' (DescribeCacheSubnetGroupsResponse (a)) Int
 dcsgrsResponseStatus = lens _dcsgrsResponseStatus (\ s a -> s{_dcsgrsResponseStatus = a});
 
 instance NFData DescribeCacheSubnetGroupsResponse

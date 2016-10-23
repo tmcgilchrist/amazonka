@@ -153,7 +153,7 @@ instance ToQuery DescribeDBInstances where
 -- | Contains the result of a successful invocation of the < DescribeDBInstances> action.
 --
 -- /See:/ 'describeDBInstancesResponse' smart constructor.
-data DescribeDBInstancesResponse = DescribeDBInstancesResponse'
+data DescribeDBInstancesResponse a = DescribeDBInstancesResponse'
     { _ddbirsDBInstances    :: !(Maybe [DBInstance])
     , _ddbirsMarker         :: !(Maybe Text)
     , _ddbirsResponseStatus :: !Int
@@ -170,7 +170,7 @@ data DescribeDBInstancesResponse = DescribeDBInstancesResponse'
 -- * 'ddbirsResponseStatus'
 describeDBInstancesResponse
     :: Int -- ^ 'ddbirsResponseStatus'
-    -> DescribeDBInstancesResponse
+    -> DescribeDBInstancesResponse (a)
 describeDBInstancesResponse pResponseStatus_ =
     DescribeDBInstancesResponse'
     { _ddbirsDBInstances = Nothing
@@ -179,15 +179,15 @@ describeDBInstancesResponse pResponseStatus_ =
     }
 
 -- | A list of < DBInstance> instances.
-ddbirsDBInstances :: Lens' DescribeDBInstancesResponse [DBInstance]
+ddbirsDBInstances :: Lens' (DescribeDBInstancesResponse (a)) [DBInstance]
 ddbirsDBInstances = lens _ddbirsDBInstances (\ s a -> s{_ddbirsDBInstances = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords' .
-ddbirsMarker :: Lens' DescribeDBInstancesResponse (Maybe Text)
+ddbirsMarker :: Lens' (DescribeDBInstancesResponse (a)) (Maybe Text)
 ddbirsMarker = lens _ddbirsMarker (\ s a -> s{_ddbirsMarker = a});
 
 -- | The response status code.
-ddbirsResponseStatus :: Lens' DescribeDBInstancesResponse Int
+ddbirsResponseStatus :: Lens' (DescribeDBInstancesResponse (a)) Int
 ddbirsResponseStatus = lens _ddbirsResponseStatus (\ s a -> s{_ddbirsResponseStatus = a});
 
 instance NFData DescribeDBInstancesResponse

@@ -101,14 +101,14 @@ instance ToQuery TagResource where
               ["Resource" =: _trResource, "Operation=Tag"]
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
-data TagResourceResponse =
+data TagResourceResponse a =
     TagResourceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
 tagResourceResponse
-    :: TagResourceResponse
+    :: TagResourceResponse (a)
 tagResourceResponse = TagResourceResponse'
 
 instance NFData TagResourceResponse

@@ -101,7 +101,7 @@ instance ToQuery DescribeStacks where
 -- | Contains the response to a 'DescribeStacks' request.
 --
 -- /See:/ 'describeStacksResponse' smart constructor.
-data DescribeStacksResponse = DescribeStacksResponse'
+data DescribeStacksResponse a = DescribeStacksResponse'
     { _dsrsStacks         :: !(Maybe [Stack])
     , _dsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data DescribeStacksResponse = DescribeStacksResponse'
 -- * 'dsrsResponseStatus'
 describeStacksResponse
     :: Int -- ^ 'dsrsResponseStatus'
-    -> DescribeStacksResponse
+    -> DescribeStacksResponse (a)
 describeStacksResponse pResponseStatus_ =
     DescribeStacksResponse'
     { _dsrsStacks = Nothing
@@ -123,11 +123,11 @@ describeStacksResponse pResponseStatus_ =
     }
 
 -- | An array of 'Stack' objects that describe the stacks.
-dsrsStacks :: Lens' DescribeStacksResponse [Stack]
+dsrsStacks :: Lens' (DescribeStacksResponse (a)) [Stack]
 dsrsStacks = lens _dsrsStacks (\ s a -> s{_dsrsStacks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DescribeStacksResponse Int
+dsrsResponseStatus :: Lens' (DescribeStacksResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 instance NFData DescribeStacksResponse

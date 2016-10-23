@@ -101,7 +101,7 @@ instance ToQuery ListHAPGs where
         toQuery = const mempty
 
 -- | /See:/ 'listHAPGsResponse' smart constructor.
-data ListHAPGsResponse = ListHAPGsResponse'
+data ListHAPGsResponse a = ListHAPGsResponse'
     { _lhrsNextToken      :: !(Maybe Text)
     , _lhrsResponseStatus :: !Int
     , _lhrsHAPGList       :: ![Text]
@@ -118,7 +118,7 @@ data ListHAPGsResponse = ListHAPGsResponse'
 -- * 'lhrsHAPGList'
 listHAPGsResponse
     :: Int -- ^ 'lhrsResponseStatus'
-    -> ListHAPGsResponse
+    -> ListHAPGsResponse (a)
 listHAPGsResponse pResponseStatus_ =
     ListHAPGsResponse'
     { _lhrsNextToken = Nothing
@@ -127,15 +127,15 @@ listHAPGsResponse pResponseStatus_ =
     }
 
 -- | If not null, more results are available. Pass this value to < ListHapgs> to retrieve the next set of items.
-lhrsNextToken :: Lens' ListHAPGsResponse (Maybe Text)
+lhrsNextToken :: Lens' (ListHAPGsResponse (a)) (Maybe Text)
 lhrsNextToken = lens _lhrsNextToken (\ s a -> s{_lhrsNextToken = a});
 
 -- | The response status code.
-lhrsResponseStatus :: Lens' ListHAPGsResponse Int
+lhrsResponseStatus :: Lens' (ListHAPGsResponse (a)) Int
 lhrsResponseStatus = lens _lhrsResponseStatus (\ s a -> s{_lhrsResponseStatus = a});
 
 -- | The list of high-availability partition groups.
-lhrsHAPGList :: Lens' ListHAPGsResponse [Text]
+lhrsHAPGList :: Lens' (ListHAPGsResponse (a)) [Text]
 lhrsHAPGList = lens _lhrsHAPGList (\ s a -> s{_lhrsHAPGList = a}) . _Coerce;
 
 instance NFData ListHAPGsResponse

@@ -132,7 +132,7 @@ instance ToQuery ListGateways where
         toQuery = const mempty
 
 -- | /See:/ 'listGatewaysResponse' smart constructor.
-data ListGatewaysResponse = ListGatewaysResponse'
+data ListGatewaysResponse a = ListGatewaysResponse'
     { _lgrsMarker         :: !(Maybe Text)
     , _lgrsGateways       :: !(Maybe [GatewayInfo])
     , _lgrsResponseStatus :: !Int
@@ -149,7 +149,7 @@ data ListGatewaysResponse = ListGatewaysResponse'
 -- * 'lgrsResponseStatus'
 listGatewaysResponse
     :: Int -- ^ 'lgrsResponseStatus'
-    -> ListGatewaysResponse
+    -> ListGatewaysResponse (a)
 listGatewaysResponse pResponseStatus_ =
     ListGatewaysResponse'
     { _lgrsMarker = Nothing
@@ -158,15 +158,15 @@ listGatewaysResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-lgrsMarker :: Lens' ListGatewaysResponse (Maybe Text)
+lgrsMarker :: Lens' (ListGatewaysResponse (a)) (Maybe Text)
 lgrsMarker = lens _lgrsMarker (\ s a -> s{_lgrsMarker = a});
 
 -- | Undocumented member.
-lgrsGateways :: Lens' ListGatewaysResponse [GatewayInfo]
+lgrsGateways :: Lens' (ListGatewaysResponse (a)) [GatewayInfo]
 lgrsGateways = lens _lgrsGateways (\ s a -> s{_lgrsGateways = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lgrsResponseStatus :: Lens' ListGatewaysResponse Int
+lgrsResponseStatus :: Lens' (ListGatewaysResponse (a)) Int
 lgrsResponseStatus = lens _lgrsResponseStatus (\ s a -> s{_lgrsResponseStatus = a});
 
 instance NFData ListGatewaysResponse

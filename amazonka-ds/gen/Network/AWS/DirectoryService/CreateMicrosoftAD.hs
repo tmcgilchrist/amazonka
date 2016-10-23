@@ -146,7 +146,7 @@ instance ToQuery CreateMicrosoftAD where
 -- | Result of a CreateMicrosoftAD request.
 --
 -- /See:/ 'createMicrosoftADResponse' smart constructor.
-data CreateMicrosoftADResponse = CreateMicrosoftADResponse'
+data CreateMicrosoftADResponse a = CreateMicrosoftADResponse'
     { _cmadrsDirectoryId    :: !(Maybe Text)
     , _cmadrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -160,7 +160,7 @@ data CreateMicrosoftADResponse = CreateMicrosoftADResponse'
 -- * 'cmadrsResponseStatus'
 createMicrosoftADResponse
     :: Int -- ^ 'cmadrsResponseStatus'
-    -> CreateMicrosoftADResponse
+    -> CreateMicrosoftADResponse (a)
 createMicrosoftADResponse pResponseStatus_ =
     CreateMicrosoftADResponse'
     { _cmadrsDirectoryId = Nothing
@@ -168,11 +168,11 @@ createMicrosoftADResponse pResponseStatus_ =
     }
 
 -- | The identifier of the directory that was created.
-cmadrsDirectoryId :: Lens' CreateMicrosoftADResponse (Maybe Text)
+cmadrsDirectoryId :: Lens' (CreateMicrosoftADResponse (a)) (Maybe Text)
 cmadrsDirectoryId = lens _cmadrsDirectoryId (\ s a -> s{_cmadrsDirectoryId = a});
 
 -- | The response status code.
-cmadrsResponseStatus :: Lens' CreateMicrosoftADResponse Int
+cmadrsResponseStatus :: Lens' (CreateMicrosoftADResponse (a)) Int
 cmadrsResponseStatus = lens _cmadrsResponseStatus (\ s a -> s{_cmadrsResponseStatus = a});
 
 instance NFData CreateMicrosoftADResponse

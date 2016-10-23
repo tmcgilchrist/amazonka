@@ -107,7 +107,7 @@ instance ToQuery DescribeRules where
 -- | Contains the output of DescribeRules.
 --
 -- /See:/ 'describeRulesResponse' smart constructor.
-data DescribeRulesResponse = DescribeRulesResponse'
+data DescribeRulesResponse a = DescribeRulesResponse'
     { _drsrsRules          :: !(Maybe [Rule])
     , _drsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DescribeRulesResponse = DescribeRulesResponse'
 -- * 'drsrsResponseStatus'
 describeRulesResponse
     :: Int -- ^ 'drsrsResponseStatus'
-    -> DescribeRulesResponse
+    -> DescribeRulesResponse (a)
 describeRulesResponse pResponseStatus_ =
     DescribeRulesResponse'
     { _drsrsRules = Nothing
@@ -129,11 +129,11 @@ describeRulesResponse pResponseStatus_ =
     }
 
 -- | Information about the rules.
-drsrsRules :: Lens' DescribeRulesResponse [Rule]
+drsrsRules :: Lens' (DescribeRulesResponse (a)) [Rule]
 drsrsRules = lens _drsrsRules (\ s a -> s{_drsrsRules = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drsrsResponseStatus :: Lens' DescribeRulesResponse Int
+drsrsResponseStatus :: Lens' (DescribeRulesResponse (a)) Int
 drsrsResponseStatus = lens _drsrsResponseStatus (\ s a -> s{_drsrsResponseStatus = a});
 
 instance NFData DescribeRulesResponse

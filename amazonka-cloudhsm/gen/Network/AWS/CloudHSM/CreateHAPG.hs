@@ -101,7 +101,7 @@ instance ToQuery CreateHAPG where
 -- | Contains the output of the < CreateHAPartitionGroup> action.
 --
 -- /See:/ 'createHAPGResponse' smart constructor.
-data CreateHAPGResponse = CreateHAPGResponse'
+data CreateHAPGResponse a = CreateHAPGResponse'
     { _chapgrsHAPGARN        :: !(Maybe Text)
     , _chapgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data CreateHAPGResponse = CreateHAPGResponse'
 -- * 'chapgrsResponseStatus'
 createHAPGResponse
     :: Int -- ^ 'chapgrsResponseStatus'
-    -> CreateHAPGResponse
+    -> CreateHAPGResponse (a)
 createHAPGResponse pResponseStatus_ =
     CreateHAPGResponse'
     { _chapgrsHAPGARN = Nothing
@@ -123,11 +123,11 @@ createHAPGResponse pResponseStatus_ =
     }
 
 -- | The ARN of the high-availability partition group.
-chapgrsHAPGARN :: Lens' CreateHAPGResponse (Maybe Text)
+chapgrsHAPGARN :: Lens' (CreateHAPGResponse (a)) (Maybe Text)
 chapgrsHAPGARN = lens _chapgrsHAPGARN (\ s a -> s{_chapgrsHAPGARN = a});
 
 -- | The response status code.
-chapgrsResponseStatus :: Lens' CreateHAPGResponse Int
+chapgrsResponseStatus :: Lens' (CreateHAPGResponse (a)) Int
 chapgrsResponseStatus = lens _chapgrsResponseStatus (\ s a -> s{_chapgrsResponseStatus = a});
 
 instance NFData CreateHAPGResponse

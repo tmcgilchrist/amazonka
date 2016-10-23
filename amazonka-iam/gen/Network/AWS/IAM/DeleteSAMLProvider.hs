@@ -89,14 +89,14 @@ instance ToQuery DeleteSAMLProvider where
                "SAMLProviderArn" =: _dsamlpSAMLProviderARN]
 
 -- | /See:/ 'deleteSAMLProviderResponse' smart constructor.
-data DeleteSAMLProviderResponse =
+data DeleteSAMLProviderResponse a =
     DeleteSAMLProviderResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSAMLProviderResponse' with the minimum fields required to make a request.
 --
 deleteSAMLProviderResponse
-    :: DeleteSAMLProviderResponse
+    :: DeleteSAMLProviderResponse (a)
 deleteSAMLProviderResponse = DeleteSAMLProviderResponse'
 
 instance NFData DeleteSAMLProviderResponse

@@ -106,7 +106,7 @@ instance ToQuery MonitorInstances where
 -- | Contains the output of MonitorInstances.
 --
 -- /See:/ 'monitorInstancesResponse' smart constructor.
-data MonitorInstancesResponse = MonitorInstancesResponse'
+data MonitorInstancesResponse a = MonitorInstancesResponse'
     { _mirsInstanceMonitorings :: !(Maybe [InstanceMonitoring])
     , _mirsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data MonitorInstancesResponse = MonitorInstancesResponse'
 -- * 'mirsResponseStatus'
 monitorInstancesResponse
     :: Int -- ^ 'mirsResponseStatus'
-    -> MonitorInstancesResponse
+    -> MonitorInstancesResponse (a)
 monitorInstancesResponse pResponseStatus_ =
     MonitorInstancesResponse'
     { _mirsInstanceMonitorings = Nothing
@@ -128,11 +128,11 @@ monitorInstancesResponse pResponseStatus_ =
     }
 
 -- | Monitoring information for one or more instances.
-mirsInstanceMonitorings :: Lens' MonitorInstancesResponse [InstanceMonitoring]
+mirsInstanceMonitorings :: Lens' (MonitorInstancesResponse (a)) [InstanceMonitoring]
 mirsInstanceMonitorings = lens _mirsInstanceMonitorings (\ s a -> s{_mirsInstanceMonitorings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-mirsResponseStatus :: Lens' MonitorInstancesResponse Int
+mirsResponseStatus :: Lens' (MonitorInstancesResponse (a)) Int
 mirsResponseStatus = lens _mirsResponseStatus (\ s a -> s{_mirsResponseStatus = a});
 
 instance NFData MonitorInstancesResponse

@@ -136,7 +136,7 @@ instance ToQuery UpdateBandwidthRateLimit where
 -- | A JSON object containing the of the gateway whose throttle information was updated.
 --
 -- /See:/ 'updateBandwidthRateLimitResponse' smart constructor.
-data UpdateBandwidthRateLimitResponse = UpdateBandwidthRateLimitResponse'
+data UpdateBandwidthRateLimitResponse a = UpdateBandwidthRateLimitResponse'
     { _ubrlrsGatewayARN     :: !(Maybe Text)
     , _ubrlrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -150,7 +150,7 @@ data UpdateBandwidthRateLimitResponse = UpdateBandwidthRateLimitResponse'
 -- * 'ubrlrsResponseStatus'
 updateBandwidthRateLimitResponse
     :: Int -- ^ 'ubrlrsResponseStatus'
-    -> UpdateBandwidthRateLimitResponse
+    -> UpdateBandwidthRateLimitResponse (a)
 updateBandwidthRateLimitResponse pResponseStatus_ =
     UpdateBandwidthRateLimitResponse'
     { _ubrlrsGatewayARN = Nothing
@@ -158,11 +158,11 @@ updateBandwidthRateLimitResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ubrlrsGatewayARN :: Lens' UpdateBandwidthRateLimitResponse (Maybe Text)
+ubrlrsGatewayARN :: Lens' (UpdateBandwidthRateLimitResponse (a)) (Maybe Text)
 ubrlrsGatewayARN = lens _ubrlrsGatewayARN (\ s a -> s{_ubrlrsGatewayARN = a});
 
 -- | The response status code.
-ubrlrsResponseStatus :: Lens' UpdateBandwidthRateLimitResponse Int
+ubrlrsResponseStatus :: Lens' (UpdateBandwidthRateLimitResponse (a)) Int
 ubrlrsResponseStatus = lens _ubrlrsResponseStatus (\ s a -> s{_ubrlrsResponseStatus = a});
 
 instance NFData UpdateBandwidthRateLimitResponse

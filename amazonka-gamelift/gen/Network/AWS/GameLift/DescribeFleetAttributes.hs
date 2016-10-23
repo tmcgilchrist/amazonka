@@ -128,7 +128,7 @@ instance ToQuery DescribeFleetAttributes where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeFleetAttributesResponse' smart constructor.
-data DescribeFleetAttributesResponse = DescribeFleetAttributesResponse'
+data DescribeFleetAttributesResponse a = DescribeFleetAttributesResponse'
     { _dfarsNextToken       :: !(Maybe Text)
     , _dfarsFleetAttributes :: !(Maybe [FleetAttributes])
     , _dfarsResponseStatus  :: !Int
@@ -145,7 +145,7 @@ data DescribeFleetAttributesResponse = DescribeFleetAttributesResponse'
 -- * 'dfarsResponseStatus'
 describeFleetAttributesResponse
     :: Int -- ^ 'dfarsResponseStatus'
-    -> DescribeFleetAttributesResponse
+    -> DescribeFleetAttributesResponse (a)
 describeFleetAttributesResponse pResponseStatus_ =
     DescribeFleetAttributesResponse'
     { _dfarsNextToken = Nothing
@@ -156,15 +156,15 @@ describeFleetAttributesResponse pResponseStatus_ =
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-dfarsNextToken :: Lens' DescribeFleetAttributesResponse (Maybe Text)
+dfarsNextToken :: Lens' (DescribeFleetAttributesResponse (a)) (Maybe Text)
 dfarsNextToken = lens _dfarsNextToken (\ s a -> s{_dfarsNextToken = a});
 
 -- | Collection of objects containing attribute metadata for each requested fleet ID.
-dfarsFleetAttributes :: Lens' DescribeFleetAttributesResponse [FleetAttributes]
+dfarsFleetAttributes :: Lens' (DescribeFleetAttributesResponse (a)) [FleetAttributes]
 dfarsFleetAttributes = lens _dfarsFleetAttributes (\ s a -> s{_dfarsFleetAttributes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dfarsResponseStatus :: Lens' DescribeFleetAttributesResponse Int
+dfarsResponseStatus :: Lens' (DescribeFleetAttributesResponse (a)) Int
 dfarsResponseStatus = lens _dfarsResponseStatus (\ s a -> s{_dfarsResponseStatus = a});
 
 instance NFData DescribeFleetAttributesResponse

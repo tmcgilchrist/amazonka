@@ -222,14 +222,14 @@ instance ToQuery RegisterActivityType where
         toQuery = const mempty
 
 -- | /See:/ 'registerActivityTypeResponse' smart constructor.
-data RegisterActivityTypeResponse =
+data RegisterActivityTypeResponse a =
     RegisterActivityTypeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RegisterActivityTypeResponse' with the minimum fields required to make a request.
 --
 registerActivityTypeResponse
-    :: RegisterActivityTypeResponse
+    :: RegisterActivityTypeResponse (a)
 registerActivityTypeResponse = RegisterActivityTypeResponse'
 
 instance NFData RegisterActivityTypeResponse

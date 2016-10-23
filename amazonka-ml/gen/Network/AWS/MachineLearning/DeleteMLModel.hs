@@ -106,7 +106,7 @@ instance ToQuery DeleteMLModel where
 -- You can use the 'GetMLModel' operation and check the value of the 'Status' parameter to see whether an 'MLModel' is marked as 'DELETED'.
 --
 -- /See:/ 'deleteMLModelResponse' smart constructor.
-data DeleteMLModelResponse = DeleteMLModelResponse'
+data DeleteMLModelResponse a = DeleteMLModelResponse'
     { _dmlmrsMLModelId      :: !(Maybe Text)
     , _dmlmrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data DeleteMLModelResponse = DeleteMLModelResponse'
 -- * 'dmlmrsResponseStatus'
 deleteMLModelResponse
     :: Int -- ^ 'dmlmrsResponseStatus'
-    -> DeleteMLModelResponse
+    -> DeleteMLModelResponse (a)
 deleteMLModelResponse pResponseStatus_ =
     DeleteMLModelResponse'
     { _dmlmrsMLModelId = Nothing
@@ -128,11 +128,11 @@ deleteMLModelResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the 'MLModel'. This value should be identical to the value of the 'MLModelID' in the request.
-dmlmrsMLModelId :: Lens' DeleteMLModelResponse (Maybe Text)
+dmlmrsMLModelId :: Lens' (DeleteMLModelResponse (a)) (Maybe Text)
 dmlmrsMLModelId = lens _dmlmrsMLModelId (\ s a -> s{_dmlmrsMLModelId = a});
 
 -- | The response status code.
-dmlmrsResponseStatus :: Lens' DeleteMLModelResponse Int
+dmlmrsResponseStatus :: Lens' (DeleteMLModelResponse (a)) Int
 dmlmrsResponseStatus = lens _dmlmrsResponseStatus (\ s a -> s{_dmlmrsResponseStatus = a});
 
 instance NFData DeleteMLModelResponse

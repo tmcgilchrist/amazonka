@@ -159,7 +159,7 @@ instance ToQuery DescribeGameSessionDetails where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeGameSessionDetailsResponse' smart constructor.
-data DescribeGameSessionDetailsResponse = DescribeGameSessionDetailsResponse'
+data DescribeGameSessionDetailsResponse a = DescribeGameSessionDetailsResponse'
     { _dgsdrsGameSessionDetails :: !(Maybe [GameSessionDetail])
     , _dgsdrsNextToken          :: !(Maybe Text)
     , _dgsdrsResponseStatus     :: !Int
@@ -176,7 +176,7 @@ data DescribeGameSessionDetailsResponse = DescribeGameSessionDetailsResponse'
 -- * 'dgsdrsResponseStatus'
 describeGameSessionDetailsResponse
     :: Int -- ^ 'dgsdrsResponseStatus'
-    -> DescribeGameSessionDetailsResponse
+    -> DescribeGameSessionDetailsResponse (a)
 describeGameSessionDetailsResponse pResponseStatus_ =
     DescribeGameSessionDetailsResponse'
     { _dgsdrsGameSessionDetails = Nothing
@@ -185,17 +185,17 @@ describeGameSessionDetailsResponse pResponseStatus_ =
     }
 
 -- | Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.
-dgsdrsGameSessionDetails :: Lens' DescribeGameSessionDetailsResponse [GameSessionDetail]
+dgsdrsGameSessionDetails :: Lens' (DescribeGameSessionDetailsResponse (a)) [GameSessionDetail]
 dgsdrsGameSessionDetails = lens _dgsdrsGameSessionDetails (\ s a -> s{_dgsdrsGameSessionDetails = a}) . _Default . _Coerce;
 
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-dgsdrsNextToken :: Lens' DescribeGameSessionDetailsResponse (Maybe Text)
+dgsdrsNextToken :: Lens' (DescribeGameSessionDetailsResponse (a)) (Maybe Text)
 dgsdrsNextToken = lens _dgsdrsNextToken (\ s a -> s{_dgsdrsNextToken = a});
 
 -- | The response status code.
-dgsdrsResponseStatus :: Lens' DescribeGameSessionDetailsResponse Int
+dgsdrsResponseStatus :: Lens' (DescribeGameSessionDetailsResponse (a)) Int
 dgsdrsResponseStatus = lens _dgsdrsResponseStatus (\ s a -> s{_dgsdrsResponseStatus = a});
 
 instance NFData DescribeGameSessionDetailsResponse

@@ -128,7 +128,7 @@ instance ToQuery ListTables where
 -- | Represents the output of a /ListTables/ operation.
 --
 -- /See:/ 'listTablesResponse' smart constructor.
-data ListTablesResponse = ListTablesResponse'
+data ListTablesResponse a = ListTablesResponse'
     { _ltrsLastEvaluatedTableName :: !(Maybe Text)
     , _ltrsTableNames             :: !(Maybe [Text])
     , _ltrsResponseStatus         :: !Int
@@ -145,7 +145,7 @@ data ListTablesResponse = ListTablesResponse'
 -- * 'ltrsResponseStatus'
 listTablesResponse
     :: Int -- ^ 'ltrsResponseStatus'
-    -> ListTablesResponse
+    -> ListTablesResponse (a)
 listTablesResponse pResponseStatus_ =
     ListTablesResponse'
     { _ltrsLastEvaluatedTableName = Nothing
@@ -156,17 +156,17 @@ listTablesResponse pResponseStatus_ =
 -- | The name of the last table in the current page of results. Use this value as the /ExclusiveStartTableName/ in a new request to obtain the next page of results, until all the table names are returned.
 --
 -- If you do not receive a /LastEvaluatedTableName/ value in the response, this means that there are no more table names to be retrieved.
-ltrsLastEvaluatedTableName :: Lens' ListTablesResponse (Maybe Text)
+ltrsLastEvaluatedTableName :: Lens' (ListTablesResponse (a)) (Maybe Text)
 ltrsLastEvaluatedTableName = lens _ltrsLastEvaluatedTableName (\ s a -> s{_ltrsLastEvaluatedTableName = a});
 
 -- | The names of the tables associated with the current account at the current endpoint. The maximum size of this array is 100.
 --
 -- If /LastEvaluatedTableName/ also appears in the output, you can use this value as the /ExclusiveStartTableName/ parameter in a subsequent /ListTables/ request and obtain the next page of results.
-ltrsTableNames :: Lens' ListTablesResponse [Text]
+ltrsTableNames :: Lens' (ListTablesResponse (a)) [Text]
 ltrsTableNames = lens _ltrsTableNames (\ s a -> s{_ltrsTableNames = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ltrsResponseStatus :: Lens' ListTablesResponse Int
+ltrsResponseStatus :: Lens' (ListTablesResponse (a)) Int
 ltrsResponseStatus = lens _ltrsResponseStatus (\ s a -> s{_ltrsResponseStatus = a});
 
 instance NFData ListTablesResponse

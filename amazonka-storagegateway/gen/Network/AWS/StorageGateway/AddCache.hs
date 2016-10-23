@@ -111,7 +111,7 @@ instance ToQuery AddCache where
         toQuery = const mempty
 
 -- | /See:/ 'addCacheResponse' smart constructor.
-data AddCacheResponse = AddCacheResponse'
+data AddCacheResponse a = AddCacheResponse'
     { _acrsGatewayARN     :: !(Maybe Text)
     , _acrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -125,7 +125,7 @@ data AddCacheResponse = AddCacheResponse'
 -- * 'acrsResponseStatus'
 addCacheResponse
     :: Int -- ^ 'acrsResponseStatus'
-    -> AddCacheResponse
+    -> AddCacheResponse (a)
 addCacheResponse pResponseStatus_ =
     AddCacheResponse'
     { _acrsGatewayARN = Nothing
@@ -133,11 +133,11 @@ addCacheResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-acrsGatewayARN :: Lens' AddCacheResponse (Maybe Text)
+acrsGatewayARN :: Lens' (AddCacheResponse (a)) (Maybe Text)
 acrsGatewayARN = lens _acrsGatewayARN (\ s a -> s{_acrsGatewayARN = a});
 
 -- | The response status code.
-acrsResponseStatus :: Lens' AddCacheResponse Int
+acrsResponseStatus :: Lens' (AddCacheResponse (a)) Int
 acrsResponseStatus = lens _acrsResponseStatus (\ s a -> s{_acrsResponseStatus = a});
 
 instance NFData AddCacheResponse

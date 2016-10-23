@@ -112,7 +112,7 @@ instance ToQuery ListJobs where
         toQuery = const mempty
 
 -- | /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse = ListJobsResponse'
+data ListJobsResponse a = ListJobsResponse'
     { _ljrsJobListEntries :: !(Maybe [JobListEntry])
     , _ljrsNextToken      :: !(Maybe Text)
     , _ljrsResponseStatus :: !Int
@@ -129,7 +129,7 @@ data ListJobsResponse = ListJobsResponse'
 -- * 'ljrsResponseStatus'
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
-    -> ListJobsResponse
+    -> ListJobsResponse (a)
 listJobsResponse pResponseStatus_ =
     ListJobsResponse'
     { _ljrsJobListEntries = Nothing
@@ -138,15 +138,15 @@ listJobsResponse pResponseStatus_ =
     }
 
 -- | Each 'JobListEntry' object contains a job\'s state, a job\'s ID, and a value that indicates whether the job is a job part, in the case of export jobs.
-ljrsJobListEntries :: Lens' ListJobsResponse [JobListEntry]
+ljrsJobListEntries :: Lens' (ListJobsResponse (a)) [JobListEntry]
 ljrsJobListEntries = lens _ljrsJobListEntries (\ s a -> s{_ljrsJobListEntries = a}) . _Default . _Coerce;
 
 -- | HTTP requests are stateless. If you use this automatically generated 'NextToken' value in your next 'ListJobs' call, your returned 'JobListEntry' objects will start from this point in the array.
-ljrsNextToken :: Lens' ListJobsResponse (Maybe Text)
+ljrsNextToken :: Lens' (ListJobsResponse (a)) (Maybe Text)
 ljrsNextToken = lens _ljrsNextToken (\ s a -> s{_ljrsNextToken = a});
 
 -- | The response status code.
-ljrsResponseStatus :: Lens' ListJobsResponse Int
+ljrsResponseStatus :: Lens' (ListJobsResponse (a)) Int
 ljrsResponseStatus = lens _ljrsResponseStatus (\ s a -> s{_ljrsResponseStatus = a});
 
 instance NFData ListJobsResponse

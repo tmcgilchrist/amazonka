@@ -118,14 +118,14 @@ instance ToQuery EnableStageTransition where
         toQuery = const mempty
 
 -- | /See:/ 'enableStageTransitionResponse' smart constructor.
-data EnableStageTransitionResponse =
+data EnableStageTransitionResponse a =
     EnableStageTransitionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'EnableStageTransitionResponse' with the minimum fields required to make a request.
 --
 enableStageTransitionResponse
-    :: EnableStageTransitionResponse
+    :: EnableStageTransitionResponse (a)
 enableStageTransitionResponse = EnableStageTransitionResponse'
 
 instance NFData EnableStageTransitionResponse

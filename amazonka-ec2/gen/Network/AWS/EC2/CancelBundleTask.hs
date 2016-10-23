@@ -104,7 +104,7 @@ instance ToQuery CancelBundleTask where
 -- | Contains the output of CancelBundleTask.
 --
 -- /See:/ 'cancelBundleTaskResponse' smart constructor.
-data CancelBundleTaskResponse = CancelBundleTaskResponse'
+data CancelBundleTaskResponse a = CancelBundleTaskResponse'
     { _cbtrsBundleTask     :: !(Maybe BundleTask)
     , _cbtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data CancelBundleTaskResponse = CancelBundleTaskResponse'
 -- * 'cbtrsResponseStatus'
 cancelBundleTaskResponse
     :: Int -- ^ 'cbtrsResponseStatus'
-    -> CancelBundleTaskResponse
+    -> CancelBundleTaskResponse (a)
 cancelBundleTaskResponse pResponseStatus_ =
     CancelBundleTaskResponse'
     { _cbtrsBundleTask = Nothing
@@ -126,11 +126,11 @@ cancelBundleTaskResponse pResponseStatus_ =
     }
 
 -- | Information about the bundle task.
-cbtrsBundleTask :: Lens' CancelBundleTaskResponse (Maybe BundleTask)
+cbtrsBundleTask :: Lens' (CancelBundleTaskResponse (a)) (Maybe BundleTask)
 cbtrsBundleTask = lens _cbtrsBundleTask (\ s a -> s{_cbtrsBundleTask = a});
 
 -- | The response status code.
-cbtrsResponseStatus :: Lens' CancelBundleTaskResponse Int
+cbtrsResponseStatus :: Lens' (CancelBundleTaskResponse (a)) Int
 cbtrsResponseStatus = lens _cbtrsResponseStatus (\ s a -> s{_cbtrsResponseStatus = a});
 
 instance NFData CancelBundleTaskResponse

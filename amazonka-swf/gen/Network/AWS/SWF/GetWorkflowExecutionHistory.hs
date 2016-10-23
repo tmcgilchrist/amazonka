@@ -173,7 +173,7 @@ instance ToQuery GetWorkflowExecutionHistory where
 -- | Paginated representation of a workflow history for a workflow execution. This is the up to date, complete and authoritative record of the events related to all tasks and events in the life of the workflow execution.
 --
 -- /See:/ 'getWorkflowExecutionHistoryResponse' smart constructor.
-data GetWorkflowExecutionHistoryResponse = GetWorkflowExecutionHistoryResponse'
+data GetWorkflowExecutionHistoryResponse a = GetWorkflowExecutionHistoryResponse'
     { _gwehrsNextPageToken  :: !(Maybe Text)
     , _gwehrsResponseStatus :: !Int
     , _gwehrsEvents         :: ![HistoryEvent]
@@ -190,7 +190,7 @@ data GetWorkflowExecutionHistoryResponse = GetWorkflowExecutionHistoryResponse'
 -- * 'gwehrsEvents'
 getWorkflowExecutionHistoryResponse
     :: Int -- ^ 'gwehrsResponseStatus'
-    -> GetWorkflowExecutionHistoryResponse
+    -> GetWorkflowExecutionHistoryResponse (a)
 getWorkflowExecutionHistoryResponse pResponseStatus_ =
     GetWorkflowExecutionHistoryResponse'
     { _gwehrsNextPageToken = Nothing
@@ -201,15 +201,15 @@ getWorkflowExecutionHistoryResponse pResponseStatus_ =
 -- | If a 'NextPageToken' was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in 'nextPageToken'. Keep all other arguments unchanged.
 --
 -- The configured 'maximumPageSize' determines how many results can be returned in a single call.
-gwehrsNextPageToken :: Lens' GetWorkflowExecutionHistoryResponse (Maybe Text)
+gwehrsNextPageToken :: Lens' (GetWorkflowExecutionHistoryResponse (a)) (Maybe Text)
 gwehrsNextPageToken = lens _gwehrsNextPageToken (\ s a -> s{_gwehrsNextPageToken = a});
 
 -- | The response status code.
-gwehrsResponseStatus :: Lens' GetWorkflowExecutionHistoryResponse Int
+gwehrsResponseStatus :: Lens' (GetWorkflowExecutionHistoryResponse (a)) Int
 gwehrsResponseStatus = lens _gwehrsResponseStatus (\ s a -> s{_gwehrsResponseStatus = a});
 
 -- | The list of history events.
-gwehrsEvents :: Lens' GetWorkflowExecutionHistoryResponse [HistoryEvent]
+gwehrsEvents :: Lens' (GetWorkflowExecutionHistoryResponse (a)) [HistoryEvent]
 gwehrsEvents = lens _gwehrsEvents (\ s a -> s{_gwehrsEvents = a}) . _Coerce;
 
 instance NFData GetWorkflowExecutionHistoryResponse

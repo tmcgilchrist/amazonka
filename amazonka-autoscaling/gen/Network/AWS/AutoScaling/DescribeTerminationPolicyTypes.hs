@@ -87,7 +87,7 @@ instance ToQuery DescribeTerminationPolicyTypes where
 -- | Contains the output of DescribeTerminationPolicyTypes.
 --
 -- /See:/ 'describeTerminationPolicyTypesResponse' smart constructor.
-data DescribeTerminationPolicyTypesResponse = DescribeTerminationPolicyTypesResponse'
+data DescribeTerminationPolicyTypesResponse a = DescribeTerminationPolicyTypesResponse'
     { _dtptrsTerminationPolicyTypes :: !(Maybe [Text])
     , _dtptrsResponseStatus         :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -101,7 +101,7 @@ data DescribeTerminationPolicyTypesResponse = DescribeTerminationPolicyTypesResp
 -- * 'dtptrsResponseStatus'
 describeTerminationPolicyTypesResponse
     :: Int -- ^ 'dtptrsResponseStatus'
-    -> DescribeTerminationPolicyTypesResponse
+    -> DescribeTerminationPolicyTypesResponse (a)
 describeTerminationPolicyTypesResponse pResponseStatus_ =
     DescribeTerminationPolicyTypesResponse'
     { _dtptrsTerminationPolicyTypes = Nothing
@@ -109,11 +109,11 @@ describeTerminationPolicyTypesResponse pResponseStatus_ =
     }
 
 -- | The termination policies supported by Auto Scaling ('OldestInstance', 'OldestLaunchConfiguration', 'NewestInstance', 'ClosestToNextInstanceHour', and 'Default').
-dtptrsTerminationPolicyTypes :: Lens' DescribeTerminationPolicyTypesResponse [Text]
+dtptrsTerminationPolicyTypes :: Lens' (DescribeTerminationPolicyTypesResponse (a)) [Text]
 dtptrsTerminationPolicyTypes = lens _dtptrsTerminationPolicyTypes (\ s a -> s{_dtptrsTerminationPolicyTypes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtptrsResponseStatus :: Lens' DescribeTerminationPolicyTypesResponse Int
+dtptrsResponseStatus :: Lens' (DescribeTerminationPolicyTypesResponse (a)) Int
 dtptrsResponseStatus = lens _dtptrsResponseStatus (\ s a -> s{_dtptrsResponseStatus = a});
 
 instance NFData

@@ -128,7 +128,7 @@ instance ToQuery CreateDBSecurityGroup where
                  _cdsgDBSecurityGroupDescription]
 
 -- | /See:/ 'createDBSecurityGroupResponse' smart constructor.
-data CreateDBSecurityGroupResponse = CreateDBSecurityGroupResponse'
+data CreateDBSecurityGroupResponse a = CreateDBSecurityGroupResponse'
     { _cdbsgrsDBSecurityGroup :: !(Maybe DBSecurityGroup)
     , _cdbsgrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -142,7 +142,7 @@ data CreateDBSecurityGroupResponse = CreateDBSecurityGroupResponse'
 -- * 'cdbsgrsResponseStatus'
 createDBSecurityGroupResponse
     :: Int -- ^ 'cdbsgrsResponseStatus'
-    -> CreateDBSecurityGroupResponse
+    -> CreateDBSecurityGroupResponse (a)
 createDBSecurityGroupResponse pResponseStatus_ =
     CreateDBSecurityGroupResponse'
     { _cdbsgrsDBSecurityGroup = Nothing
@@ -150,11 +150,11 @@ createDBSecurityGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdbsgrsDBSecurityGroup :: Lens' CreateDBSecurityGroupResponse (Maybe DBSecurityGroup)
+cdbsgrsDBSecurityGroup :: Lens' (CreateDBSecurityGroupResponse (a)) (Maybe DBSecurityGroup)
 cdbsgrsDBSecurityGroup = lens _cdbsgrsDBSecurityGroup (\ s a -> s{_cdbsgrsDBSecurityGroup = a});
 
 -- | The response status code.
-cdbsgrsResponseStatus :: Lens' CreateDBSecurityGroupResponse Int
+cdbsgrsResponseStatus :: Lens' (CreateDBSecurityGroupResponse (a)) Int
 cdbsgrsResponseStatus = lens _cdbsgrsResponseStatus (\ s a -> s{_cdbsgrsResponseStatus = a});
 
 instance NFData CreateDBSecurityGroupResponse

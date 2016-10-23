@@ -120,14 +120,14 @@ instance ToQuery PutRolePolicy where
                "PolicyDocument" =: _prpPolicyDocument]
 
 -- | /See:/ 'putRolePolicyResponse' smart constructor.
-data PutRolePolicyResponse =
+data PutRolePolicyResponse a =
     PutRolePolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutRolePolicyResponse' with the minimum fields required to make a request.
 --
 putRolePolicyResponse
-    :: PutRolePolicyResponse
+    :: PutRolePolicyResponse (a)
 putRolePolicyResponse = PutRolePolicyResponse'
 
 instance NFData PutRolePolicyResponse

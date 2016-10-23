@@ -178,7 +178,7 @@ instance ToQuery CreateDataSourceFromRDS where
 -- The 'CreateDataSourceFromRDS'> operation is asynchronous. You can poll for updates by using the 'GetBatchPrediction' operation and checking the 'Status' parameter. You can inspect the 'Message' when 'Status' shows up as 'FAILED'. You can also check the progress of the copy operation by going to the 'DataPipeline' console and looking up the pipeline using the 'pipelineId ' from the describe call.
 --
 -- /See:/ 'createDataSourceFromRDSResponse' smart constructor.
-data CreateDataSourceFromRDSResponse = CreateDataSourceFromRDSResponse'
+data CreateDataSourceFromRDSResponse a = CreateDataSourceFromRDSResponse'
     { _cdsfrdsrsDataSourceId   :: !(Maybe Text)
     , _cdsfrdsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -192,7 +192,7 @@ data CreateDataSourceFromRDSResponse = CreateDataSourceFromRDSResponse'
 -- * 'cdsfrdsrsResponseStatus'
 createDataSourceFromRDSResponse
     :: Int -- ^ 'cdsfrdsrsResponseStatus'
-    -> CreateDataSourceFromRDSResponse
+    -> CreateDataSourceFromRDSResponse (a)
 createDataSourceFromRDSResponse pResponseStatus_ =
     CreateDataSourceFromRDSResponse'
     { _cdsfrdsrsDataSourceId = Nothing
@@ -200,11 +200,11 @@ createDataSourceFromRDSResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the 'DataSourceID' in the request.
-cdsfrdsrsDataSourceId :: Lens' CreateDataSourceFromRDSResponse (Maybe Text)
+cdsfrdsrsDataSourceId :: Lens' (CreateDataSourceFromRDSResponse (a)) (Maybe Text)
 cdsfrdsrsDataSourceId = lens _cdsfrdsrsDataSourceId (\ s a -> s{_cdsfrdsrsDataSourceId = a});
 
 -- | The response status code.
-cdsfrdsrsResponseStatus :: Lens' CreateDataSourceFromRDSResponse Int
+cdsfrdsrsResponseStatus :: Lens' (CreateDataSourceFromRDSResponse (a)) Int
 cdsfrdsrsResponseStatus = lens _cdsfrdsrsResponseStatus (\ s a -> s{_cdsfrdsrsResponseStatus = a});
 
 instance NFData CreateDataSourceFromRDSResponse

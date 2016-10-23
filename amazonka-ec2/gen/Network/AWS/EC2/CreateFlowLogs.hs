@@ -161,7 +161,7 @@ instance ToQuery CreateFlowLogs where
 -- | Contains the output of CreateFlowLogs.
 --
 -- /See:/ 'createFlowLogsResponse' smart constructor.
-data CreateFlowLogsResponse = CreateFlowLogsResponse'
+data CreateFlowLogsResponse a = CreateFlowLogsResponse'
     { _cflrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
     , _cflrsClientToken    :: !(Maybe Text)
     , _cflrsFlowLogIds     :: !(Maybe [Text])
@@ -181,7 +181,7 @@ data CreateFlowLogsResponse = CreateFlowLogsResponse'
 -- * 'cflrsResponseStatus'
 createFlowLogsResponse
     :: Int -- ^ 'cflrsResponseStatus'
-    -> CreateFlowLogsResponse
+    -> CreateFlowLogsResponse (a)
 createFlowLogsResponse pResponseStatus_ =
     CreateFlowLogsResponse'
     { _cflrsUnsuccessful = Nothing
@@ -191,19 +191,19 @@ createFlowLogsResponse pResponseStatus_ =
     }
 
 -- | Information about the flow logs that could not be created successfully.
-cflrsUnsuccessful :: Lens' CreateFlowLogsResponse [UnsuccessfulItem]
+cflrsUnsuccessful :: Lens' (CreateFlowLogsResponse (a)) [UnsuccessfulItem]
 cflrsUnsuccessful = lens _cflrsUnsuccessful (\ s a -> s{_cflrsUnsuccessful = a}) . _Default . _Coerce;
 
 -- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
-cflrsClientToken :: Lens' CreateFlowLogsResponse (Maybe Text)
+cflrsClientToken :: Lens' (CreateFlowLogsResponse (a)) (Maybe Text)
 cflrsClientToken = lens _cflrsClientToken (\ s a -> s{_cflrsClientToken = a});
 
 -- | The IDs of the flow logs.
-cflrsFlowLogIds :: Lens' CreateFlowLogsResponse [Text]
+cflrsFlowLogIds :: Lens' (CreateFlowLogsResponse (a)) [Text]
 cflrsFlowLogIds = lens _cflrsFlowLogIds (\ s a -> s{_cflrsFlowLogIds = a}) . _Default . _Coerce;
 
 -- | The response status code.
-cflrsResponseStatus :: Lens' CreateFlowLogsResponse Int
+cflrsResponseStatus :: Lens' (CreateFlowLogsResponse (a)) Int
 cflrsResponseStatus = lens _cflrsResponseStatus (\ s a -> s{_cflrsResponseStatus = a});
 
 instance NFData CreateFlowLogsResponse

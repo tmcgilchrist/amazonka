@@ -129,7 +129,7 @@ instance ToQuery ListStreams where
 -- | Represents the output of a /ListStreams/ operation.
 --
 -- /See:/ 'listStreamsResponse' smart constructor.
-data ListStreamsResponse = ListStreamsResponse'
+data ListStreamsResponse a = ListStreamsResponse'
     { _lsrsLastEvaluatedStreamARN :: !(Maybe Text)
     , _lsrsStreams                :: !(Maybe [Stream])
     , _lsrsResponseStatus         :: !Int
@@ -146,7 +146,7 @@ data ListStreamsResponse = ListStreamsResponse'
 -- * 'lsrsResponseStatus'
 listStreamsResponse
     :: Int -- ^ 'lsrsResponseStatus'
-    -> ListStreamsResponse
+    -> ListStreamsResponse (a)
 listStreamsResponse pResponseStatus_ =
     ListStreamsResponse'
     { _lsrsLastEvaluatedStreamARN = Nothing
@@ -159,15 +159,15 @@ listStreamsResponse pResponseStatus_ =
 -- If 'LastEvaluatedStreamArn' is empty, then the \"last page\" of results has been processed and there is no more data to be retrieved.
 --
 -- If 'LastEvaluatedStreamArn' is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when 'LastEvaluatedStreamArn' is empty.
-lsrsLastEvaluatedStreamARN :: Lens' ListStreamsResponse (Maybe Text)
+lsrsLastEvaluatedStreamARN :: Lens' (ListStreamsResponse (a)) (Maybe Text)
 lsrsLastEvaluatedStreamARN = lens _lsrsLastEvaluatedStreamARN (\ s a -> s{_lsrsLastEvaluatedStreamARN = a});
 
 -- | A list of stream descriptors associated with the current account and endpoint.
-lsrsStreams :: Lens' ListStreamsResponse [Stream]
+lsrsStreams :: Lens' (ListStreamsResponse (a)) [Stream]
 lsrsStreams = lens _lsrsStreams (\ s a -> s{_lsrsStreams = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lsrsResponseStatus :: Lens' ListStreamsResponse Int
+lsrsResponseStatus :: Lens' (ListStreamsResponse (a)) Int
 lsrsResponseStatus = lens _lsrsResponseStatus (\ s a -> s{_lsrsResponseStatus = a});
 
 instance NFData ListStreamsResponse

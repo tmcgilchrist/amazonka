@@ -124,7 +124,7 @@ instance ToQuery RegisterInstancesWithLoadBalancer
 -- | Contains the output of RegisterInstancesWithLoadBalancer.
 --
 -- /See:/ 'registerInstancesWithLoadBalancerResponse' smart constructor.
-data RegisterInstancesWithLoadBalancerResponse = RegisterInstancesWithLoadBalancerResponse'
+data RegisterInstancesWithLoadBalancerResponse a = RegisterInstancesWithLoadBalancerResponse'
     { _riwlbrsInstances      :: !(Maybe [Instance])
     , _riwlbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data RegisterInstancesWithLoadBalancerResponse = RegisterInstancesWithLoadBalanc
 -- * 'riwlbrsResponseStatus'
 registerInstancesWithLoadBalancerResponse
     :: Int -- ^ 'riwlbrsResponseStatus'
-    -> RegisterInstancesWithLoadBalancerResponse
+    -> RegisterInstancesWithLoadBalancerResponse (a)
 registerInstancesWithLoadBalancerResponse pResponseStatus_ =
     RegisterInstancesWithLoadBalancerResponse'
     { _riwlbrsInstances = Nothing
@@ -146,11 +146,11 @@ registerInstancesWithLoadBalancerResponse pResponseStatus_ =
     }
 
 -- | The updated list of instances for the load balancer.
-riwlbrsInstances :: Lens' RegisterInstancesWithLoadBalancerResponse [Instance]
+riwlbrsInstances :: Lens' (RegisterInstancesWithLoadBalancerResponse (a)) [Instance]
 riwlbrsInstances = lens _riwlbrsInstances (\ s a -> s{_riwlbrsInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-riwlbrsResponseStatus :: Lens' RegisterInstancesWithLoadBalancerResponse Int
+riwlbrsResponseStatus :: Lens' (RegisterInstancesWithLoadBalancerResponse (a)) Int
 riwlbrsResponseStatus = lens _riwlbrsResponseStatus (\ s a -> s{_riwlbrsResponseStatus = a});
 
 instance NFData

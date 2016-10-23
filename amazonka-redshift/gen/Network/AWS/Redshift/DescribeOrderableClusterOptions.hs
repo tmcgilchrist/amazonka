@@ -154,7 +154,7 @@ instance ToQuery DescribeOrderableClusterOptions
 -- | Contains the output from the < DescribeOrderableClusterOptions> action.
 --
 -- /See:/ 'describeOrderableClusterOptionsResponse' smart constructor.
-data DescribeOrderableClusterOptionsResponse = DescribeOrderableClusterOptionsResponse'
+data DescribeOrderableClusterOptionsResponse a = DescribeOrderableClusterOptionsResponse'
     { _docorsMarker                  :: !(Maybe Text)
     , _docorsOrderableClusterOptions :: !(Maybe [OrderableClusterOption])
     , _docorsResponseStatus          :: !Int
@@ -171,7 +171,7 @@ data DescribeOrderableClusterOptionsResponse = DescribeOrderableClusterOptionsRe
 -- * 'docorsResponseStatus'
 describeOrderableClusterOptionsResponse
     :: Int -- ^ 'docorsResponseStatus'
-    -> DescribeOrderableClusterOptionsResponse
+    -> DescribeOrderableClusterOptionsResponse (a)
 describeOrderableClusterOptionsResponse pResponseStatus_ =
     DescribeOrderableClusterOptionsResponse'
     { _docorsMarker = Nothing
@@ -180,15 +180,15 @@ describeOrderableClusterOptionsResponse pResponseStatus_ =
     }
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-docorsMarker :: Lens' DescribeOrderableClusterOptionsResponse (Maybe Text)
+docorsMarker :: Lens' (DescribeOrderableClusterOptionsResponse (a)) (Maybe Text)
 docorsMarker = lens _docorsMarker (\ s a -> s{_docorsMarker = a});
 
 -- | An 'OrderableClusterOption' structure containing information about orderable options for the cluster.
-docorsOrderableClusterOptions :: Lens' DescribeOrderableClusterOptionsResponse [OrderableClusterOption]
+docorsOrderableClusterOptions :: Lens' (DescribeOrderableClusterOptionsResponse (a)) [OrderableClusterOption]
 docorsOrderableClusterOptions = lens _docorsOrderableClusterOptions (\ s a -> s{_docorsOrderableClusterOptions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-docorsResponseStatus :: Lens' DescribeOrderableClusterOptionsResponse Int
+docorsResponseStatus :: Lens' (DescribeOrderableClusterOptionsResponse (a)) Int
 docorsResponseStatus = lens _docorsResponseStatus (\ s a -> s{_docorsResponseStatus = a});
 
 instance NFData

@@ -121,14 +121,14 @@ instance ToQuery SuspendProcesses where
                "AutoScalingGroupName" =: _spAutoScalingGroupName]
 
 -- | /See:/ 'suspendProcessesResponse' smart constructor.
-data SuspendProcessesResponse =
+data SuspendProcessesResponse a =
     SuspendProcessesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SuspendProcessesResponse' with the minimum fields required to make a request.
 --
 suspendProcessesResponse
-    :: SuspendProcessesResponse
+    :: SuspendProcessesResponse (a)
 suspendProcessesResponse = SuspendProcessesResponse'
 
 instance NFData SuspendProcessesResponse

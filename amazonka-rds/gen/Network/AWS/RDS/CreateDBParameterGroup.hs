@@ -142,7 +142,7 @@ instance ToQuery CreateDBParameterGroup where
                "Description" =: _cdbpgDescription]
 
 -- | /See:/ 'createDBParameterGroupResponse' smart constructor.
-data CreateDBParameterGroupResponse = CreateDBParameterGroupResponse'
+data CreateDBParameterGroupResponse a = CreateDBParameterGroupResponse'
     { _cdpgrsDBParameterGroup :: !(Maybe DBParameterGroup)
     , _cdpgrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -156,7 +156,7 @@ data CreateDBParameterGroupResponse = CreateDBParameterGroupResponse'
 -- * 'cdpgrsResponseStatus'
 createDBParameterGroupResponse
     :: Int -- ^ 'cdpgrsResponseStatus'
-    -> CreateDBParameterGroupResponse
+    -> CreateDBParameterGroupResponse (a)
 createDBParameterGroupResponse pResponseStatus_ =
     CreateDBParameterGroupResponse'
     { _cdpgrsDBParameterGroup = Nothing
@@ -164,11 +164,11 @@ createDBParameterGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdpgrsDBParameterGroup :: Lens' CreateDBParameterGroupResponse (Maybe DBParameterGroup)
+cdpgrsDBParameterGroup :: Lens' (CreateDBParameterGroupResponse (a)) (Maybe DBParameterGroup)
 cdpgrsDBParameterGroup = lens _cdpgrsDBParameterGroup (\ s a -> s{_cdpgrsDBParameterGroup = a});
 
 -- | The response status code.
-cdpgrsResponseStatus :: Lens' CreateDBParameterGroupResponse Int
+cdpgrsResponseStatus :: Lens' (CreateDBParameterGroupResponse (a)) Int
 cdpgrsResponseStatus = lens _cdpgrsResponseStatus (\ s a -> s{_cdpgrsResponseStatus = a});
 
 instance NFData CreateDBParameterGroupResponse

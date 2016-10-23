@@ -204,7 +204,7 @@ instance ToQuery SendCommand where
         toQuery = const mempty
 
 -- | /See:/ 'sendCommandResponse' smart constructor.
-data SendCommandResponse = SendCommandResponse'
+data SendCommandResponse a = SendCommandResponse'
     { _scrsCommand        :: !(Maybe Command)
     , _scrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -218,7 +218,7 @@ data SendCommandResponse = SendCommandResponse'
 -- * 'scrsResponseStatus'
 sendCommandResponse
     :: Int -- ^ 'scrsResponseStatus'
-    -> SendCommandResponse
+    -> SendCommandResponse (a)
 sendCommandResponse pResponseStatus_ =
     SendCommandResponse'
     { _scrsCommand = Nothing
@@ -226,11 +226,11 @@ sendCommandResponse pResponseStatus_ =
     }
 
 -- | The request as it was received by SSM. Also provides the command ID which can be used future references to this request.
-scrsCommand :: Lens' SendCommandResponse (Maybe Command)
+scrsCommand :: Lens' (SendCommandResponse (a)) (Maybe Command)
 scrsCommand = lens _scrsCommand (\ s a -> s{_scrsCommand = a});
 
 -- | The response status code.
-scrsResponseStatus :: Lens' SendCommandResponse Int
+scrsResponseStatus :: Lens' (SendCommandResponse (a)) Int
 scrsResponseStatus = lens _scrsResponseStatus (\ s a -> s{_scrsResponseStatus = a});
 
 instance NFData SendCommandResponse

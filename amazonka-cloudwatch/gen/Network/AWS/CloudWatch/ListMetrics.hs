@@ -143,7 +143,7 @@ instance ToQuery ListMetrics where
 -- | The output for < ListMetrics>.
 --
 -- /See:/ 'listMetricsResponse' smart constructor.
-data ListMetricsResponse = ListMetricsResponse'
+data ListMetricsResponse a = ListMetricsResponse'
     { _lmrsMetrics        :: !(Maybe [Metric])
     , _lmrsNextToken      :: !(Maybe Text)
     , _lmrsResponseStatus :: !Int
@@ -160,7 +160,7 @@ data ListMetricsResponse = ListMetricsResponse'
 -- * 'lmrsResponseStatus'
 listMetricsResponse
     :: Int -- ^ 'lmrsResponseStatus'
-    -> ListMetricsResponse
+    -> ListMetricsResponse (a)
 listMetricsResponse pResponseStatus_ =
     ListMetricsResponse'
     { _lmrsMetrics = Nothing
@@ -169,15 +169,15 @@ listMetricsResponse pResponseStatus_ =
     }
 
 -- | A list of metrics used to generate statistics for an AWS account.
-lmrsMetrics :: Lens' ListMetricsResponse [Metric]
+lmrsMetrics :: Lens' (ListMetricsResponse (a)) [Metric]
 lmrsMetrics = lens _lmrsMetrics (\ s a -> s{_lmrsMetrics = a}) . _Default . _Coerce;
 
 -- | A string that marks the start of the next batch of returned results.
-lmrsNextToken :: Lens' ListMetricsResponse (Maybe Text)
+lmrsNextToken :: Lens' (ListMetricsResponse (a)) (Maybe Text)
 lmrsNextToken = lens _lmrsNextToken (\ s a -> s{_lmrsNextToken = a});
 
 -- | The response status code.
-lmrsResponseStatus :: Lens' ListMetricsResponse Int
+lmrsResponseStatus :: Lens' (ListMetricsResponse (a)) Int
 lmrsResponseStatus = lens _lmrsResponseStatus (\ s a -> s{_lmrsResponseStatus = a});
 
 instance NFData ListMetricsResponse

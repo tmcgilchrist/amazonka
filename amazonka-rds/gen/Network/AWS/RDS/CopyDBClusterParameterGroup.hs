@@ -152,7 +152,7 @@ instance ToQuery CopyDBClusterParameterGroup where
                  _cdbcpgTargetDBClusterParameterGroupDescription]
 
 -- | /See:/ 'copyDBClusterParameterGroupResponse' smart constructor.
-data CopyDBClusterParameterGroupResponse = CopyDBClusterParameterGroupResponse'
+data CopyDBClusterParameterGroupResponse a = CopyDBClusterParameterGroupResponse'
     { _cdcpgrsDBClusterParameterGroup :: !(Maybe DBClusterParameterGroup)
     , _cdcpgrsResponseStatus          :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -166,7 +166,7 @@ data CopyDBClusterParameterGroupResponse = CopyDBClusterParameterGroupResponse'
 -- * 'cdcpgrsResponseStatus'
 copyDBClusterParameterGroupResponse
     :: Int -- ^ 'cdcpgrsResponseStatus'
-    -> CopyDBClusterParameterGroupResponse
+    -> CopyDBClusterParameterGroupResponse (a)
 copyDBClusterParameterGroupResponse pResponseStatus_ =
     CopyDBClusterParameterGroupResponse'
     { _cdcpgrsDBClusterParameterGroup = Nothing
@@ -174,11 +174,11 @@ copyDBClusterParameterGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdcpgrsDBClusterParameterGroup :: Lens' CopyDBClusterParameterGroupResponse (Maybe DBClusterParameterGroup)
+cdcpgrsDBClusterParameterGroup :: Lens' (CopyDBClusterParameterGroupResponse (a)) (Maybe DBClusterParameterGroup)
 cdcpgrsDBClusterParameterGroup = lens _cdcpgrsDBClusterParameterGroup (\ s a -> s{_cdcpgrsDBClusterParameterGroup = a});
 
 -- | The response status code.
-cdcpgrsResponseStatus :: Lens' CopyDBClusterParameterGroupResponse Int
+cdcpgrsResponseStatus :: Lens' (CopyDBClusterParameterGroupResponse (a)) Int
 cdcpgrsResponseStatus = lens _cdcpgrsResponseStatus (\ s a -> s{_cdcpgrsResponseStatus = a});
 
 instance NFData CopyDBClusterParameterGroupResponse

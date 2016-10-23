@@ -113,14 +113,14 @@ instance ToQuery UpdateGroup where
                "NewPath" =: _ugNewPath, "GroupName" =: _ugGroupName]
 
 -- | /See:/ 'updateGroupResponse' smart constructor.
-data UpdateGroupResponse =
+data UpdateGroupResponse a =
     UpdateGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateGroupResponse' with the minimum fields required to make a request.
 --
 updateGroupResponse
-    :: UpdateGroupResponse
+    :: UpdateGroupResponse (a)
 updateGroupResponse = UpdateGroupResponse'
 
 instance NFData UpdateGroupResponse

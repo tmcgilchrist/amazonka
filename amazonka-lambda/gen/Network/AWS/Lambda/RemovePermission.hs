@@ -113,14 +113,14 @@ instance ToQuery RemovePermission where
           = mconcat ["Qualifier" =: _rpQualifier]
 
 -- | /See:/ 'removePermissionResponse' smart constructor.
-data RemovePermissionResponse =
+data RemovePermissionResponse a =
     RemovePermissionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemovePermissionResponse' with the minimum fields required to make a request.
 --
 removePermissionResponse
-    :: RemovePermissionResponse
+    :: RemovePermissionResponse (a)
 removePermissionResponse = RemovePermissionResponse'
 
 instance NFData RemovePermissionResponse

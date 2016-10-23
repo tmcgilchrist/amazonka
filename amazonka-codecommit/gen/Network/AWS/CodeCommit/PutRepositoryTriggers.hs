@@ -114,7 +114,7 @@ instance ToQuery PutRepositoryTriggers where
 -- | Represents the output of a put repository triggers operation.
 --
 -- /See:/ 'putRepositoryTriggersResponse' smart constructor.
-data PutRepositoryTriggersResponse = PutRepositoryTriggersResponse'
+data PutRepositoryTriggersResponse a = PutRepositoryTriggersResponse'
     { _prtrsConfigurationId :: !(Maybe Text)
     , _prtrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data PutRepositoryTriggersResponse = PutRepositoryTriggersResponse'
 -- * 'prtrsResponseStatus'
 putRepositoryTriggersResponse
     :: Int -- ^ 'prtrsResponseStatus'
-    -> PutRepositoryTriggersResponse
+    -> PutRepositoryTriggersResponse (a)
 putRepositoryTriggersResponse pResponseStatus_ =
     PutRepositoryTriggersResponse'
     { _prtrsConfigurationId = Nothing
@@ -136,11 +136,11 @@ putRepositoryTriggersResponse pResponseStatus_ =
     }
 
 -- | The system-generated unique ID for the create or update operation.
-prtrsConfigurationId :: Lens' PutRepositoryTriggersResponse (Maybe Text)
+prtrsConfigurationId :: Lens' (PutRepositoryTriggersResponse (a)) (Maybe Text)
 prtrsConfigurationId = lens _prtrsConfigurationId (\ s a -> s{_prtrsConfigurationId = a});
 
 -- | The response status code.
-prtrsResponseStatus :: Lens' PutRepositoryTriggersResponse Int
+prtrsResponseStatus :: Lens' (PutRepositoryTriggersResponse (a)) Int
 prtrsResponseStatus = lens _prtrsResponseStatus (\ s a -> s{_prtrsResponseStatus = a});
 
 instance NFData PutRepositoryTriggersResponse

@@ -136,7 +136,7 @@ instance ToQuery DescribeReplicationGroups where
 -- | Represents the output of a /DescribeReplicationGroups/ action.
 --
 -- /See:/ 'describeReplicationGroupsResponse' smart constructor.
-data DescribeReplicationGroupsResponse = DescribeReplicationGroupsResponse'
+data DescribeReplicationGroupsResponse a = DescribeReplicationGroupsResponse'
     { _drgrsMarker            :: !(Maybe Text)
     , _drgrsReplicationGroups :: !(Maybe [ReplicationGroup])
     , _drgrsResponseStatus    :: !Int
@@ -153,7 +153,7 @@ data DescribeReplicationGroupsResponse = DescribeReplicationGroupsResponse'
 -- * 'drgrsResponseStatus'
 describeReplicationGroupsResponse
     :: Int -- ^ 'drgrsResponseStatus'
-    -> DescribeReplicationGroupsResponse
+    -> DescribeReplicationGroupsResponse (a)
 describeReplicationGroupsResponse pResponseStatus_ =
     DescribeReplicationGroupsResponse'
     { _drgrsMarker = Nothing
@@ -162,15 +162,15 @@ describeReplicationGroupsResponse pResponseStatus_ =
     }
 
 -- | Provides an identifier to allow retrieval of paginated results.
-drgrsMarker :: Lens' DescribeReplicationGroupsResponse (Maybe Text)
+drgrsMarker :: Lens' (DescribeReplicationGroupsResponse (a)) (Maybe Text)
 drgrsMarker = lens _drgrsMarker (\ s a -> s{_drgrsMarker = a});
 
 -- | A list of replication groups. Each item in the list contains detailed information about one replication group.
-drgrsReplicationGroups :: Lens' DescribeReplicationGroupsResponse [ReplicationGroup]
+drgrsReplicationGroups :: Lens' (DescribeReplicationGroupsResponse (a)) [ReplicationGroup]
 drgrsReplicationGroups = lens _drgrsReplicationGroups (\ s a -> s{_drgrsReplicationGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drgrsResponseStatus :: Lens' DescribeReplicationGroupsResponse Int
+drgrsResponseStatus :: Lens' (DescribeReplicationGroupsResponse (a)) Int
 drgrsResponseStatus = lens _drgrsResponseStatus (\ s a -> s{_drgrsResponseStatus = a});
 
 instance NFData DescribeReplicationGroupsResponse

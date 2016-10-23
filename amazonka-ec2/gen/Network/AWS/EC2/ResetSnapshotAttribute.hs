@@ -112,14 +112,14 @@ instance ToQuery ResetSnapshotAttribute where
                "Attribute" =: _rsaAttribute]
 
 -- | /See:/ 'resetSnapshotAttributeResponse' smart constructor.
-data ResetSnapshotAttributeResponse =
+data ResetSnapshotAttributeResponse a =
     ResetSnapshotAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ResetSnapshotAttributeResponse' with the minimum fields required to make a request.
 --
 resetSnapshotAttributeResponse
-    :: ResetSnapshotAttributeResponse
+    :: ResetSnapshotAttributeResponse (a)
 resetSnapshotAttributeResponse = ResetSnapshotAttributeResponse'
 
 instance NFData ResetSnapshotAttributeResponse

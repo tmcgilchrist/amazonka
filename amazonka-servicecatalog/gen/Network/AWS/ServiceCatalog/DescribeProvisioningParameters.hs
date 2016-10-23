@@ -149,7 +149,7 @@ instance ToQuery DescribeProvisioningParameters where
         toQuery = const mempty
 
 -- | /See:/ 'describeProvisioningParametersResponse' smart constructor.
-data DescribeProvisioningParametersResponse = DescribeProvisioningParametersResponse'
+data DescribeProvisioningParametersResponse a = DescribeProvisioningParametersResponse'
     { _dpprsProvisioningArtifactParameters :: !(Maybe [ProvisioningArtifactParameter])
     , _dpprsUsageInstructions              :: !(Maybe [UsageInstruction])
     , _dpprsConstraintSummaries            :: !(Maybe [ConstraintSummary])
@@ -169,7 +169,7 @@ data DescribeProvisioningParametersResponse = DescribeProvisioningParametersResp
 -- * 'dpprsResponseStatus'
 describeProvisioningParametersResponse
     :: Int -- ^ 'dpprsResponseStatus'
-    -> DescribeProvisioningParametersResponse
+    -> DescribeProvisioningParametersResponse (a)
 describeProvisioningParametersResponse pResponseStatus_ =
     DescribeProvisioningParametersResponse'
     { _dpprsProvisioningArtifactParameters = Nothing
@@ -179,19 +179,19 @@ describeProvisioningParametersResponse pResponseStatus_ =
     }
 
 -- | The list of parameters used to successfully provision the product. Each parameter includes a list of allowable values and additional metadata about each parameter.
-dpprsProvisioningArtifactParameters :: Lens' DescribeProvisioningParametersResponse [ProvisioningArtifactParameter]
+dpprsProvisioningArtifactParameters :: Lens' (DescribeProvisioningParametersResponse (a)) [ProvisioningArtifactParameter]
 dpprsProvisioningArtifactParameters = lens _dpprsProvisioningArtifactParameters (\ s a -> s{_dpprsProvisioningArtifactParameters = a}) . _Default . _Coerce;
 
 -- | Any additional metadata specifically related to the provisioning of the product. For example, see the 'Version' field of the CloudFormation template.
-dpprsUsageInstructions :: Lens' DescribeProvisioningParametersResponse [UsageInstruction]
+dpprsUsageInstructions :: Lens' (DescribeProvisioningParametersResponse (a)) [UsageInstruction]
 dpprsUsageInstructions = lens _dpprsUsageInstructions (\ s a -> s{_dpprsUsageInstructions = a}) . _Default . _Coerce;
 
 -- | The list of constraint summaries that apply to provisioning this product.
-dpprsConstraintSummaries :: Lens' DescribeProvisioningParametersResponse [ConstraintSummary]
+dpprsConstraintSummaries :: Lens' (DescribeProvisioningParametersResponse (a)) [ConstraintSummary]
 dpprsConstraintSummaries = lens _dpprsConstraintSummaries (\ s a -> s{_dpprsConstraintSummaries = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dpprsResponseStatus :: Lens' DescribeProvisioningParametersResponse Int
+dpprsResponseStatus :: Lens' (DescribeProvisioningParametersResponse (a)) Int
 dpprsResponseStatus = lens _dpprsResponseStatus (\ s a -> s{_dpprsResponseStatus = a});
 
 instance NFData

@@ -115,7 +115,7 @@ instance ToQuery AcknowledgeJob where
 -- | Represents the output of an acknowledge job action.
 --
 -- /See:/ 'acknowledgeJobResponse' smart constructor.
-data AcknowledgeJobResponse = AcknowledgeJobResponse'
+data AcknowledgeJobResponse a = AcknowledgeJobResponse'
     { _ajrsStatus         :: !(Maybe JobStatus)
     , _ajrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data AcknowledgeJobResponse = AcknowledgeJobResponse'
 -- * 'ajrsResponseStatus'
 acknowledgeJobResponse
     :: Int -- ^ 'ajrsResponseStatus'
-    -> AcknowledgeJobResponse
+    -> AcknowledgeJobResponse (a)
 acknowledgeJobResponse pResponseStatus_ =
     AcknowledgeJobResponse'
     { _ajrsStatus = Nothing
@@ -137,11 +137,11 @@ acknowledgeJobResponse pResponseStatus_ =
     }
 
 -- | Whether the job worker has received the specified job.
-ajrsStatus :: Lens' AcknowledgeJobResponse (Maybe JobStatus)
+ajrsStatus :: Lens' (AcknowledgeJobResponse (a)) (Maybe JobStatus)
 ajrsStatus = lens _ajrsStatus (\ s a -> s{_ajrsStatus = a});
 
 -- | The response status code.
-ajrsResponseStatus :: Lens' AcknowledgeJobResponse Int
+ajrsResponseStatus :: Lens' (AcknowledgeJobResponse (a)) Int
 ajrsResponseStatus = lens _ajrsResponseStatus (\ s a -> s{_ajrsResponseStatus = a});
 
 instance NFData AcknowledgeJobResponse

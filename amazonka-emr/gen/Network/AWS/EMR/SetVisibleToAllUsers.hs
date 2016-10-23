@@ -107,14 +107,14 @@ instance ToQuery SetVisibleToAllUsers where
         toQuery = const mempty
 
 -- | /See:/ 'setVisibleToAllUsersResponse' smart constructor.
-data SetVisibleToAllUsersResponse =
+data SetVisibleToAllUsersResponse a =
     SetVisibleToAllUsersResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetVisibleToAllUsersResponse' with the minimum fields required to make a request.
 --
 setVisibleToAllUsersResponse
-    :: SetVisibleToAllUsersResponse
+    :: SetVisibleToAllUsersResponse (a)
 setVisibleToAllUsersResponse = SetVisibleToAllUsersResponse'
 
 instance NFData SetVisibleToAllUsersResponse

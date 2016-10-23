@@ -112,14 +112,14 @@ instance ToQuery AttachElasticLoadBalancer where
         toQuery = const mempty
 
 -- | /See:/ 'attachElasticLoadBalancerResponse' smart constructor.
-data AttachElasticLoadBalancerResponse =
+data AttachElasticLoadBalancerResponse a =
     AttachElasticLoadBalancerResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AttachElasticLoadBalancerResponse' with the minimum fields required to make a request.
 --
 attachElasticLoadBalancerResponse
-    :: AttachElasticLoadBalancerResponse
+    :: AttachElasticLoadBalancerResponse (a)
 attachElasticLoadBalancerResponse = AttachElasticLoadBalancerResponse'
 
 instance NFData AttachElasticLoadBalancerResponse

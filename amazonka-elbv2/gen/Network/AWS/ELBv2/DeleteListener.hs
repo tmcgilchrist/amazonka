@@ -95,7 +95,7 @@ instance ToQuery DeleteListener where
 -- | Contains the output of DeleteListener.
 --
 -- /See:/ 'deleteListenerResponse' smart constructor.
-newtype DeleteListenerResponse = DeleteListenerResponse'
+newtype DeleteListenerResponse a = DeleteListenerResponse'
     { _dlrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -106,14 +106,14 @@ newtype DeleteListenerResponse = DeleteListenerResponse'
 -- * 'dlrsResponseStatus'
 deleteListenerResponse
     :: Int -- ^ 'dlrsResponseStatus'
-    -> DeleteListenerResponse
+    -> DeleteListenerResponse (a)
 deleteListenerResponse pResponseStatus_ =
     DeleteListenerResponse'
     { _dlrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dlrsResponseStatus :: Lens' DeleteListenerResponse Int
+dlrsResponseStatus :: Lens' (DeleteListenerResponse (a)) Int
 dlrsResponseStatus = lens _dlrsResponseStatus (\ s a -> s{_dlrsResponseStatus = a});
 
 instance NFData DeleteListenerResponse

@@ -130,7 +130,7 @@ instance ToQuery GetResources where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API>
 --
 -- /See:/ 'getResourcesResponse' smart constructor.
-data GetResourcesResponse = GetResourcesResponse'
+data GetResourcesResponse a = GetResourcesResponse'
     { _grrsItems          :: !(Maybe [Resource])
     , _grrsPosition       :: !(Maybe Text)
     , _grrsResponseStatus :: !Int
@@ -147,7 +147,7 @@ data GetResourcesResponse = GetResourcesResponse'
 -- * 'grrsResponseStatus'
 getResourcesResponse
     :: Int -- ^ 'grrsResponseStatus'
-    -> GetResourcesResponse
+    -> GetResourcesResponse (a)
 getResourcesResponse pResponseStatus_ =
     GetResourcesResponse'
     { _grrsItems = Nothing
@@ -156,15 +156,15 @@ getResourcesResponse pResponseStatus_ =
     }
 
 -- | Gets the current < Resource> resource in the collection.
-grrsItems :: Lens' GetResourcesResponse [Resource]
+grrsItems :: Lens' (GetResourcesResponse (a)) [Resource]
 grrsItems = lens _grrsItems (\ s a -> s{_grrsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-grrsPosition :: Lens' GetResourcesResponse (Maybe Text)
+grrsPosition :: Lens' (GetResourcesResponse (a)) (Maybe Text)
 grrsPosition = lens _grrsPosition (\ s a -> s{_grrsPosition = a});
 
 -- | The response status code.
-grrsResponseStatus :: Lens' GetResourcesResponse Int
+grrsResponseStatus :: Lens' (GetResourcesResponse (a)) Int
 grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a});
 
 instance NFData GetResourcesResponse

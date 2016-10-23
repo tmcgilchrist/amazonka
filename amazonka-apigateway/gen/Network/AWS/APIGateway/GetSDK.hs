@@ -135,7 +135,7 @@ instance ToQuery GetSDK where
 -- | The binary blob response to < GetSdk>, which contains the generated SDK.
 --
 -- /See:/ 'getSDKResponse' smart constructor.
-data GetSDKResponse = GetSDKResponse'
+data GetSDKResponse a = GetSDKResponse'
     { _gsdkrsBody               :: !(Maybe (HashMap Text Value))
     , _gsdkrsContentDisposition :: !(Maybe Text)
     , _gsdkrsContentType        :: !(Maybe Text)
@@ -155,7 +155,7 @@ data GetSDKResponse = GetSDKResponse'
 -- * 'gsdkrsResponseStatus'
 getSDKResponse
     :: Int -- ^ 'gsdkrsResponseStatus'
-    -> GetSDKResponse
+    -> GetSDKResponse (a)
 getSDKResponse pResponseStatus_ =
     GetSDKResponse'
     { _gsdkrsBody = Nothing
@@ -165,19 +165,19 @@ getSDKResponse pResponseStatus_ =
     }
 
 -- | The binary blob response to < GetSdk>, which contains the generated SDK.
-gsdkrsBody :: Lens' GetSDKResponse (Maybe (HashMap Text Value))
+gsdkrsBody :: Lens' (GetSDKResponse (a)) (Maybe (HashMap Text Value))
 gsdkrsBody = lens _gsdkrsBody (\ s a -> s{_gsdkrsBody = a});
 
 -- | The content-disposition header value in the HTTP response.
-gsdkrsContentDisposition :: Lens' GetSDKResponse (Maybe Text)
+gsdkrsContentDisposition :: Lens' (GetSDKResponse (a)) (Maybe Text)
 gsdkrsContentDisposition = lens _gsdkrsContentDisposition (\ s a -> s{_gsdkrsContentDisposition = a});
 
 -- | The content-type header value in the HTTP response.
-gsdkrsContentType :: Lens' GetSDKResponse (Maybe Text)
+gsdkrsContentType :: Lens' (GetSDKResponse (a)) (Maybe Text)
 gsdkrsContentType = lens _gsdkrsContentType (\ s a -> s{_gsdkrsContentType = a});
 
 -- | The response status code.
-gsdkrsResponseStatus :: Lens' GetSDKResponse Int
+gsdkrsResponseStatus :: Lens' (GetSDKResponse (a)) Int
 gsdkrsResponseStatus = lens _gsdkrsResponseStatus (\ s a -> s{_gsdkrsResponseStatus = a});
 
 instance NFData GetSDKResponse

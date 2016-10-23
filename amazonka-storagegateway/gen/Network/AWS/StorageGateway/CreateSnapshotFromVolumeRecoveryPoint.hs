@@ -131,7 +131,7 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'createSnapshotFromVolumeRecoveryPointResponse' smart constructor.
-data CreateSnapshotFromVolumeRecoveryPointResponse = CreateSnapshotFromVolumeRecoveryPointResponse'
+data CreateSnapshotFromVolumeRecoveryPointResponse a = CreateSnapshotFromVolumeRecoveryPointResponse'
     { _csfvrprsVolumeRecoveryPointTime :: !(Maybe Text)
     , _csfvrprsVolumeARN               :: !(Maybe Text)
     , _csfvrprsSnapshotId              :: !(Maybe Text)
@@ -151,7 +151,7 @@ data CreateSnapshotFromVolumeRecoveryPointResponse = CreateSnapshotFromVolumeRec
 -- * 'csfvrprsResponseStatus'
 createSnapshotFromVolumeRecoveryPointResponse
     :: Int -- ^ 'csfvrprsResponseStatus'
-    -> CreateSnapshotFromVolumeRecoveryPointResponse
+    -> CreateSnapshotFromVolumeRecoveryPointResponse (a)
 createSnapshotFromVolumeRecoveryPointResponse pResponseStatus_ =
     CreateSnapshotFromVolumeRecoveryPointResponse'
     { _csfvrprsVolumeRecoveryPointTime = Nothing
@@ -161,19 +161,19 @@ createSnapshotFromVolumeRecoveryPointResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-csfvrprsVolumeRecoveryPointTime :: Lens' CreateSnapshotFromVolumeRecoveryPointResponse (Maybe Text)
+csfvrprsVolumeRecoveryPointTime :: Lens' (CreateSnapshotFromVolumeRecoveryPointResponse (a)) (Maybe Text)
 csfvrprsVolumeRecoveryPointTime = lens _csfvrprsVolumeRecoveryPointTime (\ s a -> s{_csfvrprsVolumeRecoveryPointTime = a});
 
 -- | Undocumented member.
-csfvrprsVolumeARN :: Lens' CreateSnapshotFromVolumeRecoveryPointResponse (Maybe Text)
+csfvrprsVolumeARN :: Lens' (CreateSnapshotFromVolumeRecoveryPointResponse (a)) (Maybe Text)
 csfvrprsVolumeARN = lens _csfvrprsVolumeARN (\ s a -> s{_csfvrprsVolumeARN = a});
 
 -- | Undocumented member.
-csfvrprsSnapshotId :: Lens' CreateSnapshotFromVolumeRecoveryPointResponse (Maybe Text)
+csfvrprsSnapshotId :: Lens' (CreateSnapshotFromVolumeRecoveryPointResponse (a)) (Maybe Text)
 csfvrprsSnapshotId = lens _csfvrprsSnapshotId (\ s a -> s{_csfvrprsSnapshotId = a});
 
 -- | The response status code.
-csfvrprsResponseStatus :: Lens' CreateSnapshotFromVolumeRecoveryPointResponse Int
+csfvrprsResponseStatus :: Lens' (CreateSnapshotFromVolumeRecoveryPointResponse (a)) Int
 csfvrprsResponseStatus = lens _csfvrprsResponseStatus (\ s a -> s{_csfvrprsResponseStatus = a});
 
 instance NFData

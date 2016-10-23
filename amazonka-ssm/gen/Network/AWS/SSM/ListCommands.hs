@@ -150,7 +150,7 @@ instance ToQuery ListCommands where
         toQuery = const mempty
 
 -- | /See:/ 'listCommandsResponse' smart constructor.
-data ListCommandsResponse = ListCommandsResponse'
+data ListCommandsResponse a = ListCommandsResponse'
     { _lcrsCommands       :: !(Maybe [Command])
     , _lcrsNextToken      :: !(Maybe Text)
     , _lcrsResponseStatus :: !Int
@@ -167,7 +167,7 @@ data ListCommandsResponse = ListCommandsResponse'
 -- * 'lcrsResponseStatus'
 listCommandsResponse
     :: Int -- ^ 'lcrsResponseStatus'
-    -> ListCommandsResponse
+    -> ListCommandsResponse (a)
 listCommandsResponse pResponseStatus_ =
     ListCommandsResponse'
     { _lcrsCommands = Nothing
@@ -176,15 +176,15 @@ listCommandsResponse pResponseStatus_ =
     }
 
 -- | (Optional) The list of commands requested by the user.
-lcrsCommands :: Lens' ListCommandsResponse [Command]
+lcrsCommands :: Lens' (ListCommandsResponse (a)) [Command]
 lcrsCommands = lens _lcrsCommands (\ s a -> s{_lcrsCommands = a}) . _Default . _Coerce;
 
 -- | (Optional) The token for the next set of items to return. (You received this token from a previous call.)
-lcrsNextToken :: Lens' ListCommandsResponse (Maybe Text)
+lcrsNextToken :: Lens' (ListCommandsResponse (a)) (Maybe Text)
 lcrsNextToken = lens _lcrsNextToken (\ s a -> s{_lcrsNextToken = a});
 
 -- | The response status code.
-lcrsResponseStatus :: Lens' ListCommandsResponse Int
+lcrsResponseStatus :: Lens' (ListCommandsResponse (a)) Int
 lcrsResponseStatus = lens _lcrsResponseStatus (\ s a -> s{_lcrsResponseStatus = a});
 
 instance NFData ListCommandsResponse

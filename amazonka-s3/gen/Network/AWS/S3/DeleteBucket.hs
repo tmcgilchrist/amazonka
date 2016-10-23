@@ -81,14 +81,14 @@ instance ToQuery DeleteBucket where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBucketResponse' smart constructor.
-data DeleteBucketResponse =
+data DeleteBucketResponse a =
     DeleteBucketResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteBucketResponse' with the minimum fields required to make a request.
 --
 deleteBucketResponse
-    :: DeleteBucketResponse
+    :: DeleteBucketResponse (a)
 deleteBucketResponse = DeleteBucketResponse'
 
 instance NFData DeleteBucketResponse

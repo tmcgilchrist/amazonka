@@ -109,14 +109,14 @@ instance ToQuery AddTagsToOnPremisesInstances where
         toQuery = const mempty
 
 -- | /See:/ 'addTagsToOnPremisesInstancesResponse' smart constructor.
-data AddTagsToOnPremisesInstancesResponse =
+data AddTagsToOnPremisesInstancesResponse a =
     AddTagsToOnPremisesInstancesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddTagsToOnPremisesInstancesResponse' with the minimum fields required to make a request.
 --
 addTagsToOnPremisesInstancesResponse
-    :: AddTagsToOnPremisesInstancesResponse
+    :: AddTagsToOnPremisesInstancesResponse (a)
 addTagsToOnPremisesInstancesResponse = AddTagsToOnPremisesInstancesResponse'
 
 instance NFData AddTagsToOnPremisesInstancesResponse

@@ -120,7 +120,7 @@ instance ToQuery RetrieveTapeArchive where
 -- | RetrieveTapeArchiveOutput
 --
 -- /See:/ 'retrieveTapeArchiveResponse' smart constructor.
-data RetrieveTapeArchiveResponse = RetrieveTapeArchiveResponse'
+data RetrieveTapeArchiveResponse a = RetrieveTapeArchiveResponse'
     { _rtarsTapeARN        :: !(Maybe Text)
     , _rtarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data RetrieveTapeArchiveResponse = RetrieveTapeArchiveResponse'
 -- * 'rtarsResponseStatus'
 retrieveTapeArchiveResponse
     :: Int -- ^ 'rtarsResponseStatus'
-    -> RetrieveTapeArchiveResponse
+    -> RetrieveTapeArchiveResponse (a)
 retrieveTapeArchiveResponse pResponseStatus_ =
     RetrieveTapeArchiveResponse'
     { _rtarsTapeARN = Nothing
@@ -142,11 +142,11 @@ retrieveTapeArchiveResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the retrieved virtual tape.
-rtarsTapeARN :: Lens' RetrieveTapeArchiveResponse (Maybe Text)
+rtarsTapeARN :: Lens' (RetrieveTapeArchiveResponse (a)) (Maybe Text)
 rtarsTapeARN = lens _rtarsTapeARN (\ s a -> s{_rtarsTapeARN = a});
 
 -- | The response status code.
-rtarsResponseStatus :: Lens' RetrieveTapeArchiveResponse Int
+rtarsResponseStatus :: Lens' (RetrieveTapeArchiveResponse (a)) Int
 rtarsResponseStatus = lens _rtarsResponseStatus (\ s a -> s{_rtarsResponseStatus = a});
 
 instance NFData RetrieveTapeArchiveResponse

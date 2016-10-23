@@ -150,7 +150,7 @@ instance ToQuery DescribePolicies where
 -- | Contains the output of DescribePolicies.
 --
 -- /See:/ 'describePoliciesResponse' smart constructor.
-data DescribePoliciesResponse = DescribePoliciesResponse'
+data DescribePoliciesResponse a = DescribePoliciesResponse'
     { _dprsNextToken       :: !(Maybe Text)
     , _dprsScalingPolicies :: !(Maybe [ScalingPolicy])
     , _dprsResponseStatus  :: !Int
@@ -167,7 +167,7 @@ data DescribePoliciesResponse = DescribePoliciesResponse'
 -- * 'dprsResponseStatus'
 describePoliciesResponse
     :: Int -- ^ 'dprsResponseStatus'
-    -> DescribePoliciesResponse
+    -> DescribePoliciesResponse (a)
 describePoliciesResponse pResponseStatus_ =
     DescribePoliciesResponse'
     { _dprsNextToken = Nothing
@@ -176,15 +176,15 @@ describePoliciesResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dprsNextToken :: Lens' DescribePoliciesResponse (Maybe Text)
+dprsNextToken :: Lens' (DescribePoliciesResponse (a)) (Maybe Text)
 dprsNextToken = lens _dprsNextToken (\ s a -> s{_dprsNextToken = a});
 
 -- | The scaling policies.
-dprsScalingPolicies :: Lens' DescribePoliciesResponse [ScalingPolicy]
+dprsScalingPolicies :: Lens' (DescribePoliciesResponse (a)) [ScalingPolicy]
 dprsScalingPolicies = lens _dprsScalingPolicies (\ s a -> s{_dprsScalingPolicies = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dprsResponseStatus :: Lens' DescribePoliciesResponse Int
+dprsResponseStatus :: Lens' (DescribePoliciesResponse (a)) Int
 dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a});
 
 instance NFData DescribePoliciesResponse

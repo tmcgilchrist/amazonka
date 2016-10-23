@@ -122,7 +122,7 @@ instance ToQuery DescribeConversionTasks where
 -- | Contains the output for DescribeConversionTasks.
 --
 -- /See:/ 'describeConversionTasksResponse' smart constructor.
-data DescribeConversionTasksResponse = DescribeConversionTasksResponse'
+data DescribeConversionTasksResponse a = DescribeConversionTasksResponse'
     { _dctrsConversionTasks :: !(Maybe [ConversionTask])
     , _dctrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data DescribeConversionTasksResponse = DescribeConversionTasksResponse'
 -- * 'dctrsResponseStatus'
 describeConversionTasksResponse
     :: Int -- ^ 'dctrsResponseStatus'
-    -> DescribeConversionTasksResponse
+    -> DescribeConversionTasksResponse (a)
 describeConversionTasksResponse pResponseStatus_ =
     DescribeConversionTasksResponse'
     { _dctrsConversionTasks = Nothing
@@ -144,11 +144,11 @@ describeConversionTasksResponse pResponseStatus_ =
     }
 
 -- | Information about the conversion tasks.
-dctrsConversionTasks :: Lens' DescribeConversionTasksResponse [ConversionTask]
+dctrsConversionTasks :: Lens' (DescribeConversionTasksResponse (a)) [ConversionTask]
 dctrsConversionTasks = lens _dctrsConversionTasks (\ s a -> s{_dctrsConversionTasks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dctrsResponseStatus :: Lens' DescribeConversionTasksResponse Int
+dctrsResponseStatus :: Lens' (DescribeConversionTasksResponse (a)) Int
 dctrsResponseStatus = lens _dctrsResponseStatus (\ s a -> s{_dctrsResponseStatus = a});
 
 instance NFData DescribeConversionTasksResponse

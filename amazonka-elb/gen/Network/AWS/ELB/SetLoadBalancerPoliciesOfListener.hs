@@ -127,7 +127,7 @@ instance ToQuery SetLoadBalancerPoliciesOfListener
 -- | Contains the output of SetLoadBalancePoliciesOfListener.
 --
 -- /See:/ 'setLoadBalancerPoliciesOfListenerResponse' smart constructor.
-newtype SetLoadBalancerPoliciesOfListenerResponse = SetLoadBalancerPoliciesOfListenerResponse'
+newtype SetLoadBalancerPoliciesOfListenerResponse a = SetLoadBalancerPoliciesOfListenerResponse'
     { _slbpolrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -138,14 +138,14 @@ newtype SetLoadBalancerPoliciesOfListenerResponse = SetLoadBalancerPoliciesOfLis
 -- * 'slbpolrsResponseStatus'
 setLoadBalancerPoliciesOfListenerResponse
     :: Int -- ^ 'slbpolrsResponseStatus'
-    -> SetLoadBalancerPoliciesOfListenerResponse
+    -> SetLoadBalancerPoliciesOfListenerResponse (a)
 setLoadBalancerPoliciesOfListenerResponse pResponseStatus_ =
     SetLoadBalancerPoliciesOfListenerResponse'
     { _slbpolrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-slbpolrsResponseStatus :: Lens' SetLoadBalancerPoliciesOfListenerResponse Int
+slbpolrsResponseStatus :: Lens' (SetLoadBalancerPoliciesOfListenerResponse (a)) Int
 slbpolrsResponseStatus = lens _slbpolrsResponseStatus (\ s a -> s{_slbpolrsResponseStatus = a});
 
 instance NFData

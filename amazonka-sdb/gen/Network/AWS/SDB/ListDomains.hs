@@ -113,7 +113,7 @@ instance ToQuery ListDomains where
                "NextToken" =: _ldNextToken]
 
 -- | /See:/ 'listDomainsResponse' smart constructor.
-data ListDomainsResponse = ListDomainsResponse'
+data ListDomainsResponse a = ListDomainsResponse'
     { _ldrsDomainNames    :: !(Maybe [Text])
     , _ldrsNextToken      :: !(Maybe Text)
     , _ldrsResponseStatus :: !Int
@@ -130,7 +130,7 @@ data ListDomainsResponse = ListDomainsResponse'
 -- * 'ldrsResponseStatus'
 listDomainsResponse
     :: Int -- ^ 'ldrsResponseStatus'
-    -> ListDomainsResponse
+    -> ListDomainsResponse (a)
 listDomainsResponse pResponseStatus_ =
     ListDomainsResponse'
     { _ldrsDomainNames = Nothing
@@ -139,15 +139,15 @@ listDomainsResponse pResponseStatus_ =
     }
 
 -- | A list of domain names that match the expression.
-ldrsDomainNames :: Lens' ListDomainsResponse [Text]
+ldrsDomainNames :: Lens' (ListDomainsResponse (a)) [Text]
 ldrsDomainNames = lens _ldrsDomainNames (\ s a -> s{_ldrsDomainNames = a}) . _Default . _Coerce;
 
 -- | An opaque token indicating that there are more domains than the specified 'MaxNumberOfDomains' still available.
-ldrsNextToken :: Lens' ListDomainsResponse (Maybe Text)
+ldrsNextToken :: Lens' (ListDomainsResponse (a)) (Maybe Text)
 ldrsNextToken = lens _ldrsNextToken (\ s a -> s{_ldrsNextToken = a});
 
 -- | The response status code.
-ldrsResponseStatus :: Lens' ListDomainsResponse Int
+ldrsResponseStatus :: Lens' (ListDomainsResponse (a)) Int
 ldrsResponseStatus = lens _ldrsResponseStatus (\ s a -> s{_ldrsResponseStatus = a});
 
 instance NFData ListDomainsResponse

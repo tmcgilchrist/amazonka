@@ -161,7 +161,7 @@ instance ToQuery ListDomains where
 -- | Contains a paginated collection of DomainInfo structures.
 --
 -- /See:/ 'listDomainsResponse' smart constructor.
-data ListDomainsResponse = ListDomainsResponse'
+data ListDomainsResponse a = ListDomainsResponse'
     { _ldrsNextPageToken  :: !(Maybe Text)
     , _ldrsResponseStatus :: !Int
     , _ldrsDomainInfos    :: ![DomainInfo]
@@ -178,7 +178,7 @@ data ListDomainsResponse = ListDomainsResponse'
 -- * 'ldrsDomainInfos'
 listDomainsResponse
     :: Int -- ^ 'ldrsResponseStatus'
-    -> ListDomainsResponse
+    -> ListDomainsResponse (a)
 listDomainsResponse pResponseStatus_ =
     ListDomainsResponse'
     { _ldrsNextPageToken = Nothing
@@ -189,15 +189,15 @@ listDomainsResponse pResponseStatus_ =
 -- | If a 'NextPageToken' was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in 'nextPageToken'. Keep all other arguments unchanged.
 --
 -- The configured 'maximumPageSize' determines how many results can be returned in a single call.
-ldrsNextPageToken :: Lens' ListDomainsResponse (Maybe Text)
+ldrsNextPageToken :: Lens' (ListDomainsResponse (a)) (Maybe Text)
 ldrsNextPageToken = lens _ldrsNextPageToken (\ s a -> s{_ldrsNextPageToken = a});
 
 -- | The response status code.
-ldrsResponseStatus :: Lens' ListDomainsResponse Int
+ldrsResponseStatus :: Lens' (ListDomainsResponse (a)) Int
 ldrsResponseStatus = lens _ldrsResponseStatus (\ s a -> s{_ldrsResponseStatus = a});
 
 -- | A list of DomainInfo structures.
-ldrsDomainInfos :: Lens' ListDomainsResponse [DomainInfo]
+ldrsDomainInfos :: Lens' (ListDomainsResponse (a)) [DomainInfo]
 ldrsDomainInfos = lens _ldrsDomainInfos (\ s a -> s{_ldrsDomainInfos = a}) . _Coerce;
 
 instance NFData ListDomainsResponse

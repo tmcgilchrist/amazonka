@@ -113,14 +113,14 @@ instance ToQuery UpdateAccessKey where
                "Status" =: _uakStatus]
 
 -- | /See:/ 'updateAccessKeyResponse' smart constructor.
-data UpdateAccessKeyResponse =
+data UpdateAccessKeyResponse a =
     UpdateAccessKeyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateAccessKeyResponse' with the minimum fields required to make a request.
 --
 updateAccessKeyResponse
-    :: UpdateAccessKeyResponse
+    :: UpdateAccessKeyResponse (a)
 updateAccessKeyResponse = UpdateAccessKeyResponse'
 
 instance NFData UpdateAccessKeyResponse

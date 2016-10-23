@@ -120,7 +120,7 @@ instance ToQuery DeleteMessageBatch where
 -- | For each message in the batch, the response contains a < DeleteMessageBatchResultEntry> tag if the message is deleted or a < BatchResultErrorEntry> tag if the message cannot be deleted.
 --
 -- /See:/ 'deleteMessageBatchResponse' smart constructor.
-data DeleteMessageBatchResponse = DeleteMessageBatchResponse'
+data DeleteMessageBatchResponse a = DeleteMessageBatchResponse'
     { _dmbrsResponseStatus :: !Int
     , _dmbrsSuccessful     :: ![DeleteMessageBatchResultEntry]
     , _dmbrsFailed         :: ![BatchResultErrorEntry]
@@ -137,7 +137,7 @@ data DeleteMessageBatchResponse = DeleteMessageBatchResponse'
 -- * 'dmbrsFailed'
 deleteMessageBatchResponse
     :: Int -- ^ 'dmbrsResponseStatus'
-    -> DeleteMessageBatchResponse
+    -> DeleteMessageBatchResponse (a)
 deleteMessageBatchResponse pResponseStatus_ =
     DeleteMessageBatchResponse'
     { _dmbrsResponseStatus = pResponseStatus_
@@ -146,15 +146,15 @@ deleteMessageBatchResponse pResponseStatus_ =
     }
 
 -- | The response status code.
-dmbrsResponseStatus :: Lens' DeleteMessageBatchResponse Int
+dmbrsResponseStatus :: Lens' (DeleteMessageBatchResponse (a)) Int
 dmbrsResponseStatus = lens _dmbrsResponseStatus (\ s a -> s{_dmbrsResponseStatus = a});
 
 -- | A list of < DeleteMessageBatchResultEntry> items.
-dmbrsSuccessful :: Lens' DeleteMessageBatchResponse [DeleteMessageBatchResultEntry]
+dmbrsSuccessful :: Lens' (DeleteMessageBatchResponse (a)) [DeleteMessageBatchResultEntry]
 dmbrsSuccessful = lens _dmbrsSuccessful (\ s a -> s{_dmbrsSuccessful = a}) . _Coerce;
 
 -- | A list of < BatchResultErrorEntry> items.
-dmbrsFailed :: Lens' DeleteMessageBatchResponse [BatchResultErrorEntry]
+dmbrsFailed :: Lens' (DeleteMessageBatchResponse (a)) [BatchResultErrorEntry]
 dmbrsFailed = lens _dmbrsFailed (\ s a -> s{_dmbrsFailed = a}) . _Coerce;
 
 instance NFData DeleteMessageBatchResponse

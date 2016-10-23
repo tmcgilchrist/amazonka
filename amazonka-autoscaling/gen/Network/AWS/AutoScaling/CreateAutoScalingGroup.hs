@@ -288,14 +288,14 @@ instance ToQuery CreateAutoScalingGroup where
                "MinSize" =: _casgMinSize, "MaxSize" =: _casgMaxSize]
 
 -- | /See:/ 'createAutoScalingGroupResponse' smart constructor.
-data CreateAutoScalingGroupResponse =
+data CreateAutoScalingGroupResponse a =
     CreateAutoScalingGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateAutoScalingGroupResponse' with the minimum fields required to make a request.
 --
 createAutoScalingGroupResponse
-    :: CreateAutoScalingGroupResponse
+    :: CreateAutoScalingGroupResponse (a)
 createAutoScalingGroupResponse = CreateAutoScalingGroupResponse'
 
 instance NFData CreateAutoScalingGroupResponse

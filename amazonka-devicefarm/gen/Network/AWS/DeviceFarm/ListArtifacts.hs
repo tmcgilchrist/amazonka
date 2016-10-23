@@ -142,7 +142,7 @@ instance ToQuery ListArtifacts where
 -- | Represents the result of a list artifacts operation.
 --
 -- /See:/ 'listArtifactsResponse' smart constructor.
-data ListArtifactsResponse = ListArtifactsResponse'
+data ListArtifactsResponse a = ListArtifactsResponse'
     { _larsArtifacts      :: !(Maybe [Artifact])
     , _larsNextToken      :: !(Maybe Text)
     , _larsResponseStatus :: !Int
@@ -159,7 +159,7 @@ data ListArtifactsResponse = ListArtifactsResponse'
 -- * 'larsResponseStatus'
 listArtifactsResponse
     :: Int -- ^ 'larsResponseStatus'
-    -> ListArtifactsResponse
+    -> ListArtifactsResponse (a)
 listArtifactsResponse pResponseStatus_ =
     ListArtifactsResponse'
     { _larsArtifacts = Nothing
@@ -168,15 +168,15 @@ listArtifactsResponse pResponseStatus_ =
     }
 
 -- | Information about the artifacts.
-larsArtifacts :: Lens' ListArtifactsResponse [Artifact]
+larsArtifacts :: Lens' (ListArtifactsResponse (a)) [Artifact]
 larsArtifacts = lens _larsArtifacts (\ s a -> s{_larsArtifacts = a}) . _Default . _Coerce;
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-larsNextToken :: Lens' ListArtifactsResponse (Maybe Text)
+larsNextToken :: Lens' (ListArtifactsResponse (a)) (Maybe Text)
 larsNextToken = lens _larsNextToken (\ s a -> s{_larsNextToken = a});
 
 -- | The response status code.
-larsResponseStatus :: Lens' ListArtifactsResponse Int
+larsResponseStatus :: Lens' (ListArtifactsResponse (a)) Int
 larsResponseStatus = lens _larsResponseStatus (\ s a -> s{_larsResponseStatus = a});
 
 instance NFData ListArtifactsResponse

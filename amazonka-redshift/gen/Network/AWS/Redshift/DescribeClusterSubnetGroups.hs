@@ -162,7 +162,7 @@ instance ToQuery DescribeClusterSubnetGroups where
 -- | Contains the output from the < DescribeClusterSubnetGroups> action.
 --
 -- /See:/ 'describeClusterSubnetGroupsResponse' smart constructor.
-data DescribeClusterSubnetGroupsResponse = DescribeClusterSubnetGroupsResponse'
+data DescribeClusterSubnetGroupsResponse a = DescribeClusterSubnetGroupsResponse'
     { _dcsgrsClusterSubnetGroups :: !(Maybe [ClusterSubnetGroup])
     , _dcsgrsMarker              :: !(Maybe Text)
     , _dcsgrsResponseStatus      :: !Int
@@ -179,7 +179,7 @@ data DescribeClusterSubnetGroupsResponse = DescribeClusterSubnetGroupsResponse'
 -- * 'dcsgrsResponseStatus'
 describeClusterSubnetGroupsResponse
     :: Int -- ^ 'dcsgrsResponseStatus'
-    -> DescribeClusterSubnetGroupsResponse
+    -> DescribeClusterSubnetGroupsResponse (a)
 describeClusterSubnetGroupsResponse pResponseStatus_ =
     DescribeClusterSubnetGroupsResponse'
     { _dcsgrsClusterSubnetGroups = Nothing
@@ -188,15 +188,15 @@ describeClusterSubnetGroupsResponse pResponseStatus_ =
     }
 
 -- | A list of < ClusterSubnetGroup> instances.
-dcsgrsClusterSubnetGroups :: Lens' DescribeClusterSubnetGroupsResponse [ClusterSubnetGroup]
+dcsgrsClusterSubnetGroups :: Lens' (DescribeClusterSubnetGroupsResponse (a)) [ClusterSubnetGroup]
 dcsgrsClusterSubnetGroups = lens _dcsgrsClusterSubnetGroups (\ s a -> s{_dcsgrsClusterSubnetGroups = a}) . _Default . _Coerce;
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dcsgrsMarker :: Lens' DescribeClusterSubnetGroupsResponse (Maybe Text)
+dcsgrsMarker :: Lens' (DescribeClusterSubnetGroupsResponse (a)) (Maybe Text)
 dcsgrsMarker = lens _dcsgrsMarker (\ s a -> s{_dcsgrsMarker = a});
 
 -- | The response status code.
-dcsgrsResponseStatus :: Lens' DescribeClusterSubnetGroupsResponse Int
+dcsgrsResponseStatus :: Lens' (DescribeClusterSubnetGroupsResponse (a)) Int
 dcsgrsResponseStatus = lens _dcsgrsResponseStatus (\ s a -> s{_dcsgrsResponseStatus = a});
 
 instance NFData DescribeClusterSubnetGroupsResponse

@@ -96,14 +96,14 @@ instance ToQuery DeleteDHCPOptions where
                "DhcpOptionsId" =: _ddhcpoDHCPOptionsId]
 
 -- | /See:/ 'deleteDHCPOptionsResponse' smart constructor.
-data DeleteDHCPOptionsResponse =
+data DeleteDHCPOptionsResponse a =
     DeleteDHCPOptionsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteDHCPOptionsResponse' with the minimum fields required to make a request.
 --
 deleteDHCPOptionsResponse
-    :: DeleteDHCPOptionsResponse
+    :: DeleteDHCPOptionsResponse (a)
 deleteDHCPOptionsResponse = DeleteDHCPOptionsResponse'
 
 instance NFData DeleteDHCPOptionsResponse

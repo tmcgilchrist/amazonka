@@ -112,7 +112,7 @@ instance ToQuery AddUploadBuffer where
         toQuery = const mempty
 
 -- | /See:/ 'addUploadBufferResponse' smart constructor.
-data AddUploadBufferResponse = AddUploadBufferResponse'
+data AddUploadBufferResponse a = AddUploadBufferResponse'
     { _aubrsGatewayARN     :: !(Maybe Text)
     , _aubrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -126,7 +126,7 @@ data AddUploadBufferResponse = AddUploadBufferResponse'
 -- * 'aubrsResponseStatus'
 addUploadBufferResponse
     :: Int -- ^ 'aubrsResponseStatus'
-    -> AddUploadBufferResponse
+    -> AddUploadBufferResponse (a)
 addUploadBufferResponse pResponseStatus_ =
     AddUploadBufferResponse'
     { _aubrsGatewayARN = Nothing
@@ -134,11 +134,11 @@ addUploadBufferResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-aubrsGatewayARN :: Lens' AddUploadBufferResponse (Maybe Text)
+aubrsGatewayARN :: Lens' (AddUploadBufferResponse (a)) (Maybe Text)
 aubrsGatewayARN = lens _aubrsGatewayARN (\ s a -> s{_aubrsGatewayARN = a});
 
 -- | The response status code.
-aubrsResponseStatus :: Lens' AddUploadBufferResponse Int
+aubrsResponseStatus :: Lens' (AddUploadBufferResponse (a)) Int
 aubrsResponseStatus = lens _aubrsResponseStatus (\ s a -> s{_aubrsResponseStatus = a});
 
 instance NFData AddUploadBufferResponse

@@ -106,14 +106,14 @@ instance ToQuery AddClientIdToOpenIdConnectProvider
                "ClientID" =: _acitoicpClientId]
 
 -- | /See:/ 'addClientIdToOpenIdConnectProviderResponse' smart constructor.
-data AddClientIdToOpenIdConnectProviderResponse =
+data AddClientIdToOpenIdConnectProviderResponse a =
     AddClientIdToOpenIdConnectProviderResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddClientIdToOpenIdConnectProviderResponse' with the minimum fields required to make a request.
 --
 addClientIdToOpenIdConnectProviderResponse
-    :: AddClientIdToOpenIdConnectProviderResponse
+    :: AddClientIdToOpenIdConnectProviderResponse (a)
 addClientIdToOpenIdConnectProviderResponse =
     AddClientIdToOpenIdConnectProviderResponse'
 

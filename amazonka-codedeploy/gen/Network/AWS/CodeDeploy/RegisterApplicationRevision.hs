@@ -118,14 +118,14 @@ instance ToQuery RegisterApplicationRevision where
         toQuery = const mempty
 
 -- | /See:/ 'registerApplicationRevisionResponse' smart constructor.
-data RegisterApplicationRevisionResponse =
+data RegisterApplicationRevisionResponse a =
     RegisterApplicationRevisionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RegisterApplicationRevisionResponse' with the minimum fields required to make a request.
 --
 registerApplicationRevisionResponse
-    :: RegisterApplicationRevisionResponse
+    :: RegisterApplicationRevisionResponse (a)
 registerApplicationRevisionResponse = RegisterApplicationRevisionResponse'
 
 instance NFData RegisterApplicationRevisionResponse

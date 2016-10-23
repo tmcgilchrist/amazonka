@@ -127,7 +127,7 @@ instance ToQuery StopInstances where
 -- | Contains the output of StopInstances.
 --
 -- /See:/ 'stopInstancesResponse' smart constructor.
-data StopInstancesResponse = StopInstancesResponse'
+data StopInstancesResponse a = StopInstancesResponse'
     { _sirsStoppingInstances :: !(Maybe [InstanceStateChange])
     , _sirsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data StopInstancesResponse = StopInstancesResponse'
 -- * 'sirsResponseStatus'
 stopInstancesResponse
     :: Int -- ^ 'sirsResponseStatus'
-    -> StopInstancesResponse
+    -> StopInstancesResponse (a)
 stopInstancesResponse pResponseStatus_ =
     StopInstancesResponse'
     { _sirsStoppingInstances = Nothing
@@ -149,11 +149,11 @@ stopInstancesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more stopped instances.
-sirsStoppingInstances :: Lens' StopInstancesResponse [InstanceStateChange]
+sirsStoppingInstances :: Lens' (StopInstancesResponse (a)) [InstanceStateChange]
 sirsStoppingInstances = lens _sirsStoppingInstances (\ s a -> s{_sirsStoppingInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-sirsResponseStatus :: Lens' StopInstancesResponse Int
+sirsResponseStatus :: Lens' (StopInstancesResponse (a)) Int
 sirsResponseStatus = lens _sirsResponseStatus (\ s a -> s{_sirsResponseStatus = a});
 
 instance NFData StopInstancesResponse

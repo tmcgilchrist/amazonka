@@ -131,7 +131,7 @@ instance ToQuery DeleteObjects where
         toQuery = const (mconcat ["delete"])
 
 -- | /See:/ 'deleteObjectsResponse' smart constructor.
-data DeleteObjectsResponse = DeleteObjectsResponse'
+data DeleteObjectsResponse a = DeleteObjectsResponse'
     { _drsRequestCharged :: !(Maybe RequestCharged)
     , _drsDeleted        :: !(Maybe [DeletedObject])
     , _drsErrors         :: !(Maybe [S3ServiceError])
@@ -151,7 +151,7 @@ data DeleteObjectsResponse = DeleteObjectsResponse'
 -- * 'drsResponseStatus'
 deleteObjectsResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteObjectsResponse
+    -> DeleteObjectsResponse (a)
 deleteObjectsResponse pResponseStatus_ =
     DeleteObjectsResponse'
     { _drsRequestCharged = Nothing
@@ -161,19 +161,19 @@ deleteObjectsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-drsRequestCharged :: Lens' DeleteObjectsResponse (Maybe RequestCharged)
+drsRequestCharged :: Lens' (DeleteObjectsResponse (a)) (Maybe RequestCharged)
 drsRequestCharged = lens _drsRequestCharged (\ s a -> s{_drsRequestCharged = a});
 
 -- | Undocumented member.
-drsDeleted :: Lens' DeleteObjectsResponse [DeletedObject]
+drsDeleted :: Lens' (DeleteObjectsResponse (a)) [DeletedObject]
 drsDeleted = lens _drsDeleted (\ s a -> s{_drsDeleted = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-drsErrors :: Lens' DeleteObjectsResponse [S3ServiceError]
+drsErrors :: Lens' (DeleteObjectsResponse (a)) [S3ServiceError]
 drsErrors = lens _drsErrors (\ s a -> s{_drsErrors = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteObjectsResponse Int
+drsResponseStatus :: Lens' (DeleteObjectsResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteObjectsResponse

@@ -140,7 +140,7 @@ instance ToQuery DescribeScalingActivities where
 -- | Contains the output of DescribeScalingActivities.
 --
 -- /See:/ 'describeScalingActivitiesResponse' smart constructor.
-data DescribeScalingActivitiesResponse = DescribeScalingActivitiesResponse'
+data DescribeScalingActivitiesResponse a = DescribeScalingActivitiesResponse'
     { _dsasrsNextToken      :: !(Maybe Text)
     , _dsasrsResponseStatus :: !Int
     , _dsasrsActivities     :: ![Activity]
@@ -157,7 +157,7 @@ data DescribeScalingActivitiesResponse = DescribeScalingActivitiesResponse'
 -- * 'dsasrsActivities'
 describeScalingActivitiesResponse
     :: Int -- ^ 'dsasrsResponseStatus'
-    -> DescribeScalingActivitiesResponse
+    -> DescribeScalingActivitiesResponse (a)
 describeScalingActivitiesResponse pResponseStatus_ =
     DescribeScalingActivitiesResponse'
     { _dsasrsNextToken = Nothing
@@ -166,15 +166,15 @@ describeScalingActivitiesResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dsasrsNextToken :: Lens' DescribeScalingActivitiesResponse (Maybe Text)
+dsasrsNextToken :: Lens' (DescribeScalingActivitiesResponse (a)) (Maybe Text)
 dsasrsNextToken = lens _dsasrsNextToken (\ s a -> s{_dsasrsNextToken = a});
 
 -- | The response status code.
-dsasrsResponseStatus :: Lens' DescribeScalingActivitiesResponse Int
+dsasrsResponseStatus :: Lens' (DescribeScalingActivitiesResponse (a)) Int
 dsasrsResponseStatus = lens _dsasrsResponseStatus (\ s a -> s{_dsasrsResponseStatus = a});
 
 -- | The scaling activities. Activities are sorted by start time. Activities still in progress are described first.
-dsasrsActivities :: Lens' DescribeScalingActivitiesResponse [Activity]
+dsasrsActivities :: Lens' (DescribeScalingActivitiesResponse (a)) [Activity]
 dsasrsActivities = lens _dsasrsActivities (\ s a -> s{_dsasrsActivities = a}) . _Coerce;
 
 instance NFData DescribeScalingActivitiesResponse

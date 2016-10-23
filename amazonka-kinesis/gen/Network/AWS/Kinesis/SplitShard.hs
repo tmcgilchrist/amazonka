@@ -135,14 +135,14 @@ instance ToQuery SplitShard where
         toQuery = const mempty
 
 -- | /See:/ 'splitShardResponse' smart constructor.
-data SplitShardResponse =
+data SplitShardResponse a =
     SplitShardResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SplitShardResponse' with the minimum fields required to make a request.
 --
 splitShardResponse
-    :: SplitShardResponse
+    :: SplitShardResponse (a)
 splitShardResponse = SplitShardResponse'
 
 instance NFData SplitShardResponse

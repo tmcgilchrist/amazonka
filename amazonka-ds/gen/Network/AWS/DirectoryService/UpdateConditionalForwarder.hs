@@ -125,7 +125,7 @@ instance ToQuery UpdateConditionalForwarder where
 -- | The result of an UpdateConditionalForwarder request.
 --
 -- /See:/ 'updateConditionalForwarderResponse' smart constructor.
-newtype UpdateConditionalForwarderResponse = UpdateConditionalForwarderResponse'
+newtype UpdateConditionalForwarderResponse a = UpdateConditionalForwarderResponse'
     { _ucfrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -136,14 +136,14 @@ newtype UpdateConditionalForwarderResponse = UpdateConditionalForwarderResponse'
 -- * 'ucfrsResponseStatus'
 updateConditionalForwarderResponse
     :: Int -- ^ 'ucfrsResponseStatus'
-    -> UpdateConditionalForwarderResponse
+    -> UpdateConditionalForwarderResponse (a)
 updateConditionalForwarderResponse pResponseStatus_ =
     UpdateConditionalForwarderResponse'
     { _ucfrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ucfrsResponseStatus :: Lens' UpdateConditionalForwarderResponse Int
+ucfrsResponseStatus :: Lens' (UpdateConditionalForwarderResponse (a)) Int
 ucfrsResponseStatus = lens _ucfrsResponseStatus (\ s a -> s{_ucfrsResponseStatus = a});
 
 instance NFData UpdateConditionalForwarderResponse

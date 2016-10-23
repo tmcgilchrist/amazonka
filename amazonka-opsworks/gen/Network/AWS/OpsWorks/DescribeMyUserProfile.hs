@@ -89,7 +89,7 @@ instance ToQuery DescribeMyUserProfile where
 -- | Contains the response to a 'DescribeMyUserProfile' request.
 --
 -- /See:/ 'describeMyUserProfileResponse' smart constructor.
-data DescribeMyUserProfileResponse = DescribeMyUserProfileResponse'
+data DescribeMyUserProfileResponse a = DescribeMyUserProfileResponse'
     { _dmuprsUserProfile    :: !(Maybe SelfUserProfile)
     , _dmuprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data DescribeMyUserProfileResponse = DescribeMyUserProfileResponse'
 -- * 'dmuprsResponseStatus'
 describeMyUserProfileResponse
     :: Int -- ^ 'dmuprsResponseStatus'
-    -> DescribeMyUserProfileResponse
+    -> DescribeMyUserProfileResponse (a)
 describeMyUserProfileResponse pResponseStatus_ =
     DescribeMyUserProfileResponse'
     { _dmuprsUserProfile = Nothing
@@ -111,11 +111,11 @@ describeMyUserProfileResponse pResponseStatus_ =
     }
 
 -- | A 'UserProfile' object that describes the user\'s SSH information.
-dmuprsUserProfile :: Lens' DescribeMyUserProfileResponse (Maybe SelfUserProfile)
+dmuprsUserProfile :: Lens' (DescribeMyUserProfileResponse (a)) (Maybe SelfUserProfile)
 dmuprsUserProfile = lens _dmuprsUserProfile (\ s a -> s{_dmuprsUserProfile = a});
 
 -- | The response status code.
-dmuprsResponseStatus :: Lens' DescribeMyUserProfileResponse Int
+dmuprsResponseStatus :: Lens' (DescribeMyUserProfileResponse (a)) Int
 dmuprsResponseStatus = lens _dmuprsResponseStatus (\ s a -> s{_dmuprsResponseStatus = a});
 
 instance NFData DescribeMyUserProfileResponse

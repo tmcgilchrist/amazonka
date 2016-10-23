@@ -145,7 +145,7 @@ instance ToQuery ListSteps where
 -- | This output contains the list of steps returned in reverse order. This means that the last step is the first element in the list.
 --
 -- /See:/ 'listStepsResponse' smart constructor.
-data ListStepsResponse = ListStepsResponse'
+data ListStepsResponse a = ListStepsResponse'
     { _lsrsSteps          :: !(Maybe [StepSummary])
     , _lsrsMarker         :: !(Maybe Text)
     , _lsrsResponseStatus :: !Int
@@ -162,7 +162,7 @@ data ListStepsResponse = ListStepsResponse'
 -- * 'lsrsResponseStatus'
 listStepsResponse
     :: Int -- ^ 'lsrsResponseStatus'
-    -> ListStepsResponse
+    -> ListStepsResponse (a)
 listStepsResponse pResponseStatus_ =
     ListStepsResponse'
     { _lsrsSteps = Nothing
@@ -171,15 +171,15 @@ listStepsResponse pResponseStatus_ =
     }
 
 -- | The filtered list of steps for the cluster.
-lsrsSteps :: Lens' ListStepsResponse [StepSummary]
+lsrsSteps :: Lens' (ListStepsResponse (a)) [StepSummary]
 lsrsSteps = lens _lsrsSteps (\ s a -> s{_lsrsSteps = a}) . _Default . _Coerce;
 
 -- | The pagination token that indicates the next set of results to retrieve.
-lsrsMarker :: Lens' ListStepsResponse (Maybe Text)
+lsrsMarker :: Lens' (ListStepsResponse (a)) (Maybe Text)
 lsrsMarker = lens _lsrsMarker (\ s a -> s{_lsrsMarker = a});
 
 -- | The response status code.
-lsrsResponseStatus :: Lens' ListStepsResponse Int
+lsrsResponseStatus :: Lens' (ListStepsResponse (a)) Int
 lsrsResponseStatus = lens _lsrsResponseStatus (\ s a -> s{_lsrsResponseStatus = a});
 
 instance NFData ListStepsResponse

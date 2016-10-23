@@ -118,7 +118,7 @@ instance ToQuery BatchGetDeploymentInstances where
 -- | Represents the output of a batch get deployment instance operation.
 --
 -- /See:/ 'batchGetDeploymentInstancesResponse' smart constructor.
-data BatchGetDeploymentInstancesResponse = BatchGetDeploymentInstancesResponse'
+data BatchGetDeploymentInstancesResponse a = BatchGetDeploymentInstancesResponse'
     { _bgdirsInstancesSummary :: !(Maybe [InstanceSummary])
     , _bgdirsErrorMessage     :: !(Maybe Text)
     , _bgdirsResponseStatus   :: !Int
@@ -135,7 +135,7 @@ data BatchGetDeploymentInstancesResponse = BatchGetDeploymentInstancesResponse'
 -- * 'bgdirsResponseStatus'
 batchGetDeploymentInstancesResponse
     :: Int -- ^ 'bgdirsResponseStatus'
-    -> BatchGetDeploymentInstancesResponse
+    -> BatchGetDeploymentInstancesResponse (a)
 batchGetDeploymentInstancesResponse pResponseStatus_ =
     BatchGetDeploymentInstancesResponse'
     { _bgdirsInstancesSummary = Nothing
@@ -144,15 +144,15 @@ batchGetDeploymentInstancesResponse pResponseStatus_ =
     }
 
 -- | Information about the instance.
-bgdirsInstancesSummary :: Lens' BatchGetDeploymentInstancesResponse [InstanceSummary]
+bgdirsInstancesSummary :: Lens' (BatchGetDeploymentInstancesResponse (a)) [InstanceSummary]
 bgdirsInstancesSummary = lens _bgdirsInstancesSummary (\ s a -> s{_bgdirsInstancesSummary = a}) . _Default . _Coerce;
 
 -- | Information about errors that may have occurred during the API call.
-bgdirsErrorMessage :: Lens' BatchGetDeploymentInstancesResponse (Maybe Text)
+bgdirsErrorMessage :: Lens' (BatchGetDeploymentInstancesResponse (a)) (Maybe Text)
 bgdirsErrorMessage = lens _bgdirsErrorMessage (\ s a -> s{_bgdirsErrorMessage = a});
 
 -- | The response status code.
-bgdirsResponseStatus :: Lens' BatchGetDeploymentInstancesResponse Int
+bgdirsResponseStatus :: Lens' (BatchGetDeploymentInstancesResponse (a)) Int
 bgdirsResponseStatus = lens _bgdirsResponseStatus (\ s a -> s{_bgdirsResponseStatus = a});
 
 instance NFData BatchGetDeploymentInstancesResponse

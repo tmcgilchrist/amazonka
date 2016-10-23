@@ -106,14 +106,14 @@ instance ToQuery AddTagsToStream where
         toQuery = const mempty
 
 -- | /See:/ 'addTagsToStreamResponse' smart constructor.
-data AddTagsToStreamResponse =
+data AddTagsToStreamResponse a =
     AddTagsToStreamResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddTagsToStreamResponse' with the minimum fields required to make a request.
 --
 addTagsToStreamResponse
-    :: AddTagsToStreamResponse
+    :: AddTagsToStreamResponse (a)
 addTagsToStreamResponse = AddTagsToStreamResponse'
 
 instance NFData AddTagsToStreamResponse

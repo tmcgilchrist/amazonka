@@ -317,7 +317,7 @@ instance ToQuery ModifyReplicationGroup where
                "ReplicationGroupId" =: _mrgReplicationGroupId]
 
 -- | /See:/ 'modifyReplicationGroupResponse' smart constructor.
-data ModifyReplicationGroupResponse = ModifyReplicationGroupResponse'
+data ModifyReplicationGroupResponse a = ModifyReplicationGroupResponse'
     { _mrgrsReplicationGroup :: !(Maybe ReplicationGroup)
     , _mrgrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -331,7 +331,7 @@ data ModifyReplicationGroupResponse = ModifyReplicationGroupResponse'
 -- * 'mrgrsResponseStatus'
 modifyReplicationGroupResponse
     :: Int -- ^ 'mrgrsResponseStatus'
-    -> ModifyReplicationGroupResponse
+    -> ModifyReplicationGroupResponse (a)
 modifyReplicationGroupResponse pResponseStatus_ =
     ModifyReplicationGroupResponse'
     { _mrgrsReplicationGroup = Nothing
@@ -339,11 +339,11 @@ modifyReplicationGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mrgrsReplicationGroup :: Lens' ModifyReplicationGroupResponse (Maybe ReplicationGroup)
+mrgrsReplicationGroup :: Lens' (ModifyReplicationGroupResponse (a)) (Maybe ReplicationGroup)
 mrgrsReplicationGroup = lens _mrgrsReplicationGroup (\ s a -> s{_mrgrsReplicationGroup = a});
 
 -- | The response status code.
-mrgrsResponseStatus :: Lens' ModifyReplicationGroupResponse Int
+mrgrsResponseStatus :: Lens' (ModifyReplicationGroupResponse (a)) Int
 mrgrsResponseStatus = lens _mrgrsResponseStatus (\ s a -> s{_mrgrsResponseStatus = a});
 
 instance NFData ModifyReplicationGroupResponse

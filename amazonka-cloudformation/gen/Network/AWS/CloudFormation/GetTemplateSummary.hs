@@ -143,7 +143,7 @@ instance ToQuery GetTemplateSummary where
 -- | The output for the < GetTemplateSummary> action.
 --
 -- /See:/ 'getTemplateSummaryResponse' smart constructor.
-data GetTemplateSummaryResponse = GetTemplateSummaryResponse'
+data GetTemplateSummaryResponse a = GetTemplateSummaryResponse'
     { _gtsrsVersion            :: !(Maybe Text)
     , _gtsrsCapabilitiesReason :: !(Maybe Text)
     , _gtsrsParameters         :: !(Maybe [ParameterDeclaration])
@@ -175,7 +175,7 @@ data GetTemplateSummaryResponse = GetTemplateSummaryResponse'
 -- * 'gtsrsResponseStatus'
 getTemplateSummaryResponse
     :: Int -- ^ 'gtsrsResponseStatus'
-    -> GetTemplateSummaryResponse
+    -> GetTemplateSummaryResponse (a)
 getTemplateSummaryResponse pResponseStatus_ =
     GetTemplateSummaryResponse'
     { _gtsrsVersion = Nothing
@@ -189,37 +189,37 @@ getTemplateSummaryResponse pResponseStatus_ =
     }
 
 -- | The AWS template format version, which identifies the capabilities of the template.
-gtsrsVersion :: Lens' GetTemplateSummaryResponse (Maybe Text)
+gtsrsVersion :: Lens' (GetTemplateSummaryResponse (a)) (Maybe Text)
 gtsrsVersion = lens _gtsrsVersion (\ s a -> s{_gtsrsVersion = a});
 
 -- | The list of resources that generated the values in the 'Capabilities' response element.
-gtsrsCapabilitiesReason :: Lens' GetTemplateSummaryResponse (Maybe Text)
+gtsrsCapabilitiesReason :: Lens' (GetTemplateSummaryResponse (a)) (Maybe Text)
 gtsrsCapabilitiesReason = lens _gtsrsCapabilitiesReason (\ s a -> s{_gtsrsCapabilitiesReason = a});
 
 -- | A list of parameter declarations that describe various properties for each parameter.
-gtsrsParameters :: Lens' GetTemplateSummaryResponse [ParameterDeclaration]
+gtsrsParameters :: Lens' (GetTemplateSummaryResponse (a)) [ParameterDeclaration]
 gtsrsParameters = lens _gtsrsParameters (\ s a -> s{_gtsrsParameters = a}) . _Default . _Coerce;
 
 -- | The value that is defined for the 'Metadata' property of the template.
-gtsrsMetadata :: Lens' GetTemplateSummaryResponse (Maybe Text)
+gtsrsMetadata :: Lens' (GetTemplateSummaryResponse (a)) (Maybe Text)
 gtsrsMetadata = lens _gtsrsMetadata (\ s a -> s{_gtsrsMetadata = a});
 
 -- | The value that is defined in the 'Description' property of the template.
-gtsrsDescription :: Lens' GetTemplateSummaryResponse (Maybe Text)
+gtsrsDescription :: Lens' (GetTemplateSummaryResponse (a)) (Maybe Text)
 gtsrsDescription = lens _gtsrsDescription (\ s a -> s{_gtsrsDescription = a});
 
 -- | The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the < CreateStack> or < UpdateStack> actions with your template; otherwise, those actions return an InsufficientCapabilities error.
 --
 -- For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities Acknowledging IAM Resources in AWS CloudFormation Templates>.
-gtsrsCapabilities :: Lens' GetTemplateSummaryResponse [Capability]
+gtsrsCapabilities :: Lens' (GetTemplateSummaryResponse (a)) [Capability]
 gtsrsCapabilities = lens _gtsrsCapabilities (\ s a -> s{_gtsrsCapabilities = a}) . _Default . _Coerce;
 
 -- | A list of all the template resource types that are defined in the template, such as 'AWS::EC2::Instance', 'AWS::Dynamo::Table', and 'Custom::MyCustomInstance'.
-gtsrsResourceTypes :: Lens' GetTemplateSummaryResponse [Text]
+gtsrsResourceTypes :: Lens' (GetTemplateSummaryResponse (a)) [Text]
 gtsrsResourceTypes = lens _gtsrsResourceTypes (\ s a -> s{_gtsrsResourceTypes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-gtsrsResponseStatus :: Lens' GetTemplateSummaryResponse Int
+gtsrsResponseStatus :: Lens' (GetTemplateSummaryResponse (a)) Int
 gtsrsResponseStatus = lens _gtsrsResponseStatus (\ s a -> s{_gtsrsResponseStatus = a});
 
 instance NFData GetTemplateSummaryResponse

@@ -99,14 +99,14 @@ instance ToQuery AbortVaultLock where
         toQuery = const mempty
 
 -- | /See:/ 'abortVaultLockResponse' smart constructor.
-data AbortVaultLockResponse =
+data AbortVaultLockResponse a =
     AbortVaultLockResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AbortVaultLockResponse' with the minimum fields required to make a request.
 --
 abortVaultLockResponse
-    :: AbortVaultLockResponse
+    :: AbortVaultLockResponse (a)
 abortVaultLockResponse = AbortVaultLockResponse'
 
 instance NFData AbortVaultLockResponse

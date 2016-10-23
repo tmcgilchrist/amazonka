@@ -147,7 +147,7 @@ instance ToQuery InitiateMultipartUpload where
 -- | The Amazon Glacier response to your request.
 --
 -- /See:/ 'initiateMultipartUploadResponse' smart constructor.
-data InitiateMultipartUploadResponse = InitiateMultipartUploadResponse'
+data InitiateMultipartUploadResponse a = InitiateMultipartUploadResponse'
     { _imursLocation       :: !(Maybe Text)
     , _imursUploadId       :: !(Maybe Text)
     , _imursResponseStatus :: !Int
@@ -164,7 +164,7 @@ data InitiateMultipartUploadResponse = InitiateMultipartUploadResponse'
 -- * 'imursResponseStatus'
 initiateMultipartUploadResponse
     :: Int -- ^ 'imursResponseStatus'
-    -> InitiateMultipartUploadResponse
+    -> InitiateMultipartUploadResponse (a)
 initiateMultipartUploadResponse pResponseStatus_ =
     InitiateMultipartUploadResponse'
     { _imursLocation = Nothing
@@ -173,15 +173,15 @@ initiateMultipartUploadResponse pResponseStatus_ =
     }
 
 -- | The relative URI path of the multipart upload ID Amazon Glacier created.
-imursLocation :: Lens' InitiateMultipartUploadResponse (Maybe Text)
+imursLocation :: Lens' (InitiateMultipartUploadResponse (a)) (Maybe Text)
 imursLocation = lens _imursLocation (\ s a -> s{_imursLocation = a});
 
 -- | The ID of the multipart upload. This value is also included as part of the location.
-imursUploadId :: Lens' InitiateMultipartUploadResponse (Maybe Text)
+imursUploadId :: Lens' (InitiateMultipartUploadResponse (a)) (Maybe Text)
 imursUploadId = lens _imursUploadId (\ s a -> s{_imursUploadId = a});
 
 -- | The response status code.
-imursResponseStatus :: Lens' InitiateMultipartUploadResponse Int
+imursResponseStatus :: Lens' (InitiateMultipartUploadResponse (a)) Int
 imursResponseStatus = lens _imursResponseStatus (\ s a -> s{_imursResponseStatus = a});
 
 instance NFData InitiateMultipartUploadResponse

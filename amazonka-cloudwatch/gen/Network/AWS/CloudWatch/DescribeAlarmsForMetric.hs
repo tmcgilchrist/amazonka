@@ -150,7 +150,7 @@ instance ToQuery DescribeAlarmsForMetric where
 -- | The output for < DescribeAlarmsForMetric>.
 --
 -- /See:/ 'describeAlarmsForMetricResponse' smart constructor.
-data DescribeAlarmsForMetricResponse = DescribeAlarmsForMetricResponse'
+data DescribeAlarmsForMetricResponse a = DescribeAlarmsForMetricResponse'
     { _dafmrsMetricAlarms   :: !(Maybe [MetricAlarm])
     , _dafmrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -164,7 +164,7 @@ data DescribeAlarmsForMetricResponse = DescribeAlarmsForMetricResponse'
 -- * 'dafmrsResponseStatus'
 describeAlarmsForMetricResponse
     :: Int -- ^ 'dafmrsResponseStatus'
-    -> DescribeAlarmsForMetricResponse
+    -> DescribeAlarmsForMetricResponse (a)
 describeAlarmsForMetricResponse pResponseStatus_ =
     DescribeAlarmsForMetricResponse'
     { _dafmrsMetricAlarms = Nothing
@@ -172,11 +172,11 @@ describeAlarmsForMetricResponse pResponseStatus_ =
     }
 
 -- | A list of information for each alarm with the specified metric.
-dafmrsMetricAlarms :: Lens' DescribeAlarmsForMetricResponse [MetricAlarm]
+dafmrsMetricAlarms :: Lens' (DescribeAlarmsForMetricResponse (a)) [MetricAlarm]
 dafmrsMetricAlarms = lens _dafmrsMetricAlarms (\ s a -> s{_dafmrsMetricAlarms = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dafmrsResponseStatus :: Lens' DescribeAlarmsForMetricResponse Int
+dafmrsResponseStatus :: Lens' (DescribeAlarmsForMetricResponse (a)) Int
 dafmrsResponseStatus = lens _dafmrsResponseStatus (\ s a -> s{_dafmrsResponseStatus = a});
 
 instance NFData DescribeAlarmsForMetricResponse

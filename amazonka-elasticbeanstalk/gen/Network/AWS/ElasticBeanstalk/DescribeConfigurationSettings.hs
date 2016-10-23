@@ -132,7 +132,7 @@ instance ToQuery DescribeConfigurationSettings where
 -- | The results from a request to change the configuration settings of an environment.
 --
 -- /See:/ 'describeConfigurationSettingsResponse' smart constructor.
-data DescribeConfigurationSettingsResponse = DescribeConfigurationSettingsResponse'
+data DescribeConfigurationSettingsResponse a = DescribeConfigurationSettingsResponse'
     { _dcsrsConfigurationSettings :: !(Maybe [ConfigurationSettingsDescription])
     , _dcsrsResponseStatus        :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -146,7 +146,7 @@ data DescribeConfigurationSettingsResponse = DescribeConfigurationSettingsRespon
 -- * 'dcsrsResponseStatus'
 describeConfigurationSettingsResponse
     :: Int -- ^ 'dcsrsResponseStatus'
-    -> DescribeConfigurationSettingsResponse
+    -> DescribeConfigurationSettingsResponse (a)
 describeConfigurationSettingsResponse pResponseStatus_ =
     DescribeConfigurationSettingsResponse'
     { _dcsrsConfigurationSettings = Nothing
@@ -154,11 +154,11 @@ describeConfigurationSettingsResponse pResponseStatus_ =
     }
 
 -- | A list of < ConfigurationSettingsDescription>.
-dcsrsConfigurationSettings :: Lens' DescribeConfigurationSettingsResponse [ConfigurationSettingsDescription]
+dcsrsConfigurationSettings :: Lens' (DescribeConfigurationSettingsResponse (a)) [ConfigurationSettingsDescription]
 dcsrsConfigurationSettings = lens _dcsrsConfigurationSettings (\ s a -> s{_dcsrsConfigurationSettings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcsrsResponseStatus :: Lens' DescribeConfigurationSettingsResponse Int
+dcsrsResponseStatus :: Lens' (DescribeConfigurationSettingsResponse (a)) Int
 dcsrsResponseStatus = lens _dcsrsResponseStatus (\ s a -> s{_dcsrsResponseStatus = a});
 
 instance NFData DescribeConfigurationSettingsResponse

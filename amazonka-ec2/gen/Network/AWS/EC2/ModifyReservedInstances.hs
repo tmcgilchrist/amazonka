@@ -122,7 +122,7 @@ instance ToQuery ModifyReservedInstances where
 -- | Contains the output of ModifyReservedInstances.
 --
 -- /See:/ 'modifyReservedInstancesResponse' smart constructor.
-data ModifyReservedInstancesResponse = ModifyReservedInstancesResponse'
+data ModifyReservedInstancesResponse a = ModifyReservedInstancesResponse'
     { _mrirsReservedInstancesModificationId :: !(Maybe Text)
     , _mrirsResponseStatus                  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data ModifyReservedInstancesResponse = ModifyReservedInstancesResponse'
 -- * 'mrirsResponseStatus'
 modifyReservedInstancesResponse
     :: Int -- ^ 'mrirsResponseStatus'
-    -> ModifyReservedInstancesResponse
+    -> ModifyReservedInstancesResponse (a)
 modifyReservedInstancesResponse pResponseStatus_ =
     ModifyReservedInstancesResponse'
     { _mrirsReservedInstancesModificationId = Nothing
@@ -144,11 +144,11 @@ modifyReservedInstancesResponse pResponseStatus_ =
     }
 
 -- | The ID for the modification.
-mrirsReservedInstancesModificationId :: Lens' ModifyReservedInstancesResponse (Maybe Text)
+mrirsReservedInstancesModificationId :: Lens' (ModifyReservedInstancesResponse (a)) (Maybe Text)
 mrirsReservedInstancesModificationId = lens _mrirsReservedInstancesModificationId (\ s a -> s{_mrirsReservedInstancesModificationId = a});
 
 -- | The response status code.
-mrirsResponseStatus :: Lens' ModifyReservedInstancesResponse Int
+mrirsResponseStatus :: Lens' (ModifyReservedInstancesResponse (a)) Int
 mrirsResponseStatus = lens _mrirsResponseStatus (\ s a -> s{_mrirsResponseStatus = a});
 
 instance NFData ModifyReservedInstancesResponse

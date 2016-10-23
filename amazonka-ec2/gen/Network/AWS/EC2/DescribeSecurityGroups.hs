@@ -166,7 +166,7 @@ instance ToQuery DescribeSecurityGroups where
 -- | Contains the output of DescribeSecurityGroups.
 --
 -- /See:/ 'describeSecurityGroupsResponse' smart constructor.
-data DescribeSecurityGroupsResponse = DescribeSecurityGroupsResponse'
+data DescribeSecurityGroupsResponse a = DescribeSecurityGroupsResponse'
     { _dsgrsSecurityGroups :: !(Maybe [SecurityGroup])
     , _dsgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -180,7 +180,7 @@ data DescribeSecurityGroupsResponse = DescribeSecurityGroupsResponse'
 -- * 'dsgrsResponseStatus'
 describeSecurityGroupsResponse
     :: Int -- ^ 'dsgrsResponseStatus'
-    -> DescribeSecurityGroupsResponse
+    -> DescribeSecurityGroupsResponse (a)
 describeSecurityGroupsResponse pResponseStatus_ =
     DescribeSecurityGroupsResponse'
     { _dsgrsSecurityGroups = Nothing
@@ -188,11 +188,11 @@ describeSecurityGroupsResponse pResponseStatus_ =
     }
 
 -- | Information about one or more security groups.
-dsgrsSecurityGroups :: Lens' DescribeSecurityGroupsResponse [SecurityGroup]
+dsgrsSecurityGroups :: Lens' (DescribeSecurityGroupsResponse (a)) [SecurityGroup]
 dsgrsSecurityGroups = lens _dsgrsSecurityGroups (\ s a -> s{_dsgrsSecurityGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsgrsResponseStatus :: Lens' DescribeSecurityGroupsResponse Int
+dsgrsResponseStatus :: Lens' (DescribeSecurityGroupsResponse (a)) Int
 dsgrsResponseStatus = lens _dsgrsResponseStatus (\ s a -> s{_dsgrsResponseStatus = a});
 
 instance NFData DescribeSecurityGroupsResponse

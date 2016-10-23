@@ -134,7 +134,7 @@ instance ToQuery UpdateDevicePool where
 -- | Represents the result of an update device pool request.
 --
 -- /See:/ 'updateDevicePoolResponse' smart constructor.
-data UpdateDevicePoolResponse = UpdateDevicePoolResponse'
+data UpdateDevicePoolResponse a = UpdateDevicePoolResponse'
     { _udprsDevicePool     :: !(Maybe DevicePool)
     , _udprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -148,7 +148,7 @@ data UpdateDevicePoolResponse = UpdateDevicePoolResponse'
 -- * 'udprsResponseStatus'
 updateDevicePoolResponse
     :: Int -- ^ 'udprsResponseStatus'
-    -> UpdateDevicePoolResponse
+    -> UpdateDevicePoolResponse (a)
 updateDevicePoolResponse pResponseStatus_ =
     UpdateDevicePoolResponse'
     { _udprsDevicePool = Nothing
@@ -156,11 +156,11 @@ updateDevicePoolResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-udprsDevicePool :: Lens' UpdateDevicePoolResponse (Maybe DevicePool)
+udprsDevicePool :: Lens' (UpdateDevicePoolResponse (a)) (Maybe DevicePool)
 udprsDevicePool = lens _udprsDevicePool (\ s a -> s{_udprsDevicePool = a});
 
 -- | The response status code.
-udprsResponseStatus :: Lens' UpdateDevicePoolResponse Int
+udprsResponseStatus :: Lens' (UpdateDevicePoolResponse (a)) Int
 udprsResponseStatus = lens _udprsResponseStatus (\ s a -> s{_udprsResponseStatus = a});
 
 instance NFData UpdateDevicePoolResponse

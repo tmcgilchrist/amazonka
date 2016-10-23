@@ -167,7 +167,7 @@ instance ToQuery UpdateDestination where
 -- | Contains the output of < UpdateDestination>.
 --
 -- /See:/ 'updateDestinationResponse' smart constructor.
-newtype UpdateDestinationResponse = UpdateDestinationResponse'
+newtype UpdateDestinationResponse a = UpdateDestinationResponse'
     { _udrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -178,14 +178,14 @@ newtype UpdateDestinationResponse = UpdateDestinationResponse'
 -- * 'udrsResponseStatus'
 updateDestinationResponse
     :: Int -- ^ 'udrsResponseStatus'
-    -> UpdateDestinationResponse
+    -> UpdateDestinationResponse (a)
 updateDestinationResponse pResponseStatus_ =
     UpdateDestinationResponse'
     { _udrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-udrsResponseStatus :: Lens' UpdateDestinationResponse Int
+udrsResponseStatus :: Lens' (UpdateDestinationResponse (a)) Int
 udrsResponseStatus = lens _udrsResponseStatus (\ s a -> s{_udrsResponseStatus = a});
 
 instance NFData UpdateDestinationResponse

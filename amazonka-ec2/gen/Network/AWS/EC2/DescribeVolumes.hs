@@ -184,7 +184,7 @@ instance ToQuery DescribeVolumes where
 -- | Contains the output of DescribeVolumes.
 --
 -- /See:/ 'describeVolumesResponse' smart constructor.
-data DescribeVolumesResponse = DescribeVolumesResponse'
+data DescribeVolumesResponse a = DescribeVolumesResponse'
     { _dvvrsNextToken      :: !(Maybe Text)
     , _dvvrsVolumes        :: !(Maybe [Volume])
     , _dvvrsResponseStatus :: !Int
@@ -201,7 +201,7 @@ data DescribeVolumesResponse = DescribeVolumesResponse'
 -- * 'dvvrsResponseStatus'
 describeVolumesResponse
     :: Int -- ^ 'dvvrsResponseStatus'
-    -> DescribeVolumesResponse
+    -> DescribeVolumesResponse (a)
 describeVolumesResponse pResponseStatus_ =
     DescribeVolumesResponse'
     { _dvvrsNextToken = Nothing
@@ -210,15 +210,15 @@ describeVolumesResponse pResponseStatus_ =
     }
 
 -- | The 'NextToken' value to include in a future 'DescribeVolumes' request. When the results of a 'DescribeVolumes' request exceed 'MaxResults', this value can be used to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dvvrsNextToken :: Lens' DescribeVolumesResponse (Maybe Text)
+dvvrsNextToken :: Lens' (DescribeVolumesResponse (a)) (Maybe Text)
 dvvrsNextToken = lens _dvvrsNextToken (\ s a -> s{_dvvrsNextToken = a});
 
 -- | Information about the volumes.
-dvvrsVolumes :: Lens' DescribeVolumesResponse [Volume]
+dvvrsVolumes :: Lens' (DescribeVolumesResponse (a)) [Volume]
 dvvrsVolumes = lens _dvvrsVolumes (\ s a -> s{_dvvrsVolumes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvvrsResponseStatus :: Lens' DescribeVolumesResponse Int
+dvvrsResponseStatus :: Lens' (DescribeVolumesResponse (a)) Int
 dvvrsResponseStatus = lens _dvvrsResponseStatus (\ s a -> s{_dvvrsResponseStatus = a});
 
 instance NFData DescribeVolumesResponse

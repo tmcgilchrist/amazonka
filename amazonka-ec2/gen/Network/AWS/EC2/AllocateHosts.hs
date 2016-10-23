@@ -141,7 +141,7 @@ instance ToQuery AllocateHosts where
 -- | Contains the output of AllocateHosts.
 --
 -- /See:/ 'allocateHostsResponse' smart constructor.
-data AllocateHostsResponse = AllocateHostsResponse'
+data AllocateHostsResponse a = AllocateHostsResponse'
     { _ahrsHostIds        :: !(Maybe [Text])
     , _ahrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -155,7 +155,7 @@ data AllocateHostsResponse = AllocateHostsResponse'
 -- * 'ahrsResponseStatus'
 allocateHostsResponse
     :: Int -- ^ 'ahrsResponseStatus'
-    -> AllocateHostsResponse
+    -> AllocateHostsResponse (a)
 allocateHostsResponse pResponseStatus_ =
     AllocateHostsResponse'
     { _ahrsHostIds = Nothing
@@ -163,11 +163,11 @@ allocateHostsResponse pResponseStatus_ =
     }
 
 -- | The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific host.
-ahrsHostIds :: Lens' AllocateHostsResponse [Text]
+ahrsHostIds :: Lens' (AllocateHostsResponse (a)) [Text]
 ahrsHostIds = lens _ahrsHostIds (\ s a -> s{_ahrsHostIds = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ahrsResponseStatus :: Lens' AllocateHostsResponse Int
+ahrsResponseStatus :: Lens' (AllocateHostsResponse (a)) Int
 ahrsResponseStatus = lens _ahrsResponseStatus (\ s a -> s{_ahrsResponseStatus = a});
 
 instance NFData AllocateHostsResponse

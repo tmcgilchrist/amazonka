@@ -124,7 +124,7 @@ instance ToQuery AddTagsToResource where
 -- | AddTagsToResourceOutput
 --
 -- /See:/ 'addTagsToResourceResponse' smart constructor.
-data AddTagsToResourceResponse = AddTagsToResourceResponse'
+data AddTagsToResourceResponse a = AddTagsToResourceResponse'
     { _attrrsResourceARN    :: !(Maybe Text)
     , _attrrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data AddTagsToResourceResponse = AddTagsToResourceResponse'
 -- * 'attrrsResponseStatus'
 addTagsToResourceResponse
     :: Int -- ^ 'attrrsResponseStatus'
-    -> AddTagsToResourceResponse
+    -> AddTagsToResourceResponse (a)
 addTagsToResourceResponse pResponseStatus_ =
     AddTagsToResourceResponse'
     { _attrrsResourceARN = Nothing
@@ -146,11 +146,11 @@ addTagsToResourceResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the resource you want to add tags to.
-attrrsResourceARN :: Lens' AddTagsToResourceResponse (Maybe Text)
+attrrsResourceARN :: Lens' (AddTagsToResourceResponse (a)) (Maybe Text)
 attrrsResourceARN = lens _attrrsResourceARN (\ s a -> s{_attrrsResourceARN = a});
 
 -- | The response status code.
-attrrsResponseStatus :: Lens' AddTagsToResourceResponse Int
+attrrsResponseStatus :: Lens' (AddTagsToResourceResponse (a)) Int
 attrrsResponseStatus = lens _attrrsResponseStatus (\ s a -> s{_attrrsResponseStatus = a});
 
 instance NFData AddTagsToResourceResponse

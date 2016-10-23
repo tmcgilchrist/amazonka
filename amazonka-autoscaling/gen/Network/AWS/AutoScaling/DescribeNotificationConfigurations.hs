@@ -138,7 +138,7 @@ instance ToQuery DescribeNotificationConfigurations
 -- | Contains the output from DescribeNotificationConfigurations.
 --
 -- /See:/ 'describeNotificationConfigurationsResponse' smart constructor.
-data DescribeNotificationConfigurationsResponse = DescribeNotificationConfigurationsResponse'
+data DescribeNotificationConfigurationsResponse a = DescribeNotificationConfigurationsResponse'
     { _dncrsNextToken                  :: !(Maybe Text)
     , _dncrsResponseStatus             :: !Int
     , _dncrsNotificationConfigurations :: ![NotificationConfiguration]
@@ -155,7 +155,7 @@ data DescribeNotificationConfigurationsResponse = DescribeNotificationConfigurat
 -- * 'dncrsNotificationConfigurations'
 describeNotificationConfigurationsResponse
     :: Int -- ^ 'dncrsResponseStatus'
-    -> DescribeNotificationConfigurationsResponse
+    -> DescribeNotificationConfigurationsResponse (a)
 describeNotificationConfigurationsResponse pResponseStatus_ =
     DescribeNotificationConfigurationsResponse'
     { _dncrsNextToken = Nothing
@@ -164,15 +164,15 @@ describeNotificationConfigurationsResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dncrsNextToken :: Lens' DescribeNotificationConfigurationsResponse (Maybe Text)
+dncrsNextToken :: Lens' (DescribeNotificationConfigurationsResponse (a)) (Maybe Text)
 dncrsNextToken = lens _dncrsNextToken (\ s a -> s{_dncrsNextToken = a});
 
 -- | The response status code.
-dncrsResponseStatus :: Lens' DescribeNotificationConfigurationsResponse Int
+dncrsResponseStatus :: Lens' (DescribeNotificationConfigurationsResponse (a)) Int
 dncrsResponseStatus = lens _dncrsResponseStatus (\ s a -> s{_dncrsResponseStatus = a});
 
 -- | The notification configurations.
-dncrsNotificationConfigurations :: Lens' DescribeNotificationConfigurationsResponse [NotificationConfiguration]
+dncrsNotificationConfigurations :: Lens' (DescribeNotificationConfigurationsResponse (a)) [NotificationConfiguration]
 dncrsNotificationConfigurations = lens _dncrsNotificationConfigurations (\ s a -> s{_dncrsNotificationConfigurations = a}) . _Coerce;
 
 instance NFData

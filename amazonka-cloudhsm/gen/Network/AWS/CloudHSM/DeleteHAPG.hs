@@ -101,7 +101,7 @@ instance ToQuery DeleteHAPG where
 -- | Contains the output of the < DeleteHapg> action.
 --
 -- /See:/ 'deleteHAPGResponse' smart constructor.
-data DeleteHAPGResponse = DeleteHAPGResponse'
+data DeleteHAPGResponse a = DeleteHAPGResponse'
     { _dhrsResponseStatus :: !Int
     , _dhrsStatus         :: !Text
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data DeleteHAPGResponse = DeleteHAPGResponse'
 deleteHAPGResponse
     :: Int -- ^ 'dhrsResponseStatus'
     -> Text -- ^ 'dhrsStatus'
-    -> DeleteHAPGResponse
+    -> DeleteHAPGResponse (a)
 deleteHAPGResponse pResponseStatus_ pStatus_ =
     DeleteHAPGResponse'
     { _dhrsResponseStatus = pResponseStatus_
@@ -124,11 +124,11 @@ deleteHAPGResponse pResponseStatus_ pStatus_ =
     }
 
 -- | The response status code.
-dhrsResponseStatus :: Lens' DeleteHAPGResponse Int
+dhrsResponseStatus :: Lens' (DeleteHAPGResponse (a)) Int
 dhrsResponseStatus = lens _dhrsResponseStatus (\ s a -> s{_dhrsResponseStatus = a});
 
 -- | The status of the action.
-dhrsStatus :: Lens' DeleteHAPGResponse Text
+dhrsStatus :: Lens' (DeleteHAPGResponse (a)) Text
 dhrsStatus = lens _dhrsStatus (\ s a -> s{_dhrsStatus = a});
 
 instance NFData DeleteHAPGResponse

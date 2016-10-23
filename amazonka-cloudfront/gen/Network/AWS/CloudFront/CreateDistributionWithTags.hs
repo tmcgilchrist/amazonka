@@ -103,7 +103,7 @@ instance ToQuery CreateDistributionWithTags where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'createDistributionWithTagsResponse' smart constructor.
-data CreateDistributionWithTagsResponse = CreateDistributionWithTagsResponse'
+data CreateDistributionWithTagsResponse a = CreateDistributionWithTagsResponse'
     { _cdwtrsETag           :: !(Maybe Text)
     , _cdwtrsDistribution   :: !(Maybe Distribution)
     , _cdwtrsLocation       :: !(Maybe Text)
@@ -123,7 +123,7 @@ data CreateDistributionWithTagsResponse = CreateDistributionWithTagsResponse'
 -- * 'cdwtrsResponseStatus'
 createDistributionWithTagsResponse
     :: Int -- ^ 'cdwtrsResponseStatus'
-    -> CreateDistributionWithTagsResponse
+    -> CreateDistributionWithTagsResponse (a)
 createDistributionWithTagsResponse pResponseStatus_ =
     CreateDistributionWithTagsResponse'
     { _cdwtrsETag = Nothing
@@ -133,19 +133,19 @@ createDistributionWithTagsResponse pResponseStatus_ =
     }
 
 -- | The current version of the distribution created.
-cdwtrsETag :: Lens' CreateDistributionWithTagsResponse (Maybe Text)
+cdwtrsETag :: Lens' (CreateDistributionWithTagsResponse (a)) (Maybe Text)
 cdwtrsETag = lens _cdwtrsETag (\ s a -> s{_cdwtrsETag = a});
 
 -- | The distribution\'s information.
-cdwtrsDistribution :: Lens' CreateDistributionWithTagsResponse (Maybe Distribution)
+cdwtrsDistribution :: Lens' (CreateDistributionWithTagsResponse (a)) (Maybe Distribution)
 cdwtrsDistribution = lens _cdwtrsDistribution (\ s a -> s{_cdwtrsDistribution = a});
 
 -- | The fully qualified URI of the new distribution resource just created. For example: https:\/\/cloudfront.amazonaws.com\/2010-11-01\/distribution\/EDFDVBD632BHDS5.
-cdwtrsLocation :: Lens' CreateDistributionWithTagsResponse (Maybe Text)
+cdwtrsLocation :: Lens' (CreateDistributionWithTagsResponse (a)) (Maybe Text)
 cdwtrsLocation = lens _cdwtrsLocation (\ s a -> s{_cdwtrsLocation = a});
 
 -- | The response status code.
-cdwtrsResponseStatus :: Lens' CreateDistributionWithTagsResponse Int
+cdwtrsResponseStatus :: Lens' (CreateDistributionWithTagsResponse (a)) Int
 cdwtrsResponseStatus = lens _cdwtrsResponseStatus (\ s a -> s{_cdwtrsResponseStatus = a});
 
 instance NFData CreateDistributionWithTagsResponse

@@ -159,7 +159,7 @@ instance ToQuery DescribeNetworkACLs where
 -- | Contains the output of DescribeNetworkAcls.
 --
 -- /See:/ 'describeNetworkACLsResponse' smart constructor.
-data DescribeNetworkACLsResponse = DescribeNetworkACLsResponse'
+data DescribeNetworkACLsResponse a = DescribeNetworkACLsResponse'
     { _dnarsNetworkACLs    :: !(Maybe [NetworkACL])
     , _dnarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -173,7 +173,7 @@ data DescribeNetworkACLsResponse = DescribeNetworkACLsResponse'
 -- * 'dnarsResponseStatus'
 describeNetworkACLsResponse
     :: Int -- ^ 'dnarsResponseStatus'
-    -> DescribeNetworkACLsResponse
+    -> DescribeNetworkACLsResponse (a)
 describeNetworkACLsResponse pResponseStatus_ =
     DescribeNetworkACLsResponse'
     { _dnarsNetworkACLs = Nothing
@@ -181,11 +181,11 @@ describeNetworkACLsResponse pResponseStatus_ =
     }
 
 -- | Information about one or more network ACLs.
-dnarsNetworkACLs :: Lens' DescribeNetworkACLsResponse [NetworkACL]
+dnarsNetworkACLs :: Lens' (DescribeNetworkACLsResponse (a)) [NetworkACL]
 dnarsNetworkACLs = lens _dnarsNetworkACLs (\ s a -> s{_dnarsNetworkACLs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dnarsResponseStatus :: Lens' DescribeNetworkACLsResponse Int
+dnarsResponseStatus :: Lens' (DescribeNetworkACLsResponse (a)) Int
 dnarsResponseStatus = lens _dnarsResponseStatus (\ s a -> s{_dnarsResponseStatus = a});
 
 instance NFData DescribeNetworkACLsResponse

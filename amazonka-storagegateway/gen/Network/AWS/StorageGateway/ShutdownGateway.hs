@@ -113,7 +113,7 @@ instance ToQuery ShutdownGateway where
 -- | A JSON object containing the of the gateway that was shut down.
 --
 -- /See:/ 'shutdownGatewayResponse' smart constructor.
-data ShutdownGatewayResponse = ShutdownGatewayResponse'
+data ShutdownGatewayResponse a = ShutdownGatewayResponse'
     { _srsGatewayARN     :: !(Maybe Text)
     , _srsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data ShutdownGatewayResponse = ShutdownGatewayResponse'
 -- * 'srsResponseStatus'
 shutdownGatewayResponse
     :: Int -- ^ 'srsResponseStatus'
-    -> ShutdownGatewayResponse
+    -> ShutdownGatewayResponse (a)
 shutdownGatewayResponse pResponseStatus_ =
     ShutdownGatewayResponse'
     { _srsGatewayARN = Nothing
@@ -135,11 +135,11 @@ shutdownGatewayResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-srsGatewayARN :: Lens' ShutdownGatewayResponse (Maybe Text)
+srsGatewayARN :: Lens' (ShutdownGatewayResponse (a)) (Maybe Text)
 srsGatewayARN = lens _srsGatewayARN (\ s a -> s{_srsGatewayARN = a});
 
 -- | The response status code.
-srsResponseStatus :: Lens' ShutdownGatewayResponse Int
+srsResponseStatus :: Lens' (ShutdownGatewayResponse (a)) Int
 srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a});
 
 instance NFData ShutdownGatewayResponse

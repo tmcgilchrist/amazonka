@@ -129,7 +129,7 @@ instance ToQuery DescribeAvailabilityZones where
 -- | Contains the output of DescribeAvailabiltyZones.
 --
 -- /See:/ 'describeAvailabilityZonesResponse' smart constructor.
-data DescribeAvailabilityZonesResponse = DescribeAvailabilityZonesResponse'
+data DescribeAvailabilityZonesResponse a = DescribeAvailabilityZonesResponse'
     { _dazrsAvailabilityZones :: !(Maybe [AvailabilityZone])
     , _dazrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -143,7 +143,7 @@ data DescribeAvailabilityZonesResponse = DescribeAvailabilityZonesResponse'
 -- * 'dazrsResponseStatus'
 describeAvailabilityZonesResponse
     :: Int -- ^ 'dazrsResponseStatus'
-    -> DescribeAvailabilityZonesResponse
+    -> DescribeAvailabilityZonesResponse (a)
 describeAvailabilityZonesResponse pResponseStatus_ =
     DescribeAvailabilityZonesResponse'
     { _dazrsAvailabilityZones = Nothing
@@ -151,11 +151,11 @@ describeAvailabilityZonesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more Availability Zones.
-dazrsAvailabilityZones :: Lens' DescribeAvailabilityZonesResponse [AvailabilityZone]
+dazrsAvailabilityZones :: Lens' (DescribeAvailabilityZonesResponse (a)) [AvailabilityZone]
 dazrsAvailabilityZones = lens _dazrsAvailabilityZones (\ s a -> s{_dazrsAvailabilityZones = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dazrsResponseStatus :: Lens' DescribeAvailabilityZonesResponse Int
+dazrsResponseStatus :: Lens' (DescribeAvailabilityZonesResponse (a)) Int
 dazrsResponseStatus = lens _dazrsResponseStatus (\ s a -> s{_dazrsResponseStatus = a});
 
 instance NFData DescribeAvailabilityZonesResponse

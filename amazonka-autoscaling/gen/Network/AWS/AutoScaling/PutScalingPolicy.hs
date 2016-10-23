@@ -217,7 +217,7 @@ instance ToQuery PutScalingPolicy where
 -- | Contains the output of PutScalingPolicy.
 --
 -- /See:/ 'putScalingPolicyResponse' smart constructor.
-data PutScalingPolicyResponse = PutScalingPolicyResponse'
+data PutScalingPolicyResponse a = PutScalingPolicyResponse'
     { _psprsPolicyARN      :: !(Maybe Text)
     , _psprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -231,7 +231,7 @@ data PutScalingPolicyResponse = PutScalingPolicyResponse'
 -- * 'psprsResponseStatus'
 putScalingPolicyResponse
     :: Int -- ^ 'psprsResponseStatus'
-    -> PutScalingPolicyResponse
+    -> PutScalingPolicyResponse (a)
 putScalingPolicyResponse pResponseStatus_ =
     PutScalingPolicyResponse'
     { _psprsPolicyARN = Nothing
@@ -239,11 +239,11 @@ putScalingPolicyResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the policy.
-psprsPolicyARN :: Lens' PutScalingPolicyResponse (Maybe Text)
+psprsPolicyARN :: Lens' (PutScalingPolicyResponse (a)) (Maybe Text)
 psprsPolicyARN = lens _psprsPolicyARN (\ s a -> s{_psprsPolicyARN = a});
 
 -- | The response status code.
-psprsResponseStatus :: Lens' PutScalingPolicyResponse Int
+psprsResponseStatus :: Lens' (PutScalingPolicyResponse (a)) Int
 psprsResponseStatus = lens _psprsResponseStatus (\ s a -> s{_psprsResponseStatus = a});
 
 instance NFData PutScalingPolicyResponse

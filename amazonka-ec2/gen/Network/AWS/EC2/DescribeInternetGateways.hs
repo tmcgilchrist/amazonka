@@ -135,7 +135,7 @@ instance ToQuery DescribeInternetGateways where
 -- | Contains the output of DescribeInternetGateways.
 --
 -- /See:/ 'describeInternetGatewaysResponse' smart constructor.
-data DescribeInternetGatewaysResponse = DescribeInternetGatewaysResponse'
+data DescribeInternetGatewaysResponse a = DescribeInternetGatewaysResponse'
     { _digrsInternetGateways :: !(Maybe [InternetGateway])
     , _digrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -149,7 +149,7 @@ data DescribeInternetGatewaysResponse = DescribeInternetGatewaysResponse'
 -- * 'digrsResponseStatus'
 describeInternetGatewaysResponse
     :: Int -- ^ 'digrsResponseStatus'
-    -> DescribeInternetGatewaysResponse
+    -> DescribeInternetGatewaysResponse (a)
 describeInternetGatewaysResponse pResponseStatus_ =
     DescribeInternetGatewaysResponse'
     { _digrsInternetGateways = Nothing
@@ -157,11 +157,11 @@ describeInternetGatewaysResponse pResponseStatus_ =
     }
 
 -- | Information about one or more Internet gateways.
-digrsInternetGateways :: Lens' DescribeInternetGatewaysResponse [InternetGateway]
+digrsInternetGateways :: Lens' (DescribeInternetGatewaysResponse (a)) [InternetGateway]
 digrsInternetGateways = lens _digrsInternetGateways (\ s a -> s{_digrsInternetGateways = a}) . _Default . _Coerce;
 
 -- | The response status code.
-digrsResponseStatus :: Lens' DescribeInternetGatewaysResponse Int
+digrsResponseStatus :: Lens' (DescribeInternetGatewaysResponse (a)) Int
 digrsResponseStatus = lens _digrsResponseStatus (\ s a -> s{_digrsResponseStatus = a});
 
 instance NFData DescribeInternetGatewaysResponse

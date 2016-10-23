@@ -148,7 +148,7 @@ instance ToQuery PutApprovalResult where
 -- | Represents the output of a put approval result action.
 --
 -- /See:/ 'putApprovalResultResponse' smart constructor.
-data PutApprovalResultResponse = PutApprovalResultResponse'
+data PutApprovalResultResponse a = PutApprovalResultResponse'
     { _parrsApprovedAt     :: !(Maybe POSIX)
     , _parrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -162,7 +162,7 @@ data PutApprovalResultResponse = PutApprovalResultResponse'
 -- * 'parrsResponseStatus'
 putApprovalResultResponse
     :: Int -- ^ 'parrsResponseStatus'
-    -> PutApprovalResultResponse
+    -> PutApprovalResultResponse (a)
 putApprovalResultResponse pResponseStatus_ =
     PutApprovalResultResponse'
     { _parrsApprovedAt = Nothing
@@ -170,11 +170,11 @@ putApprovalResultResponse pResponseStatus_ =
     }
 
 -- | The timestamp showing when the approval or rejection was submitted.
-parrsApprovedAt :: Lens' PutApprovalResultResponse (Maybe UTCTime)
+parrsApprovedAt :: Lens' (PutApprovalResultResponse (a)) (Maybe UTCTime)
 parrsApprovedAt = lens _parrsApprovedAt (\ s a -> s{_parrsApprovedAt = a}) . mapping _Time;
 
 -- | The response status code.
-parrsResponseStatus :: Lens' PutApprovalResultResponse Int
+parrsResponseStatus :: Lens' (PutApprovalResultResponse (a)) Int
 parrsResponseStatus = lens _parrsResponseStatus (\ s a -> s{_parrsResponseStatus = a});
 
 instance NFData PutApprovalResultResponse

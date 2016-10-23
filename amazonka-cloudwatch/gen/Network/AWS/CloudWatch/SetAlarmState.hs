@@ -118,14 +118,14 @@ instance ToQuery SetAlarmState where
                "StateReason" =: _sasStateReason]
 
 -- | /See:/ 'setAlarmStateResponse' smart constructor.
-data SetAlarmStateResponse =
+data SetAlarmStateResponse a =
     SetAlarmStateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetAlarmStateResponse' with the minimum fields required to make a request.
 --
 setAlarmStateResponse
-    :: SetAlarmStateResponse
+    :: SetAlarmStateResponse (a)
 setAlarmStateResponse = SetAlarmStateResponse'
 
 instance NFData SetAlarmStateResponse

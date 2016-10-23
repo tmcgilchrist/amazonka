@@ -114,14 +114,14 @@ instance ToQuery UpdateSigningCertificate where
                "Status" =: _uscStatus]
 
 -- | /See:/ 'updateSigningCertificateResponse' smart constructor.
-data UpdateSigningCertificateResponse =
+data UpdateSigningCertificateResponse a =
     UpdateSigningCertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateSigningCertificateResponse' with the minimum fields required to make a request.
 --
 updateSigningCertificateResponse
-    :: UpdateSigningCertificateResponse
+    :: UpdateSigningCertificateResponse (a)
 updateSigningCertificateResponse = UpdateSigningCertificateResponse'
 
 instance NFData UpdateSigningCertificateResponse

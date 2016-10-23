@@ -143,7 +143,7 @@ instance ToQuery ListDevicePools where
 -- | Represents the result of a list device pools request.
 --
 -- /See:/ 'listDevicePoolsResponse' smart constructor.
-data ListDevicePoolsResponse = ListDevicePoolsResponse'
+data ListDevicePoolsResponse a = ListDevicePoolsResponse'
     { _ldprsDevicePools    :: !(Maybe [DevicePool])
     , _ldprsNextToken      :: !(Maybe Text)
     , _ldprsResponseStatus :: !Int
@@ -160,7 +160,7 @@ data ListDevicePoolsResponse = ListDevicePoolsResponse'
 -- * 'ldprsResponseStatus'
 listDevicePoolsResponse
     :: Int -- ^ 'ldprsResponseStatus'
-    -> ListDevicePoolsResponse
+    -> ListDevicePoolsResponse (a)
 listDevicePoolsResponse pResponseStatus_ =
     ListDevicePoolsResponse'
     { _ldprsDevicePools = Nothing
@@ -169,15 +169,15 @@ listDevicePoolsResponse pResponseStatus_ =
     }
 
 -- | Information about the device pools.
-ldprsDevicePools :: Lens' ListDevicePoolsResponse [DevicePool]
+ldprsDevicePools :: Lens' (ListDevicePoolsResponse (a)) [DevicePool]
 ldprsDevicePools = lens _ldprsDevicePools (\ s a -> s{_ldprsDevicePools = a}) . _Default . _Coerce;
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-ldprsNextToken :: Lens' ListDevicePoolsResponse (Maybe Text)
+ldprsNextToken :: Lens' (ListDevicePoolsResponse (a)) (Maybe Text)
 ldprsNextToken = lens _ldprsNextToken (\ s a -> s{_ldprsNextToken = a});
 
 -- | The response status code.
-ldprsResponseStatus :: Lens' ListDevicePoolsResponse Int
+ldprsResponseStatus :: Lens' (ListDevicePoolsResponse (a)) Int
 ldprsResponseStatus = lens _ldprsResponseStatus (\ s a -> s{_ldprsResponseStatus = a});
 
 instance NFData ListDevicePoolsResponse

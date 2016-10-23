@@ -96,7 +96,7 @@ instance ToQuery DeleteFlowLogs where
 -- | Contains the output of DeleteFlowLogs.
 --
 -- /See:/ 'deleteFlowLogsResponse' smart constructor.
-data DeleteFlowLogsResponse = DeleteFlowLogsResponse'
+data DeleteFlowLogsResponse a = DeleteFlowLogsResponse'
     { _dflrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
     , _dflrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -110,7 +110,7 @@ data DeleteFlowLogsResponse = DeleteFlowLogsResponse'
 -- * 'dflrsResponseStatus'
 deleteFlowLogsResponse
     :: Int -- ^ 'dflrsResponseStatus'
-    -> DeleteFlowLogsResponse
+    -> DeleteFlowLogsResponse (a)
 deleteFlowLogsResponse pResponseStatus_ =
     DeleteFlowLogsResponse'
     { _dflrsUnsuccessful = Nothing
@@ -118,11 +118,11 @@ deleteFlowLogsResponse pResponseStatus_ =
     }
 
 -- | Information about the flow logs that could not be deleted successfully.
-dflrsUnsuccessful :: Lens' DeleteFlowLogsResponse [UnsuccessfulItem]
+dflrsUnsuccessful :: Lens' (DeleteFlowLogsResponse (a)) [UnsuccessfulItem]
 dflrsUnsuccessful = lens _dflrsUnsuccessful (\ s a -> s{_dflrsUnsuccessful = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dflrsResponseStatus :: Lens' DeleteFlowLogsResponse Int
+dflrsResponseStatus :: Lens' (DeleteFlowLogsResponse (a)) Int
 dflrsResponseStatus = lens _dflrsResponseStatus (\ s a -> s{_dflrsResponseStatus = a});
 
 instance NFData DeleteFlowLogsResponse

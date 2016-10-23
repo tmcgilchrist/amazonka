@@ -116,7 +116,7 @@ instance ToQuery ReportTaskProgress where
 -- | Contains the output of ReportTaskProgress.
 --
 -- /See:/ 'reportTaskProgressResponse' smart constructor.
-data ReportTaskProgressResponse = ReportTaskProgressResponse'
+data ReportTaskProgressResponse a = ReportTaskProgressResponse'
     { _rtprsResponseStatus :: !Int
     , _rtprsCanceled       :: !Bool
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data ReportTaskProgressResponse = ReportTaskProgressResponse'
 reportTaskProgressResponse
     :: Int -- ^ 'rtprsResponseStatus'
     -> Bool -- ^ 'rtprsCanceled'
-    -> ReportTaskProgressResponse
+    -> ReportTaskProgressResponse (a)
 reportTaskProgressResponse pResponseStatus_ pCanceled_ =
     ReportTaskProgressResponse'
     { _rtprsResponseStatus = pResponseStatus_
@@ -139,11 +139,11 @@ reportTaskProgressResponse pResponseStatus_ pCanceled_ =
     }
 
 -- | The response status code.
-rtprsResponseStatus :: Lens' ReportTaskProgressResponse Int
+rtprsResponseStatus :: Lens' (ReportTaskProgressResponse (a)) Int
 rtprsResponseStatus = lens _rtprsResponseStatus (\ s a -> s{_rtprsResponseStatus = a});
 
 -- | If true, the calling task runner should cancel processing of the task. The task runner does not need to call < SetTaskStatus> for canceled tasks.
-rtprsCanceled :: Lens' ReportTaskProgressResponse Bool
+rtprsCanceled :: Lens' (ReportTaskProgressResponse (a)) Bool
 rtprsCanceled = lens _rtprsCanceled (\ s a -> s{_rtprsCanceled = a});
 
 instance NFData ReportTaskProgressResponse

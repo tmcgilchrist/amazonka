@@ -117,14 +117,14 @@ instance ToQuery DisableMetricsCollection where
                "AutoScalingGroupName" =: _dmcAutoScalingGroupName]
 
 -- | /See:/ 'disableMetricsCollectionResponse' smart constructor.
-data DisableMetricsCollectionResponse =
+data DisableMetricsCollectionResponse a =
     DisableMetricsCollectionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DisableMetricsCollectionResponse' with the minimum fields required to make a request.
 --
 disableMetricsCollectionResponse
-    :: DisableMetricsCollectionResponse
+    :: DisableMetricsCollectionResponse (a)
 disableMetricsCollectionResponse = DisableMetricsCollectionResponse'
 
 instance NFData DisableMetricsCollectionResponse

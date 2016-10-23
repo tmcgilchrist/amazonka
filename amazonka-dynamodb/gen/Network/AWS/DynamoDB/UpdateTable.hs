@@ -169,7 +169,7 @@ instance ToQuery UpdateTable where
 -- | Represents the output of an /UpdateTable/ operation.
 --
 -- /See:/ 'updateTableResponse' smart constructor.
-data UpdateTableResponse = UpdateTableResponse'
+data UpdateTableResponse a = UpdateTableResponse'
     { _utrsTableDescription :: !(Maybe TableDescription)
     , _utrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -183,7 +183,7 @@ data UpdateTableResponse = UpdateTableResponse'
 -- * 'utrsResponseStatus'
 updateTableResponse
     :: Int -- ^ 'utrsResponseStatus'
-    -> UpdateTableResponse
+    -> UpdateTableResponse (a)
 updateTableResponse pResponseStatus_ =
     UpdateTableResponse'
     { _utrsTableDescription = Nothing
@@ -191,11 +191,11 @@ updateTableResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-utrsTableDescription :: Lens' UpdateTableResponse (Maybe TableDescription)
+utrsTableDescription :: Lens' (UpdateTableResponse (a)) (Maybe TableDescription)
 utrsTableDescription = lens _utrsTableDescription (\ s a -> s{_utrsTableDescription = a});
 
 -- | The response status code.
-utrsResponseStatus :: Lens' UpdateTableResponse Int
+utrsResponseStatus :: Lens' (UpdateTableResponse (a)) Int
 utrsResponseStatus = lens _utrsResponseStatus (\ s a -> s{_utrsResponseStatus = a});
 
 instance NFData UpdateTableResponse

@@ -125,7 +125,7 @@ instance ToQuery PollForTask where
 -- | Contains the output of PollForTask.
 --
 -- /See:/ 'pollForTaskResponse' smart constructor.
-data PollForTaskResponse = PollForTaskResponse'
+data PollForTaskResponse a = PollForTaskResponse'
     { _pftrsTaskObject     :: !(Maybe TaskObject)
     , _pftrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -139,7 +139,7 @@ data PollForTaskResponse = PollForTaskResponse'
 -- * 'pftrsResponseStatus'
 pollForTaskResponse
     :: Int -- ^ 'pftrsResponseStatus'
-    -> PollForTaskResponse
+    -> PollForTaskResponse (a)
 pollForTaskResponse pResponseStatus_ =
     PollForTaskResponse'
     { _pftrsTaskObject = Nothing
@@ -147,11 +147,11 @@ pollForTaskResponse pResponseStatus_ =
     }
 
 -- | The information needed to complete the task that is being assigned to the task runner. One of the fields returned in this object is 'taskId', which contains an identifier for the task being assigned. The calling task runner uses 'taskId' in subsequent calls to < ReportTaskProgress> and < SetTaskStatus>.
-pftrsTaskObject :: Lens' PollForTaskResponse (Maybe TaskObject)
+pftrsTaskObject :: Lens' (PollForTaskResponse (a)) (Maybe TaskObject)
 pftrsTaskObject = lens _pftrsTaskObject (\ s a -> s{_pftrsTaskObject = a});
 
 -- | The response status code.
-pftrsResponseStatus :: Lens' PollForTaskResponse Int
+pftrsResponseStatus :: Lens' (PollForTaskResponse (a)) Int
 pftrsResponseStatus = lens _pftrsResponseStatus (\ s a -> s{_pftrsResponseStatus = a});
 
 instance NFData PollForTaskResponse

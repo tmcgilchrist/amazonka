@@ -107,7 +107,7 @@ instance ToQuery CreateWorkspaces where
 -- | Contains the result of the < CreateWorkspaces> operation.
 --
 -- /See:/ 'createWorkspacesResponse' smart constructor.
-data CreateWorkspacesResponse = CreateWorkspacesResponse'
+data CreateWorkspacesResponse a = CreateWorkspacesResponse'
     { _cwrsFailedRequests  :: !(Maybe [FailedCreateWorkspaceRequest])
     , _cwrsPendingRequests :: !(Maybe [Workspace])
     , _cwrsResponseStatus  :: !Int
@@ -124,7 +124,7 @@ data CreateWorkspacesResponse = CreateWorkspacesResponse'
 -- * 'cwrsResponseStatus'
 createWorkspacesResponse
     :: Int -- ^ 'cwrsResponseStatus'
-    -> CreateWorkspacesResponse
+    -> CreateWorkspacesResponse (a)
 createWorkspacesResponse pResponseStatus_ =
     CreateWorkspacesResponse'
     { _cwrsFailedRequests = Nothing
@@ -133,17 +133,17 @@ createWorkspacesResponse pResponseStatus_ =
     }
 
 -- | An array of structures that represent the WorkSpaces that could not be created.
-cwrsFailedRequests :: Lens' CreateWorkspacesResponse [FailedCreateWorkspaceRequest]
+cwrsFailedRequests :: Lens' (CreateWorkspacesResponse (a)) [FailedCreateWorkspaceRequest]
 cwrsFailedRequests = lens _cwrsFailedRequests (\ s a -> s{_cwrsFailedRequests = a}) . _Default . _Coerce;
 
 -- | An array of structures that represent the WorkSpaces that were created.
 --
 -- Because this operation is asynchronous, the identifier in 'WorkspaceId' is not immediately available. If you immediately call < DescribeWorkspaces> with this identifier, no information will be returned.
-cwrsPendingRequests :: Lens' CreateWorkspacesResponse [Workspace]
+cwrsPendingRequests :: Lens' (CreateWorkspacesResponse (a)) [Workspace]
 cwrsPendingRequests = lens _cwrsPendingRequests (\ s a -> s{_cwrsPendingRequests = a}) . _Default . _Coerce;
 
 -- | The response status code.
-cwrsResponseStatus :: Lens' CreateWorkspacesResponse Int
+cwrsResponseStatus :: Lens' (CreateWorkspacesResponse (a)) Int
 cwrsResponseStatus = lens _cwrsResponseStatus (\ s a -> s{_cwrsResponseStatus = a});
 
 instance NFData CreateWorkspacesResponse

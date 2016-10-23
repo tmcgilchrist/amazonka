@@ -116,7 +116,7 @@ instance ToQuery AttachVPNGateway where
 -- | Contains the output of AttachVpnGateway.
 --
 -- /See:/ 'attachVPNGatewayResponse' smart constructor.
-data AttachVPNGatewayResponse = AttachVPNGatewayResponse'
+data AttachVPNGatewayResponse a = AttachVPNGatewayResponse'
     { _avgrsVPCAttachment  :: !(Maybe VPCAttachment)
     , _avgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data AttachVPNGatewayResponse = AttachVPNGatewayResponse'
 -- * 'avgrsResponseStatus'
 attachVPNGatewayResponse
     :: Int -- ^ 'avgrsResponseStatus'
-    -> AttachVPNGatewayResponse
+    -> AttachVPNGatewayResponse (a)
 attachVPNGatewayResponse pResponseStatus_ =
     AttachVPNGatewayResponse'
     { _avgrsVPCAttachment = Nothing
@@ -138,11 +138,11 @@ attachVPNGatewayResponse pResponseStatus_ =
     }
 
 -- | Information about the attachment.
-avgrsVPCAttachment :: Lens' AttachVPNGatewayResponse (Maybe VPCAttachment)
+avgrsVPCAttachment :: Lens' (AttachVPNGatewayResponse (a)) (Maybe VPCAttachment)
 avgrsVPCAttachment = lens _avgrsVPCAttachment (\ s a -> s{_avgrsVPCAttachment = a});
 
 -- | The response status code.
-avgrsResponseStatus :: Lens' AttachVPNGatewayResponse Int
+avgrsResponseStatus :: Lens' (AttachVPNGatewayResponse (a)) Int
 avgrsResponseStatus = lens _avgrsResponseStatus (\ s a -> s{_avgrsResponseStatus = a});
 
 instance NFData AttachVPNGatewayResponse

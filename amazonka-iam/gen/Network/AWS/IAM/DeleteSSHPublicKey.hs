@@ -102,14 +102,14 @@ instance ToQuery DeleteSSHPublicKey where
                "SSHPublicKeyId" =: _dspkSSHPublicKeyId]
 
 -- | /See:/ 'deleteSSHPublicKeyResponse' smart constructor.
-data DeleteSSHPublicKeyResponse =
+data DeleteSSHPublicKeyResponse a =
     DeleteSSHPublicKeyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSSHPublicKeyResponse' with the minimum fields required to make a request.
 --
 deleteSSHPublicKeyResponse
-    :: DeleteSSHPublicKeyResponse
+    :: DeleteSSHPublicKeyResponse (a)
 deleteSSHPublicKeyResponse = DeleteSSHPublicKeyResponse'
 
 instance NFData DeleteSSHPublicKeyResponse

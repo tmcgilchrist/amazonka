@@ -131,14 +131,14 @@ instance ToQuery ResendValidationEmail where
         toQuery = const mempty
 
 -- | /See:/ 'resendValidationEmailResponse' smart constructor.
-data ResendValidationEmailResponse =
+data ResendValidationEmailResponse a =
     ResendValidationEmailResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ResendValidationEmailResponse' with the minimum fields required to make a request.
 --
 resendValidationEmailResponse
-    :: ResendValidationEmailResponse
+    :: ResendValidationEmailResponse (a)
 resendValidationEmailResponse = ResendValidationEmailResponse'
 
 instance NFData ResendValidationEmailResponse

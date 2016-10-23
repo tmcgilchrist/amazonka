@@ -114,14 +114,14 @@ instance ToQuery UpdateVolume where
         toQuery = const mempty
 
 -- | /See:/ 'updateVolumeResponse' smart constructor.
-data UpdateVolumeResponse =
+data UpdateVolumeResponse a =
     UpdateVolumeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateVolumeResponse' with the minimum fields required to make a request.
 --
 updateVolumeResponse
-    :: UpdateVolumeResponse
+    :: UpdateVolumeResponse (a)
 updateVolumeResponse = UpdateVolumeResponse'
 
 instance NFData UpdateVolumeResponse

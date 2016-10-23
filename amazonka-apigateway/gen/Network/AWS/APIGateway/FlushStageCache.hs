@@ -98,14 +98,14 @@ instance ToQuery FlushStageCache where
         toQuery = const mempty
 
 -- | /See:/ 'flushStageCacheResponse' smart constructor.
-data FlushStageCacheResponse =
+data FlushStageCacheResponse a =
     FlushStageCacheResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'FlushStageCacheResponse' with the minimum fields required to make a request.
 --
 flushStageCacheResponse
-    :: FlushStageCacheResponse
+    :: FlushStageCacheResponse (a)
 flushStageCacheResponse = FlushStageCacheResponse'
 
 instance NFData FlushStageCacheResponse

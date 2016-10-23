@@ -102,14 +102,14 @@ instance ToQuery SetDataRetrievalPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'setDataRetrievalPolicyResponse' smart constructor.
-data SetDataRetrievalPolicyResponse =
+data SetDataRetrievalPolicyResponse a =
     SetDataRetrievalPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetDataRetrievalPolicyResponse' with the minimum fields required to make a request.
 --
 setDataRetrievalPolicyResponse
-    :: SetDataRetrievalPolicyResponse
+    :: SetDataRetrievalPolicyResponse (a)
 setDataRetrievalPolicyResponse = SetDataRetrievalPolicyResponse'
 
 instance NFData SetDataRetrievalPolicyResponse

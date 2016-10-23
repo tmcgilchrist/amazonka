@@ -111,7 +111,7 @@ instance ToQuery GetVaultNotifications where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'getVaultNotificationsResponse' smart constructor.
-data GetVaultNotificationsResponse = GetVaultNotificationsResponse'
+data GetVaultNotificationsResponse a = GetVaultNotificationsResponse'
     { _gvnrsVaultNotificationConfig :: !(Maybe VaultNotificationConfig)
     , _gvnrsResponseStatus          :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -125,7 +125,7 @@ data GetVaultNotificationsResponse = GetVaultNotificationsResponse'
 -- * 'gvnrsResponseStatus'
 getVaultNotificationsResponse
     :: Int -- ^ 'gvnrsResponseStatus'
-    -> GetVaultNotificationsResponse
+    -> GetVaultNotificationsResponse (a)
 getVaultNotificationsResponse pResponseStatus_ =
     GetVaultNotificationsResponse'
     { _gvnrsVaultNotificationConfig = Nothing
@@ -133,11 +133,11 @@ getVaultNotificationsResponse pResponseStatus_ =
     }
 
 -- | Returns the notification configuration set on the vault.
-gvnrsVaultNotificationConfig :: Lens' GetVaultNotificationsResponse (Maybe VaultNotificationConfig)
+gvnrsVaultNotificationConfig :: Lens' (GetVaultNotificationsResponse (a)) (Maybe VaultNotificationConfig)
 gvnrsVaultNotificationConfig = lens _gvnrsVaultNotificationConfig (\ s a -> s{_gvnrsVaultNotificationConfig = a});
 
 -- | The response status code.
-gvnrsResponseStatus :: Lens' GetVaultNotificationsResponse Int
+gvnrsResponseStatus :: Lens' (GetVaultNotificationsResponse (a)) Int
 gvnrsResponseStatus = lens _gvnrsResponseStatus (\ s a -> s{_gvnrsResponseStatus = a});
 
 instance NFData GetVaultNotificationsResponse

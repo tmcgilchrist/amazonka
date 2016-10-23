@@ -163,7 +163,7 @@ instance ToQuery UploadMultipartPart where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'uploadMultipartPartResponse' smart constructor.
-data UploadMultipartPartResponse = UploadMultipartPartResponse'
+data UploadMultipartPartResponse a = UploadMultipartPartResponse'
     { _umprsChecksum       :: !(Maybe Text)
     , _umprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -177,7 +177,7 @@ data UploadMultipartPartResponse = UploadMultipartPartResponse'
 -- * 'umprsResponseStatus'
 uploadMultipartPartResponse
     :: Int -- ^ 'umprsResponseStatus'
-    -> UploadMultipartPartResponse
+    -> UploadMultipartPartResponse (a)
 uploadMultipartPartResponse pResponseStatus_ =
     UploadMultipartPartResponse'
     { _umprsChecksum = Nothing
@@ -185,11 +185,11 @@ uploadMultipartPartResponse pResponseStatus_ =
     }
 
 -- | The SHA256 tree hash that Amazon Glacier computed for the uploaded part.
-umprsChecksum :: Lens' UploadMultipartPartResponse (Maybe Text)
+umprsChecksum :: Lens' (UploadMultipartPartResponse (a)) (Maybe Text)
 umprsChecksum = lens _umprsChecksum (\ s a -> s{_umprsChecksum = a});
 
 -- | The response status code.
-umprsResponseStatus :: Lens' UploadMultipartPartResponse Int
+umprsResponseStatus :: Lens' (UploadMultipartPartResponse (a)) Int
 umprsResponseStatus = lens _umprsResponseStatus (\ s a -> s{_umprsResponseStatus = a});
 
 instance NFData UploadMultipartPartResponse

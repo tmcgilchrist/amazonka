@@ -120,7 +120,7 @@ instance ToQuery ConfirmProductInstance where
 -- | Contains the output of ConfirmProductInstance.
 --
 -- /See:/ 'confirmProductInstanceResponse' smart constructor.
-data ConfirmProductInstanceResponse = ConfirmProductInstanceResponse'
+data ConfirmProductInstanceResponse a = ConfirmProductInstanceResponse'
     { _cpirsReturn         :: !(Maybe Bool)
     , _cpirsOwnerId        :: !(Maybe Text)
     , _cpirsResponseStatus :: !Int
@@ -137,7 +137,7 @@ data ConfirmProductInstanceResponse = ConfirmProductInstanceResponse'
 -- * 'cpirsResponseStatus'
 confirmProductInstanceResponse
     :: Int -- ^ 'cpirsResponseStatus'
-    -> ConfirmProductInstanceResponse
+    -> ConfirmProductInstanceResponse (a)
 confirmProductInstanceResponse pResponseStatus_ =
     ConfirmProductInstanceResponse'
     { _cpirsReturn = Nothing
@@ -146,15 +146,15 @@ confirmProductInstanceResponse pResponseStatus_ =
     }
 
 -- | The return value of the request. Returns 'true' if the specified product code is owned by the requester and associated with the specified instance.
-cpirsReturn :: Lens' ConfirmProductInstanceResponse (Maybe Bool)
+cpirsReturn :: Lens' (ConfirmProductInstanceResponse (a)) (Maybe Bool)
 cpirsReturn = lens _cpirsReturn (\ s a -> s{_cpirsReturn = a});
 
 -- | The AWS account ID of the instance owner. This is only present if the product code is attached to the instance.
-cpirsOwnerId :: Lens' ConfirmProductInstanceResponse (Maybe Text)
+cpirsOwnerId :: Lens' (ConfirmProductInstanceResponse (a)) (Maybe Text)
 cpirsOwnerId = lens _cpirsOwnerId (\ s a -> s{_cpirsOwnerId = a});
 
 -- | The response status code.
-cpirsResponseStatus :: Lens' ConfirmProductInstanceResponse Int
+cpirsResponseStatus :: Lens' (ConfirmProductInstanceResponse (a)) Int
 cpirsResponseStatus = lens _cpirsResponseStatus (\ s a -> s{_cpirsResponseStatus = a});
 
 instance NFData ConfirmProductInstanceResponse

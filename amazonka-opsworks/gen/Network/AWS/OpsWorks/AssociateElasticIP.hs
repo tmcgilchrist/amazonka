@@ -106,14 +106,14 @@ instance ToQuery AssociateElasticIP where
         toQuery = const mempty
 
 -- | /See:/ 'associateElasticIPResponse' smart constructor.
-data AssociateElasticIPResponse =
+data AssociateElasticIPResponse a =
     AssociateElasticIPResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AssociateElasticIPResponse' with the minimum fields required to make a request.
 --
 associateElasticIPResponse
-    :: AssociateElasticIPResponse
+    :: AssociateElasticIPResponse (a)
 associateElasticIPResponse = AssociateElasticIPResponse'
 
 instance NFData AssociateElasticIPResponse

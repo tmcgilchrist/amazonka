@@ -124,7 +124,7 @@ instance ToQuery DescribeInstanceInformation where
         toQuery = const mempty
 
 -- | /See:/ 'describeInstanceInformationResponse' smart constructor.
-data DescribeInstanceInformationResponse = DescribeInstanceInformationResponse'
+data DescribeInstanceInformationResponse a = DescribeInstanceInformationResponse'
     { _diirsNextToken               :: !(Maybe Text)
     , _diirsInstanceInformationList :: !(Maybe [InstanceInformation])
     , _diirsResponseStatus          :: !Int
@@ -141,7 +141,7 @@ data DescribeInstanceInformationResponse = DescribeInstanceInformationResponse'
 -- * 'diirsResponseStatus'
 describeInstanceInformationResponse
     :: Int -- ^ 'diirsResponseStatus'
-    -> DescribeInstanceInformationResponse
+    -> DescribeInstanceInformationResponse (a)
 describeInstanceInformationResponse pResponseStatus_ =
     DescribeInstanceInformationResponse'
     { _diirsNextToken = Nothing
@@ -150,15 +150,15 @@ describeInstanceInformationResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-diirsNextToken :: Lens' DescribeInstanceInformationResponse (Maybe Text)
+diirsNextToken :: Lens' (DescribeInstanceInformationResponse (a)) (Maybe Text)
 diirsNextToken = lens _diirsNextToken (\ s a -> s{_diirsNextToken = a});
 
 -- | The instance information list.
-diirsInstanceInformationList :: Lens' DescribeInstanceInformationResponse [InstanceInformation]
+diirsInstanceInformationList :: Lens' (DescribeInstanceInformationResponse (a)) [InstanceInformation]
 diirsInstanceInformationList = lens _diirsInstanceInformationList (\ s a -> s{_diirsInstanceInformationList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-diirsResponseStatus :: Lens' DescribeInstanceInformationResponse Int
+diirsResponseStatus :: Lens' (DescribeInstanceInformationResponse (a)) Int
 diirsResponseStatus = lens _diirsResponseStatus (\ s a -> s{_diirsResponseStatus = a});
 
 instance NFData DescribeInstanceInformationResponse

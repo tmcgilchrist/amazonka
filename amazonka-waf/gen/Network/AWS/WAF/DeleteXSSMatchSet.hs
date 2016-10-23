@@ -122,7 +122,7 @@ instance ToQuery DeleteXSSMatchSet where
 -- | The response to a request to delete an < XssMatchSet> from AWS WAF.
 --
 -- /See:/ 'deleteXSSMatchSetResponse' smart constructor.
-data DeleteXSSMatchSetResponse = DeleteXSSMatchSetResponse'
+data DeleteXSSMatchSetResponse a = DeleteXSSMatchSetResponse'
     { _dxmsrsChangeToken    :: !(Maybe Text)
     , _dxmsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data DeleteXSSMatchSetResponse = DeleteXSSMatchSetResponse'
 -- * 'dxmsrsResponseStatus'
 deleteXSSMatchSetResponse
     :: Int -- ^ 'dxmsrsResponseStatus'
-    -> DeleteXSSMatchSetResponse
+    -> DeleteXSSMatchSetResponse (a)
 deleteXSSMatchSetResponse pResponseStatus_ =
     DeleteXSSMatchSetResponse'
     { _dxmsrsChangeToken = Nothing
@@ -144,11 +144,11 @@ deleteXSSMatchSetResponse pResponseStatus_ =
     }
 
 -- | The 'ChangeToken' that you used to submit the 'DeleteXssMatchSet' request. You can also use this value to query the status of the request. For more information, see < GetChangeTokenStatus>.
-dxmsrsChangeToken :: Lens' DeleteXSSMatchSetResponse (Maybe Text)
+dxmsrsChangeToken :: Lens' (DeleteXSSMatchSetResponse (a)) (Maybe Text)
 dxmsrsChangeToken = lens _dxmsrsChangeToken (\ s a -> s{_dxmsrsChangeToken = a});
 
 -- | The response status code.
-dxmsrsResponseStatus :: Lens' DeleteXSSMatchSetResponse Int
+dxmsrsResponseStatus :: Lens' (DeleteXSSMatchSetResponse (a)) Int
 dxmsrsResponseStatus = lens _dxmsrsResponseStatus (\ s a -> s{_dxmsrsResponseStatus = a});
 
 instance NFData DeleteXSSMatchSetResponse

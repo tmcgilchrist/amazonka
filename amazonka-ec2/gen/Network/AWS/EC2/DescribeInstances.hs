@@ -322,7 +322,7 @@ instance ToQuery DescribeInstances where
 -- | Contains the output of DescribeInstances.
 --
 -- /See:/ 'describeInstancesResponse' smart constructor.
-data DescribeInstancesResponse = DescribeInstancesResponse'
+data DescribeInstancesResponse a = DescribeInstancesResponse'
     { _dirsNextToken      :: !(Maybe Text)
     , _dirsReservations   :: !(Maybe [Reservation])
     , _dirsResponseStatus :: !Int
@@ -339,7 +339,7 @@ data DescribeInstancesResponse = DescribeInstancesResponse'
 -- * 'dirsResponseStatus'
 describeInstancesResponse
     :: Int -- ^ 'dirsResponseStatus'
-    -> DescribeInstancesResponse
+    -> DescribeInstancesResponse (a)
 describeInstancesResponse pResponseStatus_ =
     DescribeInstancesResponse'
     { _dirsNextToken = Nothing
@@ -348,15 +348,15 @@ describeInstancesResponse pResponseStatus_ =
     }
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dirsNextToken :: Lens' DescribeInstancesResponse (Maybe Text)
+dirsNextToken :: Lens' (DescribeInstancesResponse (a)) (Maybe Text)
 dirsNextToken = lens _dirsNextToken (\ s a -> s{_dirsNextToken = a});
 
 -- | Zero or more reservations.
-dirsReservations :: Lens' DescribeInstancesResponse [Reservation]
+dirsReservations :: Lens' (DescribeInstancesResponse (a)) [Reservation]
 dirsReservations = lens _dirsReservations (\ s a -> s{_dirsReservations = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dirsResponseStatus :: Lens' DescribeInstancesResponse Int
+dirsResponseStatus :: Lens' (DescribeInstancesResponse (a)) Int
 dirsResponseStatus = lens _dirsResponseStatus (\ s a -> s{_dirsResponseStatus = a});
 
 instance NFData DescribeInstancesResponse

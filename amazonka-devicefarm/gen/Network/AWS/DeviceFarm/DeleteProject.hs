@@ -101,7 +101,7 @@ instance ToQuery DeleteProject where
 -- | Represents the result of a delete project request.
 --
 -- /See:/ 'deleteProjectResponse' smart constructor.
-newtype DeleteProjectResponse = DeleteProjectResponse'
+newtype DeleteProjectResponse a = DeleteProjectResponse'
     { _dprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -112,14 +112,14 @@ newtype DeleteProjectResponse = DeleteProjectResponse'
 -- * 'dprsResponseStatus'
 deleteProjectResponse
     :: Int -- ^ 'dprsResponseStatus'
-    -> DeleteProjectResponse
+    -> DeleteProjectResponse (a)
 deleteProjectResponse pResponseStatus_ =
     DeleteProjectResponse'
     { _dprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dprsResponseStatus :: Lens' DeleteProjectResponse Int
+dprsResponseStatus :: Lens' (DeleteProjectResponse (a)) Int
 dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a});
 
 instance NFData DeleteProjectResponse

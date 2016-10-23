@@ -163,7 +163,7 @@ instance ToQuery DescribeWorkspaces where
 -- | Contains the results for the < DescribeWorkspaces> operation.
 --
 -- /See:/ 'describeWorkspacesResponse' smart constructor.
-data DescribeWorkspacesResponse = DescribeWorkspacesResponse'
+data DescribeWorkspacesResponse a = DescribeWorkspacesResponse'
     { _dwrsNextToken      :: !(Maybe Text)
     , _dwrsWorkspaces     :: !(Maybe [Workspace])
     , _dwrsResponseStatus :: !Int
@@ -180,7 +180,7 @@ data DescribeWorkspacesResponse = DescribeWorkspacesResponse'
 -- * 'dwrsResponseStatus'
 describeWorkspacesResponse
     :: Int -- ^ 'dwrsResponseStatus'
-    -> DescribeWorkspacesResponse
+    -> DescribeWorkspacesResponse (a)
 describeWorkspacesResponse pResponseStatus_ =
     DescribeWorkspacesResponse'
     { _dwrsNextToken = Nothing
@@ -189,17 +189,17 @@ describeWorkspacesResponse pResponseStatus_ =
     }
 
 -- | If not null, more results are available. Pass this value for the 'NextToken' parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.
-dwrsNextToken :: Lens' DescribeWorkspacesResponse (Maybe Text)
+dwrsNextToken :: Lens' (DescribeWorkspacesResponse (a)) (Maybe Text)
 dwrsNextToken = lens _dwrsNextToken (\ s a -> s{_dwrsNextToken = a});
 
 -- | An array of structures that contain the information about the WorkSpaces.
 --
 -- Because the < CreateWorkspaces> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.
-dwrsWorkspaces :: Lens' DescribeWorkspacesResponse [Workspace]
+dwrsWorkspaces :: Lens' (DescribeWorkspacesResponse (a)) [Workspace]
 dwrsWorkspaces = lens _dwrsWorkspaces (\ s a -> s{_dwrsWorkspaces = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dwrsResponseStatus :: Lens' DescribeWorkspacesResponse Int
+dwrsResponseStatus :: Lens' (DescribeWorkspacesResponse (a)) Int
 dwrsResponseStatus = lens _dwrsResponseStatus (\ s a -> s{_dwrsResponseStatus = a});
 
 instance NFData DescribeWorkspacesResponse

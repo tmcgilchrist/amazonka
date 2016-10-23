@@ -127,14 +127,14 @@ instance ToQuery SwapEnvironmentCNAMEs where
                "SourceEnvironmentId" =: _secnameSourceEnvironmentId]
 
 -- | /See:/ 'swapEnvironmentCNAMEsResponse' smart constructor.
-data SwapEnvironmentCNAMEsResponse =
+data SwapEnvironmentCNAMEsResponse a =
     SwapEnvironmentCNAMEsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SwapEnvironmentCNAMEsResponse' with the minimum fields required to make a request.
 --
 swapEnvironmentCNAMEsResponse
-    :: SwapEnvironmentCNAMEsResponse
+    :: SwapEnvironmentCNAMEsResponse (a)
 swapEnvironmentCNAMEsResponse = SwapEnvironmentCNAMEsResponse'
 
 instance NFData SwapEnvironmentCNAMEsResponse

@@ -90,14 +90,14 @@ instance ToQuery DeleteSnapshotCopyGrant where
                  _dscgSnapshotCopyGrantName]
 
 -- | /See:/ 'deleteSnapshotCopyGrantResponse' smart constructor.
-data DeleteSnapshotCopyGrantResponse =
+data DeleteSnapshotCopyGrantResponse a =
     DeleteSnapshotCopyGrantResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSnapshotCopyGrantResponse' with the minimum fields required to make a request.
 --
 deleteSnapshotCopyGrantResponse
-    :: DeleteSnapshotCopyGrantResponse
+    :: DeleteSnapshotCopyGrantResponse (a)
 deleteSnapshotCopyGrantResponse = DeleteSnapshotCopyGrantResponse'
 
 instance NFData DeleteSnapshotCopyGrantResponse

@@ -107,7 +107,7 @@ instance ToQuery DescribeSecurityGroupReferences
                toQueryList "GroupId" _dsgrGroupId]
 
 -- | /See:/ 'describeSecurityGroupReferencesResponse' smart constructor.
-data DescribeSecurityGroupReferencesResponse = DescribeSecurityGroupReferencesResponse'
+data DescribeSecurityGroupReferencesResponse a = DescribeSecurityGroupReferencesResponse'
     { _dsgrrsSecurityGroupReferenceSet :: !(Maybe [SecurityGroupReference])
     , _dsgrrsResponseStatus            :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DescribeSecurityGroupReferencesResponse = DescribeSecurityGroupReferencesRe
 -- * 'dsgrrsResponseStatus'
 describeSecurityGroupReferencesResponse
     :: Int -- ^ 'dsgrrsResponseStatus'
-    -> DescribeSecurityGroupReferencesResponse
+    -> DescribeSecurityGroupReferencesResponse (a)
 describeSecurityGroupReferencesResponse pResponseStatus_ =
     DescribeSecurityGroupReferencesResponse'
     { _dsgrrsSecurityGroupReferenceSet = Nothing
@@ -129,11 +129,11 @@ describeSecurityGroupReferencesResponse pResponseStatus_ =
     }
 
 -- | Information about the VPCs with the referencing security groups.
-dsgrrsSecurityGroupReferenceSet :: Lens' DescribeSecurityGroupReferencesResponse [SecurityGroupReference]
+dsgrrsSecurityGroupReferenceSet :: Lens' (DescribeSecurityGroupReferencesResponse (a)) [SecurityGroupReference]
 dsgrrsSecurityGroupReferenceSet = lens _dsgrrsSecurityGroupReferenceSet (\ s a -> s{_dsgrrsSecurityGroupReferenceSet = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsgrrsResponseStatus :: Lens' DescribeSecurityGroupReferencesResponse Int
+dsgrrsResponseStatus :: Lens' (DescribeSecurityGroupReferencesResponse (a)) Int
 dsgrrsResponseStatus = lens _dsgrrsResponseStatus (\ s a -> s{_dsgrrsResponseStatus = a});
 
 instance NFData

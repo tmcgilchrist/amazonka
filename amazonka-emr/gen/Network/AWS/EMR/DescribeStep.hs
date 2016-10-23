@@ -114,7 +114,7 @@ instance ToQuery DescribeStep where
 -- | This output contains the description of the cluster step.
 --
 -- /See:/ 'describeStepResponse' smart constructor.
-data DescribeStepResponse = DescribeStepResponse'
+data DescribeStepResponse a = DescribeStepResponse'
     { _dsrsStep           :: !(Maybe Step)
     , _dsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data DescribeStepResponse = DescribeStepResponse'
 -- * 'dsrsResponseStatus'
 describeStepResponse
     :: Int -- ^ 'dsrsResponseStatus'
-    -> DescribeStepResponse
+    -> DescribeStepResponse (a)
 describeStepResponse pResponseStatus_ =
     DescribeStepResponse'
     { _dsrsStep = Nothing
@@ -136,11 +136,11 @@ describeStepResponse pResponseStatus_ =
     }
 
 -- | The step details for the requested step identifier.
-dsrsStep :: Lens' DescribeStepResponse (Maybe Step)
+dsrsStep :: Lens' (DescribeStepResponse (a)) (Maybe Step)
 dsrsStep = lens _dsrsStep (\ s a -> s{_dsrsStep = a});
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DescribeStepResponse Int
+dsrsResponseStatus :: Lens' (DescribeStepResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 instance NFData DescribeStepResponse

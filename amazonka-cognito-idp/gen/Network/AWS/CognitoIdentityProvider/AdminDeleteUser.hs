@@ -106,14 +106,14 @@ instance ToQuery AdminDeleteUser where
         toQuery = const mempty
 
 -- | /See:/ 'adminDeleteUserResponse' smart constructor.
-data AdminDeleteUserResponse =
+data AdminDeleteUserResponse a =
     AdminDeleteUserResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AdminDeleteUserResponse' with the minimum fields required to make a request.
 --
 adminDeleteUserResponse
-    :: AdminDeleteUserResponse
+    :: AdminDeleteUserResponse (a)
 adminDeleteUserResponse = AdminDeleteUserResponse'
 
 instance NFData AdminDeleteUserResponse

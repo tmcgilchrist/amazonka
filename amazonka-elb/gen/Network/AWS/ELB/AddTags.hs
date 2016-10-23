@@ -107,7 +107,7 @@ instance ToQuery AddTags where
 -- | Contains the output of AddTags.
 --
 -- /See:/ 'addTagsResponse' smart constructor.
-newtype AddTagsResponse = AddTagsResponse'
+newtype AddTagsResponse a = AddTagsResponse'
     { _atrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -118,14 +118,14 @@ newtype AddTagsResponse = AddTagsResponse'
 -- * 'atrsResponseStatus'
 addTagsResponse
     :: Int -- ^ 'atrsResponseStatus'
-    -> AddTagsResponse
+    -> AddTagsResponse (a)
 addTagsResponse pResponseStatus_ =
     AddTagsResponse'
     { _atrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-atrsResponseStatus :: Lens' AddTagsResponse Int
+atrsResponseStatus :: Lens' (AddTagsResponse (a)) Int
 atrsResponseStatus = lens _atrsResponseStatus (\ s a -> s{_atrsResponseStatus = a});
 
 instance NFData AddTagsResponse

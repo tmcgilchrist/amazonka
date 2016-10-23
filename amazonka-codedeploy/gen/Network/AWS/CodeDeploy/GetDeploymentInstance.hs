@@ -116,7 +116,7 @@ instance ToQuery GetDeploymentInstance where
 -- | Represents the output of a get deployment instance operation.
 --
 -- /See:/ 'getDeploymentInstanceResponse' smart constructor.
-data GetDeploymentInstanceResponse = GetDeploymentInstanceResponse'
+data GetDeploymentInstanceResponse a = GetDeploymentInstanceResponse'
     { _gdirsInstanceSummary :: !(Maybe InstanceSummary)
     , _gdirsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data GetDeploymentInstanceResponse = GetDeploymentInstanceResponse'
 -- * 'gdirsResponseStatus'
 getDeploymentInstanceResponse
     :: Int -- ^ 'gdirsResponseStatus'
-    -> GetDeploymentInstanceResponse
+    -> GetDeploymentInstanceResponse (a)
 getDeploymentInstanceResponse pResponseStatus_ =
     GetDeploymentInstanceResponse'
     { _gdirsInstanceSummary = Nothing
@@ -138,11 +138,11 @@ getDeploymentInstanceResponse pResponseStatus_ =
     }
 
 -- | Information about the instance.
-gdirsInstanceSummary :: Lens' GetDeploymentInstanceResponse (Maybe InstanceSummary)
+gdirsInstanceSummary :: Lens' (GetDeploymentInstanceResponse (a)) (Maybe InstanceSummary)
 gdirsInstanceSummary = lens _gdirsInstanceSummary (\ s a -> s{_gdirsInstanceSummary = a});
 
 -- | The response status code.
-gdirsResponseStatus :: Lens' GetDeploymentInstanceResponse Int
+gdirsResponseStatus :: Lens' (GetDeploymentInstanceResponse (a)) Int
 gdirsResponseStatus = lens _gdirsResponseStatus (\ s a -> s{_gdirsResponseStatus = a});
 
 instance NFData GetDeploymentInstanceResponse

@@ -220,7 +220,7 @@ instance ToQuery DescribeDBSnapshots where
 -- | Contains the result of a successful invocation of the < DescribeDBSnapshots> action.
 --
 -- /See:/ 'describeDBSnapshotsResponse' smart constructor.
-data DescribeDBSnapshotsResponse = DescribeDBSnapshotsResponse'
+data DescribeDBSnapshotsResponse a = DescribeDBSnapshotsResponse'
     { _ddsrsMarker         :: !(Maybe Text)
     , _ddsrsDBSnapshots    :: !(Maybe [DBSnapshot])
     , _ddsrsResponseStatus :: !Int
@@ -237,7 +237,7 @@ data DescribeDBSnapshotsResponse = DescribeDBSnapshotsResponse'
 -- * 'ddsrsResponseStatus'
 describeDBSnapshotsResponse
     :: Int -- ^ 'ddsrsResponseStatus'
-    -> DescribeDBSnapshotsResponse
+    -> DescribeDBSnapshotsResponse (a)
 describeDBSnapshotsResponse pResponseStatus_ =
     DescribeDBSnapshotsResponse'
     { _ddsrsMarker = Nothing
@@ -246,15 +246,15 @@ describeDBSnapshotsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddsrsMarker :: Lens' DescribeDBSnapshotsResponse (Maybe Text)
+ddsrsMarker :: Lens' (DescribeDBSnapshotsResponse (a)) (Maybe Text)
 ddsrsMarker = lens _ddsrsMarker (\ s a -> s{_ddsrsMarker = a});
 
 -- | A list of < DBSnapshot> instances.
-ddsrsDBSnapshots :: Lens' DescribeDBSnapshotsResponse [DBSnapshot]
+ddsrsDBSnapshots :: Lens' (DescribeDBSnapshotsResponse (a)) [DBSnapshot]
 ddsrsDBSnapshots = lens _ddsrsDBSnapshots (\ s a -> s{_ddsrsDBSnapshots = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddsrsResponseStatus :: Lens' DescribeDBSnapshotsResponse Int
+ddsrsResponseStatus :: Lens' (DescribeDBSnapshotsResponse (a)) Int
 ddsrsResponseStatus = lens _ddsrsResponseStatus (\ s a -> s{_ddsrsResponseStatus = a});
 
 instance NFData DescribeDBSnapshotsResponse

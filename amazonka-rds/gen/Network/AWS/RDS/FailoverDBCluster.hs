@@ -120,7 +120,7 @@ instance ToQuery FailoverDBCluster where
                  _fdcTargetDBInstanceIdentifier]
 
 -- | /See:/ 'failoverDBClusterResponse' smart constructor.
-data FailoverDBClusterResponse = FailoverDBClusterResponse'
+data FailoverDBClusterResponse a = FailoverDBClusterResponse'
     { _fdcrsDBCluster      :: !(Maybe DBCluster)
     , _fdcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data FailoverDBClusterResponse = FailoverDBClusterResponse'
 -- * 'fdcrsResponseStatus'
 failoverDBClusterResponse
     :: Int -- ^ 'fdcrsResponseStatus'
-    -> FailoverDBClusterResponse
+    -> FailoverDBClusterResponse (a)
 failoverDBClusterResponse pResponseStatus_ =
     FailoverDBClusterResponse'
     { _fdcrsDBCluster = Nothing
@@ -142,11 +142,11 @@ failoverDBClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-fdcrsDBCluster :: Lens' FailoverDBClusterResponse (Maybe DBCluster)
+fdcrsDBCluster :: Lens' (FailoverDBClusterResponse (a)) (Maybe DBCluster)
 fdcrsDBCluster = lens _fdcrsDBCluster (\ s a -> s{_fdcrsDBCluster = a});
 
 -- | The response status code.
-fdcrsResponseStatus :: Lens' FailoverDBClusterResponse Int
+fdcrsResponseStatus :: Lens' (FailoverDBClusterResponse (a)) Int
 fdcrsResponseStatus = lens _fdcrsResponseStatus (\ s a -> s{_fdcrsResponseStatus = a});
 
 instance NFData FailoverDBClusterResponse

@@ -118,7 +118,7 @@ instance ToQuery RebootDBInstance where
                "DBInstanceIdentifier" =: _rdiDBInstanceIdentifier]
 
 -- | /See:/ 'rebootDBInstanceResponse' smart constructor.
-data RebootDBInstanceResponse = RebootDBInstanceResponse'
+data RebootDBInstanceResponse a = RebootDBInstanceResponse'
     { _rdirsDBInstance     :: !(Maybe DBInstance)
     , _rdirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data RebootDBInstanceResponse = RebootDBInstanceResponse'
 -- * 'rdirsResponseStatus'
 rebootDBInstanceResponse
     :: Int -- ^ 'rdirsResponseStatus'
-    -> RebootDBInstanceResponse
+    -> RebootDBInstanceResponse (a)
 rebootDBInstanceResponse pResponseStatus_ =
     RebootDBInstanceResponse'
     { _rdirsDBInstance = Nothing
@@ -140,11 +140,11 @@ rebootDBInstanceResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rdirsDBInstance :: Lens' RebootDBInstanceResponse (Maybe DBInstance)
+rdirsDBInstance :: Lens' (RebootDBInstanceResponse (a)) (Maybe DBInstance)
 rdirsDBInstance = lens _rdirsDBInstance (\ s a -> s{_rdirsDBInstance = a});
 
 -- | The response status code.
-rdirsResponseStatus :: Lens' RebootDBInstanceResponse Int
+rdirsResponseStatus :: Lens' (RebootDBInstanceResponse (a)) Int
 rdirsResponseStatus = lens _rdirsResponseStatus (\ s a -> s{_rdirsResponseStatus = a});
 
 instance NFData RebootDBInstanceResponse

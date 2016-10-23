@@ -112,7 +112,7 @@ instance ToQuery AttachLoadBalancerTargetGroups where
                  toQueryList "member" _albtgTargetGroupARNs]
 
 -- | /See:/ 'attachLoadBalancerTargetGroupsResponse' smart constructor.
-newtype AttachLoadBalancerTargetGroupsResponse = AttachLoadBalancerTargetGroupsResponse'
+newtype AttachLoadBalancerTargetGroupsResponse a = AttachLoadBalancerTargetGroupsResponse'
     { _albtgrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -123,14 +123,14 @@ newtype AttachLoadBalancerTargetGroupsResponse = AttachLoadBalancerTargetGroupsR
 -- * 'albtgrsResponseStatus'
 attachLoadBalancerTargetGroupsResponse
     :: Int -- ^ 'albtgrsResponseStatus'
-    -> AttachLoadBalancerTargetGroupsResponse
+    -> AttachLoadBalancerTargetGroupsResponse (a)
 attachLoadBalancerTargetGroupsResponse pResponseStatus_ =
     AttachLoadBalancerTargetGroupsResponse'
     { _albtgrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-albtgrsResponseStatus :: Lens' AttachLoadBalancerTargetGroupsResponse Int
+albtgrsResponseStatus :: Lens' (AttachLoadBalancerTargetGroupsResponse (a)) Int
 albtgrsResponseStatus = lens _albtgrsResponseStatus (\ s a -> s{_albtgrsResponseStatus = a});
 
 instance NFData

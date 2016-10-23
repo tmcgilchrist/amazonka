@@ -86,7 +86,7 @@ instance ToQuery DescribeLocations where
 -- | A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.
 --
 -- /See:/ 'describeLocationsResponse' smart constructor.
-data DescribeLocationsResponse = DescribeLocationsResponse'
+data DescribeLocationsResponse a = DescribeLocationsResponse'
     { _dlrsLocations      :: !(Maybe [Location])
     , _dlrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -100,7 +100,7 @@ data DescribeLocationsResponse = DescribeLocationsResponse'
 -- * 'dlrsResponseStatus'
 describeLocationsResponse
     :: Int -- ^ 'dlrsResponseStatus'
-    -> DescribeLocationsResponse
+    -> DescribeLocationsResponse (a)
 describeLocationsResponse pResponseStatus_ =
     DescribeLocationsResponse'
     { _dlrsLocations = Nothing
@@ -108,11 +108,11 @@ describeLocationsResponse pResponseStatus_ =
     }
 
 -- | A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.
-dlrsLocations :: Lens' DescribeLocationsResponse [Location]
+dlrsLocations :: Lens' (DescribeLocationsResponse (a)) [Location]
 dlrsLocations = lens _dlrsLocations (\ s a -> s{_dlrsLocations = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlrsResponseStatus :: Lens' DescribeLocationsResponse Int
+dlrsResponseStatus :: Lens' (DescribeLocationsResponse (a)) Int
 dlrsResponseStatus = lens _dlrsResponseStatus (\ s a -> s{_dlrsResponseStatus = a});
 
 instance NFData DescribeLocationsResponse

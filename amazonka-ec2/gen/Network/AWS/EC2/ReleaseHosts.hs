@@ -104,7 +104,7 @@ instance ToQuery ReleaseHosts where
 -- | Contains the output of ReleaseHosts.
 --
 -- /See:/ 'releaseHostsResponse' smart constructor.
-data ReleaseHostsResponse = ReleaseHostsResponse'
+data ReleaseHostsResponse a = ReleaseHostsResponse'
     { _rhrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
     , _rhrsSuccessful     :: !(Maybe [Text])
     , _rhrsResponseStatus :: !Int
@@ -121,7 +121,7 @@ data ReleaseHostsResponse = ReleaseHostsResponse'
 -- * 'rhrsResponseStatus'
 releaseHostsResponse
     :: Int -- ^ 'rhrsResponseStatus'
-    -> ReleaseHostsResponse
+    -> ReleaseHostsResponse (a)
 releaseHostsResponse pResponseStatus_ =
     ReleaseHostsResponse'
     { _rhrsUnsuccessful = Nothing
@@ -130,15 +130,15 @@ releaseHostsResponse pResponseStatus_ =
     }
 
 -- | The IDs of the Dedicated Hosts that could not be released, including an error message.
-rhrsUnsuccessful :: Lens' ReleaseHostsResponse [UnsuccessfulItem]
+rhrsUnsuccessful :: Lens' (ReleaseHostsResponse (a)) [UnsuccessfulItem]
 rhrsUnsuccessful = lens _rhrsUnsuccessful (\ s a -> s{_rhrsUnsuccessful = a}) . _Default . _Coerce;
 
 -- | The IDs of the Dedicated Hosts that were successfully released.
-rhrsSuccessful :: Lens' ReleaseHostsResponse [Text]
+rhrsSuccessful :: Lens' (ReleaseHostsResponse (a)) [Text]
 rhrsSuccessful = lens _rhrsSuccessful (\ s a -> s{_rhrsSuccessful = a}) . _Default . _Coerce;
 
 -- | The response status code.
-rhrsResponseStatus :: Lens' ReleaseHostsResponse Int
+rhrsResponseStatus :: Lens' (ReleaseHostsResponse (a)) Int
 rhrsResponseStatus = lens _rhrsResponseStatus (\ s a -> s{_rhrsResponseStatus = a});
 
 instance NFData ReleaseHostsResponse

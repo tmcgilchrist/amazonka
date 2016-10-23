@@ -81,7 +81,7 @@ instance ToQuery GetCheckerIPRanges where
 -- | A complex type that contains the 'CheckerIpRanges' element.
 --
 -- /See:/ 'getCheckerIPRangesResponse' smart constructor.
-data GetCheckerIPRangesResponse = GetCheckerIPRangesResponse'
+data GetCheckerIPRangesResponse a = GetCheckerIPRangesResponse'
     { _gcirrsResponseStatus  :: !Int
     , _gcirrsCheckerIPRanges :: ![Text]
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -95,7 +95,7 @@ data GetCheckerIPRangesResponse = GetCheckerIPRangesResponse'
 -- * 'gcirrsCheckerIPRanges'
 getCheckerIPRangesResponse
     :: Int -- ^ 'gcirrsResponseStatus'
-    -> GetCheckerIPRangesResponse
+    -> GetCheckerIPRangesResponse (a)
 getCheckerIPRangesResponse pResponseStatus_ =
     GetCheckerIPRangesResponse'
     { _gcirrsResponseStatus = pResponseStatus_
@@ -103,11 +103,11 @@ getCheckerIPRangesResponse pResponseStatus_ =
     }
 
 -- | The response status code.
-gcirrsResponseStatus :: Lens' GetCheckerIPRangesResponse Int
+gcirrsResponseStatus :: Lens' (GetCheckerIPRangesResponse (a)) Int
 gcirrsResponseStatus = lens _gcirrsResponseStatus (\ s a -> s{_gcirrsResponseStatus = a});
 
 -- | A complex type that contains sorted list of IP ranges in CIDR format for Amazon Route 53 health checkers.
-gcirrsCheckerIPRanges :: Lens' GetCheckerIPRangesResponse [Text]
+gcirrsCheckerIPRanges :: Lens' (GetCheckerIPRangesResponse (a)) [Text]
 gcirrsCheckerIPRanges = lens _gcirrsCheckerIPRanges (\ s a -> s{_gcirrsCheckerIPRanges = a}) . _Coerce;
 
 instance NFData GetCheckerIPRangesResponse

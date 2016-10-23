@@ -127,7 +127,7 @@ instance ToQuery DescribeDeployments where
 -- | Contains the response to a 'DescribeDeployments' request.
 --
 -- /See:/ 'describeDeploymentsResponse' smart constructor.
-data DescribeDeploymentsResponse = DescribeDeploymentsResponse'
+data DescribeDeploymentsResponse a = DescribeDeploymentsResponse'
     { _ddrsDeployments    :: !(Maybe [Deployment])
     , _ddrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data DescribeDeploymentsResponse = DescribeDeploymentsResponse'
 -- * 'ddrsResponseStatus'
 describeDeploymentsResponse
     :: Int -- ^ 'ddrsResponseStatus'
-    -> DescribeDeploymentsResponse
+    -> DescribeDeploymentsResponse (a)
 describeDeploymentsResponse pResponseStatus_ =
     DescribeDeploymentsResponse'
     { _ddrsDeployments = Nothing
@@ -149,11 +149,11 @@ describeDeploymentsResponse pResponseStatus_ =
     }
 
 -- | An array of 'Deployment' objects that describe the deployments.
-ddrsDeployments :: Lens' DescribeDeploymentsResponse [Deployment]
+ddrsDeployments :: Lens' (DescribeDeploymentsResponse (a)) [Deployment]
 ddrsDeployments = lens _ddrsDeployments (\ s a -> s{_ddrsDeployments = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddrsResponseStatus :: Lens' DescribeDeploymentsResponse Int
+ddrsResponseStatus :: Lens' (DescribeDeploymentsResponse (a)) Int
 ddrsResponseStatus = lens _ddrsResponseStatus (\ s a -> s{_ddrsResponseStatus = a});
 
 instance NFData DescribeDeploymentsResponse

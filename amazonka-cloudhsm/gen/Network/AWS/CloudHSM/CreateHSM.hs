@@ -182,7 +182,7 @@ instance ToQuery CreateHSM where
 -- | Contains the output of the < CreateHsm> operation.
 --
 -- /See:/ 'createHSMResponse' smart constructor.
-data CreateHSMResponse = CreateHSMResponse'
+data CreateHSMResponse a = CreateHSMResponse'
     { _chrsHSMARN         :: !(Maybe Text)
     , _chrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -196,7 +196,7 @@ data CreateHSMResponse = CreateHSMResponse'
 -- * 'chrsResponseStatus'
 createHSMResponse
     :: Int -- ^ 'chrsResponseStatus'
-    -> CreateHSMResponse
+    -> CreateHSMResponse (a)
 createHSMResponse pResponseStatus_ =
     CreateHSMResponse'
     { _chrsHSMARN = Nothing
@@ -204,11 +204,11 @@ createHSMResponse pResponseStatus_ =
     }
 
 -- | The ARN of the HSM.
-chrsHSMARN :: Lens' CreateHSMResponse (Maybe Text)
+chrsHSMARN :: Lens' (CreateHSMResponse (a)) (Maybe Text)
 chrsHSMARN = lens _chrsHSMARN (\ s a -> s{_chrsHSMARN = a});
 
 -- | The response status code.
-chrsResponseStatus :: Lens' CreateHSMResponse Int
+chrsResponseStatus :: Lens' (CreateHSMResponse (a)) Int
 chrsResponseStatus = lens _chrsResponseStatus (\ s a -> s{_chrsResponseStatus = a});
 
 instance NFData CreateHSMResponse

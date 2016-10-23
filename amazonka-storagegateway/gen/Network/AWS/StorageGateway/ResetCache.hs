@@ -100,7 +100,7 @@ instance ToQuery ResetCache where
         toQuery = const mempty
 
 -- | /See:/ 'resetCacheResponse' smart constructor.
-data ResetCacheResponse = ResetCacheResponse'
+data ResetCacheResponse a = ResetCacheResponse'
     { _rcrsGatewayARN     :: !(Maybe Text)
     , _rcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -114,7 +114,7 @@ data ResetCacheResponse = ResetCacheResponse'
 -- * 'rcrsResponseStatus'
 resetCacheResponse
     :: Int -- ^ 'rcrsResponseStatus'
-    -> ResetCacheResponse
+    -> ResetCacheResponse (a)
 resetCacheResponse pResponseStatus_ =
     ResetCacheResponse'
     { _rcrsGatewayARN = Nothing
@@ -122,11 +122,11 @@ resetCacheResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rcrsGatewayARN :: Lens' ResetCacheResponse (Maybe Text)
+rcrsGatewayARN :: Lens' (ResetCacheResponse (a)) (Maybe Text)
 rcrsGatewayARN = lens _rcrsGatewayARN (\ s a -> s{_rcrsGatewayARN = a});
 
 -- | The response status code.
-rcrsResponseStatus :: Lens' ResetCacheResponse Int
+rcrsResponseStatus :: Lens' (ResetCacheResponse (a)) Int
 rcrsResponseStatus = lens _rcrsResponseStatus (\ s a -> s{_rcrsResponseStatus = a});
 
 instance NFData ResetCacheResponse

@@ -198,7 +198,7 @@ instance ToQuery ProvisionProduct where
         toQuery = const mempty
 
 -- | /See:/ 'provisionProductResponse' smart constructor.
-data ProvisionProductResponse = ProvisionProductResponse'
+data ProvisionProductResponse a = ProvisionProductResponse'
     { _pprsRecordDetail   :: !(Maybe RecordDetail)
     , _pprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -212,7 +212,7 @@ data ProvisionProductResponse = ProvisionProductResponse'
 -- * 'pprsResponseStatus'
 provisionProductResponse
     :: Int -- ^ 'pprsResponseStatus'
-    -> ProvisionProductResponse
+    -> ProvisionProductResponse (a)
 provisionProductResponse pResponseStatus_ =
     ProvisionProductResponse'
     { _pprsRecordDetail = Nothing
@@ -220,11 +220,11 @@ provisionProductResponse pResponseStatus_ =
     }
 
 -- | The detailed result of the < ProvisionProduct> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors that the request encountered.
-pprsRecordDetail :: Lens' ProvisionProductResponse (Maybe RecordDetail)
+pprsRecordDetail :: Lens' (ProvisionProductResponse (a)) (Maybe RecordDetail)
 pprsRecordDetail = lens _pprsRecordDetail (\ s a -> s{_pprsRecordDetail = a});
 
 -- | The response status code.
-pprsResponseStatus :: Lens' ProvisionProductResponse Int
+pprsResponseStatus :: Lens' (ProvisionProductResponse (a)) Int
 pprsResponseStatus = lens _pprsResponseStatus (\ s a -> s{_pprsResponseStatus = a});
 
 instance NFData ProvisionProductResponse

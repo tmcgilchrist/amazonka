@@ -109,7 +109,7 @@ instance ToQuery ListChangeSets where
 -- | The output for the < ListChangeSets> action.
 --
 -- /See:/ 'listChangeSetsResponse' smart constructor.
-data ListChangeSetsResponse = ListChangeSetsResponse'
+data ListChangeSetsResponse a = ListChangeSetsResponse'
     { _lcsrsNextToken      :: !(Maybe Text)
     , _lcsrsSummaries      :: !(Maybe [ChangeSetSummary])
     , _lcsrsResponseStatus :: !Int
@@ -126,7 +126,7 @@ data ListChangeSetsResponse = ListChangeSetsResponse'
 -- * 'lcsrsResponseStatus'
 listChangeSetsResponse
     :: Int -- ^ 'lcsrsResponseStatus'
-    -> ListChangeSetsResponse
+    -> ListChangeSetsResponse (a)
 listChangeSetsResponse pResponseStatus_ =
     ListChangeSetsResponse'
     { _lcsrsNextToken = Nothing
@@ -135,15 +135,15 @@ listChangeSetsResponse pResponseStatus_ =
     }
 
 -- | If the output exceeds 1 MB, a string that identifies the next page of change sets. If there is no additional page, this value is null.
-lcsrsNextToken :: Lens' ListChangeSetsResponse (Maybe Text)
+lcsrsNextToken :: Lens' (ListChangeSetsResponse (a)) (Maybe Text)
 lcsrsNextToken = lens _lcsrsNextToken (\ s a -> s{_lcsrsNextToken = a});
 
 -- | A list of 'ChangeSetSummary' structures that provides the ID and status of each change set for the specified stack.
-lcsrsSummaries :: Lens' ListChangeSetsResponse [ChangeSetSummary]
+lcsrsSummaries :: Lens' (ListChangeSetsResponse (a)) [ChangeSetSummary]
 lcsrsSummaries = lens _lcsrsSummaries (\ s a -> s{_lcsrsSummaries = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lcsrsResponseStatus :: Lens' ListChangeSetsResponse Int
+lcsrsResponseStatus :: Lens' (ListChangeSetsResponse (a)) Int
 lcsrsResponseStatus = lens _lcsrsResponseStatus (\ s a -> s{_lcsrsResponseStatus = a});
 
 instance NFData ListChangeSetsResponse

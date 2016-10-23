@@ -109,7 +109,7 @@ instance ToQuery GetModelTemplate where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings Mapping Templates>
 --
 -- /See:/ 'getModelTemplateResponse' smart constructor.
-data GetModelTemplateResponse = GetModelTemplateResponse'
+data GetModelTemplateResponse a = GetModelTemplateResponse'
     { _gmtrsValue          :: !(Maybe Text)
     , _gmtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -123,7 +123,7 @@ data GetModelTemplateResponse = GetModelTemplateResponse'
 -- * 'gmtrsResponseStatus'
 getModelTemplateResponse
     :: Int -- ^ 'gmtrsResponseStatus'
-    -> GetModelTemplateResponse
+    -> GetModelTemplateResponse (a)
 getModelTemplateResponse pResponseStatus_ =
     GetModelTemplateResponse'
     { _gmtrsValue = Nothing
@@ -131,11 +131,11 @@ getModelTemplateResponse pResponseStatus_ =
     }
 
 -- | The Apache <http://velocity.apache.org/engine/devel/vtl-reference-guide.html Velocity Template Language (VTL)> template content used for the template resource.
-gmtrsValue :: Lens' GetModelTemplateResponse (Maybe Text)
+gmtrsValue :: Lens' (GetModelTemplateResponse (a)) (Maybe Text)
 gmtrsValue = lens _gmtrsValue (\ s a -> s{_gmtrsValue = a});
 
 -- | The response status code.
-gmtrsResponseStatus :: Lens' GetModelTemplateResponse Int
+gmtrsResponseStatus :: Lens' (GetModelTemplateResponse (a)) Int
 gmtrsResponseStatus = lens _gmtrsResponseStatus (\ s a -> s{_gmtrsResponseStatus = a});
 
 instance NFData GetModelTemplateResponse

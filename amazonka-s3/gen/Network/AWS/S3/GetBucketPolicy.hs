@@ -88,7 +88,7 @@ instance ToQuery GetBucketPolicy where
         toQuery = const (mconcat ["policy"])
 
 -- | /See:/ 'getBucketPolicyResponse' smart constructor.
-data GetBucketPolicyResponse = GetBucketPolicyResponse'
+data GetBucketPolicyResponse a = GetBucketPolicyResponse'
     { _gbprsResponseStatus :: !Int
     , _gbprsPolicy         :: !(HashMap Text Value)
     } deriving (Eq,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetBucketPolicyResponse = GetBucketPolicyResponse'
 getBucketPolicyResponse
     :: Int -- ^ 'gbprsResponseStatus'
     -> HashMap Text Value -- ^ 'gbprsPolicy'
-    -> GetBucketPolicyResponse
+    -> GetBucketPolicyResponse (a)
 getBucketPolicyResponse pResponseStatus_ pPolicy_ =
     GetBucketPolicyResponse'
     { _gbprsResponseStatus = pResponseStatus_
@@ -111,11 +111,11 @@ getBucketPolicyResponse pResponseStatus_ pPolicy_ =
     }
 
 -- | The response status code.
-gbprsResponseStatus :: Lens' GetBucketPolicyResponse Int
+gbprsResponseStatus :: Lens' (GetBucketPolicyResponse (a)) Int
 gbprsResponseStatus = lens _gbprsResponseStatus (\ s a -> s{_gbprsResponseStatus = a});
 
 -- | The bucket policy as a JSON document.
-gbprsPolicy :: Lens' GetBucketPolicyResponse (HashMap Text Value)
+gbprsPolicy :: Lens' (GetBucketPolicyResponse (a)) (HashMap Text Value)
 gbprsPolicy = lens _gbprsPolicy (\ s a -> s{_gbprsPolicy = a});
 
 instance NFData GetBucketPolicyResponse

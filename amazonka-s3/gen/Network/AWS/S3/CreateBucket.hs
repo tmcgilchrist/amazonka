@@ -165,7 +165,7 @@ instance ToQuery CreateBucket where
         toQuery = const mempty
 
 -- | /See:/ 'createBucketResponse' smart constructor.
-data CreateBucketResponse = CreateBucketResponse'
+data CreateBucketResponse a = CreateBucketResponse'
     { _cbrsLocation       :: !(Maybe Text)
     , _cbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -179,7 +179,7 @@ data CreateBucketResponse = CreateBucketResponse'
 -- * 'cbrsResponseStatus'
 createBucketResponse
     :: Int -- ^ 'cbrsResponseStatus'
-    -> CreateBucketResponse
+    -> CreateBucketResponse (a)
 createBucketResponse pResponseStatus_ =
     CreateBucketResponse'
     { _cbrsLocation = Nothing
@@ -187,11 +187,11 @@ createBucketResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cbrsLocation :: Lens' CreateBucketResponse (Maybe Text)
+cbrsLocation :: Lens' (CreateBucketResponse (a)) (Maybe Text)
 cbrsLocation = lens _cbrsLocation (\ s a -> s{_cbrsLocation = a});
 
 -- | The response status code.
-cbrsResponseStatus :: Lens' CreateBucketResponse Int
+cbrsResponseStatus :: Lens' (CreateBucketResponse (a)) Int
 cbrsResponseStatus = lens _cbrsResponseStatus (\ s a -> s{_cbrsResponseStatus = a});
 
 instance NFData CreateBucketResponse

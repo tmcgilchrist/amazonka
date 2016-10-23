@@ -138,7 +138,7 @@ instance ToQuery DescribeEnvironmentHealth where
 -- | See the example below for a sample response.
 --
 -- /See:/ 'describeEnvironmentHealthResponse' smart constructor.
-data DescribeEnvironmentHealthResponse = DescribeEnvironmentHealthResponse'
+data DescribeEnvironmentHealthResponse a = DescribeEnvironmentHealthResponse'
     { _dehrsStatus             :: !(Maybe EnvironmentHealth)
     , _dehrsCauses             :: !(Maybe [Text])
     , _dehrsApplicationMetrics :: !(Maybe ApplicationMetrics)
@@ -173,7 +173,7 @@ data DescribeEnvironmentHealthResponse = DescribeEnvironmentHealthResponse'
 -- * 'dehrsResponseStatus'
 describeEnvironmentHealthResponse
     :: Int -- ^ 'dehrsResponseStatus'
-    -> DescribeEnvironmentHealthResponse
+    -> DescribeEnvironmentHealthResponse (a)
 describeEnvironmentHealthResponse pResponseStatus_ =
     DescribeEnvironmentHealthResponse'
     { _dehrsStatus = Nothing
@@ -188,39 +188,39 @@ describeEnvironmentHealthResponse pResponseStatus_ =
     }
 
 -- | Returns the health status value of the environment. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses>.
-dehrsStatus :: Lens' DescribeEnvironmentHealthResponse (Maybe EnvironmentHealth)
+dehrsStatus :: Lens' (DescribeEnvironmentHealthResponse (a)) (Maybe EnvironmentHealth)
 dehrsStatus = lens _dehrsStatus (\ s a -> s{_dehrsStatus = a});
 
 -- | Returns potential causes for the reported status.
-dehrsCauses :: Lens' DescribeEnvironmentHealthResponse [Text]
+dehrsCauses :: Lens' (DescribeEnvironmentHealthResponse (a)) [Text]
 dehrsCauses = lens _dehrsCauses (\ s a -> s{_dehrsCauses = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-dehrsApplicationMetrics :: Lens' DescribeEnvironmentHealthResponse (Maybe ApplicationMetrics)
+dehrsApplicationMetrics :: Lens' (DescribeEnvironmentHealthResponse (a)) (Maybe ApplicationMetrics)
 dehrsApplicationMetrics = lens _dehrsApplicationMetrics (\ s a -> s{_dehrsApplicationMetrics = a});
 
 -- | Returns the color indicator that tells you information about the health of the environment. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses>.
-dehrsColor :: Lens' DescribeEnvironmentHealthResponse (Maybe Text)
+dehrsColor :: Lens' (DescribeEnvironmentHealthResponse (a)) (Maybe Text)
 dehrsColor = lens _dehrsColor (\ s a -> s{_dehrsColor = a});
 
 -- | The AWS Elastic Beanstalk environment name.
-dehrsEnvironmentName :: Lens' DescribeEnvironmentHealthResponse (Maybe Text)
+dehrsEnvironmentName :: Lens' (DescribeEnvironmentHealthResponse (a)) (Maybe Text)
 dehrsEnvironmentName = lens _dehrsEnvironmentName (\ s a -> s{_dehrsEnvironmentName = a});
 
 -- | Contains the response body with information about the health of the environment.
-dehrsHealthStatus :: Lens' DescribeEnvironmentHealthResponse (Maybe Text)
+dehrsHealthStatus :: Lens' (DescribeEnvironmentHealthResponse (a)) (Maybe Text)
 dehrsHealthStatus = lens _dehrsHealthStatus (\ s a -> s{_dehrsHealthStatus = a});
 
 -- | Undocumented member.
-dehrsInstancesHealth :: Lens' DescribeEnvironmentHealthResponse (Maybe InstanceHealthSummary)
+dehrsInstancesHealth :: Lens' (DescribeEnvironmentHealthResponse (a)) (Maybe InstanceHealthSummary)
 dehrsInstancesHealth = lens _dehrsInstancesHealth (\ s a -> s{_dehrsInstancesHealth = a});
 
 -- | The date and time the information was last refreshed.
-dehrsRefreshedAt :: Lens' DescribeEnvironmentHealthResponse (Maybe UTCTime)
+dehrsRefreshedAt :: Lens' (DescribeEnvironmentHealthResponse (a)) (Maybe UTCTime)
 dehrsRefreshedAt = lens _dehrsRefreshedAt (\ s a -> s{_dehrsRefreshedAt = a}) . mapping _Time;
 
 -- | The response status code.
-dehrsResponseStatus :: Lens' DescribeEnvironmentHealthResponse Int
+dehrsResponseStatus :: Lens' (DescribeEnvironmentHealthResponse (a)) Int
 dehrsResponseStatus = lens _dehrsResponseStatus (\ s a -> s{_dehrsResponseStatus = a});
 
 instance NFData DescribeEnvironmentHealthResponse

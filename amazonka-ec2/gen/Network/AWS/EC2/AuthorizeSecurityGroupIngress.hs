@@ -192,14 +192,14 @@ instance ToQuery AuthorizeSecurityGroupIngress where
                "DryRun" =: _asgiDryRun]
 
 -- | /See:/ 'authorizeSecurityGroupIngressResponse' smart constructor.
-data AuthorizeSecurityGroupIngressResponse =
+data AuthorizeSecurityGroupIngressResponse a =
     AuthorizeSecurityGroupIngressResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AuthorizeSecurityGroupIngressResponse' with the minimum fields required to make a request.
 --
 authorizeSecurityGroupIngressResponse
-    :: AuthorizeSecurityGroupIngressResponse
+    :: AuthorizeSecurityGroupIngressResponse (a)
 authorizeSecurityGroupIngressResponse = AuthorizeSecurityGroupIngressResponse'
 
 instance NFData AuthorizeSecurityGroupIngressResponse

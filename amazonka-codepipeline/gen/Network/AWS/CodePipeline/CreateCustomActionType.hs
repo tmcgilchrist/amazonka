@@ -178,7 +178,7 @@ instance ToQuery CreateCustomActionType where
 -- | Represents the output of a create custom action operation.
 --
 -- /See:/ 'createCustomActionTypeResponse' smart constructor.
-data CreateCustomActionTypeResponse = CreateCustomActionTypeResponse'
+data CreateCustomActionTypeResponse a = CreateCustomActionTypeResponse'
     { _ccatrsResponseStatus :: !Int
     , _ccatrsActionType     :: !ActionType
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -193,7 +193,7 @@ data CreateCustomActionTypeResponse = CreateCustomActionTypeResponse'
 createCustomActionTypeResponse
     :: Int -- ^ 'ccatrsResponseStatus'
     -> ActionType -- ^ 'ccatrsActionType'
-    -> CreateCustomActionTypeResponse
+    -> CreateCustomActionTypeResponse (a)
 createCustomActionTypeResponse pResponseStatus_ pActionType_ =
     CreateCustomActionTypeResponse'
     { _ccatrsResponseStatus = pResponseStatus_
@@ -201,11 +201,11 @@ createCustomActionTypeResponse pResponseStatus_ pActionType_ =
     }
 
 -- | The response status code.
-ccatrsResponseStatus :: Lens' CreateCustomActionTypeResponse Int
+ccatrsResponseStatus :: Lens' (CreateCustomActionTypeResponse (a)) Int
 ccatrsResponseStatus = lens _ccatrsResponseStatus (\ s a -> s{_ccatrsResponseStatus = a});
 
 -- | Undocumented member.
-ccatrsActionType :: Lens' CreateCustomActionTypeResponse ActionType
+ccatrsActionType :: Lens' (CreateCustomActionTypeResponse (a)) ActionType
 ccatrsActionType = lens _ccatrsActionType (\ s a -> s{_ccatrsActionType = a});
 
 instance NFData CreateCustomActionTypeResponse

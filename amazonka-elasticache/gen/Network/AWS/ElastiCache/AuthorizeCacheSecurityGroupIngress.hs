@@ -126,7 +126,7 @@ instance ToQuery AuthorizeCacheSecurityGroupIngress
                  _acsgiEC2SecurityGroupOwnerId]
 
 -- | /See:/ 'authorizeCacheSecurityGroupIngressResponse' smart constructor.
-data AuthorizeCacheSecurityGroupIngressResponse = AuthorizeCacheSecurityGroupIngressResponse'
+data AuthorizeCacheSecurityGroupIngressResponse a = AuthorizeCacheSecurityGroupIngressResponse'
     { _acsgirsCacheSecurityGroup :: !(Maybe CacheSecurityGroup)
     , _acsgirsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data AuthorizeCacheSecurityGroupIngressResponse = AuthorizeCacheSecurityGroupIng
 -- * 'acsgirsResponseStatus'
 authorizeCacheSecurityGroupIngressResponse
     :: Int -- ^ 'acsgirsResponseStatus'
-    -> AuthorizeCacheSecurityGroupIngressResponse
+    -> AuthorizeCacheSecurityGroupIngressResponse (a)
 authorizeCacheSecurityGroupIngressResponse pResponseStatus_ =
     AuthorizeCacheSecurityGroupIngressResponse'
     { _acsgirsCacheSecurityGroup = Nothing
@@ -148,11 +148,11 @@ authorizeCacheSecurityGroupIngressResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-acsgirsCacheSecurityGroup :: Lens' AuthorizeCacheSecurityGroupIngressResponse (Maybe CacheSecurityGroup)
+acsgirsCacheSecurityGroup :: Lens' (AuthorizeCacheSecurityGroupIngressResponse (a)) (Maybe CacheSecurityGroup)
 acsgirsCacheSecurityGroup = lens _acsgirsCacheSecurityGroup (\ s a -> s{_acsgirsCacheSecurityGroup = a});
 
 -- | The response status code.
-acsgirsResponseStatus :: Lens' AuthorizeCacheSecurityGroupIngressResponse Int
+acsgirsResponseStatus :: Lens' (AuthorizeCacheSecurityGroupIngressResponse (a)) Int
 acsgirsResponseStatus = lens _acsgirsResponseStatus (\ s a -> s{_acsgirsResponseStatus = a});
 
 instance NFData

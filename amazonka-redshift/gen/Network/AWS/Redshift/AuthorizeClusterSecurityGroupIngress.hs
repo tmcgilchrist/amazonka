@@ -143,7 +143,7 @@ instance ToQuery AuthorizeClusterSecurityGroupIngress
                  _acsgiClusterSecurityGroupName]
 
 -- | /See:/ 'authorizeClusterSecurityGroupIngressResponse' smart constructor.
-data AuthorizeClusterSecurityGroupIngressResponse = AuthorizeClusterSecurityGroupIngressResponse'
+data AuthorizeClusterSecurityGroupIngressResponse a = AuthorizeClusterSecurityGroupIngressResponse'
     { _acsgirsClusterSecurityGroup :: !(Maybe ClusterSecurityGroup)
     , _acsgirsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -157,7 +157,7 @@ data AuthorizeClusterSecurityGroupIngressResponse = AuthorizeClusterSecurityGrou
 -- * 'acsgirsResponseStatus'
 authorizeClusterSecurityGroupIngressResponse
     :: Int -- ^ 'acsgirsResponseStatus'
-    -> AuthorizeClusterSecurityGroupIngressResponse
+    -> AuthorizeClusterSecurityGroupIngressResponse (a)
 authorizeClusterSecurityGroupIngressResponse pResponseStatus_ =
     AuthorizeClusterSecurityGroupIngressResponse'
     { _acsgirsClusterSecurityGroup = Nothing
@@ -165,11 +165,11 @@ authorizeClusterSecurityGroupIngressResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-acsgirsClusterSecurityGroup :: Lens' AuthorizeClusterSecurityGroupIngressResponse (Maybe ClusterSecurityGroup)
+acsgirsClusterSecurityGroup :: Lens' (AuthorizeClusterSecurityGroupIngressResponse (a)) (Maybe ClusterSecurityGroup)
 acsgirsClusterSecurityGroup = lens _acsgirsClusterSecurityGroup (\ s a -> s{_acsgirsClusterSecurityGroup = a});
 
 -- | The response status code.
-acsgirsResponseStatus :: Lens' AuthorizeClusterSecurityGroupIngressResponse Int
+acsgirsResponseStatus :: Lens' (AuthorizeClusterSecurityGroupIngressResponse (a)) Int
 acsgirsResponseStatus = lens _acsgirsResponseStatus (\ s a -> s{_acsgirsResponseStatus = a});
 
 instance NFData

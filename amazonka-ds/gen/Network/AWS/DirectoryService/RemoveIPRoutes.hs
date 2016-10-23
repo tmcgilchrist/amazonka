@@ -108,7 +108,7 @@ instance ToQuery RemoveIPRoutes where
         toQuery = const mempty
 
 -- | /See:/ 'removeIPRoutesResponse' smart constructor.
-newtype RemoveIPRoutesResponse = RemoveIPRoutesResponse'
+newtype RemoveIPRoutesResponse a = RemoveIPRoutesResponse'
     { _rirrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -119,14 +119,14 @@ newtype RemoveIPRoutesResponse = RemoveIPRoutesResponse'
 -- * 'rirrsResponseStatus'
 removeIPRoutesResponse
     :: Int -- ^ 'rirrsResponseStatus'
-    -> RemoveIPRoutesResponse
+    -> RemoveIPRoutesResponse (a)
 removeIPRoutesResponse pResponseStatus_ =
     RemoveIPRoutesResponse'
     { _rirrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-rirrsResponseStatus :: Lens' RemoveIPRoutesResponse Int
+rirrsResponseStatus :: Lens' (RemoveIPRoutesResponse (a)) Int
 rirrsResponseStatus = lens _rirrsResponseStatus (\ s a -> s{_rirrsResponseStatus = a});
 
 instance NFData RemoveIPRoutesResponse

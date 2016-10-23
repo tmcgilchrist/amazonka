@@ -140,7 +140,7 @@ instance ToQuery ValidatePipelineDefinition where
 -- | Contains the output of ValidatePipelineDefinition.
 --
 -- /See:/ 'validatePipelineDefinitionResponse' smart constructor.
-data ValidatePipelineDefinitionResponse = ValidatePipelineDefinitionResponse'
+data ValidatePipelineDefinitionResponse a = ValidatePipelineDefinitionResponse'
     { _vpdrsValidationErrors   :: !(Maybe [ValidationError])
     , _vpdrsValidationWarnings :: !(Maybe [ValidationWarning])
     , _vpdrsResponseStatus     :: !Int
@@ -161,7 +161,7 @@ data ValidatePipelineDefinitionResponse = ValidatePipelineDefinitionResponse'
 validatePipelineDefinitionResponse
     :: Int -- ^ 'vpdrsResponseStatus'
     -> Bool -- ^ 'vpdrsErrored'
-    -> ValidatePipelineDefinitionResponse
+    -> ValidatePipelineDefinitionResponse (a)
 validatePipelineDefinitionResponse pResponseStatus_ pErrored_ =
     ValidatePipelineDefinitionResponse'
     { _vpdrsValidationErrors = Nothing
@@ -171,19 +171,19 @@ validatePipelineDefinitionResponse pResponseStatus_ pErrored_ =
     }
 
 -- | Any validation errors that were found.
-vpdrsValidationErrors :: Lens' ValidatePipelineDefinitionResponse [ValidationError]
+vpdrsValidationErrors :: Lens' (ValidatePipelineDefinitionResponse (a)) [ValidationError]
 vpdrsValidationErrors = lens _vpdrsValidationErrors (\ s a -> s{_vpdrsValidationErrors = a}) . _Default . _Coerce;
 
 -- | Any validation warnings that were found.
-vpdrsValidationWarnings :: Lens' ValidatePipelineDefinitionResponse [ValidationWarning]
+vpdrsValidationWarnings :: Lens' (ValidatePipelineDefinitionResponse (a)) [ValidationWarning]
 vpdrsValidationWarnings = lens _vpdrsValidationWarnings (\ s a -> s{_vpdrsValidationWarnings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-vpdrsResponseStatus :: Lens' ValidatePipelineDefinitionResponse Int
+vpdrsResponseStatus :: Lens' (ValidatePipelineDefinitionResponse (a)) Int
 vpdrsResponseStatus = lens _vpdrsResponseStatus (\ s a -> s{_vpdrsResponseStatus = a});
 
 -- | Indicates whether there were validation errors.
-vpdrsErrored :: Lens' ValidatePipelineDefinitionResponse Bool
+vpdrsErrored :: Lens' (ValidatePipelineDefinitionResponse (a)) Bool
 vpdrsErrored = lens _vpdrsErrored (\ s a -> s{_vpdrsErrored = a});
 
 instance NFData ValidatePipelineDefinitionResponse

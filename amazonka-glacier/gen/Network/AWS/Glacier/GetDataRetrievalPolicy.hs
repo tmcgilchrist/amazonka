@@ -95,7 +95,7 @@ instance ToQuery GetDataRetrievalPolicy where
 -- | Contains the Amazon Glacier response to the 'GetDataRetrievalPolicy' request.
 --
 -- /See:/ 'getDataRetrievalPolicyResponse' smart constructor.
-data GetDataRetrievalPolicyResponse = GetDataRetrievalPolicyResponse'
+data GetDataRetrievalPolicyResponse a = GetDataRetrievalPolicyResponse'
     { _gdrprsPolicy         :: !(Maybe DataRetrievalPolicy)
     , _gdrprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -109,7 +109,7 @@ data GetDataRetrievalPolicyResponse = GetDataRetrievalPolicyResponse'
 -- * 'gdrprsResponseStatus'
 getDataRetrievalPolicyResponse
     :: Int -- ^ 'gdrprsResponseStatus'
-    -> GetDataRetrievalPolicyResponse
+    -> GetDataRetrievalPolicyResponse (a)
 getDataRetrievalPolicyResponse pResponseStatus_ =
     GetDataRetrievalPolicyResponse'
     { _gdrprsPolicy = Nothing
@@ -117,11 +117,11 @@ getDataRetrievalPolicyResponse pResponseStatus_ =
     }
 
 -- | Contains the returned data retrieval policy in JSON format.
-gdrprsPolicy :: Lens' GetDataRetrievalPolicyResponse (Maybe DataRetrievalPolicy)
+gdrprsPolicy :: Lens' (GetDataRetrievalPolicyResponse (a)) (Maybe DataRetrievalPolicy)
 gdrprsPolicy = lens _gdrprsPolicy (\ s a -> s{_gdrprsPolicy = a});
 
 -- | The response status code.
-gdrprsResponseStatus :: Lens' GetDataRetrievalPolicyResponse Int
+gdrprsResponseStatus :: Lens' (GetDataRetrievalPolicyResponse (a)) Int
 gdrprsResponseStatus = lens _gdrprsResponseStatus (\ s a -> s{_gdrprsResponseStatus = a});
 
 instance NFData GetDataRetrievalPolicyResponse

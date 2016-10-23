@@ -107,7 +107,7 @@ instance ToQuery DeleteCacheCluster where
                "CacheClusterId" =: _dccCacheClusterId]
 
 -- | /See:/ 'deleteCacheClusterResponse' smart constructor.
-data DeleteCacheClusterResponse = DeleteCacheClusterResponse'
+data DeleteCacheClusterResponse a = DeleteCacheClusterResponse'
     { _dccrsCacheCluster   :: !(Maybe CacheCluster)
     , _dccrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DeleteCacheClusterResponse = DeleteCacheClusterResponse'
 -- * 'dccrsResponseStatus'
 deleteCacheClusterResponse
     :: Int -- ^ 'dccrsResponseStatus'
-    -> DeleteCacheClusterResponse
+    -> DeleteCacheClusterResponse (a)
 deleteCacheClusterResponse pResponseStatus_ =
     DeleteCacheClusterResponse'
     { _dccrsCacheCluster = Nothing
@@ -129,11 +129,11 @@ deleteCacheClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dccrsCacheCluster :: Lens' DeleteCacheClusterResponse (Maybe CacheCluster)
+dccrsCacheCluster :: Lens' (DeleteCacheClusterResponse (a)) (Maybe CacheCluster)
 dccrsCacheCluster = lens _dccrsCacheCluster (\ s a -> s{_dccrsCacheCluster = a});
 
 -- | The response status code.
-dccrsResponseStatus :: Lens' DeleteCacheClusterResponse Int
+dccrsResponseStatus :: Lens' (DeleteCacheClusterResponse (a)) Int
 dccrsResponseStatus = lens _dccrsResponseStatus (\ s a -> s{_dccrsResponseStatus = a});
 
 instance NFData DeleteCacheClusterResponse

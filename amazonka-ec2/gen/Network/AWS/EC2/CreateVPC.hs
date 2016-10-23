@@ -124,7 +124,7 @@ instance ToQuery CreateVPC where
 -- | Contains the output of CreateVpc.
 --
 -- /See:/ 'createVPCResponse' smart constructor.
-data CreateVPCResponse = CreateVPCResponse'
+data CreateVPCResponse a = CreateVPCResponse'
     { _cvrsVPC            :: !(Maybe VPC)
     , _cvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data CreateVPCResponse = CreateVPCResponse'
 -- * 'cvrsResponseStatus'
 createVPCResponse
     :: Int -- ^ 'cvrsResponseStatus'
-    -> CreateVPCResponse
+    -> CreateVPCResponse (a)
 createVPCResponse pResponseStatus_ =
     CreateVPCResponse'
     { _cvrsVPC = Nothing
@@ -146,11 +146,11 @@ createVPCResponse pResponseStatus_ =
     }
 
 -- | Information about the VPC.
-cvrsVPC :: Lens' CreateVPCResponse (Maybe VPC)
+cvrsVPC :: Lens' (CreateVPCResponse (a)) (Maybe VPC)
 cvrsVPC = lens _cvrsVPC (\ s a -> s{_cvrsVPC = a});
 
 -- | The response status code.
-cvrsResponseStatus :: Lens' CreateVPCResponse Int
+cvrsResponseStatus :: Lens' (CreateVPCResponse (a)) Int
 cvrsResponseStatus = lens _cvrsResponseStatus (\ s a -> s{_cvrsResponseStatus = a});
 
 instance NFData CreateVPCResponse

@@ -170,7 +170,7 @@ instance ToQuery CreateUpload where
 -- | Represents the result of a create upload request.
 --
 -- /See:/ 'createUploadResponse' smart constructor.
-data CreateUploadResponse = CreateUploadResponse'
+data CreateUploadResponse a = CreateUploadResponse'
     { _cursUpload         :: !(Maybe Upload)
     , _cursResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -184,7 +184,7 @@ data CreateUploadResponse = CreateUploadResponse'
 -- * 'cursResponseStatus'
 createUploadResponse
     :: Int -- ^ 'cursResponseStatus'
-    -> CreateUploadResponse
+    -> CreateUploadResponse (a)
 createUploadResponse pResponseStatus_ =
     CreateUploadResponse'
     { _cursUpload = Nothing
@@ -192,11 +192,11 @@ createUploadResponse pResponseStatus_ =
     }
 
 -- | The newly created upload.
-cursUpload :: Lens' CreateUploadResponse (Maybe Upload)
+cursUpload :: Lens' (CreateUploadResponse (a)) (Maybe Upload)
 cursUpload = lens _cursUpload (\ s a -> s{_cursUpload = a});
 
 -- | The response status code.
-cursResponseStatus :: Lens' CreateUploadResponse Int
+cursResponseStatus :: Lens' (CreateUploadResponse (a)) Int
 cursResponseStatus = lens _cursResponseStatus (\ s a -> s{_cursResponseStatus = a});
 
 instance NFData CreateUploadResponse

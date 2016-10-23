@@ -111,7 +111,7 @@ instance ToQuery CreateTags where
 -- | The result of the < CreateTags> operation.
 --
 -- /See:/ 'createTagsResponse' smart constructor.
-newtype CreateTagsResponse = CreateTagsResponse'
+newtype CreateTagsResponse a = CreateTagsResponse'
     { _ctrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -122,14 +122,14 @@ newtype CreateTagsResponse = CreateTagsResponse'
 -- * 'ctrsResponseStatus'
 createTagsResponse
     :: Int -- ^ 'ctrsResponseStatus'
-    -> CreateTagsResponse
+    -> CreateTagsResponse (a)
 createTagsResponse pResponseStatus_ =
     CreateTagsResponse'
     { _ctrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ctrsResponseStatus :: Lens' CreateTagsResponse Int
+ctrsResponseStatus :: Lens' (CreateTagsResponse (a)) Int
 ctrsResponseStatus = lens _ctrsResponseStatus (\ s a -> s{_ctrsResponseStatus = a});
 
 instance NFData CreateTagsResponse

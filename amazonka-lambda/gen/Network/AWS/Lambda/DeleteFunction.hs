@@ -104,14 +104,14 @@ instance ToQuery DeleteFunction where
           = mconcat ["Qualifier" =: _dfQualifier]
 
 -- | /See:/ 'deleteFunctionResponse' smart constructor.
-data DeleteFunctionResponse =
+data DeleteFunctionResponse a =
     DeleteFunctionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteFunctionResponse' with the minimum fields required to make a request.
 --
 deleteFunctionResponse
-    :: DeleteFunctionResponse
+    :: DeleteFunctionResponse (a)
 deleteFunctionResponse = DeleteFunctionResponse'
 
 instance NFData DeleteFunctionResponse

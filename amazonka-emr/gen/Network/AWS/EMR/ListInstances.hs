@@ -155,7 +155,7 @@ instance ToQuery ListInstances where
 -- | This output contains the list of instances.
 --
 -- /See:/ 'listInstancesResponse' smart constructor.
-data ListInstancesResponse = ListInstancesResponse'
+data ListInstancesResponse a = ListInstancesResponse'
     { _lirsMarker         :: !(Maybe Text)
     , _lirsInstances      :: !(Maybe [Instance])
     , _lirsResponseStatus :: !Int
@@ -172,7 +172,7 @@ data ListInstancesResponse = ListInstancesResponse'
 -- * 'lirsResponseStatus'
 listInstancesResponse
     :: Int -- ^ 'lirsResponseStatus'
-    -> ListInstancesResponse
+    -> ListInstancesResponse (a)
 listInstancesResponse pResponseStatus_ =
     ListInstancesResponse'
     { _lirsMarker = Nothing
@@ -181,15 +181,15 @@ listInstancesResponse pResponseStatus_ =
     }
 
 -- | The pagination token that indicates the next set of results to retrieve.
-lirsMarker :: Lens' ListInstancesResponse (Maybe Text)
+lirsMarker :: Lens' (ListInstancesResponse (a)) (Maybe Text)
 lirsMarker = lens _lirsMarker (\ s a -> s{_lirsMarker = a});
 
 -- | The list of instances for the cluster and given filters.
-lirsInstances :: Lens' ListInstancesResponse [Instance]
+lirsInstances :: Lens' (ListInstancesResponse (a)) [Instance]
 lirsInstances = lens _lirsInstances (\ s a -> s{_lirsInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lirsResponseStatus :: Lens' ListInstancesResponse Int
+lirsResponseStatus :: Lens' (ListInstancesResponse (a)) Int
 lirsResponseStatus = lens _lirsResponseStatus (\ s a -> s{_lirsResponseStatus = a});
 
 instance NFData ListInstancesResponse

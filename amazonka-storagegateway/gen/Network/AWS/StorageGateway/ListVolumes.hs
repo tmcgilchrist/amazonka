@@ -142,7 +142,7 @@ instance ToQuery ListVolumes where
         toQuery = const mempty
 
 -- | /See:/ 'listVolumesResponse' smart constructor.
-data ListVolumesResponse = ListVolumesResponse'
+data ListVolumesResponse a = ListVolumesResponse'
     { _lvrsGatewayARN     :: !(Maybe Text)
     , _lvrsMarker         :: !(Maybe Text)
     , _lvrsVolumeInfos    :: !(Maybe [VolumeInfo])
@@ -162,7 +162,7 @@ data ListVolumesResponse = ListVolumesResponse'
 -- * 'lvrsResponseStatus'
 listVolumesResponse
     :: Int -- ^ 'lvrsResponseStatus'
-    -> ListVolumesResponse
+    -> ListVolumesResponse (a)
 listVolumesResponse pResponseStatus_ =
     ListVolumesResponse'
     { _lvrsGatewayARN = Nothing
@@ -172,19 +172,19 @@ listVolumesResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-lvrsGatewayARN :: Lens' ListVolumesResponse (Maybe Text)
+lvrsGatewayARN :: Lens' (ListVolumesResponse (a)) (Maybe Text)
 lvrsGatewayARN = lens _lvrsGatewayARN (\ s a -> s{_lvrsGatewayARN = a});
 
 -- | Undocumented member.
-lvrsMarker :: Lens' ListVolumesResponse (Maybe Text)
+lvrsMarker :: Lens' (ListVolumesResponse (a)) (Maybe Text)
 lvrsMarker = lens _lvrsMarker (\ s a -> s{_lvrsMarker = a});
 
 -- | Undocumented member.
-lvrsVolumeInfos :: Lens' ListVolumesResponse [VolumeInfo]
+lvrsVolumeInfos :: Lens' (ListVolumesResponse (a)) [VolumeInfo]
 lvrsVolumeInfos = lens _lvrsVolumeInfos (\ s a -> s{_lvrsVolumeInfos = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lvrsResponseStatus :: Lens' ListVolumesResponse Int
+lvrsResponseStatus :: Lens' (ListVolumesResponse (a)) Int
 lvrsResponseStatus = lens _lvrsResponseStatus (\ s a -> s{_lvrsResponseStatus = a});
 
 instance NFData ListVolumesResponse

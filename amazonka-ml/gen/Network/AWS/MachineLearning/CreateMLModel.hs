@@ -200,7 +200,7 @@ instance ToQuery CreateMLModel where
 -- The 'CreateMLModel' operation is asynchronous. You can poll for status updates by using the 'GetMLModel' operation and checking the 'Status' parameter.
 --
 -- /See:/ 'createMLModelResponse' smart constructor.
-data CreateMLModelResponse = CreateMLModelResponse'
+data CreateMLModelResponse a = CreateMLModelResponse'
     { _cmlmrsMLModelId      :: !(Maybe Text)
     , _cmlmrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -214,7 +214,7 @@ data CreateMLModelResponse = CreateMLModelResponse'
 -- * 'cmlmrsResponseStatus'
 createMLModelResponse
     :: Int -- ^ 'cmlmrsResponseStatus'
-    -> CreateMLModelResponse
+    -> CreateMLModelResponse (a)
 createMLModelResponse pResponseStatus_ =
     CreateMLModelResponse'
     { _cmlmrsMLModelId = Nothing
@@ -222,11 +222,11 @@ createMLModelResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the 'MLModel'. This value should be identical to the value of the 'MLModelId' in the request.
-cmlmrsMLModelId :: Lens' CreateMLModelResponse (Maybe Text)
+cmlmrsMLModelId :: Lens' (CreateMLModelResponse (a)) (Maybe Text)
 cmlmrsMLModelId = lens _cmlmrsMLModelId (\ s a -> s{_cmlmrsMLModelId = a});
 
 -- | The response status code.
-cmlmrsResponseStatus :: Lens' CreateMLModelResponse Int
+cmlmrsResponseStatus :: Lens' (CreateMLModelResponse (a)) Int
 cmlmrsResponseStatus = lens _cmlmrsResponseStatus (\ s a -> s{_cmlmrsResponseStatus = a});
 
 instance NFData CreateMLModelResponse

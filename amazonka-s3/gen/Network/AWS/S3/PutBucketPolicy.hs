@@ -104,14 +104,14 @@ instance ToQuery PutBucketPolicy where
         toQuery = const (mconcat ["policy"])
 
 -- | /See:/ 'putBucketPolicyResponse' smart constructor.
-data PutBucketPolicyResponse =
+data PutBucketPolicyResponse a =
     PutBucketPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketPolicyResponse' with the minimum fields required to make a request.
 --
 putBucketPolicyResponse
-    :: PutBucketPolicyResponse
+    :: PutBucketPolicyResponse (a)
 putBucketPolicyResponse = PutBucketPolicyResponse'
 
 instance NFData PutBucketPolicyResponse

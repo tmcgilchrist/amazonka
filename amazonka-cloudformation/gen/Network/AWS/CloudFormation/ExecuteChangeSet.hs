@@ -107,7 +107,7 @@ instance ToQuery ExecuteChangeSet where
 -- | The output for the < ExecuteChangeSet> action.
 --
 -- /See:/ 'executeChangeSetResponse' smart constructor.
-newtype ExecuteChangeSetResponse = ExecuteChangeSetResponse'
+newtype ExecuteChangeSetResponse a = ExecuteChangeSetResponse'
     { _ecsrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -118,14 +118,14 @@ newtype ExecuteChangeSetResponse = ExecuteChangeSetResponse'
 -- * 'ecsrsResponseStatus'
 executeChangeSetResponse
     :: Int -- ^ 'ecsrsResponseStatus'
-    -> ExecuteChangeSetResponse
+    -> ExecuteChangeSetResponse (a)
 executeChangeSetResponse pResponseStatus_ =
     ExecuteChangeSetResponse'
     { _ecsrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ecsrsResponseStatus :: Lens' ExecuteChangeSetResponse Int
+ecsrsResponseStatus :: Lens' (ExecuteChangeSetResponse (a)) Int
 ecsrsResponseStatus = lens _ecsrsResponseStatus (\ s a -> s{_ecsrsResponseStatus = a});
 
 instance NFData ExecuteChangeSetResponse

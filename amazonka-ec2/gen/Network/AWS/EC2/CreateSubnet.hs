@@ -137,7 +137,7 @@ instance ToQuery CreateSubnet where
 -- | Contains the output of CreateSubnet.
 --
 -- /See:/ 'createSubnetResponse' smart constructor.
-data CreateSubnetResponse = CreateSubnetResponse'
+data CreateSubnetResponse a = CreateSubnetResponse'
     { _crsSubnet         :: !(Maybe Subnet)
     , _crsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -151,7 +151,7 @@ data CreateSubnetResponse = CreateSubnetResponse'
 -- * 'crsResponseStatus'
 createSubnetResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CreateSubnetResponse
+    -> CreateSubnetResponse (a)
 createSubnetResponse pResponseStatus_ =
     CreateSubnetResponse'
     { _crsSubnet = Nothing
@@ -159,11 +159,11 @@ createSubnetResponse pResponseStatus_ =
     }
 
 -- | Information about the subnet.
-crsSubnet :: Lens' CreateSubnetResponse (Maybe Subnet)
+crsSubnet :: Lens' (CreateSubnetResponse (a)) (Maybe Subnet)
 crsSubnet = lens _crsSubnet (\ s a -> s{_crsSubnet = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CreateSubnetResponse Int
+crsResponseStatus :: Lens' (CreateSubnetResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CreateSubnetResponse

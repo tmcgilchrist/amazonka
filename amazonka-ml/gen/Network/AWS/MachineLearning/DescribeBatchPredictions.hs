@@ -233,7 +233,7 @@ instance ToQuery DescribeBatchPredictions where
 -- | Represents the output of a 'DescribeBatchPredictions' operation. The content is essentially a list of 'BatchPrediction's.
 --
 -- /See:/ 'describeBatchPredictionsResponse' smart constructor.
-data DescribeBatchPredictionsResponse = DescribeBatchPredictionsResponse'
+data DescribeBatchPredictionsResponse a = DescribeBatchPredictionsResponse'
     { _dbpsrsResults        :: !(Maybe [BatchPrediction])
     , _dbpsrsNextToken      :: !(Maybe Text)
     , _dbpsrsResponseStatus :: !Int
@@ -250,7 +250,7 @@ data DescribeBatchPredictionsResponse = DescribeBatchPredictionsResponse'
 -- * 'dbpsrsResponseStatus'
 describeBatchPredictionsResponse
     :: Int -- ^ 'dbpsrsResponseStatus'
-    -> DescribeBatchPredictionsResponse
+    -> DescribeBatchPredictionsResponse (a)
 describeBatchPredictionsResponse pResponseStatus_ =
     DescribeBatchPredictionsResponse'
     { _dbpsrsResults = Nothing
@@ -259,15 +259,15 @@ describeBatchPredictionsResponse pResponseStatus_ =
     }
 
 -- | A list of 'BatchPrediction' objects that meet the search criteria.
-dbpsrsResults :: Lens' DescribeBatchPredictionsResponse [BatchPrediction]
+dbpsrsResults :: Lens' (DescribeBatchPredictionsResponse (a)) [BatchPrediction]
 dbpsrsResults = lens _dbpsrsResults (\ s a -> s{_dbpsrsResults = a}) . _Default . _Coerce;
 
 -- | The ID of the next page in the paginated results that indicates at least one more page follows.
-dbpsrsNextToken :: Lens' DescribeBatchPredictionsResponse (Maybe Text)
+dbpsrsNextToken :: Lens' (DescribeBatchPredictionsResponse (a)) (Maybe Text)
 dbpsrsNextToken = lens _dbpsrsNextToken (\ s a -> s{_dbpsrsNextToken = a});
 
 -- | The response status code.
-dbpsrsResponseStatus :: Lens' DescribeBatchPredictionsResponse Int
+dbpsrsResponseStatus :: Lens' (DescribeBatchPredictionsResponse (a)) Int
 dbpsrsResponseStatus = lens _dbpsrsResponseStatus (\ s a -> s{_dbpsrsResponseStatus = a});
 
 instance NFData DescribeBatchPredictionsResponse

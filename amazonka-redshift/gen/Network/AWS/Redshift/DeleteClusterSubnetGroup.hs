@@ -90,14 +90,14 @@ instance ToQuery DeleteClusterSubnetGroup where
                  _dcsgClusterSubnetGroupName]
 
 -- | /See:/ 'deleteClusterSubnetGroupResponse' smart constructor.
-data DeleteClusterSubnetGroupResponse =
+data DeleteClusterSubnetGroupResponse a =
     DeleteClusterSubnetGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteClusterSubnetGroupResponse' with the minimum fields required to make a request.
 --
 deleteClusterSubnetGroupResponse
-    :: DeleteClusterSubnetGroupResponse
+    :: DeleteClusterSubnetGroupResponse (a)
 deleteClusterSubnetGroupResponse = DeleteClusterSubnetGroupResponse'
 
 instance NFData DeleteClusterSubnetGroupResponse

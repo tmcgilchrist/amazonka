@@ -101,14 +101,14 @@ instance ToQuery DetachGroupPolicy where
                "PolicyArn" =: _dgpPolicyARN]
 
 -- | /See:/ 'detachGroupPolicyResponse' smart constructor.
-data DetachGroupPolicyResponse =
+data DetachGroupPolicyResponse a =
     DetachGroupPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DetachGroupPolicyResponse' with the minimum fields required to make a request.
 --
 detachGroupPolicyResponse
-    :: DetachGroupPolicyResponse
+    :: DetachGroupPolicyResponse (a)
 detachGroupPolicyResponse = DetachGroupPolicyResponse'
 
 instance NFData DetachGroupPolicyResponse

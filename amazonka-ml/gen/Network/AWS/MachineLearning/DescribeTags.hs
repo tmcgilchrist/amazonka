@@ -116,7 +116,7 @@ instance ToQuery DescribeTags where
 -- | Amazon ML returns the following elements.
 --
 -- /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse = DescribeTagsResponse'
+data DescribeTagsResponse a = DescribeTagsResponse'
     { _dtrsResourceId     :: !(Maybe Text)
     , _dtrsResourceType   :: !(Maybe TaggableResourceType)
     , _dtrsTags           :: !(Maybe [Tag])
@@ -136,7 +136,7 @@ data DescribeTagsResponse = DescribeTagsResponse'
 -- * 'dtrsResponseStatus'
 describeTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
-    -> DescribeTagsResponse
+    -> DescribeTagsResponse (a)
 describeTagsResponse pResponseStatus_ =
     DescribeTagsResponse'
     { _dtrsResourceId = Nothing
@@ -146,19 +146,19 @@ describeTagsResponse pResponseStatus_ =
     }
 
 -- | The ID of the tagged ML object.
-dtrsResourceId :: Lens' DescribeTagsResponse (Maybe Text)
+dtrsResourceId :: Lens' (DescribeTagsResponse (a)) (Maybe Text)
 dtrsResourceId = lens _dtrsResourceId (\ s a -> s{_dtrsResourceId = a});
 
 -- | The type of the tagged ML object.
-dtrsResourceType :: Lens' DescribeTagsResponse (Maybe TaggableResourceType)
+dtrsResourceType :: Lens' (DescribeTagsResponse (a)) (Maybe TaggableResourceType)
 dtrsResourceType = lens _dtrsResourceType (\ s a -> s{_dtrsResourceType = a});
 
 -- | A list of tags associated with the ML object.
-dtrsTags :: Lens' DescribeTagsResponse [Tag]
+dtrsTags :: Lens' (DescribeTagsResponse (a)) [Tag]
 dtrsTags = lens _dtrsTags (\ s a -> s{_dtrsTags = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtrsResponseStatus :: Lens' DescribeTagsResponse Int
+dtrsResponseStatus :: Lens' (DescribeTagsResponse (a)) Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a});
 
 instance NFData DescribeTagsResponse

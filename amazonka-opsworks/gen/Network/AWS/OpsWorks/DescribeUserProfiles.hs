@@ -104,7 +104,7 @@ instance ToQuery DescribeUserProfiles where
 -- | Contains the response to a 'DescribeUserProfiles' request.
 --
 -- /See:/ 'describeUserProfilesResponse' smart constructor.
-data DescribeUserProfilesResponse = DescribeUserProfilesResponse'
+data DescribeUserProfilesResponse a = DescribeUserProfilesResponse'
     { _duprsUserProfiles   :: !(Maybe [UserProfile])
     , _duprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data DescribeUserProfilesResponse = DescribeUserProfilesResponse'
 -- * 'duprsResponseStatus'
 describeUserProfilesResponse
     :: Int -- ^ 'duprsResponseStatus'
-    -> DescribeUserProfilesResponse
+    -> DescribeUserProfilesResponse (a)
 describeUserProfilesResponse pResponseStatus_ =
     DescribeUserProfilesResponse'
     { _duprsUserProfiles = Nothing
@@ -126,11 +126,11 @@ describeUserProfilesResponse pResponseStatus_ =
     }
 
 -- | A 'Users' object that describes the specified users.
-duprsUserProfiles :: Lens' DescribeUserProfilesResponse [UserProfile]
+duprsUserProfiles :: Lens' (DescribeUserProfilesResponse (a)) [UserProfile]
 duprsUserProfiles = lens _duprsUserProfiles (\ s a -> s{_duprsUserProfiles = a}) . _Default . _Coerce;
 
 -- | The response status code.
-duprsResponseStatus :: Lens' DescribeUserProfilesResponse Int
+duprsResponseStatus :: Lens' (DescribeUserProfilesResponse (a)) Int
 duprsResponseStatus = lens _duprsResponseStatus (\ s a -> s{_duprsResponseStatus = a});
 
 instance NFData DescribeUserProfilesResponse

@@ -132,7 +132,7 @@ instance ToQuery CreateRule where
 -- | Contains the output of CreateRule.
 --
 -- /See:/ 'createRuleResponse' smart constructor.
-data CreateRuleResponse = CreateRuleResponse'
+data CreateRuleResponse a = CreateRuleResponse'
     { _crrsRules          :: !(Maybe [Rule])
     , _crrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -146,7 +146,7 @@ data CreateRuleResponse = CreateRuleResponse'
 -- * 'crrsResponseStatus'
 createRuleResponse
     :: Int -- ^ 'crrsResponseStatus'
-    -> CreateRuleResponse
+    -> CreateRuleResponse (a)
 createRuleResponse pResponseStatus_ =
     CreateRuleResponse'
     { _crrsRules = Nothing
@@ -154,11 +154,11 @@ createRuleResponse pResponseStatus_ =
     }
 
 -- | Information about the rule.
-crrsRules :: Lens' CreateRuleResponse [Rule]
+crrsRules :: Lens' (CreateRuleResponse (a)) [Rule]
 crrsRules = lens _crrsRules (\ s a -> s{_crrsRules = a}) . _Default . _Coerce;
 
 -- | The response status code.
-crrsResponseStatus :: Lens' CreateRuleResponse Int
+crrsResponseStatus :: Lens' (CreateRuleResponse (a)) Int
 crrsResponseStatus = lens _crrsResponseStatus (\ s a -> s{_crrsResponseStatus = a});
 
 instance NFData CreateRuleResponse

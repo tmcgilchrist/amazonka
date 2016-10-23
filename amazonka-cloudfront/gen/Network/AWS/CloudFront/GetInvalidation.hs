@@ -104,7 +104,7 @@ instance ToQuery GetInvalidation where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'getInvalidationResponse' smart constructor.
-data GetInvalidationResponse = GetInvalidationResponse'
+data GetInvalidationResponse a = GetInvalidationResponse'
     { _girsInvalidation   :: !(Maybe Invalidation)
     , _girsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data GetInvalidationResponse = GetInvalidationResponse'
 -- * 'girsResponseStatus'
 getInvalidationResponse
     :: Int -- ^ 'girsResponseStatus'
-    -> GetInvalidationResponse
+    -> GetInvalidationResponse (a)
 getInvalidationResponse pResponseStatus_ =
     GetInvalidationResponse'
     { _girsInvalidation = Nothing
@@ -126,11 +126,11 @@ getInvalidationResponse pResponseStatus_ =
     }
 
 -- | The invalidation\'s information.
-girsInvalidation :: Lens' GetInvalidationResponse (Maybe Invalidation)
+girsInvalidation :: Lens' (GetInvalidationResponse (a)) (Maybe Invalidation)
 girsInvalidation = lens _girsInvalidation (\ s a -> s{_girsInvalidation = a});
 
 -- | The response status code.
-girsResponseStatus :: Lens' GetInvalidationResponse Int
+girsResponseStatus :: Lens' (GetInvalidationResponse (a)) Int
 girsResponseStatus = lens _girsResponseStatus (\ s a -> s{_girsResponseStatus = a});
 
 instance NFData GetInvalidationResponse

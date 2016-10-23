@@ -120,7 +120,7 @@ instance ToQuery DescribeVirtualInterfaces where
 -- | A structure containing a list of virtual interfaces.
 --
 -- /See:/ 'describeVirtualInterfacesResponse' smart constructor.
-data DescribeVirtualInterfacesResponse = DescribeVirtualInterfacesResponse'
+data DescribeVirtualInterfacesResponse a = DescribeVirtualInterfacesResponse'
     { _dvisrsVirtualInterfaces :: !(Maybe [VirtualInterface])
     , _dvisrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data DescribeVirtualInterfacesResponse = DescribeVirtualInterfacesResponse'
 -- * 'dvisrsResponseStatus'
 describeVirtualInterfacesResponse
     :: Int -- ^ 'dvisrsResponseStatus'
-    -> DescribeVirtualInterfacesResponse
+    -> DescribeVirtualInterfacesResponse (a)
 describeVirtualInterfacesResponse pResponseStatus_ =
     DescribeVirtualInterfacesResponse'
     { _dvisrsVirtualInterfaces = Nothing
@@ -142,11 +142,11 @@ describeVirtualInterfacesResponse pResponseStatus_ =
     }
 
 -- | A list of virtual interfaces.
-dvisrsVirtualInterfaces :: Lens' DescribeVirtualInterfacesResponse [VirtualInterface]
+dvisrsVirtualInterfaces :: Lens' (DescribeVirtualInterfacesResponse (a)) [VirtualInterface]
 dvisrsVirtualInterfaces = lens _dvisrsVirtualInterfaces (\ s a -> s{_dvisrsVirtualInterfaces = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvisrsResponseStatus :: Lens' DescribeVirtualInterfacesResponse Int
+dvisrsResponseStatus :: Lens' (DescribeVirtualInterfacesResponse (a)) Int
 dvisrsResponseStatus = lens _dvisrsResponseStatus (\ s a -> s{_dvisrsResponseStatus = a});
 
 instance NFData DescribeVirtualInterfacesResponse

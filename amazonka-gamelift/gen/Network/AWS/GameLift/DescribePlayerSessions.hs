@@ -166,7 +166,7 @@ instance ToQuery DescribePlayerSessions where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describePlayerSessionsResponse' smart constructor.
-data DescribePlayerSessionsResponse = DescribePlayerSessionsResponse'
+data DescribePlayerSessionsResponse a = DescribePlayerSessionsResponse'
     { _dpsrsNextToken      :: !(Maybe Text)
     , _dpsrsPlayerSessions :: !(Maybe [PlayerSession])
     , _dpsrsResponseStatus :: !Int
@@ -183,7 +183,7 @@ data DescribePlayerSessionsResponse = DescribePlayerSessionsResponse'
 -- * 'dpsrsResponseStatus'
 describePlayerSessionsResponse
     :: Int -- ^ 'dpsrsResponseStatus'
-    -> DescribePlayerSessionsResponse
+    -> DescribePlayerSessionsResponse (a)
 describePlayerSessionsResponse pResponseStatus_ =
     DescribePlayerSessionsResponse'
     { _dpsrsNextToken = Nothing
@@ -194,15 +194,15 @@ describePlayerSessionsResponse pResponseStatus_ =
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-dpsrsNextToken :: Lens' DescribePlayerSessionsResponse (Maybe Text)
+dpsrsNextToken :: Lens' (DescribePlayerSessionsResponse (a)) (Maybe Text)
 dpsrsNextToken = lens _dpsrsNextToken (\ s a -> s{_dpsrsNextToken = a});
 
 -- | Collection of objects containing properties for each player session that matches the request.
-dpsrsPlayerSessions :: Lens' DescribePlayerSessionsResponse [PlayerSession]
+dpsrsPlayerSessions :: Lens' (DescribePlayerSessionsResponse (a)) [PlayerSession]
 dpsrsPlayerSessions = lens _dpsrsPlayerSessions (\ s a -> s{_dpsrsPlayerSessions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dpsrsResponseStatus :: Lens' DescribePlayerSessionsResponse Int
+dpsrsResponseStatus :: Lens' (DescribePlayerSessionsResponse (a)) Int
 dpsrsResponseStatus = lens _dpsrsResponseStatus (\ s a -> s{_dpsrsResponseStatus = a});
 
 instance NFData DescribePlayerSessionsResponse

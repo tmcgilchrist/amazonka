@@ -121,7 +121,7 @@ instance ToQuery BatchGetApplicationRevisions where
 -- | Represents the output of a batch get application revisions operation.
 --
 -- /See:/ 'batchGetApplicationRevisionsResponse' smart constructor.
-data BatchGetApplicationRevisionsResponse = BatchGetApplicationRevisionsResponse'
+data BatchGetApplicationRevisionsResponse a = BatchGetApplicationRevisionsResponse'
     { _bgarrsApplicationName :: !(Maybe Text)
     , _bgarrsRevisions       :: !(Maybe [RevisionInfo])
     , _bgarrsErrorMessage    :: !(Maybe Text)
@@ -141,7 +141,7 @@ data BatchGetApplicationRevisionsResponse = BatchGetApplicationRevisionsResponse
 -- * 'bgarrsResponseStatus'
 batchGetApplicationRevisionsResponse
     :: Int -- ^ 'bgarrsResponseStatus'
-    -> BatchGetApplicationRevisionsResponse
+    -> BatchGetApplicationRevisionsResponse (a)
 batchGetApplicationRevisionsResponse pResponseStatus_ =
     BatchGetApplicationRevisionsResponse'
     { _bgarrsApplicationName = Nothing
@@ -151,19 +151,19 @@ batchGetApplicationRevisionsResponse pResponseStatus_ =
     }
 
 -- | The name of the application that corresponds to the revisions.
-bgarrsApplicationName :: Lens' BatchGetApplicationRevisionsResponse (Maybe Text)
+bgarrsApplicationName :: Lens' (BatchGetApplicationRevisionsResponse (a)) (Maybe Text)
 bgarrsApplicationName = lens _bgarrsApplicationName (\ s a -> s{_bgarrsApplicationName = a});
 
 -- | Additional information about the revisions, including the type and location.
-bgarrsRevisions :: Lens' BatchGetApplicationRevisionsResponse [RevisionInfo]
+bgarrsRevisions :: Lens' (BatchGetApplicationRevisionsResponse (a)) [RevisionInfo]
 bgarrsRevisions = lens _bgarrsRevisions (\ s a -> s{_bgarrsRevisions = a}) . _Default . _Coerce;
 
 -- | Information about errors that may have occurred during the API call.
-bgarrsErrorMessage :: Lens' BatchGetApplicationRevisionsResponse (Maybe Text)
+bgarrsErrorMessage :: Lens' (BatchGetApplicationRevisionsResponse (a)) (Maybe Text)
 bgarrsErrorMessage = lens _bgarrsErrorMessage (\ s a -> s{_bgarrsErrorMessage = a});
 
 -- | The response status code.
-bgarrsResponseStatus :: Lens' BatchGetApplicationRevisionsResponse Int
+bgarrsResponseStatus :: Lens' (BatchGetApplicationRevisionsResponse (a)) Int
 bgarrsResponseStatus = lens _bgarrsResponseStatus (\ s a -> s{_bgarrsResponseStatus = a});
 
 instance NFData BatchGetApplicationRevisionsResponse

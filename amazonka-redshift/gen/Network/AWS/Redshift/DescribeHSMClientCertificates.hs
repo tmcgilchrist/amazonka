@@ -164,7 +164,7 @@ instance ToQuery DescribeHSMClientCertificates where
 -- |
 --
 -- /See:/ 'describeHSMClientCertificatesResponse' smart constructor.
-data DescribeHSMClientCertificatesResponse = DescribeHSMClientCertificatesResponse'
+data DescribeHSMClientCertificatesResponse a = DescribeHSMClientCertificatesResponse'
     { _dhccrsMarker                :: !(Maybe Text)
     , _dhccrsHSMClientCertificates :: !(Maybe [HSMClientCertificate])
     , _dhccrsResponseStatus        :: !Int
@@ -181,7 +181,7 @@ data DescribeHSMClientCertificatesResponse = DescribeHSMClientCertificatesRespon
 -- * 'dhccrsResponseStatus'
 describeHSMClientCertificatesResponse
     :: Int -- ^ 'dhccrsResponseStatus'
-    -> DescribeHSMClientCertificatesResponse
+    -> DescribeHSMClientCertificatesResponse (a)
 describeHSMClientCertificatesResponse pResponseStatus_ =
     DescribeHSMClientCertificatesResponse'
     { _dhccrsMarker = Nothing
@@ -190,15 +190,15 @@ describeHSMClientCertificatesResponse pResponseStatus_ =
     }
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dhccrsMarker :: Lens' DescribeHSMClientCertificatesResponse (Maybe Text)
+dhccrsMarker :: Lens' (DescribeHSMClientCertificatesResponse (a)) (Maybe Text)
 dhccrsMarker = lens _dhccrsMarker (\ s a -> s{_dhccrsMarker = a});
 
 -- | A list of the identifiers for one or more HSM client certificates used by Amazon Redshift clusters to store and retrieve database encryption keys in an HSM.
-dhccrsHSMClientCertificates :: Lens' DescribeHSMClientCertificatesResponse [HSMClientCertificate]
+dhccrsHSMClientCertificates :: Lens' (DescribeHSMClientCertificatesResponse (a)) [HSMClientCertificate]
 dhccrsHSMClientCertificates = lens _dhccrsHSMClientCertificates (\ s a -> s{_dhccrsHSMClientCertificates = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dhccrsResponseStatus :: Lens' DescribeHSMClientCertificatesResponse Int
+dhccrsResponseStatus :: Lens' (DescribeHSMClientCertificatesResponse (a)) Int
 dhccrsResponseStatus = lens _dhccrsResponseStatus (\ s a -> s{_dhccrsResponseStatus = a});
 
 instance NFData DescribeHSMClientCertificatesResponse

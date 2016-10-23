@@ -105,7 +105,7 @@ instance ToQuery BatchGetOnPremisesInstances where
 -- | Represents the output of a batch get on-premises instances operation.
 --
 -- /See:/ 'batchGetOnPremisesInstancesResponse' smart constructor.
-data BatchGetOnPremisesInstancesResponse = BatchGetOnPremisesInstancesResponse'
+data BatchGetOnPremisesInstancesResponse a = BatchGetOnPremisesInstancesResponse'
     { _bgopirsInstanceInfos  :: !(Maybe [InstanceInfo])
     , _bgopirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data BatchGetOnPremisesInstancesResponse = BatchGetOnPremisesInstancesResponse'
 -- * 'bgopirsResponseStatus'
 batchGetOnPremisesInstancesResponse
     :: Int -- ^ 'bgopirsResponseStatus'
-    -> BatchGetOnPremisesInstancesResponse
+    -> BatchGetOnPremisesInstancesResponse (a)
 batchGetOnPremisesInstancesResponse pResponseStatus_ =
     BatchGetOnPremisesInstancesResponse'
     { _bgopirsInstanceInfos = Nothing
@@ -127,11 +127,11 @@ batchGetOnPremisesInstancesResponse pResponseStatus_ =
     }
 
 -- | Information about the on-premises instances.
-bgopirsInstanceInfos :: Lens' BatchGetOnPremisesInstancesResponse [InstanceInfo]
+bgopirsInstanceInfos :: Lens' (BatchGetOnPremisesInstancesResponse (a)) [InstanceInfo]
 bgopirsInstanceInfos = lens _bgopirsInstanceInfos (\ s a -> s{_bgopirsInstanceInfos = a}) . _Default . _Coerce;
 
 -- | The response status code.
-bgopirsResponseStatus :: Lens' BatchGetOnPremisesInstancesResponse Int
+bgopirsResponseStatus :: Lens' (BatchGetOnPremisesInstancesResponse (a)) Int
 bgopirsResponseStatus = lens _bgopirsResponseStatus (\ s a -> s{_bgopirsResponseStatus = a});
 
 instance NFData BatchGetOnPremisesInstancesResponse

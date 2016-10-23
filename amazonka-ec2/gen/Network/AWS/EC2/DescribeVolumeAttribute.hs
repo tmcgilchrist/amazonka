@@ -124,7 +124,7 @@ instance ToQuery DescribeVolumeAttribute where
 -- | Contains the output of DescribeVolumeAttribute.
 --
 -- /See:/ 'describeVolumeAttributeResponse' smart constructor.
-data DescribeVolumeAttributeResponse = DescribeVolumeAttributeResponse'
+data DescribeVolumeAttributeResponse a = DescribeVolumeAttributeResponse'
     { _dvarsVolumeId       :: !(Maybe Text)
     , _dvarsProductCodes   :: !(Maybe [ProductCode])
     , _dvarsAutoEnableIO   :: !(Maybe AttributeBooleanValue)
@@ -144,7 +144,7 @@ data DescribeVolumeAttributeResponse = DescribeVolumeAttributeResponse'
 -- * 'dvarsResponseStatus'
 describeVolumeAttributeResponse
     :: Int -- ^ 'dvarsResponseStatus'
-    -> DescribeVolumeAttributeResponse
+    -> DescribeVolumeAttributeResponse (a)
 describeVolumeAttributeResponse pResponseStatus_ =
     DescribeVolumeAttributeResponse'
     { _dvarsVolumeId = Nothing
@@ -154,19 +154,19 @@ describeVolumeAttributeResponse pResponseStatus_ =
     }
 
 -- | The ID of the volume.
-dvarsVolumeId :: Lens' DescribeVolumeAttributeResponse (Maybe Text)
+dvarsVolumeId :: Lens' (DescribeVolumeAttributeResponse (a)) (Maybe Text)
 dvarsVolumeId = lens _dvarsVolumeId (\ s a -> s{_dvarsVolumeId = a});
 
 -- | A list of product codes.
-dvarsProductCodes :: Lens' DescribeVolumeAttributeResponse [ProductCode]
+dvarsProductCodes :: Lens' (DescribeVolumeAttributeResponse (a)) [ProductCode]
 dvarsProductCodes = lens _dvarsProductCodes (\ s a -> s{_dvarsProductCodes = a}) . _Default . _Coerce;
 
 -- | The state of 'autoEnableIO' attribute.
-dvarsAutoEnableIO :: Lens' DescribeVolumeAttributeResponse (Maybe AttributeBooleanValue)
+dvarsAutoEnableIO :: Lens' (DescribeVolumeAttributeResponse (a)) (Maybe AttributeBooleanValue)
 dvarsAutoEnableIO = lens _dvarsAutoEnableIO (\ s a -> s{_dvarsAutoEnableIO = a});
 
 -- | The response status code.
-dvarsResponseStatus :: Lens' DescribeVolumeAttributeResponse Int
+dvarsResponseStatus :: Lens' (DescribeVolumeAttributeResponse (a)) Int
 dvarsResponseStatus = lens _dvarsResponseStatus (\ s a -> s{_dvarsResponseStatus = a});
 
 instance NFData DescribeVolumeAttributeResponse

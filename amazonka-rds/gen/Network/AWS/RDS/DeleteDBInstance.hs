@@ -156,7 +156,7 @@ instance ToQuery DeleteDBInstance where
                "DBInstanceIdentifier" =: _ddiDBInstanceIdentifier]
 
 -- | /See:/ 'deleteDBInstanceResponse' smart constructor.
-data DeleteDBInstanceResponse = DeleteDBInstanceResponse'
+data DeleteDBInstanceResponse a = DeleteDBInstanceResponse'
     { _ddirsDBInstance     :: !(Maybe DBInstance)
     , _ddirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -170,7 +170,7 @@ data DeleteDBInstanceResponse = DeleteDBInstanceResponse'
 -- * 'ddirsResponseStatus'
 deleteDBInstanceResponse
     :: Int -- ^ 'ddirsResponseStatus'
-    -> DeleteDBInstanceResponse
+    -> DeleteDBInstanceResponse (a)
 deleteDBInstanceResponse pResponseStatus_ =
     DeleteDBInstanceResponse'
     { _ddirsDBInstance = Nothing
@@ -178,11 +178,11 @@ deleteDBInstanceResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ddirsDBInstance :: Lens' DeleteDBInstanceResponse (Maybe DBInstance)
+ddirsDBInstance :: Lens' (DeleteDBInstanceResponse (a)) (Maybe DBInstance)
 ddirsDBInstance = lens _ddirsDBInstance (\ s a -> s{_ddirsDBInstance = a});
 
 -- | The response status code.
-ddirsResponseStatus :: Lens' DeleteDBInstanceResponse Int
+ddirsResponseStatus :: Lens' (DeleteDBInstanceResponse (a)) Int
 ddirsResponseStatus = lens _ddirsResponseStatus (\ s a -> s{_ddirsResponseStatus = a});
 
 instance NFData DeleteDBInstanceResponse

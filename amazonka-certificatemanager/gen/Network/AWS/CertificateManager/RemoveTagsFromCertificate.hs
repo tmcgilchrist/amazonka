@@ -112,14 +112,14 @@ instance ToQuery RemoveTagsFromCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'removeTagsFromCertificateResponse' smart constructor.
-data RemoveTagsFromCertificateResponse =
+data RemoveTagsFromCertificateResponse a =
     RemoveTagsFromCertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveTagsFromCertificateResponse' with the minimum fields required to make a request.
 --
 removeTagsFromCertificateResponse
-    :: RemoveTagsFromCertificateResponse
+    :: RemoveTagsFromCertificateResponse (a)
 removeTagsFromCertificateResponse = RemoveTagsFromCertificateResponse'
 
 instance NFData RemoveTagsFromCertificateResponse

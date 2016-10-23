@@ -137,7 +137,7 @@ instance ToQuery DescribeEcsClusters where
 -- | Contains the response to a 'DescribeEcsClusters' request.
 --
 -- /See:/ 'describeEcsClustersResponse' smart constructor.
-data DescribeEcsClustersResponse = DescribeEcsClustersResponse'
+data DescribeEcsClustersResponse a = DescribeEcsClustersResponse'
     { _decrsNextToken      :: !(Maybe Text)
     , _decrsEcsClusters    :: !(Maybe [EcsCluster])
     , _decrsResponseStatus :: !Int
@@ -154,7 +154,7 @@ data DescribeEcsClustersResponse = DescribeEcsClustersResponse'
 -- * 'decrsResponseStatus'
 describeEcsClustersResponse
     :: Int -- ^ 'decrsResponseStatus'
-    -> DescribeEcsClustersResponse
+    -> DescribeEcsClustersResponse (a)
 describeEcsClustersResponse pResponseStatus_ =
     DescribeEcsClustersResponse'
     { _decrsNextToken = Nothing
@@ -163,15 +163,15 @@ describeEcsClustersResponse pResponseStatus_ =
     }
 
 -- | If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object\'s 'NextToken' parameter to retrieve the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to 'null'.
-decrsNextToken :: Lens' DescribeEcsClustersResponse (Maybe Text)
+decrsNextToken :: Lens' (DescribeEcsClustersResponse (a)) (Maybe Text)
 decrsNextToken = lens _decrsNextToken (\ s a -> s{_decrsNextToken = a});
 
 -- | A list of 'EcsCluster' objects containing the cluster descriptions.
-decrsEcsClusters :: Lens' DescribeEcsClustersResponse [EcsCluster]
+decrsEcsClusters :: Lens' (DescribeEcsClustersResponse (a)) [EcsCluster]
 decrsEcsClusters = lens _decrsEcsClusters (\ s a -> s{_decrsEcsClusters = a}) . _Default . _Coerce;
 
 -- | The response status code.
-decrsResponseStatus :: Lens' DescribeEcsClustersResponse Int
+decrsResponseStatus :: Lens' (DescribeEcsClustersResponse (a)) Int
 decrsResponseStatus = lens _decrsResponseStatus (\ s a -> s{_decrsResponseStatus = a});
 
 instance NFData DescribeEcsClustersResponse

@@ -110,7 +110,7 @@ instance ToQuery ModifyTargetGroupAttributes where
 -- | Contains the output of ModifyTargetGroupAttributes.
 --
 -- /See:/ 'modifyTargetGroupAttributesResponse' smart constructor.
-data ModifyTargetGroupAttributesResponse = ModifyTargetGroupAttributesResponse'
+data ModifyTargetGroupAttributesResponse a = ModifyTargetGroupAttributesResponse'
     { _mtgarsAttributes     :: !(Maybe [TargetGroupAttribute])
     , _mtgarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -124,7 +124,7 @@ data ModifyTargetGroupAttributesResponse = ModifyTargetGroupAttributesResponse'
 -- * 'mtgarsResponseStatus'
 modifyTargetGroupAttributesResponse
     :: Int -- ^ 'mtgarsResponseStatus'
-    -> ModifyTargetGroupAttributesResponse
+    -> ModifyTargetGroupAttributesResponse (a)
 modifyTargetGroupAttributesResponse pResponseStatus_ =
     ModifyTargetGroupAttributesResponse'
     { _mtgarsAttributes = Nothing
@@ -132,11 +132,11 @@ modifyTargetGroupAttributesResponse pResponseStatus_ =
     }
 
 -- | Information about the attributes.
-mtgarsAttributes :: Lens' ModifyTargetGroupAttributesResponse [TargetGroupAttribute]
+mtgarsAttributes :: Lens' (ModifyTargetGroupAttributesResponse (a)) [TargetGroupAttribute]
 mtgarsAttributes = lens _mtgarsAttributes (\ s a -> s{_mtgarsAttributes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-mtgarsResponseStatus :: Lens' ModifyTargetGroupAttributesResponse Int
+mtgarsResponseStatus :: Lens' (ModifyTargetGroupAttributesResponse (a)) Int
 mtgarsResponseStatus = lens _mtgarsResponseStatus (\ s a -> s{_mtgarsResponseStatus = a});
 
 instance NFData ModifyTargetGroupAttributesResponse

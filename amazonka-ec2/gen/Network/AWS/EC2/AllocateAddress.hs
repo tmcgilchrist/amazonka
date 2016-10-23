@@ -111,7 +111,7 @@ instance ToQuery AllocateAddress where
 -- | Contains the output of AllocateAddress.
 --
 -- /See:/ 'allocateAddressResponse' smart constructor.
-data AllocateAddressResponse = AllocateAddressResponse'
+data AllocateAddressResponse a = AllocateAddressResponse'
     { _aarsAllocationId   :: !(Maybe Text)
     , _aarsDomain         :: !(Maybe DomainType)
     , _aarsPublicIP       :: !(Maybe Text)
@@ -131,7 +131,7 @@ data AllocateAddressResponse = AllocateAddressResponse'
 -- * 'aarsResponseStatus'
 allocateAddressResponse
     :: Int -- ^ 'aarsResponseStatus'
-    -> AllocateAddressResponse
+    -> AllocateAddressResponse (a)
 allocateAddressResponse pResponseStatus_ =
     AllocateAddressResponse'
     { _aarsAllocationId = Nothing
@@ -141,19 +141,19 @@ allocateAddressResponse pResponseStatus_ =
     }
 
 -- | [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in a VPC.
-aarsAllocationId :: Lens' AllocateAddressResponse (Maybe Text)
+aarsAllocationId :: Lens' (AllocateAddressResponse (a)) (Maybe Text)
 aarsAllocationId = lens _aarsAllocationId (\ s a -> s{_aarsAllocationId = a});
 
 -- | Indicates whether this Elastic IP address is for use with instances in EC2-Classic ('standard') or instances in a VPC ('vpc').
-aarsDomain :: Lens' AllocateAddressResponse (Maybe DomainType)
+aarsDomain :: Lens' (AllocateAddressResponse (a)) (Maybe DomainType)
 aarsDomain = lens _aarsDomain (\ s a -> s{_aarsDomain = a});
 
 -- | The Elastic IP address.
-aarsPublicIP :: Lens' AllocateAddressResponse (Maybe Text)
+aarsPublicIP :: Lens' (AllocateAddressResponse (a)) (Maybe Text)
 aarsPublicIP = lens _aarsPublicIP (\ s a -> s{_aarsPublicIP = a});
 
 -- | The response status code.
-aarsResponseStatus :: Lens' AllocateAddressResponse Int
+aarsResponseStatus :: Lens' (AllocateAddressResponse (a)) Int
 aarsResponseStatus = lens _aarsResponseStatus (\ s a -> s{_aarsResponseStatus = a});
 
 instance NFData AllocateAddressResponse

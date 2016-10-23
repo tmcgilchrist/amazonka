@@ -116,14 +116,14 @@ instance ToQuery UnsubscribeFromEvent where
         toQuery = const mempty
 
 -- | /See:/ 'unsubscribeFromEventResponse' smart constructor.
-data UnsubscribeFromEventResponse =
+data UnsubscribeFromEventResponse a =
     UnsubscribeFromEventResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UnsubscribeFromEventResponse' with the minimum fields required to make a request.
 --
 unsubscribeFromEventResponse
-    :: UnsubscribeFromEventResponse
+    :: UnsubscribeFromEventResponse (a)
 unsubscribeFromEventResponse = UnsubscribeFromEventResponse'
 
 instance NFData UnsubscribeFromEventResponse

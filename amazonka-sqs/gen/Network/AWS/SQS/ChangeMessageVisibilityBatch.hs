@@ -126,7 +126,7 @@ instance ToQuery ChangeMessageVisibilityBatch where
 -- | For each message in the batch, the response contains a < ChangeMessageVisibilityBatchResultEntry> tag if the message succeeds or a < BatchResultErrorEntry> tag if the message fails.
 --
 -- /See:/ 'changeMessageVisibilityBatchResponse' smart constructor.
-data ChangeMessageVisibilityBatchResponse = ChangeMessageVisibilityBatchResponse'
+data ChangeMessageVisibilityBatchResponse a = ChangeMessageVisibilityBatchResponse'
     { _cmvbrsResponseStatus :: !Int
     , _cmvbrsSuccessful     :: ![ChangeMessageVisibilityBatchResultEntry]
     , _cmvbrsFailed         :: ![BatchResultErrorEntry]
@@ -143,7 +143,7 @@ data ChangeMessageVisibilityBatchResponse = ChangeMessageVisibilityBatchResponse
 -- * 'cmvbrsFailed'
 changeMessageVisibilityBatchResponse
     :: Int -- ^ 'cmvbrsResponseStatus'
-    -> ChangeMessageVisibilityBatchResponse
+    -> ChangeMessageVisibilityBatchResponse (a)
 changeMessageVisibilityBatchResponse pResponseStatus_ =
     ChangeMessageVisibilityBatchResponse'
     { _cmvbrsResponseStatus = pResponseStatus_
@@ -152,15 +152,15 @@ changeMessageVisibilityBatchResponse pResponseStatus_ =
     }
 
 -- | The response status code.
-cmvbrsResponseStatus :: Lens' ChangeMessageVisibilityBatchResponse Int
+cmvbrsResponseStatus :: Lens' (ChangeMessageVisibilityBatchResponse (a)) Int
 cmvbrsResponseStatus = lens _cmvbrsResponseStatus (\ s a -> s{_cmvbrsResponseStatus = a});
 
 -- | A list of < ChangeMessageVisibilityBatchResultEntry> items.
-cmvbrsSuccessful :: Lens' ChangeMessageVisibilityBatchResponse [ChangeMessageVisibilityBatchResultEntry]
+cmvbrsSuccessful :: Lens' (ChangeMessageVisibilityBatchResponse (a)) [ChangeMessageVisibilityBatchResultEntry]
 cmvbrsSuccessful = lens _cmvbrsSuccessful (\ s a -> s{_cmvbrsSuccessful = a}) . _Coerce;
 
 -- | A list of < BatchResultErrorEntry> items.
-cmvbrsFailed :: Lens' ChangeMessageVisibilityBatchResponse [BatchResultErrorEntry]
+cmvbrsFailed :: Lens' (ChangeMessageVisibilityBatchResponse (a)) [BatchResultErrorEntry]
 cmvbrsFailed = lens _cmvbrsFailed (\ s a -> s{_cmvbrsFailed = a}) . _Coerce;
 
 instance NFData ChangeMessageVisibilityBatchResponse

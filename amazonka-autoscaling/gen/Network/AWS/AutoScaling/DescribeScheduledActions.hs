@@ -165,7 +165,7 @@ instance ToQuery DescribeScheduledActions where
 -- | Contains the output of DescribeScheduledActions.
 --
 -- /See:/ 'describeScheduledActionsResponse' smart constructor.
-data DescribeScheduledActionsResponse = DescribeScheduledActionsResponse'
+data DescribeScheduledActionsResponse a = DescribeScheduledActionsResponse'
     { _dsarsScheduledUpdateGroupActions :: !(Maybe [ScheduledUpdateGroupAction])
     , _dsarsNextToken                   :: !(Maybe Text)
     , _dsarsResponseStatus              :: !Int
@@ -182,7 +182,7 @@ data DescribeScheduledActionsResponse = DescribeScheduledActionsResponse'
 -- * 'dsarsResponseStatus'
 describeScheduledActionsResponse
     :: Int -- ^ 'dsarsResponseStatus'
-    -> DescribeScheduledActionsResponse
+    -> DescribeScheduledActionsResponse (a)
 describeScheduledActionsResponse pResponseStatus_ =
     DescribeScheduledActionsResponse'
     { _dsarsScheduledUpdateGroupActions = Nothing
@@ -191,15 +191,15 @@ describeScheduledActionsResponse pResponseStatus_ =
     }
 
 -- | The scheduled actions.
-dsarsScheduledUpdateGroupActions :: Lens' DescribeScheduledActionsResponse [ScheduledUpdateGroupAction]
+dsarsScheduledUpdateGroupActions :: Lens' (DescribeScheduledActionsResponse (a)) [ScheduledUpdateGroupAction]
 dsarsScheduledUpdateGroupActions = lens _dsarsScheduledUpdateGroupActions (\ s a -> s{_dsarsScheduledUpdateGroupActions = a}) . _Default . _Coerce;
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dsarsNextToken :: Lens' DescribeScheduledActionsResponse (Maybe Text)
+dsarsNextToken :: Lens' (DescribeScheduledActionsResponse (a)) (Maybe Text)
 dsarsNextToken = lens _dsarsNextToken (\ s a -> s{_dsarsNextToken = a});
 
 -- | The response status code.
-dsarsResponseStatus :: Lens' DescribeScheduledActionsResponse Int
+dsarsResponseStatus :: Lens' (DescribeScheduledActionsResponse (a)) Int
 dsarsResponseStatus = lens _dsarsResponseStatus (\ s a -> s{_dsarsResponseStatus = a});
 
 instance NFData DescribeScheduledActionsResponse

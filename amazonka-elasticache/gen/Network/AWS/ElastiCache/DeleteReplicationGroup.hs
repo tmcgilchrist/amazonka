@@ -118,7 +118,7 @@ instance ToQuery DeleteReplicationGroup where
                "ReplicationGroupId" =: _drgReplicationGroupId]
 
 -- | /See:/ 'deleteReplicationGroupResponse' smart constructor.
-data DeleteReplicationGroupResponse = DeleteReplicationGroupResponse'
+data DeleteReplicationGroupResponse a = DeleteReplicationGroupResponse'
     { _delrsReplicationGroup :: !(Maybe ReplicationGroup)
     , _delrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data DeleteReplicationGroupResponse = DeleteReplicationGroupResponse'
 -- * 'delrsResponseStatus'
 deleteReplicationGroupResponse
     :: Int -- ^ 'delrsResponseStatus'
-    -> DeleteReplicationGroupResponse
+    -> DeleteReplicationGroupResponse (a)
 deleteReplicationGroupResponse pResponseStatus_ =
     DeleteReplicationGroupResponse'
     { _delrsReplicationGroup = Nothing
@@ -140,11 +140,11 @@ deleteReplicationGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-delrsReplicationGroup :: Lens' DeleteReplicationGroupResponse (Maybe ReplicationGroup)
+delrsReplicationGroup :: Lens' (DeleteReplicationGroupResponse (a)) (Maybe ReplicationGroup)
 delrsReplicationGroup = lens _delrsReplicationGroup (\ s a -> s{_delrsReplicationGroup = a});
 
 -- | The response status code.
-delrsResponseStatus :: Lens' DeleteReplicationGroupResponse Int
+delrsResponseStatus :: Lens' (DeleteReplicationGroupResponse (a)) Int
 delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a});
 
 instance NFData DeleteReplicationGroupResponse

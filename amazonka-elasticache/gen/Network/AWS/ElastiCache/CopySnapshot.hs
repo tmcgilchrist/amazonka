@@ -168,7 +168,7 @@ instance ToQuery CopySnapshot where
                "TargetSnapshotName" =: _csTargetSnapshotName]
 
 -- | /See:/ 'copySnapshotResponse' smart constructor.
-data CopySnapshotResponse = CopySnapshotResponse'
+data CopySnapshotResponse a = CopySnapshotResponse'
     { _csrsSnapshot       :: !(Maybe Snapshot)
     , _csrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -182,7 +182,7 @@ data CopySnapshotResponse = CopySnapshotResponse'
 -- * 'csrsResponseStatus'
 copySnapshotResponse
     :: Int -- ^ 'csrsResponseStatus'
-    -> CopySnapshotResponse
+    -> CopySnapshotResponse (a)
 copySnapshotResponse pResponseStatus_ =
     CopySnapshotResponse'
     { _csrsSnapshot = Nothing
@@ -190,11 +190,11 @@ copySnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-csrsSnapshot :: Lens' CopySnapshotResponse (Maybe Snapshot)
+csrsSnapshot :: Lens' (CopySnapshotResponse (a)) (Maybe Snapshot)
 csrsSnapshot = lens _csrsSnapshot (\ s a -> s{_csrsSnapshot = a});
 
 -- | The response status code.
-csrsResponseStatus :: Lens' CopySnapshotResponse Int
+csrsResponseStatus :: Lens' (CopySnapshotResponse (a)) Int
 csrsResponseStatus = lens _csrsResponseStatus (\ s a -> s{_csrsResponseStatus = a});
 
 instance NFData CopySnapshotResponse

@@ -107,7 +107,7 @@ instance ToQuery DeleteVolume where
 -- | A JSON object containing the of the storage volume that was deleted
 --
 -- /See:/ 'deleteVolumeResponse' smart constructor.
-data DeleteVolumeResponse = DeleteVolumeResponse'
+data DeleteVolumeResponse a = DeleteVolumeResponse'
     { _dvrsVolumeARN      :: !(Maybe Text)
     , _dvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DeleteVolumeResponse = DeleteVolumeResponse'
 -- * 'dvrsResponseStatus'
 deleteVolumeResponse
     :: Int -- ^ 'dvrsResponseStatus'
-    -> DeleteVolumeResponse
+    -> DeleteVolumeResponse (a)
 deleteVolumeResponse pResponseStatus_ =
     DeleteVolumeResponse'
     { _dvrsVolumeARN = Nothing
@@ -129,11 +129,11 @@ deleteVolumeResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.
-dvrsVolumeARN :: Lens' DeleteVolumeResponse (Maybe Text)
+dvrsVolumeARN :: Lens' (DeleteVolumeResponse (a)) (Maybe Text)
 dvrsVolumeARN = lens _dvrsVolumeARN (\ s a -> s{_dvrsVolumeARN = a});
 
 -- | The response status code.
-dvrsResponseStatus :: Lens' DeleteVolumeResponse Int
+dvrsResponseStatus :: Lens' (DeleteVolumeResponse (a)) Int
 dvrsResponseStatus = lens _dvrsResponseStatus (\ s a -> s{_dvrsResponseStatus = a});
 
 instance NFData DeleteVolumeResponse

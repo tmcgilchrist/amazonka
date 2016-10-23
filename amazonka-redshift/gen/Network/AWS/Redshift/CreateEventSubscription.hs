@@ -191,7 +191,7 @@ instance ToQuery CreateEventSubscription where
                "SnsTopicArn" =: _cesSNSTopicARN]
 
 -- | /See:/ 'createEventSubscriptionResponse' smart constructor.
-data CreateEventSubscriptionResponse = CreateEventSubscriptionResponse'
+data CreateEventSubscriptionResponse a = CreateEventSubscriptionResponse'
     { _cesrsEventSubscription :: !(Maybe EventSubscription)
     , _cesrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -205,7 +205,7 @@ data CreateEventSubscriptionResponse = CreateEventSubscriptionResponse'
 -- * 'cesrsResponseStatus'
 createEventSubscriptionResponse
     :: Int -- ^ 'cesrsResponseStatus'
-    -> CreateEventSubscriptionResponse
+    -> CreateEventSubscriptionResponse (a)
 createEventSubscriptionResponse pResponseStatus_ =
     CreateEventSubscriptionResponse'
     { _cesrsEventSubscription = Nothing
@@ -213,11 +213,11 @@ createEventSubscriptionResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cesrsEventSubscription :: Lens' CreateEventSubscriptionResponse (Maybe EventSubscription)
+cesrsEventSubscription :: Lens' (CreateEventSubscriptionResponse (a)) (Maybe EventSubscription)
 cesrsEventSubscription = lens _cesrsEventSubscription (\ s a -> s{_cesrsEventSubscription = a});
 
 -- | The response status code.
-cesrsResponseStatus :: Lens' CreateEventSubscriptionResponse Int
+cesrsResponseStatus :: Lens' (CreateEventSubscriptionResponse (a)) Int
 cesrsResponseStatus = lens _cesrsResponseStatus (\ s a -> s{_cesrsResponseStatus = a});
 
 instance NFData CreateEventSubscriptionResponse

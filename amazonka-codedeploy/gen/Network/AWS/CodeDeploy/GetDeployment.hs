@@ -103,7 +103,7 @@ instance ToQuery GetDeployment where
 -- | Represents the output of a get deployment operation.
 --
 -- /See:/ 'getDeploymentResponse' smart constructor.
-data GetDeploymentResponse = GetDeploymentResponse'
+data GetDeploymentResponse a = GetDeploymentResponse'
     { _gdrsDeploymentInfo :: !(Maybe DeploymentInfo)
     , _gdrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data GetDeploymentResponse = GetDeploymentResponse'
 -- * 'gdrsResponseStatus'
 getDeploymentResponse
     :: Int -- ^ 'gdrsResponseStatus'
-    -> GetDeploymentResponse
+    -> GetDeploymentResponse (a)
 getDeploymentResponse pResponseStatus_ =
     GetDeploymentResponse'
     { _gdrsDeploymentInfo = Nothing
@@ -125,11 +125,11 @@ getDeploymentResponse pResponseStatus_ =
     }
 
 -- | Information about the deployment.
-gdrsDeploymentInfo :: Lens' GetDeploymentResponse (Maybe DeploymentInfo)
+gdrsDeploymentInfo :: Lens' (GetDeploymentResponse (a)) (Maybe DeploymentInfo)
 gdrsDeploymentInfo = lens _gdrsDeploymentInfo (\ s a -> s{_gdrsDeploymentInfo = a});
 
 -- | The response status code.
-gdrsResponseStatus :: Lens' GetDeploymentResponse Int
+gdrsResponseStatus :: Lens' (GetDeploymentResponse (a)) Int
 gdrsResponseStatus = lens _gdrsResponseStatus (\ s a -> s{_gdrsResponseStatus = a});
 
 instance NFData GetDeploymentResponse

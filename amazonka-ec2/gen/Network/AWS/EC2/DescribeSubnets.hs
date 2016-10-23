@@ -141,7 +141,7 @@ instance ToQuery DescribeSubnets where
 -- | Contains the output of DescribeSubnets.
 --
 -- /See:/ 'describeSubnetsResponse' smart constructor.
-data DescribeSubnetsResponse = DescribeSubnetsResponse'
+data DescribeSubnetsResponse a = DescribeSubnetsResponse'
     { _dsrsSubnets        :: !(Maybe [Subnet])
     , _dsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -155,7 +155,7 @@ data DescribeSubnetsResponse = DescribeSubnetsResponse'
 -- * 'dsrsResponseStatus'
 describeSubnetsResponse
     :: Int -- ^ 'dsrsResponseStatus'
-    -> DescribeSubnetsResponse
+    -> DescribeSubnetsResponse (a)
 describeSubnetsResponse pResponseStatus_ =
     DescribeSubnetsResponse'
     { _dsrsSubnets = Nothing
@@ -163,11 +163,11 @@ describeSubnetsResponse pResponseStatus_ =
     }
 
 -- | Information about one or more subnets.
-dsrsSubnets :: Lens' DescribeSubnetsResponse [Subnet]
+dsrsSubnets :: Lens' (DescribeSubnetsResponse (a)) [Subnet]
 dsrsSubnets = lens _dsrsSubnets (\ s a -> s{_dsrsSubnets = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DescribeSubnetsResponse Int
+dsrsResponseStatus :: Lens' (DescribeSubnetsResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 instance NFData DescribeSubnetsResponse

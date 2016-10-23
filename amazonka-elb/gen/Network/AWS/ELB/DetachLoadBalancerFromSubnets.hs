@@ -114,7 +114,7 @@ instance ToQuery DetachLoadBalancerFromSubnets where
 -- | Contains the output of DetachLoadBalancerFromSubnets.
 --
 -- /See:/ 'detachLoadBalancerFromSubnetsResponse' smart constructor.
-data DetachLoadBalancerFromSubnetsResponse = DetachLoadBalancerFromSubnetsResponse'
+data DetachLoadBalancerFromSubnetsResponse a = DetachLoadBalancerFromSubnetsResponse'
     { _dlbfsrsSubnets        :: !(Maybe [Text])
     , _dlbfsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data DetachLoadBalancerFromSubnetsResponse = DetachLoadBalancerFromSubnetsRespon
 -- * 'dlbfsrsResponseStatus'
 detachLoadBalancerFromSubnetsResponse
     :: Int -- ^ 'dlbfsrsResponseStatus'
-    -> DetachLoadBalancerFromSubnetsResponse
+    -> DetachLoadBalancerFromSubnetsResponse (a)
 detachLoadBalancerFromSubnetsResponse pResponseStatus_ =
     DetachLoadBalancerFromSubnetsResponse'
     { _dlbfsrsSubnets = Nothing
@@ -136,11 +136,11 @@ detachLoadBalancerFromSubnetsResponse pResponseStatus_ =
     }
 
 -- | The IDs of the remaining subnets for the load balancer.
-dlbfsrsSubnets :: Lens' DetachLoadBalancerFromSubnetsResponse [Text]
+dlbfsrsSubnets :: Lens' (DetachLoadBalancerFromSubnetsResponse (a)) [Text]
 dlbfsrsSubnets = lens _dlbfsrsSubnets (\ s a -> s{_dlbfsrsSubnets = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlbfsrsResponseStatus :: Lens' DetachLoadBalancerFromSubnetsResponse Int
+dlbfsrsResponseStatus :: Lens' (DetachLoadBalancerFromSubnetsResponse (a)) Int
 dlbfsrsResponseStatus = lens _dlbfsrsResponseStatus (\ s a -> s{_dlbfsrsResponseStatus = a});
 
 instance NFData DetachLoadBalancerFromSubnetsResponse

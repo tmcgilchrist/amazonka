@@ -105,7 +105,7 @@ instance ToQuery ListPipelines where
 -- | Represents the output of a list pipelines action.
 --
 -- /See:/ 'listPipelinesResponse' smart constructor.
-data ListPipelinesResponse = ListPipelinesResponse'
+data ListPipelinesResponse a = ListPipelinesResponse'
     { _lprsPipelines      :: !(Maybe [PipelineSummary])
     , _lprsNextToken      :: !(Maybe Text)
     , _lprsResponseStatus :: !Int
@@ -122,7 +122,7 @@ data ListPipelinesResponse = ListPipelinesResponse'
 -- * 'lprsResponseStatus'
 listPipelinesResponse
     :: Int -- ^ 'lprsResponseStatus'
-    -> ListPipelinesResponse
+    -> ListPipelinesResponse (a)
 listPipelinesResponse pResponseStatus_ =
     ListPipelinesResponse'
     { _lprsPipelines = Nothing
@@ -131,15 +131,15 @@ listPipelinesResponse pResponseStatus_ =
     }
 
 -- | The list of pipelines.
-lprsPipelines :: Lens' ListPipelinesResponse [PipelineSummary]
+lprsPipelines :: Lens' (ListPipelinesResponse (a)) [PipelineSummary]
 lprsPipelines = lens _lprsPipelines (\ s a -> s{_lprsPipelines = a}) . _Default . _Coerce;
 
 -- | If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list pipelines call to return the next set of pipelines in the list.
-lprsNextToken :: Lens' ListPipelinesResponse (Maybe Text)
+lprsNextToken :: Lens' (ListPipelinesResponse (a)) (Maybe Text)
 lprsNextToken = lens _lprsNextToken (\ s a -> s{_lprsNextToken = a});
 
 -- | The response status code.
-lprsResponseStatus :: Lens' ListPipelinesResponse Int
+lprsResponseStatus :: Lens' (ListPipelinesResponse (a)) Int
 lprsResponseStatus = lens _lprsResponseStatus (\ s a -> s{_lprsResponseStatus = a});
 
 instance NFData ListPipelinesResponse

@@ -122,7 +122,7 @@ instance ToQuery
 -- | Contains the output of EnableAvailabilityZonesForLoadBalancer.
 --
 -- /See:/ 'enableAvailabilityZonesForLoadBalancerResponse' smart constructor.
-data EnableAvailabilityZonesForLoadBalancerResponse = EnableAvailabilityZonesForLoadBalancerResponse'
+data EnableAvailabilityZonesForLoadBalancerResponse a = EnableAvailabilityZonesForLoadBalancerResponse'
     { _eazflbrsAvailabilityZones :: !(Maybe [Text])
     , _eazflbrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data EnableAvailabilityZonesForLoadBalancerResponse = EnableAvailabilityZonesFor
 -- * 'eazflbrsResponseStatus'
 enableAvailabilityZonesForLoadBalancerResponse
     :: Int -- ^ 'eazflbrsResponseStatus'
-    -> EnableAvailabilityZonesForLoadBalancerResponse
+    -> EnableAvailabilityZonesForLoadBalancerResponse (a)
 enableAvailabilityZonesForLoadBalancerResponse pResponseStatus_ =
     EnableAvailabilityZonesForLoadBalancerResponse'
     { _eazflbrsAvailabilityZones = Nothing
@@ -144,11 +144,11 @@ enableAvailabilityZonesForLoadBalancerResponse pResponseStatus_ =
     }
 
 -- | The updated list of Availability Zones for the load balancer.
-eazflbrsAvailabilityZones :: Lens' EnableAvailabilityZonesForLoadBalancerResponse [Text]
+eazflbrsAvailabilityZones :: Lens' (EnableAvailabilityZonesForLoadBalancerResponse (a)) [Text]
 eazflbrsAvailabilityZones = lens _eazflbrsAvailabilityZones (\ s a -> s{_eazflbrsAvailabilityZones = a}) . _Default . _Coerce;
 
 -- | The response status code.
-eazflbrsResponseStatus :: Lens' EnableAvailabilityZonesForLoadBalancerResponse Int
+eazflbrsResponseStatus :: Lens' (EnableAvailabilityZonesForLoadBalancerResponse (a)) Int
 eazflbrsResponseStatus = lens _eazflbrsResponseStatus (\ s a -> s{_eazflbrsResponseStatus = a});
 
 instance NFData

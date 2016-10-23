@@ -118,7 +118,7 @@ instance ToQuery GetRestAPIs where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API>
 --
 -- /See:/ 'getRestAPIsResponse' smart constructor.
-data GetRestAPIsResponse = GetRestAPIsResponse'
+data GetRestAPIsResponse a = GetRestAPIsResponse'
     { _grarsItems          :: !(Maybe [RestAPI])
     , _grarsPosition       :: !(Maybe Text)
     , _grarsResponseStatus :: !Int
@@ -135,7 +135,7 @@ data GetRestAPIsResponse = GetRestAPIsResponse'
 -- * 'grarsResponseStatus'
 getRestAPIsResponse
     :: Int -- ^ 'grarsResponseStatus'
-    -> GetRestAPIsResponse
+    -> GetRestAPIsResponse (a)
 getRestAPIsResponse pResponseStatus_ =
     GetRestAPIsResponse'
     { _grarsItems = Nothing
@@ -144,15 +144,15 @@ getRestAPIsResponse pResponseStatus_ =
     }
 
 -- | An array of links to the current page of < RestApi> resources.
-grarsItems :: Lens' GetRestAPIsResponse [RestAPI]
+grarsItems :: Lens' (GetRestAPIsResponse (a)) [RestAPI]
 grarsItems = lens _grarsItems (\ s a -> s{_grarsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-grarsPosition :: Lens' GetRestAPIsResponse (Maybe Text)
+grarsPosition :: Lens' (GetRestAPIsResponse (a)) (Maybe Text)
 grarsPosition = lens _grarsPosition (\ s a -> s{_grarsPosition = a});
 
 -- | The response status code.
-grarsResponseStatus :: Lens' GetRestAPIsResponse Int
+grarsResponseStatus :: Lens' (GetRestAPIsResponse (a)) Int
 grarsResponseStatus = lens _grarsResponseStatus (\ s a -> s{_grarsResponseStatus = a});
 
 instance NFData GetRestAPIsResponse

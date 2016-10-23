@@ -103,7 +103,7 @@ instance ToQuery
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'getCloudFrontOriginAccessIdentityConfigResponse' smart constructor.
-data GetCloudFrontOriginAccessIdentityConfigResponse = GetCloudFrontOriginAccessIdentityConfigResponse'
+data GetCloudFrontOriginAccessIdentityConfigResponse a = GetCloudFrontOriginAccessIdentityConfigResponse'
     { _gcfoaicrsCloudFrontOriginAccessIdentityConfig :: !(Maybe CloudFrontOriginAccessIdentityConfig)
     , _gcfoaicrsETag                                 :: !(Maybe Text)
     , _gcfoaicrsResponseStatus                       :: !Int
@@ -120,7 +120,7 @@ data GetCloudFrontOriginAccessIdentityConfigResponse = GetCloudFrontOriginAccess
 -- * 'gcfoaicrsResponseStatus'
 getCloudFrontOriginAccessIdentityConfigResponse
     :: Int -- ^ 'gcfoaicrsResponseStatus'
-    -> GetCloudFrontOriginAccessIdentityConfigResponse
+    -> GetCloudFrontOriginAccessIdentityConfigResponse (a)
 getCloudFrontOriginAccessIdentityConfigResponse pResponseStatus_ =
     GetCloudFrontOriginAccessIdentityConfigResponse'
     { _gcfoaicrsCloudFrontOriginAccessIdentityConfig = Nothing
@@ -129,15 +129,15 @@ getCloudFrontOriginAccessIdentityConfigResponse pResponseStatus_ =
     }
 
 -- | The origin access identity\'s configuration information.
-gcfoaicrsCloudFrontOriginAccessIdentityConfig :: Lens' GetCloudFrontOriginAccessIdentityConfigResponse (Maybe CloudFrontOriginAccessIdentityConfig)
+gcfoaicrsCloudFrontOriginAccessIdentityConfig :: Lens' (GetCloudFrontOriginAccessIdentityConfigResponse (a)) (Maybe CloudFrontOriginAccessIdentityConfig)
 gcfoaicrsCloudFrontOriginAccessIdentityConfig = lens _gcfoaicrsCloudFrontOriginAccessIdentityConfig (\ s a -> s{_gcfoaicrsCloudFrontOriginAccessIdentityConfig = a});
 
 -- | The current version of the configuration. For example: E2QWRUHAPOMQZL.
-gcfoaicrsETag :: Lens' GetCloudFrontOriginAccessIdentityConfigResponse (Maybe Text)
+gcfoaicrsETag :: Lens' (GetCloudFrontOriginAccessIdentityConfigResponse (a)) (Maybe Text)
 gcfoaicrsETag = lens _gcfoaicrsETag (\ s a -> s{_gcfoaicrsETag = a});
 
 -- | The response status code.
-gcfoaicrsResponseStatus :: Lens' GetCloudFrontOriginAccessIdentityConfigResponse Int
+gcfoaicrsResponseStatus :: Lens' (GetCloudFrontOriginAccessIdentityConfigResponse (a)) Int
 gcfoaicrsResponseStatus = lens _gcfoaicrsResponseStatus (\ s a -> s{_gcfoaicrsResponseStatus = a});
 
 instance NFData

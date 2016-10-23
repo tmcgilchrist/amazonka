@@ -135,7 +135,7 @@ instance ToQuery CreateDBSnapshot where
                "DBInstanceIdentifier" =: _cdbsDBInstanceIdentifier]
 
 -- | /See:/ 'createDBSnapshotResponse' smart constructor.
-data CreateDBSnapshotResponse = CreateDBSnapshotResponse'
+data CreateDBSnapshotResponse a = CreateDBSnapshotResponse'
     { _cdbsrsDBSnapshot     :: !(Maybe DBSnapshot)
     , _cdbsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -149,7 +149,7 @@ data CreateDBSnapshotResponse = CreateDBSnapshotResponse'
 -- * 'cdbsrsResponseStatus'
 createDBSnapshotResponse
     :: Int -- ^ 'cdbsrsResponseStatus'
-    -> CreateDBSnapshotResponse
+    -> CreateDBSnapshotResponse (a)
 createDBSnapshotResponse pResponseStatus_ =
     CreateDBSnapshotResponse'
     { _cdbsrsDBSnapshot = Nothing
@@ -157,11 +157,11 @@ createDBSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdbsrsDBSnapshot :: Lens' CreateDBSnapshotResponse (Maybe DBSnapshot)
+cdbsrsDBSnapshot :: Lens' (CreateDBSnapshotResponse (a)) (Maybe DBSnapshot)
 cdbsrsDBSnapshot = lens _cdbsrsDBSnapshot (\ s a -> s{_cdbsrsDBSnapshot = a});
 
 -- | The response status code.
-cdbsrsResponseStatus :: Lens' CreateDBSnapshotResponse Int
+cdbsrsResponseStatus :: Lens' (CreateDBSnapshotResponse (a)) Int
 cdbsrsResponseStatus = lens _cdbsrsResponseStatus (\ s a -> s{_cdbsrsResponseStatus = a});
 
 instance NFData CreateDBSnapshotResponse

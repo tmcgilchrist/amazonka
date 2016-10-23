@@ -161,7 +161,7 @@ instance ToQuery DescribeScheduledInstances where
 -- | Contains the output of DescribeScheduledInstances.
 --
 -- /See:/ 'describeScheduledInstancesResponse' smart constructor.
-data DescribeScheduledInstancesResponse = DescribeScheduledInstancesResponse'
+data DescribeScheduledInstancesResponse a = DescribeScheduledInstancesResponse'
     { _dsirsNextToken            :: !(Maybe Text)
     , _dsirsScheduledInstanceSet :: !(Maybe [ScheduledInstance])
     , _dsirsResponseStatus       :: !Int
@@ -178,7 +178,7 @@ data DescribeScheduledInstancesResponse = DescribeScheduledInstancesResponse'
 -- * 'dsirsResponseStatus'
 describeScheduledInstancesResponse
     :: Int -- ^ 'dsirsResponseStatus'
-    -> DescribeScheduledInstancesResponse
+    -> DescribeScheduledInstancesResponse (a)
 describeScheduledInstancesResponse pResponseStatus_ =
     DescribeScheduledInstancesResponse'
     { _dsirsNextToken = Nothing
@@ -187,15 +187,15 @@ describeScheduledInstancesResponse pResponseStatus_ =
     }
 
 -- | The token required to retrieve the next set of results. This value is 'null' when there are no more results to return.
-dsirsNextToken :: Lens' DescribeScheduledInstancesResponse (Maybe Text)
+dsirsNextToken :: Lens' (DescribeScheduledInstancesResponse (a)) (Maybe Text)
 dsirsNextToken = lens _dsirsNextToken (\ s a -> s{_dsirsNextToken = a});
 
 -- | Information about the Scheduled Instances.
-dsirsScheduledInstanceSet :: Lens' DescribeScheduledInstancesResponse [ScheduledInstance]
+dsirsScheduledInstanceSet :: Lens' (DescribeScheduledInstancesResponse (a)) [ScheduledInstance]
 dsirsScheduledInstanceSet = lens _dsirsScheduledInstanceSet (\ s a -> s{_dsirsScheduledInstanceSet = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsirsResponseStatus :: Lens' DescribeScheduledInstancesResponse Int
+dsirsResponseStatus :: Lens' (DescribeScheduledInstancesResponse (a)) Int
 dsirsResponseStatus = lens _dsirsResponseStatus (\ s a -> s{_dsirsResponseStatus = a});
 
 instance NFData DescribeScheduledInstancesResponse

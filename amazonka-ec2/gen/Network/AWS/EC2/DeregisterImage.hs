@@ -97,14 +97,14 @@ instance ToQuery DeregisterImage where
                "DryRun" =: _diDryRun, "ImageId" =: _diImageId]
 
 -- | /See:/ 'deregisterImageResponse' smart constructor.
-data DeregisterImageResponse =
+data DeregisterImageResponse a =
     DeregisterImageResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeregisterImageResponse' with the minimum fields required to make a request.
 --
 deregisterImageResponse
-    :: DeregisterImageResponse
+    :: DeregisterImageResponse (a)
 deregisterImageResponse = DeregisterImageResponse'
 
 instance NFData DeregisterImageResponse

@@ -117,14 +117,14 @@ instance ToQuery ModifyIdentityIdFormat where
                "PrincipalArn" =: _miifPrincipalARN]
 
 -- | /See:/ 'modifyIdentityIdFormatResponse' smart constructor.
-data ModifyIdentityIdFormatResponse =
+data ModifyIdentityIdFormatResponse a =
     ModifyIdentityIdFormatResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyIdentityIdFormatResponse' with the minimum fields required to make a request.
 --
 modifyIdentityIdFormatResponse
-    :: ModifyIdentityIdFormatResponse
+    :: ModifyIdentityIdFormatResponse (a)
 modifyIdentityIdFormatResponse = ModifyIdentityIdFormatResponse'
 
 instance NFData ModifyIdentityIdFormatResponse

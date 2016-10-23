@@ -125,7 +125,7 @@ instance ToQuery DescribeCommands where
 -- | Contains the response to a 'DescribeCommands' request.
 --
 -- /See:/ 'describeCommandsResponse' smart constructor.
-data DescribeCommandsResponse = DescribeCommandsResponse'
+data DescribeCommandsResponse a = DescribeCommandsResponse'
     { _dcrsCommands       :: !(Maybe [Command])
     , _dcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -139,7 +139,7 @@ data DescribeCommandsResponse = DescribeCommandsResponse'
 -- * 'dcrsResponseStatus'
 describeCommandsResponse
     :: Int -- ^ 'dcrsResponseStatus'
-    -> DescribeCommandsResponse
+    -> DescribeCommandsResponse (a)
 describeCommandsResponse pResponseStatus_ =
     DescribeCommandsResponse'
     { _dcrsCommands = Nothing
@@ -147,11 +147,11 @@ describeCommandsResponse pResponseStatus_ =
     }
 
 -- | An array of 'Command' objects that describe each of the specified commands.
-dcrsCommands :: Lens' DescribeCommandsResponse [Command]
+dcrsCommands :: Lens' (DescribeCommandsResponse (a)) [Command]
 dcrsCommands = lens _dcrsCommands (\ s a -> s{_dcrsCommands = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcrsResponseStatus :: Lens' DescribeCommandsResponse Int
+dcrsResponseStatus :: Lens' (DescribeCommandsResponse (a)) Int
 dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a});
 
 instance NFData DescribeCommandsResponse

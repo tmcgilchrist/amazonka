@@ -159,7 +159,7 @@ instance ToQuery CreateDeliveryStream where
 -- | Contains the output of < CreateDeliveryStream>.
 --
 -- /See:/ 'createDeliveryStreamResponse' smart constructor.
-data CreateDeliveryStreamResponse = CreateDeliveryStreamResponse'
+data CreateDeliveryStreamResponse a = CreateDeliveryStreamResponse'
     { _cdsrsDeliveryStreamARN :: !(Maybe Text)
     , _cdsrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -173,7 +173,7 @@ data CreateDeliveryStreamResponse = CreateDeliveryStreamResponse'
 -- * 'cdsrsResponseStatus'
 createDeliveryStreamResponse
     :: Int -- ^ 'cdsrsResponseStatus'
-    -> CreateDeliveryStreamResponse
+    -> CreateDeliveryStreamResponse (a)
 createDeliveryStreamResponse pResponseStatus_ =
     CreateDeliveryStreamResponse'
     { _cdsrsDeliveryStreamARN = Nothing
@@ -181,11 +181,11 @@ createDeliveryStreamResponse pResponseStatus_ =
     }
 
 -- | The ARN of the delivery stream.
-cdsrsDeliveryStreamARN :: Lens' CreateDeliveryStreamResponse (Maybe Text)
+cdsrsDeliveryStreamARN :: Lens' (CreateDeliveryStreamResponse (a)) (Maybe Text)
 cdsrsDeliveryStreamARN = lens _cdsrsDeliveryStreamARN (\ s a -> s{_cdsrsDeliveryStreamARN = a});
 
 -- | The response status code.
-cdsrsResponseStatus :: Lens' CreateDeliveryStreamResponse Int
+cdsrsResponseStatus :: Lens' (CreateDeliveryStreamResponse (a)) Int
 cdsrsResponseStatus = lens _cdsrsResponseStatus (\ s a -> s{_cdsrsResponseStatus = a});
 
 instance NFData CreateDeliveryStreamResponse

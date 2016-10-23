@@ -106,14 +106,14 @@ instance ToQuery PutBucketAccelerateConfiguration
         toQuery = const (mconcat ["accelerate"])
 
 -- | /See:/ 'putBucketAccelerateConfigurationResponse' smart constructor.
-data PutBucketAccelerateConfigurationResponse =
+data PutBucketAccelerateConfigurationResponse a =
     PutBucketAccelerateConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketAccelerateConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketAccelerateConfigurationResponse
-    :: PutBucketAccelerateConfigurationResponse
+    :: PutBucketAccelerateConfigurationResponse (a)
 putBucketAccelerateConfigurationResponse =
     PutBucketAccelerateConfigurationResponse'
 

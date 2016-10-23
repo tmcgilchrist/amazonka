@@ -217,7 +217,7 @@ instance ToQuery ImportImage where
 -- | Contains the output for ImportImage.
 --
 -- /See:/ 'importImageResponse' smart constructor.
-data ImportImageResponse = ImportImageResponse'
+data ImportImageResponse a = ImportImageResponse'
     { _irsStatus          :: !(Maybe Text)
     , _irsHypervisor      :: !(Maybe Text)
     , _irsPlatform        :: !(Maybe Text)
@@ -261,7 +261,7 @@ data ImportImageResponse = ImportImageResponse'
 -- * 'irsResponseStatus'
 importImageResponse
     :: Int -- ^ 'irsResponseStatus'
-    -> ImportImageResponse
+    -> ImportImageResponse (a)
 importImageResponse pResponseStatus_ =
     ImportImageResponse'
     { _irsStatus = Nothing
@@ -279,51 +279,51 @@ importImageResponse pResponseStatus_ =
     }
 
 -- | A brief status of the task.
-irsStatus :: Lens' ImportImageResponse (Maybe Text)
+irsStatus :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsStatus = lens _irsStatus (\ s a -> s{_irsStatus = a});
 
 -- | The target hypervisor of the import task.
-irsHypervisor :: Lens' ImportImageResponse (Maybe Text)
+irsHypervisor :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsHypervisor = lens _irsHypervisor (\ s a -> s{_irsHypervisor = a});
 
 -- | The operating system of the virtual machine.
-irsPlatform :: Lens' ImportImageResponse (Maybe Text)
+irsPlatform :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsPlatform = lens _irsPlatform (\ s a -> s{_irsPlatform = a});
 
 -- | The progress of the task.
-irsProgress :: Lens' ImportImageResponse (Maybe Text)
+irsProgress :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsProgress = lens _irsProgress (\ s a -> s{_irsProgress = a});
 
 -- | The license type of the virtual machine.
-irsLicenseType :: Lens' ImportImageResponse (Maybe Text)
+irsLicenseType :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsLicenseType = lens _irsLicenseType (\ s a -> s{_irsLicenseType = a});
 
 -- | Information about the snapshots.
-irsSnapshotDetails :: Lens' ImportImageResponse [SnapshotDetail]
+irsSnapshotDetails :: Lens' (ImportImageResponse (a)) [SnapshotDetail]
 irsSnapshotDetails = lens _irsSnapshotDetails (\ s a -> s{_irsSnapshotDetails = a}) . _Default . _Coerce;
 
 -- | A detailed status message of the import task.
-irsStatusMessage :: Lens' ImportImageResponse (Maybe Text)
+irsStatusMessage :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsStatusMessage = lens _irsStatusMessage (\ s a -> s{_irsStatusMessage = a});
 
 -- | The ID of the Amazon Machine Image (AMI) created by the import task.
-irsImageId :: Lens' ImportImageResponse (Maybe Text)
+irsImageId :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsImageId = lens _irsImageId (\ s a -> s{_irsImageId = a});
 
 -- | The task ID of the import image task.
-irsImportTaskId :: Lens' ImportImageResponse (Maybe Text)
+irsImportTaskId :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsImportTaskId = lens _irsImportTaskId (\ s a -> s{_irsImportTaskId = a});
 
 -- | The architecture of the virtual machine.
-irsArchitecture :: Lens' ImportImageResponse (Maybe Text)
+irsArchitecture :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsArchitecture = lens _irsArchitecture (\ s a -> s{_irsArchitecture = a});
 
 -- | A description of the import task.
-irsDescription :: Lens' ImportImageResponse (Maybe Text)
+irsDescription :: Lens' (ImportImageResponse (a)) (Maybe Text)
 irsDescription = lens _irsDescription (\ s a -> s{_irsDescription = a});
 
 -- | The response status code.
-irsResponseStatus :: Lens' ImportImageResponse Int
+irsResponseStatus :: Lens' (ImportImageResponse (a)) Int
 irsResponseStatus = lens _irsResponseStatus (\ s a -> s{_irsResponseStatus = a});
 
 instance NFData ImportImageResponse

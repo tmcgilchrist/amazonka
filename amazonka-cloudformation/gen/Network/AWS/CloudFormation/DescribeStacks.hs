@@ -124,7 +124,7 @@ instance ToQuery DescribeStacks where
 -- | The output for a < DescribeStacks> action.
 --
 -- /See:/ 'describeStacksResponse' smart constructor.
-data DescribeStacksResponse = DescribeStacksResponse'
+data DescribeStacksResponse a = DescribeStacksResponse'
     { _dsrsNextToken      :: !(Maybe Text)
     , _dsrsStacks         :: !(Maybe [Stack])
     , _dsrsResponseStatus :: !Int
@@ -141,7 +141,7 @@ data DescribeStacksResponse = DescribeStacksResponse'
 -- * 'dsrsResponseStatus'
 describeStacksResponse
     :: Int -- ^ 'dsrsResponseStatus'
-    -> DescribeStacksResponse
+    -> DescribeStacksResponse (a)
 describeStacksResponse pResponseStatus_ =
     DescribeStacksResponse'
     { _dsrsNextToken = Nothing
@@ -150,15 +150,15 @@ describeStacksResponse pResponseStatus_ =
     }
 
 -- | If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.
-dsrsNextToken :: Lens' DescribeStacksResponse (Maybe Text)
+dsrsNextToken :: Lens' (DescribeStacksResponse (a)) (Maybe Text)
 dsrsNextToken = lens _dsrsNextToken (\ s a -> s{_dsrsNextToken = a});
 
 -- | A list of stack structures.
-dsrsStacks :: Lens' DescribeStacksResponse [Stack]
+dsrsStacks :: Lens' (DescribeStacksResponse (a)) [Stack]
 dsrsStacks = lens _dsrsStacks (\ s a -> s{_dsrsStacks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DescribeStacksResponse Int
+dsrsResponseStatus :: Lens' (DescribeStacksResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 instance NFData DescribeStacksResponse

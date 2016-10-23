@@ -74,14 +74,14 @@ instance ToQuery DeleteAccountPasswordPolicy where
                   "Version" =: ("2010-05-08" :: ByteString)])
 
 -- | /See:/ 'deleteAccountPasswordPolicyResponse' smart constructor.
-data DeleteAccountPasswordPolicyResponse =
+data DeleteAccountPasswordPolicyResponse a =
     DeleteAccountPasswordPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAccountPasswordPolicyResponse' with the minimum fields required to make a request.
 --
 deleteAccountPasswordPolicyResponse
-    :: DeleteAccountPasswordPolicyResponse
+    :: DeleteAccountPasswordPolicyResponse (a)
 deleteAccountPasswordPolicyResponse = DeleteAccountPasswordPolicyResponse'
 
 instance NFData DeleteAccountPasswordPolicyResponse

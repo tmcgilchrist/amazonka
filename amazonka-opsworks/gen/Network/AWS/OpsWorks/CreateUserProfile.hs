@@ -135,7 +135,7 @@ instance ToQuery CreateUserProfile where
 -- | Contains the response to a 'CreateUserProfile' request.
 --
 -- /See:/ 'createUserProfileResponse' smart constructor.
-data CreateUserProfileResponse = CreateUserProfileResponse'
+data CreateUserProfileResponse a = CreateUserProfileResponse'
     { _cuprsIAMUserARN     :: !(Maybe Text)
     , _cuprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -149,7 +149,7 @@ data CreateUserProfileResponse = CreateUserProfileResponse'
 -- * 'cuprsResponseStatus'
 createUserProfileResponse
     :: Int -- ^ 'cuprsResponseStatus'
-    -> CreateUserProfileResponse
+    -> CreateUserProfileResponse (a)
 createUserProfileResponse pResponseStatus_ =
     CreateUserProfileResponse'
     { _cuprsIAMUserARN = Nothing
@@ -157,11 +157,11 @@ createUserProfileResponse pResponseStatus_ =
     }
 
 -- | The user\'s IAM ARN.
-cuprsIAMUserARN :: Lens' CreateUserProfileResponse (Maybe Text)
+cuprsIAMUserARN :: Lens' (CreateUserProfileResponse (a)) (Maybe Text)
 cuprsIAMUserARN = lens _cuprsIAMUserARN (\ s a -> s{_cuprsIAMUserARN = a});
 
 -- | The response status code.
-cuprsResponseStatus :: Lens' CreateUserProfileResponse Int
+cuprsResponseStatus :: Lens' (CreateUserProfileResponse (a)) Int
 cuprsResponseStatus = lens _cuprsResponseStatus (\ s a -> s{_cuprsResponseStatus = a});
 
 instance NFData CreateUserProfileResponse

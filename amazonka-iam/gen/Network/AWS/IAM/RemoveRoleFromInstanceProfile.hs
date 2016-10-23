@@ -108,14 +108,14 @@ instance ToQuery RemoveRoleFromInstanceProfile where
                "RoleName" =: _rrfipRoleName]
 
 -- | /See:/ 'removeRoleFromInstanceProfileResponse' smart constructor.
-data RemoveRoleFromInstanceProfileResponse =
+data RemoveRoleFromInstanceProfileResponse a =
     RemoveRoleFromInstanceProfileResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveRoleFromInstanceProfileResponse' with the minimum fields required to make a request.
 --
 removeRoleFromInstanceProfileResponse
-    :: RemoveRoleFromInstanceProfileResponse
+    :: RemoveRoleFromInstanceProfileResponse (a)
 removeRoleFromInstanceProfileResponse = RemoveRoleFromInstanceProfileResponse'
 
 instance NFData RemoveRoleFromInstanceProfileResponse

@@ -219,7 +219,7 @@ instance ToQuery CreateFleet where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'createFleetResponse' smart constructor.
-data CreateFleetResponse = CreateFleetResponse'
+data CreateFleetResponse a = CreateFleetResponse'
     { _cfrsFleetAttributes :: !(Maybe FleetAttributes)
     , _cfrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -233,7 +233,7 @@ data CreateFleetResponse = CreateFleetResponse'
 -- * 'cfrsResponseStatus'
 createFleetResponse
     :: Int -- ^ 'cfrsResponseStatus'
-    -> CreateFleetResponse
+    -> CreateFleetResponse (a)
 createFleetResponse pResponseStatus_ =
     CreateFleetResponse'
     { _cfrsFleetAttributes = Nothing
@@ -241,11 +241,11 @@ createFleetResponse pResponseStatus_ =
     }
 
 -- | Properties for the newly created fleet.
-cfrsFleetAttributes :: Lens' CreateFleetResponse (Maybe FleetAttributes)
+cfrsFleetAttributes :: Lens' (CreateFleetResponse (a)) (Maybe FleetAttributes)
 cfrsFleetAttributes = lens _cfrsFleetAttributes (\ s a -> s{_cfrsFleetAttributes = a});
 
 -- | The response status code.
-cfrsResponseStatus :: Lens' CreateFleetResponse Int
+cfrsResponseStatus :: Lens' (CreateFleetResponse (a)) Int
 cfrsResponseStatus = lens _cfrsResponseStatus (\ s a -> s{_cfrsResponseStatus = a});
 
 instance NFData CreateFleetResponse

@@ -115,14 +115,14 @@ instance ToQuery ModifyMountTargetSecurityGroups
         toQuery = const mempty
 
 -- | /See:/ 'modifyMountTargetSecurityGroupsResponse' smart constructor.
-data ModifyMountTargetSecurityGroupsResponse =
+data ModifyMountTargetSecurityGroupsResponse a =
     ModifyMountTargetSecurityGroupsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyMountTargetSecurityGroupsResponse' with the minimum fields required to make a request.
 --
 modifyMountTargetSecurityGroupsResponse
-    :: ModifyMountTargetSecurityGroupsResponse
+    :: ModifyMountTargetSecurityGroupsResponse (a)
 modifyMountTargetSecurityGroupsResponse =
     ModifyMountTargetSecurityGroupsResponse'
 

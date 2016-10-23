@@ -193,7 +193,7 @@ instance ToQuery UpdateDeploymentGroup where
 -- | Represents the output of an update deployment group operation.
 --
 -- /See:/ 'updateDeploymentGroupResponse' smart constructor.
-data UpdateDeploymentGroupResponse = UpdateDeploymentGroupResponse'
+data UpdateDeploymentGroupResponse a = UpdateDeploymentGroupResponse'
     { _udgrsHooksNotCleanedUp :: !(Maybe [AutoScalingGroup])
     , _udgrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -207,7 +207,7 @@ data UpdateDeploymentGroupResponse = UpdateDeploymentGroupResponse'
 -- * 'udgrsResponseStatus'
 updateDeploymentGroupResponse
     :: Int -- ^ 'udgrsResponseStatus'
-    -> UpdateDeploymentGroupResponse
+    -> UpdateDeploymentGroupResponse (a)
 updateDeploymentGroupResponse pResponseStatus_ =
     UpdateDeploymentGroupResponse'
     { _udgrsHooksNotCleanedUp = Nothing
@@ -215,11 +215,11 @@ updateDeploymentGroupResponse pResponseStatus_ =
     }
 
 -- | If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the AWS account. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the AWS account.
-udgrsHooksNotCleanedUp :: Lens' UpdateDeploymentGroupResponse [AutoScalingGroup]
+udgrsHooksNotCleanedUp :: Lens' (UpdateDeploymentGroupResponse (a)) [AutoScalingGroup]
 udgrsHooksNotCleanedUp = lens _udgrsHooksNotCleanedUp (\ s a -> s{_udgrsHooksNotCleanedUp = a}) . _Default . _Coerce;
 
 -- | The response status code.
-udgrsResponseStatus :: Lens' UpdateDeploymentGroupResponse Int
+udgrsResponseStatus :: Lens' (UpdateDeploymentGroupResponse (a)) Int
 udgrsResponseStatus = lens _udgrsResponseStatus (\ s a -> s{_udgrsResponseStatus = a});
 
 instance NFData UpdateDeploymentGroupResponse

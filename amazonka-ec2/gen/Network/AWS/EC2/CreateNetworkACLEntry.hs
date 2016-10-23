@@ -180,14 +180,14 @@ instance ToQuery CreateNetworkACLEntry where
                "CidrBlock" =: _cnaeCIdRBlock]
 
 -- | /See:/ 'createNetworkACLEntryResponse' smart constructor.
-data CreateNetworkACLEntryResponse =
+data CreateNetworkACLEntryResponse a =
     CreateNetworkACLEntryResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateNetworkACLEntryResponse' with the minimum fields required to make a request.
 --
 createNetworkACLEntryResponse
-    :: CreateNetworkACLEntryResponse
+    :: CreateNetworkACLEntryResponse (a)
 createNetworkACLEntryResponse = CreateNetworkACLEntryResponse'
 
 instance NFData CreateNetworkACLEntryResponse

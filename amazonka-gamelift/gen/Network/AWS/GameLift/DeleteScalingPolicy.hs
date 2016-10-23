@@ -106,14 +106,14 @@ instance ToQuery DeleteScalingPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'deleteScalingPolicyResponse' smart constructor.
-data DeleteScalingPolicyResponse =
+data DeleteScalingPolicyResponse a =
     DeleteScalingPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteScalingPolicyResponse' with the minimum fields required to make a request.
 --
 deleteScalingPolicyResponse
-    :: DeleteScalingPolicyResponse
+    :: DeleteScalingPolicyResponse (a)
 deleteScalingPolicyResponse = DeleteScalingPolicyResponse'
 
 instance NFData DeleteScalingPolicyResponse

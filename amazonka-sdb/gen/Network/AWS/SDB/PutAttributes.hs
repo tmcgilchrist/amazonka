@@ -129,14 +129,14 @@ instance ToQuery PutAttributes where
                toQueryList "Attribute" _paAttributes]
 
 -- | /See:/ 'putAttributesResponse' smart constructor.
-data PutAttributesResponse =
+data PutAttributesResponse a =
     PutAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutAttributesResponse' with the minimum fields required to make a request.
 --
 putAttributesResponse
-    :: PutAttributesResponse
+    :: PutAttributesResponse (a)
 putAttributesResponse = PutAttributesResponse'
 
 instance NFData PutAttributesResponse

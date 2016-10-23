@@ -180,7 +180,7 @@ instance ToQuery ListObjectsV where
                "list-type=2"]
 
 -- | /See:/ 'listObjectsVResponse' smart constructor.
-data ListObjectsVResponse = ListObjectsVResponse'
+data ListObjectsVResponse a = ListObjectsVResponse'
     { _lrsStartAfter            :: !(Maybe Text)
     , _lrsKeyCount              :: !(Maybe Int)
     , _lrsContents              :: !(Maybe [Object])
@@ -227,7 +227,7 @@ data ListObjectsVResponse = ListObjectsVResponse'
 -- * 'lrsResponseStatus'
 listObjectsVResponse
     :: Int -- ^ 'lrsResponseStatus'
-    -> ListObjectsVResponse
+    -> ListObjectsVResponse (a)
 listObjectsVResponse pResponseStatus_ =
     ListObjectsVResponse'
     { _lrsStartAfter = Nothing
@@ -246,55 +246,55 @@ listObjectsVResponse pResponseStatus_ =
     }
 
 -- | StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
-lrsStartAfter :: Lens' ListObjectsVResponse (Maybe Text)
+lrsStartAfter :: Lens' (ListObjectsVResponse (a)) (Maybe Text)
 lrsStartAfter = lens _lrsStartAfter (\ s a -> s{_lrsStartAfter = a});
 
 -- | KeyCount is the number of keys returned with this request. KeyCount will always be less than equals to MaxKeys field. Say you ask for 50 keys, your result will include less than equals 50 keys
-lrsKeyCount :: Lens' ListObjectsVResponse (Maybe Int)
+lrsKeyCount :: Lens' (ListObjectsVResponse (a)) (Maybe Int)
 lrsKeyCount = lens _lrsKeyCount (\ s a -> s{_lrsKeyCount = a});
 
 -- | Metadata about each object returned.
-lrsContents :: Lens' ListObjectsVResponse [Object]
+lrsContents :: Lens' (ListObjectsVResponse (a)) [Object]
 lrsContents = lens _lrsContents (\ s a -> s{_lrsContents = a}) . _Default . _Coerce;
 
 -- | ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a token. ContinuationToken is obfuscated and is not a real key
-lrsContinuationToken :: Lens' ListObjectsVResponse (Maybe Text)
+lrsContinuationToken :: Lens' (ListObjectsVResponse (a)) (Maybe Text)
 lrsContinuationToken = lens _lrsContinuationToken (\ s a -> s{_lrsContinuationToken = a});
 
 -- | Limits the response to keys that begin with the specified prefix.
-lrsPrefix :: Lens' ListObjectsVResponse (Maybe Text)
+lrsPrefix :: Lens' (ListObjectsVResponse (a)) (Maybe Text)
 lrsPrefix = lens _lrsPrefix (\ s a -> s{_lrsPrefix = a});
 
 -- | CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of the string specified by delimiter
-lrsCommonPrefixes :: Lens' ListObjectsVResponse [CommonPrefix]
+lrsCommonPrefixes :: Lens' (ListObjectsVResponse (a)) [CommonPrefix]
 lrsCommonPrefixes = lens _lrsCommonPrefixes (\ s a -> s{_lrsCommonPrefixes = a}) . _Default . _Coerce;
 
 -- | Encoding type used by Amazon S3 to encode object keys in the response.
-lrsEncodingType :: Lens' ListObjectsVResponse (Maybe EncodingType)
+lrsEncodingType :: Lens' (ListObjectsVResponse (a)) (Maybe EncodingType)
 lrsEncodingType = lens _lrsEncodingType (\ s a -> s{_lrsEncodingType = a});
 
 -- | Name of the bucket to list.
-lrsName :: Lens' ListObjectsVResponse (Maybe BucketName)
+lrsName :: Lens' (ListObjectsVResponse (a)) (Maybe BucketName)
 lrsName = lens _lrsName (\ s a -> s{_lrsName = a});
 
 -- | NextContinuationToken is sent when isTruncated is true which means there are more keys in the bucket that can be listed. The next list requests to Amazon S3 can be continued with this NextContinuationToken. NextContinuationToken is obfuscated and is not a real key
-lrsNextContinuationToken :: Lens' ListObjectsVResponse (Maybe Text)
+lrsNextContinuationToken :: Lens' (ListObjectsVResponse (a)) (Maybe Text)
 lrsNextContinuationToken = lens _lrsNextContinuationToken (\ s a -> s{_lrsNextContinuationToken = a});
 
 -- | Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
-lrsMaxKeys :: Lens' ListObjectsVResponse (Maybe Int)
+lrsMaxKeys :: Lens' (ListObjectsVResponse (a)) (Maybe Int)
 lrsMaxKeys = lens _lrsMaxKeys (\ s a -> s{_lrsMaxKeys = a});
 
 -- | A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria.
-lrsIsTruncated :: Lens' ListObjectsVResponse (Maybe Bool)
+lrsIsTruncated :: Lens' (ListObjectsVResponse (a)) (Maybe Bool)
 lrsIsTruncated = lens _lrsIsTruncated (\ s a -> s{_lrsIsTruncated = a});
 
 -- | A delimiter is a character you use to group keys.
-lrsDelimiter :: Lens' ListObjectsVResponse (Maybe Delimiter)
+lrsDelimiter :: Lens' (ListObjectsVResponse (a)) (Maybe Delimiter)
 lrsDelimiter = lens _lrsDelimiter (\ s a -> s{_lrsDelimiter = a});
 
 -- | The response status code.
-lrsResponseStatus :: Lens' ListObjectsVResponse Int
+lrsResponseStatus :: Lens' (ListObjectsVResponse (a)) Int
 lrsResponseStatus = lens _lrsResponseStatus (\ s a -> s{_lrsResponseStatus = a});
 
 instance NFData ListObjectsVResponse

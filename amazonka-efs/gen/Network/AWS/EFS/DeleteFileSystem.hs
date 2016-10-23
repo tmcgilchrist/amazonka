@@ -90,14 +90,14 @@ instance ToQuery DeleteFileSystem where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFileSystemResponse' smart constructor.
-data DeleteFileSystemResponse =
+data DeleteFileSystemResponse a =
     DeleteFileSystemResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteFileSystemResponse' with the minimum fields required to make a request.
 --
 deleteFileSystemResponse
-    :: DeleteFileSystemResponse
+    :: DeleteFileSystemResponse (a)
 deleteFileSystemResponse = DeleteFileSystemResponse'
 
 instance NFData DeleteFileSystemResponse

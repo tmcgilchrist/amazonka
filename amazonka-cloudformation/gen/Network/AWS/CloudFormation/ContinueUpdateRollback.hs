@@ -98,7 +98,7 @@ instance ToQuery ContinueUpdateRollback where
 -- | The output for a < ContinueUpdateRollback> action.
 --
 -- /See:/ 'continueUpdateRollbackResponse' smart constructor.
-newtype ContinueUpdateRollbackResponse = ContinueUpdateRollbackResponse'
+newtype ContinueUpdateRollbackResponse a = ContinueUpdateRollbackResponse'
     { _currsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -109,14 +109,14 @@ newtype ContinueUpdateRollbackResponse = ContinueUpdateRollbackResponse'
 -- * 'currsResponseStatus'
 continueUpdateRollbackResponse
     :: Int -- ^ 'currsResponseStatus'
-    -> ContinueUpdateRollbackResponse
+    -> ContinueUpdateRollbackResponse (a)
 continueUpdateRollbackResponse pResponseStatus_ =
     ContinueUpdateRollbackResponse'
     { _currsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-currsResponseStatus :: Lens' ContinueUpdateRollbackResponse Int
+currsResponseStatus :: Lens' (ContinueUpdateRollbackResponse (a)) Int
 currsResponseStatus = lens _currsResponseStatus (\ s a -> s{_currsResponseStatus = a});
 
 instance NFData ContinueUpdateRollbackResponse

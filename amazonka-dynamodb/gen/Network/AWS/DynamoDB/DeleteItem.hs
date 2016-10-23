@@ -380,7 +380,7 @@ instance ToQuery DeleteItem where
 -- | Represents the output of a /DeleteItem/ operation.
 --
 -- /See:/ 'deleteItemResponse' smart constructor.
-data DeleteItemResponse = DeleteItemResponse'
+data DeleteItemResponse a = DeleteItemResponse'
     { _dirsItemCollectionMetrics :: !(Maybe ItemCollectionMetrics)
     , _dirsConsumedCapacity      :: !(Maybe ConsumedCapacity)
     , _dirsAttributes            :: !(Maybe (Map Text AttributeValue))
@@ -400,7 +400,7 @@ data DeleteItemResponse = DeleteItemResponse'
 -- * 'dirsResponseStatus'
 deleteItemResponse
     :: Int -- ^ 'dirsResponseStatus'
-    -> DeleteItemResponse
+    -> DeleteItemResponse (a)
 deleteItemResponse pResponseStatus_ =
     DeleteItemResponse'
     { _dirsItemCollectionMetrics = Nothing
@@ -419,19 +419,19 @@ deleteItemResponse pResponseStatus_ =
 --
 --     The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
 --
-dirsItemCollectionMetrics :: Lens' DeleteItemResponse (Maybe ItemCollectionMetrics)
+dirsItemCollectionMetrics :: Lens' (DeleteItemResponse (a)) (Maybe ItemCollectionMetrics)
 dirsItemCollectionMetrics = lens _dirsItemCollectionMetrics (\ s a -> s{_dirsItemCollectionMetrics = a});
 
 -- | Undocumented member.
-dirsConsumedCapacity :: Lens' DeleteItemResponse (Maybe ConsumedCapacity)
+dirsConsumedCapacity :: Lens' (DeleteItemResponse (a)) (Maybe ConsumedCapacity)
 dirsConsumedCapacity = lens _dirsConsumedCapacity (\ s a -> s{_dirsConsumedCapacity = a});
 
 -- | A map of attribute names to /AttributeValue/ objects, representing the item as it appeared before the /DeleteItem/ operation. This map appears in the response only if /ReturnValues/ was specified as 'ALL_OLD' in the request.
-dirsAttributes :: Lens' DeleteItemResponse (HashMap Text AttributeValue)
+dirsAttributes :: Lens' (DeleteItemResponse (a)) (HashMap Text AttributeValue)
 dirsAttributes = lens _dirsAttributes (\ s a -> s{_dirsAttributes = a}) . _Default . _Map;
 
 -- | The response status code.
-dirsResponseStatus :: Lens' DeleteItemResponse Int
+dirsResponseStatus :: Lens' (DeleteItemResponse (a)) Int
 dirsResponseStatus = lens _dirsResponseStatus (\ s a -> s{_dirsResponseStatus = a});
 
 instance NFData DeleteItemResponse

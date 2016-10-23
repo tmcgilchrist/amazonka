@@ -103,14 +103,14 @@ instance ToQuery AttachInstances where
                "AutoScalingGroupName" =: _aiAutoScalingGroupName]
 
 -- | /See:/ 'attachInstancesResponse' smart constructor.
-data AttachInstancesResponse =
+data AttachInstancesResponse a =
     AttachInstancesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AttachInstancesResponse' with the minimum fields required to make a request.
 --
 attachInstancesResponse
-    :: AttachInstancesResponse
+    :: AttachInstancesResponse (a)
 attachInstancesResponse = AttachInstancesResponse'
 
 instance NFData AttachInstancesResponse

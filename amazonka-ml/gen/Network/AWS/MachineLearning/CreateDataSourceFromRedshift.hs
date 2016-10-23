@@ -182,7 +182,7 @@ instance ToQuery CreateDataSourceFromRedshift where
 -- The 'CreateDataSourceFromRedshift' operation is asynchronous. You can poll for updates by using the 'GetBatchPrediction' operation and checking the 'Status' parameter.
 --
 -- /See:/ 'createDataSourceFromRedshiftResponse' smart constructor.
-data CreateDataSourceFromRedshiftResponse = CreateDataSourceFromRedshiftResponse'
+data CreateDataSourceFromRedshiftResponse a = CreateDataSourceFromRedshiftResponse'
     { _cdsfrrsDataSourceId   :: !(Maybe Text)
     , _cdsfrrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -196,7 +196,7 @@ data CreateDataSourceFromRedshiftResponse = CreateDataSourceFromRedshiftResponse
 -- * 'cdsfrrsResponseStatus'
 createDataSourceFromRedshiftResponse
     :: Int -- ^ 'cdsfrrsResponseStatus'
-    -> CreateDataSourceFromRedshiftResponse
+    -> CreateDataSourceFromRedshiftResponse (a)
 createDataSourceFromRedshiftResponse pResponseStatus_ =
     CreateDataSourceFromRedshiftResponse'
     { _cdsfrrsDataSourceId = Nothing
@@ -204,11 +204,11 @@ createDataSourceFromRedshiftResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the 'DataSourceID' in the request.
-cdsfrrsDataSourceId :: Lens' CreateDataSourceFromRedshiftResponse (Maybe Text)
+cdsfrrsDataSourceId :: Lens' (CreateDataSourceFromRedshiftResponse (a)) (Maybe Text)
 cdsfrrsDataSourceId = lens _cdsfrrsDataSourceId (\ s a -> s{_cdsfrrsDataSourceId = a});
 
 -- | The response status code.
-cdsfrrsResponseStatus :: Lens' CreateDataSourceFromRedshiftResponse Int
+cdsfrrsResponseStatus :: Lens' (CreateDataSourceFromRedshiftResponse (a)) Int
 cdsfrrsResponseStatus = lens _cdsfrrsResponseStatus (\ s a -> s{_cdsfrrsResponseStatus = a});
 
 instance NFData CreateDataSourceFromRedshiftResponse

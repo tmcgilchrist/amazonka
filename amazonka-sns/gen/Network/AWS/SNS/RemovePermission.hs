@@ -96,14 +96,14 @@ instance ToQuery RemovePermission where
                "TopicArn" =: _rpTopicARN, "Label" =: _rpLabel]
 
 -- | /See:/ 'removePermissionResponse' smart constructor.
-data RemovePermissionResponse =
+data RemovePermissionResponse a =
     RemovePermissionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemovePermissionResponse' with the minimum fields required to make a request.
 --
 removePermissionResponse
-    :: RemovePermissionResponse
+    :: RemovePermissionResponse (a)
 removePermissionResponse = RemovePermissionResponse'
 
 instance NFData RemovePermissionResponse

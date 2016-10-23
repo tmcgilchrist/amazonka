@@ -137,7 +137,7 @@ instance ToQuery CreateDBClusterSnapshot where
                "DBClusterIdentifier" =: _cdcsDBClusterIdentifier]
 
 -- | /See:/ 'createDBClusterSnapshotResponse' smart constructor.
-data CreateDBClusterSnapshotResponse = CreateDBClusterSnapshotResponse'
+data CreateDBClusterSnapshotResponse a = CreateDBClusterSnapshotResponse'
     { _cdbcsrsDBClusterSnapshot :: !(Maybe DBClusterSnapshot)
     , _cdbcsrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -151,7 +151,7 @@ data CreateDBClusterSnapshotResponse = CreateDBClusterSnapshotResponse'
 -- * 'cdbcsrsResponseStatus'
 createDBClusterSnapshotResponse
     :: Int -- ^ 'cdbcsrsResponseStatus'
-    -> CreateDBClusterSnapshotResponse
+    -> CreateDBClusterSnapshotResponse (a)
 createDBClusterSnapshotResponse pResponseStatus_ =
     CreateDBClusterSnapshotResponse'
     { _cdbcsrsDBClusterSnapshot = Nothing
@@ -159,11 +159,11 @@ createDBClusterSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdbcsrsDBClusterSnapshot :: Lens' CreateDBClusterSnapshotResponse (Maybe DBClusterSnapshot)
+cdbcsrsDBClusterSnapshot :: Lens' (CreateDBClusterSnapshotResponse (a)) (Maybe DBClusterSnapshot)
 cdbcsrsDBClusterSnapshot = lens _cdbcsrsDBClusterSnapshot (\ s a -> s{_cdbcsrsDBClusterSnapshot = a});
 
 -- | The response status code.
-cdbcsrsResponseStatus :: Lens' CreateDBClusterSnapshotResponse Int
+cdbcsrsResponseStatus :: Lens' (CreateDBClusterSnapshotResponse (a)) Int
 cdbcsrsResponseStatus = lens _cdbcsrsResponseStatus (\ s a -> s{_cdbcsrsResponseStatus = a});
 
 instance NFData CreateDBClusterSnapshotResponse

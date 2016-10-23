@@ -158,7 +158,7 @@ instance ToQuery QueryObjects where
 -- | Contains the output of QueryObjects.
 --
 -- /See:/ 'queryObjectsResponse' smart constructor.
-data QueryObjectsResponse = QueryObjectsResponse'
+data QueryObjectsResponse a = QueryObjectsResponse'
     { _qorsHasMoreResults :: !(Maybe Bool)
     , _qorsIds            :: !(Maybe [Text])
     , _qorsMarker         :: !(Maybe Text)
@@ -178,7 +178,7 @@ data QueryObjectsResponse = QueryObjectsResponse'
 -- * 'qorsResponseStatus'
 queryObjectsResponse
     :: Int -- ^ 'qorsResponseStatus'
-    -> QueryObjectsResponse
+    -> QueryObjectsResponse (a)
 queryObjectsResponse pResponseStatus_ =
     QueryObjectsResponse'
     { _qorsHasMoreResults = Nothing
@@ -188,19 +188,19 @@ queryObjectsResponse pResponseStatus_ =
     }
 
 -- | Indicates whether there are more results that can be obtained by a subsequent call.
-qorsHasMoreResults :: Lens' QueryObjectsResponse (Maybe Bool)
+qorsHasMoreResults :: Lens' (QueryObjectsResponse (a)) (Maybe Bool)
 qorsHasMoreResults = lens _qorsHasMoreResults (\ s a -> s{_qorsHasMoreResults = a});
 
 -- | The identifiers that match the query selectors.
-qorsIds :: Lens' QueryObjectsResponse [Text]
+qorsIds :: Lens' (QueryObjectsResponse (a)) [Text]
 qorsIds = lens _qorsIds (\ s a -> s{_qorsIds = a}) . _Default . _Coerce;
 
 -- | The starting point for the next page of results. To view the next page of results, call 'QueryObjects' again with this marker value. If the value is null, there are no more results.
-qorsMarker :: Lens' QueryObjectsResponse (Maybe Text)
+qorsMarker :: Lens' (QueryObjectsResponse (a)) (Maybe Text)
 qorsMarker = lens _qorsMarker (\ s a -> s{_qorsMarker = a});
 
 -- | The response status code.
-qorsResponseStatus :: Lens' QueryObjectsResponse Int
+qorsResponseStatus :: Lens' (QueryObjectsResponse (a)) Int
 qorsResponseStatus = lens _qorsResponseStatus (\ s a -> s{_qorsResponseStatus = a});
 
 instance NFData QueryObjectsResponse

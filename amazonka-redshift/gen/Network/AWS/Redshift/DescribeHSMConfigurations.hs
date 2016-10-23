@@ -161,7 +161,7 @@ instance ToQuery DescribeHSMConfigurations where
 -- |
 --
 -- /See:/ 'describeHSMConfigurationsResponse' smart constructor.
-data DescribeHSMConfigurationsResponse = DescribeHSMConfigurationsResponse'
+data DescribeHSMConfigurationsResponse a = DescribeHSMConfigurationsResponse'
     { _dhcrsMarker            :: !(Maybe Text)
     , _dhcrsHSMConfigurations :: !(Maybe [HSMConfiguration])
     , _dhcrsResponseStatus    :: !Int
@@ -178,7 +178,7 @@ data DescribeHSMConfigurationsResponse = DescribeHSMConfigurationsResponse'
 -- * 'dhcrsResponseStatus'
 describeHSMConfigurationsResponse
     :: Int -- ^ 'dhcrsResponseStatus'
-    -> DescribeHSMConfigurationsResponse
+    -> DescribeHSMConfigurationsResponse (a)
 describeHSMConfigurationsResponse pResponseStatus_ =
     DescribeHSMConfigurationsResponse'
     { _dhcrsMarker = Nothing
@@ -187,15 +187,15 @@ describeHSMConfigurationsResponse pResponseStatus_ =
     }
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dhcrsMarker :: Lens' DescribeHSMConfigurationsResponse (Maybe Text)
+dhcrsMarker :: Lens' (DescribeHSMConfigurationsResponse (a)) (Maybe Text)
 dhcrsMarker = lens _dhcrsMarker (\ s a -> s{_dhcrsMarker = a});
 
 -- | A list of 'HsmConfiguration' objects.
-dhcrsHSMConfigurations :: Lens' DescribeHSMConfigurationsResponse [HSMConfiguration]
+dhcrsHSMConfigurations :: Lens' (DescribeHSMConfigurationsResponse (a)) [HSMConfiguration]
 dhcrsHSMConfigurations = lens _dhcrsHSMConfigurations (\ s a -> s{_dhcrsHSMConfigurations = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dhcrsResponseStatus :: Lens' DescribeHSMConfigurationsResponse Int
+dhcrsResponseStatus :: Lens' (DescribeHSMConfigurationsResponse (a)) Int
 dhcrsResponseStatus = lens _dhcrsResponseStatus (\ s a -> s{_dhcrsResponseStatus = a});
 
 instance NFData DescribeHSMConfigurationsResponse

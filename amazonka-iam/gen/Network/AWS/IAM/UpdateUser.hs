@@ -113,14 +113,14 @@ instance ToQuery UpdateUser where
                "NewPath" =: _uuNewPath, "UserName" =: _uuUserName]
 
 -- | /See:/ 'updateUserResponse' smart constructor.
-data UpdateUserResponse =
+data UpdateUserResponse a =
     UpdateUserResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateUserResponse' with the minimum fields required to make a request.
 --
 updateUserResponse
-    :: UpdateUserResponse
+    :: UpdateUserResponse (a)
 updateUserResponse = UpdateUserResponse'
 
 instance NFData UpdateUserResponse

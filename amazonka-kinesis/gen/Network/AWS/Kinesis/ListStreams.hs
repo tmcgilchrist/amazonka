@@ -134,7 +134,7 @@ instance ToQuery ListStreams where
 -- | Represents the output for 'ListStreams'.
 --
 -- /See:/ 'listStreamsResponse' smart constructor.
-data ListStreamsResponse = ListStreamsResponse'
+data ListStreamsResponse a = ListStreamsResponse'
     { _lsrsResponseStatus :: !Int
     , _lsrsStreamNames    :: ![Text]
     , _lsrsHasMoreStreams :: !Bool
@@ -152,7 +152,7 @@ data ListStreamsResponse = ListStreamsResponse'
 listStreamsResponse
     :: Int -- ^ 'lsrsResponseStatus'
     -> Bool -- ^ 'lsrsHasMoreStreams'
-    -> ListStreamsResponse
+    -> ListStreamsResponse (a)
 listStreamsResponse pResponseStatus_ pHasMoreStreams_ =
     ListStreamsResponse'
     { _lsrsResponseStatus = pResponseStatus_
@@ -161,15 +161,15 @@ listStreamsResponse pResponseStatus_ pHasMoreStreams_ =
     }
 
 -- | The response status code.
-lsrsResponseStatus :: Lens' ListStreamsResponse Int
+lsrsResponseStatus :: Lens' (ListStreamsResponse (a)) Int
 lsrsResponseStatus = lens _lsrsResponseStatus (\ s a -> s{_lsrsResponseStatus = a});
 
 -- | The names of the streams that are associated with the AWS account making the 'ListStreams' request.
-lsrsStreamNames :: Lens' ListStreamsResponse [Text]
+lsrsStreamNames :: Lens' (ListStreamsResponse (a)) [Text]
 lsrsStreamNames = lens _lsrsStreamNames (\ s a -> s{_lsrsStreamNames = a}) . _Coerce;
 
 -- | If set to 'true', there are more streams available to list.
-lsrsHasMoreStreams :: Lens' ListStreamsResponse Bool
+lsrsHasMoreStreams :: Lens' (ListStreamsResponse (a)) Bool
 lsrsHasMoreStreams = lens _lsrsHasMoreStreams (\ s a -> s{_lsrsHasMoreStreams = a});
 
 instance NFData ListStreamsResponse

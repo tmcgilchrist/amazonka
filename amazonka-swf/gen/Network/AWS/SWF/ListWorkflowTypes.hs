@@ -181,7 +181,7 @@ instance ToQuery ListWorkflowTypes where
 -- | Contains a paginated list of information structures about workflow types.
 --
 -- /See:/ 'listWorkflowTypesResponse' smart constructor.
-data ListWorkflowTypesResponse = ListWorkflowTypesResponse'
+data ListWorkflowTypesResponse a = ListWorkflowTypesResponse'
     { _lwtrsNextPageToken  :: !(Maybe Text)
     , _lwtrsResponseStatus :: !Int
     , _lwtrsTypeInfos      :: ![WorkflowTypeInfo]
@@ -198,7 +198,7 @@ data ListWorkflowTypesResponse = ListWorkflowTypesResponse'
 -- * 'lwtrsTypeInfos'
 listWorkflowTypesResponse
     :: Int -- ^ 'lwtrsResponseStatus'
-    -> ListWorkflowTypesResponse
+    -> ListWorkflowTypesResponse (a)
 listWorkflowTypesResponse pResponseStatus_ =
     ListWorkflowTypesResponse'
     { _lwtrsNextPageToken = Nothing
@@ -209,15 +209,15 @@ listWorkflowTypesResponse pResponseStatus_ =
 -- | If a 'NextPageToken' was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in 'nextPageToken'. Keep all other arguments unchanged.
 --
 -- The configured 'maximumPageSize' determines how many results can be returned in a single call.
-lwtrsNextPageToken :: Lens' ListWorkflowTypesResponse (Maybe Text)
+lwtrsNextPageToken :: Lens' (ListWorkflowTypesResponse (a)) (Maybe Text)
 lwtrsNextPageToken = lens _lwtrsNextPageToken (\ s a -> s{_lwtrsNextPageToken = a});
 
 -- | The response status code.
-lwtrsResponseStatus :: Lens' ListWorkflowTypesResponse Int
+lwtrsResponseStatus :: Lens' (ListWorkflowTypesResponse (a)) Int
 lwtrsResponseStatus = lens _lwtrsResponseStatus (\ s a -> s{_lwtrsResponseStatus = a});
 
 -- | The list of workflow type information.
-lwtrsTypeInfos :: Lens' ListWorkflowTypesResponse [WorkflowTypeInfo]
+lwtrsTypeInfos :: Lens' (ListWorkflowTypesResponse (a)) [WorkflowTypeInfo]
 lwtrsTypeInfos = lens _lwtrsTypeInfos (\ s a -> s{_lwtrsTypeInfos = a}) . _Coerce;
 
 instance NFData ListWorkflowTypesResponse

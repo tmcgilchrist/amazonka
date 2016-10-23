@@ -130,7 +130,7 @@ instance ToQuery GetModels where
 -- < Method>, < MethodResponse>, <http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html Models and Mappings>
 --
 -- /See:/ 'getModelsResponse' smart constructor.
-data GetModelsResponse = GetModelsResponse'
+data GetModelsResponse a = GetModelsResponse'
     { _gmrsItems          :: !(Maybe [Model])
     , _gmrsPosition       :: !(Maybe Text)
     , _gmrsResponseStatus :: !Int
@@ -147,7 +147,7 @@ data GetModelsResponse = GetModelsResponse'
 -- * 'gmrsResponseStatus'
 getModelsResponse
     :: Int -- ^ 'gmrsResponseStatus'
-    -> GetModelsResponse
+    -> GetModelsResponse (a)
 getModelsResponse pResponseStatus_ =
     GetModelsResponse'
     { _gmrsItems = Nothing
@@ -156,15 +156,15 @@ getModelsResponse pResponseStatus_ =
     }
 
 -- | Gets the current < Model> resource in the collection.
-gmrsItems :: Lens' GetModelsResponse [Model]
+gmrsItems :: Lens' (GetModelsResponse (a)) [Model]
 gmrsItems = lens _gmrsItems (\ s a -> s{_gmrsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gmrsPosition :: Lens' GetModelsResponse (Maybe Text)
+gmrsPosition :: Lens' (GetModelsResponse (a)) (Maybe Text)
 gmrsPosition = lens _gmrsPosition (\ s a -> s{_gmrsPosition = a});
 
 -- | The response status code.
-gmrsResponseStatus :: Lens' GetModelsResponse Int
+gmrsResponseStatus :: Lens' (GetModelsResponse (a)) Int
 gmrsResponseStatus = lens _gmrsResponseStatus (\ s a -> s{_gmrsResponseStatus = a});
 
 instance NFData GetModelsResponse

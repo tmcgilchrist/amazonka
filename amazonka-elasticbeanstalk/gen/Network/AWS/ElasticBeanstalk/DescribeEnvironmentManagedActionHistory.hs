@@ -138,7 +138,7 @@ instance ToQuery
 -- | A result message containing a list of completed and failed managed actions.
 --
 -- /See:/ 'describeEnvironmentManagedActionHistoryResponse' smart constructor.
-data DescribeEnvironmentManagedActionHistoryResponse = DescribeEnvironmentManagedActionHistoryResponse'
+data DescribeEnvironmentManagedActionHistoryResponse a = DescribeEnvironmentManagedActionHistoryResponse'
     { _demahrsManagedActionHistoryItems :: !(Maybe (List1 ManagedActionHistoryItem))
     , _demahrsNextToken                 :: !(Maybe Text)
     , _demahrsResponseStatus            :: !Int
@@ -155,7 +155,7 @@ data DescribeEnvironmentManagedActionHistoryResponse = DescribeEnvironmentManage
 -- * 'demahrsResponseStatus'
 describeEnvironmentManagedActionHistoryResponse
     :: Int -- ^ 'demahrsResponseStatus'
-    -> DescribeEnvironmentManagedActionHistoryResponse
+    -> DescribeEnvironmentManagedActionHistoryResponse (a)
 describeEnvironmentManagedActionHistoryResponse pResponseStatus_ =
     DescribeEnvironmentManagedActionHistoryResponse'
     { _demahrsManagedActionHistoryItems = Nothing
@@ -164,15 +164,15 @@ describeEnvironmentManagedActionHistoryResponse pResponseStatus_ =
     }
 
 -- | A list of completed and failed managed actions.
-demahrsManagedActionHistoryItems :: Lens' DescribeEnvironmentManagedActionHistoryResponse (Maybe (NonEmpty ManagedActionHistoryItem))
+demahrsManagedActionHistoryItems :: Lens' (DescribeEnvironmentManagedActionHistoryResponse (a)) (Maybe (NonEmpty ManagedActionHistoryItem))
 demahrsManagedActionHistoryItems = lens _demahrsManagedActionHistoryItems (\ s a -> s{_demahrsManagedActionHistoryItems = a}) . mapping _List1;
 
 -- | A pagination token that you pass to < DescribeEnvironmentManagedActionHistory> to get the next page of results.
-demahrsNextToken :: Lens' DescribeEnvironmentManagedActionHistoryResponse (Maybe Text)
+demahrsNextToken :: Lens' (DescribeEnvironmentManagedActionHistoryResponse (a)) (Maybe Text)
 demahrsNextToken = lens _demahrsNextToken (\ s a -> s{_demahrsNextToken = a});
 
 -- | The response status code.
-demahrsResponseStatus :: Lens' DescribeEnvironmentManagedActionHistoryResponse Int
+demahrsResponseStatus :: Lens' (DescribeEnvironmentManagedActionHistoryResponse (a)) Int
 demahrsResponseStatus = lens _demahrsResponseStatus (\ s a -> s{_demahrsResponseStatus = a});
 
 instance NFData

@@ -115,7 +115,7 @@ instance ToQuery CancelRetrieval where
 -- | CancelRetrievalOutput
 --
 -- /See:/ 'cancelRetrievalResponse' smart constructor.
-data CancelRetrievalResponse = CancelRetrievalResponse'
+data CancelRetrievalResponse a = CancelRetrievalResponse'
     { _crrsTapeARN        :: !(Maybe Text)
     , _crrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data CancelRetrievalResponse = CancelRetrievalResponse'
 -- * 'crrsResponseStatus'
 cancelRetrievalResponse
     :: Int -- ^ 'crrsResponseStatus'
-    -> CancelRetrievalResponse
+    -> CancelRetrievalResponse (a)
 cancelRetrievalResponse pResponseStatus_ =
     CancelRetrievalResponse'
     { _crrsTapeARN = Nothing
@@ -137,11 +137,11 @@ cancelRetrievalResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the virtual tape for which retrieval was canceled.
-crrsTapeARN :: Lens' CancelRetrievalResponse (Maybe Text)
+crrsTapeARN :: Lens' (CancelRetrievalResponse (a)) (Maybe Text)
 crrsTapeARN = lens _crrsTapeARN (\ s a -> s{_crrsTapeARN = a});
 
 -- | The response status code.
-crrsResponseStatus :: Lens' CancelRetrievalResponse Int
+crrsResponseStatus :: Lens' (CancelRetrievalResponse (a)) Int
 crrsResponseStatus = lens _crrsResponseStatus (\ s a -> s{_crrsResponseStatus = a});
 
 instance NFData CancelRetrievalResponse

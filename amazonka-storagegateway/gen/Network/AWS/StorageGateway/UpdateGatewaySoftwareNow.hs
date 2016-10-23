@@ -108,7 +108,7 @@ instance ToQuery UpdateGatewaySoftwareNow where
 -- | A JSON object containing the of the gateway that was updated.
 --
 -- /See:/ 'updateGatewaySoftwareNowResponse' smart constructor.
-data UpdateGatewaySoftwareNowResponse = UpdateGatewaySoftwareNowResponse'
+data UpdateGatewaySoftwareNowResponse a = UpdateGatewaySoftwareNowResponse'
     { _ugsnrsGatewayARN     :: !(Maybe Text)
     , _ugsnrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -122,7 +122,7 @@ data UpdateGatewaySoftwareNowResponse = UpdateGatewaySoftwareNowResponse'
 -- * 'ugsnrsResponseStatus'
 updateGatewaySoftwareNowResponse
     :: Int -- ^ 'ugsnrsResponseStatus'
-    -> UpdateGatewaySoftwareNowResponse
+    -> UpdateGatewaySoftwareNowResponse (a)
 updateGatewaySoftwareNowResponse pResponseStatus_ =
     UpdateGatewaySoftwareNowResponse'
     { _ugsnrsGatewayARN = Nothing
@@ -130,11 +130,11 @@ updateGatewaySoftwareNowResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ugsnrsGatewayARN :: Lens' UpdateGatewaySoftwareNowResponse (Maybe Text)
+ugsnrsGatewayARN :: Lens' (UpdateGatewaySoftwareNowResponse (a)) (Maybe Text)
 ugsnrsGatewayARN = lens _ugsnrsGatewayARN (\ s a -> s{_ugsnrsGatewayARN = a});
 
 -- | The response status code.
-ugsnrsResponseStatus :: Lens' UpdateGatewaySoftwareNowResponse Int
+ugsnrsResponseStatus :: Lens' (UpdateGatewaySoftwareNowResponse (a)) Int
 ugsnrsResponseStatus = lens _ugsnrsResponseStatus (\ s a -> s{_ugsnrsResponseStatus = a});
 
 instance NFData UpdateGatewaySoftwareNowResponse

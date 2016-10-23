@@ -113,7 +113,7 @@ instance ToQuery UpdateRadius where
 -- | Contains the results of the < UpdateRadius> operation.
 --
 -- /See:/ 'updateRadiusResponse' smart constructor.
-newtype UpdateRadiusResponse = UpdateRadiusResponse'
+newtype UpdateRadiusResponse a = UpdateRadiusResponse'
     { _urrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -124,14 +124,14 @@ newtype UpdateRadiusResponse = UpdateRadiusResponse'
 -- * 'urrsResponseStatus'
 updateRadiusResponse
     :: Int -- ^ 'urrsResponseStatus'
-    -> UpdateRadiusResponse
+    -> UpdateRadiusResponse (a)
 updateRadiusResponse pResponseStatus_ =
     UpdateRadiusResponse'
     { _urrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-urrsResponseStatus :: Lens' UpdateRadiusResponse Int
+urrsResponseStatus :: Lens' (UpdateRadiusResponse (a)) Int
 urrsResponseStatus = lens _urrsResponseStatus (\ s a -> s{_urrsResponseStatus = a});
 
 instance NFData UpdateRadiusResponse

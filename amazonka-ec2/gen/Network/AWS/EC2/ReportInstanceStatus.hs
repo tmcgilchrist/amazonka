@@ -168,14 +168,14 @@ instance ToQuery ReportInstanceStatus where
                toQueryList "ReasonCode" _risReasonCodes]
 
 -- | /See:/ 'reportInstanceStatusResponse' smart constructor.
-data ReportInstanceStatusResponse =
+data ReportInstanceStatusResponse a =
     ReportInstanceStatusResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ReportInstanceStatusResponse' with the minimum fields required to make a request.
 --
 reportInstanceStatusResponse
-    :: ReportInstanceStatusResponse
+    :: ReportInstanceStatusResponse (a)
 reportInstanceStatusResponse = ReportInstanceStatusResponse'
 
 instance NFData ReportInstanceStatusResponse

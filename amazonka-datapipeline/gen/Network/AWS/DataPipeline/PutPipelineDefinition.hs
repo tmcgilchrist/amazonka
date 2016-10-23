@@ -148,7 +148,7 @@ instance ToQuery PutPipelineDefinition where
 -- | Contains the output of PutPipelineDefinition.
 --
 -- /See:/ 'putPipelineDefinitionResponse' smart constructor.
-data PutPipelineDefinitionResponse = PutPipelineDefinitionResponse'
+data PutPipelineDefinitionResponse a = PutPipelineDefinitionResponse'
     { _ppdrsValidationErrors   :: !(Maybe [ValidationError])
     , _ppdrsValidationWarnings :: !(Maybe [ValidationWarning])
     , _ppdrsResponseStatus     :: !Int
@@ -169,7 +169,7 @@ data PutPipelineDefinitionResponse = PutPipelineDefinitionResponse'
 putPipelineDefinitionResponse
     :: Int -- ^ 'ppdrsResponseStatus'
     -> Bool -- ^ 'ppdrsErrored'
-    -> PutPipelineDefinitionResponse
+    -> PutPipelineDefinitionResponse (a)
 putPipelineDefinitionResponse pResponseStatus_ pErrored_ =
     PutPipelineDefinitionResponse'
     { _ppdrsValidationErrors = Nothing
@@ -179,19 +179,19 @@ putPipelineDefinitionResponse pResponseStatus_ pErrored_ =
     }
 
 -- | The validation errors that are associated with the objects defined in 'pipelineObjects'.
-ppdrsValidationErrors :: Lens' PutPipelineDefinitionResponse [ValidationError]
+ppdrsValidationErrors :: Lens' (PutPipelineDefinitionResponse (a)) [ValidationError]
 ppdrsValidationErrors = lens _ppdrsValidationErrors (\ s a -> s{_ppdrsValidationErrors = a}) . _Default . _Coerce;
 
 -- | The validation warnings that are associated with the objects defined in 'pipelineObjects'.
-ppdrsValidationWarnings :: Lens' PutPipelineDefinitionResponse [ValidationWarning]
+ppdrsValidationWarnings :: Lens' (PutPipelineDefinitionResponse (a)) [ValidationWarning]
 ppdrsValidationWarnings = lens _ppdrsValidationWarnings (\ s a -> s{_ppdrsValidationWarnings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ppdrsResponseStatus :: Lens' PutPipelineDefinitionResponse Int
+ppdrsResponseStatus :: Lens' (PutPipelineDefinitionResponse (a)) Int
 ppdrsResponseStatus = lens _ppdrsResponseStatus (\ s a -> s{_ppdrsResponseStatus = a});
 
 -- | Indicates whether there were validation errors, and the pipeline definition is stored but cannot be activated until you correct the pipeline and call 'PutPipelineDefinition' to commit the corrected pipeline.
-ppdrsErrored :: Lens' PutPipelineDefinitionResponse Bool
+ppdrsErrored :: Lens' (PutPipelineDefinitionResponse (a)) Bool
 ppdrsErrored = lens _ppdrsErrored (\ s a -> s{_ppdrsErrored = a});
 
 instance NFData PutPipelineDefinitionResponse

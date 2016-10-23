@@ -93,7 +93,7 @@ instance ToQuery GetBucketLifecycleConfiguration
         toQuery = const (mconcat ["lifecycle"])
 
 -- | /See:/ 'getBucketLifecycleConfigurationResponse' smart constructor.
-data GetBucketLifecycleConfigurationResponse = GetBucketLifecycleConfigurationResponse'
+data GetBucketLifecycleConfigurationResponse a = GetBucketLifecycleConfigurationResponse'
     { _gblcrsRules          :: !(Maybe [LifecycleRule])
     , _gblcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -107,7 +107,7 @@ data GetBucketLifecycleConfigurationResponse = GetBucketLifecycleConfigurationRe
 -- * 'gblcrsResponseStatus'
 getBucketLifecycleConfigurationResponse
     :: Int -- ^ 'gblcrsResponseStatus'
-    -> GetBucketLifecycleConfigurationResponse
+    -> GetBucketLifecycleConfigurationResponse (a)
 getBucketLifecycleConfigurationResponse pResponseStatus_ =
     GetBucketLifecycleConfigurationResponse'
     { _gblcrsRules = Nothing
@@ -115,11 +115,11 @@ getBucketLifecycleConfigurationResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gblcrsRules :: Lens' GetBucketLifecycleConfigurationResponse [LifecycleRule]
+gblcrsRules :: Lens' (GetBucketLifecycleConfigurationResponse (a)) [LifecycleRule]
 gblcrsRules = lens _gblcrsRules (\ s a -> s{_gblcrsRules = a}) . _Default . _Coerce;
 
 -- | The response status code.
-gblcrsResponseStatus :: Lens' GetBucketLifecycleConfigurationResponse Int
+gblcrsResponseStatus :: Lens' (GetBucketLifecycleConfigurationResponse (a)) Int
 gblcrsResponseStatus = lens _gblcrsResponseStatus (\ s a -> s{_gblcrsResponseStatus = a});
 
 instance NFData

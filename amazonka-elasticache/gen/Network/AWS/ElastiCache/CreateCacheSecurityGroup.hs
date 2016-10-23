@@ -113,7 +113,7 @@ instance ToQuery CreateCacheSecurityGroup where
                "Description" =: _ccsgDescription]
 
 -- | /See:/ 'createCacheSecurityGroupResponse' smart constructor.
-data CreateCacheSecurityGroupResponse = CreateCacheSecurityGroupResponse'
+data CreateCacheSecurityGroupResponse a = CreateCacheSecurityGroupResponse'
     { _ccsgrsCacheSecurityGroup :: !(Maybe CacheSecurityGroup)
     , _ccsgrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data CreateCacheSecurityGroupResponse = CreateCacheSecurityGroupResponse'
 -- * 'ccsgrsResponseStatus'
 createCacheSecurityGroupResponse
     :: Int -- ^ 'ccsgrsResponseStatus'
-    -> CreateCacheSecurityGroupResponse
+    -> CreateCacheSecurityGroupResponse (a)
 createCacheSecurityGroupResponse pResponseStatus_ =
     CreateCacheSecurityGroupResponse'
     { _ccsgrsCacheSecurityGroup = Nothing
@@ -135,11 +135,11 @@ createCacheSecurityGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ccsgrsCacheSecurityGroup :: Lens' CreateCacheSecurityGroupResponse (Maybe CacheSecurityGroup)
+ccsgrsCacheSecurityGroup :: Lens' (CreateCacheSecurityGroupResponse (a)) (Maybe CacheSecurityGroup)
 ccsgrsCacheSecurityGroup = lens _ccsgrsCacheSecurityGroup (\ s a -> s{_ccsgrsCacheSecurityGroup = a});
 
 -- | The response status code.
-ccsgrsResponseStatus :: Lens' CreateCacheSecurityGroupResponse Int
+ccsgrsResponseStatus :: Lens' (CreateCacheSecurityGroupResponse (a)) Int
 ccsgrsResponseStatus = lens _ccsgrsResponseStatus (\ s a -> s{_ccsgrsResponseStatus = a});
 
 instance NFData CreateCacheSecurityGroupResponse

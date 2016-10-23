@@ -106,14 +106,14 @@ instance ToQuery PutBucketNotificationConfiguration
         toQuery = const (mconcat ["notification"])
 
 -- | /See:/ 'putBucketNotificationConfigurationResponse' smart constructor.
-data PutBucketNotificationConfigurationResponse =
+data PutBucketNotificationConfigurationResponse a =
     PutBucketNotificationConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketNotificationConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketNotificationConfigurationResponse
-    :: PutBucketNotificationConfigurationResponse
+    :: PutBucketNotificationConfigurationResponse (a)
 putBucketNotificationConfigurationResponse =
     PutBucketNotificationConfigurationResponse'
 

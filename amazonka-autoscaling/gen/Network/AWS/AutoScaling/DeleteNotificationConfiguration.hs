@@ -104,14 +104,14 @@ instance ToQuery DeleteNotificationConfiguration
                "TopicARN" =: _dncTopicARN]
 
 -- | /See:/ 'deleteNotificationConfigurationResponse' smart constructor.
-data DeleteNotificationConfigurationResponse =
+data DeleteNotificationConfigurationResponse a =
     DeleteNotificationConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteNotificationConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteNotificationConfigurationResponse
-    :: DeleteNotificationConfigurationResponse
+    :: DeleteNotificationConfigurationResponse (a)
 deleteNotificationConfigurationResponse =
     DeleteNotificationConfigurationResponse'
 

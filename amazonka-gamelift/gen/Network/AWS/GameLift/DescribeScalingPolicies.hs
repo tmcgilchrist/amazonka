@@ -147,7 +147,7 @@ instance ToQuery DescribeScalingPolicies where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeScalingPoliciesResponse' smart constructor.
-data DescribeScalingPoliciesResponse = DescribeScalingPoliciesResponse'
+data DescribeScalingPoliciesResponse a = DescribeScalingPoliciesResponse'
     { _dsprsNextToken       :: !(Maybe Text)
     , _dsprsScalingPolicies :: !(Maybe [ScalingPolicy])
     , _dsprsResponseStatus  :: !Int
@@ -164,7 +164,7 @@ data DescribeScalingPoliciesResponse = DescribeScalingPoliciesResponse'
 -- * 'dsprsResponseStatus'
 describeScalingPoliciesResponse
     :: Int -- ^ 'dsprsResponseStatus'
-    -> DescribeScalingPoliciesResponse
+    -> DescribeScalingPoliciesResponse (a)
 describeScalingPoliciesResponse pResponseStatus_ =
     DescribeScalingPoliciesResponse'
     { _dsprsNextToken = Nothing
@@ -175,15 +175,15 @@ describeScalingPoliciesResponse pResponseStatus_ =
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-dsprsNextToken :: Lens' DescribeScalingPoliciesResponse (Maybe Text)
+dsprsNextToken :: Lens' (DescribeScalingPoliciesResponse (a)) (Maybe Text)
 dsprsNextToken = lens _dsprsNextToken (\ s a -> s{_dsprsNextToken = a});
 
 -- | Collection of objects containing the scaling policies matching the request.
-dsprsScalingPolicies :: Lens' DescribeScalingPoliciesResponse [ScalingPolicy]
+dsprsScalingPolicies :: Lens' (DescribeScalingPoliciesResponse (a)) [ScalingPolicy]
 dsprsScalingPolicies = lens _dsprsScalingPolicies (\ s a -> s{_dsprsScalingPolicies = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsprsResponseStatus :: Lens' DescribeScalingPoliciesResponse Int
+dsprsResponseStatus :: Lens' (DescribeScalingPoliciesResponse (a)) Int
 dsprsResponseStatus = lens _dsprsResponseStatus (\ s a -> s{_dsprsResponseStatus = a});
 
 instance NFData DescribeScalingPoliciesResponse

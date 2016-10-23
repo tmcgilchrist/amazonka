@@ -176,14 +176,14 @@ instance ToQuery ReplaceNetworkACLEntry where
                "CidrBlock" =: _rnaeCIdRBlock]
 
 -- | /See:/ 'replaceNetworkACLEntryResponse' smart constructor.
-data ReplaceNetworkACLEntryResponse =
+data ReplaceNetworkACLEntryResponse a =
     ReplaceNetworkACLEntryResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ReplaceNetworkACLEntryResponse' with the minimum fields required to make a request.
 --
 replaceNetworkACLEntryResponse
-    :: ReplaceNetworkACLEntryResponse
+    :: ReplaceNetworkACLEntryResponse (a)
 replaceNetworkACLEntryResponse = ReplaceNetworkACLEntryResponse'
 
 instance NFData ReplaceNetworkACLEntryResponse

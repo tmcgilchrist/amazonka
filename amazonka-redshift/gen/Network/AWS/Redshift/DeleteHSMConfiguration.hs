@@ -90,14 +90,14 @@ instance ToQuery DeleteHSMConfiguration where
                  _dhcHSMConfigurationIdentifier]
 
 -- | /See:/ 'deleteHSMConfigurationResponse' smart constructor.
-data DeleteHSMConfigurationResponse =
+data DeleteHSMConfigurationResponse a =
     DeleteHSMConfigurationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteHSMConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteHSMConfigurationResponse
-    :: DeleteHSMConfigurationResponse
+    :: DeleteHSMConfigurationResponse (a)
 deleteHSMConfigurationResponse = DeleteHSMConfigurationResponse'
 
 instance NFData DeleteHSMConfigurationResponse

@@ -145,7 +145,7 @@ instance ToQuery ListMultipartUploads where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'listMultipartUploadsResponse' smart constructor.
-data ListMultipartUploadsResponse = ListMultipartUploadsResponse'
+data ListMultipartUploadsResponse a = ListMultipartUploadsResponse'
     { _lmursUploadsList    :: !(Maybe [UploadListElement])
     , _lmursMarker         :: !(Maybe Text)
     , _lmursResponseStatus :: !Int
@@ -162,7 +162,7 @@ data ListMultipartUploadsResponse = ListMultipartUploadsResponse'
 -- * 'lmursResponseStatus'
 listMultipartUploadsResponse
     :: Int -- ^ 'lmursResponseStatus'
-    -> ListMultipartUploadsResponse
+    -> ListMultipartUploadsResponse (a)
 listMultipartUploadsResponse pResponseStatus_ =
     ListMultipartUploadsResponse'
     { _lmursUploadsList = Nothing
@@ -171,15 +171,15 @@ listMultipartUploadsResponse pResponseStatus_ =
     }
 
 -- | A list of in-progress multipart uploads.
-lmursUploadsList :: Lens' ListMultipartUploadsResponse [UploadListElement]
+lmursUploadsList :: Lens' (ListMultipartUploadsResponse (a)) [UploadListElement]
 lmursUploadsList = lens _lmursUploadsList (\ s a -> s{_lmursUploadsList = a}) . _Default . _Coerce;
 
 -- | An opaque string that represents where to continue pagination of the results. You use the marker in a new List Multipart Uploads request to obtain more uploads in the list. If there are no more uploads, this value is 'null'.
-lmursMarker :: Lens' ListMultipartUploadsResponse (Maybe Text)
+lmursMarker :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Text)
 lmursMarker = lens _lmursMarker (\ s a -> s{_lmursMarker = a});
 
 -- | The response status code.
-lmursResponseStatus :: Lens' ListMultipartUploadsResponse Int
+lmursResponseStatus :: Lens' (ListMultipartUploadsResponse (a)) Int
 lmursResponseStatus = lens _lmursResponseStatus (\ s a -> s{_lmursResponseStatus = a});
 
 instance NFData ListMultipartUploadsResponse

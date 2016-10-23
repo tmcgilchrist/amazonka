@@ -132,14 +132,14 @@ instance ToQuery RegisterDomain where
         toQuery = const mempty
 
 -- | /See:/ 'registerDomainResponse' smart constructor.
-data RegisterDomainResponse =
+data RegisterDomainResponse a =
     RegisterDomainResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RegisterDomainResponse' with the minimum fields required to make a request.
 --
 registerDomainResponse
-    :: RegisterDomainResponse
+    :: RegisterDomainResponse (a)
 registerDomainResponse = RegisterDomainResponse'
 
 instance NFData RegisterDomainResponse

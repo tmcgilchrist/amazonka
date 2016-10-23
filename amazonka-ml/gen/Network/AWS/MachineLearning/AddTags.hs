@@ -124,7 +124,7 @@ instance ToQuery AddTags where
 -- | Amazon ML returns the following elements.
 --
 -- /See:/ 'addTagsResponse' smart constructor.
-data AddTagsResponse = AddTagsResponse'
+data AddTagsResponse a = AddTagsResponse'
     { _atrsResourceId     :: !(Maybe Text)
     , _atrsResourceType   :: !(Maybe TaggableResourceType)
     , _atrsResponseStatus :: !Int
@@ -141,7 +141,7 @@ data AddTagsResponse = AddTagsResponse'
 -- * 'atrsResponseStatus'
 addTagsResponse
     :: Int -- ^ 'atrsResponseStatus'
-    -> AddTagsResponse
+    -> AddTagsResponse (a)
 addTagsResponse pResponseStatus_ =
     AddTagsResponse'
     { _atrsResourceId = Nothing
@@ -150,15 +150,15 @@ addTagsResponse pResponseStatus_ =
     }
 
 -- | The ID of the ML object that was tagged.
-atrsResourceId :: Lens' AddTagsResponse (Maybe Text)
+atrsResourceId :: Lens' (AddTagsResponse (a)) (Maybe Text)
 atrsResourceId = lens _atrsResourceId (\ s a -> s{_atrsResourceId = a});
 
 -- | The type of the ML object that was tagged.
-atrsResourceType :: Lens' AddTagsResponse (Maybe TaggableResourceType)
+atrsResourceType :: Lens' (AddTagsResponse (a)) (Maybe TaggableResourceType)
 atrsResourceType = lens _atrsResourceType (\ s a -> s{_atrsResourceType = a});
 
 -- | The response status code.
-atrsResponseStatus :: Lens' AddTagsResponse Int
+atrsResponseStatus :: Lens' (AddTagsResponse (a)) Int
 atrsResponseStatus = lens _atrsResponseStatus (\ s a -> s{_atrsResponseStatus = a});
 
 instance NFData AddTagsResponse

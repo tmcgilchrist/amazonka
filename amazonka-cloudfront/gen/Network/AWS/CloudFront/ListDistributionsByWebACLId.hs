@@ -116,7 +116,7 @@ instance ToQuery ListDistributionsByWebACLId where
 -- | The response to a request to list the distributions that are associated with a specified AWS WAF web ACL.
 --
 -- /See:/ 'listDistributionsByWebACLIdResponse' smart constructor.
-data ListDistributionsByWebACLIdResponse = ListDistributionsByWebACLIdResponse'
+data ListDistributionsByWebACLIdResponse a = ListDistributionsByWebACLIdResponse'
     { _ldbwairsDistributionList :: !(Maybe DistributionList)
     , _ldbwairsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data ListDistributionsByWebACLIdResponse = ListDistributionsByWebACLIdResponse'
 -- * 'ldbwairsResponseStatus'
 listDistributionsByWebACLIdResponse
     :: Int -- ^ 'ldbwairsResponseStatus'
-    -> ListDistributionsByWebACLIdResponse
+    -> ListDistributionsByWebACLIdResponse (a)
 listDistributionsByWebACLIdResponse pResponseStatus_ =
     ListDistributionsByWebACLIdResponse'
     { _ldbwairsDistributionList = Nothing
@@ -138,11 +138,11 @@ listDistributionsByWebACLIdResponse pResponseStatus_ =
     }
 
 -- | The DistributionList type.
-ldbwairsDistributionList :: Lens' ListDistributionsByWebACLIdResponse (Maybe DistributionList)
+ldbwairsDistributionList :: Lens' (ListDistributionsByWebACLIdResponse (a)) (Maybe DistributionList)
 ldbwairsDistributionList = lens _ldbwairsDistributionList (\ s a -> s{_ldbwairsDistributionList = a});
 
 -- | The response status code.
-ldbwairsResponseStatus :: Lens' ListDistributionsByWebACLIdResponse Int
+ldbwairsResponseStatus :: Lens' (ListDistributionsByWebACLIdResponse (a)) Int
 ldbwairsResponseStatus = lens _ldbwairsResponseStatus (\ s a -> s{_ldbwairsResponseStatus = a});
 
 instance NFData ListDistributionsByWebACLIdResponse

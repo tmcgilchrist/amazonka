@@ -150,7 +150,7 @@ instance ToQuery UpdateSnapshotSchedule where
 -- | A JSON object containing the of the updated storage volume.
 --
 -- /See:/ 'updateSnapshotScheduleResponse' smart constructor.
-data UpdateSnapshotScheduleResponse = UpdateSnapshotScheduleResponse'
+data UpdateSnapshotScheduleResponse a = UpdateSnapshotScheduleResponse'
     { _ussrsVolumeARN      :: !(Maybe Text)
     , _ussrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -164,7 +164,7 @@ data UpdateSnapshotScheduleResponse = UpdateSnapshotScheduleResponse'
 -- * 'ussrsResponseStatus'
 updateSnapshotScheduleResponse
     :: Int -- ^ 'ussrsResponseStatus'
-    -> UpdateSnapshotScheduleResponse
+    -> UpdateSnapshotScheduleResponse (a)
 updateSnapshotScheduleResponse pResponseStatus_ =
     UpdateSnapshotScheduleResponse'
     { _ussrsVolumeARN = Nothing
@@ -172,11 +172,11 @@ updateSnapshotScheduleResponse pResponseStatus_ =
     }
 
 -- |
-ussrsVolumeARN :: Lens' UpdateSnapshotScheduleResponse (Maybe Text)
+ussrsVolumeARN :: Lens' (UpdateSnapshotScheduleResponse (a)) (Maybe Text)
 ussrsVolumeARN = lens _ussrsVolumeARN (\ s a -> s{_ussrsVolumeARN = a});
 
 -- | The response status code.
-ussrsResponseStatus :: Lens' UpdateSnapshotScheduleResponse Int
+ussrsResponseStatus :: Lens' (UpdateSnapshotScheduleResponse (a)) Int
 ussrsResponseStatus = lens _ussrsResponseStatus (\ s a -> s{_ussrsResponseStatus = a});
 
 instance NFData UpdateSnapshotScheduleResponse

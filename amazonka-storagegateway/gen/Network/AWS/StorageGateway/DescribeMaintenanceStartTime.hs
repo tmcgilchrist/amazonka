@@ -111,7 +111,7 @@ instance ToQuery DescribeMaintenanceStartTime where
         toQuery = const mempty
 
 -- | /See:/ 'describeMaintenanceStartTimeResponse' smart constructor.
-data DescribeMaintenanceStartTimeResponse = DescribeMaintenanceStartTimeResponse'
+data DescribeMaintenanceStartTimeResponse a = DescribeMaintenanceStartTimeResponse'
     { _dmstrsGatewayARN     :: !(Maybe Text)
     , _dmstrsMinuteOfHour   :: !(Maybe Nat)
     , _dmstrsHourOfDay      :: !(Maybe Nat)
@@ -137,7 +137,7 @@ data DescribeMaintenanceStartTimeResponse = DescribeMaintenanceStartTimeResponse
 -- * 'dmstrsResponseStatus'
 describeMaintenanceStartTimeResponse
     :: Int -- ^ 'dmstrsResponseStatus'
-    -> DescribeMaintenanceStartTimeResponse
+    -> DescribeMaintenanceStartTimeResponse (a)
 describeMaintenanceStartTimeResponse pResponseStatus_ =
     DescribeMaintenanceStartTimeResponse'
     { _dmstrsGatewayARN = Nothing
@@ -149,27 +149,27 @@ describeMaintenanceStartTimeResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dmstrsGatewayARN :: Lens' DescribeMaintenanceStartTimeResponse (Maybe Text)
+dmstrsGatewayARN :: Lens' (DescribeMaintenanceStartTimeResponse (a)) (Maybe Text)
 dmstrsGatewayARN = lens _dmstrsGatewayARN (\ s a -> s{_dmstrsGatewayARN = a});
 
 -- | Undocumented member.
-dmstrsMinuteOfHour :: Lens' DescribeMaintenanceStartTimeResponse (Maybe Natural)
+dmstrsMinuteOfHour :: Lens' (DescribeMaintenanceStartTimeResponse (a)) (Maybe Natural)
 dmstrsMinuteOfHour = lens _dmstrsMinuteOfHour (\ s a -> s{_dmstrsMinuteOfHour = a}) . mapping _Nat;
 
 -- | Undocumented member.
-dmstrsHourOfDay :: Lens' DescribeMaintenanceStartTimeResponse (Maybe Natural)
+dmstrsHourOfDay :: Lens' (DescribeMaintenanceStartTimeResponse (a)) (Maybe Natural)
 dmstrsHourOfDay = lens _dmstrsHourOfDay (\ s a -> s{_dmstrsHourOfDay = a}) . mapping _Nat;
 
 -- | Undocumented member.
-dmstrsTimezone :: Lens' DescribeMaintenanceStartTimeResponse (Maybe Text)
+dmstrsTimezone :: Lens' (DescribeMaintenanceStartTimeResponse (a)) (Maybe Text)
 dmstrsTimezone = lens _dmstrsTimezone (\ s a -> s{_dmstrsTimezone = a});
 
 -- | Undocumented member.
-dmstrsDayOfWeek :: Lens' DescribeMaintenanceStartTimeResponse (Maybe Natural)
+dmstrsDayOfWeek :: Lens' (DescribeMaintenanceStartTimeResponse (a)) (Maybe Natural)
 dmstrsDayOfWeek = lens _dmstrsDayOfWeek (\ s a -> s{_dmstrsDayOfWeek = a}) . mapping _Nat;
 
 -- | The response status code.
-dmstrsResponseStatus :: Lens' DescribeMaintenanceStartTimeResponse Int
+dmstrsResponseStatus :: Lens' (DescribeMaintenanceStartTimeResponse (a)) Int
 dmstrsResponseStatus = lens _dmstrsResponseStatus (\ s a -> s{_dmstrsResponseStatus = a});
 
 instance NFData DescribeMaintenanceStartTimeResponse

@@ -117,14 +117,14 @@ instance ToQuery DeleteApplicationVersion where
                "VersionLabel" =: _davVersionLabel]
 
 -- | /See:/ 'deleteApplicationVersionResponse' smart constructor.
-data DeleteApplicationVersionResponse =
+data DeleteApplicationVersionResponse a =
     DeleteApplicationVersionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteApplicationVersionResponse' with the minimum fields required to make a request.
 --
 deleteApplicationVersionResponse
-    :: DeleteApplicationVersionResponse
+    :: DeleteApplicationVersionResponse (a)
 deleteApplicationVersionResponse = DeleteApplicationVersionResponse'
 
 instance NFData DeleteApplicationVersionResponse

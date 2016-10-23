@@ -132,7 +132,7 @@ instance ToQuery GetBasePathMappings where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html Use Custom Domain Names>
 --
 -- /See:/ 'getBasePathMappingsResponse' smart constructor.
-data GetBasePathMappingsResponse = GetBasePathMappingsResponse'
+data GetBasePathMappingsResponse a = GetBasePathMappingsResponse'
     { _gbpmrsItems          :: !(Maybe [BasePathMapping])
     , _gbpmrsPosition       :: !(Maybe Text)
     , _gbpmrsResponseStatus :: !Int
@@ -149,7 +149,7 @@ data GetBasePathMappingsResponse = GetBasePathMappingsResponse'
 -- * 'gbpmrsResponseStatus'
 getBasePathMappingsResponse
     :: Int -- ^ 'gbpmrsResponseStatus'
-    -> GetBasePathMappingsResponse
+    -> GetBasePathMappingsResponse (a)
 getBasePathMappingsResponse pResponseStatus_ =
     GetBasePathMappingsResponse'
     { _gbpmrsItems = Nothing
@@ -158,15 +158,15 @@ getBasePathMappingsResponse pResponseStatus_ =
     }
 
 -- | The current page of any < BasePathMapping> resources in the collection of base path mapping resources.
-gbpmrsItems :: Lens' GetBasePathMappingsResponse [BasePathMapping]
+gbpmrsItems :: Lens' (GetBasePathMappingsResponse (a)) [BasePathMapping]
 gbpmrsItems = lens _gbpmrsItems (\ s a -> s{_gbpmrsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gbpmrsPosition :: Lens' GetBasePathMappingsResponse (Maybe Text)
+gbpmrsPosition :: Lens' (GetBasePathMappingsResponse (a)) (Maybe Text)
 gbpmrsPosition = lens _gbpmrsPosition (\ s a -> s{_gbpmrsPosition = a});
 
 -- | The response status code.
-gbpmrsResponseStatus :: Lens' GetBasePathMappingsResponse Int
+gbpmrsResponseStatus :: Lens' (GetBasePathMappingsResponse (a)) Int
 gbpmrsResponseStatus = lens _gbpmrsResponseStatus (\ s a -> s{_gbpmrsResponseStatus = a});
 
 instance NFData GetBasePathMappingsResponse

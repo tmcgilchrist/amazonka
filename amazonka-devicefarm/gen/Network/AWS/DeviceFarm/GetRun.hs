@@ -101,7 +101,7 @@ instance ToQuery GetRun where
 -- | Represents the result of a get run request.
 --
 -- /See:/ 'getRunResponse' smart constructor.
-data GetRunResponse = GetRunResponse'
+data GetRunResponse a = GetRunResponse'
     { _grrsRun            :: !(Maybe Run)
     , _grrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetRunResponse = GetRunResponse'
 -- * 'grrsResponseStatus'
 getRunResponse
     :: Int -- ^ 'grrsResponseStatus'
-    -> GetRunResponse
+    -> GetRunResponse (a)
 getRunResponse pResponseStatus_ =
     GetRunResponse'
     { _grrsRun = Nothing
@@ -123,11 +123,11 @@ getRunResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-grrsRun :: Lens' GetRunResponse (Maybe Run)
+grrsRun :: Lens' (GetRunResponse (a)) (Maybe Run)
 grrsRun = lens _grrsRun (\ s a -> s{_grrsRun = a});
 
 -- | The response status code.
-grrsResponseStatus :: Lens' GetRunResponse Int
+grrsResponseStatus :: Lens' (GetRunResponse (a)) Int
 grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a});
 
 instance NFData GetRunResponse

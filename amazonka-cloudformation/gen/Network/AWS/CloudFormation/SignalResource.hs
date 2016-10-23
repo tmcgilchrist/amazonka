@@ -118,14 +118,14 @@ instance ToQuery SignalResource where
                "UniqueId" =: _sigUniqueId, "Status" =: _sigStatus]
 
 -- | /See:/ 'signalResourceResponse' smart constructor.
-data SignalResourceResponse =
+data SignalResourceResponse a =
     SignalResourceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SignalResourceResponse' with the minimum fields required to make a request.
 --
 signalResourceResponse
-    :: SignalResourceResponse
+    :: SignalResourceResponse (a)
 signalResourceResponse = SignalResourceResponse'
 
 instance NFData SignalResourceResponse

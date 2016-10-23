@@ -124,7 +124,7 @@ instance ToQuery ListProjects where
 -- | Represents the result of a list projects request.
 --
 -- /See:/ 'listProjectsResponse' smart constructor.
-data ListProjectsResponse = ListProjectsResponse'
+data ListProjectsResponse a = ListProjectsResponse'
     { _lprsNextToken      :: !(Maybe Text)
     , _lprsProjects       :: !(Maybe [Project])
     , _lprsResponseStatus :: !Int
@@ -141,7 +141,7 @@ data ListProjectsResponse = ListProjectsResponse'
 -- * 'lprsResponseStatus'
 listProjectsResponse
     :: Int -- ^ 'lprsResponseStatus'
-    -> ListProjectsResponse
+    -> ListProjectsResponse (a)
 listProjectsResponse pResponseStatus_ =
     ListProjectsResponse'
     { _lprsNextToken = Nothing
@@ -150,15 +150,15 @@ listProjectsResponse pResponseStatus_ =
     }
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-lprsNextToken :: Lens' ListProjectsResponse (Maybe Text)
+lprsNextToken :: Lens' (ListProjectsResponse (a)) (Maybe Text)
 lprsNextToken = lens _lprsNextToken (\ s a -> s{_lprsNextToken = a});
 
 -- | Information about the projects.
-lprsProjects :: Lens' ListProjectsResponse [Project]
+lprsProjects :: Lens' (ListProjectsResponse (a)) [Project]
 lprsProjects = lens _lprsProjects (\ s a -> s{_lprsProjects = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lprsResponseStatus :: Lens' ListProjectsResponse Int
+lprsResponseStatus :: Lens' (ListProjectsResponse (a)) Int
 lprsResponseStatus = lens _lprsResponseStatus (\ s a -> s{_lprsResponseStatus = a});
 
 instance NFData ListProjectsResponse

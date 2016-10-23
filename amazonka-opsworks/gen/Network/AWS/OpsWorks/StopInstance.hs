@@ -93,14 +93,14 @@ instance ToQuery StopInstance where
         toQuery = const mempty
 
 -- | /See:/ 'stopInstanceResponse' smart constructor.
-data StopInstanceResponse =
+data StopInstanceResponse a =
     StopInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'StopInstanceResponse' with the minimum fields required to make a request.
 --
 stopInstanceResponse
-    :: StopInstanceResponse
+    :: StopInstanceResponse (a)
 stopInstanceResponse = StopInstanceResponse'
 
 instance NFData StopInstanceResponse

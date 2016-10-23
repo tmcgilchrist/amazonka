@@ -103,14 +103,14 @@ instance ToQuery DeleteMessage where
                "ReceiptHandle" =: _dmReceiptHandle]
 
 -- | /See:/ 'deleteMessageResponse' smart constructor.
-data DeleteMessageResponse =
+data DeleteMessageResponse a =
     DeleteMessageResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteMessageResponse' with the minimum fields required to make a request.
 --
 deleteMessageResponse
-    :: DeleteMessageResponse
+    :: DeleteMessageResponse (a)
 deleteMessageResponse = DeleteMessageResponse'
 
 instance NFData DeleteMessageResponse

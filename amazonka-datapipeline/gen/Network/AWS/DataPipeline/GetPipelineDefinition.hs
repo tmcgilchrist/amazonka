@@ -119,7 +119,7 @@ instance ToQuery GetPipelineDefinition where
 -- | Contains the output of GetPipelineDefinition.
 --
 -- /See:/ 'getPipelineDefinitionResponse' smart constructor.
-data GetPipelineDefinitionResponse = GetPipelineDefinitionResponse'
+data GetPipelineDefinitionResponse a = GetPipelineDefinitionResponse'
     { _gpdrsPipelineObjects  :: !(Maybe [PipelineObject])
     , _gpdrsParameterObjects :: !(Maybe [ParameterObject])
     , _gpdrsParameterValues  :: !(Maybe [ParameterValue])
@@ -139,7 +139,7 @@ data GetPipelineDefinitionResponse = GetPipelineDefinitionResponse'
 -- * 'gpdrsResponseStatus'
 getPipelineDefinitionResponse
     :: Int -- ^ 'gpdrsResponseStatus'
-    -> GetPipelineDefinitionResponse
+    -> GetPipelineDefinitionResponse (a)
 getPipelineDefinitionResponse pResponseStatus_ =
     GetPipelineDefinitionResponse'
     { _gpdrsPipelineObjects = Nothing
@@ -149,19 +149,19 @@ getPipelineDefinitionResponse pResponseStatus_ =
     }
 
 -- | The objects defined in the pipeline.
-gpdrsPipelineObjects :: Lens' GetPipelineDefinitionResponse [PipelineObject]
+gpdrsPipelineObjects :: Lens' (GetPipelineDefinitionResponse (a)) [PipelineObject]
 gpdrsPipelineObjects = lens _gpdrsPipelineObjects (\ s a -> s{_gpdrsPipelineObjects = a}) . _Default . _Coerce;
 
 -- | The parameter objects used in the pipeline definition.
-gpdrsParameterObjects :: Lens' GetPipelineDefinitionResponse [ParameterObject]
+gpdrsParameterObjects :: Lens' (GetPipelineDefinitionResponse (a)) [ParameterObject]
 gpdrsParameterObjects = lens _gpdrsParameterObjects (\ s a -> s{_gpdrsParameterObjects = a}) . _Default . _Coerce;
 
 -- | The parameter values used in the pipeline definition.
-gpdrsParameterValues :: Lens' GetPipelineDefinitionResponse [ParameterValue]
+gpdrsParameterValues :: Lens' (GetPipelineDefinitionResponse (a)) [ParameterValue]
 gpdrsParameterValues = lens _gpdrsParameterValues (\ s a -> s{_gpdrsParameterValues = a}) . _Default . _Coerce;
 
 -- | The response status code.
-gpdrsResponseStatus :: Lens' GetPipelineDefinitionResponse Int
+gpdrsResponseStatus :: Lens' (GetPipelineDefinitionResponse (a)) Int
 gpdrsResponseStatus = lens _gpdrsResponseStatus (\ s a -> s{_gpdrsResponseStatus = a});
 
 instance NFData GetPipelineDefinitionResponse

@@ -110,7 +110,7 @@ instance ToQuery GetQueueURL where
 -- | For more information, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UnderstandingResponses.html Responses> in the /Amazon SQS Developer Guide/.
 --
 -- /See:/ 'getQueueURLResponse' smart constructor.
-data GetQueueURLResponse = GetQueueURLResponse'
+data GetQueueURLResponse a = GetQueueURLResponse'
     { _gqursResponseStatus :: !Int
     , _gqursQueueURL       :: !Text
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -125,7 +125,7 @@ data GetQueueURLResponse = GetQueueURLResponse'
 getQueueURLResponse
     :: Int -- ^ 'gqursResponseStatus'
     -> Text -- ^ 'gqursQueueURL'
-    -> GetQueueURLResponse
+    -> GetQueueURLResponse (a)
 getQueueURLResponse pResponseStatus_ pQueueURL_ =
     GetQueueURLResponse'
     { _gqursResponseStatus = pResponseStatus_
@@ -133,11 +133,11 @@ getQueueURLResponse pResponseStatus_ pQueueURL_ =
     }
 
 -- | The response status code.
-gqursResponseStatus :: Lens' GetQueueURLResponse Int
+gqursResponseStatus :: Lens' (GetQueueURLResponse (a)) Int
 gqursResponseStatus = lens _gqursResponseStatus (\ s a -> s{_gqursResponseStatus = a});
 
 -- | The URL for the queue.
-gqursQueueURL :: Lens' GetQueueURLResponse Text
+gqursQueueURL :: Lens' (GetQueueURLResponse (a)) Text
 gqursQueueURL = lens _gqursQueueURL (\ s a -> s{_gqursQueueURL = a});
 
 instance NFData GetQueueURLResponse

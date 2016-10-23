@@ -92,14 +92,14 @@ instance ToQuery DeleteCacheParameterGroup where
                  _dCacheParameterGroupName]
 
 -- | /See:/ 'deleteCacheParameterGroupResponse' smart constructor.
-data DeleteCacheParameterGroupResponse =
+data DeleteCacheParameterGroupResponse a =
     DeleteCacheParameterGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteCacheParameterGroupResponse' with the minimum fields required to make a request.
 --
 deleteCacheParameterGroupResponse
-    :: DeleteCacheParameterGroupResponse
+    :: DeleteCacheParameterGroupResponse (a)
 deleteCacheParameterGroupResponse = DeleteCacheParameterGroupResponse'
 
 instance NFData DeleteCacheParameterGroupResponse

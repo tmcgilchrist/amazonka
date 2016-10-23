@@ -120,7 +120,7 @@ instance ToQuery BatchGetDeploymentGroups where
 -- | Represents the output of a batch get deployment groups operation.
 --
 -- /See:/ 'batchGetDeploymentGroupsResponse' smart constructor.
-data BatchGetDeploymentGroupsResponse = BatchGetDeploymentGroupsResponse'
+data BatchGetDeploymentGroupsResponse a = BatchGetDeploymentGroupsResponse'
     { _bgdgrsDeploymentGroupsInfo :: !(Maybe [DeploymentGroupInfo])
     , _bgdgrsErrorMessage         :: !(Maybe Text)
     , _bgdgrsResponseStatus       :: !Int
@@ -137,7 +137,7 @@ data BatchGetDeploymentGroupsResponse = BatchGetDeploymentGroupsResponse'
 -- * 'bgdgrsResponseStatus'
 batchGetDeploymentGroupsResponse
     :: Int -- ^ 'bgdgrsResponseStatus'
-    -> BatchGetDeploymentGroupsResponse
+    -> BatchGetDeploymentGroupsResponse (a)
 batchGetDeploymentGroupsResponse pResponseStatus_ =
     BatchGetDeploymentGroupsResponse'
     { _bgdgrsDeploymentGroupsInfo = Nothing
@@ -146,15 +146,15 @@ batchGetDeploymentGroupsResponse pResponseStatus_ =
     }
 
 -- | Information about the deployment groups.
-bgdgrsDeploymentGroupsInfo :: Lens' BatchGetDeploymentGroupsResponse [DeploymentGroupInfo]
+bgdgrsDeploymentGroupsInfo :: Lens' (BatchGetDeploymentGroupsResponse (a)) [DeploymentGroupInfo]
 bgdgrsDeploymentGroupsInfo = lens _bgdgrsDeploymentGroupsInfo (\ s a -> s{_bgdgrsDeploymentGroupsInfo = a}) . _Default . _Coerce;
 
 -- | Information about errors that may have occurred during the API call.
-bgdgrsErrorMessage :: Lens' BatchGetDeploymentGroupsResponse (Maybe Text)
+bgdgrsErrorMessage :: Lens' (BatchGetDeploymentGroupsResponse (a)) (Maybe Text)
 bgdgrsErrorMessage = lens _bgdgrsErrorMessage (\ s a -> s{_bgdgrsErrorMessage = a});
 
 -- | The response status code.
-bgdgrsResponseStatus :: Lens' BatchGetDeploymentGroupsResponse Int
+bgdgrsResponseStatus :: Lens' (BatchGetDeploymentGroupsResponse (a)) Int
 bgdgrsResponseStatus = lens _bgdgrsResponseStatus (\ s a -> s{_bgdgrsResponseStatus = a});
 
 instance NFData BatchGetDeploymentGroupsResponse

@@ -147,7 +147,7 @@ instance ToQuery CreateComputer where
 -- | Contains the results for the < CreateComputer> operation.
 --
 -- /See:/ 'createComputerResponse' smart constructor.
-data CreateComputerResponse = CreateComputerResponse'
+data CreateComputerResponse a = CreateComputerResponse'
     { _ccrsComputer       :: !(Maybe Computer)
     , _ccrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -161,7 +161,7 @@ data CreateComputerResponse = CreateComputerResponse'
 -- * 'ccrsResponseStatus'
 createComputerResponse
     :: Int -- ^ 'ccrsResponseStatus'
-    -> CreateComputerResponse
+    -> CreateComputerResponse (a)
 createComputerResponse pResponseStatus_ =
     CreateComputerResponse'
     { _ccrsComputer = Nothing
@@ -169,11 +169,11 @@ createComputerResponse pResponseStatus_ =
     }
 
 -- | A < Computer> object that represents the computer account.
-ccrsComputer :: Lens' CreateComputerResponse (Maybe Computer)
+ccrsComputer :: Lens' (CreateComputerResponse (a)) (Maybe Computer)
 ccrsComputer = lens _ccrsComputer (\ s a -> s{_ccrsComputer = a});
 
 -- | The response status code.
-ccrsResponseStatus :: Lens' CreateComputerResponse Int
+ccrsResponseStatus :: Lens' (CreateComputerResponse (a)) Int
 ccrsResponseStatus = lens _ccrsResponseStatus (\ s a -> s{_ccrsResponseStatus = a});
 
 instance NFData CreateComputerResponse

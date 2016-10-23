@@ -110,14 +110,14 @@ instance ToQuery SetTopicAttributes where
                "AttributeName" =: _staAttributeName]
 
 -- | /See:/ 'setTopicAttributesResponse' smart constructor.
-data SetTopicAttributesResponse =
+data SetTopicAttributesResponse a =
     SetTopicAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetTopicAttributesResponse' with the minimum fields required to make a request.
 --
 setTopicAttributesResponse
-    :: SetTopicAttributesResponse
+    :: SetTopicAttributesResponse (a)
 setTopicAttributesResponse = SetTopicAttributesResponse'
 
 instance NFData SetTopicAttributesResponse

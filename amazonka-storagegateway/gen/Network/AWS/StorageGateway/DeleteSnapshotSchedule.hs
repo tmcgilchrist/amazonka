@@ -104,7 +104,7 @@ instance ToQuery DeleteSnapshotSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'deleteSnapshotScheduleResponse' smart constructor.
-data DeleteSnapshotScheduleResponse = DeleteSnapshotScheduleResponse'
+data DeleteSnapshotScheduleResponse a = DeleteSnapshotScheduleResponse'
     { _dsssrsVolumeARN      :: !(Maybe Text)
     , _dsssrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data DeleteSnapshotScheduleResponse = DeleteSnapshotScheduleResponse'
 -- * 'dsssrsResponseStatus'
 deleteSnapshotScheduleResponse
     :: Int -- ^ 'dsssrsResponseStatus'
-    -> DeleteSnapshotScheduleResponse
+    -> DeleteSnapshotScheduleResponse (a)
 deleteSnapshotScheduleResponse pResponseStatus_ =
     DeleteSnapshotScheduleResponse'
     { _dsssrsVolumeARN = Nothing
@@ -126,11 +126,11 @@ deleteSnapshotScheduleResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dsssrsVolumeARN :: Lens' DeleteSnapshotScheduleResponse (Maybe Text)
+dsssrsVolumeARN :: Lens' (DeleteSnapshotScheduleResponse (a)) (Maybe Text)
 dsssrsVolumeARN = lens _dsssrsVolumeARN (\ s a -> s{_dsssrsVolumeARN = a});
 
 -- | The response status code.
-dsssrsResponseStatus :: Lens' DeleteSnapshotScheduleResponse Int
+dsssrsResponseStatus :: Lens' (DeleteSnapshotScheduleResponse (a)) Int
 dsssrsResponseStatus = lens _dsssrsResponseStatus (\ s a -> s{_dsssrsResponseStatus = a});
 
 instance NFData DeleteSnapshotScheduleResponse

@@ -103,7 +103,7 @@ instance ToQuery DeleteSnapshot where
 -- | Contains the results of the < DeleteSnapshot> operation.
 --
 -- /See:/ 'deleteSnapshotResponse' smart constructor.
-data DeleteSnapshotResponse = DeleteSnapshotResponse'
+data DeleteSnapshotResponse a = DeleteSnapshotResponse'
     { _dsrsSnapshotId     :: !(Maybe Text)
     , _dsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data DeleteSnapshotResponse = DeleteSnapshotResponse'
 -- * 'dsrsResponseStatus'
 deleteSnapshotResponse
     :: Int -- ^ 'dsrsResponseStatus'
-    -> DeleteSnapshotResponse
+    -> DeleteSnapshotResponse (a)
 deleteSnapshotResponse pResponseStatus_ =
     DeleteSnapshotResponse'
     { _dsrsSnapshotId = Nothing
@@ -125,11 +125,11 @@ deleteSnapshotResponse pResponseStatus_ =
     }
 
 -- | The identifier of the directory snapshot that was deleted.
-dsrsSnapshotId :: Lens' DeleteSnapshotResponse (Maybe Text)
+dsrsSnapshotId :: Lens' (DeleteSnapshotResponse (a)) (Maybe Text)
 dsrsSnapshotId = lens _dsrsSnapshotId (\ s a -> s{_dsrsSnapshotId = a});
 
 -- | The response status code.
-dsrsResponseStatus :: Lens' DeleteSnapshotResponse Int
+dsrsResponseStatus :: Lens' (DeleteSnapshotResponse (a)) Int
 dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a});
 
 instance NFData DeleteSnapshotResponse

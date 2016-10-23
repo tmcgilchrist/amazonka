@@ -115,7 +115,7 @@ instance ToQuery DescribePermissions where
 -- | Contains the response to a 'DescribePermissions' request.
 --
 -- /See:/ 'describePermissionsResponse' smart constructor.
-data DescribePermissionsResponse = DescribePermissionsResponse'
+data DescribePermissionsResponse a = DescribePermissionsResponse'
     { _dprsPermissions    :: !(Maybe [Permission])
     , _dprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data DescribePermissionsResponse = DescribePermissionsResponse'
 -- * 'dprsResponseStatus'
 describePermissionsResponse
     :: Int -- ^ 'dprsResponseStatus'
-    -> DescribePermissionsResponse
+    -> DescribePermissionsResponse (a)
 describePermissionsResponse pResponseStatus_ =
     DescribePermissionsResponse'
     { _dprsPermissions = Nothing
@@ -144,11 +144,11 @@ describePermissionsResponse pResponseStatus_ =
 --
 -- -   If the request contains a stack ID and an IAM ARN, the array contains a single 'Permission' object with permissions for the specified stack and IAM ARN.
 --
-dprsPermissions :: Lens' DescribePermissionsResponse [Permission]
+dprsPermissions :: Lens' (DescribePermissionsResponse (a)) [Permission]
 dprsPermissions = lens _dprsPermissions (\ s a -> s{_dprsPermissions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dprsResponseStatus :: Lens' DescribePermissionsResponse Int
+dprsResponseStatus :: Lens' (DescribePermissionsResponse (a)) Int
 dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a});
 
 instance NFData DescribePermissionsResponse

@@ -161,7 +161,7 @@ instance ToQuery DescribeClusters where
 -- | Contains the output from the < DescribeClusters> action.
 --
 -- /See:/ 'describeClustersResponse' smart constructor.
-data DescribeClustersResponse = DescribeClustersResponse'
+data DescribeClustersResponse a = DescribeClustersResponse'
     { _dcrsMarker         :: !(Maybe Text)
     , _dcrsClusters       :: !(Maybe [Cluster])
     , _dcrsResponseStatus :: !Int
@@ -178,7 +178,7 @@ data DescribeClustersResponse = DescribeClustersResponse'
 -- * 'dcrsResponseStatus'
 describeClustersResponse
     :: Int -- ^ 'dcrsResponseStatus'
-    -> DescribeClustersResponse
+    -> DescribeClustersResponse (a)
 describeClustersResponse pResponseStatus_ =
     DescribeClustersResponse'
     { _dcrsMarker = Nothing
@@ -187,15 +187,15 @@ describeClustersResponse pResponseStatus_ =
     }
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dcrsMarker :: Lens' DescribeClustersResponse (Maybe Text)
+dcrsMarker :: Lens' (DescribeClustersResponse (a)) (Maybe Text)
 dcrsMarker = lens _dcrsMarker (\ s a -> s{_dcrsMarker = a});
 
 -- | A list of 'Cluster' objects, where each object describes one cluster.
-dcrsClusters :: Lens' DescribeClustersResponse [Cluster]
+dcrsClusters :: Lens' (DescribeClustersResponse (a)) [Cluster]
 dcrsClusters = lens _dcrsClusters (\ s a -> s{_dcrsClusters = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcrsResponseStatus :: Lens' DescribeClustersResponse Int
+dcrsResponseStatus :: Lens' (DescribeClustersResponse (a)) Int
 dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a});
 
 instance NFData DescribeClustersResponse

@@ -211,7 +211,7 @@ instance ToQuery DescribeReservedDBInstances where
 -- | Contains the result of a successful invocation of the < DescribeReservedDBInstances> action.
 --
 -- /See:/ 'describeReservedDBInstancesResponse' smart constructor.
-data DescribeReservedDBInstancesResponse = DescribeReservedDBInstancesResponse'
+data DescribeReservedDBInstancesResponse a = DescribeReservedDBInstancesResponse'
     { _drdirsReservedDBInstances :: !(Maybe [ReservedDBInstance])
     , _drdirsMarker              :: !(Maybe Text)
     , _drdirsResponseStatus      :: !Int
@@ -228,7 +228,7 @@ data DescribeReservedDBInstancesResponse = DescribeReservedDBInstancesResponse'
 -- * 'drdirsResponseStatus'
 describeReservedDBInstancesResponse
     :: Int -- ^ 'drdirsResponseStatus'
-    -> DescribeReservedDBInstancesResponse
+    -> DescribeReservedDBInstancesResponse (a)
 describeReservedDBInstancesResponse pResponseStatus_ =
     DescribeReservedDBInstancesResponse'
     { _drdirsReservedDBInstances = Nothing
@@ -237,15 +237,15 @@ describeReservedDBInstancesResponse pResponseStatus_ =
     }
 
 -- | A list of reserved DB instances.
-drdirsReservedDBInstances :: Lens' DescribeReservedDBInstancesResponse [ReservedDBInstance]
+drdirsReservedDBInstances :: Lens' (DescribeReservedDBInstancesResponse (a)) [ReservedDBInstance]
 drdirsReservedDBInstances = lens _drdirsReservedDBInstances (\ s a -> s{_drdirsReservedDBInstances = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-drdirsMarker :: Lens' DescribeReservedDBInstancesResponse (Maybe Text)
+drdirsMarker :: Lens' (DescribeReservedDBInstancesResponse (a)) (Maybe Text)
 drdirsMarker = lens _drdirsMarker (\ s a -> s{_drdirsMarker = a});
 
 -- | The response status code.
-drdirsResponseStatus :: Lens' DescribeReservedDBInstancesResponse Int
+drdirsResponseStatus :: Lens' (DescribeReservedDBInstancesResponse (a)) Int
 drdirsResponseStatus = lens _drdirsResponseStatus (\ s a -> s{_drdirsResponseStatus = a});
 
 instance NFData DescribeReservedDBInstancesResponse

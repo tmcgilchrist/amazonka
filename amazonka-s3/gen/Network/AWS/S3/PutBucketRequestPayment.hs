@@ -110,14 +110,14 @@ instance ToQuery PutBucketRequestPayment where
         toQuery = const (mconcat ["requestPayment"])
 
 -- | /See:/ 'putBucketRequestPaymentResponse' smart constructor.
-data PutBucketRequestPaymentResponse =
+data PutBucketRequestPaymentResponse a =
     PutBucketRequestPaymentResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketRequestPaymentResponse' with the minimum fields required to make a request.
 --
 putBucketRequestPaymentResponse
-    :: PutBucketRequestPaymentResponse
+    :: PutBucketRequestPaymentResponse (a)
 putBucketRequestPaymentResponse = PutBucketRequestPaymentResponse'
 
 instance NFData PutBucketRequestPaymentResponse

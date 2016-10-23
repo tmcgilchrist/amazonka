@@ -105,14 +105,14 @@ instance ToQuery UpdateCertificate where
           = mconcat ["newStatus" =: _ucNewStatus]
 
 -- | /See:/ 'updateCertificateResponse' smart constructor.
-data UpdateCertificateResponse =
+data UpdateCertificateResponse a =
     UpdateCertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateCertificateResponse' with the minimum fields required to make a request.
 --
 updateCertificateResponse
-    :: UpdateCertificateResponse
+    :: UpdateCertificateResponse (a)
 updateCertificateResponse = UpdateCertificateResponse'
 
 instance NFData UpdateCertificateResponse

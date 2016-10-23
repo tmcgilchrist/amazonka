@@ -119,7 +119,7 @@ instance ToQuery CreateVault where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'createVaultResponse' smart constructor.
-data CreateVaultResponse = CreateVaultResponse'
+data CreateVaultResponse a = CreateVaultResponse'
     { _cvrsLocation       :: !(Maybe Text)
     , _cvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data CreateVaultResponse = CreateVaultResponse'
 -- * 'cvrsResponseStatus'
 createVaultResponse
     :: Int -- ^ 'cvrsResponseStatus'
-    -> CreateVaultResponse
+    -> CreateVaultResponse (a)
 createVaultResponse pResponseStatus_ =
     CreateVaultResponse'
     { _cvrsLocation = Nothing
@@ -141,11 +141,11 @@ createVaultResponse pResponseStatus_ =
     }
 
 -- | The URI of the vault that was created.
-cvrsLocation :: Lens' CreateVaultResponse (Maybe Text)
+cvrsLocation :: Lens' (CreateVaultResponse (a)) (Maybe Text)
 cvrsLocation = lens _cvrsLocation (\ s a -> s{_cvrsLocation = a});
 
 -- | The response status code.
-cvrsResponseStatus :: Lens' CreateVaultResponse Int
+cvrsResponseStatus :: Lens' (CreateVaultResponse (a)) Int
 cvrsResponseStatus = lens _cvrsResponseStatus (\ s a -> s{_cvrsResponseStatus = a});
 
 instance NFData CreateVaultResponse

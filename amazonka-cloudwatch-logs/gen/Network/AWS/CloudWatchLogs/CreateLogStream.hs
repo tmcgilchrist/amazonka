@@ -110,14 +110,14 @@ instance ToQuery CreateLogStream where
         toQuery = const mempty
 
 -- | /See:/ 'createLogStreamResponse' smart constructor.
-data CreateLogStreamResponse =
+data CreateLogStreamResponse a =
     CreateLogStreamResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateLogStreamResponse' with the minimum fields required to make a request.
 --
 createLogStreamResponse
-    :: CreateLogStreamResponse
+    :: CreateLogStreamResponse (a)
 createLogStreamResponse = CreateLogStreamResponse'
 
 instance NFData CreateLogStreamResponse

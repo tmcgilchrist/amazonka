@@ -226,14 +226,14 @@ instance ToQuery RegisterWorkflowType where
         toQuery = const mempty
 
 -- | /See:/ 'registerWorkflowTypeResponse' smart constructor.
-data RegisterWorkflowTypeResponse =
+data RegisterWorkflowTypeResponse a =
     RegisterWorkflowTypeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RegisterWorkflowTypeResponse' with the minimum fields required to make a request.
 --
 registerWorkflowTypeResponse
-    :: RegisterWorkflowTypeResponse
+    :: RegisterWorkflowTypeResponse (a)
 registerWorkflowTypeResponse = RegisterWorkflowTypeResponse'
 
 instance NFData RegisterWorkflowTypeResponse

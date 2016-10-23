@@ -92,7 +92,7 @@ instance ToQuery GetBucketACL where
         toQuery = const (mconcat ["acl"])
 
 -- | /See:/ 'getBucketACLResponse' smart constructor.
-data GetBucketACLResponse = GetBucketACLResponse'
+data GetBucketACLResponse a = GetBucketACLResponse'
     { _gbarsGrants         :: !(Maybe [Grant])
     , _gbarsOwner          :: !(Maybe Owner)
     , _gbarsResponseStatus :: !Int
@@ -109,7 +109,7 @@ data GetBucketACLResponse = GetBucketACLResponse'
 -- * 'gbarsResponseStatus'
 getBucketACLResponse
     :: Int -- ^ 'gbarsResponseStatus'
-    -> GetBucketACLResponse
+    -> GetBucketACLResponse (a)
 getBucketACLResponse pResponseStatus_ =
     GetBucketACLResponse'
     { _gbarsGrants = Nothing
@@ -118,15 +118,15 @@ getBucketACLResponse pResponseStatus_ =
     }
 
 -- | A list of grants.
-gbarsGrants :: Lens' GetBucketACLResponse [Grant]
+gbarsGrants :: Lens' (GetBucketACLResponse (a)) [Grant]
 gbarsGrants = lens _gbarsGrants (\ s a -> s{_gbarsGrants = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gbarsOwner :: Lens' GetBucketACLResponse (Maybe Owner)
+gbarsOwner :: Lens' (GetBucketACLResponse (a)) (Maybe Owner)
 gbarsOwner = lens _gbarsOwner (\ s a -> s{_gbarsOwner = a});
 
 -- | The response status code.
-gbarsResponseStatus :: Lens' GetBucketACLResponse Int
+gbarsResponseStatus :: Lens' (GetBucketACLResponse (a)) Int
 gbarsResponseStatus = lens _gbarsResponseStatus (\ s a -> s{_gbarsResponseStatus = a});
 
 instance NFData GetBucketACLResponse

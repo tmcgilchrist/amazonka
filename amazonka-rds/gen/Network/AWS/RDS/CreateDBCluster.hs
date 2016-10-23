@@ -373,7 +373,7 @@ instance ToQuery CreateDBCluster where
                "Engine" =: _cdcEngine]
 
 -- | /See:/ 'createDBClusterResponse' smart constructor.
-data CreateDBClusterResponse = CreateDBClusterResponse'
+data CreateDBClusterResponse a = CreateDBClusterResponse'
     { _cdcrsDBCluster      :: !(Maybe DBCluster)
     , _cdcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -387,7 +387,7 @@ data CreateDBClusterResponse = CreateDBClusterResponse'
 -- * 'cdcrsResponseStatus'
 createDBClusterResponse
     :: Int -- ^ 'cdcrsResponseStatus'
-    -> CreateDBClusterResponse
+    -> CreateDBClusterResponse (a)
 createDBClusterResponse pResponseStatus_ =
     CreateDBClusterResponse'
     { _cdcrsDBCluster = Nothing
@@ -395,11 +395,11 @@ createDBClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdcrsDBCluster :: Lens' CreateDBClusterResponse (Maybe DBCluster)
+cdcrsDBCluster :: Lens' (CreateDBClusterResponse (a)) (Maybe DBCluster)
 cdcrsDBCluster = lens _cdcrsDBCluster (\ s a -> s{_cdcrsDBCluster = a});
 
 -- | The response status code.
-cdcrsResponseStatus :: Lens' CreateDBClusterResponse Int
+cdcrsResponseStatus :: Lens' (CreateDBClusterResponse (a)) Int
 cdcrsResponseStatus = lens _cdcrsResponseStatus (\ s a -> s{_cdcrsResponseStatus = a});
 
 instance NFData CreateDBClusterResponse

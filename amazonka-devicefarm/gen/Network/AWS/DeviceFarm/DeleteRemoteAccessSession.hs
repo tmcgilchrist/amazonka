@@ -102,7 +102,7 @@ instance ToQuery DeleteRemoteAccessSession where
 -- | The response from the server when a request is made to delete the remote access session.
 --
 -- /See:/ 'deleteRemoteAccessSessionResponse' smart constructor.
-newtype DeleteRemoteAccessSessionResponse = DeleteRemoteAccessSessionResponse'
+newtype DeleteRemoteAccessSessionResponse a = DeleteRemoteAccessSessionResponse'
     { _drasrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -113,14 +113,14 @@ newtype DeleteRemoteAccessSessionResponse = DeleteRemoteAccessSessionResponse'
 -- * 'drasrsResponseStatus'
 deleteRemoteAccessSessionResponse
     :: Int -- ^ 'drasrsResponseStatus'
-    -> DeleteRemoteAccessSessionResponse
+    -> DeleteRemoteAccessSessionResponse (a)
 deleteRemoteAccessSessionResponse pResponseStatus_ =
     DeleteRemoteAccessSessionResponse'
     { _drasrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drasrsResponseStatus :: Lens' DeleteRemoteAccessSessionResponse Int
+drasrsResponseStatus :: Lens' (DeleteRemoteAccessSessionResponse (a)) Int
 drasrsResponseStatus = lens _drasrsResponseStatus (\ s a -> s{_drasrsResponseStatus = a});
 
 instance NFData DeleteRemoteAccessSessionResponse

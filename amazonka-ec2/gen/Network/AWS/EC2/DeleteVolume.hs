@@ -99,14 +99,14 @@ instance ToQuery DeleteVolume where
                "DryRun" =: _dvvDryRun, "VolumeId" =: _dvvVolumeId]
 
 -- | /See:/ 'deleteVolumeResponse' smart constructor.
-data DeleteVolumeResponse =
+data DeleteVolumeResponse a =
     DeleteVolumeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVolumeResponse' with the minimum fields required to make a request.
 --
 deleteVolumeResponse
-    :: DeleteVolumeResponse
+    :: DeleteVolumeResponse (a)
 deleteVolumeResponse = DeleteVolumeResponse'
 
 instance NFData DeleteVolumeResponse

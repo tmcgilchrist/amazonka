@@ -135,7 +135,7 @@ instance ToQuery RestoreObject where
           = mconcat ["versionId" =: _roVersionId, "restore"]
 
 -- | /See:/ 'restoreObjectResponse' smart constructor.
-data RestoreObjectResponse = RestoreObjectResponse'
+data RestoreObjectResponse a = RestoreObjectResponse'
     { _rorsRequestCharged :: !(Maybe RequestCharged)
     , _rorsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -149,7 +149,7 @@ data RestoreObjectResponse = RestoreObjectResponse'
 -- * 'rorsResponseStatus'
 restoreObjectResponse
     :: Int -- ^ 'rorsResponseStatus'
-    -> RestoreObjectResponse
+    -> RestoreObjectResponse (a)
 restoreObjectResponse pResponseStatus_ =
     RestoreObjectResponse'
     { _rorsRequestCharged = Nothing
@@ -157,11 +157,11 @@ restoreObjectResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rorsRequestCharged :: Lens' RestoreObjectResponse (Maybe RequestCharged)
+rorsRequestCharged :: Lens' (RestoreObjectResponse (a)) (Maybe RequestCharged)
 rorsRequestCharged = lens _rorsRequestCharged (\ s a -> s{_rorsRequestCharged = a});
 
 -- | The response status code.
-rorsResponseStatus :: Lens' RestoreObjectResponse Int
+rorsResponseStatus :: Lens' (RestoreObjectResponse (a)) Int
 rorsResponseStatus = lens _rorsResponseStatus (\ s a -> s{_rorsResponseStatus = a});
 
 instance NFData RestoreObjectResponse

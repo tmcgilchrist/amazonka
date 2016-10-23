@@ -166,7 +166,7 @@ instance ToQuery RegisterInstance where
 -- | Contains the response to a 'RegisterInstanceResult' request.
 --
 -- /See:/ 'registerInstanceResponse' smart constructor.
-data RegisterInstanceResponse = RegisterInstanceResponse'
+data RegisterInstanceResponse a = RegisterInstanceResponse'
     { _rirsInstanceId     :: !(Maybe Text)
     , _rirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -180,7 +180,7 @@ data RegisterInstanceResponse = RegisterInstanceResponse'
 -- * 'rirsResponseStatus'
 registerInstanceResponse
     :: Int -- ^ 'rirsResponseStatus'
-    -> RegisterInstanceResponse
+    -> RegisterInstanceResponse (a)
 registerInstanceResponse pResponseStatus_ =
     RegisterInstanceResponse'
     { _rirsInstanceId = Nothing
@@ -188,11 +188,11 @@ registerInstanceResponse pResponseStatus_ =
     }
 
 -- | The registered instance\'s AWS OpsWorks ID.
-rirsInstanceId :: Lens' RegisterInstanceResponse (Maybe Text)
+rirsInstanceId :: Lens' (RegisterInstanceResponse (a)) (Maybe Text)
 rirsInstanceId = lens _rirsInstanceId (\ s a -> s{_rirsInstanceId = a});
 
 -- | The response status code.
-rirsResponseStatus :: Lens' RegisterInstanceResponse Int
+rirsResponseStatus :: Lens' (RegisterInstanceResponse (a)) Int
 rirsResponseStatus = lens _rirsResponseStatus (\ s a -> s{_rirsResponseStatus = a});
 
 instance NFData RegisterInstanceResponse

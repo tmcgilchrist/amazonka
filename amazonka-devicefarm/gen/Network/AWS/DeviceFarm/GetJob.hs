@@ -101,7 +101,7 @@ instance ToQuery GetJob where
 -- | Represents the result of a get job request.
 --
 -- /See:/ 'getJobResponse' smart constructor.
-data GetJobResponse = GetJobResponse'
+data GetJobResponse a = GetJobResponse'
     { _gjrsJob            :: !(Maybe Job)
     , _gjrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetJobResponse = GetJobResponse'
 -- * 'gjrsResponseStatus'
 getJobResponse
     :: Int -- ^ 'gjrsResponseStatus'
-    -> GetJobResponse
+    -> GetJobResponse (a)
 getJobResponse pResponseStatus_ =
     GetJobResponse'
     { _gjrsJob = Nothing
@@ -123,11 +123,11 @@ getJobResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gjrsJob :: Lens' GetJobResponse (Maybe Job)
+gjrsJob :: Lens' (GetJobResponse (a)) (Maybe Job)
 gjrsJob = lens _gjrsJob (\ s a -> s{_gjrsJob = a});
 
 -- | The response status code.
-gjrsResponseStatus :: Lens' GetJobResponse Int
+gjrsResponseStatus :: Lens' (GetJobResponse (a)) Int
 gjrsResponseStatus = lens _gjrsResponseStatus (\ s a -> s{_gjrsResponseStatus = a});
 
 instance NFData GetJobResponse

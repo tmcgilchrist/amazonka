@@ -131,7 +131,7 @@ instance ToQuery RetrieveEnvironmentInfo where
 -- | Result message containing a description of the requested environment info.
 --
 -- /See:/ 'retrieveEnvironmentInfoResponse' smart constructor.
-data RetrieveEnvironmentInfoResponse = RetrieveEnvironmentInfoResponse'
+data RetrieveEnvironmentInfoResponse a = RetrieveEnvironmentInfoResponse'
     { _reirsEnvironmentInfo :: !(Maybe [EnvironmentInfoDescription])
     , _reirsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -145,7 +145,7 @@ data RetrieveEnvironmentInfoResponse = RetrieveEnvironmentInfoResponse'
 -- * 'reirsResponseStatus'
 retrieveEnvironmentInfoResponse
     :: Int -- ^ 'reirsResponseStatus'
-    -> RetrieveEnvironmentInfoResponse
+    -> RetrieveEnvironmentInfoResponse (a)
 retrieveEnvironmentInfoResponse pResponseStatus_ =
     RetrieveEnvironmentInfoResponse'
     { _reirsEnvironmentInfo = Nothing
@@ -153,11 +153,11 @@ retrieveEnvironmentInfoResponse pResponseStatus_ =
     }
 
 -- | The < EnvironmentInfoDescription> of the environment.
-reirsEnvironmentInfo :: Lens' RetrieveEnvironmentInfoResponse [EnvironmentInfoDescription]
+reirsEnvironmentInfo :: Lens' (RetrieveEnvironmentInfoResponse (a)) [EnvironmentInfoDescription]
 reirsEnvironmentInfo = lens _reirsEnvironmentInfo (\ s a -> s{_reirsEnvironmentInfo = a}) . _Default . _Coerce;
 
 -- | The response status code.
-reirsResponseStatus :: Lens' RetrieveEnvironmentInfoResponse Int
+reirsResponseStatus :: Lens' (RetrieveEnvironmentInfoResponse (a)) Int
 reirsResponseStatus = lens _reirsResponseStatus (\ s a -> s{_reirsResponseStatus = a});
 
 instance NFData RetrieveEnvironmentInfoResponse

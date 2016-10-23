@@ -176,7 +176,7 @@ instance ToQuery DescribeCacheEngineVersions where
 -- | Represents the output of a < DescribeCacheEngineVersions> action.
 --
 -- /See:/ 'describeCacheEngineVersionsResponse' smart constructor.
-data DescribeCacheEngineVersionsResponse = DescribeCacheEngineVersionsResponse'
+data DescribeCacheEngineVersionsResponse a = DescribeCacheEngineVersionsResponse'
     { _dcevrsCacheEngineVersions :: !(Maybe [CacheEngineVersion])
     , _dcevrsMarker              :: !(Maybe Text)
     , _dcevrsResponseStatus      :: !Int
@@ -193,7 +193,7 @@ data DescribeCacheEngineVersionsResponse = DescribeCacheEngineVersionsResponse'
 -- * 'dcevrsResponseStatus'
 describeCacheEngineVersionsResponse
     :: Int -- ^ 'dcevrsResponseStatus'
-    -> DescribeCacheEngineVersionsResponse
+    -> DescribeCacheEngineVersionsResponse (a)
 describeCacheEngineVersionsResponse pResponseStatus_ =
     DescribeCacheEngineVersionsResponse'
     { _dcevrsCacheEngineVersions = Nothing
@@ -202,15 +202,15 @@ describeCacheEngineVersionsResponse pResponseStatus_ =
     }
 
 -- | A list of cache engine version details. Each element in the list contains detailed information about one cache engine version.
-dcevrsCacheEngineVersions :: Lens' DescribeCacheEngineVersionsResponse [CacheEngineVersion]
+dcevrsCacheEngineVersions :: Lens' (DescribeCacheEngineVersionsResponse (a)) [CacheEngineVersion]
 dcevrsCacheEngineVersions = lens _dcevrsCacheEngineVersions (\ s a -> s{_dcevrsCacheEngineVersions = a}) . _Default . _Coerce;
 
 -- | Provides an identifier to allow retrieval of paginated results.
-dcevrsMarker :: Lens' DescribeCacheEngineVersionsResponse (Maybe Text)
+dcevrsMarker :: Lens' (DescribeCacheEngineVersionsResponse (a)) (Maybe Text)
 dcevrsMarker = lens _dcevrsMarker (\ s a -> s{_dcevrsMarker = a});
 
 -- | The response status code.
-dcevrsResponseStatus :: Lens' DescribeCacheEngineVersionsResponse Int
+dcevrsResponseStatus :: Lens' (DescribeCacheEngineVersionsResponse (a)) Int
 dcevrsResponseStatus = lens _dcevrsResponseStatus (\ s a -> s{_dcevrsResponseStatus = a});
 
 instance NFData DescribeCacheEngineVersionsResponse

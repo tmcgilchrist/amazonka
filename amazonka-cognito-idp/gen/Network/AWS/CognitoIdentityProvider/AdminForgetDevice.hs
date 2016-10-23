@@ -117,14 +117,14 @@ instance ToQuery AdminForgetDevice where
         toQuery = const mempty
 
 -- | /See:/ 'adminForgetDeviceResponse' smart constructor.
-data AdminForgetDeviceResponse =
+data AdminForgetDeviceResponse a =
     AdminForgetDeviceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AdminForgetDeviceResponse' with the minimum fields required to make a request.
 --
 adminForgetDeviceResponse
-    :: AdminForgetDeviceResponse
+    :: AdminForgetDeviceResponse (a)
 adminForgetDeviceResponse = AdminForgetDeviceResponse'
 
 instance NFData AdminForgetDeviceResponse

@@ -111,14 +111,14 @@ instance ToQuery CreatePlacementGroup where
                "Strategy" =: _cpgStrategy]
 
 -- | /See:/ 'createPlacementGroupResponse' smart constructor.
-data CreatePlacementGroupResponse =
+data CreatePlacementGroupResponse a =
     CreatePlacementGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreatePlacementGroupResponse' with the minimum fields required to make a request.
 --
 createPlacementGroupResponse
-    :: CreatePlacementGroupResponse
+    :: CreatePlacementGroupResponse (a)
 createPlacementGroupResponse = CreatePlacementGroupResponse'
 
 instance NFData CreatePlacementGroupResponse

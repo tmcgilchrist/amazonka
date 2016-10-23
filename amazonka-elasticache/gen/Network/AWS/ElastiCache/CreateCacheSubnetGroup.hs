@@ -124,7 +124,7 @@ instance ToQuery CreateCacheSubnetGroup where
                  toQueryList "SubnetIdentifier" _ccsgSubnetIds]
 
 -- | /See:/ 'createCacheSubnetGroupResponse' smart constructor.
-data CreateCacheSubnetGroupResponse = CreateCacheSubnetGroupResponse'
+data CreateCacheSubnetGroupResponse a = CreateCacheSubnetGroupResponse'
     { _crsCacheSubnetGroup :: !(Maybe CacheSubnetGroup)
     , _crsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data CreateCacheSubnetGroupResponse = CreateCacheSubnetGroupResponse'
 -- * 'crsResponseStatus'
 createCacheSubnetGroupResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CreateCacheSubnetGroupResponse
+    -> CreateCacheSubnetGroupResponse (a)
 createCacheSubnetGroupResponse pResponseStatus_ =
     CreateCacheSubnetGroupResponse'
     { _crsCacheSubnetGroup = Nothing
@@ -146,11 +146,11 @@ createCacheSubnetGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crsCacheSubnetGroup :: Lens' CreateCacheSubnetGroupResponse (Maybe CacheSubnetGroup)
+crsCacheSubnetGroup :: Lens' (CreateCacheSubnetGroupResponse (a)) (Maybe CacheSubnetGroup)
 crsCacheSubnetGroup = lens _crsCacheSubnetGroup (\ s a -> s{_crsCacheSubnetGroup = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CreateCacheSubnetGroupResponse Int
+crsResponseStatus :: Lens' (CreateCacheSubnetGroupResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CreateCacheSubnetGroupResponse

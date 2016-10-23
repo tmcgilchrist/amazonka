@@ -83,14 +83,14 @@ instance ToQuery DeleteTopicRule where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTopicRuleResponse' smart constructor.
-data DeleteTopicRuleResponse =
+data DeleteTopicRuleResponse a =
     DeleteTopicRuleResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteTopicRuleResponse' with the minimum fields required to make a request.
 --
 deleteTopicRuleResponse
-    :: DeleteTopicRuleResponse
+    :: DeleteTopicRuleResponse (a)
 deleteTopicRuleResponse = DeleteTopicRuleResponse'
 
 instance NFData DeleteTopicRuleResponse

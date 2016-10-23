@@ -119,7 +119,7 @@ instance ToQuery CreateSpotDatafeedSubscription where
 -- | Contains the output of CreateSpotDatafeedSubscription.
 --
 -- /See:/ 'createSpotDatafeedSubscriptionResponse' smart constructor.
-data CreateSpotDatafeedSubscriptionResponse = CreateSpotDatafeedSubscriptionResponse'
+data CreateSpotDatafeedSubscriptionResponse a = CreateSpotDatafeedSubscriptionResponse'
     { _csdsrsSpotDatafeedSubscription :: !(Maybe SpotDatafeedSubscription)
     , _csdsrsResponseStatus           :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data CreateSpotDatafeedSubscriptionResponse = CreateSpotDatafeedSubscriptionResp
 -- * 'csdsrsResponseStatus'
 createSpotDatafeedSubscriptionResponse
     :: Int -- ^ 'csdsrsResponseStatus'
-    -> CreateSpotDatafeedSubscriptionResponse
+    -> CreateSpotDatafeedSubscriptionResponse (a)
 createSpotDatafeedSubscriptionResponse pResponseStatus_ =
     CreateSpotDatafeedSubscriptionResponse'
     { _csdsrsSpotDatafeedSubscription = Nothing
@@ -141,11 +141,11 @@ createSpotDatafeedSubscriptionResponse pResponseStatus_ =
     }
 
 -- | The Spot instance data feed subscription.
-csdsrsSpotDatafeedSubscription :: Lens' CreateSpotDatafeedSubscriptionResponse (Maybe SpotDatafeedSubscription)
+csdsrsSpotDatafeedSubscription :: Lens' (CreateSpotDatafeedSubscriptionResponse (a)) (Maybe SpotDatafeedSubscription)
 csdsrsSpotDatafeedSubscription = lens _csdsrsSpotDatafeedSubscription (\ s a -> s{_csdsrsSpotDatafeedSubscription = a});
 
 -- | The response status code.
-csdsrsResponseStatus :: Lens' CreateSpotDatafeedSubscriptionResponse Int
+csdsrsResponseStatus :: Lens' (CreateSpotDatafeedSubscriptionResponse (a)) Int
 csdsrsResponseStatus = lens _csdsrsResponseStatus (\ s a -> s{_csdsrsResponseStatus = a});
 
 instance NFData

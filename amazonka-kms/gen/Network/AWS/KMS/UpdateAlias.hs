@@ -115,14 +115,14 @@ instance ToQuery UpdateAlias where
         toQuery = const mempty
 
 -- | /See:/ 'updateAliasResponse' smart constructor.
-data UpdateAliasResponse =
+data UpdateAliasResponse a =
     UpdateAliasResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateAliasResponse' with the minimum fields required to make a request.
 --
 updateAliasResponse
-    :: UpdateAliasResponse
+    :: UpdateAliasResponse (a)
 updateAliasResponse = UpdateAliasResponse'
 
 instance NFData UpdateAliasResponse

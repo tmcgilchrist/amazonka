@@ -124,7 +124,7 @@ instance ToQuery UpdateStreamingDistribution where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'updateStreamingDistributionResponse' smart constructor.
-data UpdateStreamingDistributionResponse = UpdateStreamingDistributionResponse'
+data UpdateStreamingDistributionResponse a = UpdateStreamingDistributionResponse'
     { _usdrsETag                  :: !(Maybe Text)
     , _usdrsStreamingDistribution :: !(Maybe StreamingDistribution)
     , _usdrsResponseStatus        :: !Int
@@ -141,7 +141,7 @@ data UpdateStreamingDistributionResponse = UpdateStreamingDistributionResponse'
 -- * 'usdrsResponseStatus'
 updateStreamingDistributionResponse
     :: Int -- ^ 'usdrsResponseStatus'
-    -> UpdateStreamingDistributionResponse
+    -> UpdateStreamingDistributionResponse (a)
 updateStreamingDistributionResponse pResponseStatus_ =
     UpdateStreamingDistributionResponse'
     { _usdrsETag = Nothing
@@ -150,15 +150,15 @@ updateStreamingDistributionResponse pResponseStatus_ =
     }
 
 -- | The current version of the configuration. For example: E2QWRUHAPOMQZL.
-usdrsETag :: Lens' UpdateStreamingDistributionResponse (Maybe Text)
+usdrsETag :: Lens' (UpdateStreamingDistributionResponse (a)) (Maybe Text)
 usdrsETag = lens _usdrsETag (\ s a -> s{_usdrsETag = a});
 
 -- | The streaming distribution\'s information.
-usdrsStreamingDistribution :: Lens' UpdateStreamingDistributionResponse (Maybe StreamingDistribution)
+usdrsStreamingDistribution :: Lens' (UpdateStreamingDistributionResponse (a)) (Maybe StreamingDistribution)
 usdrsStreamingDistribution = lens _usdrsStreamingDistribution (\ s a -> s{_usdrsStreamingDistribution = a});
 
 -- | The response status code.
-usdrsResponseStatus :: Lens' UpdateStreamingDistributionResponse Int
+usdrsResponseStatus :: Lens' (UpdateStreamingDistributionResponse (a)) Int
 usdrsResponseStatus = lens _usdrsResponseStatus (\ s a -> s{_usdrsResponseStatus = a});
 
 instance NFData UpdateStreamingDistributionResponse

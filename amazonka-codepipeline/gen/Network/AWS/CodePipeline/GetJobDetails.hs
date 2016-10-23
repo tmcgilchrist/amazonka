@@ -104,7 +104,7 @@ instance ToQuery GetJobDetails where
 -- | Represents the output of a get job details action.
 --
 -- /See:/ 'getJobDetailsResponse' smart constructor.
-data GetJobDetailsResponse = GetJobDetailsResponse'
+data GetJobDetailsResponse a = GetJobDetailsResponse'
     { _gjdrsJobDetails     :: !(Maybe JobDetails)
     , _gjdrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data GetJobDetailsResponse = GetJobDetailsResponse'
 -- * 'gjdrsResponseStatus'
 getJobDetailsResponse
     :: Int -- ^ 'gjdrsResponseStatus'
-    -> GetJobDetailsResponse
+    -> GetJobDetailsResponse (a)
 getJobDetailsResponse pResponseStatus_ =
     GetJobDetailsResponse'
     { _gjdrsJobDetails = Nothing
@@ -128,11 +128,11 @@ getJobDetailsResponse pResponseStatus_ =
 -- | The details of the job.
 --
 -- If AWSSessionCredentials is used, a long-running job can call GetJobDetails again to obtain new credentials.
-gjdrsJobDetails :: Lens' GetJobDetailsResponse (Maybe JobDetails)
+gjdrsJobDetails :: Lens' (GetJobDetailsResponse (a)) (Maybe JobDetails)
 gjdrsJobDetails = lens _gjdrsJobDetails (\ s a -> s{_gjdrsJobDetails = a});
 
 -- | The response status code.
-gjdrsResponseStatus :: Lens' GetJobDetailsResponse Int
+gjdrsResponseStatus :: Lens' (GetJobDetailsResponse (a)) Int
 gjdrsResponseStatus = lens _gjdrsResponseStatus (\ s a -> s{_gjdrsResponseStatus = a});
 
 instance NFData GetJobDetailsResponse

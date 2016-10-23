@@ -112,7 +112,7 @@ instance ToQuery GetBranch where
 -- | Represents the output of a get branch operation.
 --
 -- /See:/ 'getBranchResponse' smart constructor.
-data GetBranchResponse = GetBranchResponse'
+data GetBranchResponse a = GetBranchResponse'
     { _gbrsBranch         :: !(Maybe BranchInfo)
     , _gbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -126,7 +126,7 @@ data GetBranchResponse = GetBranchResponse'
 -- * 'gbrsResponseStatus'
 getBranchResponse
     :: Int -- ^ 'gbrsResponseStatus'
-    -> GetBranchResponse
+    -> GetBranchResponse (a)
 getBranchResponse pResponseStatus_ =
     GetBranchResponse'
     { _gbrsBranch = Nothing
@@ -134,11 +134,11 @@ getBranchResponse pResponseStatus_ =
     }
 
 -- | The name of the branch.
-gbrsBranch :: Lens' GetBranchResponse (Maybe BranchInfo)
+gbrsBranch :: Lens' (GetBranchResponse (a)) (Maybe BranchInfo)
 gbrsBranch = lens _gbrsBranch (\ s a -> s{_gbrsBranch = a});
 
 -- | The response status code.
-gbrsResponseStatus :: Lens' GetBranchResponse Int
+gbrsResponseStatus :: Lens' (GetBranchResponse (a)) Int
 gbrsResponseStatus = lens _gbrsResponseStatus (\ s a -> s{_gbrsResponseStatus = a});
 
 instance NFData GetBranchResponse

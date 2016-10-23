@@ -174,14 +174,14 @@ instance ToQuery RevokeSecurityGroupEgress where
                "DryRun" =: _rsgeDryRun, "GroupId" =: _rsgeGroupId]
 
 -- | /See:/ 'revokeSecurityGroupEgressResponse' smart constructor.
-data RevokeSecurityGroupEgressResponse =
+data RevokeSecurityGroupEgressResponse a =
     RevokeSecurityGroupEgressResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RevokeSecurityGroupEgressResponse' with the minimum fields required to make a request.
 --
 revokeSecurityGroupEgressResponse
-    :: RevokeSecurityGroupEgressResponse
+    :: RevokeSecurityGroupEgressResponse (a)
 revokeSecurityGroupEgressResponse = RevokeSecurityGroupEgressResponse'
 
 instance NFData RevokeSecurityGroupEgressResponse

@@ -138,7 +138,7 @@ instance ToQuery CreateClusterSubnetGroup where
                  toQueryList "SubnetIdentifier" _ccsgSubnetIds]
 
 -- | /See:/ 'createClusterSubnetGroupResponse' smart constructor.
-data CreateClusterSubnetGroupResponse = CreateClusterSubnetGroupResponse'
+data CreateClusterSubnetGroupResponse a = CreateClusterSubnetGroupResponse'
     { _ccsgrsClusterSubnetGroup :: !(Maybe ClusterSubnetGroup)
     , _ccsgrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -152,7 +152,7 @@ data CreateClusterSubnetGroupResponse = CreateClusterSubnetGroupResponse'
 -- * 'ccsgrsResponseStatus'
 createClusterSubnetGroupResponse
     :: Int -- ^ 'ccsgrsResponseStatus'
-    -> CreateClusterSubnetGroupResponse
+    -> CreateClusterSubnetGroupResponse (a)
 createClusterSubnetGroupResponse pResponseStatus_ =
     CreateClusterSubnetGroupResponse'
     { _ccsgrsClusterSubnetGroup = Nothing
@@ -160,11 +160,11 @@ createClusterSubnetGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ccsgrsClusterSubnetGroup :: Lens' CreateClusterSubnetGroupResponse (Maybe ClusterSubnetGroup)
+ccsgrsClusterSubnetGroup :: Lens' (CreateClusterSubnetGroupResponse (a)) (Maybe ClusterSubnetGroup)
 ccsgrsClusterSubnetGroup = lens _ccsgrsClusterSubnetGroup (\ s a -> s{_ccsgrsClusterSubnetGroup = a});
 
 -- | The response status code.
-ccsgrsResponseStatus :: Lens' CreateClusterSubnetGroupResponse Int
+ccsgrsResponseStatus :: Lens' (CreateClusterSubnetGroupResponse (a)) Int
 ccsgrsResponseStatus = lens _ccsgrsResponseStatus (\ s a -> s{_ccsgrsResponseStatus = a});
 
 instance NFData CreateClusterSubnetGroupResponse

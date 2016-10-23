@@ -105,7 +105,7 @@ instance ToQuery GetTemplate where
 -- | The output for < GetTemplate> action.
 --
 -- /See:/ 'getTemplateResponse' smart constructor.
-data GetTemplateResponse = GetTemplateResponse'
+data GetTemplateResponse a = GetTemplateResponse'
     { _gtrsTemplateBody   :: !(Maybe Text)
     , _gtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data GetTemplateResponse = GetTemplateResponse'
 -- * 'gtrsResponseStatus'
 getTemplateResponse
     :: Int -- ^ 'gtrsResponseStatus'
-    -> GetTemplateResponse
+    -> GetTemplateResponse (a)
 getTemplateResponse pResponseStatus_ =
     GetTemplateResponse'
     { _gtrsTemplateBody = Nothing
@@ -127,11 +127,11 @@ getTemplateResponse pResponseStatus_ =
     }
 
 -- | Structure containing the template body. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide.)
-gtrsTemplateBody :: Lens' GetTemplateResponse (Maybe Text)
+gtrsTemplateBody :: Lens' (GetTemplateResponse (a)) (Maybe Text)
 gtrsTemplateBody = lens _gtrsTemplateBody (\ s a -> s{_gtrsTemplateBody = a});
 
 -- | The response status code.
-gtrsResponseStatus :: Lens' GetTemplateResponse Int
+gtrsResponseStatus :: Lens' (GetTemplateResponse (a)) Int
 gtrsResponseStatus = lens _gtrsResponseStatus (\ s a -> s{_gtrsResponseStatus = a});
 
 instance NFData GetTemplateResponse

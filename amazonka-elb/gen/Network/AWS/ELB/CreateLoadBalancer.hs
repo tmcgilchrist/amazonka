@@ -182,7 +182,7 @@ instance ToQuery CreateLoadBalancer where
 -- | Contains the output for CreateLoadBalancer.
 --
 -- /See:/ 'createLoadBalancerResponse' smart constructor.
-data CreateLoadBalancerResponse = CreateLoadBalancerResponse'
+data CreateLoadBalancerResponse a = CreateLoadBalancerResponse'
     { _clbrsDNSName        :: !(Maybe Text)
     , _clbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -196,7 +196,7 @@ data CreateLoadBalancerResponse = CreateLoadBalancerResponse'
 -- * 'clbrsResponseStatus'
 createLoadBalancerResponse
     :: Int -- ^ 'clbrsResponseStatus'
-    -> CreateLoadBalancerResponse
+    -> CreateLoadBalancerResponse (a)
 createLoadBalancerResponse pResponseStatus_ =
     CreateLoadBalancerResponse'
     { _clbrsDNSName = Nothing
@@ -204,11 +204,11 @@ createLoadBalancerResponse pResponseStatus_ =
     }
 
 -- | The DNS name of the load balancer.
-clbrsDNSName :: Lens' CreateLoadBalancerResponse (Maybe Text)
+clbrsDNSName :: Lens' (CreateLoadBalancerResponse (a)) (Maybe Text)
 clbrsDNSName = lens _clbrsDNSName (\ s a -> s{_clbrsDNSName = a});
 
 -- | The response status code.
-clbrsResponseStatus :: Lens' CreateLoadBalancerResponse Int
+clbrsResponseStatus :: Lens' (CreateLoadBalancerResponse (a)) Int
 clbrsResponseStatus = lens _clbrsResponseStatus (\ s a -> s{_clbrsResponseStatus = a});
 
 instance NFData CreateLoadBalancerResponse

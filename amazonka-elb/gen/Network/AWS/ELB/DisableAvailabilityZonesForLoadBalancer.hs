@@ -122,7 +122,7 @@ instance ToQuery
 -- | Contains the output for DisableAvailabilityZonesForLoadBalancer.
 --
 -- /See:/ 'disableAvailabilityZonesForLoadBalancerResponse' smart constructor.
-data DisableAvailabilityZonesForLoadBalancerResponse = DisableAvailabilityZonesForLoadBalancerResponse'
+data DisableAvailabilityZonesForLoadBalancerResponse a = DisableAvailabilityZonesForLoadBalancerResponse'
     { _dazflbrsAvailabilityZones :: !(Maybe [Text])
     , _dazflbrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -136,7 +136,7 @@ data DisableAvailabilityZonesForLoadBalancerResponse = DisableAvailabilityZonesF
 -- * 'dazflbrsResponseStatus'
 disableAvailabilityZonesForLoadBalancerResponse
     :: Int -- ^ 'dazflbrsResponseStatus'
-    -> DisableAvailabilityZonesForLoadBalancerResponse
+    -> DisableAvailabilityZonesForLoadBalancerResponse (a)
 disableAvailabilityZonesForLoadBalancerResponse pResponseStatus_ =
     DisableAvailabilityZonesForLoadBalancerResponse'
     { _dazflbrsAvailabilityZones = Nothing
@@ -144,11 +144,11 @@ disableAvailabilityZonesForLoadBalancerResponse pResponseStatus_ =
     }
 
 -- | The remaining Availability Zones for the load balancer.
-dazflbrsAvailabilityZones :: Lens' DisableAvailabilityZonesForLoadBalancerResponse [Text]
+dazflbrsAvailabilityZones :: Lens' (DisableAvailabilityZonesForLoadBalancerResponse (a)) [Text]
 dazflbrsAvailabilityZones = lens _dazflbrsAvailabilityZones (\ s a -> s{_dazflbrsAvailabilityZones = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dazflbrsResponseStatus :: Lens' DisableAvailabilityZonesForLoadBalancerResponse Int
+dazflbrsResponseStatus :: Lens' (DisableAvailabilityZonesForLoadBalancerResponse (a)) Int
 dazflbrsResponseStatus = lens _dazflbrsResponseStatus (\ s a -> s{_dazflbrsResponseStatus = a});
 
 instance NFData

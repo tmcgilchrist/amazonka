@@ -98,14 +98,14 @@ instance ToQuery DeleteScheduledAction where
                "ScheduledActionName" =: _dsaScheduledActionName]
 
 -- | /See:/ 'deleteScheduledActionResponse' smart constructor.
-data DeleteScheduledActionResponse =
+data DeleteScheduledActionResponse a =
     DeleteScheduledActionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteScheduledActionResponse' with the minimum fields required to make a request.
 --
 deleteScheduledActionResponse
-    :: DeleteScheduledActionResponse
+    :: DeleteScheduledActionResponse (a)
 deleteScheduledActionResponse = DeleteScheduledActionResponse'
 
 instance NFData DeleteScheduledActionResponse

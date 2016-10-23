@@ -126,7 +126,7 @@ instance ToQuery DescribeInstances where
 -- | Contains the response to a 'DescribeInstances' request.
 --
 -- /See:/ 'describeInstancesResponse' smart constructor.
-data DescribeInstancesResponse = DescribeInstancesResponse'
+data DescribeInstancesResponse a = DescribeInstancesResponse'
     { _dirsInstances      :: !(Maybe [Instance])
     , _dirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data DescribeInstancesResponse = DescribeInstancesResponse'
 -- * 'dirsResponseStatus'
 describeInstancesResponse
     :: Int -- ^ 'dirsResponseStatus'
-    -> DescribeInstancesResponse
+    -> DescribeInstancesResponse (a)
 describeInstancesResponse pResponseStatus_ =
     DescribeInstancesResponse'
     { _dirsInstances = Nothing
@@ -148,11 +148,11 @@ describeInstancesResponse pResponseStatus_ =
     }
 
 -- | An array of 'Instance' objects that describe the instances.
-dirsInstances :: Lens' DescribeInstancesResponse [Instance]
+dirsInstances :: Lens' (DescribeInstancesResponse (a)) [Instance]
 dirsInstances = lens _dirsInstances (\ s a -> s{_dirsInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dirsResponseStatus :: Lens' DescribeInstancesResponse Int
+dirsResponseStatus :: Lens' (DescribeInstancesResponse (a)) Int
 dirsResponseStatus = lens _dirsResponseStatus (\ s a -> s{_dirsResponseStatus = a});
 
 instance NFData DescribeInstancesResponse

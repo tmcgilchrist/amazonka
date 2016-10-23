@@ -89,7 +89,7 @@ instance ToQuery GetBucketReplication where
         toQuery = const (mconcat ["replication"])
 
 -- | /See:/ 'getBucketReplicationResponse' smart constructor.
-data GetBucketReplicationResponse = GetBucketReplicationResponse'
+data GetBucketReplicationResponse a = GetBucketReplicationResponse'
     { _gbrrsReplicationConfiguration :: !(Maybe ReplicationConfiguration)
     , _gbrrsResponseStatus           :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetBucketReplicationResponse = GetBucketReplicationResponse'
 -- * 'gbrrsResponseStatus'
 getBucketReplicationResponse
     :: Int -- ^ 'gbrrsResponseStatus'
-    -> GetBucketReplicationResponse
+    -> GetBucketReplicationResponse (a)
 getBucketReplicationResponse pResponseStatus_ =
     GetBucketReplicationResponse'
     { _gbrrsReplicationConfiguration = Nothing
@@ -111,11 +111,11 @@ getBucketReplicationResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gbrrsReplicationConfiguration :: Lens' GetBucketReplicationResponse (Maybe ReplicationConfiguration)
+gbrrsReplicationConfiguration :: Lens' (GetBucketReplicationResponse (a)) (Maybe ReplicationConfiguration)
 gbrrsReplicationConfiguration = lens _gbrrsReplicationConfiguration (\ s a -> s{_gbrrsReplicationConfiguration = a});
 
 -- | The response status code.
-gbrrsResponseStatus :: Lens' GetBucketReplicationResponse Int
+gbrrsResponseStatus :: Lens' (GetBucketReplicationResponse (a)) Int
 gbrrsResponseStatus = lens _gbrrsResponseStatus (\ s a -> s{_gbrrsResponseStatus = a});
 
 instance NFData GetBucketReplicationResponse

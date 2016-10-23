@@ -105,7 +105,7 @@ instance ToQuery StopDeployment where
 -- | Represents the output of a stop deployment operation.
 --
 -- /See:/ 'stopDeploymentResponse' smart constructor.
-data StopDeploymentResponse = StopDeploymentResponse'
+data StopDeploymentResponse a = StopDeploymentResponse'
     { _sdrsStatus         :: !(Maybe StopStatus)
     , _sdrsStatusMessage  :: !(Maybe Text)
     , _sdrsResponseStatus :: !Int
@@ -122,7 +122,7 @@ data StopDeploymentResponse = StopDeploymentResponse'
 -- * 'sdrsResponseStatus'
 stopDeploymentResponse
     :: Int -- ^ 'sdrsResponseStatus'
-    -> StopDeploymentResponse
+    -> StopDeploymentResponse (a)
 stopDeploymentResponse pResponseStatus_ =
     StopDeploymentResponse'
     { _sdrsStatus = Nothing
@@ -134,15 +134,15 @@ stopDeploymentResponse pResponseStatus_ =
 --
 -- -   Pending: The stop operation is pending.
 -- -   Succeeded: The stop operation was successful.
-sdrsStatus :: Lens' StopDeploymentResponse (Maybe StopStatus)
+sdrsStatus :: Lens' (StopDeploymentResponse (a)) (Maybe StopStatus)
 sdrsStatus = lens _sdrsStatus (\ s a -> s{_sdrsStatus = a});
 
 -- | An accompanying status message.
-sdrsStatusMessage :: Lens' StopDeploymentResponse (Maybe Text)
+sdrsStatusMessage :: Lens' (StopDeploymentResponse (a)) (Maybe Text)
 sdrsStatusMessage = lens _sdrsStatusMessage (\ s a -> s{_sdrsStatusMessage = a});
 
 -- | The response status code.
-sdrsResponseStatus :: Lens' StopDeploymentResponse Int
+sdrsResponseStatus :: Lens' (StopDeploymentResponse (a)) Int
 sdrsResponseStatus = lens _sdrsResponseStatus (\ s a -> s{_sdrsResponseStatus = a});
 
 instance NFData StopDeploymentResponse

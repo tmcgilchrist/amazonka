@@ -132,7 +132,7 @@ instance ToQuery DescribeAutoScalingGroups where
 -- | Contains the output for DescribeAutoScalingGroups.
 --
 -- /See:/ 'describeAutoScalingGroupsResponse' smart constructor.
-data DescribeAutoScalingGroupsResponse = DescribeAutoScalingGroupsResponse'
+data DescribeAutoScalingGroupsResponse a = DescribeAutoScalingGroupsResponse'
     { _dasgrsNextToken         :: !(Maybe Text)
     , _dasgrsResponseStatus    :: !Int
     , _dasgrsAutoScalingGroups :: ![AutoScalingGroup]
@@ -149,7 +149,7 @@ data DescribeAutoScalingGroupsResponse = DescribeAutoScalingGroupsResponse'
 -- * 'dasgrsAutoScalingGroups'
 describeAutoScalingGroupsResponse
     :: Int -- ^ 'dasgrsResponseStatus'
-    -> DescribeAutoScalingGroupsResponse
+    -> DescribeAutoScalingGroupsResponse (a)
 describeAutoScalingGroupsResponse pResponseStatus_ =
     DescribeAutoScalingGroupsResponse'
     { _dasgrsNextToken = Nothing
@@ -158,15 +158,15 @@ describeAutoScalingGroupsResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dasgrsNextToken :: Lens' DescribeAutoScalingGroupsResponse (Maybe Text)
+dasgrsNextToken :: Lens' (DescribeAutoScalingGroupsResponse (a)) (Maybe Text)
 dasgrsNextToken = lens _dasgrsNextToken (\ s a -> s{_dasgrsNextToken = a});
 
 -- | The response status code.
-dasgrsResponseStatus :: Lens' DescribeAutoScalingGroupsResponse Int
+dasgrsResponseStatus :: Lens' (DescribeAutoScalingGroupsResponse (a)) Int
 dasgrsResponseStatus = lens _dasgrsResponseStatus (\ s a -> s{_dasgrsResponseStatus = a});
 
 -- | The groups.
-dasgrsAutoScalingGroups :: Lens' DescribeAutoScalingGroupsResponse [AutoScalingGroup]
+dasgrsAutoScalingGroups :: Lens' (DescribeAutoScalingGroupsResponse (a)) [AutoScalingGroup]
 dasgrsAutoScalingGroups = lens _dasgrsAutoScalingGroups (\ s a -> s{_dasgrsAutoScalingGroups = a}) . _Coerce;
 
 instance NFData DescribeAutoScalingGroupsResponse

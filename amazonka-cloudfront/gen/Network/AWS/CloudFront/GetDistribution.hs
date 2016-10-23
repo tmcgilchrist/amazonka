@@ -94,7 +94,7 @@ instance ToQuery GetDistribution where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'getDistributionResponse' smart constructor.
-data GetDistributionResponse = GetDistributionResponse'
+data GetDistributionResponse a = GetDistributionResponse'
     { _gdrsETag           :: !(Maybe Text)
     , _gdrsDistribution   :: !(Maybe Distribution)
     , _gdrsResponseStatus :: !Int
@@ -111,7 +111,7 @@ data GetDistributionResponse = GetDistributionResponse'
 -- * 'gdrsResponseStatus'
 getDistributionResponse
     :: Int -- ^ 'gdrsResponseStatus'
-    -> GetDistributionResponse
+    -> GetDistributionResponse (a)
 getDistributionResponse pResponseStatus_ =
     GetDistributionResponse'
     { _gdrsETag = Nothing
@@ -120,15 +120,15 @@ getDistributionResponse pResponseStatus_ =
     }
 
 -- | The current version of the distribution\'s information. For example: E2QWRUHAPOMQZL.
-gdrsETag :: Lens' GetDistributionResponse (Maybe Text)
+gdrsETag :: Lens' (GetDistributionResponse (a)) (Maybe Text)
 gdrsETag = lens _gdrsETag (\ s a -> s{_gdrsETag = a});
 
 -- | The distribution\'s information.
-gdrsDistribution :: Lens' GetDistributionResponse (Maybe Distribution)
+gdrsDistribution :: Lens' (GetDistributionResponse (a)) (Maybe Distribution)
 gdrsDistribution = lens _gdrsDistribution (\ s a -> s{_gdrsDistribution = a});
 
 -- | The response status code.
-gdrsResponseStatus :: Lens' GetDistributionResponse Int
+gdrsResponseStatus :: Lens' (GetDistributionResponse (a)) Int
 gdrsResponseStatus = lens _gdrsResponseStatus (\ s a -> s{_gdrsResponseStatus = a});
 
 instance NFData GetDistributionResponse

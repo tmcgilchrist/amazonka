@@ -125,7 +125,7 @@ instance ToQuery DescribeServiceErrors where
 -- | Contains the response to a 'DescribeServiceErrors' request.
 --
 -- /See:/ 'describeServiceErrorsResponse' smart constructor.
-data DescribeServiceErrorsResponse = DescribeServiceErrorsResponse'
+data DescribeServiceErrorsResponse a = DescribeServiceErrorsResponse'
     { _dsersServiceErrors  :: !(Maybe [ServiceError'])
     , _dsersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -139,7 +139,7 @@ data DescribeServiceErrorsResponse = DescribeServiceErrorsResponse'
 -- * 'dsersResponseStatus'
 describeServiceErrorsResponse
     :: Int -- ^ 'dsersResponseStatus'
-    -> DescribeServiceErrorsResponse
+    -> DescribeServiceErrorsResponse (a)
 describeServiceErrorsResponse pResponseStatus_ =
     DescribeServiceErrorsResponse'
     { _dsersServiceErrors = Nothing
@@ -147,11 +147,11 @@ describeServiceErrorsResponse pResponseStatus_ =
     }
 
 -- | An array of 'ServiceError' objects that describe the specified service errors.
-dsersServiceErrors :: Lens' DescribeServiceErrorsResponse [ServiceError']
+dsersServiceErrors :: Lens' (DescribeServiceErrorsResponse (a)) [ServiceError']
 dsersServiceErrors = lens _dsersServiceErrors (\ s a -> s{_dsersServiceErrors = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsersResponseStatus :: Lens' DescribeServiceErrorsResponse Int
+dsersResponseStatus :: Lens' (DescribeServiceErrorsResponse (a)) Int
 dsersResponseStatus = lens _dsersResponseStatus (\ s a -> s{_dsersResponseStatus = a});
 
 instance NFData DescribeServiceErrorsResponse

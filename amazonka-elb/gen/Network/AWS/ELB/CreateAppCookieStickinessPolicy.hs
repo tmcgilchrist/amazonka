@@ -128,7 +128,7 @@ instance ToQuery CreateAppCookieStickinessPolicy
 -- | Contains the output for CreateAppCookieStickinessPolicy.
 --
 -- /See:/ 'createAppCookieStickinessPolicyResponse' smart constructor.
-newtype CreateAppCookieStickinessPolicyResponse = CreateAppCookieStickinessPolicyResponse'
+newtype CreateAppCookieStickinessPolicyResponse a = CreateAppCookieStickinessPolicyResponse'
     { _cacsprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -139,14 +139,14 @@ newtype CreateAppCookieStickinessPolicyResponse = CreateAppCookieStickinessPolic
 -- * 'cacsprsResponseStatus'
 createAppCookieStickinessPolicyResponse
     :: Int -- ^ 'cacsprsResponseStatus'
-    -> CreateAppCookieStickinessPolicyResponse
+    -> CreateAppCookieStickinessPolicyResponse (a)
 createAppCookieStickinessPolicyResponse pResponseStatus_ =
     CreateAppCookieStickinessPolicyResponse'
     { _cacsprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-cacsprsResponseStatus :: Lens' CreateAppCookieStickinessPolicyResponse Int
+cacsprsResponseStatus :: Lens' (CreateAppCookieStickinessPolicyResponse (a)) Int
 cacsprsResponseStatus = lens _cacsprsResponseStatus (\ s a -> s{_cacsprsResponseStatus = a});
 
 instance NFData

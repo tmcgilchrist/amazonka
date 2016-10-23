@@ -107,14 +107,14 @@ instance ToQuery DeleteSecurityGroup where
                "GroupName" =: _dsgGroupName, "DryRun" =: _dsgDryRun]
 
 -- | /See:/ 'deleteSecurityGroupResponse' smart constructor.
-data DeleteSecurityGroupResponse =
+data DeleteSecurityGroupResponse a =
     DeleteSecurityGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSecurityGroupResponse' with the minimum fields required to make a request.
 --
 deleteSecurityGroupResponse
-    :: DeleteSecurityGroupResponse
+    :: DeleteSecurityGroupResponse (a)
 deleteSecurityGroupResponse = DeleteSecurityGroupResponse'
 
 instance NFData DeleteSecurityGroupResponse

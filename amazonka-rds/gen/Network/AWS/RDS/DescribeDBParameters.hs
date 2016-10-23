@@ -166,7 +166,7 @@ instance ToQuery DescribeDBParameters where
 -- | Contains the result of a successful invocation of the < DescribeDBParameters> action.
 --
 -- /See:/ 'describeDBParametersResponse' smart constructor.
-data DescribeDBParametersResponse = DescribeDBParametersResponse'
+data DescribeDBParametersResponse a = DescribeDBParametersResponse'
     { _ddprsMarker         :: !(Maybe Text)
     , _ddprsParameters     :: !(Maybe [Parameter])
     , _ddprsResponseStatus :: !Int
@@ -183,7 +183,7 @@ data DescribeDBParametersResponse = DescribeDBParametersResponse'
 -- * 'ddprsResponseStatus'
 describeDBParametersResponse
     :: Int -- ^ 'ddprsResponseStatus'
-    -> DescribeDBParametersResponse
+    -> DescribeDBParametersResponse (a)
 describeDBParametersResponse pResponseStatus_ =
     DescribeDBParametersResponse'
     { _ddprsMarker = Nothing
@@ -192,15 +192,15 @@ describeDBParametersResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddprsMarker :: Lens' DescribeDBParametersResponse (Maybe Text)
+ddprsMarker :: Lens' (DescribeDBParametersResponse (a)) (Maybe Text)
 ddprsMarker = lens _ddprsMarker (\ s a -> s{_ddprsMarker = a});
 
 -- | A list of < Parameter> values.
-ddprsParameters :: Lens' DescribeDBParametersResponse [Parameter]
+ddprsParameters :: Lens' (DescribeDBParametersResponse (a)) [Parameter]
 ddprsParameters = lens _ddprsParameters (\ s a -> s{_ddprsParameters = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddprsResponseStatus :: Lens' DescribeDBParametersResponse Int
+ddprsResponseStatus :: Lens' (DescribeDBParametersResponse (a)) Int
 ddprsResponseStatus = lens _ddprsResponseStatus (\ s a -> s{_ddprsResponseStatus = a});
 
 instance NFData DescribeDBParametersResponse

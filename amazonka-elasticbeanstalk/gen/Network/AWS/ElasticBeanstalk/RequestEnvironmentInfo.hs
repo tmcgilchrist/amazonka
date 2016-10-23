@@ -127,14 +127,14 @@ instance ToQuery RequestEnvironmentInfo where
                "InfoType" =: _reiInfoType]
 
 -- | /See:/ 'requestEnvironmentInfoResponse' smart constructor.
-data RequestEnvironmentInfoResponse =
+data RequestEnvironmentInfoResponse a =
     RequestEnvironmentInfoResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RequestEnvironmentInfoResponse' with the minimum fields required to make a request.
 --
 requestEnvironmentInfoResponse
-    :: RequestEnvironmentInfoResponse
+    :: RequestEnvironmentInfoResponse (a)
 requestEnvironmentInfoResponse = RequestEnvironmentInfoResponse'
 
 instance NFData RequestEnvironmentInfoResponse

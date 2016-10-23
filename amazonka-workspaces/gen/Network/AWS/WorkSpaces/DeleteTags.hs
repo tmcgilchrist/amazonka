@@ -111,7 +111,7 @@ instance ToQuery DeleteTags where
 -- | The result of the < DeleteTags> operation.
 --
 -- /See:/ 'deleteTagsResponse' smart constructor.
-newtype DeleteTagsResponse = DeleteTagsResponse'
+newtype DeleteTagsResponse a = DeleteTagsResponse'
     { _drsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -122,14 +122,14 @@ newtype DeleteTagsResponse = DeleteTagsResponse'
 -- * 'drsResponseStatus'
 deleteTagsResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteTagsResponse
+    -> DeleteTagsResponse (a)
 deleteTagsResponse pResponseStatus_ =
     DeleteTagsResponse'
     { _drsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteTagsResponse Int
+drsResponseStatus :: Lens' (DeleteTagsResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteTagsResponse

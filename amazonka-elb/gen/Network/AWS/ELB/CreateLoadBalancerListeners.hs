@@ -109,7 +109,7 @@ instance ToQuery CreateLoadBalancerListeners where
 -- | Contains the parameters for CreateLoadBalancerListener.
 --
 -- /See:/ 'createLoadBalancerListenersResponse' smart constructor.
-newtype CreateLoadBalancerListenersResponse = CreateLoadBalancerListenersResponse'
+newtype CreateLoadBalancerListenersResponse a = CreateLoadBalancerListenersResponse'
     { _clblrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -120,14 +120,14 @@ newtype CreateLoadBalancerListenersResponse = CreateLoadBalancerListenersRespons
 -- * 'clblrsResponseStatus'
 createLoadBalancerListenersResponse
     :: Int -- ^ 'clblrsResponseStatus'
-    -> CreateLoadBalancerListenersResponse
+    -> CreateLoadBalancerListenersResponse (a)
 createLoadBalancerListenersResponse pResponseStatus_ =
     CreateLoadBalancerListenersResponse'
     { _clblrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-clblrsResponseStatus :: Lens' CreateLoadBalancerListenersResponse Int
+clblrsResponseStatus :: Lens' (CreateLoadBalancerListenersResponse (a)) Int
 clblrsResponseStatus = lens _clblrsResponseStatus (\ s a -> s{_clblrsResponseStatus = a});
 
 instance NFData CreateLoadBalancerListenersResponse

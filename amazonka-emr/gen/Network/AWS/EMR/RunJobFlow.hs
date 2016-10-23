@@ -303,7 +303,7 @@ instance ToQuery RunJobFlow where
 -- | The result of the < RunJobFlow> operation.
 --
 -- /See:/ 'runJobFlowResponse' smart constructor.
-data RunJobFlowResponse = RunJobFlowResponse'
+data RunJobFlowResponse a = RunJobFlowResponse'
     { _rjfrsJobFlowId      :: !(Maybe Text)
     , _rjfrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -317,7 +317,7 @@ data RunJobFlowResponse = RunJobFlowResponse'
 -- * 'rjfrsResponseStatus'
 runJobFlowResponse
     :: Int -- ^ 'rjfrsResponseStatus'
-    -> RunJobFlowResponse
+    -> RunJobFlowResponse (a)
 runJobFlowResponse pResponseStatus_ =
     RunJobFlowResponse'
     { _rjfrsJobFlowId = Nothing
@@ -325,11 +325,11 @@ runJobFlowResponse pResponseStatus_ =
     }
 
 -- | An unique identifier for the job flow.
-rjfrsJobFlowId :: Lens' RunJobFlowResponse (Maybe Text)
+rjfrsJobFlowId :: Lens' (RunJobFlowResponse (a)) (Maybe Text)
 rjfrsJobFlowId = lens _rjfrsJobFlowId (\ s a -> s{_rjfrsJobFlowId = a});
 
 -- | The response status code.
-rjfrsResponseStatus :: Lens' RunJobFlowResponse Int
+rjfrsResponseStatus :: Lens' (RunJobFlowResponse (a)) Int
 rjfrsResponseStatus = lens _rjfrsResponseStatus (\ s a -> s{_rjfrsResponseStatus = a});
 
 instance NFData RunJobFlowResponse

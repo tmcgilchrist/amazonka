@@ -143,7 +143,7 @@ instance ToQuery MeterUsage where
         toQuery = const mempty
 
 -- | /See:/ 'meterUsageResponse' smart constructor.
-data MeterUsageResponse = MeterUsageResponse'
+data MeterUsageResponse a = MeterUsageResponse'
     { _mursMeteringRecordId :: !(Maybe Text)
     , _mursResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -157,7 +157,7 @@ data MeterUsageResponse = MeterUsageResponse'
 -- * 'mursResponseStatus'
 meterUsageResponse
     :: Int -- ^ 'mursResponseStatus'
-    -> MeterUsageResponse
+    -> MeterUsageResponse (a)
 meterUsageResponse pResponseStatus_ =
     MeterUsageResponse'
     { _mursMeteringRecordId = Nothing
@@ -165,11 +165,11 @@ meterUsageResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-mursMeteringRecordId :: Lens' MeterUsageResponse (Maybe Text)
+mursMeteringRecordId :: Lens' (MeterUsageResponse (a)) (Maybe Text)
 mursMeteringRecordId = lens _mursMeteringRecordId (\ s a -> s{_mursMeteringRecordId = a});
 
 -- | The response status code.
-mursResponseStatus :: Lens' MeterUsageResponse Int
+mursResponseStatus :: Lens' (MeterUsageResponse (a)) Int
 mursResponseStatus = lens _mursResponseStatus (\ s a -> s{_mursResponseStatus = a});
 
 instance NFData MeterUsageResponse

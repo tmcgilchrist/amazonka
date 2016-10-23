@@ -90,14 +90,14 @@ instance ToQuery DeleteSpotDatafeedSubscription where
                "DryRun" =: _dsdssDryRun]
 
 -- | /See:/ 'deleteSpotDatafeedSubscriptionResponse' smart constructor.
-data DeleteSpotDatafeedSubscriptionResponse =
+data DeleteSpotDatafeedSubscriptionResponse a =
     DeleteSpotDatafeedSubscriptionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSpotDatafeedSubscriptionResponse' with the minimum fields required to make a request.
 --
 deleteSpotDatafeedSubscriptionResponse
-    :: DeleteSpotDatafeedSubscriptionResponse
+    :: DeleteSpotDatafeedSubscriptionResponse (a)
 deleteSpotDatafeedSubscriptionResponse =
     DeleteSpotDatafeedSubscriptionResponse'
 

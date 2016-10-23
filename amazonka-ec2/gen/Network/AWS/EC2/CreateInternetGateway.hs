@@ -97,7 +97,7 @@ instance ToQuery CreateInternetGateway where
 -- | Contains the output of CreateInternetGateway.
 --
 -- /See:/ 'createInternetGatewayResponse' smart constructor.
-data CreateInternetGatewayResponse = CreateInternetGatewayResponse'
+data CreateInternetGatewayResponse a = CreateInternetGatewayResponse'
     { _cigrsInternetGateway :: !(Maybe InternetGateway)
     , _cigrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -111,7 +111,7 @@ data CreateInternetGatewayResponse = CreateInternetGatewayResponse'
 -- * 'cigrsResponseStatus'
 createInternetGatewayResponse
     :: Int -- ^ 'cigrsResponseStatus'
-    -> CreateInternetGatewayResponse
+    -> CreateInternetGatewayResponse (a)
 createInternetGatewayResponse pResponseStatus_ =
     CreateInternetGatewayResponse'
     { _cigrsInternetGateway = Nothing
@@ -119,11 +119,11 @@ createInternetGatewayResponse pResponseStatus_ =
     }
 
 -- | Information about the Internet gateway.
-cigrsInternetGateway :: Lens' CreateInternetGatewayResponse (Maybe InternetGateway)
+cigrsInternetGateway :: Lens' (CreateInternetGatewayResponse (a)) (Maybe InternetGateway)
 cigrsInternetGateway = lens _cigrsInternetGateway (\ s a -> s{_cigrsInternetGateway = a});
 
 -- | The response status code.
-cigrsResponseStatus :: Lens' CreateInternetGatewayResponse Int
+cigrsResponseStatus :: Lens' (CreateInternetGatewayResponse (a)) Int
 cigrsResponseStatus = lens _cigrsResponseStatus (\ s a -> s{_cigrsResponseStatus = a});
 
 instance NFData CreateInternetGatewayResponse

@@ -86,14 +86,14 @@ instance ToQuery DeleteAPIKey where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAPIKeyResponse' smart constructor.
-data DeleteAPIKeyResponse =
+data DeleteAPIKeyResponse a =
     DeleteAPIKeyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAPIKeyResponse' with the minimum fields required to make a request.
 --
 deleteAPIKeyResponse
-    :: DeleteAPIKeyResponse
+    :: DeleteAPIKeyResponse (a)
 deleteAPIKeyResponse = DeleteAPIKeyResponse'
 
 instance NFData DeleteAPIKeyResponse

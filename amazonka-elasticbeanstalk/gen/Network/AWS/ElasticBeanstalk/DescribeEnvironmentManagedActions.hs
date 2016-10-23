@@ -123,7 +123,7 @@ instance ToQuery DescribeEnvironmentManagedActions
 -- | The result message containing a list of managed actions.
 --
 -- /See:/ 'describeEnvironmentManagedActionsResponse' smart constructor.
-data DescribeEnvironmentManagedActionsResponse = DescribeEnvironmentManagedActionsResponse'
+data DescribeEnvironmentManagedActionsResponse a = DescribeEnvironmentManagedActionsResponse'
     { _demarsManagedActions :: !(Maybe (List1 ManagedAction))
     , _demarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data DescribeEnvironmentManagedActionsResponse = DescribeEnvironmentManagedActio
 -- * 'demarsResponseStatus'
 describeEnvironmentManagedActionsResponse
     :: Int -- ^ 'demarsResponseStatus'
-    -> DescribeEnvironmentManagedActionsResponse
+    -> DescribeEnvironmentManagedActionsResponse (a)
 describeEnvironmentManagedActionsResponse pResponseStatus_ =
     DescribeEnvironmentManagedActionsResponse'
     { _demarsManagedActions = Nothing
@@ -145,11 +145,11 @@ describeEnvironmentManagedActionsResponse pResponseStatus_ =
     }
 
 -- | A list of upcoming and in-progress managed actions.
-demarsManagedActions :: Lens' DescribeEnvironmentManagedActionsResponse (Maybe (NonEmpty ManagedAction))
+demarsManagedActions :: Lens' (DescribeEnvironmentManagedActionsResponse (a)) (Maybe (NonEmpty ManagedAction))
 demarsManagedActions = lens _demarsManagedActions (\ s a -> s{_demarsManagedActions = a}) . mapping _List1;
 
 -- | The response status code.
-demarsResponseStatus :: Lens' DescribeEnvironmentManagedActionsResponse Int
+demarsResponseStatus :: Lens' (DescribeEnvironmentManagedActionsResponse (a)) Int
 demarsResponseStatus = lens _demarsResponseStatus (\ s a -> s{_demarsResponseStatus = a});
 
 instance NFData

@@ -105,7 +105,7 @@ instance ToQuery BatchGetDeployments where
 -- | Represents the output of a batch get deployments operation.
 --
 -- /See:/ 'batchGetDeploymentsResponse' smart constructor.
-data BatchGetDeploymentsResponse = BatchGetDeploymentsResponse'
+data BatchGetDeploymentsResponse a = BatchGetDeploymentsResponse'
     { _bgdrsDeploymentsInfo :: !(Maybe [DeploymentInfo])
     , _bgdrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data BatchGetDeploymentsResponse = BatchGetDeploymentsResponse'
 -- * 'bgdrsResponseStatus'
 batchGetDeploymentsResponse
     :: Int -- ^ 'bgdrsResponseStatus'
-    -> BatchGetDeploymentsResponse
+    -> BatchGetDeploymentsResponse (a)
 batchGetDeploymentsResponse pResponseStatus_ =
     BatchGetDeploymentsResponse'
     { _bgdrsDeploymentsInfo = Nothing
@@ -127,11 +127,11 @@ batchGetDeploymentsResponse pResponseStatus_ =
     }
 
 -- | Information about the deployments.
-bgdrsDeploymentsInfo :: Lens' BatchGetDeploymentsResponse [DeploymentInfo]
+bgdrsDeploymentsInfo :: Lens' (BatchGetDeploymentsResponse (a)) [DeploymentInfo]
 bgdrsDeploymentsInfo = lens _bgdrsDeploymentsInfo (\ s a -> s{_bgdrsDeploymentsInfo = a}) . _Default . _Coerce;
 
 -- | The response status code.
-bgdrsResponseStatus :: Lens' BatchGetDeploymentsResponse Int
+bgdrsResponseStatus :: Lens' (BatchGetDeploymentsResponse (a)) Int
 bgdrsResponseStatus = lens _bgdrsResponseStatus (\ s a -> s{_bgdrsResponseStatus = a});
 
 instance NFData BatchGetDeploymentsResponse

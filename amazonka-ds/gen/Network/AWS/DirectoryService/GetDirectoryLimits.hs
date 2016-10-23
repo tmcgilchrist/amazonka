@@ -89,7 +89,7 @@ instance ToQuery GetDirectoryLimits where
 -- | Contains the results of the < GetDirectoryLimits> operation.
 --
 -- /See:/ 'getDirectoryLimitsResponse' smart constructor.
-data GetDirectoryLimitsResponse = GetDirectoryLimitsResponse'
+data GetDirectoryLimitsResponse a = GetDirectoryLimitsResponse'
     { _gdlrsDirectoryLimits :: !(Maybe DirectoryLimits)
     , _gdlrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetDirectoryLimitsResponse = GetDirectoryLimitsResponse'
 -- * 'gdlrsResponseStatus'
 getDirectoryLimitsResponse
     :: Int -- ^ 'gdlrsResponseStatus'
-    -> GetDirectoryLimitsResponse
+    -> GetDirectoryLimitsResponse (a)
 getDirectoryLimitsResponse pResponseStatus_ =
     GetDirectoryLimitsResponse'
     { _gdlrsDirectoryLimits = Nothing
@@ -111,11 +111,11 @@ getDirectoryLimitsResponse pResponseStatus_ =
     }
 
 -- | A < DirectoryLimits> object that contains the directory limits for the current region.
-gdlrsDirectoryLimits :: Lens' GetDirectoryLimitsResponse (Maybe DirectoryLimits)
+gdlrsDirectoryLimits :: Lens' (GetDirectoryLimitsResponse (a)) (Maybe DirectoryLimits)
 gdlrsDirectoryLimits = lens _gdlrsDirectoryLimits (\ s a -> s{_gdlrsDirectoryLimits = a});
 
 -- | The response status code.
-gdlrsResponseStatus :: Lens' GetDirectoryLimitsResponse Int
+gdlrsResponseStatus :: Lens' (GetDirectoryLimitsResponse (a)) Int
 gdlrsResponseStatus = lens _gdlrsResponseStatus (\ s a -> s{_gdlrsResponseStatus = a});
 
 instance NFData GetDirectoryLimitsResponse

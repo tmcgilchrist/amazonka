@@ -127,7 +127,7 @@ instance ToQuery SendMessageBatch where
 -- | For each message in the batch, the response contains a < SendMessageBatchResultEntry> tag if the message succeeds or a < BatchResultErrorEntry> tag if the message fails.
 --
 -- /See:/ 'sendMessageBatchResponse' smart constructor.
-data SendMessageBatchResponse = SendMessageBatchResponse'
+data SendMessageBatchResponse a = SendMessageBatchResponse'
     { _smbrsResponseStatus :: !Int
     , _smbrsSuccessful     :: ![SendMessageBatchResultEntry]
     , _smbrsFailed         :: ![BatchResultErrorEntry]
@@ -144,7 +144,7 @@ data SendMessageBatchResponse = SendMessageBatchResponse'
 -- * 'smbrsFailed'
 sendMessageBatchResponse
     :: Int -- ^ 'smbrsResponseStatus'
-    -> SendMessageBatchResponse
+    -> SendMessageBatchResponse (a)
 sendMessageBatchResponse pResponseStatus_ =
     SendMessageBatchResponse'
     { _smbrsResponseStatus = pResponseStatus_
@@ -153,15 +153,15 @@ sendMessageBatchResponse pResponseStatus_ =
     }
 
 -- | The response status code.
-smbrsResponseStatus :: Lens' SendMessageBatchResponse Int
+smbrsResponseStatus :: Lens' (SendMessageBatchResponse (a)) Int
 smbrsResponseStatus = lens _smbrsResponseStatus (\ s a -> s{_smbrsResponseStatus = a});
 
 -- | A list of < SendMessageBatchResultEntry> items.
-smbrsSuccessful :: Lens' SendMessageBatchResponse [SendMessageBatchResultEntry]
+smbrsSuccessful :: Lens' (SendMessageBatchResponse (a)) [SendMessageBatchResultEntry]
 smbrsSuccessful = lens _smbrsSuccessful (\ s a -> s{_smbrsSuccessful = a}) . _Coerce;
 
 -- | A list of < BatchResultErrorEntry> items with the error detail about each message that could not be enqueued.
-smbrsFailed :: Lens' SendMessageBatchResponse [BatchResultErrorEntry]
+smbrsFailed :: Lens' (SendMessageBatchResponse (a)) [BatchResultErrorEntry]
 smbrsFailed = lens _smbrsFailed (\ s a -> s{_smbrsFailed = a}) . _Coerce;
 
 instance NFData SendMessageBatchResponse

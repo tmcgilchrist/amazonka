@@ -121,14 +121,14 @@ instance ToQuery DeleteIntegrationResponse where
         toQuery = const mempty
 
 -- | /See:/ 'deleteIntegrationResponseResponse' smart constructor.
-data DeleteIntegrationResponseResponse =
+data DeleteIntegrationResponseResponse a =
     DeleteIntegrationResponseResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteIntegrationResponseResponse' with the minimum fields required to make a request.
 --
 deleteIntegrationResponseResponse
-    :: DeleteIntegrationResponseResponse
+    :: DeleteIntegrationResponseResponse (a)
 deleteIntegrationResponseResponse = DeleteIntegrationResponseResponse'
 
 instance NFData DeleteIntegrationResponseResponse

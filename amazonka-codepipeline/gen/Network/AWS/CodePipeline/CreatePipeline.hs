@@ -103,7 +103,7 @@ instance ToQuery CreatePipeline where
 -- | Represents the output of a create pipeline action.
 --
 -- /See:/ 'createPipelineResponse' smart constructor.
-data CreatePipelineResponse = CreatePipelineResponse'
+data CreatePipelineResponse a = CreatePipelineResponse'
     { _cprsPipeline       :: !(Maybe PipelineDeclaration)
     , _cprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data CreatePipelineResponse = CreatePipelineResponse'
 -- * 'cprsResponseStatus'
 createPipelineResponse
     :: Int -- ^ 'cprsResponseStatus'
-    -> CreatePipelineResponse
+    -> CreatePipelineResponse (a)
 createPipelineResponse pResponseStatus_ =
     CreatePipelineResponse'
     { _cprsPipeline = Nothing
@@ -125,11 +125,11 @@ createPipelineResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cprsPipeline :: Lens' CreatePipelineResponse (Maybe PipelineDeclaration)
+cprsPipeline :: Lens' (CreatePipelineResponse (a)) (Maybe PipelineDeclaration)
 cprsPipeline = lens _cprsPipeline (\ s a -> s{_cprsPipeline = a});
 
 -- | The response status code.
-cprsResponseStatus :: Lens' CreatePipelineResponse Int
+cprsResponseStatus :: Lens' (CreatePipelineResponse (a)) Int
 cprsResponseStatus = lens _cprsResponseStatus (\ s a -> s{_cprsResponseStatus = a});
 
 instance NFData CreatePipelineResponse

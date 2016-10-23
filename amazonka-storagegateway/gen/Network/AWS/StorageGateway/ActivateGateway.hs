@@ -192,7 +192,7 @@ instance ToQuery ActivateGateway where
 -- For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.
 --
 -- /See:/ 'activateGatewayResponse' smart constructor.
-data ActivateGatewayResponse = ActivateGatewayResponse'
+data ActivateGatewayResponse a = ActivateGatewayResponse'
     { _agrsGatewayARN     :: !(Maybe Text)
     , _agrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -206,7 +206,7 @@ data ActivateGatewayResponse = ActivateGatewayResponse'
 -- * 'agrsResponseStatus'
 activateGatewayResponse
     :: Int -- ^ 'agrsResponseStatus'
-    -> ActivateGatewayResponse
+    -> ActivateGatewayResponse (a)
 activateGatewayResponse pResponseStatus_ =
     ActivateGatewayResponse'
     { _agrsGatewayARN = Nothing
@@ -214,11 +214,11 @@ activateGatewayResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-agrsGatewayARN :: Lens' ActivateGatewayResponse (Maybe Text)
+agrsGatewayARN :: Lens' (ActivateGatewayResponse (a)) (Maybe Text)
 agrsGatewayARN = lens _agrsGatewayARN (\ s a -> s{_agrsGatewayARN = a});
 
 -- | The response status code.
-agrsResponseStatus :: Lens' ActivateGatewayResponse Int
+agrsResponseStatus :: Lens' (ActivateGatewayResponse (a)) Int
 agrsResponseStatus = lens _agrsResponseStatus (\ s a -> s{_agrsResponseStatus = a});
 
 instance NFData ActivateGatewayResponse

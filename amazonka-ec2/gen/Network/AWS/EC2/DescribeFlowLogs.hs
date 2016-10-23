@@ -139,7 +139,7 @@ instance ToQuery DescribeFlowLogs where
 -- | Contains the output of DescribeFlowLogs.
 --
 -- /See:/ 'describeFlowLogsResponse' smart constructor.
-data DescribeFlowLogsResponse = DescribeFlowLogsResponse'
+data DescribeFlowLogsResponse a = DescribeFlowLogsResponse'
     { _dflsrsNextToken      :: !(Maybe Text)
     , _dflsrsFlowLogs       :: !(Maybe [FlowLog])
     , _dflsrsResponseStatus :: !Int
@@ -156,7 +156,7 @@ data DescribeFlowLogsResponse = DescribeFlowLogsResponse'
 -- * 'dflsrsResponseStatus'
 describeFlowLogsResponse
     :: Int -- ^ 'dflsrsResponseStatus'
-    -> DescribeFlowLogsResponse
+    -> DescribeFlowLogsResponse (a)
 describeFlowLogsResponse pResponseStatus_ =
     DescribeFlowLogsResponse'
     { _dflsrsNextToken = Nothing
@@ -165,15 +165,15 @@ describeFlowLogsResponse pResponseStatus_ =
     }
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dflsrsNextToken :: Lens' DescribeFlowLogsResponse (Maybe Text)
+dflsrsNextToken :: Lens' (DescribeFlowLogsResponse (a)) (Maybe Text)
 dflsrsNextToken = lens _dflsrsNextToken (\ s a -> s{_dflsrsNextToken = a});
 
 -- | Information about the flow logs.
-dflsrsFlowLogs :: Lens' DescribeFlowLogsResponse [FlowLog]
+dflsrsFlowLogs :: Lens' (DescribeFlowLogsResponse (a)) [FlowLog]
 dflsrsFlowLogs = lens _dflsrsFlowLogs (\ s a -> s{_dflsrsFlowLogs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dflsrsResponseStatus :: Lens' DescribeFlowLogsResponse Int
+dflsrsResponseStatus :: Lens' (DescribeFlowLogsResponse (a)) Int
 dflsrsResponseStatus = lens _dflsrsResponseStatus (\ s a -> s{_dflsrsResponseStatus = a});
 
 instance NFData DescribeFlowLogsResponse

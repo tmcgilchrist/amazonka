@@ -126,7 +126,7 @@ instance ToQuery CreateSnapshotCopyGrant where
                  _cscgSnapshotCopyGrantName]
 
 -- | /See:/ 'createSnapshotCopyGrantResponse' smart constructor.
-data CreateSnapshotCopyGrantResponse = CreateSnapshotCopyGrantResponse'
+data CreateSnapshotCopyGrantResponse a = CreateSnapshotCopyGrantResponse'
     { _cscgrsSnapshotCopyGrant :: !(Maybe SnapshotCopyGrant)
     , _cscgrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data CreateSnapshotCopyGrantResponse = CreateSnapshotCopyGrantResponse'
 -- * 'cscgrsResponseStatus'
 createSnapshotCopyGrantResponse
     :: Int -- ^ 'cscgrsResponseStatus'
-    -> CreateSnapshotCopyGrantResponse
+    -> CreateSnapshotCopyGrantResponse (a)
 createSnapshotCopyGrantResponse pResponseStatus_ =
     CreateSnapshotCopyGrantResponse'
     { _cscgrsSnapshotCopyGrant = Nothing
@@ -148,11 +148,11 @@ createSnapshotCopyGrantResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cscgrsSnapshotCopyGrant :: Lens' CreateSnapshotCopyGrantResponse (Maybe SnapshotCopyGrant)
+cscgrsSnapshotCopyGrant :: Lens' (CreateSnapshotCopyGrantResponse (a)) (Maybe SnapshotCopyGrant)
 cscgrsSnapshotCopyGrant = lens _cscgrsSnapshotCopyGrant (\ s a -> s{_cscgrsSnapshotCopyGrant = a});
 
 -- | The response status code.
-cscgrsResponseStatus :: Lens' CreateSnapshotCopyGrantResponse Int
+cscgrsResponseStatus :: Lens' (CreateSnapshotCopyGrantResponse (a)) Int
 cscgrsResponseStatus = lens _cscgrsResponseStatus (\ s a -> s{_cscgrsResponseStatus = a});
 
 instance NFData CreateSnapshotCopyGrantResponse

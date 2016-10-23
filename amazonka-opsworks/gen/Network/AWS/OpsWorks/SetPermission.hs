@@ -147,14 +147,14 @@ instance ToQuery SetPermission where
         toQuery = const mempty
 
 -- | /See:/ 'setPermissionResponse' smart constructor.
-data SetPermissionResponse =
+data SetPermissionResponse a =
     SetPermissionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetPermissionResponse' with the minimum fields required to make a request.
 --
 setPermissionResponse
-    :: SetPermissionResponse
+    :: SetPermissionResponse (a)
 setPermissionResponse = SetPermissionResponse'
 
 instance NFData SetPermissionResponse

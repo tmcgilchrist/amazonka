@@ -131,7 +131,7 @@ instance ToQuery AttachClassicLinkVPC where
 -- | Contains the output of AttachClassicLinkVpc.
 --
 -- /See:/ 'attachClassicLinkVPCResponse' smart constructor.
-data AttachClassicLinkVPCResponse = AttachClassicLinkVPCResponse'
+data AttachClassicLinkVPCResponse a = AttachClassicLinkVPCResponse'
     { _aclvrsReturn         :: !(Maybe Bool)
     , _aclvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -145,7 +145,7 @@ data AttachClassicLinkVPCResponse = AttachClassicLinkVPCResponse'
 -- * 'aclvrsResponseStatus'
 attachClassicLinkVPCResponse
     :: Int -- ^ 'aclvrsResponseStatus'
-    -> AttachClassicLinkVPCResponse
+    -> AttachClassicLinkVPCResponse (a)
 attachClassicLinkVPCResponse pResponseStatus_ =
     AttachClassicLinkVPCResponse'
     { _aclvrsReturn = Nothing
@@ -153,11 +153,11 @@ attachClassicLinkVPCResponse pResponseStatus_ =
     }
 
 -- | Returns 'true' if the request succeeds; otherwise, it returns an error.
-aclvrsReturn :: Lens' AttachClassicLinkVPCResponse (Maybe Bool)
+aclvrsReturn :: Lens' (AttachClassicLinkVPCResponse (a)) (Maybe Bool)
 aclvrsReturn = lens _aclvrsReturn (\ s a -> s{_aclvrsReturn = a});
 
 -- | The response status code.
-aclvrsResponseStatus :: Lens' AttachClassicLinkVPCResponse Int
+aclvrsResponseStatus :: Lens' (AttachClassicLinkVPCResponse (a)) Int
 aclvrsResponseStatus = lens _aclvrsResponseStatus (\ s a -> s{_aclvrsResponseStatus = a});
 
 instance NFData AttachClassicLinkVPCResponse

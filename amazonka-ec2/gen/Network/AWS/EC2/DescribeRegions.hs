@@ -124,7 +124,7 @@ instance ToQuery DescribeRegions where
 -- | Contains the output of DescribeRegions.
 --
 -- /See:/ 'describeRegionsResponse' smart constructor.
-data DescribeRegionsResponse = DescribeRegionsResponse'
+data DescribeRegionsResponse a = DescribeRegionsResponse'
     { _drrsRegions        :: !(Maybe [RegionInfo])
     , _drrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data DescribeRegionsResponse = DescribeRegionsResponse'
 -- * 'drrsResponseStatus'
 describeRegionsResponse
     :: Int -- ^ 'drrsResponseStatus'
-    -> DescribeRegionsResponse
+    -> DescribeRegionsResponse (a)
 describeRegionsResponse pResponseStatus_ =
     DescribeRegionsResponse'
     { _drrsRegions = Nothing
@@ -146,11 +146,11 @@ describeRegionsResponse pResponseStatus_ =
     }
 
 -- | Information about one or more regions.
-drrsRegions :: Lens' DescribeRegionsResponse [RegionInfo]
+drrsRegions :: Lens' (DescribeRegionsResponse (a)) [RegionInfo]
 drrsRegions = lens _drrsRegions (\ s a -> s{_drrsRegions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drrsResponseStatus :: Lens' DescribeRegionsResponse Int
+drrsResponseStatus :: Lens' (DescribeRegionsResponse (a)) Int
 drrsResponseStatus = lens _drrsResponseStatus (\ s a -> s{_drrsResponseStatus = a});
 
 instance NFData DescribeRegionsResponse

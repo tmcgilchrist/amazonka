@@ -89,7 +89,7 @@ instance ToQuery GetBucketTagging where
         toQuery = const (mconcat ["tagging"])
 
 -- | /See:/ 'getBucketTaggingResponse' smart constructor.
-data GetBucketTaggingResponse = GetBucketTaggingResponse'
+data GetBucketTaggingResponse a = GetBucketTaggingResponse'
     { _gbtrsResponseStatus :: !Int
     , _gbtrsTagSet         :: ![Tag]
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetBucketTaggingResponse = GetBucketTaggingResponse'
 -- * 'gbtrsTagSet'
 getBucketTaggingResponse
     :: Int -- ^ 'gbtrsResponseStatus'
-    -> GetBucketTaggingResponse
+    -> GetBucketTaggingResponse (a)
 getBucketTaggingResponse pResponseStatus_ =
     GetBucketTaggingResponse'
     { _gbtrsResponseStatus = pResponseStatus_
@@ -111,11 +111,11 @@ getBucketTaggingResponse pResponseStatus_ =
     }
 
 -- | The response status code.
-gbtrsResponseStatus :: Lens' GetBucketTaggingResponse Int
+gbtrsResponseStatus :: Lens' (GetBucketTaggingResponse (a)) Int
 gbtrsResponseStatus = lens _gbtrsResponseStatus (\ s a -> s{_gbtrsResponseStatus = a});
 
 -- | Undocumented member.
-gbtrsTagSet :: Lens' GetBucketTaggingResponse [Tag]
+gbtrsTagSet :: Lens' (GetBucketTaggingResponse (a)) [Tag]
 gbtrsTagSet = lens _gbtrsTagSet (\ s a -> s{_gbtrsTagSet = a}) . _Coerce;
 
 instance NFData GetBucketTaggingResponse

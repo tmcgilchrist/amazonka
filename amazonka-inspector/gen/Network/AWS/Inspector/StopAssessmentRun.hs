@@ -92,14 +92,14 @@ instance ToQuery StopAssessmentRun where
         toQuery = const mempty
 
 -- | /See:/ 'stopAssessmentRunResponse' smart constructor.
-data StopAssessmentRunResponse =
+data StopAssessmentRunResponse a =
     StopAssessmentRunResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'StopAssessmentRunResponse' with the minimum fields required to make a request.
 --
 stopAssessmentRunResponse
-    :: StopAssessmentRunResponse
+    :: StopAssessmentRunResponse (a)
 stopAssessmentRunResponse = StopAssessmentRunResponse'
 
 instance NFData StopAssessmentRunResponse

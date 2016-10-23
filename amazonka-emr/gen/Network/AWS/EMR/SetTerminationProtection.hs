@@ -115,14 +115,14 @@ instance ToQuery SetTerminationProtection where
         toQuery = const mempty
 
 -- | /See:/ 'setTerminationProtectionResponse' smart constructor.
-data SetTerminationProtectionResponse =
+data SetTerminationProtectionResponse a =
     SetTerminationProtectionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetTerminationProtectionResponse' with the minimum fields required to make a request.
 --
 setTerminationProtectionResponse
-    :: SetTerminationProtectionResponse
+    :: SetTerminationProtectionResponse (a)
 setTerminationProtectionResponse = SetTerminationProtectionResponse'
 
 instance NFData SetTerminationProtectionResponse

@@ -139,7 +139,7 @@ instance ToQuery DescribeTrusts where
 -- | The result of a DescribeTrust request.
 --
 -- /See:/ 'describeTrustsResponse' smart constructor.
-data DescribeTrustsResponse = DescribeTrustsResponse'
+data DescribeTrustsResponse a = DescribeTrustsResponse'
     { _dtrsNextToken      :: !(Maybe Text)
     , _dtrsTrusts         :: !(Maybe [Trust])
     , _dtrsResponseStatus :: !Int
@@ -156,7 +156,7 @@ data DescribeTrustsResponse = DescribeTrustsResponse'
 -- * 'dtrsResponseStatus'
 describeTrustsResponse
     :: Int -- ^ 'dtrsResponseStatus'
-    -> DescribeTrustsResponse
+    -> DescribeTrustsResponse (a)
 describeTrustsResponse pResponseStatus_ =
     DescribeTrustsResponse'
     { _dtrsNextToken = Nothing
@@ -165,17 +165,17 @@ describeTrustsResponse pResponseStatus_ =
     }
 
 -- | If not null, more results are available. Pass this value for the /NextToken/ parameter in a subsequent call to < DescribeTrusts> to retrieve the next set of items.
-dtrsNextToken :: Lens' DescribeTrustsResponse (Maybe Text)
+dtrsNextToken :: Lens' (DescribeTrustsResponse (a)) (Maybe Text)
 dtrsNextToken = lens _dtrsNextToken (\ s a -> s{_dtrsNextToken = a});
 
 -- | The list of Trust objects that were retrieved.
 --
 -- It is possible that this list contains less than the number of items specified in the /Limit/ member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.
-dtrsTrusts :: Lens' DescribeTrustsResponse [Trust]
+dtrsTrusts :: Lens' (DescribeTrustsResponse (a)) [Trust]
 dtrsTrusts = lens _dtrsTrusts (\ s a -> s{_dtrsTrusts = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtrsResponseStatus :: Lens' DescribeTrustsResponse Int
+dtrsResponseStatus :: Lens' (DescribeTrustsResponse (a)) Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a});
 
 instance NFData DescribeTrustsResponse

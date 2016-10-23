@@ -97,7 +97,7 @@ instance ToQuery DeleteActivation where
         toQuery = const mempty
 
 -- | /See:/ 'deleteActivationResponse' smart constructor.
-newtype DeleteActivationResponse = DeleteActivationResponse'
+newtype DeleteActivationResponse a = DeleteActivationResponse'
     { _daarsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -108,14 +108,14 @@ newtype DeleteActivationResponse = DeleteActivationResponse'
 -- * 'daarsResponseStatus'
 deleteActivationResponse
     :: Int -- ^ 'daarsResponseStatus'
-    -> DeleteActivationResponse
+    -> DeleteActivationResponse (a)
 deleteActivationResponse pResponseStatus_ =
     DeleteActivationResponse'
     { _daarsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-daarsResponseStatus :: Lens' DeleteActivationResponse Int
+daarsResponseStatus :: Lens' (DeleteActivationResponse (a)) Int
 daarsResponseStatus = lens _daarsResponseStatus (\ s a -> s{_daarsResponseStatus = a});
 
 instance NFData DeleteActivationResponse

@@ -99,14 +99,14 @@ instance ToQuery DeleteDeliveryChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDeliveryChannelResponse' smart constructor.
-data DeleteDeliveryChannelResponse =
+data DeleteDeliveryChannelResponse a =
     DeleteDeliveryChannelResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteDeliveryChannelResponse' with the minimum fields required to make a request.
 --
 deleteDeliveryChannelResponse
-    :: DeleteDeliveryChannelResponse
+    :: DeleteDeliveryChannelResponse (a)
 deleteDeliveryChannelResponse = DeleteDeliveryChannelResponse'
 
 instance NFData DeleteDeliveryChannelResponse

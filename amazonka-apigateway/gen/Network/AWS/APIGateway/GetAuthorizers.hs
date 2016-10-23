@@ -122,7 +122,7 @@ instance ToQuery GetAuthorizers where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html Enable custom authorization>
 --
 -- /See:/ 'getAuthorizersResponse' smart constructor.
-data GetAuthorizersResponse = GetAuthorizersResponse'
+data GetAuthorizersResponse a = GetAuthorizersResponse'
     { _garsItems          :: !(Maybe [Authorizer])
     , _garsPosition       :: !(Maybe Text)
     , _garsResponseStatus :: !Int
@@ -139,7 +139,7 @@ data GetAuthorizersResponse = GetAuthorizersResponse'
 -- * 'garsResponseStatus'
 getAuthorizersResponse
     :: Int -- ^ 'garsResponseStatus'
-    -> GetAuthorizersResponse
+    -> GetAuthorizersResponse (a)
 getAuthorizersResponse pResponseStatus_ =
     GetAuthorizersResponse'
     { _garsItems = Nothing
@@ -148,15 +148,15 @@ getAuthorizersResponse pResponseStatus_ =
     }
 
 -- | Gets the current list of < Authorizer> resources in the collection.
-garsItems :: Lens' GetAuthorizersResponse [Authorizer]
+garsItems :: Lens' (GetAuthorizersResponse (a)) [Authorizer]
 garsItems = lens _garsItems (\ s a -> s{_garsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-garsPosition :: Lens' GetAuthorizersResponse (Maybe Text)
+garsPosition :: Lens' (GetAuthorizersResponse (a)) (Maybe Text)
 garsPosition = lens _garsPosition (\ s a -> s{_garsPosition = a});
 
 -- | The response status code.
-garsResponseStatus :: Lens' GetAuthorizersResponse Int
+garsResponseStatus :: Lens' (GetAuthorizersResponse (a)) Int
 garsResponseStatus = lens _garsResponseStatus (\ s a -> s{_garsResponseStatus = a});
 
 instance NFData GetAuthorizersResponse

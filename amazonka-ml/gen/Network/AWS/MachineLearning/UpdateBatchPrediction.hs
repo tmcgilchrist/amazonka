@@ -119,7 +119,7 @@ instance ToQuery UpdateBatchPrediction where
 -- You can see the updated content by using the 'GetBatchPrediction' operation.
 --
 -- /See:/ 'updateBatchPredictionResponse' smart constructor.
-data UpdateBatchPredictionResponse = UpdateBatchPredictionResponse'
+data UpdateBatchPredictionResponse a = UpdateBatchPredictionResponse'
     { _ubprsBatchPredictionId :: !(Maybe Text)
     , _ubprsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data UpdateBatchPredictionResponse = UpdateBatchPredictionResponse'
 -- * 'ubprsResponseStatus'
 updateBatchPredictionResponse
     :: Int -- ^ 'ubprsResponseStatus'
-    -> UpdateBatchPredictionResponse
+    -> UpdateBatchPredictionResponse (a)
 updateBatchPredictionResponse pResponseStatus_ =
     UpdateBatchPredictionResponse'
     { _ubprsBatchPredictionId = Nothing
@@ -141,11 +141,11 @@ updateBatchPredictionResponse pResponseStatus_ =
     }
 
 -- | The ID assigned to the 'BatchPrediction' during creation. This value should be identical to the value of the 'BatchPredictionId' in the request.
-ubprsBatchPredictionId :: Lens' UpdateBatchPredictionResponse (Maybe Text)
+ubprsBatchPredictionId :: Lens' (UpdateBatchPredictionResponse (a)) (Maybe Text)
 ubprsBatchPredictionId = lens _ubprsBatchPredictionId (\ s a -> s{_ubprsBatchPredictionId = a});
 
 -- | The response status code.
-ubprsResponseStatus :: Lens' UpdateBatchPredictionResponse Int
+ubprsResponseStatus :: Lens' (UpdateBatchPredictionResponse (a)) Int
 ubprsResponseStatus = lens _ubprsResponseStatus (\ s a -> s{_ubprsResponseStatus = a});
 
 instance NFData UpdateBatchPredictionResponse

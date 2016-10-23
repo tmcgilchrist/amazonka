@@ -94,14 +94,14 @@ instance ToQuery DeleteClusterSecurityGroup where
                  _dClusterSecurityGroupName]
 
 -- | /See:/ 'deleteClusterSecurityGroupResponse' smart constructor.
-data DeleteClusterSecurityGroupResponse =
+data DeleteClusterSecurityGroupResponse a =
     DeleteClusterSecurityGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteClusterSecurityGroupResponse' with the minimum fields required to make a request.
 --
 deleteClusterSecurityGroupResponse
-    :: DeleteClusterSecurityGroupResponse
+    :: DeleteClusterSecurityGroupResponse (a)
 deleteClusterSecurityGroupResponse = DeleteClusterSecurityGroupResponse'
 
 instance NFData DeleteClusterSecurityGroupResponse

@@ -128,7 +128,7 @@ instance ToQuery ListUniqueProblems where
 -- | Represents the result of a list unique problems request.
 --
 -- /See:/ 'listUniqueProblemsResponse' smart constructor.
-data ListUniqueProblemsResponse = ListUniqueProblemsResponse'
+data ListUniqueProblemsResponse a = ListUniqueProblemsResponse'
     { _luprsNextToken      :: !(Maybe Text)
     , _luprsUniqueProblems :: !(Maybe (Map ExecutionResult [UniqueProblem]))
     , _luprsResponseStatus :: !Int
@@ -145,7 +145,7 @@ data ListUniqueProblemsResponse = ListUniqueProblemsResponse'
 -- * 'luprsResponseStatus'
 listUniqueProblemsResponse
     :: Int -- ^ 'luprsResponseStatus'
-    -> ListUniqueProblemsResponse
+    -> ListUniqueProblemsResponse (a)
 listUniqueProblemsResponse pResponseStatus_ =
     ListUniqueProblemsResponse'
     { _luprsNextToken = Nothing
@@ -154,7 +154,7 @@ listUniqueProblemsResponse pResponseStatus_ =
     }
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-luprsNextToken :: Lens' ListUniqueProblemsResponse (Maybe Text)
+luprsNextToken :: Lens' (ListUniqueProblemsResponse (a)) (Maybe Text)
 luprsNextToken = lens _luprsNextToken (\ s a -> s{_luprsNextToken = a});
 
 -- | Information about the unique problems.
@@ -175,11 +175,11 @@ luprsNextToken = lens _luprsNextToken (\ s a -> s{_luprsNextToken = a});
 --
 -- -   STOPPED: A stopped condition.
 --
-luprsUniqueProblems :: Lens' ListUniqueProblemsResponse (HashMap ExecutionResult [UniqueProblem])
+luprsUniqueProblems :: Lens' (ListUniqueProblemsResponse (a)) (HashMap ExecutionResult [UniqueProblem])
 luprsUniqueProblems = lens _luprsUniqueProblems (\ s a -> s{_luprsUniqueProblems = a}) . _Default . _Map;
 
 -- | The response status code.
-luprsResponseStatus :: Lens' ListUniqueProblemsResponse Int
+luprsResponseStatus :: Lens' (ListUniqueProblemsResponse (a)) Int
 luprsResponseStatus = lens _luprsResponseStatus (\ s a -> s{_luprsResponseStatus = a});
 
 instance NFData ListUniqueProblemsResponse

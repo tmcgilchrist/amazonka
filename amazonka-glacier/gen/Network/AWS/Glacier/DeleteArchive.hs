@@ -114,14 +114,14 @@ instance ToQuery DeleteArchive where
         toQuery = const mempty
 
 -- | /See:/ 'deleteArchiveResponse' smart constructor.
-data DeleteArchiveResponse =
+data DeleteArchiveResponse a =
     DeleteArchiveResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteArchiveResponse' with the minimum fields required to make a request.
 --
 deleteArchiveResponse
-    :: DeleteArchiveResponse
+    :: DeleteArchiveResponse (a)
 deleteArchiveResponse = DeleteArchiveResponse'
 
 instance NFData DeleteArchiveResponse

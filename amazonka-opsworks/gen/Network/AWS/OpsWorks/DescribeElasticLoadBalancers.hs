@@ -118,7 +118,7 @@ instance ToQuery DescribeElasticLoadBalancers where
 -- | Contains the response to a 'DescribeElasticLoadBalancers' request.
 --
 -- /See:/ 'describeElasticLoadBalancersResponse' smart constructor.
-data DescribeElasticLoadBalancersResponse = DescribeElasticLoadBalancersResponse'
+data DescribeElasticLoadBalancersResponse a = DescribeElasticLoadBalancersResponse'
     { _delbrsElasticLoadBalancers :: !(Maybe [ElasticLoadBalancer])
     , _delbrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data DescribeElasticLoadBalancersResponse = DescribeElasticLoadBalancersResponse
 -- * 'delbrsResponseStatus'
 describeElasticLoadBalancersResponse
     :: Int -- ^ 'delbrsResponseStatus'
-    -> DescribeElasticLoadBalancersResponse
+    -> DescribeElasticLoadBalancersResponse (a)
 describeElasticLoadBalancersResponse pResponseStatus_ =
     DescribeElasticLoadBalancersResponse'
     { _delbrsElasticLoadBalancers = Nothing
@@ -140,11 +140,11 @@ describeElasticLoadBalancersResponse pResponseStatus_ =
     }
 
 -- | A list of 'ElasticLoadBalancer' objects that describe the specified Elastic Load Balancing instances.
-delbrsElasticLoadBalancers :: Lens' DescribeElasticLoadBalancersResponse [ElasticLoadBalancer]
+delbrsElasticLoadBalancers :: Lens' (DescribeElasticLoadBalancersResponse (a)) [ElasticLoadBalancer]
 delbrsElasticLoadBalancers = lens _delbrsElasticLoadBalancers (\ s a -> s{_delbrsElasticLoadBalancers = a}) . _Default . _Coerce;
 
 -- | The response status code.
-delbrsResponseStatus :: Lens' DescribeElasticLoadBalancersResponse Int
+delbrsResponseStatus :: Lens' (DescribeElasticLoadBalancersResponse (a)) Int
 delbrsResponseStatus = lens _delbrsResponseStatus (\ s a -> s{_delbrsResponseStatus = a});
 
 instance NFData DescribeElasticLoadBalancersResponse

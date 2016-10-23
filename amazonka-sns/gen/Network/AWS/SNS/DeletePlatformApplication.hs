@@ -90,14 +90,14 @@ instance ToQuery DeletePlatformApplication where
                  _dpaPlatformApplicationARN]
 
 -- | /See:/ 'deletePlatformApplicationResponse' smart constructor.
-data DeletePlatformApplicationResponse =
+data DeletePlatformApplicationResponse a =
     DeletePlatformApplicationResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeletePlatformApplicationResponse' with the minimum fields required to make a request.
 --
 deletePlatformApplicationResponse
-    :: DeletePlatformApplicationResponse
+    :: DeletePlatformApplicationResponse (a)
 deletePlatformApplicationResponse = DeletePlatformApplicationResponse'
 
 instance NFData DeletePlatformApplicationResponse

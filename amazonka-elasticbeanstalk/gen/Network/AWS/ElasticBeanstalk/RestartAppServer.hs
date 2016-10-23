@@ -99,14 +99,14 @@ instance ToQuery RestartAppServer where
                "EnvironmentId" =: _rasEnvironmentId]
 
 -- | /See:/ 'restartAppServerResponse' smart constructor.
-data RestartAppServerResponse =
+data RestartAppServerResponse a =
     RestartAppServerResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RestartAppServerResponse' with the minimum fields required to make a request.
 --
 restartAppServerResponse
-    :: RestartAppServerResponse
+    :: RestartAppServerResponse (a)
 restartAppServerResponse = RestartAppServerResponse'
 
 instance NFData RestartAppServerResponse

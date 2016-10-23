@@ -135,7 +135,7 @@ instance ToQuery DescribeDirectories where
 -- | Contains the results of the < DescribeDirectories> operation.
 --
 -- /See:/ 'describeDirectoriesResponse' smart constructor.
-data DescribeDirectoriesResponse = DescribeDirectoriesResponse'
+data DescribeDirectoriesResponse a = DescribeDirectoriesResponse'
     { _ddrsDirectoryDescriptions :: !(Maybe [DirectoryDescription])
     , _ddrsNextToken             :: !(Maybe Text)
     , _ddrsResponseStatus        :: !Int
@@ -152,7 +152,7 @@ data DescribeDirectoriesResponse = DescribeDirectoriesResponse'
 -- * 'ddrsResponseStatus'
 describeDirectoriesResponse
     :: Int -- ^ 'ddrsResponseStatus'
-    -> DescribeDirectoriesResponse
+    -> DescribeDirectoriesResponse (a)
 describeDirectoriesResponse pResponseStatus_ =
     DescribeDirectoriesResponse'
     { _ddrsDirectoryDescriptions = Nothing
@@ -163,15 +163,15 @@ describeDirectoriesResponse pResponseStatus_ =
 -- | The list of < DirectoryDescription> objects that were retrieved.
 --
 -- It is possible that this list contains less than the number of items specified in the /Limit/ member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.
-ddrsDirectoryDescriptions :: Lens' DescribeDirectoriesResponse [DirectoryDescription]
+ddrsDirectoryDescriptions :: Lens' (DescribeDirectoriesResponse (a)) [DirectoryDescription]
 ddrsDirectoryDescriptions = lens _ddrsDirectoryDescriptions (\ s a -> s{_ddrsDirectoryDescriptions = a}) . _Default . _Coerce;
 
 -- | If not null, more results are available. Pass this value for the /NextToken/ parameter in a subsequent call to < DescribeDirectories> to retrieve the next set of items.
-ddrsNextToken :: Lens' DescribeDirectoriesResponse (Maybe Text)
+ddrsNextToken :: Lens' (DescribeDirectoriesResponse (a)) (Maybe Text)
 ddrsNextToken = lens _ddrsNextToken (\ s a -> s{_ddrsNextToken = a});
 
 -- | The response status code.
-ddrsResponseStatus :: Lens' DescribeDirectoriesResponse Int
+ddrsResponseStatus :: Lens' (DescribeDirectoriesResponse (a)) Int
 ddrsResponseStatus = lens _ddrsResponseStatus (\ s a -> s{_ddrsResponseStatus = a});
 
 instance NFData DescribeDirectoriesResponse

@@ -78,7 +78,7 @@ instance ToQuery ListBuckets where
         toQuery = const mempty
 
 -- | /See:/ 'listBucketsResponse' smart constructor.
-data ListBucketsResponse = ListBucketsResponse'
+data ListBucketsResponse a = ListBucketsResponse'
     { _lbrsBuckets        :: !(Maybe [Bucket])
     , _lbrsOwner          :: !(Maybe Owner)
     , _lbrsResponseStatus :: !Int
@@ -95,7 +95,7 @@ data ListBucketsResponse = ListBucketsResponse'
 -- * 'lbrsResponseStatus'
 listBucketsResponse
     :: Int -- ^ 'lbrsResponseStatus'
-    -> ListBucketsResponse
+    -> ListBucketsResponse (a)
 listBucketsResponse pResponseStatus_ =
     ListBucketsResponse'
     { _lbrsBuckets = Nothing
@@ -104,15 +104,15 @@ listBucketsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-lbrsBuckets :: Lens' ListBucketsResponse [Bucket]
+lbrsBuckets :: Lens' (ListBucketsResponse (a)) [Bucket]
 lbrsBuckets = lens _lbrsBuckets (\ s a -> s{_lbrsBuckets = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-lbrsOwner :: Lens' ListBucketsResponse (Maybe Owner)
+lbrsOwner :: Lens' (ListBucketsResponse (a)) (Maybe Owner)
 lbrsOwner = lens _lbrsOwner (\ s a -> s{_lbrsOwner = a});
 
 -- | The response status code.
-lbrsResponseStatus :: Lens' ListBucketsResponse Int
+lbrsResponseStatus :: Lens' (ListBucketsResponse (a)) Int
 lbrsResponseStatus = lens _lbrsResponseStatus (\ s a -> s{_lbrsResponseStatus = a});
 
 instance NFData ListBucketsResponse

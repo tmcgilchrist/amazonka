@@ -140,7 +140,7 @@ instance ToQuery DescribeReservedInstancesListings
 -- | Contains the output of DescribeReservedInstancesListings.
 --
 -- /See:/ 'describeReservedInstancesListingsResponse' smart constructor.
-data DescribeReservedInstancesListingsResponse = DescribeReservedInstancesListingsResponse'
+data DescribeReservedInstancesListingsResponse a = DescribeReservedInstancesListingsResponse'
     { _drilrsReservedInstancesListings :: !(Maybe [ReservedInstancesListing])
     , _drilrsResponseStatus            :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -154,7 +154,7 @@ data DescribeReservedInstancesListingsResponse = DescribeReservedInstancesListin
 -- * 'drilrsResponseStatus'
 describeReservedInstancesListingsResponse
     :: Int -- ^ 'drilrsResponseStatus'
-    -> DescribeReservedInstancesListingsResponse
+    -> DescribeReservedInstancesListingsResponse (a)
 describeReservedInstancesListingsResponse pResponseStatus_ =
     DescribeReservedInstancesListingsResponse'
     { _drilrsReservedInstancesListings = Nothing
@@ -162,11 +162,11 @@ describeReservedInstancesListingsResponse pResponseStatus_ =
     }
 
 -- | Information about the Reserved Instance listing.
-drilrsReservedInstancesListings :: Lens' DescribeReservedInstancesListingsResponse [ReservedInstancesListing]
+drilrsReservedInstancesListings :: Lens' (DescribeReservedInstancesListingsResponse (a)) [ReservedInstancesListing]
 drilrsReservedInstancesListings = lens _drilrsReservedInstancesListings (\ s a -> s{_drilrsReservedInstancesListings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drilrsResponseStatus :: Lens' DescribeReservedInstancesListingsResponse Int
+drilrsResponseStatus :: Lens' (DescribeReservedInstancesListingsResponse (a)) Int
 drilrsResponseStatus = lens _drilrsResponseStatus (\ s a -> s{_drilrsResponseStatus = a});
 
 instance NFData

@@ -130,14 +130,14 @@ instance ToQuery AddPermission where
                toQueryList "ActionName" _apActions]
 
 -- | /See:/ 'addPermissionResponse' smart constructor.
-data AddPermissionResponse =
+data AddPermissionResponse a =
     AddPermissionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddPermissionResponse' with the minimum fields required to make a request.
 --
 addPermissionResponse
-    :: AddPermissionResponse
+    :: AddPermissionResponse (a)
 addPermissionResponse = AddPermissionResponse'
 
 instance NFData AddPermissionResponse

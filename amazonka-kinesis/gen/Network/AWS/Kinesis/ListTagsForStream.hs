@@ -126,7 +126,7 @@ instance ToQuery ListTagsForStream where
 -- | Represents the output for 'ListTagsForStream'.
 --
 -- /See:/ 'listTagsForStreamResponse' smart constructor.
-data ListTagsForStreamResponse = ListTagsForStreamResponse'
+data ListTagsForStreamResponse a = ListTagsForStreamResponse'
     { _ltfsrsResponseStatus :: !Int
     , _ltfsrsTags           :: ![Tag]
     , _ltfsrsHasMoreTags    :: !Bool
@@ -144,7 +144,7 @@ data ListTagsForStreamResponse = ListTagsForStreamResponse'
 listTagsForStreamResponse
     :: Int -- ^ 'ltfsrsResponseStatus'
     -> Bool -- ^ 'ltfsrsHasMoreTags'
-    -> ListTagsForStreamResponse
+    -> ListTagsForStreamResponse (a)
 listTagsForStreamResponse pResponseStatus_ pHasMoreTags_ =
     ListTagsForStreamResponse'
     { _ltfsrsResponseStatus = pResponseStatus_
@@ -153,15 +153,15 @@ listTagsForStreamResponse pResponseStatus_ pHasMoreTags_ =
     }
 
 -- | The response status code.
-ltfsrsResponseStatus :: Lens' ListTagsForStreamResponse Int
+ltfsrsResponseStatus :: Lens' (ListTagsForStreamResponse (a)) Int
 ltfsrsResponseStatus = lens _ltfsrsResponseStatus (\ s a -> s{_ltfsrsResponseStatus = a});
 
 -- | A list of tags associated with 'StreamName', starting with the first tag after 'ExclusiveStartTagKey' and up to the specified 'Limit'.
-ltfsrsTags :: Lens' ListTagsForStreamResponse [Tag]
+ltfsrsTags :: Lens' (ListTagsForStreamResponse (a)) [Tag]
 ltfsrsTags = lens _ltfsrsTags (\ s a -> s{_ltfsrsTags = a}) . _Coerce;
 
 -- | If set to 'true', more tags are available. To request additional tags, set 'ExclusiveStartTagKey' to the key of the last tag returned.
-ltfsrsHasMoreTags :: Lens' ListTagsForStreamResponse Bool
+ltfsrsHasMoreTags :: Lens' (ListTagsForStreamResponse (a)) Bool
 ltfsrsHasMoreTags = lens _ltfsrsHasMoreTags (\ s a -> s{_ltfsrsHasMoreTags = a});
 
 instance NFData ListTagsForStreamResponse

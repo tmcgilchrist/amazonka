@@ -116,7 +116,7 @@ instance ToQuery UpdateDataSource where
 -- You can see the updated content by using the 'GetBatchPrediction' operation.
 --
 -- /See:/ 'updateDataSourceResponse' smart constructor.
-data UpdateDataSourceResponse = UpdateDataSourceResponse'
+data UpdateDataSourceResponse a = UpdateDataSourceResponse'
     { _udsrsDataSourceId   :: !(Maybe Text)
     , _udsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data UpdateDataSourceResponse = UpdateDataSourceResponse'
 -- * 'udsrsResponseStatus'
 updateDataSourceResponse
     :: Int -- ^ 'udsrsResponseStatus'
-    -> UpdateDataSourceResponse
+    -> UpdateDataSourceResponse (a)
 updateDataSourceResponse pResponseStatus_ =
     UpdateDataSourceResponse'
     { _udsrsDataSourceId = Nothing
@@ -138,11 +138,11 @@ updateDataSourceResponse pResponseStatus_ =
     }
 
 -- | The ID assigned to the 'DataSource' during creation. This value should be identical to the value of the 'DataSourceID' in the request.
-udsrsDataSourceId :: Lens' UpdateDataSourceResponse (Maybe Text)
+udsrsDataSourceId :: Lens' (UpdateDataSourceResponse (a)) (Maybe Text)
 udsrsDataSourceId = lens _udsrsDataSourceId (\ s a -> s{_udsrsDataSourceId = a});
 
 -- | The response status code.
-udsrsResponseStatus :: Lens' UpdateDataSourceResponse Int
+udsrsResponseStatus :: Lens' (UpdateDataSourceResponse (a)) Int
 udsrsResponseStatus = lens _udsrsResponseStatus (\ s a -> s{_udsrsResponseStatus = a});
 
 instance NFData UpdateDataSourceResponse

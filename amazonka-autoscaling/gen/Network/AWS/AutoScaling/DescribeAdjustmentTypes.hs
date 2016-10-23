@@ -84,7 +84,7 @@ instance ToQuery DescribeAdjustmentTypes where
 -- | Contains the parameters for DescribeAdjustmentTypes.
 --
 -- /See:/ 'describeAdjustmentTypesResponse' smart constructor.
-data DescribeAdjustmentTypesResponse = DescribeAdjustmentTypesResponse'
+data DescribeAdjustmentTypesResponse a = DescribeAdjustmentTypesResponse'
     { _datrsAdjustmentTypes :: !(Maybe [AdjustmentType])
     , _datrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -98,7 +98,7 @@ data DescribeAdjustmentTypesResponse = DescribeAdjustmentTypesResponse'
 -- * 'datrsResponseStatus'
 describeAdjustmentTypesResponse
     :: Int -- ^ 'datrsResponseStatus'
-    -> DescribeAdjustmentTypesResponse
+    -> DescribeAdjustmentTypesResponse (a)
 describeAdjustmentTypesResponse pResponseStatus_ =
     DescribeAdjustmentTypesResponse'
     { _datrsAdjustmentTypes = Nothing
@@ -106,11 +106,11 @@ describeAdjustmentTypesResponse pResponseStatus_ =
     }
 
 -- | The policy adjustment types.
-datrsAdjustmentTypes :: Lens' DescribeAdjustmentTypesResponse [AdjustmentType]
+datrsAdjustmentTypes :: Lens' (DescribeAdjustmentTypesResponse (a)) [AdjustmentType]
 datrsAdjustmentTypes = lens _datrsAdjustmentTypes (\ s a -> s{_datrsAdjustmentTypes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-datrsResponseStatus :: Lens' DescribeAdjustmentTypesResponse Int
+datrsResponseStatus :: Lens' (DescribeAdjustmentTypesResponse (a)) Int
 datrsResponseStatus = lens _datrsResponseStatus (\ s a -> s{_datrsResponseStatus = a});
 
 instance NFData DescribeAdjustmentTypesResponse

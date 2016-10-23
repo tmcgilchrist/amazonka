@@ -161,7 +161,7 @@ instance ToQuery CreateDeployment where
 -- | Represents the output of a create deployment operation.
 --
 -- /See:/ 'createDeploymentResponse' smart constructor.
-data CreateDeploymentResponse = CreateDeploymentResponse'
+data CreateDeploymentResponse a = CreateDeploymentResponse'
     { _cdrsDeploymentId   :: !(Maybe Text)
     , _cdrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -175,7 +175,7 @@ data CreateDeploymentResponse = CreateDeploymentResponse'
 -- * 'cdrsResponseStatus'
 createDeploymentResponse
     :: Int -- ^ 'cdrsResponseStatus'
-    -> CreateDeploymentResponse
+    -> CreateDeploymentResponse (a)
 createDeploymentResponse pResponseStatus_ =
     CreateDeploymentResponse'
     { _cdrsDeploymentId = Nothing
@@ -183,11 +183,11 @@ createDeploymentResponse pResponseStatus_ =
     }
 
 -- | A unique deployment ID.
-cdrsDeploymentId :: Lens' CreateDeploymentResponse (Maybe Text)
+cdrsDeploymentId :: Lens' (CreateDeploymentResponse (a)) (Maybe Text)
 cdrsDeploymentId = lens _cdrsDeploymentId (\ s a -> s{_cdrsDeploymentId = a});
 
 -- | The response status code.
-cdrsResponseStatus :: Lens' CreateDeploymentResponse Int
+cdrsResponseStatus :: Lens' (CreateDeploymentResponse (a)) Int
 cdrsResponseStatus = lens _cdrsResponseStatus (\ s a -> s{_cdrsResponseStatus = a});
 
 instance NFData CreateDeploymentResponse

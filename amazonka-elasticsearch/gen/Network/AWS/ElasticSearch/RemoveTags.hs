@@ -98,14 +98,14 @@ instance ToQuery RemoveTags where
         toQuery = const mempty
 
 -- | /See:/ 'removeTagsResponse' smart constructor.
-data RemoveTagsResponse =
+data RemoveTagsResponse a =
     RemoveTagsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveTagsResponse' with the minimum fields required to make a request.
 --
 removeTagsResponse
-    :: RemoveTagsResponse
+    :: RemoveTagsResponse (a)
 removeTagsResponse = RemoveTagsResponse'
 
 instance NFData RemoveTagsResponse

@@ -107,14 +107,14 @@ instance ToQuery DeleteUserPoolClient where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUserPoolClientResponse' smart constructor.
-data DeleteUserPoolClientResponse =
+data DeleteUserPoolClientResponse a =
     DeleteUserPoolClientResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteUserPoolClientResponse' with the minimum fields required to make a request.
 --
 deleteUserPoolClientResponse
-    :: DeleteUserPoolClientResponse
+    :: DeleteUserPoolClientResponse (a)
 deleteUserPoolClientResponse = DeleteUserPoolClientResponse'
 
 instance NFData DeleteUserPoolClientResponse

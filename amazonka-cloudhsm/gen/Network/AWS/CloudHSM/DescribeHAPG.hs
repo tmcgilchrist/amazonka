@@ -119,7 +119,7 @@ instance ToQuery DescribeHAPG where
 -- | Contains the output of the < DescribeHapg> action.
 --
 -- /See:/ 'describeHAPGResponse' smart constructor.
-data DescribeHAPGResponse = DescribeHAPGResponse'
+data DescribeHAPGResponse a = DescribeHAPGResponse'
     { _dhapgrsState                   :: !(Maybe CloudHSMObjectState)
     , _dhapgrsLastModifiedTimestamp   :: !(Maybe Text)
     , _dhapgrsHSMsPendingRegistration :: !(Maybe [Text])
@@ -157,7 +157,7 @@ data DescribeHAPGResponse = DescribeHAPGResponse'
 -- * 'dhapgrsResponseStatus'
 describeHAPGResponse
     :: Int -- ^ 'dhapgrsResponseStatus'
-    -> DescribeHAPGResponse
+    -> DescribeHAPGResponse (a)
 describeHAPGResponse pResponseStatus_ =
     DescribeHAPGResponse'
     { _dhapgrsState = Nothing
@@ -173,43 +173,43 @@ describeHAPGResponse pResponseStatus_ =
     }
 
 -- | The state of the high-availability partition group.
-dhapgrsState :: Lens' DescribeHAPGResponse (Maybe CloudHSMObjectState)
+dhapgrsState :: Lens' (DescribeHAPGResponse (a)) (Maybe CloudHSMObjectState)
 dhapgrsState = lens _dhapgrsState (\ s a -> s{_dhapgrsState = a});
 
 -- | The date and time the high-availability partition group was last modified.
-dhapgrsLastModifiedTimestamp :: Lens' DescribeHAPGResponse (Maybe Text)
+dhapgrsLastModifiedTimestamp :: Lens' (DescribeHAPGResponse (a)) (Maybe Text)
 dhapgrsLastModifiedTimestamp = lens _dhapgrsLastModifiedTimestamp (\ s a -> s{_dhapgrsLastModifiedTimestamp = a});
 
 -- | Undocumented member.
-dhapgrsHSMsPendingRegistration :: Lens' DescribeHAPGResponse [Text]
+dhapgrsHSMsPendingRegistration :: Lens' (DescribeHAPGResponse (a)) [Text]
 dhapgrsHSMsPendingRegistration = lens _dhapgrsHSMsPendingRegistration (\ s a -> s{_dhapgrsHSMsPendingRegistration = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-dhapgrsHSMsPendingDeletion :: Lens' DescribeHAPGResponse [Text]
+dhapgrsHSMsPendingDeletion :: Lens' (DescribeHAPGResponse (a)) [Text]
 dhapgrsHSMsPendingDeletion = lens _dhapgrsHSMsPendingDeletion (\ s a -> s{_dhapgrsHSMsPendingDeletion = a}) . _Default . _Coerce;
 
 -- | The serial number of the high-availability partition group.
-dhapgrsHAPGSerial :: Lens' DescribeHAPGResponse (Maybe Text)
+dhapgrsHAPGSerial :: Lens' (DescribeHAPGResponse (a)) (Maybe Text)
 dhapgrsHAPGSerial = lens _dhapgrsHAPGSerial (\ s a -> s{_dhapgrsHAPGSerial = a});
 
 -- | Undocumented member.
-dhapgrsHSMsLastActionFailed :: Lens' DescribeHAPGResponse [Text]
+dhapgrsHSMsLastActionFailed :: Lens' (DescribeHAPGResponse (a)) [Text]
 dhapgrsHSMsLastActionFailed = lens _dhapgrsHSMsLastActionFailed (\ s a -> s{_dhapgrsHSMsLastActionFailed = a}) . _Default . _Coerce;
 
 -- | The list of partition serial numbers that belong to the high-availability partition group.
-dhapgrsPartitionSerialList :: Lens' DescribeHAPGResponse [Text]
+dhapgrsPartitionSerialList :: Lens' (DescribeHAPGResponse (a)) [Text]
 dhapgrsPartitionSerialList = lens _dhapgrsPartitionSerialList (\ s a -> s{_dhapgrsPartitionSerialList = a}) . _Default . _Coerce;
 
 -- | The ARN of the high-availability partition group.
-dhapgrsHAPGARN :: Lens' DescribeHAPGResponse (Maybe Text)
+dhapgrsHAPGARN :: Lens' (DescribeHAPGResponse (a)) (Maybe Text)
 dhapgrsHAPGARN = lens _dhapgrsHAPGARN (\ s a -> s{_dhapgrsHAPGARN = a});
 
 -- | The label for the high-availability partition group.
-dhapgrsLabel :: Lens' DescribeHAPGResponse (Maybe Text)
+dhapgrsLabel :: Lens' (DescribeHAPGResponse (a)) (Maybe Text)
 dhapgrsLabel = lens _dhapgrsLabel (\ s a -> s{_dhapgrsLabel = a});
 
 -- | The response status code.
-dhapgrsResponseStatus :: Lens' DescribeHAPGResponse Int
+dhapgrsResponseStatus :: Lens' (DescribeHAPGResponse (a)) Int
 dhapgrsResponseStatus = lens _dhapgrsResponseStatus (\ s a -> s{_dhapgrsResponseStatus = a});
 
 instance NFData DescribeHAPGResponse

@@ -100,14 +100,14 @@ instance ToQuery RemoveUserFromGroup where
                "UserName" =: _rufgUserName]
 
 -- | /See:/ 'removeUserFromGroupResponse' smart constructor.
-data RemoveUserFromGroupResponse =
+data RemoveUserFromGroupResponse a =
     RemoveUserFromGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveUserFromGroupResponse' with the minimum fields required to make a request.
 --
 removeUserFromGroupResponse
-    :: RemoveUserFromGroupResponse
+    :: RemoveUserFromGroupResponse (a)
 removeUserFromGroupResponse = RemoveUserFromGroupResponse'
 
 instance NFData RemoveUserFromGroupResponse

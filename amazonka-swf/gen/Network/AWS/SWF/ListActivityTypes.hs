@@ -181,7 +181,7 @@ instance ToQuery ListActivityTypes where
 -- | Contains a paginated list of activity type information structures.
 --
 -- /See:/ 'listActivityTypesResponse' smart constructor.
-data ListActivityTypesResponse = ListActivityTypesResponse'
+data ListActivityTypesResponse a = ListActivityTypesResponse'
     { _latrsNextPageToken  :: !(Maybe Text)
     , _latrsResponseStatus :: !Int
     , _latrsTypeInfos      :: ![ActivityTypeInfo]
@@ -198,7 +198,7 @@ data ListActivityTypesResponse = ListActivityTypesResponse'
 -- * 'latrsTypeInfos'
 listActivityTypesResponse
     :: Int -- ^ 'latrsResponseStatus'
-    -> ListActivityTypesResponse
+    -> ListActivityTypesResponse (a)
 listActivityTypesResponse pResponseStatus_ =
     ListActivityTypesResponse'
     { _latrsNextPageToken = Nothing
@@ -209,15 +209,15 @@ listActivityTypesResponse pResponseStatus_ =
 -- | If a 'NextPageToken' was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in 'nextPageToken'. Keep all other arguments unchanged.
 --
 -- The configured 'maximumPageSize' determines how many results can be returned in a single call.
-latrsNextPageToken :: Lens' ListActivityTypesResponse (Maybe Text)
+latrsNextPageToken :: Lens' (ListActivityTypesResponse (a)) (Maybe Text)
 latrsNextPageToken = lens _latrsNextPageToken (\ s a -> s{_latrsNextPageToken = a});
 
 -- | The response status code.
-latrsResponseStatus :: Lens' ListActivityTypesResponse Int
+latrsResponseStatus :: Lens' (ListActivityTypesResponse (a)) Int
 latrsResponseStatus = lens _latrsResponseStatus (\ s a -> s{_latrsResponseStatus = a});
 
 -- | List of activity type information.
-latrsTypeInfos :: Lens' ListActivityTypesResponse [ActivityTypeInfo]
+latrsTypeInfos :: Lens' (ListActivityTypesResponse (a)) [ActivityTypeInfo]
 latrsTypeInfos = lens _latrsTypeInfos (\ s a -> s{_latrsTypeInfos = a}) . _Coerce;
 
 instance NFData ListActivityTypesResponse

@@ -128,7 +128,7 @@ instance ToQuery DescribeDeliveryStream where
 -- | Contains the output of < DescribeDeliveryStream>.
 --
 -- /See:/ 'describeDeliveryStreamResponse' smart constructor.
-data DescribeDeliveryStreamResponse = DescribeDeliveryStreamResponse'
+data DescribeDeliveryStreamResponse a = DescribeDeliveryStreamResponse'
     { _ddsrsResponseStatus            :: !Int
     , _ddsrsDeliveryStreamDescription :: !DeliveryStreamDescription
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -143,7 +143,7 @@ data DescribeDeliveryStreamResponse = DescribeDeliveryStreamResponse'
 describeDeliveryStreamResponse
     :: Int -- ^ 'ddsrsResponseStatus'
     -> DeliveryStreamDescription -- ^ 'ddsrsDeliveryStreamDescription'
-    -> DescribeDeliveryStreamResponse
+    -> DescribeDeliveryStreamResponse (a)
 describeDeliveryStreamResponse pResponseStatus_ pDeliveryStreamDescription_ =
     DescribeDeliveryStreamResponse'
     { _ddsrsResponseStatus = pResponseStatus_
@@ -151,11 +151,11 @@ describeDeliveryStreamResponse pResponseStatus_ pDeliveryStreamDescription_ =
     }
 
 -- | The response status code.
-ddsrsResponseStatus :: Lens' DescribeDeliveryStreamResponse Int
+ddsrsResponseStatus :: Lens' (DescribeDeliveryStreamResponse (a)) Int
 ddsrsResponseStatus = lens _ddsrsResponseStatus (\ s a -> s{_ddsrsResponseStatus = a});
 
 -- | Information about the delivery stream.
-ddsrsDeliveryStreamDescription :: Lens' DescribeDeliveryStreamResponse DeliveryStreamDescription
+ddsrsDeliveryStreamDescription :: Lens' (DescribeDeliveryStreamResponse (a)) DeliveryStreamDescription
 ddsrsDeliveryStreamDescription = lens _ddsrsDeliveryStreamDescription (\ s a -> s{_ddsrsDeliveryStreamDescription = a});
 
 instance NFData DescribeDeliveryStreamResponse

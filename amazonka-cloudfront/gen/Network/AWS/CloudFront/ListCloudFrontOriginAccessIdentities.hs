@@ -133,7 +133,7 @@ instance ToQuery ListCloudFrontOriginAccessIdentities
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'listCloudFrontOriginAccessIdentitiesResponse' smart constructor.
-data ListCloudFrontOriginAccessIdentitiesResponse = ListCloudFrontOriginAccessIdentitiesResponse'
+data ListCloudFrontOriginAccessIdentitiesResponse a = ListCloudFrontOriginAccessIdentitiesResponse'
     { _lcfoairsResponseStatus                     :: !Int
     , _lcfoairsCloudFrontOriginAccessIdentityList :: !CloudFrontOriginAccessIdentityList
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -148,7 +148,7 @@ data ListCloudFrontOriginAccessIdentitiesResponse = ListCloudFrontOriginAccessId
 listCloudFrontOriginAccessIdentitiesResponse
     :: Int -- ^ 'lcfoairsResponseStatus'
     -> CloudFrontOriginAccessIdentityList -- ^ 'lcfoairsCloudFrontOriginAccessIdentityList'
-    -> ListCloudFrontOriginAccessIdentitiesResponse
+    -> ListCloudFrontOriginAccessIdentitiesResponse (a)
 listCloudFrontOriginAccessIdentitiesResponse pResponseStatus_ pCloudFrontOriginAccessIdentityList_ =
     ListCloudFrontOriginAccessIdentitiesResponse'
     { _lcfoairsResponseStatus = pResponseStatus_
@@ -156,11 +156,11 @@ listCloudFrontOriginAccessIdentitiesResponse pResponseStatus_ pCloudFrontOriginA
     }
 
 -- | The response status code.
-lcfoairsResponseStatus :: Lens' ListCloudFrontOriginAccessIdentitiesResponse Int
+lcfoairsResponseStatus :: Lens' (ListCloudFrontOriginAccessIdentitiesResponse (a)) Int
 lcfoairsResponseStatus = lens _lcfoairsResponseStatus (\ s a -> s{_lcfoairsResponseStatus = a});
 
 -- | The CloudFrontOriginAccessIdentityList type.
-lcfoairsCloudFrontOriginAccessIdentityList :: Lens' ListCloudFrontOriginAccessIdentitiesResponse CloudFrontOriginAccessIdentityList
+lcfoairsCloudFrontOriginAccessIdentityList :: Lens' (ListCloudFrontOriginAccessIdentitiesResponse (a)) CloudFrontOriginAccessIdentityList
 lcfoairsCloudFrontOriginAccessIdentityList = lens _lcfoairsCloudFrontOriginAccessIdentityList (\ s a -> s{_lcfoairsCloudFrontOriginAccessIdentityList = a});
 
 instance NFData

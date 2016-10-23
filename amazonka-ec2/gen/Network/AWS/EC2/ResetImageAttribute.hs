@@ -109,14 +109,14 @@ instance ToQuery ResetImageAttribute where
                "Attribute" =: _resAttribute]
 
 -- | /See:/ 'resetImageAttributeResponse' smart constructor.
-data ResetImageAttributeResponse =
+data ResetImageAttributeResponse a =
     ResetImageAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ResetImageAttributeResponse' with the minimum fields required to make a request.
 --
 resetImageAttributeResponse
-    :: ResetImageAttributeResponse
+    :: ResetImageAttributeResponse (a)
 resetImageAttributeResponse = ResetImageAttributeResponse'
 
 instance NFData ResetImageAttributeResponse

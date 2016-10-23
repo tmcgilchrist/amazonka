@@ -94,14 +94,14 @@ instance ToQuery DeleteAssessmentRun where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAssessmentRunResponse' smart constructor.
-data DeleteAssessmentRunResponse =
+data DeleteAssessmentRunResponse a =
     DeleteAssessmentRunResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAssessmentRunResponse' with the minimum fields required to make a request.
 --
 deleteAssessmentRunResponse
-    :: DeleteAssessmentRunResponse
+    :: DeleteAssessmentRunResponse (a)
 deleteAssessmentRunResponse = DeleteAssessmentRunResponse'
 
 instance NFData DeleteAssessmentRunResponse

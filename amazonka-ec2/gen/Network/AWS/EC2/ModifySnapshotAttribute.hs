@@ -156,14 +156,14 @@ instance ToQuery ModifySnapshotAttribute where
                "SnapshotId" =: _msaSnapshotId]
 
 -- | /See:/ 'modifySnapshotAttributeResponse' smart constructor.
-data ModifySnapshotAttributeResponse =
+data ModifySnapshotAttributeResponse a =
     ModifySnapshotAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifySnapshotAttributeResponse' with the minimum fields required to make a request.
 --
 modifySnapshotAttributeResponse
-    :: ModifySnapshotAttributeResponse
+    :: ModifySnapshotAttributeResponse (a)
 modifySnapshotAttributeResponse = ModifySnapshotAttributeResponse'
 
 instance NFData ModifySnapshotAttributeResponse

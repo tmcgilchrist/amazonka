@@ -108,7 +108,7 @@ instance ToQuery RestoreAddressToClassic where
 -- | Contains the output of RestoreAddressToClassic.
 --
 -- /See:/ 'restoreAddressToClassicResponse' smart constructor.
-data RestoreAddressToClassicResponse = RestoreAddressToClassicResponse'
+data RestoreAddressToClassicResponse a = RestoreAddressToClassicResponse'
     { _ratcrsStatus         :: !(Maybe AddressStatus)
     , _ratcrsPublicIP       :: !(Maybe Text)
     , _ratcrsResponseStatus :: !Int
@@ -125,7 +125,7 @@ data RestoreAddressToClassicResponse = RestoreAddressToClassicResponse'
 -- * 'ratcrsResponseStatus'
 restoreAddressToClassicResponse
     :: Int -- ^ 'ratcrsResponseStatus'
-    -> RestoreAddressToClassicResponse
+    -> RestoreAddressToClassicResponse (a)
 restoreAddressToClassicResponse pResponseStatus_ =
     RestoreAddressToClassicResponse'
     { _ratcrsStatus = Nothing
@@ -134,15 +134,15 @@ restoreAddressToClassicResponse pResponseStatus_ =
     }
 
 -- | The move status for the IP address.
-ratcrsStatus :: Lens' RestoreAddressToClassicResponse (Maybe AddressStatus)
+ratcrsStatus :: Lens' (RestoreAddressToClassicResponse (a)) (Maybe AddressStatus)
 ratcrsStatus = lens _ratcrsStatus (\ s a -> s{_ratcrsStatus = a});
 
 -- | The Elastic IP address.
-ratcrsPublicIP :: Lens' RestoreAddressToClassicResponse (Maybe Text)
+ratcrsPublicIP :: Lens' (RestoreAddressToClassicResponse (a)) (Maybe Text)
 ratcrsPublicIP = lens _ratcrsPublicIP (\ s a -> s{_ratcrsPublicIP = a});
 
 -- | The response status code.
-ratcrsResponseStatus :: Lens' RestoreAddressToClassicResponse Int
+ratcrsResponseStatus :: Lens' (RestoreAddressToClassicResponse (a)) Int
 ratcrsResponseStatus = lens _ratcrsResponseStatus (\ s a -> s{_ratcrsResponseStatus = a});
 
 instance NFData RestoreAddressToClassicResponse

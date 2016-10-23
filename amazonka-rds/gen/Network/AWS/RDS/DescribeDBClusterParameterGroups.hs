@@ -152,7 +152,7 @@ instance ToQuery DescribeDBClusterParameterGroups
 -- |
 --
 -- /See:/ 'describeDBClusterParameterGroupsResponse' smart constructor.
-data DescribeDBClusterParameterGroupsResponse = DescribeDBClusterParameterGroupsResponse'
+data DescribeDBClusterParameterGroupsResponse a = DescribeDBClusterParameterGroupsResponse'
     { _ddcpgrsMarker                   :: !(Maybe Text)
     , _ddcpgrsDBClusterParameterGroups :: !(Maybe [DBClusterParameterGroup])
     , _ddcpgrsResponseStatus           :: !Int
@@ -169,7 +169,7 @@ data DescribeDBClusterParameterGroupsResponse = DescribeDBClusterParameterGroups
 -- * 'ddcpgrsResponseStatus'
 describeDBClusterParameterGroupsResponse
     :: Int -- ^ 'ddcpgrsResponseStatus'
-    -> DescribeDBClusterParameterGroupsResponse
+    -> DescribeDBClusterParameterGroupsResponse (a)
 describeDBClusterParameterGroupsResponse pResponseStatus_ =
     DescribeDBClusterParameterGroupsResponse'
     { _ddcpgrsMarker = Nothing
@@ -178,15 +178,15 @@ describeDBClusterParameterGroupsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous 'DescribeDBClusterParameterGroups' request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddcpgrsMarker :: Lens' DescribeDBClusterParameterGroupsResponse (Maybe Text)
+ddcpgrsMarker :: Lens' (DescribeDBClusterParameterGroupsResponse (a)) (Maybe Text)
 ddcpgrsMarker = lens _ddcpgrsMarker (\ s a -> s{_ddcpgrsMarker = a});
 
 -- | A list of DB cluster parameter groups.
-ddcpgrsDBClusterParameterGroups :: Lens' DescribeDBClusterParameterGroupsResponse [DBClusterParameterGroup]
+ddcpgrsDBClusterParameterGroups :: Lens' (DescribeDBClusterParameterGroupsResponse (a)) [DBClusterParameterGroup]
 ddcpgrsDBClusterParameterGroups = lens _ddcpgrsDBClusterParameterGroups (\ s a -> s{_ddcpgrsDBClusterParameterGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddcpgrsResponseStatus :: Lens' DescribeDBClusterParameterGroupsResponse Int
+ddcpgrsResponseStatus :: Lens' (DescribeDBClusterParameterGroupsResponse (a)) Int
 ddcpgrsResponseStatus = lens _ddcpgrsResponseStatus (\ s a -> s{_ddcpgrsResponseStatus = a});
 
 instance NFData

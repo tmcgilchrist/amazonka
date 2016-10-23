@@ -171,7 +171,7 @@ instance ToQuery BatchWriteItem where
 -- | Represents the output of a /BatchWriteItem/ operation.
 --
 -- /See:/ 'batchWriteItemResponse' smart constructor.
-data BatchWriteItemResponse = BatchWriteItemResponse'
+data BatchWriteItemResponse a = BatchWriteItemResponse'
     { _bwirsItemCollectionMetrics :: !(Maybe (Map Text [ItemCollectionMetrics]))
     , _bwirsConsumedCapacity      :: !(Maybe [ConsumedCapacity])
     , _bwirsUnprocessedItems      :: !(Maybe (Map Text (List1 WriteRequest)))
@@ -191,7 +191,7 @@ data BatchWriteItemResponse = BatchWriteItemResponse'
 -- * 'bwirsResponseStatus'
 batchWriteItemResponse
     :: Int -- ^ 'bwirsResponseStatus'
-    -> BatchWriteItemResponse
+    -> BatchWriteItemResponse (a)
 batchWriteItemResponse pResponseStatus_ =
     BatchWriteItemResponse'
     { _bwirsItemCollectionMetrics = Nothing
@@ -210,7 +210,7 @@ batchWriteItemResponse pResponseStatus_ =
 --
 --     The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.
 --
-bwirsItemCollectionMetrics :: Lens' BatchWriteItemResponse (HashMap Text [ItemCollectionMetrics])
+bwirsItemCollectionMetrics :: Lens' (BatchWriteItemResponse (a)) (HashMap Text [ItemCollectionMetrics])
 bwirsItemCollectionMetrics = lens _bwirsItemCollectionMetrics (\ s a -> s{_bwirsItemCollectionMetrics = a}) . _Default . _Map;
 
 -- | The capacity units consumed by the operation.
@@ -221,7 +221,7 @@ bwirsItemCollectionMetrics = lens _bwirsItemCollectionMetrics (\ s a -> s{_bwirs
 --
 -- -   /CapacityUnits/ - The total number of capacity units consumed.
 --
-bwirsConsumedCapacity :: Lens' BatchWriteItemResponse [ConsumedCapacity]
+bwirsConsumedCapacity :: Lens' (BatchWriteItemResponse (a)) [ConsumedCapacity]
 bwirsConsumedCapacity = lens _bwirsConsumedCapacity (\ s a -> s{_bwirsConsumedCapacity = a}) . _Default . _Coerce;
 
 -- | A map of tables and requests against those tables that were not processed. The /UnprocessedItems/ value is in the same form as /RequestItems/, so you can provide this value directly to a subsequent /BatchGetItem/ operation. For more information, see /RequestItems/ in the Request Parameters section.
@@ -239,11 +239,11 @@ bwirsConsumedCapacity = lens _bwirsConsumedCapacity (\ s a -> s{_bwirsConsumedCa
 --         If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table\'s attribute definition.
 --
 -- If there are no unprocessed items remaining, the response contains an empty /UnprocessedItems/ map.
-bwirsUnprocessedItems :: Lens' BatchWriteItemResponse (HashMap Text (NonEmpty WriteRequest))
+bwirsUnprocessedItems :: Lens' (BatchWriteItemResponse (a)) (HashMap Text (NonEmpty WriteRequest))
 bwirsUnprocessedItems = lens _bwirsUnprocessedItems (\ s a -> s{_bwirsUnprocessedItems = a}) . _Default . _Map;
 
 -- | The response status code.
-bwirsResponseStatus :: Lens' BatchWriteItemResponse Int
+bwirsResponseStatus :: Lens' (BatchWriteItemResponse (a)) Int
 bwirsResponseStatus = lens _bwirsResponseStatus (\ s a -> s{_bwirsResponseStatus = a});
 
 instance NFData BatchWriteItemResponse

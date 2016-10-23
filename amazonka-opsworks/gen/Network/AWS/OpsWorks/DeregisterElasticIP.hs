@@ -95,14 +95,14 @@ instance ToQuery DeregisterElasticIP where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterElasticIPResponse' smart constructor.
-data DeregisterElasticIPResponse =
+data DeregisterElasticIPResponse a =
     DeregisterElasticIPResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeregisterElasticIPResponse' with the minimum fields required to make a request.
 --
 deregisterElasticIPResponse
-    :: DeregisterElasticIPResponse
+    :: DeregisterElasticIPResponse (a)
 deregisterElasticIPResponse = DeregisterElasticIPResponse'
 
 instance NFData DeregisterElasticIPResponse

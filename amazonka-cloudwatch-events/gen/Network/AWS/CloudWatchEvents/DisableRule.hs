@@ -94,14 +94,14 @@ instance ToQuery DisableRule where
         toQuery = const mempty
 
 -- | /See:/ 'disableRuleResponse' smart constructor.
-data DisableRuleResponse =
+data DisableRuleResponse a =
     DisableRuleResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DisableRuleResponse' with the minimum fields required to make a request.
 --
 disableRuleResponse
-    :: DisableRuleResponse
+    :: DisableRuleResponse (a)
 disableRuleResponse = DisableRuleResponse'
 
 instance NFData DisableRuleResponse

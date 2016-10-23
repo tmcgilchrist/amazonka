@@ -138,7 +138,7 @@ instance ToQuery PurchaseReservedDBInstancesOffering
                  _prdioReservedDBInstancesOfferingId]
 
 -- | /See:/ 'purchaseReservedDBInstancesOfferingResponse' smart constructor.
-data PurchaseReservedDBInstancesOfferingResponse = PurchaseReservedDBInstancesOfferingResponse'
+data PurchaseReservedDBInstancesOfferingResponse a = PurchaseReservedDBInstancesOfferingResponse'
     { _prdiorsReservedDBInstance :: !(Maybe ReservedDBInstance)
     , _prdiorsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -152,7 +152,7 @@ data PurchaseReservedDBInstancesOfferingResponse = PurchaseReservedDBInstancesOf
 -- * 'prdiorsResponseStatus'
 purchaseReservedDBInstancesOfferingResponse
     :: Int -- ^ 'prdiorsResponseStatus'
-    -> PurchaseReservedDBInstancesOfferingResponse
+    -> PurchaseReservedDBInstancesOfferingResponse (a)
 purchaseReservedDBInstancesOfferingResponse pResponseStatus_ =
     PurchaseReservedDBInstancesOfferingResponse'
     { _prdiorsReservedDBInstance = Nothing
@@ -160,11 +160,11 @@ purchaseReservedDBInstancesOfferingResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-prdiorsReservedDBInstance :: Lens' PurchaseReservedDBInstancesOfferingResponse (Maybe ReservedDBInstance)
+prdiorsReservedDBInstance :: Lens' (PurchaseReservedDBInstancesOfferingResponse (a)) (Maybe ReservedDBInstance)
 prdiorsReservedDBInstance = lens _prdiorsReservedDBInstance (\ s a -> s{_prdiorsReservedDBInstance = a});
 
 -- | The response status code.
-prdiorsResponseStatus :: Lens' PurchaseReservedDBInstancesOfferingResponse Int
+prdiorsResponseStatus :: Lens' (PurchaseReservedDBInstancesOfferingResponse (a)) Int
 prdiorsResponseStatus = lens _prdiorsResponseStatus (\ s a -> s{_prdiorsResponseStatus = a});
 
 instance NFData

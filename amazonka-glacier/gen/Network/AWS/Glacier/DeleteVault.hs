@@ -100,14 +100,14 @@ instance ToQuery DeleteVault where
         toQuery = const mempty
 
 -- | /See:/ 'deleteVaultResponse' smart constructor.
-data DeleteVaultResponse =
+data DeleteVaultResponse a =
     DeleteVaultResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVaultResponse' with the minimum fields required to make a request.
 --
 deleteVaultResponse
-    :: DeleteVaultResponse
+    :: DeleteVaultResponse (a)
 deleteVaultResponse = DeleteVaultResponse'
 
 instance NFData DeleteVaultResponse

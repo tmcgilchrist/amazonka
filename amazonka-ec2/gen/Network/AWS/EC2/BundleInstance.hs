@@ -127,7 +127,7 @@ instance ToQuery BundleInstance where
 -- | Contains the output of BundleInstance.
 --
 -- /See:/ 'bundleInstanceResponse' smart constructor.
-data BundleInstanceResponse = BundleInstanceResponse'
+data BundleInstanceResponse a = BundleInstanceResponse'
     { _birsBundleTask     :: !(Maybe BundleTask)
     , _birsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data BundleInstanceResponse = BundleInstanceResponse'
 -- * 'birsResponseStatus'
 bundleInstanceResponse
     :: Int -- ^ 'birsResponseStatus'
-    -> BundleInstanceResponse
+    -> BundleInstanceResponse (a)
 bundleInstanceResponse pResponseStatus_ =
     BundleInstanceResponse'
     { _birsBundleTask = Nothing
@@ -149,11 +149,11 @@ bundleInstanceResponse pResponseStatus_ =
     }
 
 -- | Information about the bundle task.
-birsBundleTask :: Lens' BundleInstanceResponse (Maybe BundleTask)
+birsBundleTask :: Lens' (BundleInstanceResponse (a)) (Maybe BundleTask)
 birsBundleTask = lens _birsBundleTask (\ s a -> s{_birsBundleTask = a});
 
 -- | The response status code.
-birsResponseStatus :: Lens' BundleInstanceResponse Int
+birsResponseStatus :: Lens' (BundleInstanceResponse (a)) Int
 birsResponseStatus = lens _birsResponseStatus (\ s a -> s{_birsResponseStatus = a});
 
 instance NFData BundleInstanceResponse

@@ -125,14 +125,14 @@ instance ToQuery EnableMFADevice where
                "AuthenticationCode2" =: _emdAuthenticationCode2]
 
 -- | /See:/ 'enableMFADeviceResponse' smart constructor.
-data EnableMFADeviceResponse =
+data EnableMFADeviceResponse a =
     EnableMFADeviceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'EnableMFADeviceResponse' with the minimum fields required to make a request.
 --
 enableMFADeviceResponse
-    :: EnableMFADeviceResponse
+    :: EnableMFADeviceResponse (a)
 enableMFADeviceResponse = EnableMFADeviceResponse'
 
 instance NFData EnableMFADeviceResponse

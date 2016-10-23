@@ -155,7 +155,7 @@ instance ToQuery CreateDataSourceFromS3 where
 -- The 'CreateDataSourceFromS3' operation is asynchronous. You can poll for updates by using the 'GetBatchPrediction' operation and checking the 'Status' parameter.
 --
 -- /See:/ 'createDataSourceFromS3Response' smart constructor.
-data CreateDataSourceFromS3Response = CreateDataSourceFromS3Response'
+data CreateDataSourceFromS3Response a = CreateDataSourceFromS3Response'
     { _cdsfsrsDataSourceId   :: !(Maybe Text)
     , _cdsfsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -169,7 +169,7 @@ data CreateDataSourceFromS3Response = CreateDataSourceFromS3Response'
 -- * 'cdsfsrsResponseStatus'
 createDataSourceFromS3Response
     :: Int -- ^ 'cdsfsrsResponseStatus'
-    -> CreateDataSourceFromS3Response
+    -> CreateDataSourceFromS3Response (a)
 createDataSourceFromS3Response pResponseStatus_ =
     CreateDataSourceFromS3Response'
     { _cdsfsrsDataSourceId = Nothing
@@ -177,11 +177,11 @@ createDataSourceFromS3Response pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the 'DataSource'. This value should be identical to the value of the 'DataSourceID' in the request.
-cdsfsrsDataSourceId :: Lens' CreateDataSourceFromS3Response (Maybe Text)
+cdsfsrsDataSourceId :: Lens' (CreateDataSourceFromS3Response (a)) (Maybe Text)
 cdsfsrsDataSourceId = lens _cdsfsrsDataSourceId (\ s a -> s{_cdsfsrsDataSourceId = a});
 
 -- | The response status code.
-cdsfsrsResponseStatus :: Lens' CreateDataSourceFromS3Response Int
+cdsfsrsResponseStatus :: Lens' (CreateDataSourceFromS3Response (a)) Int
 cdsfsrsResponseStatus = lens _cdsfsrsResponseStatus (\ s a -> s{_cdsfsrsResponseStatus = a});
 
 instance NFData CreateDataSourceFromS3Response

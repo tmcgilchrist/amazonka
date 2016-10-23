@@ -106,7 +106,7 @@ instance ToQuery DeleteRepository where
 -- | Represents the output of a delete repository operation.
 --
 -- /See:/ 'deleteRepositoryResponse' smart constructor.
-data DeleteRepositoryResponse = DeleteRepositoryResponse'
+data DeleteRepositoryResponse a = DeleteRepositoryResponse'
     { _drrsRepositoryId   :: !(Maybe Text)
     , _drrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data DeleteRepositoryResponse = DeleteRepositoryResponse'
 -- * 'drrsResponseStatus'
 deleteRepositoryResponse
     :: Int -- ^ 'drrsResponseStatus'
-    -> DeleteRepositoryResponse
+    -> DeleteRepositoryResponse (a)
 deleteRepositoryResponse pResponseStatus_ =
     DeleteRepositoryResponse'
     { _drrsRepositoryId = Nothing
@@ -128,11 +128,11 @@ deleteRepositoryResponse pResponseStatus_ =
     }
 
 -- | The ID of the repository that was deleted.
-drrsRepositoryId :: Lens' DeleteRepositoryResponse (Maybe Text)
+drrsRepositoryId :: Lens' (DeleteRepositoryResponse (a)) (Maybe Text)
 drrsRepositoryId = lens _drrsRepositoryId (\ s a -> s{_drrsRepositoryId = a});
 
 -- | The response status code.
-drrsResponseStatus :: Lens' DeleteRepositoryResponse Int
+drrsResponseStatus :: Lens' (DeleteRepositoryResponse (a)) Int
 drrsResponseStatus = lens _drrsResponseStatus (\ s a -> s{_drrsResponseStatus = a});
 
 instance NFData DeleteRepositoryResponse

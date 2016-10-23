@@ -89,7 +89,7 @@ instance ToQuery GetBucketCORS where
         toQuery = const (mconcat ["cors"])
 
 -- | /See:/ 'getBucketCORSResponse' smart constructor.
-data GetBucketCORSResponse = GetBucketCORSResponse'
+data GetBucketCORSResponse a = GetBucketCORSResponse'
     { _gbcrsCORSRules      :: !(Maybe [CORSRule])
     , _gbcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetBucketCORSResponse = GetBucketCORSResponse'
 -- * 'gbcrsResponseStatus'
 getBucketCORSResponse
     :: Int -- ^ 'gbcrsResponseStatus'
-    -> GetBucketCORSResponse
+    -> GetBucketCORSResponse (a)
 getBucketCORSResponse pResponseStatus_ =
     GetBucketCORSResponse'
     { _gbcrsCORSRules = Nothing
@@ -111,11 +111,11 @@ getBucketCORSResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gbcrsCORSRules :: Lens' GetBucketCORSResponse [CORSRule]
+gbcrsCORSRules :: Lens' (GetBucketCORSResponse (a)) [CORSRule]
 gbcrsCORSRules = lens _gbcrsCORSRules (\ s a -> s{_gbcrsCORSRules = a}) . _Default . _Coerce;
 
 -- | The response status code.
-gbcrsResponseStatus :: Lens' GetBucketCORSResponse Int
+gbcrsResponseStatus :: Lens' (GetBucketCORSResponse (a)) Int
 gbcrsResponseStatus = lens _gbcrsResponseStatus (\ s a -> s{_gbcrsResponseStatus = a});
 
 instance NFData GetBucketCORSResponse

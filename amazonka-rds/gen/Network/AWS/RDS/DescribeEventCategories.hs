@@ -111,7 +111,7 @@ instance ToQuery DescribeEventCategories where
 -- | Data returned from the __DescribeEventCategories__ action.
 --
 -- /See:/ 'describeEventCategoriesResponse' smart constructor.
-data DescribeEventCategoriesResponse = DescribeEventCategoriesResponse'
+data DescribeEventCategoriesResponse a = DescribeEventCategoriesResponse'
     { _decrsEventCategoriesMapList :: !(Maybe [EventCategoriesMap])
     , _decrsResponseStatus         :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -125,7 +125,7 @@ data DescribeEventCategoriesResponse = DescribeEventCategoriesResponse'
 -- * 'decrsResponseStatus'
 describeEventCategoriesResponse
     :: Int -- ^ 'decrsResponseStatus'
-    -> DescribeEventCategoriesResponse
+    -> DescribeEventCategoriesResponse (a)
 describeEventCategoriesResponse pResponseStatus_ =
     DescribeEventCategoriesResponse'
     { _decrsEventCategoriesMapList = Nothing
@@ -133,11 +133,11 @@ describeEventCategoriesResponse pResponseStatus_ =
     }
 
 -- | A list of EventCategoriesMap data types.
-decrsEventCategoriesMapList :: Lens' DescribeEventCategoriesResponse [EventCategoriesMap]
+decrsEventCategoriesMapList :: Lens' (DescribeEventCategoriesResponse (a)) [EventCategoriesMap]
 decrsEventCategoriesMapList = lens _decrsEventCategoriesMapList (\ s a -> s{_decrsEventCategoriesMapList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-decrsResponseStatus :: Lens' DescribeEventCategoriesResponse Int
+decrsResponseStatus :: Lens' (DescribeEventCategoriesResponse (a)) Int
 decrsResponseStatus = lens _decrsResponseStatus (\ s a -> s{_decrsResponseStatus = a});
 
 instance NFData DescribeEventCategoriesResponse

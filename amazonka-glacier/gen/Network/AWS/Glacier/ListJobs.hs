@@ -167,7 +167,7 @@ instance ToQuery ListJobs where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse = ListJobsResponse'
+data ListJobsResponse a = ListJobsResponse'
     { _ljrsMarker         :: !(Maybe Text)
     , _ljrsJobList        :: !(Maybe [GlacierJobDescription])
     , _ljrsResponseStatus :: !Int
@@ -184,7 +184,7 @@ data ListJobsResponse = ListJobsResponse'
 -- * 'ljrsResponseStatus'
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
-    -> ListJobsResponse
+    -> ListJobsResponse (a)
 listJobsResponse pResponseStatus_ =
     ListJobsResponse'
     { _ljrsMarker = Nothing
@@ -193,15 +193,15 @@ listJobsResponse pResponseStatus_ =
     }
 
 -- | An opaque string that represents where to continue pagination of the results. You use this value in a new List Jobs request to obtain more jobs in the list. If there are no more jobs, this value is 'null'.
-ljrsMarker :: Lens' ListJobsResponse (Maybe Text)
+ljrsMarker :: Lens' (ListJobsResponse (a)) (Maybe Text)
 ljrsMarker = lens _ljrsMarker (\ s a -> s{_ljrsMarker = a});
 
 -- | A list of job objects. Each job object contains metadata describing the job.
-ljrsJobList :: Lens' ListJobsResponse [GlacierJobDescription]
+ljrsJobList :: Lens' (ListJobsResponse (a)) [GlacierJobDescription]
 ljrsJobList = lens _ljrsJobList (\ s a -> s{_ljrsJobList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ljrsResponseStatus :: Lens' ListJobsResponse Int
+ljrsResponseStatus :: Lens' (ListJobsResponse (a)) Int
 ljrsResponseStatus = lens _ljrsResponseStatus (\ s a -> s{_ljrsResponseStatus = a});
 
 instance NFData ListJobsResponse

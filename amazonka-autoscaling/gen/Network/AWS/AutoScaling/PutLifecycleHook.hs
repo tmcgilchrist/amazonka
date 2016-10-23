@@ -206,7 +206,7 @@ instance ToQuery PutLifecycleHook where
 -- | Contains the output of PutLifecycleHook.
 --
 -- /See:/ 'putLifecycleHookResponse' smart constructor.
-newtype PutLifecycleHookResponse = PutLifecycleHookResponse'
+newtype PutLifecycleHookResponse a = PutLifecycleHookResponse'
     { _plhrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -217,14 +217,14 @@ newtype PutLifecycleHookResponse = PutLifecycleHookResponse'
 -- * 'plhrsResponseStatus'
 putLifecycleHookResponse
     :: Int -- ^ 'plhrsResponseStatus'
-    -> PutLifecycleHookResponse
+    -> PutLifecycleHookResponse (a)
 putLifecycleHookResponse pResponseStatus_ =
     PutLifecycleHookResponse'
     { _plhrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-plhrsResponseStatus :: Lens' PutLifecycleHookResponse Int
+plhrsResponseStatus :: Lens' (PutLifecycleHookResponse (a)) Int
 plhrsResponseStatus = lens _plhrsResponseStatus (\ s a -> s{_plhrsResponseStatus = a});
 
 instance NFData PutLifecycleHookResponse

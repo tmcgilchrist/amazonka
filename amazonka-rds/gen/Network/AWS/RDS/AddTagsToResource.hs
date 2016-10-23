@@ -98,14 +98,14 @@ instance ToQuery AddTagsToResource where
                "Tags" =: toQueryList "Tag" _attrTags]
 
 -- | /See:/ 'addTagsToResourceResponse' smart constructor.
-data AddTagsToResourceResponse =
+data AddTagsToResourceResponse a =
     AddTagsToResourceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AddTagsToResourceResponse' with the minimum fields required to make a request.
 --
 addTagsToResourceResponse
-    :: AddTagsToResourceResponse
+    :: AddTagsToResourceResponse (a)
 addTagsToResourceResponse = AddTagsToResourceResponse'
 
 instance NFData AddTagsToResourceResponse

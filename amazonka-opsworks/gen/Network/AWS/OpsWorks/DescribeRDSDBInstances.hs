@@ -116,7 +116,7 @@ instance ToQuery DescribeRDSDBInstances where
 -- | Contains the response to a 'DescribeRdsDbInstances' request.
 --
 -- /See:/ 'describeRDSDBInstancesResponse' smart constructor.
-data DescribeRDSDBInstancesResponse = DescribeRDSDBInstancesResponse'
+data DescribeRDSDBInstancesResponse a = DescribeRDSDBInstancesResponse'
     { _drdirsRDSDBInstances :: !(Maybe [RDSDBInstance])
     , _drdirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data DescribeRDSDBInstancesResponse = DescribeRDSDBInstancesResponse'
 -- * 'drdirsResponseStatus'
 describeRDSDBInstancesResponse
     :: Int -- ^ 'drdirsResponseStatus'
-    -> DescribeRDSDBInstancesResponse
+    -> DescribeRDSDBInstancesResponse (a)
 describeRDSDBInstancesResponse pResponseStatus_ =
     DescribeRDSDBInstancesResponse'
     { _drdirsRDSDBInstances = Nothing
@@ -138,11 +138,11 @@ describeRDSDBInstancesResponse pResponseStatus_ =
     }
 
 -- | An a array of 'RdsDbInstance' objects that describe the instances.
-drdirsRDSDBInstances :: Lens' DescribeRDSDBInstancesResponse [RDSDBInstance]
+drdirsRDSDBInstances :: Lens' (DescribeRDSDBInstancesResponse (a)) [RDSDBInstance]
 drdirsRDSDBInstances = lens _drdirsRDSDBInstances (\ s a -> s{_drdirsRDSDBInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drdirsResponseStatus :: Lens' DescribeRDSDBInstancesResponse Int
+drdirsResponseStatus :: Lens' (DescribeRDSDBInstancesResponse (a)) Int
 drdirsResponseStatus = lens _drdirsResponseStatus (\ s a -> s{_drdirsResponseStatus = a});
 
 instance NFData DescribeRDSDBInstancesResponse

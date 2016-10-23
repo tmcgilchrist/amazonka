@@ -87,14 +87,14 @@ instance ToQuery CreateAccountAlias where
                "AccountAlias" =: _caaAccountAlias]
 
 -- | /See:/ 'createAccountAliasResponse' smart constructor.
-data CreateAccountAliasResponse =
+data CreateAccountAliasResponse a =
     CreateAccountAliasResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateAccountAliasResponse' with the minimum fields required to make a request.
 --
 createAccountAliasResponse
-    :: CreateAccountAliasResponse
+    :: CreateAccountAliasResponse (a)
 createAccountAliasResponse = CreateAccountAliasResponse'
 
 instance NFData CreateAccountAliasResponse

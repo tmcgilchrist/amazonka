@@ -99,7 +99,7 @@ instance ToQuery SetRulePriorities where
 -- | Contains the output of SetRulePriorities.
 --
 -- /See:/ 'setRulePrioritiesResponse' smart constructor.
-data SetRulePrioritiesResponse = SetRulePrioritiesResponse'
+data SetRulePrioritiesResponse a = SetRulePrioritiesResponse'
     { _srprsRules          :: !(Maybe [Rule])
     , _srprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -113,7 +113,7 @@ data SetRulePrioritiesResponse = SetRulePrioritiesResponse'
 -- * 'srprsResponseStatus'
 setRulePrioritiesResponse
     :: Int -- ^ 'srprsResponseStatus'
-    -> SetRulePrioritiesResponse
+    -> SetRulePrioritiesResponse (a)
 setRulePrioritiesResponse pResponseStatus_ =
     SetRulePrioritiesResponse'
     { _srprsRules = Nothing
@@ -121,11 +121,11 @@ setRulePrioritiesResponse pResponseStatus_ =
     }
 
 -- | Information about the rules.
-srprsRules :: Lens' SetRulePrioritiesResponse [Rule]
+srprsRules :: Lens' (SetRulePrioritiesResponse (a)) [Rule]
 srprsRules = lens _srprsRules (\ s a -> s{_srprsRules = a}) . _Default . _Coerce;
 
 -- | The response status code.
-srprsResponseStatus :: Lens' SetRulePrioritiesResponse Int
+srprsResponseStatus :: Lens' (SetRulePrioritiesResponse (a)) Int
 srprsResponseStatus = lens _srprsResponseStatus (\ s a -> s{_srprsResponseStatus = a});
 
 instance NFData SetRulePrioritiesResponse

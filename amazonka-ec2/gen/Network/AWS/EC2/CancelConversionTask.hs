@@ -109,14 +109,14 @@ instance ToQuery CancelConversionTask where
                "ConversionTaskId" =: _cctConversionTaskId]
 
 -- | /See:/ 'cancelConversionTaskResponse' smart constructor.
-data CancelConversionTaskResponse =
+data CancelConversionTaskResponse a =
     CancelConversionTaskResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CancelConversionTaskResponse' with the minimum fields required to make a request.
 --
 cancelConversionTaskResponse
-    :: CancelConversionTaskResponse
+    :: CancelConversionTaskResponse (a)
 cancelConversionTaskResponse = CancelConversionTaskResponse'
 
 instance NFData CancelConversionTaskResponse

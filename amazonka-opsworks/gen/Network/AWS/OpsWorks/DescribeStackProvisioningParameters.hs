@@ -112,7 +112,7 @@ instance ToQuery DescribeStackProvisioningParameters
 -- | Contains the response to a 'DescribeStackProvisioningParameters' request.
 --
 -- /See:/ 'describeStackProvisioningParametersResponse' smart constructor.
-data DescribeStackProvisioningParametersResponse = DescribeStackProvisioningParametersResponse'
+data DescribeStackProvisioningParametersResponse a = DescribeStackProvisioningParametersResponse'
     { _dspprsAgentInstallerURL :: !(Maybe Text)
     , _dspprsParameters        :: !(Maybe (Map Text Text))
     , _dspprsResponseStatus    :: !Int
@@ -129,7 +129,7 @@ data DescribeStackProvisioningParametersResponse = DescribeStackProvisioningPara
 -- * 'dspprsResponseStatus'
 describeStackProvisioningParametersResponse
     :: Int -- ^ 'dspprsResponseStatus'
-    -> DescribeStackProvisioningParametersResponse
+    -> DescribeStackProvisioningParametersResponse (a)
 describeStackProvisioningParametersResponse pResponseStatus_ =
     DescribeStackProvisioningParametersResponse'
     { _dspprsAgentInstallerURL = Nothing
@@ -138,15 +138,15 @@ describeStackProvisioningParametersResponse pResponseStatus_ =
     }
 
 -- | The AWS OpsWorks agent installer\'s URL.
-dspprsAgentInstallerURL :: Lens' DescribeStackProvisioningParametersResponse (Maybe Text)
+dspprsAgentInstallerURL :: Lens' (DescribeStackProvisioningParametersResponse (a)) (Maybe Text)
 dspprsAgentInstallerURL = lens _dspprsAgentInstallerURL (\ s a -> s{_dspprsAgentInstallerURL = a});
 
 -- | An embedded object that contains the provisioning parameters.
-dspprsParameters :: Lens' DescribeStackProvisioningParametersResponse (HashMap Text Text)
+dspprsParameters :: Lens' (DescribeStackProvisioningParametersResponse (a)) (HashMap Text Text)
 dspprsParameters = lens _dspprsParameters (\ s a -> s{_dspprsParameters = a}) . _Default . _Map;
 
 -- | The response status code.
-dspprsResponseStatus :: Lens' DescribeStackProvisioningParametersResponse Int
+dspprsResponseStatus :: Lens' (DescribeStackProvisioningParametersResponse (a)) Int
 dspprsResponseStatus = lens _dspprsResponseStatus (\ s a -> s{_dspprsResponseStatus = a});
 
 instance NFData

@@ -163,7 +163,7 @@ instance ToQuery CreateCachediSCSIVolume where
         toQuery = const mempty
 
 -- | /See:/ 'createCachediSCSIVolumeResponse' smart constructor.
-data CreateCachediSCSIVolumeResponse = CreateCachediSCSIVolumeResponse'
+data CreateCachediSCSIVolumeResponse a = CreateCachediSCSIVolumeResponse'
     { _ccscsivrsTargetARN      :: !(Maybe Text)
     , _ccscsivrsVolumeARN      :: !(Maybe Text)
     , _ccscsivrsResponseStatus :: !Int
@@ -180,7 +180,7 @@ data CreateCachediSCSIVolumeResponse = CreateCachediSCSIVolumeResponse'
 -- * 'ccscsivrsResponseStatus'
 createCachediSCSIVolumeResponse
     :: Int -- ^ 'ccscsivrsResponseStatus'
-    -> CreateCachediSCSIVolumeResponse
+    -> CreateCachediSCSIVolumeResponse (a)
 createCachediSCSIVolumeResponse pResponseStatus_ =
     CreateCachediSCSIVolumeResponse'
     { _ccscsivrsTargetARN = Nothing
@@ -189,15 +189,15 @@ createCachediSCSIVolumeResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ccscsivrsTargetARN :: Lens' CreateCachediSCSIVolumeResponse (Maybe Text)
+ccscsivrsTargetARN :: Lens' (CreateCachediSCSIVolumeResponse (a)) (Maybe Text)
 ccscsivrsTargetARN = lens _ccscsivrsTargetARN (\ s a -> s{_ccscsivrsTargetARN = a});
 
 -- | Undocumented member.
-ccscsivrsVolumeARN :: Lens' CreateCachediSCSIVolumeResponse (Maybe Text)
+ccscsivrsVolumeARN :: Lens' (CreateCachediSCSIVolumeResponse (a)) (Maybe Text)
 ccscsivrsVolumeARN = lens _ccscsivrsVolumeARN (\ s a -> s{_ccscsivrsVolumeARN = a});
 
 -- | The response status code.
-ccscsivrsResponseStatus :: Lens' CreateCachediSCSIVolumeResponse Int
+ccscsivrsResponseStatus :: Lens' (CreateCachediSCSIVolumeResponse (a)) Int
 ccscsivrsResponseStatus = lens _ccscsivrsResponseStatus (\ s a -> s{_ccscsivrsResponseStatus = a});
 
 instance NFData CreateCachediSCSIVolumeResponse

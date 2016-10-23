@@ -179,14 +179,14 @@ instance ToQuery PutScheduledUpdateGroupAction where
                "ScheduledActionName" =: _psugaScheduledActionName]
 
 -- | /See:/ 'putScheduledUpdateGroupActionResponse' smart constructor.
-data PutScheduledUpdateGroupActionResponse =
+data PutScheduledUpdateGroupActionResponse a =
     PutScheduledUpdateGroupActionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutScheduledUpdateGroupActionResponse' with the minimum fields required to make a request.
 --
 putScheduledUpdateGroupActionResponse
-    :: PutScheduledUpdateGroupActionResponse
+    :: PutScheduledUpdateGroupActionResponse (a)
 putScheduledUpdateGroupActionResponse = PutScheduledUpdateGroupActionResponse'
 
 instance NFData PutScheduledUpdateGroupActionResponse

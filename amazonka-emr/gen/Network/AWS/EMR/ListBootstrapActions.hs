@@ -128,7 +128,7 @@ instance ToQuery ListBootstrapActions where
 -- | This output contains the boostrap actions detail .
 --
 -- /See:/ 'listBootstrapActionsResponse' smart constructor.
-data ListBootstrapActionsResponse = ListBootstrapActionsResponse'
+data ListBootstrapActionsResponse a = ListBootstrapActionsResponse'
     { _lbarsBootstrapActions :: !(Maybe [Command])
     , _lbarsMarker           :: !(Maybe Text)
     , _lbarsResponseStatus   :: !Int
@@ -145,7 +145,7 @@ data ListBootstrapActionsResponse = ListBootstrapActionsResponse'
 -- * 'lbarsResponseStatus'
 listBootstrapActionsResponse
     :: Int -- ^ 'lbarsResponseStatus'
-    -> ListBootstrapActionsResponse
+    -> ListBootstrapActionsResponse (a)
 listBootstrapActionsResponse pResponseStatus_ =
     ListBootstrapActionsResponse'
     { _lbarsBootstrapActions = Nothing
@@ -154,15 +154,15 @@ listBootstrapActionsResponse pResponseStatus_ =
     }
 
 -- | The bootstrap actions associated with the cluster .
-lbarsBootstrapActions :: Lens' ListBootstrapActionsResponse [Command]
+lbarsBootstrapActions :: Lens' (ListBootstrapActionsResponse (a)) [Command]
 lbarsBootstrapActions = lens _lbarsBootstrapActions (\ s a -> s{_lbarsBootstrapActions = a}) . _Default . _Coerce;
 
 -- | The pagination token that indicates the next set of results to retrieve .
-lbarsMarker :: Lens' ListBootstrapActionsResponse (Maybe Text)
+lbarsMarker :: Lens' (ListBootstrapActionsResponse (a)) (Maybe Text)
 lbarsMarker = lens _lbarsMarker (\ s a -> s{_lbarsMarker = a});
 
 -- | The response status code.
-lbarsResponseStatus :: Lens' ListBootstrapActionsResponse Int
+lbarsResponseStatus :: Lens' (ListBootstrapActionsResponse (a)) Int
 lbarsResponseStatus = lens _lbarsResponseStatus (\ s a -> s{_lbarsResponseStatus = a});
 
 instance NFData ListBootstrapActionsResponse

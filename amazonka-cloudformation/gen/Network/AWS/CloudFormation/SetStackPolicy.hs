@@ -106,14 +106,14 @@ instance ToQuery SetStackPolicy where
                "StackName" =: _sspStackName]
 
 -- | /See:/ 'setStackPolicyResponse' smart constructor.
-data SetStackPolicyResponse =
+data SetStackPolicyResponse a =
     SetStackPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetStackPolicyResponse' with the minimum fields required to make a request.
 --
 setStackPolicyResponse
-    :: SetStackPolicyResponse
+    :: SetStackPolicyResponse (a)
 setStackPolicyResponse = SetStackPolicyResponse'
 
 instance NFData SetStackPolicyResponse

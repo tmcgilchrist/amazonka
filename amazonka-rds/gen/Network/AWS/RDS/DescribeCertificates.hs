@@ -142,7 +142,7 @@ instance ToQuery DescribeCertificates where
 -- | Data returned by the __DescribeCertificates__ action.
 --
 -- /See:/ 'describeCertificatesResponse' smart constructor.
-data DescribeCertificatesResponse = DescribeCertificatesResponse'
+data DescribeCertificatesResponse a = DescribeCertificatesResponse'
     { _dcrsCertificates   :: !(Maybe [Certificate])
     , _dcrsMarker         :: !(Maybe Text)
     , _dcrsResponseStatus :: !Int
@@ -159,7 +159,7 @@ data DescribeCertificatesResponse = DescribeCertificatesResponse'
 -- * 'dcrsResponseStatus'
 describeCertificatesResponse
     :: Int -- ^ 'dcrsResponseStatus'
-    -> DescribeCertificatesResponse
+    -> DescribeCertificatesResponse (a)
 describeCertificatesResponse pResponseStatus_ =
     DescribeCertificatesResponse'
     { _dcrsCertificates = Nothing
@@ -168,15 +168,15 @@ describeCertificatesResponse pResponseStatus_ =
     }
 
 -- | The list of < Certificate> objects for the AWS account.
-dcrsCertificates :: Lens' DescribeCertificatesResponse [Certificate]
+dcrsCertificates :: Lens' (DescribeCertificatesResponse (a)) [Certificate]
 dcrsCertificates = lens _dcrsCertificates (\ s a -> s{_dcrsCertificates = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous < DescribeCertificates> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords' .
-dcrsMarker :: Lens' DescribeCertificatesResponse (Maybe Text)
+dcrsMarker :: Lens' (DescribeCertificatesResponse (a)) (Maybe Text)
 dcrsMarker = lens _dcrsMarker (\ s a -> s{_dcrsMarker = a});
 
 -- | The response status code.
-dcrsResponseStatus :: Lens' DescribeCertificatesResponse Int
+dcrsResponseStatus :: Lens' (DescribeCertificatesResponse (a)) Int
 dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a});
 
 instance NFData DescribeCertificatesResponse

@@ -91,7 +91,7 @@ instance ToQuery DescribeAutoScalingNotificationTypes
 -- | Contains the output of DescribeAutoScalingNotificationTypes.
 --
 -- /See:/ 'describeAutoScalingNotificationTypesResponse' smart constructor.
-data DescribeAutoScalingNotificationTypesResponse = DescribeAutoScalingNotificationTypesResponse'
+data DescribeAutoScalingNotificationTypesResponse a = DescribeAutoScalingNotificationTypesResponse'
     { _dasntrsAutoScalingNotificationTypes :: !(Maybe [Text])
     , _dasntrsResponseStatus               :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -105,7 +105,7 @@ data DescribeAutoScalingNotificationTypesResponse = DescribeAutoScalingNotificat
 -- * 'dasntrsResponseStatus'
 describeAutoScalingNotificationTypesResponse
     :: Int -- ^ 'dasntrsResponseStatus'
-    -> DescribeAutoScalingNotificationTypesResponse
+    -> DescribeAutoScalingNotificationTypesResponse (a)
 describeAutoScalingNotificationTypesResponse pResponseStatus_ =
     DescribeAutoScalingNotificationTypesResponse'
     { _dasntrsAutoScalingNotificationTypes = Nothing
@@ -113,11 +113,11 @@ describeAutoScalingNotificationTypesResponse pResponseStatus_ =
     }
 
 -- | The notification types.
-dasntrsAutoScalingNotificationTypes :: Lens' DescribeAutoScalingNotificationTypesResponse [Text]
+dasntrsAutoScalingNotificationTypes :: Lens' (DescribeAutoScalingNotificationTypesResponse (a)) [Text]
 dasntrsAutoScalingNotificationTypes = lens _dasntrsAutoScalingNotificationTypes (\ s a -> s{_dasntrsAutoScalingNotificationTypes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dasntrsResponseStatus :: Lens' DescribeAutoScalingNotificationTypesResponse Int
+dasntrsResponseStatus :: Lens' (DescribeAutoScalingNotificationTypesResponse (a)) Int
 dasntrsResponseStatus = lens _dasntrsResponseStatus (\ s a -> s{_dasntrsResponseStatus = a});
 
 instance NFData

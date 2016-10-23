@@ -141,7 +141,7 @@ instance ToQuery DescribeImportImageTasks where
 -- | Contains the output for DescribeImportImageTasks.
 --
 -- /See:/ 'describeImportImageTasksResponse' smart constructor.
-data DescribeImportImageTasksResponse = DescribeImportImageTasksResponse'
+data DescribeImportImageTasksResponse a = DescribeImportImageTasksResponse'
     { _diitrsNextToken        :: !(Maybe Text)
     , _diitrsImportImageTasks :: !(Maybe [ImportImageTask])
     , _diitrsResponseStatus   :: !Int
@@ -158,7 +158,7 @@ data DescribeImportImageTasksResponse = DescribeImportImageTasksResponse'
 -- * 'diitrsResponseStatus'
 describeImportImageTasksResponse
     :: Int -- ^ 'diitrsResponseStatus'
-    -> DescribeImportImageTasksResponse
+    -> DescribeImportImageTasksResponse (a)
 describeImportImageTasksResponse pResponseStatus_ =
     DescribeImportImageTasksResponse'
     { _diitrsNextToken = Nothing
@@ -167,15 +167,15 @@ describeImportImageTasksResponse pResponseStatus_ =
     }
 
 -- | The token to use to get the next page of results. This value is 'null' when there are no more results to return.
-diitrsNextToken :: Lens' DescribeImportImageTasksResponse (Maybe Text)
+diitrsNextToken :: Lens' (DescribeImportImageTasksResponse (a)) (Maybe Text)
 diitrsNextToken = lens _diitrsNextToken (\ s a -> s{_diitrsNextToken = a});
 
 -- | A list of zero or more import image tasks that are currently active or were completed or canceled in the previous 7 days.
-diitrsImportImageTasks :: Lens' DescribeImportImageTasksResponse [ImportImageTask]
+diitrsImportImageTasks :: Lens' (DescribeImportImageTasksResponse (a)) [ImportImageTask]
 diitrsImportImageTasks = lens _diitrsImportImageTasks (\ s a -> s{_diitrsImportImageTasks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-diitrsResponseStatus :: Lens' DescribeImportImageTasksResponse Int
+diitrsResponseStatus :: Lens' (DescribeImportImageTasksResponse (a)) Int
 diitrsResponseStatus = lens _diitrsResponseStatus (\ s a -> s{_diitrsResponseStatus = a});
 
 instance NFData DescribeImportImageTasksResponse

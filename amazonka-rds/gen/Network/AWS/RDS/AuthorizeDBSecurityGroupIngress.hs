@@ -144,7 +144,7 @@ instance ToQuery AuthorizeDBSecurityGroupIngress
                "DBSecurityGroupName" =: _adsgiDBSecurityGroupName]
 
 -- | /See:/ 'authorizeDBSecurityGroupIngressResponse' smart constructor.
-data AuthorizeDBSecurityGroupIngressResponse = AuthorizeDBSecurityGroupIngressResponse'
+data AuthorizeDBSecurityGroupIngressResponse a = AuthorizeDBSecurityGroupIngressResponse'
     { _adsgirsDBSecurityGroup :: !(Maybe DBSecurityGroup)
     , _adsgirsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -158,7 +158,7 @@ data AuthorizeDBSecurityGroupIngressResponse = AuthorizeDBSecurityGroupIngressRe
 -- * 'adsgirsResponseStatus'
 authorizeDBSecurityGroupIngressResponse
     :: Int -- ^ 'adsgirsResponseStatus'
-    -> AuthorizeDBSecurityGroupIngressResponse
+    -> AuthorizeDBSecurityGroupIngressResponse (a)
 authorizeDBSecurityGroupIngressResponse pResponseStatus_ =
     AuthorizeDBSecurityGroupIngressResponse'
     { _adsgirsDBSecurityGroup = Nothing
@@ -166,11 +166,11 @@ authorizeDBSecurityGroupIngressResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-adsgirsDBSecurityGroup :: Lens' AuthorizeDBSecurityGroupIngressResponse (Maybe DBSecurityGroup)
+adsgirsDBSecurityGroup :: Lens' (AuthorizeDBSecurityGroupIngressResponse (a)) (Maybe DBSecurityGroup)
 adsgirsDBSecurityGroup = lens _adsgirsDBSecurityGroup (\ s a -> s{_adsgirsDBSecurityGroup = a});
 
 -- | The response status code.
-adsgirsResponseStatus :: Lens' AuthorizeDBSecurityGroupIngressResponse Int
+adsgirsResponseStatus :: Lens' (AuthorizeDBSecurityGroupIngressResponse (a)) Int
 adsgirsResponseStatus = lens _adsgirsResponseStatus (\ s a -> s{_adsgirsResponseStatus = a});
 
 instance NFData

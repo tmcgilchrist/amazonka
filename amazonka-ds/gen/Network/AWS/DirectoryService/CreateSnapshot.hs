@@ -116,7 +116,7 @@ instance ToQuery CreateSnapshot where
 -- | Contains the results of the < CreateSnapshot> operation.
 --
 -- /See:/ 'createSnapshotResponse' smart constructor.
-data CreateSnapshotResponse = CreateSnapshotResponse'
+data CreateSnapshotResponse a = CreateSnapshotResponse'
     { _csrsSnapshotId     :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data CreateSnapshotResponse = CreateSnapshotResponse'
 -- * 'csrsResponseStatus'
 createSnapshotResponse
     :: Int -- ^ 'csrsResponseStatus'
-    -> CreateSnapshotResponse
+    -> CreateSnapshotResponse (a)
 createSnapshotResponse pResponseStatus_ =
     CreateSnapshotResponse'
     { _csrsSnapshotId = Nothing
@@ -138,11 +138,11 @@ createSnapshotResponse pResponseStatus_ =
     }
 
 -- | The identifier of the snapshot that was created.
-csrsSnapshotId :: Lens' CreateSnapshotResponse (Maybe Text)
+csrsSnapshotId :: Lens' (CreateSnapshotResponse (a)) (Maybe Text)
 csrsSnapshotId = lens _csrsSnapshotId (\ s a -> s{_csrsSnapshotId = a});
 
 -- | The response status code.
-csrsResponseStatus :: Lens' CreateSnapshotResponse Int
+csrsResponseStatus :: Lens' (CreateSnapshotResponse (a)) Int
 csrsResponseStatus = lens _csrsResponseStatus (\ s a -> s{_csrsResponseStatus = a});
 
 instance NFData CreateSnapshotResponse

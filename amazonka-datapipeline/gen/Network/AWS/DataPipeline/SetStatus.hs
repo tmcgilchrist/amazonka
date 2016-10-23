@@ -115,14 +115,14 @@ instance ToQuery SetStatus where
         toQuery = const mempty
 
 -- | /See:/ 'setStatusResponse' smart constructor.
-data SetStatusResponse =
+data SetStatusResponse a =
     SetStatusResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetStatusResponse' with the minimum fields required to make a request.
 --
 setStatusResponse
-    :: SetStatusResponse
+    :: SetStatusResponse (a)
 setStatusResponse = SetStatusResponse'
 
 instance NFData SetStatusResponse

@@ -112,14 +112,14 @@ instance ToQuery SetSubscriptionAttributes where
                "AttributeName" =: _ssaAttributeName]
 
 -- | /See:/ 'setSubscriptionAttributesResponse' smart constructor.
-data SetSubscriptionAttributesResponse =
+data SetSubscriptionAttributesResponse a =
     SetSubscriptionAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetSubscriptionAttributesResponse' with the minimum fields required to make a request.
 --
 setSubscriptionAttributesResponse
-    :: SetSubscriptionAttributesResponse
+    :: SetSubscriptionAttributesResponse (a)
 setSubscriptionAttributesResponse = SetSubscriptionAttributesResponse'
 
 instance NFData SetSubscriptionAttributesResponse

@@ -111,14 +111,14 @@ instance ToQuery
                "ClientID" =: _rcifoicpClientId]
 
 -- | /See:/ 'removeClientIdFromOpenIdConnectProviderResponse' smart constructor.
-data RemoveClientIdFromOpenIdConnectProviderResponse =
+data RemoveClientIdFromOpenIdConnectProviderResponse a =
     RemoveClientIdFromOpenIdConnectProviderResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveClientIdFromOpenIdConnectProviderResponse' with the minimum fields required to make a request.
 --
 removeClientIdFromOpenIdConnectProviderResponse
-    :: RemoveClientIdFromOpenIdConnectProviderResponse
+    :: RemoveClientIdFromOpenIdConnectProviderResponse (a)
 removeClientIdFromOpenIdConnectProviderResponse =
     RemoveClientIdFromOpenIdConnectProviderResponse'
 

@@ -90,14 +90,14 @@ instance ToQuery CreateOrUpdateTags where
                "Tags" =: toQueryList "member" _coutTags]
 
 -- | /See:/ 'createOrUpdateTagsResponse' smart constructor.
-data CreateOrUpdateTagsResponse =
+data CreateOrUpdateTagsResponse a =
     CreateOrUpdateTagsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateOrUpdateTagsResponse' with the minimum fields required to make a request.
 --
 createOrUpdateTagsResponse
-    :: CreateOrUpdateTagsResponse
+    :: CreateOrUpdateTagsResponse (a)
 createOrUpdateTagsResponse = CreateOrUpdateTagsResponse'
 
 instance NFData CreateOrUpdateTagsResponse

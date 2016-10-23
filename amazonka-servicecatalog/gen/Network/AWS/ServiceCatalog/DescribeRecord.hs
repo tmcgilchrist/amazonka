@@ -142,7 +142,7 @@ instance ToQuery DescribeRecord where
         toQuery = const mempty
 
 -- | /See:/ 'describeRecordResponse' smart constructor.
-data DescribeRecordResponse = DescribeRecordResponse'
+data DescribeRecordResponse a = DescribeRecordResponse'
     { _drrsRecordDetail   :: !(Maybe RecordDetail)
     , _drrsNextPageToken  :: !(Maybe Text)
     , _drrsRecordOutputs  :: !(Maybe [RecordOutput])
@@ -162,7 +162,7 @@ data DescribeRecordResponse = DescribeRecordResponse'
 -- * 'drrsResponseStatus'
 describeRecordResponse
     :: Int -- ^ 'drrsResponseStatus'
-    -> DescribeRecordResponse
+    -> DescribeRecordResponse (a)
 describeRecordResponse pResponseStatus_ =
     DescribeRecordResponse'
     { _drrsRecordDetail = Nothing
@@ -172,19 +172,19 @@ describeRecordResponse pResponseStatus_ =
     }
 
 -- | Detailed record information for the specified product.
-drrsRecordDetail :: Lens' DescribeRecordResponse (Maybe RecordDetail)
+drrsRecordDetail :: Lens' (DescribeRecordResponse (a)) (Maybe RecordDetail)
 drrsRecordDetail = lens _drrsRecordDetail (\ s a -> s{_drrsRecordDetail = a});
 
 -- | The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
-drrsNextPageToken :: Lens' DescribeRecordResponse (Maybe Text)
+drrsNextPageToken :: Lens' (DescribeRecordResponse (a)) (Maybe Text)
 drrsNextPageToken = lens _drrsNextPageToken (\ s a -> s{_drrsNextPageToken = a});
 
 -- | A list of outputs for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.
-drrsRecordOutputs :: Lens' DescribeRecordResponse [RecordOutput]
+drrsRecordOutputs :: Lens' (DescribeRecordResponse (a)) [RecordOutput]
 drrsRecordOutputs = lens _drrsRecordOutputs (\ s a -> s{_drrsRecordOutputs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drrsResponseStatus :: Lens' DescribeRecordResponse Int
+drrsResponseStatus :: Lens' (DescribeRecordResponse (a)) Int
 drrsResponseStatus = lens _drrsResponseStatus (\ s a -> s{_drrsResponseStatus = a});
 
 instance NFData DescribeRecordResponse

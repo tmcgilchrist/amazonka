@@ -102,14 +102,14 @@ instance ToQuery DeleteSnapshot where
                "SnapshotId" =: _deleSnapshotId]
 
 -- | /See:/ 'deleteSnapshotResponse' smart constructor.
-data DeleteSnapshotResponse =
+data DeleteSnapshotResponse a =
     DeleteSnapshotResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSnapshotResponse' with the minimum fields required to make a request.
 --
 deleteSnapshotResponse
-    :: DeleteSnapshotResponse
+    :: DeleteSnapshotResponse (a)
 deleteSnapshotResponse = DeleteSnapshotResponse'
 
 instance NFData DeleteSnapshotResponse

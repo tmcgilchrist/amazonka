@@ -122,7 +122,7 @@ instance ToQuery ImportAPIKeys where
 -- | The identifier of an API key used to reference an API key in a usage plan.
 --
 -- /See:/ 'importAPIKeysResponse' smart constructor.
-data ImportAPIKeysResponse = ImportAPIKeysResponse'
+data ImportAPIKeysResponse a = ImportAPIKeysResponse'
     { _iakrsIds            :: !(Maybe [Text])
     , _iakrsWarnings       :: !(Maybe [Text])
     , _iakrsResponseStatus :: !Int
@@ -139,7 +139,7 @@ data ImportAPIKeysResponse = ImportAPIKeysResponse'
 -- * 'iakrsResponseStatus'
 importAPIKeysResponse
     :: Int -- ^ 'iakrsResponseStatus'
-    -> ImportAPIKeysResponse
+    -> ImportAPIKeysResponse (a)
 importAPIKeysResponse pResponseStatus_ =
     ImportAPIKeysResponse'
     { _iakrsIds = Nothing
@@ -148,15 +148,15 @@ importAPIKeysResponse pResponseStatus_ =
     }
 
 -- | A list of all the < ApiKey> identifiers.
-iakrsIds :: Lens' ImportAPIKeysResponse [Text]
+iakrsIds :: Lens' (ImportAPIKeysResponse (a)) [Text]
 iakrsIds = lens _iakrsIds (\ s a -> s{_iakrsIds = a}) . _Default . _Coerce;
 
 -- | A list of warning messages.
-iakrsWarnings :: Lens' ImportAPIKeysResponse [Text]
+iakrsWarnings :: Lens' (ImportAPIKeysResponse (a)) [Text]
 iakrsWarnings = lens _iakrsWarnings (\ s a -> s{_iakrsWarnings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-iakrsResponseStatus :: Lens' ImportAPIKeysResponse Int
+iakrsResponseStatus :: Lens' (ImportAPIKeysResponse (a)) Int
 iakrsResponseStatus = lens _iakrsResponseStatus (\ s a -> s{_iakrsResponseStatus = a});
 
 instance NFData ImportAPIKeysResponse

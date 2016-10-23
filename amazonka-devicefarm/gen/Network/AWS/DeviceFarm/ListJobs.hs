@@ -125,7 +125,7 @@ instance ToQuery ListJobs where
 -- | Represents the result of a list jobs request.
 --
 -- /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse = ListJobsResponse'
+data ListJobsResponse a = ListJobsResponse'
     { _ljrsJobs           :: !(Maybe [Job])
     , _ljrsNextToken      :: !(Maybe Text)
     , _ljrsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ListJobsResponse = ListJobsResponse'
 -- * 'ljrsResponseStatus'
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
-    -> ListJobsResponse
+    -> ListJobsResponse (a)
 listJobsResponse pResponseStatus_ =
     ListJobsResponse'
     { _ljrsJobs = Nothing
@@ -151,15 +151,15 @@ listJobsResponse pResponseStatus_ =
     }
 
 -- | Information about the jobs.
-ljrsJobs :: Lens' ListJobsResponse [Job]
+ljrsJobs :: Lens' (ListJobsResponse (a)) [Job]
 ljrsJobs = lens _ljrsJobs (\ s a -> s{_ljrsJobs = a}) . _Default . _Coerce;
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-ljrsNextToken :: Lens' ListJobsResponse (Maybe Text)
+ljrsNextToken :: Lens' (ListJobsResponse (a)) (Maybe Text)
 ljrsNextToken = lens _ljrsNextToken (\ s a -> s{_ljrsNextToken = a});
 
 -- | The response status code.
-ljrsResponseStatus :: Lens' ListJobsResponse Int
+ljrsResponseStatus :: Lens' (ListJobsResponse (a)) Int
 ljrsResponseStatus = lens _ljrsResponseStatus (\ s a -> s{_ljrsResponseStatus = a});
 
 instance NFData ListJobsResponse

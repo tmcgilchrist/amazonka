@@ -185,7 +185,7 @@ instance ToQuery ListMultipartUploads where
                "delimiter" =: _lmuDelimiter, "uploads"]
 
 -- | /See:/ 'listMultipartUploadsResponse' smart constructor.
-data ListMultipartUploadsResponse = ListMultipartUploadsResponse'
+data ListMultipartUploadsResponse a = ListMultipartUploadsResponse'
     { _lmursKeyMarker          :: !(Maybe Text)
     , _lmursPrefix             :: !(Maybe Text)
     , _lmursCommonPrefixes     :: !(Maybe [CommonPrefix])
@@ -232,7 +232,7 @@ data ListMultipartUploadsResponse = ListMultipartUploadsResponse'
 -- * 'lmursResponseStatus'
 listMultipartUploadsResponse
     :: Int -- ^ 'lmursResponseStatus'
-    -> ListMultipartUploadsResponse
+    -> ListMultipartUploadsResponse (a)
 listMultipartUploadsResponse pResponseStatus_ =
     ListMultipartUploadsResponse'
     { _lmursKeyMarker = Nothing
@@ -251,55 +251,55 @@ listMultipartUploadsResponse pResponseStatus_ =
     }
 
 -- | The key at or after which the listing began.
-lmursKeyMarker :: Lens' ListMultipartUploadsResponse (Maybe Text)
+lmursKeyMarker :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Text)
 lmursKeyMarker = lens _lmursKeyMarker (\ s a -> s{_lmursKeyMarker = a});
 
 -- | When a prefix is provided in the request, this field contains the specified prefix. The result contains only keys starting with the specified prefix.
-lmursPrefix :: Lens' ListMultipartUploadsResponse (Maybe Text)
+lmursPrefix :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Text)
 lmursPrefix = lens _lmursPrefix (\ s a -> s{_lmursPrefix = a});
 
 -- | Undocumented member.
-lmursCommonPrefixes :: Lens' ListMultipartUploadsResponse [CommonPrefix]
+lmursCommonPrefixes :: Lens' (ListMultipartUploadsResponse (a)) [CommonPrefix]
 lmursCommonPrefixes = lens _lmursCommonPrefixes (\ s a -> s{_lmursCommonPrefixes = a}) . _Default . _Coerce;
 
 -- | Encoding type used by Amazon S3 to encode object keys in the response.
-lmursEncodingType :: Lens' ListMultipartUploadsResponse (Maybe EncodingType)
+lmursEncodingType :: Lens' (ListMultipartUploadsResponse (a)) (Maybe EncodingType)
 lmursEncodingType = lens _lmursEncodingType (\ s a -> s{_lmursEncodingType = a});
 
 -- | Name of the bucket to which the multipart upload was initiated.
-lmursBucket :: Lens' ListMultipartUploadsResponse (Maybe BucketName)
+lmursBucket :: Lens' (ListMultipartUploadsResponse (a)) (Maybe BucketName)
 lmursBucket = lens _lmursBucket (\ s a -> s{_lmursBucket = a});
 
 -- | Upload ID after which listing began.
-lmursUploadIdMarker :: Lens' ListMultipartUploadsResponse (Maybe Text)
+lmursUploadIdMarker :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Text)
 lmursUploadIdMarker = lens _lmursUploadIdMarker (\ s a -> s{_lmursUploadIdMarker = a});
 
 -- | Maximum number of multipart uploads that could have been included in the response.
-lmursMaxUploads :: Lens' ListMultipartUploadsResponse (Maybe Int)
+lmursMaxUploads :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Int)
 lmursMaxUploads = lens _lmursMaxUploads (\ s a -> s{_lmursMaxUploads = a});
 
 -- | When a list is truncated, this element specifies the value that should be used for the key-marker request parameter in a subsequent request.
-lmursNextKeyMarker :: Lens' ListMultipartUploadsResponse (Maybe Text)
+lmursNextKeyMarker :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Text)
 lmursNextKeyMarker = lens _lmursNextKeyMarker (\ s a -> s{_lmursNextKeyMarker = a});
 
 -- | Undocumented member.
-lmursUploads :: Lens' ListMultipartUploadsResponse [MultipartUpload]
+lmursUploads :: Lens' (ListMultipartUploadsResponse (a)) [MultipartUpload]
 lmursUploads = lens _lmursUploads (\ s a -> s{_lmursUploads = a}) . _Default . _Coerce;
 
 -- | Indicates whether the returned list of multipart uploads is truncated. A value of true indicates that the list was truncated. The list can be truncated if the number of multipart uploads exceeds the limit allowed or specified by max uploads.
-lmursIsTruncated :: Lens' ListMultipartUploadsResponse (Maybe Bool)
+lmursIsTruncated :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Bool)
 lmursIsTruncated = lens _lmursIsTruncated (\ s a -> s{_lmursIsTruncated = a});
 
 -- | When a list is truncated, this element specifies the value that should be used for the upload-id-marker request parameter in a subsequent request.
-lmursNextUploadIdMarker :: Lens' ListMultipartUploadsResponse (Maybe Text)
+lmursNextUploadIdMarker :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Text)
 lmursNextUploadIdMarker = lens _lmursNextUploadIdMarker (\ s a -> s{_lmursNextUploadIdMarker = a});
 
 -- | Undocumented member.
-lmursDelimiter :: Lens' ListMultipartUploadsResponse (Maybe Delimiter)
+lmursDelimiter :: Lens' (ListMultipartUploadsResponse (a)) (Maybe Delimiter)
 lmursDelimiter = lens _lmursDelimiter (\ s a -> s{_lmursDelimiter = a});
 
 -- | The response status code.
-lmursResponseStatus :: Lens' ListMultipartUploadsResponse Int
+lmursResponseStatus :: Lens' (ListMultipartUploadsResponse (a)) Int
 lmursResponseStatus = lens _lmursResponseStatus (\ s a -> s{_lmursResponseStatus = a});
 
 instance NFData ListMultipartUploadsResponse

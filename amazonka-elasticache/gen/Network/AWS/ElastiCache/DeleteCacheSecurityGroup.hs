@@ -94,14 +94,14 @@ instance ToQuery DeleteCacheSecurityGroup where
                  _dcsgCacheSecurityGroupName]
 
 -- | /See:/ 'deleteCacheSecurityGroupResponse' smart constructor.
-data DeleteCacheSecurityGroupResponse =
+data DeleteCacheSecurityGroupResponse a =
     DeleteCacheSecurityGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteCacheSecurityGroupResponse' with the minimum fields required to make a request.
 --
 deleteCacheSecurityGroupResponse
-    :: DeleteCacheSecurityGroupResponse
+    :: DeleteCacheSecurityGroupResponse (a)
 deleteCacheSecurityGroupResponse = DeleteCacheSecurityGroupResponse'
 
 instance NFData DeleteCacheSecurityGroupResponse

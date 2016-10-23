@@ -380,7 +380,7 @@ instance ToQuery RestoreDBInstanceFromDBSnapshot
                  _rdifdsDBSnapshotIdentifier]
 
 -- | /See:/ 'restoreDBInstanceFromDBSnapshotResponse' smart constructor.
-data RestoreDBInstanceFromDBSnapshotResponse = RestoreDBInstanceFromDBSnapshotResponse'
+data RestoreDBInstanceFromDBSnapshotResponse a = RestoreDBInstanceFromDBSnapshotResponse'
     { _rdifdsrsDBInstance     :: !(Maybe DBInstance)
     , _rdifdsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -394,7 +394,7 @@ data RestoreDBInstanceFromDBSnapshotResponse = RestoreDBInstanceFromDBSnapshotRe
 -- * 'rdifdsrsResponseStatus'
 restoreDBInstanceFromDBSnapshotResponse
     :: Int -- ^ 'rdifdsrsResponseStatus'
-    -> RestoreDBInstanceFromDBSnapshotResponse
+    -> RestoreDBInstanceFromDBSnapshotResponse (a)
 restoreDBInstanceFromDBSnapshotResponse pResponseStatus_ =
     RestoreDBInstanceFromDBSnapshotResponse'
     { _rdifdsrsDBInstance = Nothing
@@ -402,11 +402,11 @@ restoreDBInstanceFromDBSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rdifdsrsDBInstance :: Lens' RestoreDBInstanceFromDBSnapshotResponse (Maybe DBInstance)
+rdifdsrsDBInstance :: Lens' (RestoreDBInstanceFromDBSnapshotResponse (a)) (Maybe DBInstance)
 rdifdsrsDBInstance = lens _rdifdsrsDBInstance (\ s a -> s{_rdifdsrsDBInstance = a});
 
 -- | The response status code.
-rdifdsrsResponseStatus :: Lens' RestoreDBInstanceFromDBSnapshotResponse Int
+rdifdsrsResponseStatus :: Lens' (RestoreDBInstanceFromDBSnapshotResponse (a)) Int
 rdifdsrsResponseStatus = lens _rdifdsrsResponseStatus (\ s a -> s{_rdifdsrsResponseStatus = a});
 
 instance NFData

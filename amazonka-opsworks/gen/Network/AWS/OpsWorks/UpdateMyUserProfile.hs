@@ -95,14 +95,14 @@ instance ToQuery UpdateMyUserProfile where
         toQuery = const mempty
 
 -- | /See:/ 'updateMyUserProfileResponse' smart constructor.
-data UpdateMyUserProfileResponse =
+data UpdateMyUserProfileResponse a =
     UpdateMyUserProfileResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateMyUserProfileResponse' with the minimum fields required to make a request.
 --
 updateMyUserProfileResponse
-    :: UpdateMyUserProfileResponse
+    :: UpdateMyUserProfileResponse (a)
 updateMyUserProfileResponse = UpdateMyUserProfileResponse'
 
 instance NFData UpdateMyUserProfileResponse

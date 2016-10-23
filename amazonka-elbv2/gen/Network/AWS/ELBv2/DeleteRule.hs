@@ -93,7 +93,7 @@ instance ToQuery DeleteRule where
 -- | Contains the output of DeleteRule.
 --
 -- /See:/ 'deleteRuleResponse' smart constructor.
-newtype DeleteRuleResponse = DeleteRuleResponse'
+newtype DeleteRuleResponse a = DeleteRuleResponse'
     { _drrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -104,14 +104,14 @@ newtype DeleteRuleResponse = DeleteRuleResponse'
 -- * 'drrsResponseStatus'
 deleteRuleResponse
     :: Int -- ^ 'drrsResponseStatus'
-    -> DeleteRuleResponse
+    -> DeleteRuleResponse (a)
 deleteRuleResponse pResponseStatus_ =
     DeleteRuleResponse'
     { _drrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drrsResponseStatus :: Lens' DeleteRuleResponse Int
+drrsResponseStatus :: Lens' (DeleteRuleResponse (a)) Int
 drrsResponseStatus = lens _drrsResponseStatus (\ s a -> s{_drrsResponseStatus = a});
 
 instance NFData DeleteRuleResponse

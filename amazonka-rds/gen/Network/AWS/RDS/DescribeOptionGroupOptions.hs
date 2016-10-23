@@ -157,7 +157,7 @@ instance ToQuery DescribeOptionGroupOptions where
 -- |
 --
 -- /See:/ 'describeOptionGroupOptionsResponse' smart constructor.
-data DescribeOptionGroupOptionsResponse = DescribeOptionGroupOptionsResponse'
+data DescribeOptionGroupOptionsResponse a = DescribeOptionGroupOptionsResponse'
     { _dogorsOptionGroupOptions :: !(Maybe [OptionGroupOption])
     , _dogorsMarker             :: !(Maybe Text)
     , _dogorsResponseStatus     :: !Int
@@ -174,7 +174,7 @@ data DescribeOptionGroupOptionsResponse = DescribeOptionGroupOptionsResponse'
 -- * 'dogorsResponseStatus'
 describeOptionGroupOptionsResponse
     :: Int -- ^ 'dogorsResponseStatus'
-    -> DescribeOptionGroupOptionsResponse
+    -> DescribeOptionGroupOptionsResponse (a)
 describeOptionGroupOptionsResponse pResponseStatus_ =
     DescribeOptionGroupOptionsResponse'
     { _dogorsOptionGroupOptions = Nothing
@@ -183,15 +183,15 @@ describeOptionGroupOptionsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dogorsOptionGroupOptions :: Lens' DescribeOptionGroupOptionsResponse [OptionGroupOption]
+dogorsOptionGroupOptions :: Lens' (DescribeOptionGroupOptionsResponse (a)) [OptionGroupOption]
 dogorsOptionGroupOptions = lens _dogorsOptionGroupOptions (\ s a -> s{_dogorsOptionGroupOptions = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-dogorsMarker :: Lens' DescribeOptionGroupOptionsResponse (Maybe Text)
+dogorsMarker :: Lens' (DescribeOptionGroupOptionsResponse (a)) (Maybe Text)
 dogorsMarker = lens _dogorsMarker (\ s a -> s{_dogorsMarker = a});
 
 -- | The response status code.
-dogorsResponseStatus :: Lens' DescribeOptionGroupOptionsResponse Int
+dogorsResponseStatus :: Lens' (DescribeOptionGroupOptionsResponse (a)) Int
 dogorsResponseStatus = lens _dogorsResponseStatus (\ s a -> s{_dogorsResponseStatus = a});
 
 instance NFData DescribeOptionGroupOptionsResponse

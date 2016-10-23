@@ -108,7 +108,7 @@ instance ToQuery SetSecurityGroups where
 -- | Contains the output of SetSecurityGroups.
 --
 -- /See:/ 'setSecurityGroupsResponse' smart constructor.
-data SetSecurityGroupsResponse = SetSecurityGroupsResponse'
+data SetSecurityGroupsResponse a = SetSecurityGroupsResponse'
     { _ssgrsSecurityGroupIds :: !(Maybe [Text])
     , _ssgrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -122,7 +122,7 @@ data SetSecurityGroupsResponse = SetSecurityGroupsResponse'
 -- * 'ssgrsResponseStatus'
 setSecurityGroupsResponse
     :: Int -- ^ 'ssgrsResponseStatus'
-    -> SetSecurityGroupsResponse
+    -> SetSecurityGroupsResponse (a)
 setSecurityGroupsResponse pResponseStatus_ =
     SetSecurityGroupsResponse'
     { _ssgrsSecurityGroupIds = Nothing
@@ -130,11 +130,11 @@ setSecurityGroupsResponse pResponseStatus_ =
     }
 
 -- | The IDs of the security groups associated with the load balancer.
-ssgrsSecurityGroupIds :: Lens' SetSecurityGroupsResponse [Text]
+ssgrsSecurityGroupIds :: Lens' (SetSecurityGroupsResponse (a)) [Text]
 ssgrsSecurityGroupIds = lens _ssgrsSecurityGroupIds (\ s a -> s{_ssgrsSecurityGroupIds = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ssgrsResponseStatus :: Lens' SetSecurityGroupsResponse Int
+ssgrsResponseStatus :: Lens' (SetSecurityGroupsResponse (a)) Int
 ssgrsResponseStatus = lens _ssgrsResponseStatus (\ s a -> s{_ssgrsResponseStatus = a});
 
 instance NFData SetSecurityGroupsResponse

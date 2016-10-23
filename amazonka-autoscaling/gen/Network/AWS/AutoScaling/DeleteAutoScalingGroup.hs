@@ -107,14 +107,14 @@ instance ToQuery DeleteAutoScalingGroup where
                "AutoScalingGroupName" =: _dasgAutoScalingGroupName]
 
 -- | /See:/ 'deleteAutoScalingGroupResponse' smart constructor.
-data DeleteAutoScalingGroupResponse =
+data DeleteAutoScalingGroupResponse a =
     DeleteAutoScalingGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAutoScalingGroupResponse' with the minimum fields required to make a request.
 --
 deleteAutoScalingGroupResponse
-    :: DeleteAutoScalingGroupResponse
+    :: DeleteAutoScalingGroupResponse (a)
 deleteAutoScalingGroupResponse = DeleteAutoScalingGroupResponse'
 
 instance NFData DeleteAutoScalingGroupResponse

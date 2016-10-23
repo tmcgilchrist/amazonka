@@ -93,14 +93,14 @@ instance ToQuery StartInstance where
         toQuery = const mempty
 
 -- | /See:/ 'startInstanceResponse' smart constructor.
-data StartInstanceResponse =
+data StartInstanceResponse a =
     StartInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'StartInstanceResponse' with the minimum fields required to make a request.
 --
 startInstanceResponse
-    :: StartInstanceResponse
+    :: StartInstanceResponse (a)
 startInstanceResponse = StartInstanceResponse'
 
 instance NFData StartInstanceResponse

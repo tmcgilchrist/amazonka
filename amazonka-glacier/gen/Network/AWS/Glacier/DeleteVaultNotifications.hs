@@ -101,14 +101,14 @@ instance ToQuery DeleteVaultNotifications where
         toQuery = const mempty
 
 -- | /See:/ 'deleteVaultNotificationsResponse' smart constructor.
-data DeleteVaultNotificationsResponse =
+data DeleteVaultNotificationsResponse a =
     DeleteVaultNotificationsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVaultNotificationsResponse' with the minimum fields required to make a request.
 --
 deleteVaultNotificationsResponse
-    :: DeleteVaultNotificationsResponse
+    :: DeleteVaultNotificationsResponse (a)
 deleteVaultNotificationsResponse = DeleteVaultNotificationsResponse'
 
 instance NFData DeleteVaultNotificationsResponse

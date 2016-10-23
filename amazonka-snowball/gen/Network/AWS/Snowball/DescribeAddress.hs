@@ -99,7 +99,7 @@ instance ToQuery DescribeAddress where
         toQuery = const mempty
 
 -- | /See:/ 'describeAddressResponse' smart constructor.
-data DescribeAddressResponse = DescribeAddressResponse'
+data DescribeAddressResponse a = DescribeAddressResponse'
     { _darsAddress        :: !(Maybe Address)
     , _darsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -113,7 +113,7 @@ data DescribeAddressResponse = DescribeAddressResponse'
 -- * 'darsResponseStatus'
 describeAddressResponse
     :: Int -- ^ 'darsResponseStatus'
-    -> DescribeAddressResponse
+    -> DescribeAddressResponse (a)
 describeAddressResponse pResponseStatus_ =
     DescribeAddressResponse'
     { _darsAddress = Nothing
@@ -121,11 +121,11 @@ describeAddressResponse pResponseStatus_ =
     }
 
 -- | The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.
-darsAddress :: Lens' DescribeAddressResponse (Maybe Address)
+darsAddress :: Lens' (DescribeAddressResponse (a)) (Maybe Address)
 darsAddress = lens _darsAddress (\ s a -> s{_darsAddress = a});
 
 -- | The response status code.
-darsResponseStatus :: Lens' DescribeAddressResponse Int
+darsResponseStatus :: Lens' (DescribeAddressResponse (a)) Int
 darsResponseStatus = lens _darsResponseStatus (\ s a -> s{_darsResponseStatus = a});
 
 instance NFData DescribeAddressResponse

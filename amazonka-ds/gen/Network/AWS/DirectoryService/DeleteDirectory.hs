@@ -103,7 +103,7 @@ instance ToQuery DeleteDirectory where
 -- | Contains the results of the < DeleteDirectory> operation.
 --
 -- /See:/ 'deleteDirectoryResponse' smart constructor.
-data DeleteDirectoryResponse = DeleteDirectoryResponse'
+data DeleteDirectoryResponse a = DeleteDirectoryResponse'
     { _delrsDirectoryId    :: !(Maybe Text)
     , _delrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data DeleteDirectoryResponse = DeleteDirectoryResponse'
 -- * 'delrsResponseStatus'
 deleteDirectoryResponse
     :: Int -- ^ 'delrsResponseStatus'
-    -> DeleteDirectoryResponse
+    -> DeleteDirectoryResponse (a)
 deleteDirectoryResponse pResponseStatus_ =
     DeleteDirectoryResponse'
     { _delrsDirectoryId = Nothing
@@ -125,11 +125,11 @@ deleteDirectoryResponse pResponseStatus_ =
     }
 
 -- | The directory identifier.
-delrsDirectoryId :: Lens' DeleteDirectoryResponse (Maybe Text)
+delrsDirectoryId :: Lens' (DeleteDirectoryResponse (a)) (Maybe Text)
 delrsDirectoryId = lens _delrsDirectoryId (\ s a -> s{_delrsDirectoryId = a});
 
 -- | The response status code.
-delrsResponseStatus :: Lens' DeleteDirectoryResponse Int
+delrsResponseStatus :: Lens' (DeleteDirectoryResponse (a)) Int
 delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a});
 
 instance NFData DeleteDirectoryResponse

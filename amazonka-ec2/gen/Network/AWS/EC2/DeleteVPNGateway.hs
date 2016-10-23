@@ -96,14 +96,14 @@ instance ToQuery DeleteVPNGateway where
                "VpnGatewayId" =: _dvgVPNGatewayId]
 
 -- | /See:/ 'deleteVPNGatewayResponse' smart constructor.
-data DeleteVPNGatewayResponse =
+data DeleteVPNGatewayResponse a =
     DeleteVPNGatewayResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteVPNGatewayResponse' with the minimum fields required to make a request.
 --
 deleteVPNGatewayResponse
-    :: DeleteVPNGatewayResponse
+    :: DeleteVPNGatewayResponse (a)
 deleteVPNGatewayResponse = DeleteVPNGatewayResponse'
 
 instance NFData DeleteVPNGatewayResponse

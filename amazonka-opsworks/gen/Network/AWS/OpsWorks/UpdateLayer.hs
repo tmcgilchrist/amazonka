@@ -256,14 +256,14 @@ instance ToQuery UpdateLayer where
         toQuery = const mempty
 
 -- | /See:/ 'updateLayerResponse' smart constructor.
-data UpdateLayerResponse =
+data UpdateLayerResponse a =
     UpdateLayerResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateLayerResponse' with the minimum fields required to make a request.
 --
 updateLayerResponse
-    :: UpdateLayerResponse
+    :: UpdateLayerResponse (a)
 updateLayerResponse = UpdateLayerResponse'
 
 instance NFData UpdateLayerResponse

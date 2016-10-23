@@ -119,7 +119,7 @@ instance ToQuery GetClientCertificates where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html Use Client-Side Certificate>
 --
 -- /See:/ 'getClientCertificatesResponse' smart constructor.
-data GetClientCertificatesResponse = GetClientCertificatesResponse'
+data GetClientCertificatesResponse a = GetClientCertificatesResponse'
     { _gccrsItems          :: !(Maybe [ClientCertificate])
     , _gccrsPosition       :: !(Maybe Text)
     , _gccrsResponseStatus :: !Int
@@ -136,7 +136,7 @@ data GetClientCertificatesResponse = GetClientCertificatesResponse'
 -- * 'gccrsResponseStatus'
 getClientCertificatesResponse
     :: Int -- ^ 'gccrsResponseStatus'
-    -> GetClientCertificatesResponse
+    -> GetClientCertificatesResponse (a)
 getClientCertificatesResponse pResponseStatus_ =
     GetClientCertificatesResponse'
     { _gccrsItems = Nothing
@@ -145,15 +145,15 @@ getClientCertificatesResponse pResponseStatus_ =
     }
 
 -- | The current page of any < ClientCertificate> resources in the collection of < ClientCertificate> resources.
-gccrsItems :: Lens' GetClientCertificatesResponse [ClientCertificate]
+gccrsItems :: Lens' (GetClientCertificatesResponse (a)) [ClientCertificate]
 gccrsItems = lens _gccrsItems (\ s a -> s{_gccrsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gccrsPosition :: Lens' GetClientCertificatesResponse (Maybe Text)
+gccrsPosition :: Lens' (GetClientCertificatesResponse (a)) (Maybe Text)
 gccrsPosition = lens _gccrsPosition (\ s a -> s{_gccrsPosition = a});
 
 -- | The response status code.
-gccrsResponseStatus :: Lens' GetClientCertificatesResponse Int
+gccrsResponseStatus :: Lens' (GetClientCertificatesResponse (a)) Int
 gccrsResponseStatus = lens _gccrsResponseStatus (\ s a -> s{_gccrsResponseStatus = a});
 
 instance NFData GetClientCertificatesResponse

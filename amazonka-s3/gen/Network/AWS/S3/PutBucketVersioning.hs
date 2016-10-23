@@ -120,14 +120,14 @@ instance ToQuery PutBucketVersioning where
         toQuery = const (mconcat ["versioning"])
 
 -- | /See:/ 'putBucketVersioningResponse' smart constructor.
-data PutBucketVersioningResponse =
+data PutBucketVersioningResponse a =
     PutBucketVersioningResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketVersioningResponse' with the minimum fields required to make a request.
 --
 putBucketVersioningResponse
-    :: PutBucketVersioningResponse
+    :: PutBucketVersioningResponse (a)
 putBucketVersioningResponse = PutBucketVersioningResponse'
 
 instance NFData PutBucketVersioningResponse

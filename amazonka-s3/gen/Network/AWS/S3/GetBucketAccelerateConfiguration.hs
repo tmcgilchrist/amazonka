@@ -93,7 +93,7 @@ instance ToQuery GetBucketAccelerateConfiguration
         toQuery = const (mconcat ["accelerate"])
 
 -- | /See:/ 'getBucketAccelerateConfigurationResponse' smart constructor.
-data GetBucketAccelerateConfigurationResponse = GetBucketAccelerateConfigurationResponse'
+data GetBucketAccelerateConfigurationResponse a = GetBucketAccelerateConfigurationResponse'
     { _gbacrsStatus         :: !(Maybe BucketAccelerateStatus)
     , _gbacrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -107,7 +107,7 @@ data GetBucketAccelerateConfigurationResponse = GetBucketAccelerateConfiguration
 -- * 'gbacrsResponseStatus'
 getBucketAccelerateConfigurationResponse
     :: Int -- ^ 'gbacrsResponseStatus'
-    -> GetBucketAccelerateConfigurationResponse
+    -> GetBucketAccelerateConfigurationResponse (a)
 getBucketAccelerateConfigurationResponse pResponseStatus_ =
     GetBucketAccelerateConfigurationResponse'
     { _gbacrsStatus = Nothing
@@ -115,11 +115,11 @@ getBucketAccelerateConfigurationResponse pResponseStatus_ =
     }
 
 -- | The accelerate configuration of the bucket.
-gbacrsStatus :: Lens' GetBucketAccelerateConfigurationResponse (Maybe BucketAccelerateStatus)
+gbacrsStatus :: Lens' (GetBucketAccelerateConfigurationResponse (a)) (Maybe BucketAccelerateStatus)
 gbacrsStatus = lens _gbacrsStatus (\ s a -> s{_gbacrsStatus = a});
 
 -- | The response status code.
-gbacrsResponseStatus :: Lens' GetBucketAccelerateConfigurationResponse Int
+gbacrsResponseStatus :: Lens' (GetBucketAccelerateConfigurationResponse (a)) Int
 gbacrsResponseStatus = lens _gbacrsResponseStatus (\ s a -> s{_gbacrsResponseStatus = a});
 
 instance NFData

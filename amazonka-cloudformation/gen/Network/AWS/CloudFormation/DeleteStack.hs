@@ -100,14 +100,14 @@ instance ToQuery DeleteStack where
                "StackName" =: _dsStackName]
 
 -- | /See:/ 'deleteStackResponse' smart constructor.
-data DeleteStackResponse =
+data DeleteStackResponse a =
     DeleteStackResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteStackResponse' with the minimum fields required to make a request.
 --
 deleteStackResponse
-    :: DeleteStackResponse
+    :: DeleteStackResponse (a)
 deleteStackResponse = DeleteStackResponse'
 
 instance NFData DeleteStackResponse

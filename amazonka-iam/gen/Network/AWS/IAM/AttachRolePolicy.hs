@@ -103,14 +103,14 @@ instance ToQuery AttachRolePolicy where
                "PolicyArn" =: _arpPolicyARN]
 
 -- | /See:/ 'attachRolePolicyResponse' smart constructor.
-data AttachRolePolicyResponse =
+data AttachRolePolicyResponse a =
     AttachRolePolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AttachRolePolicyResponse' with the minimum fields required to make a request.
 --
 attachRolePolicyResponse
-    :: AttachRolePolicyResponse
+    :: AttachRolePolicyResponse (a)
 attachRolePolicyResponse = AttachRolePolicyResponse'
 
 instance NFData AttachRolePolicyResponse

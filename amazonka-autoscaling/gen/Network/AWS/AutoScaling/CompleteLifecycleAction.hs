@@ -152,7 +152,7 @@ instance ToQuery CompleteLifecycleAction where
 -- | Contains the output of CompleteLifecycleAction.
 --
 -- /See:/ 'completeLifecycleActionResponse' smart constructor.
-newtype CompleteLifecycleActionResponse = CompleteLifecycleActionResponse'
+newtype CompleteLifecycleActionResponse a = CompleteLifecycleActionResponse'
     { _clarsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -163,14 +163,14 @@ newtype CompleteLifecycleActionResponse = CompleteLifecycleActionResponse'
 -- * 'clarsResponseStatus'
 completeLifecycleActionResponse
     :: Int -- ^ 'clarsResponseStatus'
-    -> CompleteLifecycleActionResponse
+    -> CompleteLifecycleActionResponse (a)
 completeLifecycleActionResponse pResponseStatus_ =
     CompleteLifecycleActionResponse'
     { _clarsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-clarsResponseStatus :: Lens' CompleteLifecycleActionResponse Int
+clarsResponseStatus :: Lens' (CompleteLifecycleActionResponse (a)) Int
 clarsResponseStatus = lens _clarsResponseStatus (\ s a -> s{_clarsResponseStatus = a});
 
 instance NFData CompleteLifecycleActionResponse

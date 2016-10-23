@@ -151,7 +151,7 @@ instance ToQuery DescribeEngineDefaultParameters
                  _dedpDBParameterGroupFamily]
 
 -- | /See:/ 'describeEngineDefaultParametersResponse' smart constructor.
-data DescribeEngineDefaultParametersResponse = DescribeEngineDefaultParametersResponse'
+data DescribeEngineDefaultParametersResponse a = DescribeEngineDefaultParametersResponse'
     { _dedprsResponseStatus :: !Int
     , _dedprsEngineDefaults :: !EngineDefaults
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -166,7 +166,7 @@ data DescribeEngineDefaultParametersResponse = DescribeEngineDefaultParametersRe
 describeEngineDefaultParametersResponse
     :: Int -- ^ 'dedprsResponseStatus'
     -> EngineDefaults -- ^ 'dedprsEngineDefaults'
-    -> DescribeEngineDefaultParametersResponse
+    -> DescribeEngineDefaultParametersResponse (a)
 describeEngineDefaultParametersResponse pResponseStatus_ pEngineDefaults_ =
     DescribeEngineDefaultParametersResponse'
     { _dedprsResponseStatus = pResponseStatus_
@@ -174,11 +174,11 @@ describeEngineDefaultParametersResponse pResponseStatus_ pEngineDefaults_ =
     }
 
 -- | The response status code.
-dedprsResponseStatus :: Lens' DescribeEngineDefaultParametersResponse Int
+dedprsResponseStatus :: Lens' (DescribeEngineDefaultParametersResponse (a)) Int
 dedprsResponseStatus = lens _dedprsResponseStatus (\ s a -> s{_dedprsResponseStatus = a});
 
 -- | Undocumented member.
-dedprsEngineDefaults :: Lens' DescribeEngineDefaultParametersResponse EngineDefaults
+dedprsEngineDefaults :: Lens' (DescribeEngineDefaultParametersResponse (a)) EngineDefaults
 dedprsEngineDefaults = lens _dedprsEngineDefaults (\ s a -> s{_dedprsEngineDefaults = a});
 
 instance NFData

@@ -116,7 +116,7 @@ instance ToQuery AddInstanceGroups where
 -- | Output from an AddInstanceGroups call.
 --
 -- /See:/ 'addInstanceGroupsResponse' smart constructor.
-data AddInstanceGroupsResponse = AddInstanceGroupsResponse'
+data AddInstanceGroupsResponse a = AddInstanceGroupsResponse'
     { _aigrsJobFlowId        :: !(Maybe Text)
     , _aigrsInstanceGroupIds :: !(Maybe [Text])
     , _aigrsResponseStatus   :: !Int
@@ -133,7 +133,7 @@ data AddInstanceGroupsResponse = AddInstanceGroupsResponse'
 -- * 'aigrsResponseStatus'
 addInstanceGroupsResponse
     :: Int -- ^ 'aigrsResponseStatus'
-    -> AddInstanceGroupsResponse
+    -> AddInstanceGroupsResponse (a)
 addInstanceGroupsResponse pResponseStatus_ =
     AddInstanceGroupsResponse'
     { _aigrsJobFlowId = Nothing
@@ -142,15 +142,15 @@ addInstanceGroupsResponse pResponseStatus_ =
     }
 
 -- | The job flow ID in which the instance groups are added.
-aigrsJobFlowId :: Lens' AddInstanceGroupsResponse (Maybe Text)
+aigrsJobFlowId :: Lens' (AddInstanceGroupsResponse (a)) (Maybe Text)
 aigrsJobFlowId = lens _aigrsJobFlowId (\ s a -> s{_aigrsJobFlowId = a});
 
 -- | Instance group IDs of the newly created instance groups.
-aigrsInstanceGroupIds :: Lens' AddInstanceGroupsResponse [Text]
+aigrsInstanceGroupIds :: Lens' (AddInstanceGroupsResponse (a)) [Text]
 aigrsInstanceGroupIds = lens _aigrsInstanceGroupIds (\ s a -> s{_aigrsInstanceGroupIds = a}) . _Default . _Coerce;
 
 -- | The response status code.
-aigrsResponseStatus :: Lens' AddInstanceGroupsResponse Int
+aigrsResponseStatus :: Lens' (AddInstanceGroupsResponse (a)) Int
 aigrsResponseStatus = lens _aigrsResponseStatus (\ s a -> s{_aigrsResponseStatus = a});
 
 instance NFData AddInstanceGroupsResponse

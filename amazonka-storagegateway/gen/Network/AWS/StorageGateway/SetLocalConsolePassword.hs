@@ -116,7 +116,7 @@ instance ToQuery SetLocalConsolePassword where
         toQuery = const mempty
 
 -- | /See:/ 'setLocalConsolePasswordResponse' smart constructor.
-data SetLocalConsolePasswordResponse = SetLocalConsolePasswordResponse'
+data SetLocalConsolePasswordResponse a = SetLocalConsolePasswordResponse'
     { _slcprsGatewayARN     :: !(Maybe Text)
     , _slcprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data SetLocalConsolePasswordResponse = SetLocalConsolePasswordResponse'
 -- * 'slcprsResponseStatus'
 setLocalConsolePasswordResponse
     :: Int -- ^ 'slcprsResponseStatus'
-    -> SetLocalConsolePasswordResponse
+    -> SetLocalConsolePasswordResponse (a)
 setLocalConsolePasswordResponse pResponseStatus_ =
     SetLocalConsolePasswordResponse'
     { _slcprsGatewayARN = Nothing
@@ -138,11 +138,11 @@ setLocalConsolePasswordResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-slcprsGatewayARN :: Lens' SetLocalConsolePasswordResponse (Maybe Text)
+slcprsGatewayARN :: Lens' (SetLocalConsolePasswordResponse (a)) (Maybe Text)
 slcprsGatewayARN = lens _slcprsGatewayARN (\ s a -> s{_slcprsGatewayARN = a});
 
 -- | The response status code.
-slcprsResponseStatus :: Lens' SetLocalConsolePasswordResponse Int
+slcprsResponseStatus :: Lens' (SetLocalConsolePasswordResponse (a)) Int
 slcprsResponseStatus = lens _slcprsResponseStatus (\ s a -> s{_slcprsResponseStatus = a});
 
 instance NFData SetLocalConsolePasswordResponse

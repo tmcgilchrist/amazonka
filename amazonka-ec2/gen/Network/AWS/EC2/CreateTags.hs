@@ -107,14 +107,14 @@ instance ToQuery CreateTags where
                toQueryList "Tag" _cTags]
 
 -- | /See:/ 'createTagsResponse' smart constructor.
-data CreateTagsResponse =
+data CreateTagsResponse a =
     CreateTagsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateTagsResponse' with the minimum fields required to make a request.
 --
 createTagsResponse
-    :: CreateTagsResponse
+    :: CreateTagsResponse (a)
 createTagsResponse = CreateTagsResponse'
 
 instance NFData CreateTagsResponse

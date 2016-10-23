@@ -100,14 +100,14 @@ instance ToQuery UnassignPrivateIPAddresses where
                  _upiaPrivateIPAddresses]
 
 -- | /See:/ 'unassignPrivateIPAddressesResponse' smart constructor.
-data UnassignPrivateIPAddressesResponse =
+data UnassignPrivateIPAddressesResponse a =
     UnassignPrivateIPAddressesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UnassignPrivateIPAddressesResponse' with the minimum fields required to make a request.
 --
 unassignPrivateIPAddressesResponse
-    :: UnassignPrivateIPAddressesResponse
+    :: UnassignPrivateIPAddressesResponse (a)
 unassignPrivateIPAddressesResponse = UnassignPrivateIPAddressesResponse'
 
 instance NFData UnassignPrivateIPAddressesResponse

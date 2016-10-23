@@ -169,7 +169,7 @@ instance ToQuery UpdateJob where
         toQuery = const mempty
 
 -- | /See:/ 'updateJobResponse' smart constructor.
-newtype UpdateJobResponse = UpdateJobResponse'
+newtype UpdateJobResponse a = UpdateJobResponse'
     { _ujrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -180,14 +180,14 @@ newtype UpdateJobResponse = UpdateJobResponse'
 -- * 'ujrsResponseStatus'
 updateJobResponse
     :: Int -- ^ 'ujrsResponseStatus'
-    -> UpdateJobResponse
+    -> UpdateJobResponse (a)
 updateJobResponse pResponseStatus_ =
     UpdateJobResponse'
     { _ujrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-ujrsResponseStatus :: Lens' UpdateJobResponse Int
+ujrsResponseStatus :: Lens' (UpdateJobResponse (a)) Int
 ujrsResponseStatus = lens _ujrsResponseStatus (\ s a -> s{_ujrsResponseStatus = a});
 
 instance NFData UpdateJobResponse

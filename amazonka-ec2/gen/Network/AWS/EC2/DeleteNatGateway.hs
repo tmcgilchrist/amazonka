@@ -95,7 +95,7 @@ instance ToQuery DeleteNatGateway where
 -- | Contains the output of DeleteNatGateway.
 --
 -- /See:/ 'deleteNatGatewayResponse' smart constructor.
-data DeleteNatGatewayResponse = DeleteNatGatewayResponse'
+data DeleteNatGatewayResponse a = DeleteNatGatewayResponse'
     { _delrsNatGatewayId   :: !(Maybe Text)
     , _delrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -109,7 +109,7 @@ data DeleteNatGatewayResponse = DeleteNatGatewayResponse'
 -- * 'delrsResponseStatus'
 deleteNatGatewayResponse
     :: Int -- ^ 'delrsResponseStatus'
-    -> DeleteNatGatewayResponse
+    -> DeleteNatGatewayResponse (a)
 deleteNatGatewayResponse pResponseStatus_ =
     DeleteNatGatewayResponse'
     { _delrsNatGatewayId = Nothing
@@ -117,11 +117,11 @@ deleteNatGatewayResponse pResponseStatus_ =
     }
 
 -- | The ID of the NAT gateway.
-delrsNatGatewayId :: Lens' DeleteNatGatewayResponse (Maybe Text)
+delrsNatGatewayId :: Lens' (DeleteNatGatewayResponse (a)) (Maybe Text)
 delrsNatGatewayId = lens _delrsNatGatewayId (\ s a -> s{_delrsNatGatewayId = a});
 
 -- | The response status code.
-delrsResponseStatus :: Lens' DeleteNatGatewayResponse Int
+delrsResponseStatus :: Lens' (DeleteNatGatewayResponse (a)) Int
 delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a});
 
 instance NFData DeleteNatGatewayResponse

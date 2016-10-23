@@ -97,14 +97,14 @@ instance ToQuery DeleteCustomerGateway where
                "CustomerGatewayId" =: _dcgcCustomerGatewayId]
 
 -- | /See:/ 'deleteCustomerGatewayResponse' smart constructor.
-data DeleteCustomerGatewayResponse =
+data DeleteCustomerGatewayResponse a =
     DeleteCustomerGatewayResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteCustomerGatewayResponse' with the minimum fields required to make a request.
 --
 deleteCustomerGatewayResponse
-    :: DeleteCustomerGatewayResponse
+    :: DeleteCustomerGatewayResponse (a)
 deleteCustomerGatewayResponse = DeleteCustomerGatewayResponse'
 
 instance NFData DeleteCustomerGatewayResponse

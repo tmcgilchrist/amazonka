@@ -112,14 +112,14 @@ instance ToQuery UpdateCACertificate where
                  _ucacNewAutoRegistrationStatus]
 
 -- | /See:/ 'updateCACertificateResponse' smart constructor.
-data UpdateCACertificateResponse =
+data UpdateCACertificateResponse a =
     UpdateCACertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateCACertificateResponse' with the minimum fields required to make a request.
 --
 updateCACertificateResponse
-    :: UpdateCACertificateResponse
+    :: UpdateCACertificateResponse (a)
 updateCACertificateResponse = UpdateCACertificateResponse'
 
 instance NFData UpdateCACertificateResponse

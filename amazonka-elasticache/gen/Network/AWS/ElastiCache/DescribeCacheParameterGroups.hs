@@ -137,7 +137,7 @@ instance ToQuery DescribeCacheParameterGroups where
 -- | Represents the output of a /DescribeCacheParameterGroups/ action.
 --
 -- /See:/ 'describeCacheParameterGroupsResponse' smart constructor.
-data DescribeCacheParameterGroupsResponse = DescribeCacheParameterGroupsResponse'
+data DescribeCacheParameterGroupsResponse a = DescribeCacheParameterGroupsResponse'
     { _dcpgrsCacheParameterGroups :: !(Maybe [CacheParameterGroup])
     , _dcpgrsMarker               :: !(Maybe Text)
     , _dcpgrsResponseStatus       :: !Int
@@ -154,7 +154,7 @@ data DescribeCacheParameterGroupsResponse = DescribeCacheParameterGroupsResponse
 -- * 'dcpgrsResponseStatus'
 describeCacheParameterGroupsResponse
     :: Int -- ^ 'dcpgrsResponseStatus'
-    -> DescribeCacheParameterGroupsResponse
+    -> DescribeCacheParameterGroupsResponse (a)
 describeCacheParameterGroupsResponse pResponseStatus_ =
     DescribeCacheParameterGroupsResponse'
     { _dcpgrsCacheParameterGroups = Nothing
@@ -163,15 +163,15 @@ describeCacheParameterGroupsResponse pResponseStatus_ =
     }
 
 -- | A list of cache parameter groups. Each element in the list contains detailed information about one cache parameter group.
-dcpgrsCacheParameterGroups :: Lens' DescribeCacheParameterGroupsResponse [CacheParameterGroup]
+dcpgrsCacheParameterGroups :: Lens' (DescribeCacheParameterGroupsResponse (a)) [CacheParameterGroup]
 dcpgrsCacheParameterGroups = lens _dcpgrsCacheParameterGroups (\ s a -> s{_dcpgrsCacheParameterGroups = a}) . _Default . _Coerce;
 
 -- | Provides an identifier to allow retrieval of paginated results.
-dcpgrsMarker :: Lens' DescribeCacheParameterGroupsResponse (Maybe Text)
+dcpgrsMarker :: Lens' (DescribeCacheParameterGroupsResponse (a)) (Maybe Text)
 dcpgrsMarker = lens _dcpgrsMarker (\ s a -> s{_dcpgrsMarker = a});
 
 -- | The response status code.
-dcpgrsResponseStatus :: Lens' DescribeCacheParameterGroupsResponse Int
+dcpgrsResponseStatus :: Lens' (DescribeCacheParameterGroupsResponse (a)) Int
 dcpgrsResponseStatus = lens _dcpgrsResponseStatus (\ s a -> s{_dcpgrsResponseStatus = a});
 
 instance NFData DescribeCacheParameterGroupsResponse

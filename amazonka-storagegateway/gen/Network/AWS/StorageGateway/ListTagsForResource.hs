@@ -129,7 +129,7 @@ instance ToQuery ListTagsForResource where
 -- | ListTagsForResourceOutput
 --
 -- /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse = ListTagsForResourceResponse'
+data ListTagsForResourceResponse a = ListTagsForResourceResponse'
     { _ltfrrsResourceARN    :: !(Maybe Text)
     , _ltfrrsMarker         :: !(Maybe Text)
     , _ltfrrsTags           :: !(Maybe [Tag])
@@ -149,7 +149,7 @@ data ListTagsForResourceResponse = ListTagsForResourceResponse'
 -- * 'ltfrrsResponseStatus'
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
-    -> ListTagsForResourceResponse
+    -> ListTagsForResourceResponse (a)
 listTagsForResourceResponse pResponseStatus_ =
     ListTagsForResourceResponse'
     { _ltfrrsResourceARN = Nothing
@@ -159,19 +159,19 @@ listTagsForResourceResponse pResponseStatus_ =
     }
 
 -- | he Amazon Resource Name (ARN) of the resource for which you want to list tags.
-ltfrrsResourceARN :: Lens' ListTagsForResourceResponse (Maybe Text)
+ltfrrsResourceARN :: Lens' (ListTagsForResourceResponse (a)) (Maybe Text)
 ltfrrsResourceARN = lens _ltfrrsResourceARN (\ s a -> s{_ltfrrsResourceARN = a});
 
 -- | An opaque string that indicates the position at which to stop returning the list of tags.
-ltfrrsMarker :: Lens' ListTagsForResourceResponse (Maybe Text)
+ltfrrsMarker :: Lens' (ListTagsForResourceResponse (a)) (Maybe Text)
 ltfrrsMarker = lens _ltfrrsMarker (\ s a -> s{_ltfrrsMarker = a});
 
 -- | An array that contains the tags for the specified resource.
-ltfrrsTags :: Lens' ListTagsForResourceResponse [Tag]
+ltfrrsTags :: Lens' (ListTagsForResourceResponse (a)) [Tag]
 ltfrrsTags = lens _ltfrrsTags (\ s a -> s{_ltfrrsTags = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ltfrrsResponseStatus :: Lens' ListTagsForResourceResponse Int
+ltfrrsResponseStatus :: Lens' (ListTagsForResourceResponse (a)) Int
 ltfrrsResponseStatus = lens _ltfrrsResponseStatus (\ s a -> s{_ltfrrsResponseStatus = a});
 
 instance NFData ListTagsForResourceResponse

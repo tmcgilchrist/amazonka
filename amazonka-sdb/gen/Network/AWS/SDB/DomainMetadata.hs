@@ -104,7 +104,7 @@ instance ToQuery DomainMetadata where
                "DomainName" =: _dmDomainName]
 
 -- | /See:/ 'domainMetadataResponse' smart constructor.
-data DomainMetadataResponse = DomainMetadataResponse'
+data DomainMetadataResponse a = DomainMetadataResponse'
     { _dmrsItemNamesSizeBytes       :: !(Maybe Integer)
     , _dmrsAttributeValuesSizeBytes :: !(Maybe Integer)
     , _dmrsAttributeNameCount       :: !(Maybe Int)
@@ -136,7 +136,7 @@ data DomainMetadataResponse = DomainMetadataResponse'
 -- * 'dmrsResponseStatus'
 domainMetadataResponse
     :: Int -- ^ 'dmrsResponseStatus'
-    -> DomainMetadataResponse
+    -> DomainMetadataResponse (a)
 domainMetadataResponse pResponseStatus_ =
     DomainMetadataResponse'
     { _dmrsItemNamesSizeBytes = Nothing
@@ -150,35 +150,35 @@ domainMetadataResponse pResponseStatus_ =
     }
 
 -- | The total size of all item names in the domain, in bytes.
-dmrsItemNamesSizeBytes :: Lens' DomainMetadataResponse (Maybe Integer)
+dmrsItemNamesSizeBytes :: Lens' (DomainMetadataResponse (a)) (Maybe Integer)
 dmrsItemNamesSizeBytes = lens _dmrsItemNamesSizeBytes (\ s a -> s{_dmrsItemNamesSizeBytes = a});
 
 -- | The total size of all attribute values in the domain, in bytes.
-dmrsAttributeValuesSizeBytes :: Lens' DomainMetadataResponse (Maybe Integer)
+dmrsAttributeValuesSizeBytes :: Lens' (DomainMetadataResponse (a)) (Maybe Integer)
 dmrsAttributeValuesSizeBytes = lens _dmrsAttributeValuesSizeBytes (\ s a -> s{_dmrsAttributeValuesSizeBytes = a});
 
 -- | The number of unique attribute names in the domain.
-dmrsAttributeNameCount :: Lens' DomainMetadataResponse (Maybe Int)
+dmrsAttributeNameCount :: Lens' (DomainMetadataResponse (a)) (Maybe Int)
 dmrsAttributeNameCount = lens _dmrsAttributeNameCount (\ s a -> s{_dmrsAttributeNameCount = a});
 
 -- | The total size of all unique attribute names in the domain, in bytes.
-dmrsAttributeNamesSizeBytes :: Lens' DomainMetadataResponse (Maybe Integer)
+dmrsAttributeNamesSizeBytes :: Lens' (DomainMetadataResponse (a)) (Maybe Integer)
 dmrsAttributeNamesSizeBytes = lens _dmrsAttributeNamesSizeBytes (\ s a -> s{_dmrsAttributeNamesSizeBytes = a});
 
 -- | The number of all attribute name\/value pairs in the domain.
-dmrsAttributeValueCount :: Lens' DomainMetadataResponse (Maybe Int)
+dmrsAttributeValueCount :: Lens' (DomainMetadataResponse (a)) (Maybe Int)
 dmrsAttributeValueCount = lens _dmrsAttributeValueCount (\ s a -> s{_dmrsAttributeValueCount = a});
 
 -- | The number of all items in the domain.
-dmrsItemCount :: Lens' DomainMetadataResponse (Maybe Int)
+dmrsItemCount :: Lens' (DomainMetadataResponse (a)) (Maybe Int)
 dmrsItemCount = lens _dmrsItemCount (\ s a -> s{_dmrsItemCount = a});
 
 -- | The data and time when metadata was calculated, in Epoch (UNIX) seconds.
-dmrsTimestamp :: Lens' DomainMetadataResponse (Maybe Int)
+dmrsTimestamp :: Lens' (DomainMetadataResponse (a)) (Maybe Int)
 dmrsTimestamp = lens _dmrsTimestamp (\ s a -> s{_dmrsTimestamp = a});
 
 -- | The response status code.
-dmrsResponseStatus :: Lens' DomainMetadataResponse Int
+dmrsResponseStatus :: Lens' (DomainMetadataResponse (a)) Int
 dmrsResponseStatus = lens _dmrsResponseStatus (\ s a -> s{_dmrsResponseStatus = a});
 
 instance NFData DomainMetadataResponse

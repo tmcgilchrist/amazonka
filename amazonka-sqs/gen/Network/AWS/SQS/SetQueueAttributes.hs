@@ -119,14 +119,14 @@ instance ToQuery SetQueueAttributes where
                toQueryMap "Attribute" "Name" "Value" _sqaAttributes]
 
 -- | /See:/ 'setQueueAttributesResponse' smart constructor.
-data SetQueueAttributesResponse =
+data SetQueueAttributesResponse a =
     SetQueueAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetQueueAttributesResponse' with the minimum fields required to make a request.
 --
 setQueueAttributesResponse
-    :: SetQueueAttributesResponse
+    :: SetQueueAttributesResponse (a)
 setQueueAttributesResponse = SetQueueAttributesResponse'
 
 instance NFData SetQueueAttributesResponse

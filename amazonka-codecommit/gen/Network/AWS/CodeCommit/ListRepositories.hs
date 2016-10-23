@@ -136,7 +136,7 @@ instance ToQuery ListRepositories where
 -- | Represents the output of a list repositories operation.
 --
 -- /See:/ 'listRepositoriesResponse' smart constructor.
-data ListRepositoriesResponse = ListRepositoriesResponse'
+data ListRepositoriesResponse a = ListRepositoriesResponse'
     { _lrrsRepositories   :: !(Maybe [RepositoryNameIdPair])
     , _lrrsNextToken      :: !(Maybe Text)
     , _lrrsResponseStatus :: !Int
@@ -153,7 +153,7 @@ data ListRepositoriesResponse = ListRepositoriesResponse'
 -- * 'lrrsResponseStatus'
 listRepositoriesResponse
     :: Int -- ^ 'lrrsResponseStatus'
-    -> ListRepositoriesResponse
+    -> ListRepositoriesResponse (a)
 listRepositoriesResponse pResponseStatus_ =
     ListRepositoriesResponse'
     { _lrrsRepositories = Nothing
@@ -162,15 +162,15 @@ listRepositoriesResponse pResponseStatus_ =
     }
 
 -- | Lists the repositories called by the list repositories operation.
-lrrsRepositories :: Lens' ListRepositoriesResponse [RepositoryNameIdPair]
+lrrsRepositories :: Lens' (ListRepositoriesResponse (a)) [RepositoryNameIdPair]
 lrrsRepositories = lens _lrrsRepositories (\ s a -> s{_lrrsRepositories = a}) . _Default . _Coerce;
 
 -- | An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.
-lrrsNextToken :: Lens' ListRepositoriesResponse (Maybe Text)
+lrrsNextToken :: Lens' (ListRepositoriesResponse (a)) (Maybe Text)
 lrrsNextToken = lens _lrrsNextToken (\ s a -> s{_lrrsNextToken = a});
 
 -- | The response status code.
-lrrsResponseStatus :: Lens' ListRepositoriesResponse Int
+lrrsResponseStatus :: Lens' (ListRepositoriesResponse (a)) Int
 lrrsResponseStatus = lens _lrrsResponseStatus (\ s a -> s{_lrrsResponseStatus = a});
 
 instance NFData ListRepositoriesResponse

@@ -152,7 +152,7 @@ instance ToQuery DescribeChangeSet where
 -- | The output for the < DescribeChangeSet> action.
 --
 -- /See:/ 'describeChangeSetResponse' smart constructor.
-data DescribeChangeSetResponse = DescribeChangeSetResponse'
+data DescribeChangeSetResponse a = DescribeChangeSetResponse'
     { _drsCreationTime     :: !(Maybe ISO8601)
     , _drsStatus           :: !(Maybe ChangeSetStatus)
     , _drsChanges          :: !(Maybe [Change])
@@ -208,7 +208,7 @@ data DescribeChangeSetResponse = DescribeChangeSetResponse'
 -- * 'drsResponseStatus'
 describeChangeSetResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DescribeChangeSetResponse
+    -> DescribeChangeSetResponse (a)
 describeChangeSetResponse pResponseStatus_ =
     DescribeChangeSetResponse'
     { _drsCreationTime = Nothing
@@ -230,67 +230,67 @@ describeChangeSetResponse pResponseStatus_ =
     }
 
 -- | The start time when the change set was created, in UTC.
-drsCreationTime :: Lens' DescribeChangeSetResponse (Maybe UTCTime)
+drsCreationTime :: Lens' (DescribeChangeSetResponse (a)) (Maybe UTCTime)
 drsCreationTime = lens _drsCreationTime (\ s a -> s{_drsCreationTime = a}) . mapping _Time;
 
 -- | The current status of the change set, such as 'CREATE_IN_PROGRESS', 'CREATE_COMPLETE', or 'FAILED'.
-drsStatus :: Lens' DescribeChangeSetResponse (Maybe ChangeSetStatus)
+drsStatus :: Lens' (DescribeChangeSetResponse (a)) (Maybe ChangeSetStatus)
 drsStatus = lens _drsStatus (\ s a -> s{_drsStatus = a});
 
 -- | A list of 'Change' structures that describes the resources AWS CloudFormation changes if you execute the change set.
-drsChanges :: Lens' DescribeChangeSetResponse [Change]
+drsChanges :: Lens' (DescribeChangeSetResponse (a)) [Change]
 drsChanges = lens _drsChanges (\ s a -> s{_drsChanges = a}) . _Default . _Coerce;
 
 -- | The ARNs of the Amazon Simple Notification Service (Amazon SNS) topics that will be associated with the stack if you execute the change set.
-drsNotificationARNs :: Lens' DescribeChangeSetResponse [Text]
+drsNotificationARNs :: Lens' (DescribeChangeSetResponse (a)) [Text]
 drsNotificationARNs = lens _drsNotificationARNs (\ s a -> s{_drsNotificationARNs = a}) . _Default . _Coerce;
 
 -- | The name of the change set.
-drsChangeSetName :: Lens' DescribeChangeSetResponse (Maybe Text)
+drsChangeSetName :: Lens' (DescribeChangeSetResponse (a)) (Maybe Text)
 drsChangeSetName = lens _drsChangeSetName (\ s a -> s{_drsChangeSetName = a});
 
 -- | If the change set execution status is 'AVAILABLE', you can execute the change set. If you can’t execute the change set, the status indicates why. For example, a change set might be in an 'UNAVAILABLE' state because AWS CloudFormation is still creating it or in an 'OBSOLETE' state because the stack was already updated.
-drsExecutionStatus :: Lens' DescribeChangeSetResponse (Maybe ExecutionStatus)
+drsExecutionStatus :: Lens' (DescribeChangeSetResponse (a)) (Maybe ExecutionStatus)
 drsExecutionStatus = lens _drsExecutionStatus (\ s a -> s{_drsExecutionStatus = a});
 
 -- | The ARN of the change set.
-drsChangeSetId :: Lens' DescribeChangeSetResponse (Maybe Text)
+drsChangeSetId :: Lens' (DescribeChangeSetResponse (a)) (Maybe Text)
 drsChangeSetId = lens _drsChangeSetId (\ s a -> s{_drsChangeSetId = a});
 
 -- | If the output exceeds 1 MB, a string that identifies the next page of changes. If there is no additional page, this value is null.
-drsNextToken :: Lens' DescribeChangeSetResponse (Maybe Text)
+drsNextToken :: Lens' (DescribeChangeSetResponse (a)) (Maybe Text)
 drsNextToken = lens _drsNextToken (\ s a -> s{_drsNextToken = a});
 
 -- | A list of 'Parameter' structures that describes the input parameters and their values used to create the change set. For more information, see the <http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html Parameter> data type.
-drsParameters :: Lens' DescribeChangeSetResponse [Parameter]
+drsParameters :: Lens' (DescribeChangeSetResponse (a)) [Parameter]
 drsParameters = lens _drsParameters (\ s a -> s{_drsParameters = a}) . _Default . _Coerce;
 
 -- | A description of the change set\'s status. For example, if your attempt to create a change set failed, AWS CloudFormation shows the error message.
-drsStatusReason :: Lens' DescribeChangeSetResponse (Maybe Text)
+drsStatusReason :: Lens' (DescribeChangeSetResponse (a)) (Maybe Text)
 drsStatusReason = lens _drsStatusReason (\ s a -> s{_drsStatusReason = a});
 
 -- | The ARN of the stack that is associated with the change set.
-drsStackId :: Lens' DescribeChangeSetResponse (Maybe Text)
+drsStackId :: Lens' (DescribeChangeSetResponse (a)) (Maybe Text)
 drsStackId = lens _drsStackId (\ s a -> s{_drsStackId = a});
 
 -- | Information about the change set.
-drsDescription :: Lens' DescribeChangeSetResponse (Maybe Text)
+drsDescription :: Lens' (DescribeChangeSetResponse (a)) (Maybe Text)
 drsDescription = lens _drsDescription (\ s a -> s{_drsDescription = a});
 
 -- | If you execute the change set, the list of capabilities that were explicitly acknowledged when the change set was created.
-drsCapabilities :: Lens' DescribeChangeSetResponse [Capability]
+drsCapabilities :: Lens' (DescribeChangeSetResponse (a)) [Capability]
 drsCapabilities = lens _drsCapabilities (\ s a -> s{_drsCapabilities = a}) . _Default . _Coerce;
 
 -- | If you execute the change set, the tags that will be associated with the stack.
-drsTags :: Lens' DescribeChangeSetResponse [Tag]
+drsTags :: Lens' (DescribeChangeSetResponse (a)) [Tag]
 drsTags = lens _drsTags (\ s a -> s{_drsTags = a}) . _Default . _Coerce;
 
 -- | The name of the stack that is associated with the change set.
-drsStackName :: Lens' DescribeChangeSetResponse (Maybe Text)
+drsStackName :: Lens' (DescribeChangeSetResponse (a)) (Maybe Text)
 drsStackName = lens _drsStackName (\ s a -> s{_drsStackName = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DescribeChangeSetResponse Int
+drsResponseStatus :: Lens' (DescribeChangeSetResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DescribeChangeSetResponse

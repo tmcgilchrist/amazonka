@@ -104,14 +104,14 @@ instance ToQuery DeleteMetricFilter where
         toQuery = const mempty
 
 -- | /See:/ 'deleteMetricFilterResponse' smart constructor.
-data DeleteMetricFilterResponse =
+data DeleteMetricFilterResponse a =
     DeleteMetricFilterResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteMetricFilterResponse' with the minimum fields required to make a request.
 --
 deleteMetricFilterResponse
-    :: DeleteMetricFilterResponse
+    :: DeleteMetricFilterResponse (a)
 deleteMetricFilterResponse = DeleteMetricFilterResponse'
 
 instance NFData DeleteMetricFilterResponse

@@ -95,14 +95,14 @@ instance ToQuery DeleteKeyPair where
                "DryRun" =: _dkpDryRun, "KeyName" =: _dkpKeyName]
 
 -- | /See:/ 'deleteKeyPairResponse' smart constructor.
-data DeleteKeyPairResponse =
+data DeleteKeyPairResponse a =
     DeleteKeyPairResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteKeyPairResponse' with the minimum fields required to make a request.
 --
 deleteKeyPairResponse
-    :: DeleteKeyPairResponse
+    :: DeleteKeyPairResponse (a)
 deleteKeyPairResponse = DeleteKeyPairResponse'
 
 instance NFData DeleteKeyPairResponse

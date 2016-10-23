@@ -127,7 +127,7 @@ instance ToQuery DescribeStaleSecurityGroups where
                "VpcId" =: _dssgVPCId]
 
 -- | /See:/ 'describeStaleSecurityGroupsResponse' smart constructor.
-data DescribeStaleSecurityGroupsResponse = DescribeStaleSecurityGroupsResponse'
+data DescribeStaleSecurityGroupsResponse a = DescribeStaleSecurityGroupsResponse'
     { _dssgrsStaleSecurityGroupSet :: !(Maybe [StaleSecurityGroup])
     , _dssgrsNextToken             :: !(Maybe Text)
     , _dssgrsResponseStatus        :: !Int
@@ -144,7 +144,7 @@ data DescribeStaleSecurityGroupsResponse = DescribeStaleSecurityGroupsResponse'
 -- * 'dssgrsResponseStatus'
 describeStaleSecurityGroupsResponse
     :: Int -- ^ 'dssgrsResponseStatus'
-    -> DescribeStaleSecurityGroupsResponse
+    -> DescribeStaleSecurityGroupsResponse (a)
 describeStaleSecurityGroupsResponse pResponseStatus_ =
     DescribeStaleSecurityGroupsResponse'
     { _dssgrsStaleSecurityGroupSet = Nothing
@@ -153,15 +153,15 @@ describeStaleSecurityGroupsResponse pResponseStatus_ =
     }
 
 -- | Information about the stale security groups.
-dssgrsStaleSecurityGroupSet :: Lens' DescribeStaleSecurityGroupsResponse [StaleSecurityGroup]
+dssgrsStaleSecurityGroupSet :: Lens' (DescribeStaleSecurityGroupsResponse (a)) [StaleSecurityGroup]
 dssgrsStaleSecurityGroupSet = lens _dssgrsStaleSecurityGroupSet (\ s a -> s{_dssgrsStaleSecurityGroupSet = a}) . _Default . _Coerce;
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dssgrsNextToken :: Lens' DescribeStaleSecurityGroupsResponse (Maybe Text)
+dssgrsNextToken :: Lens' (DescribeStaleSecurityGroupsResponse (a)) (Maybe Text)
 dssgrsNextToken = lens _dssgrsNextToken (\ s a -> s{_dssgrsNextToken = a});
 
 -- | The response status code.
-dssgrsResponseStatus :: Lens' DescribeStaleSecurityGroupsResponse Int
+dssgrsResponseStatus :: Lens' (DescribeStaleSecurityGroupsResponse (a)) Int
 dssgrsResponseStatus = lens _dssgrsResponseStatus (\ s a -> s{_dssgrsResponseStatus = a});
 
 instance NFData DescribeStaleSecurityGroupsResponse

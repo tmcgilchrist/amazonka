@@ -110,7 +110,7 @@ instance ToQuery DescribeApplicationVersions where
 -- | Result message wrapping a list of application version descriptions.
 --
 -- /See:/ 'describeApplicationVersionsResponse' smart constructor.
-data DescribeApplicationVersionsResponse = DescribeApplicationVersionsResponse'
+data DescribeApplicationVersionsResponse a = DescribeApplicationVersionsResponse'
     { _davrsApplicationVersions :: !(Maybe [ApplicationVersionDescription])
     , _davrsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -124,7 +124,7 @@ data DescribeApplicationVersionsResponse = DescribeApplicationVersionsResponse'
 -- * 'davrsResponseStatus'
 describeApplicationVersionsResponse
     :: Int -- ^ 'davrsResponseStatus'
-    -> DescribeApplicationVersionsResponse
+    -> DescribeApplicationVersionsResponse (a)
 describeApplicationVersionsResponse pResponseStatus_ =
     DescribeApplicationVersionsResponse'
     { _davrsApplicationVersions = Nothing
@@ -132,11 +132,11 @@ describeApplicationVersionsResponse pResponseStatus_ =
     }
 
 -- | List of 'ApplicationVersionDescription' objects sorted by order of creation.
-davrsApplicationVersions :: Lens' DescribeApplicationVersionsResponse [ApplicationVersionDescription]
+davrsApplicationVersions :: Lens' (DescribeApplicationVersionsResponse (a)) [ApplicationVersionDescription]
 davrsApplicationVersions = lens _davrsApplicationVersions (\ s a -> s{_davrsApplicationVersions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-davrsResponseStatus :: Lens' DescribeApplicationVersionsResponse Int
+davrsResponseStatus :: Lens' (DescribeApplicationVersionsResponse (a)) Int
 davrsResponseStatus = lens _davrsResponseStatus (\ s a -> s{_davrsResponseStatus = a});
 
 instance NFData DescribeApplicationVersionsResponse

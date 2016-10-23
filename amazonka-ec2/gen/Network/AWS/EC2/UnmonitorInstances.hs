@@ -107,7 +107,7 @@ instance ToQuery UnmonitorInstances where
 -- | Contains the output of UnmonitorInstances.
 --
 -- /See:/ 'unmonitorInstancesResponse' smart constructor.
-data UnmonitorInstancesResponse = UnmonitorInstancesResponse'
+data UnmonitorInstancesResponse a = UnmonitorInstancesResponse'
     { _uirsInstanceMonitorings :: !(Maybe [InstanceMonitoring])
     , _uirsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data UnmonitorInstancesResponse = UnmonitorInstancesResponse'
 -- * 'uirsResponseStatus'
 unmonitorInstancesResponse
     :: Int -- ^ 'uirsResponseStatus'
-    -> UnmonitorInstancesResponse
+    -> UnmonitorInstancesResponse (a)
 unmonitorInstancesResponse pResponseStatus_ =
     UnmonitorInstancesResponse'
     { _uirsInstanceMonitorings = Nothing
@@ -129,11 +129,11 @@ unmonitorInstancesResponse pResponseStatus_ =
     }
 
 -- | Monitoring information for one or more instances.
-uirsInstanceMonitorings :: Lens' UnmonitorInstancesResponse [InstanceMonitoring]
+uirsInstanceMonitorings :: Lens' (UnmonitorInstancesResponse (a)) [InstanceMonitoring]
 uirsInstanceMonitorings = lens _uirsInstanceMonitorings (\ s a -> s{_uirsInstanceMonitorings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-uirsResponseStatus :: Lens' UnmonitorInstancesResponse Int
+uirsResponseStatus :: Lens' (UnmonitorInstancesResponse (a)) Int
 uirsResponseStatus = lens _uirsResponseStatus (\ s a -> s{_uirsResponseStatus = a});
 
 instance NFData UnmonitorInstancesResponse

@@ -118,7 +118,7 @@ instance ToQuery GetThirdPartyJobDetails where
 -- | Represents the output of a get third party job details action.
 --
 -- /See:/ 'getThirdPartyJobDetailsResponse' smart constructor.
-data GetThirdPartyJobDetailsResponse = GetThirdPartyJobDetailsResponse'
+data GetThirdPartyJobDetailsResponse a = GetThirdPartyJobDetailsResponse'
     { _gtpjdrsJobDetails     :: !(Maybe ThirdPartyJobDetails)
     , _gtpjdrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -132,7 +132,7 @@ data GetThirdPartyJobDetailsResponse = GetThirdPartyJobDetailsResponse'
 -- * 'gtpjdrsResponseStatus'
 getThirdPartyJobDetailsResponse
     :: Int -- ^ 'gtpjdrsResponseStatus'
-    -> GetThirdPartyJobDetailsResponse
+    -> GetThirdPartyJobDetailsResponse (a)
 getThirdPartyJobDetailsResponse pResponseStatus_ =
     GetThirdPartyJobDetailsResponse'
     { _gtpjdrsJobDetails = Nothing
@@ -140,11 +140,11 @@ getThirdPartyJobDetailsResponse pResponseStatus_ =
     }
 
 -- | The details of the job, including any protected values defined for the job.
-gtpjdrsJobDetails :: Lens' GetThirdPartyJobDetailsResponse (Maybe ThirdPartyJobDetails)
+gtpjdrsJobDetails :: Lens' (GetThirdPartyJobDetailsResponse (a)) (Maybe ThirdPartyJobDetails)
 gtpjdrsJobDetails = lens _gtpjdrsJobDetails (\ s a -> s{_gtpjdrsJobDetails = a});
 
 -- | The response status code.
-gtpjdrsResponseStatus :: Lens' GetThirdPartyJobDetailsResponse Int
+gtpjdrsResponseStatus :: Lens' (GetThirdPartyJobDetailsResponse (a)) Int
 gtpjdrsResponseStatus = lens _gtpjdrsResponseStatus (\ s a -> s{_gtpjdrsResponseStatus = a});
 
 instance NFData GetThirdPartyJobDetailsResponse

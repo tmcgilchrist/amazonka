@@ -114,7 +114,7 @@ instance ToQuery DescribeAgentVersions where
 -- | Contains the response to a 'DescribeAgentVersions' request.
 --
 -- /See:/ 'describeAgentVersionsResponse' smart constructor.
-data DescribeAgentVersionsResponse = DescribeAgentVersionsResponse'
+data DescribeAgentVersionsResponse a = DescribeAgentVersionsResponse'
     { _davrsAgentVersions  :: !(Maybe [AgentVersion])
     , _davrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data DescribeAgentVersionsResponse = DescribeAgentVersionsResponse'
 -- * 'davrsResponseStatus'
 describeAgentVersionsResponse
     :: Int -- ^ 'davrsResponseStatus'
-    -> DescribeAgentVersionsResponse
+    -> DescribeAgentVersionsResponse (a)
 describeAgentVersionsResponse pResponseStatus_ =
     DescribeAgentVersionsResponse'
     { _davrsAgentVersions = Nothing
@@ -136,11 +136,11 @@ describeAgentVersionsResponse pResponseStatus_ =
     }
 
 -- | The agent versions for the specified stack or configuration manager. Note that this value is the complete version number, not the abbreviated number used by the console.
-davrsAgentVersions :: Lens' DescribeAgentVersionsResponse [AgentVersion]
+davrsAgentVersions :: Lens' (DescribeAgentVersionsResponse (a)) [AgentVersion]
 davrsAgentVersions = lens _davrsAgentVersions (\ s a -> s{_davrsAgentVersions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-davrsResponseStatus :: Lens' DescribeAgentVersionsResponse Int
+davrsResponseStatus :: Lens' (DescribeAgentVersionsResponse (a)) Int
 davrsResponseStatus = lens _davrsResponseStatus (\ s a -> s{_davrsResponseStatus = a});
 
 instance NFData DescribeAgentVersionsResponse

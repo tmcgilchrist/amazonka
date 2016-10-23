@@ -186,7 +186,7 @@ instance ToQuery CreateStorediSCSIVolume where
 -- | A JSON object containing the following fields:
 --
 -- /See:/ 'createStorediSCSIVolumeResponse' smart constructor.
-data CreateStorediSCSIVolumeResponse = CreateStorediSCSIVolumeResponse'
+data CreateStorediSCSIVolumeResponse a = CreateStorediSCSIVolumeResponse'
     { _csscsivrsTargetARN         :: !(Maybe Text)
     , _csscsivrsVolumeARN         :: !(Maybe Text)
     , _csscsivrsVolumeSizeInBytes :: !(Maybe Integer)
@@ -206,7 +206,7 @@ data CreateStorediSCSIVolumeResponse = CreateStorediSCSIVolumeResponse'
 -- * 'csscsivrsResponseStatus'
 createStorediSCSIVolumeResponse
     :: Int -- ^ 'csscsivrsResponseStatus'
-    -> CreateStorediSCSIVolumeResponse
+    -> CreateStorediSCSIVolumeResponse (a)
 createStorediSCSIVolumeResponse pResponseStatus_ =
     CreateStorediSCSIVolumeResponse'
     { _csscsivrsTargetARN = Nothing
@@ -216,19 +216,19 @@ createStorediSCSIVolumeResponse pResponseStatus_ =
     }
 
 -- | he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.
-csscsivrsTargetARN :: Lens' CreateStorediSCSIVolumeResponse (Maybe Text)
+csscsivrsTargetARN :: Lens' (CreateStorediSCSIVolumeResponse (a)) (Maybe Text)
 csscsivrsTargetARN = lens _csscsivrsTargetARN (\ s a -> s{_csscsivrsTargetARN = a});
 
 -- | The Amazon Resource Name (ARN) of the configured volume.
-csscsivrsVolumeARN :: Lens' CreateStorediSCSIVolumeResponse (Maybe Text)
+csscsivrsVolumeARN :: Lens' (CreateStorediSCSIVolumeResponse (a)) (Maybe Text)
 csscsivrsVolumeARN = lens _csscsivrsVolumeARN (\ s a -> s{_csscsivrsVolumeARN = a});
 
 -- | The size of the volume in bytes.
-csscsivrsVolumeSizeInBytes :: Lens' CreateStorediSCSIVolumeResponse (Maybe Integer)
+csscsivrsVolumeSizeInBytes :: Lens' (CreateStorediSCSIVolumeResponse (a)) (Maybe Integer)
 csscsivrsVolumeSizeInBytes = lens _csscsivrsVolumeSizeInBytes (\ s a -> s{_csscsivrsVolumeSizeInBytes = a});
 
 -- | The response status code.
-csscsivrsResponseStatus :: Lens' CreateStorediSCSIVolumeResponse Int
+csscsivrsResponseStatus :: Lens' (CreateStorediSCSIVolumeResponse (a)) Int
 csscsivrsResponseStatus = lens _csscsivrsResponseStatus (\ s a -> s{_csscsivrsResponseStatus = a});
 
 instance NFData CreateStorediSCSIVolumeResponse

@@ -233,14 +233,14 @@ instance ToQuery UpdateInstance where
         toQuery = const mempty
 
 -- | /See:/ 'updateInstanceResponse' smart constructor.
-data UpdateInstanceResponse =
+data UpdateInstanceResponse a =
     UpdateInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateInstanceResponse' with the minimum fields required to make a request.
 --
 updateInstanceResponse
-    :: UpdateInstanceResponse
+    :: UpdateInstanceResponse (a)
 updateInstanceResponse = UpdateInstanceResponse'
 
 instance NFData UpdateInstanceResponse

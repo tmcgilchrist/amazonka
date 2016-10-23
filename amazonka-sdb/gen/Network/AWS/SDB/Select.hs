@@ -127,7 +127,7 @@ instance ToQuery Select where
                "SelectExpression" =: _sSelectExpression]
 
 -- | /See:/ 'selectResponse' smart constructor.
-data SelectResponse = SelectResponse'
+data SelectResponse a = SelectResponse'
     { _srsItems          :: !(Maybe [Item])
     , _srsNextToken      :: !(Maybe Text)
     , _srsResponseStatus :: !Int
@@ -144,7 +144,7 @@ data SelectResponse = SelectResponse'
 -- * 'srsResponseStatus'
 selectResponse
     :: Int -- ^ 'srsResponseStatus'
-    -> SelectResponse
+    -> SelectResponse (a)
 selectResponse pResponseStatus_ =
     SelectResponse'
     { _srsItems = Nothing
@@ -153,15 +153,15 @@ selectResponse pResponseStatus_ =
     }
 
 -- | A list of items that match the select expression.
-srsItems :: Lens' SelectResponse [Item]
+srsItems :: Lens' (SelectResponse (a)) [Item]
 srsItems = lens _srsItems (\ s a -> s{_srsItems = a}) . _Default . _Coerce;
 
 -- | An opaque token indicating that more items than 'MaxNumberOfItems' were matched, the response size exceeded 1 megabyte, or the execution time exceeded 5 seconds.
-srsNextToken :: Lens' SelectResponse (Maybe Text)
+srsNextToken :: Lens' (SelectResponse (a)) (Maybe Text)
 srsNextToken = lens _srsNextToken (\ s a -> s{_srsNextToken = a});
 
 -- | The response status code.
-srsResponseStatus :: Lens' SelectResponse Int
+srsResponseStatus :: Lens' (SelectResponse (a)) Int
 srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a});
 
 instance NFData SelectResponse

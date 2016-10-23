@@ -94,14 +94,14 @@ instance ToQuery DeleteQueue where
                "QueueUrl" =: _dqQueueURL]
 
 -- | /See:/ 'deleteQueueResponse' smart constructor.
-data DeleteQueueResponse =
+data DeleteQueueResponse a =
     DeleteQueueResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteQueueResponse' with the minimum fields required to make a request.
 --
 deleteQueueResponse
-    :: DeleteQueueResponse
+    :: DeleteQueueResponse (a)
 deleteQueueResponse = DeleteQueueResponse'
 
 instance NFData DeleteQueueResponse

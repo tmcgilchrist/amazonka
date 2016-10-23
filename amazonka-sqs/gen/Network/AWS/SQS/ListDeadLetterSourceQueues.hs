@@ -102,7 +102,7 @@ instance ToQuery ListDeadLetterSourceQueues where
 -- | A list of your dead letter source queues.
 --
 -- /See:/ 'listDeadLetterSourceQueuesResponse' smart constructor.
-data ListDeadLetterSourceQueuesResponse = ListDeadLetterSourceQueuesResponse'
+data ListDeadLetterSourceQueuesResponse a = ListDeadLetterSourceQueuesResponse'
     { _ldlsqrsResponseStatus :: !Int
     , _ldlsqrsQueueURLs      :: ![Text]
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data ListDeadLetterSourceQueuesResponse = ListDeadLetterSourceQueuesResponse'
 -- * 'ldlsqrsQueueURLs'
 listDeadLetterSourceQueuesResponse
     :: Int -- ^ 'ldlsqrsResponseStatus'
-    -> ListDeadLetterSourceQueuesResponse
+    -> ListDeadLetterSourceQueuesResponse (a)
 listDeadLetterSourceQueuesResponse pResponseStatus_ =
     ListDeadLetterSourceQueuesResponse'
     { _ldlsqrsResponseStatus = pResponseStatus_
@@ -124,11 +124,11 @@ listDeadLetterSourceQueuesResponse pResponseStatus_ =
     }
 
 -- | The response status code.
-ldlsqrsResponseStatus :: Lens' ListDeadLetterSourceQueuesResponse Int
+ldlsqrsResponseStatus :: Lens' (ListDeadLetterSourceQueuesResponse (a)) Int
 ldlsqrsResponseStatus = lens _ldlsqrsResponseStatus (\ s a -> s{_ldlsqrsResponseStatus = a});
 
 -- | A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead letter queue.
-ldlsqrsQueueURLs :: Lens' ListDeadLetterSourceQueuesResponse [Text]
+ldlsqrsQueueURLs :: Lens' (ListDeadLetterSourceQueuesResponse (a)) [Text]
 ldlsqrsQueueURLs = lens _ldlsqrsQueueURLs (\ s a -> s{_ldlsqrsQueueURLs = a}) . _Coerce;
 
 instance NFData ListDeadLetterSourceQueuesResponse

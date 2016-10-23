@@ -127,7 +127,7 @@ instance ToQuery AcknowledgeThirdPartyJob where
 -- | Represents the output of an acknowledge third party job action.
 --
 -- /See:/ 'acknowledgeThirdPartyJobResponse' smart constructor.
-data AcknowledgeThirdPartyJobResponse = AcknowledgeThirdPartyJobResponse'
+data AcknowledgeThirdPartyJobResponse a = AcknowledgeThirdPartyJobResponse'
     { _atpjrsStatus         :: !(Maybe JobStatus)
     , _atpjrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data AcknowledgeThirdPartyJobResponse = AcknowledgeThirdPartyJobResponse'
 -- * 'atpjrsResponseStatus'
 acknowledgeThirdPartyJobResponse
     :: Int -- ^ 'atpjrsResponseStatus'
-    -> AcknowledgeThirdPartyJobResponse
+    -> AcknowledgeThirdPartyJobResponse (a)
 acknowledgeThirdPartyJobResponse pResponseStatus_ =
     AcknowledgeThirdPartyJobResponse'
     { _atpjrsStatus = Nothing
@@ -149,11 +149,11 @@ acknowledgeThirdPartyJobResponse pResponseStatus_ =
     }
 
 -- | The status information for the third party job, if any.
-atpjrsStatus :: Lens' AcknowledgeThirdPartyJobResponse (Maybe JobStatus)
+atpjrsStatus :: Lens' (AcknowledgeThirdPartyJobResponse (a)) (Maybe JobStatus)
 atpjrsStatus = lens _atpjrsStatus (\ s a -> s{_atpjrsStatus = a});
 
 -- | The response status code.
-atpjrsResponseStatus :: Lens' AcknowledgeThirdPartyJobResponse Int
+atpjrsResponseStatus :: Lens' (AcknowledgeThirdPartyJobResponse (a)) Int
 atpjrsResponseStatus = lens _atpjrsResponseStatus (\ s a -> s{_atpjrsResponseStatus = a});
 
 instance NFData AcknowledgeThirdPartyJobResponse

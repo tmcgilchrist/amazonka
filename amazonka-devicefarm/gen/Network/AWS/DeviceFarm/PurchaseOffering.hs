@@ -114,7 +114,7 @@ instance ToQuery PurchaseOffering where
 -- | The result of the purchase offering (e.g., success or failure).
 --
 -- /See:/ 'purchaseOfferingResponse' smart constructor.
-data PurchaseOfferingResponse = PurchaseOfferingResponse'
+data PurchaseOfferingResponse a = PurchaseOfferingResponse'
     { _porsOfferingTransaction :: !(Maybe OfferingTransaction)
     , _porsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data PurchaseOfferingResponse = PurchaseOfferingResponse'
 -- * 'porsResponseStatus'
 purchaseOfferingResponse
     :: Int -- ^ 'porsResponseStatus'
-    -> PurchaseOfferingResponse
+    -> PurchaseOfferingResponse (a)
 purchaseOfferingResponse pResponseStatus_ =
     PurchaseOfferingResponse'
     { _porsOfferingTransaction = Nothing
@@ -136,11 +136,11 @@ purchaseOfferingResponse pResponseStatus_ =
     }
 
 -- | Represents the offering transaction for the purchase result.
-porsOfferingTransaction :: Lens' PurchaseOfferingResponse (Maybe OfferingTransaction)
+porsOfferingTransaction :: Lens' (PurchaseOfferingResponse (a)) (Maybe OfferingTransaction)
 porsOfferingTransaction = lens _porsOfferingTransaction (\ s a -> s{_porsOfferingTransaction = a});
 
 -- | The response status code.
-porsResponseStatus :: Lens' PurchaseOfferingResponse Int
+porsResponseStatus :: Lens' (PurchaseOfferingResponse (a)) Int
 porsResponseStatus = lens _porsResponseStatus (\ s a -> s{_porsResponseStatus = a});
 
 instance NFData PurchaseOfferingResponse

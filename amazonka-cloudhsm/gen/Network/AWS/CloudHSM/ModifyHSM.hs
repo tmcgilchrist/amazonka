@@ -157,7 +157,7 @@ instance ToQuery ModifyHSM where
 -- | Contains the output of the < ModifyHsm> operation.
 --
 -- /See:/ 'modifyHSMResponse' smart constructor.
-data ModifyHSMResponse = ModifyHSMResponse'
+data ModifyHSMResponse a = ModifyHSMResponse'
     { _mhsmrsHSMARN         :: !(Maybe Text)
     , _mhsmrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -171,7 +171,7 @@ data ModifyHSMResponse = ModifyHSMResponse'
 -- * 'mhsmrsResponseStatus'
 modifyHSMResponse
     :: Int -- ^ 'mhsmrsResponseStatus'
-    -> ModifyHSMResponse
+    -> ModifyHSMResponse (a)
 modifyHSMResponse pResponseStatus_ =
     ModifyHSMResponse'
     { _mhsmrsHSMARN = Nothing
@@ -179,11 +179,11 @@ modifyHSMResponse pResponseStatus_ =
     }
 
 -- | The ARN of the HSM.
-mhsmrsHSMARN :: Lens' ModifyHSMResponse (Maybe Text)
+mhsmrsHSMARN :: Lens' (ModifyHSMResponse (a)) (Maybe Text)
 mhsmrsHSMARN = lens _mhsmrsHSMARN (\ s a -> s{_mhsmrsHSMARN = a});
 
 -- | The response status code.
-mhsmrsResponseStatus :: Lens' ModifyHSMResponse Int
+mhsmrsResponseStatus :: Lens' (ModifyHSMResponse (a)) Int
 mhsmrsResponseStatus = lens _mhsmrsResponseStatus (\ s a -> s{_mhsmrsResponseStatus = a});
 
 instance NFData ModifyHSMResponse

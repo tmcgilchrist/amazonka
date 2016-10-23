@@ -176,7 +176,7 @@ instance ToQuery StartSupportDataExport where
 -- | Container for the result of the StartSupportDataExport operation.
 --
 -- /See:/ 'startSupportDataExportResponse' smart constructor.
-data StartSupportDataExportResponse = StartSupportDataExportResponse'
+data StartSupportDataExportResponse a = StartSupportDataExportResponse'
     { _ssdersDataSetRequestId :: !(Maybe Text)
     , _ssdersResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -190,7 +190,7 @@ data StartSupportDataExportResponse = StartSupportDataExportResponse'
 -- * 'ssdersResponseStatus'
 startSupportDataExportResponse
     :: Int -- ^ 'ssdersResponseStatus'
-    -> StartSupportDataExportResponse
+    -> StartSupportDataExportResponse (a)
 startSupportDataExportResponse pResponseStatus_ =
     StartSupportDataExportResponse'
     { _ssdersDataSetRequestId = Nothing
@@ -198,11 +198,11 @@ startSupportDataExportResponse pResponseStatus_ =
     }
 
 -- | A unique identifier representing a specific request to the StartSupportDataExport operation. This identifier can be used to correlate a request with notifications from the SNS topic.
-ssdersDataSetRequestId :: Lens' StartSupportDataExportResponse (Maybe Text)
+ssdersDataSetRequestId :: Lens' (StartSupportDataExportResponse (a)) (Maybe Text)
 ssdersDataSetRequestId = lens _ssdersDataSetRequestId (\ s a -> s{_ssdersDataSetRequestId = a});
 
 -- | The response status code.
-ssdersResponseStatus :: Lens' StartSupportDataExportResponse Int
+ssdersResponseStatus :: Lens' (StartSupportDataExportResponse (a)) Int
 ssdersResponseStatus = lens _ssdersResponseStatus (\ s a -> s{_ssdersResponseStatus = a});
 
 instance NFData StartSupportDataExportResponse

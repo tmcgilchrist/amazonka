@@ -124,7 +124,7 @@ instance ToQuery GetObjectACL where
           = mconcat ["versionId" =: _goaVersionId, "acl"]
 
 -- | /See:/ 'getObjectACLResponse' smart constructor.
-data GetObjectACLResponse = GetObjectACLResponse'
+data GetObjectACLResponse a = GetObjectACLResponse'
     { _goarsRequestCharged :: !(Maybe RequestCharged)
     , _goarsGrants         :: !(Maybe [Grant])
     , _goarsOwner          :: !(Maybe Owner)
@@ -144,7 +144,7 @@ data GetObjectACLResponse = GetObjectACLResponse'
 -- * 'goarsResponseStatus'
 getObjectACLResponse
     :: Int -- ^ 'goarsResponseStatus'
-    -> GetObjectACLResponse
+    -> GetObjectACLResponse (a)
 getObjectACLResponse pResponseStatus_ =
     GetObjectACLResponse'
     { _goarsRequestCharged = Nothing
@@ -154,19 +154,19 @@ getObjectACLResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-goarsRequestCharged :: Lens' GetObjectACLResponse (Maybe RequestCharged)
+goarsRequestCharged :: Lens' (GetObjectACLResponse (a)) (Maybe RequestCharged)
 goarsRequestCharged = lens _goarsRequestCharged (\ s a -> s{_goarsRequestCharged = a});
 
 -- | A list of grants.
-goarsGrants :: Lens' GetObjectACLResponse [Grant]
+goarsGrants :: Lens' (GetObjectACLResponse (a)) [Grant]
 goarsGrants = lens _goarsGrants (\ s a -> s{_goarsGrants = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-goarsOwner :: Lens' GetObjectACLResponse (Maybe Owner)
+goarsOwner :: Lens' (GetObjectACLResponse (a)) (Maybe Owner)
 goarsOwner = lens _goarsOwner (\ s a -> s{_goarsOwner = a});
 
 -- | The response status code.
-goarsResponseStatus :: Lens' GetObjectACLResponse Int
+goarsResponseStatus :: Lens' (GetObjectACLResponse (a)) Int
 goarsResponseStatus = lens _goarsResponseStatus (\ s a -> s{_goarsResponseStatus = a});
 
 instance NFData GetObjectACLResponse

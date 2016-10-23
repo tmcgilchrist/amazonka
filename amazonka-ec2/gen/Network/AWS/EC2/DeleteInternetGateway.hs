@@ -97,14 +97,14 @@ instance ToQuery DeleteInternetGateway where
                "InternetGatewayId" =: _digiInternetGatewayId]
 
 -- | /See:/ 'deleteInternetGatewayResponse' smart constructor.
-data DeleteInternetGatewayResponse =
+data DeleteInternetGatewayResponse a =
     DeleteInternetGatewayResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteInternetGatewayResponse' with the minimum fields required to make a request.
 --
 deleteInternetGatewayResponse
-    :: DeleteInternetGatewayResponse
+    :: DeleteInternetGatewayResponse (a)
 deleteInternetGatewayResponse = DeleteInternetGatewayResponse'
 
 instance NFData DeleteInternetGatewayResponse

@@ -231,7 +231,7 @@ instance ToQuery DescribeDataSources where
 -- | Represents the query results from a < DescribeDataSources> operation. The content is essentially a list of 'DataSource'.
 --
 -- /See:/ 'describeDataSourcesResponse' smart constructor.
-data DescribeDataSourcesResponse = DescribeDataSourcesResponse'
+data DescribeDataSourcesResponse a = DescribeDataSourcesResponse'
     { _ddssrsResults        :: !(Maybe [DataSource])
     , _ddssrsNextToken      :: !(Maybe Text)
     , _ddssrsResponseStatus :: !Int
@@ -248,7 +248,7 @@ data DescribeDataSourcesResponse = DescribeDataSourcesResponse'
 -- * 'ddssrsResponseStatus'
 describeDataSourcesResponse
     :: Int -- ^ 'ddssrsResponseStatus'
-    -> DescribeDataSourcesResponse
+    -> DescribeDataSourcesResponse (a)
 describeDataSourcesResponse pResponseStatus_ =
     DescribeDataSourcesResponse'
     { _ddssrsResults = Nothing
@@ -257,15 +257,15 @@ describeDataSourcesResponse pResponseStatus_ =
     }
 
 -- | A list of 'DataSource' that meet the search criteria.
-ddssrsResults :: Lens' DescribeDataSourcesResponse [DataSource]
+ddssrsResults :: Lens' (DescribeDataSourcesResponse (a)) [DataSource]
 ddssrsResults = lens _ddssrsResults (\ s a -> s{_ddssrsResults = a}) . _Default . _Coerce;
 
 -- | An ID of the next page in the paginated results that indicates at least one more page follows.
-ddssrsNextToken :: Lens' DescribeDataSourcesResponse (Maybe Text)
+ddssrsNextToken :: Lens' (DescribeDataSourcesResponse (a)) (Maybe Text)
 ddssrsNextToken = lens _ddssrsNextToken (\ s a -> s{_ddssrsNextToken = a});
 
 -- | The response status code.
-ddssrsResponseStatus :: Lens' DescribeDataSourcesResponse Int
+ddssrsResponseStatus :: Lens' (DescribeDataSourcesResponse (a)) Int
 ddssrsResponseStatus = lens _ddssrsResponseStatus (\ s a -> s{_ddssrsResponseStatus = a});
 
 instance NFData DescribeDataSourcesResponse

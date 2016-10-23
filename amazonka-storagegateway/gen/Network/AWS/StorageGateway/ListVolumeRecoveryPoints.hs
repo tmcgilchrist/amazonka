@@ -105,7 +105,7 @@ instance ToQuery ListVolumeRecoveryPoints where
         toQuery = const mempty
 
 -- | /See:/ 'listVolumeRecoveryPointsResponse' smart constructor.
-data ListVolumeRecoveryPointsResponse = ListVolumeRecoveryPointsResponse'
+data ListVolumeRecoveryPointsResponse a = ListVolumeRecoveryPointsResponse'
     { _lvrprsVolumeRecoveryPointInfos :: !(Maybe [VolumeRecoveryPointInfo])
     , _lvrprsGatewayARN               :: !(Maybe Text)
     , _lvrprsResponseStatus           :: !Int
@@ -122,7 +122,7 @@ data ListVolumeRecoveryPointsResponse = ListVolumeRecoveryPointsResponse'
 -- * 'lvrprsResponseStatus'
 listVolumeRecoveryPointsResponse
     :: Int -- ^ 'lvrprsResponseStatus'
-    -> ListVolumeRecoveryPointsResponse
+    -> ListVolumeRecoveryPointsResponse (a)
 listVolumeRecoveryPointsResponse pResponseStatus_ =
     ListVolumeRecoveryPointsResponse'
     { _lvrprsVolumeRecoveryPointInfos = Nothing
@@ -131,15 +131,15 @@ listVolumeRecoveryPointsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-lvrprsVolumeRecoveryPointInfos :: Lens' ListVolumeRecoveryPointsResponse [VolumeRecoveryPointInfo]
+lvrprsVolumeRecoveryPointInfos :: Lens' (ListVolumeRecoveryPointsResponse (a)) [VolumeRecoveryPointInfo]
 lvrprsVolumeRecoveryPointInfos = lens _lvrprsVolumeRecoveryPointInfos (\ s a -> s{_lvrprsVolumeRecoveryPointInfos = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-lvrprsGatewayARN :: Lens' ListVolumeRecoveryPointsResponse (Maybe Text)
+lvrprsGatewayARN :: Lens' (ListVolumeRecoveryPointsResponse (a)) (Maybe Text)
 lvrprsGatewayARN = lens _lvrprsGatewayARN (\ s a -> s{_lvrprsGatewayARN = a});
 
 -- | The response status code.
-lvrprsResponseStatus :: Lens' ListVolumeRecoveryPointsResponse Int
+lvrprsResponseStatus :: Lens' (ListVolumeRecoveryPointsResponse (a)) Int
 lvrprsResponseStatus = lens _lvrprsResponseStatus (\ s a -> s{_lvrprsResponseStatus = a});
 
 instance NFData ListVolumeRecoveryPointsResponse

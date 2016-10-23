@@ -101,7 +101,7 @@ instance ToQuery DescribeJob where
         toQuery = const mempty
 
 -- | /See:/ 'describeJobResponse' smart constructor.
-data DescribeJobResponse = DescribeJobResponse'
+data DescribeJobResponse a = DescribeJobResponse'
     { _djrsJobMetadata    :: !(Maybe JobMetadata)
     , _djrsSubJobMetadata :: !(Maybe [JobMetadata])
     , _djrsResponseStatus :: !Int
@@ -118,7 +118,7 @@ data DescribeJobResponse = DescribeJobResponse'
 -- * 'djrsResponseStatus'
 describeJobResponse
     :: Int -- ^ 'djrsResponseStatus'
-    -> DescribeJobResponse
+    -> DescribeJobResponse (a)
 describeJobResponse pResponseStatus_ =
     DescribeJobResponse'
     { _djrsJobMetadata = Nothing
@@ -127,15 +127,15 @@ describeJobResponse pResponseStatus_ =
     }
 
 -- | Information about a specific job, including shipping information, job status, and other important metadata.
-djrsJobMetadata :: Lens' DescribeJobResponse (Maybe JobMetadata)
+djrsJobMetadata :: Lens' (DescribeJobResponse (a)) (Maybe JobMetadata)
 djrsJobMetadata = lens _djrsJobMetadata (\ s a -> s{_djrsJobMetadata = a});
 
 -- | Information about a specific job part (in the case of an export job), including shipping information, job status, and other important metadata.
-djrsSubJobMetadata :: Lens' DescribeJobResponse [JobMetadata]
+djrsSubJobMetadata :: Lens' (DescribeJobResponse (a)) [JobMetadata]
 djrsSubJobMetadata = lens _djrsSubJobMetadata (\ s a -> s{_djrsSubJobMetadata = a}) . _Default . _Coerce;
 
 -- | The response status code.
-djrsResponseStatus :: Lens' DescribeJobResponse Int
+djrsResponseStatus :: Lens' (DescribeJobResponse (a)) Int
 djrsResponseStatus = lens _djrsResponseStatus (\ s a -> s{_djrsResponseStatus = a});
 
 instance NFData DescribeJobResponse

@@ -110,7 +110,7 @@ instance ToQuery DeleteTable where
 -- | Represents the output of a /DeleteTable/ operation.
 --
 -- /See:/ 'deleteTableResponse' smart constructor.
-data DeleteTableResponse = DeleteTableResponse'
+data DeleteTableResponse a = DeleteTableResponse'
     { _dtrsTableDescription :: !(Maybe TableDescription)
     , _dtrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -124,7 +124,7 @@ data DeleteTableResponse = DeleteTableResponse'
 -- * 'dtrsResponseStatus'
 deleteTableResponse
     :: Int -- ^ 'dtrsResponseStatus'
-    -> DeleteTableResponse
+    -> DeleteTableResponse (a)
 deleteTableResponse pResponseStatus_ =
     DeleteTableResponse'
     { _dtrsTableDescription = Nothing
@@ -132,11 +132,11 @@ deleteTableResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dtrsTableDescription :: Lens' DeleteTableResponse (Maybe TableDescription)
+dtrsTableDescription :: Lens' (DeleteTableResponse (a)) (Maybe TableDescription)
 dtrsTableDescription = lens _dtrsTableDescription (\ s a -> s{_dtrsTableDescription = a});
 
 -- | The response status code.
-dtrsResponseStatus :: Lens' DeleteTableResponse Int
+dtrsResponseStatus :: Lens' (DeleteTableResponse (a)) Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a});
 
 instance NFData DeleteTableResponse

@@ -112,14 +112,14 @@ instance ToQuery SetInstanceHealth where
                "HealthStatus" =: _sihHealthStatus]
 
 -- | /See:/ 'setInstanceHealthResponse' smart constructor.
-data SetInstanceHealthResponse =
+data SetInstanceHealthResponse a =
     SetInstanceHealthResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetInstanceHealthResponse' with the minimum fields required to make a request.
 --
 setInstanceHealthResponse
-    :: SetInstanceHealthResponse
+    :: SetInstanceHealthResponse (a)
 setInstanceHealthResponse = SetInstanceHealthResponse'
 
 instance NFData SetInstanceHealthResponse

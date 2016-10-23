@@ -127,7 +127,7 @@ instance ToQuery CreateDeploymentConfig where
 -- | Represents the output of a create deployment configuration operation.
 --
 -- /See:/ 'createDeploymentConfigResponse' smart constructor.
-data CreateDeploymentConfigResponse = CreateDeploymentConfigResponse'
+data CreateDeploymentConfigResponse a = CreateDeploymentConfigResponse'
     { _cdcrsDeploymentConfigId :: !(Maybe Text)
     , _cdcrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data CreateDeploymentConfigResponse = CreateDeploymentConfigResponse'
 -- * 'cdcrsResponseStatus'
 createDeploymentConfigResponse
     :: Int -- ^ 'cdcrsResponseStatus'
-    -> CreateDeploymentConfigResponse
+    -> CreateDeploymentConfigResponse (a)
 createDeploymentConfigResponse pResponseStatus_ =
     CreateDeploymentConfigResponse'
     { _cdcrsDeploymentConfigId = Nothing
@@ -149,11 +149,11 @@ createDeploymentConfigResponse pResponseStatus_ =
     }
 
 -- | A unique deployment configuration ID.
-cdcrsDeploymentConfigId :: Lens' CreateDeploymentConfigResponse (Maybe Text)
+cdcrsDeploymentConfigId :: Lens' (CreateDeploymentConfigResponse (a)) (Maybe Text)
 cdcrsDeploymentConfigId = lens _cdcrsDeploymentConfigId (\ s a -> s{_cdcrsDeploymentConfigId = a});
 
 -- | The response status code.
-cdcrsResponseStatus :: Lens' CreateDeploymentConfigResponse Int
+cdcrsResponseStatus :: Lens' (CreateDeploymentConfigResponse (a)) Int
 cdcrsResponseStatus = lens _cdcrsResponseStatus (\ s a -> s{_cdcrsResponseStatus = a});
 
 instance NFData CreateDeploymentConfigResponse

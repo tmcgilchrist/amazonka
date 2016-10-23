@@ -116,7 +116,7 @@ instance ToQuery CreateKeyPair where
 -- | Describes a key pair.
 --
 -- /See:/ 'createKeyPairResponse' smart constructor.
-data CreateKeyPairResponse = CreateKeyPairResponse'
+data CreateKeyPairResponse a = CreateKeyPairResponse'
     { _ckprsResponseStatus :: !Int
     , _ckprsKeyName        :: !Text
     , _ckprsKeyFingerprint :: !Text
@@ -139,7 +139,7 @@ createKeyPairResponse
     -> Text -- ^ 'ckprsKeyName'
     -> Text -- ^ 'ckprsKeyFingerprint'
     -> Text -- ^ 'ckprsKeyMaterial'
-    -> CreateKeyPairResponse
+    -> CreateKeyPairResponse (a)
 createKeyPairResponse pResponseStatus_ pKeyName_ pKeyFingerprint_ pKeyMaterial_ =
     CreateKeyPairResponse'
     { _ckprsResponseStatus = pResponseStatus_
@@ -149,19 +149,19 @@ createKeyPairResponse pResponseStatus_ pKeyName_ pKeyFingerprint_ pKeyMaterial_ 
     }
 
 -- | The response status code.
-ckprsResponseStatus :: Lens' CreateKeyPairResponse Int
+ckprsResponseStatus :: Lens' (CreateKeyPairResponse (a)) Int
 ckprsResponseStatus = lens _ckprsResponseStatus (\ s a -> s{_ckprsResponseStatus = a});
 
 -- | The name of the key pair.
-ckprsKeyName :: Lens' CreateKeyPairResponse Text
+ckprsKeyName :: Lens' (CreateKeyPairResponse (a)) Text
 ckprsKeyName = lens _ckprsKeyName (\ s a -> s{_ckprsKeyName = a});
 
 -- | The SHA-1 digest of the DER encoded private key.
-ckprsKeyFingerprint :: Lens' CreateKeyPairResponse Text
+ckprsKeyFingerprint :: Lens' (CreateKeyPairResponse (a)) Text
 ckprsKeyFingerprint = lens _ckprsKeyFingerprint (\ s a -> s{_ckprsKeyFingerprint = a});
 
 -- | An unencrypted PEM encoded RSA private key.
-ckprsKeyMaterial :: Lens' CreateKeyPairResponse Text
+ckprsKeyMaterial :: Lens' (CreateKeyPairResponse (a)) Text
 ckprsKeyMaterial = lens _ckprsKeyMaterial (\ s a -> s{_ckprsKeyMaterial = a});
 
 instance NFData CreateKeyPairResponse

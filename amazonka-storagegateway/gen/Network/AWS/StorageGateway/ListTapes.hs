@@ -138,7 +138,7 @@ instance ToQuery ListTapes where
 --
 --
 -- /See:/ 'listTapesResponse' smart constructor.
-data ListTapesResponse = ListTapesResponse'
+data ListTapesResponse a = ListTapesResponse'
     { _ltrsMarker         :: !(Maybe Text)
     , _ltrsTapeInfos      :: !(Maybe [TapeInfo])
     , _ltrsResponseStatus :: !Int
@@ -155,7 +155,7 @@ data ListTapesResponse = ListTapesResponse'
 -- * 'ltrsResponseStatus'
 listTapesResponse
     :: Int -- ^ 'ltrsResponseStatus'
-    -> ListTapesResponse
+    -> ListTapesResponse (a)
 listTapesResponse pResponseStatus_ =
     ListTapesResponse'
     { _ltrsMarker = Nothing
@@ -164,15 +164,15 @@ listTapesResponse pResponseStatus_ =
     }
 
 -- | A string that indicates the position at which to begin returning the next list of tapes. Use the marker in your next request to continue pagination of tapes. If there are no more tapes to list, this element does not appear in the response body.
-ltrsMarker :: Lens' ListTapesResponse (Maybe Text)
+ltrsMarker :: Lens' (ListTapesResponse (a)) (Maybe Text)
 ltrsMarker = lens _ltrsMarker (\ s a -> s{_ltrsMarker = a});
 
 -- | Undocumented member.
-ltrsTapeInfos :: Lens' ListTapesResponse [TapeInfo]
+ltrsTapeInfos :: Lens' (ListTapesResponse (a)) [TapeInfo]
 ltrsTapeInfos = lens _ltrsTapeInfos (\ s a -> s{_ltrsTapeInfos = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ltrsResponseStatus :: Lens' ListTapesResponse Int
+ltrsResponseStatus :: Lens' (ListTapesResponse (a)) Int
 ltrsResponseStatus = lens _ltrsResponseStatus (\ s a -> s{_ltrsResponseStatus = a});
 
 instance NFData ListTapesResponse

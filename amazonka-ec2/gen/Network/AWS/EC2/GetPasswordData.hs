@@ -115,7 +115,7 @@ instance ToQuery GetPasswordData where
 -- | Contains the output of GetPasswordData.
 --
 -- /See:/ 'getPasswordDataResponse' smart constructor.
-data GetPasswordDataResponse = GetPasswordDataResponse'
+data GetPasswordDataResponse a = GetPasswordDataResponse'
     { _gpdrsResponseStatus :: !Int
     , _gpdrsInstanceId     :: !Text
     , _gpdrsPasswordData   :: !Text
@@ -138,7 +138,7 @@ getPasswordDataResponse
     -> Text -- ^ 'gpdrsInstanceId'
     -> Text -- ^ 'gpdrsPasswordData'
     -> UTCTime -- ^ 'gpdrsTimestamp'
-    -> GetPasswordDataResponse
+    -> GetPasswordDataResponse (a)
 getPasswordDataResponse pResponseStatus_ pInstanceId_ pPasswordData_ pTimestamp_ =
     GetPasswordDataResponse'
     { _gpdrsResponseStatus = pResponseStatus_
@@ -148,19 +148,19 @@ getPasswordDataResponse pResponseStatus_ pInstanceId_ pPasswordData_ pTimestamp_
     }
 
 -- | The response status code.
-gpdrsResponseStatus :: Lens' GetPasswordDataResponse Int
+gpdrsResponseStatus :: Lens' (GetPasswordDataResponse (a)) Int
 gpdrsResponseStatus = lens _gpdrsResponseStatus (\ s a -> s{_gpdrsResponseStatus = a});
 
 -- | The ID of the Windows instance.
-gpdrsInstanceId :: Lens' GetPasswordDataResponse Text
+gpdrsInstanceId :: Lens' (GetPasswordDataResponse (a)) Text
 gpdrsInstanceId = lens _gpdrsInstanceId (\ s a -> s{_gpdrsInstanceId = a});
 
 -- | The password of the instance.
-gpdrsPasswordData :: Lens' GetPasswordDataResponse Text
+gpdrsPasswordData :: Lens' (GetPasswordDataResponse (a)) Text
 gpdrsPasswordData = lens _gpdrsPasswordData (\ s a -> s{_gpdrsPasswordData = a});
 
 -- | The time the data was last updated.
-gpdrsTimestamp :: Lens' GetPasswordDataResponse UTCTime
+gpdrsTimestamp :: Lens' (GetPasswordDataResponse (a)) UTCTime
 gpdrsTimestamp = lens _gpdrsTimestamp (\ s a -> s{_gpdrsTimestamp = a}) . _Time;
 
 instance NFData GetPasswordDataResponse

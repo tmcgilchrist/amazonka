@@ -116,7 +116,7 @@ instance ToQuery ListDistributions where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'listDistributionsResponse' smart constructor.
-data ListDistributionsResponse = ListDistributionsResponse'
+data ListDistributionsResponse a = ListDistributionsResponse'
     { _ldrsResponseStatus   :: !Int
     , _ldrsDistributionList :: !DistributionList
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data ListDistributionsResponse = ListDistributionsResponse'
 listDistributionsResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> DistributionList -- ^ 'ldrsDistributionList'
-    -> ListDistributionsResponse
+    -> ListDistributionsResponse (a)
 listDistributionsResponse pResponseStatus_ pDistributionList_ =
     ListDistributionsResponse'
     { _ldrsResponseStatus = pResponseStatus_
@@ -139,11 +139,11 @@ listDistributionsResponse pResponseStatus_ pDistributionList_ =
     }
 
 -- | The response status code.
-ldrsResponseStatus :: Lens' ListDistributionsResponse Int
+ldrsResponseStatus :: Lens' (ListDistributionsResponse (a)) Int
 ldrsResponseStatus = lens _ldrsResponseStatus (\ s a -> s{_ldrsResponseStatus = a});
 
 -- | The DistributionList type.
-ldrsDistributionList :: Lens' ListDistributionsResponse DistributionList
+ldrsDistributionList :: Lens' (ListDistributionsResponse (a)) DistributionList
 ldrsDistributionList = lens _ldrsDistributionList (\ s a -> s{_ldrsDistributionList = a});
 
 instance NFData ListDistributionsResponse

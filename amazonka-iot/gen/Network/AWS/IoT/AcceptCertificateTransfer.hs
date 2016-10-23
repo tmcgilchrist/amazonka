@@ -102,14 +102,14 @@ instance ToQuery AcceptCertificateTransfer where
           = mconcat ["setAsActive" =: _actSetAsActive]
 
 -- | /See:/ 'acceptCertificateTransferResponse' smart constructor.
-data AcceptCertificateTransferResponse =
+data AcceptCertificateTransferResponse a =
     AcceptCertificateTransferResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AcceptCertificateTransferResponse' with the minimum fields required to make a request.
 --
 acceptCertificateTransferResponse
-    :: AcceptCertificateTransferResponse
+    :: AcceptCertificateTransferResponse (a)
 acceptCertificateTransferResponse = AcceptCertificateTransferResponse'
 
 instance NFData AcceptCertificateTransferResponse

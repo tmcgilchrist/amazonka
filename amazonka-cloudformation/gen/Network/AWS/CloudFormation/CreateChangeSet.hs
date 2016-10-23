@@ -230,7 +230,7 @@ instance ToQuery CreateChangeSet where
 -- | The output for the < CreateChangeSet> action.
 --
 -- /See:/ 'createChangeSetResponse' smart constructor.
-data CreateChangeSetResponse = CreateChangeSetResponse'
+data CreateChangeSetResponse a = CreateChangeSetResponse'
     { _ccsrsId             :: !(Maybe Text)
     , _ccsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -244,7 +244,7 @@ data CreateChangeSetResponse = CreateChangeSetResponse'
 -- * 'ccsrsResponseStatus'
 createChangeSetResponse
     :: Int -- ^ 'ccsrsResponseStatus'
-    -> CreateChangeSetResponse
+    -> CreateChangeSetResponse (a)
 createChangeSetResponse pResponseStatus_ =
     CreateChangeSetResponse'
     { _ccsrsId = Nothing
@@ -252,11 +252,11 @@ createChangeSetResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the change set.
-ccsrsId :: Lens' CreateChangeSetResponse (Maybe Text)
+ccsrsId :: Lens' (CreateChangeSetResponse (a)) (Maybe Text)
 ccsrsId = lens _ccsrsId (\ s a -> s{_ccsrsId = a});
 
 -- | The response status code.
-ccsrsResponseStatus :: Lens' CreateChangeSetResponse Int
+ccsrsResponseStatus :: Lens' (CreateChangeSetResponse (a)) Int
 ccsrsResponseStatus = lens _ccsrsResponseStatus (\ s a -> s{_ccsrsResponseStatus = a});
 
 instance NFData CreateChangeSetResponse

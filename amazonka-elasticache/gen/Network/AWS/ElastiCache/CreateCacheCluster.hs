@@ -431,7 +431,7 @@ instance ToQuery CreateCacheCluster where
                "CacheClusterId" =: _cccCacheClusterId]
 
 -- | /See:/ 'createCacheClusterResponse' smart constructor.
-data CreateCacheClusterResponse = CreateCacheClusterResponse'
+data CreateCacheClusterResponse a = CreateCacheClusterResponse'
     { _cccrsCacheCluster   :: !(Maybe CacheCluster)
     , _cccrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -445,7 +445,7 @@ data CreateCacheClusterResponse = CreateCacheClusterResponse'
 -- * 'cccrsResponseStatus'
 createCacheClusterResponse
     :: Int -- ^ 'cccrsResponseStatus'
-    -> CreateCacheClusterResponse
+    -> CreateCacheClusterResponse (a)
 createCacheClusterResponse pResponseStatus_ =
     CreateCacheClusterResponse'
     { _cccrsCacheCluster = Nothing
@@ -453,11 +453,11 @@ createCacheClusterResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cccrsCacheCluster :: Lens' CreateCacheClusterResponse (Maybe CacheCluster)
+cccrsCacheCluster :: Lens' (CreateCacheClusterResponse (a)) (Maybe CacheCluster)
 cccrsCacheCluster = lens _cccrsCacheCluster (\ s a -> s{_cccrsCacheCluster = a});
 
 -- | The response status code.
-cccrsResponseStatus :: Lens' CreateCacheClusterResponse Int
+cccrsResponseStatus :: Lens' (CreateCacheClusterResponse (a)) Int
 cccrsResponseStatus = lens _cccrsResponseStatus (\ s a -> s{_cccrsResponseStatus = a});
 
 instance NFData CreateCacheClusterResponse

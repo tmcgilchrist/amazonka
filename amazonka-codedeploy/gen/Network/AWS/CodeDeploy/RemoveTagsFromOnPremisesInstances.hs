@@ -112,14 +112,14 @@ instance ToQuery RemoveTagsFromOnPremisesInstances
         toQuery = const mempty
 
 -- | /See:/ 'removeTagsFromOnPremisesInstancesResponse' smart constructor.
-data RemoveTagsFromOnPremisesInstancesResponse =
+data RemoveTagsFromOnPremisesInstancesResponse a =
     RemoveTagsFromOnPremisesInstancesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveTagsFromOnPremisesInstancesResponse' with the minimum fields required to make a request.
 --
 removeTagsFromOnPremisesInstancesResponse
-    :: RemoveTagsFromOnPremisesInstancesResponse
+    :: RemoveTagsFromOnPremisesInstancesResponse (a)
 removeTagsFromOnPremisesInstancesResponse =
     RemoveTagsFromOnPremisesInstancesResponse'
 

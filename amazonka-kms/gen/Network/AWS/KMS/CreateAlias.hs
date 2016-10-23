@@ -112,14 +112,14 @@ instance ToQuery CreateAlias where
         toQuery = const mempty
 
 -- | /See:/ 'createAliasResponse' smart constructor.
-data CreateAliasResponse =
+data CreateAliasResponse a =
     CreateAliasResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateAliasResponse' with the minimum fields required to make a request.
 --
 createAliasResponse
-    :: CreateAliasResponse
+    :: CreateAliasResponse (a)
 createAliasResponse = CreateAliasResponse'
 
 instance NFData CreateAliasResponse

@@ -126,7 +126,7 @@ instance ToQuery UpdateFleetPortSettings where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'updateFleetPortSettingsResponse' smart constructor.
-data UpdateFleetPortSettingsResponse = UpdateFleetPortSettingsResponse'
+data UpdateFleetPortSettingsResponse a = UpdateFleetPortSettingsResponse'
     { _ufpsrsFleetId        :: !(Maybe Text)
     , _ufpsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data UpdateFleetPortSettingsResponse = UpdateFleetPortSettingsResponse'
 -- * 'ufpsrsResponseStatus'
 updateFleetPortSettingsResponse
     :: Int -- ^ 'ufpsrsResponseStatus'
-    -> UpdateFleetPortSettingsResponse
+    -> UpdateFleetPortSettingsResponse (a)
 updateFleetPortSettingsResponse pResponseStatus_ =
     UpdateFleetPortSettingsResponse'
     { _ufpsrsFleetId = Nothing
@@ -148,11 +148,11 @@ updateFleetPortSettingsResponse pResponseStatus_ =
     }
 
 -- | Unique identifier for the updated fleet.
-ufpsrsFleetId :: Lens' UpdateFleetPortSettingsResponse (Maybe Text)
+ufpsrsFleetId :: Lens' (UpdateFleetPortSettingsResponse (a)) (Maybe Text)
 ufpsrsFleetId = lens _ufpsrsFleetId (\ s a -> s{_ufpsrsFleetId = a});
 
 -- | The response status code.
-ufpsrsResponseStatus :: Lens' UpdateFleetPortSettingsResponse Int
+ufpsrsResponseStatus :: Lens' (UpdateFleetPortSettingsResponse (a)) Int
 ufpsrsResponseStatus = lens _ufpsrsResponseStatus (\ s a -> s{_ufpsrsResponseStatus = a});
 
 instance NFData UpdateFleetPortSettingsResponse

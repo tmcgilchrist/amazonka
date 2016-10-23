@@ -111,7 +111,7 @@ instance ToQuery ModifyHosts where
 -- | Contains the output of ModifyHosts.
 --
 -- /See:/ 'modifyHostsResponse' smart constructor.
-data ModifyHostsResponse = ModifyHostsResponse'
+data ModifyHostsResponse a = ModifyHostsResponse'
     { _mhrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
     , _mhrsSuccessful     :: !(Maybe [Text])
     , _mhrsResponseStatus :: !Int
@@ -128,7 +128,7 @@ data ModifyHostsResponse = ModifyHostsResponse'
 -- * 'mhrsResponseStatus'
 modifyHostsResponse
     :: Int -- ^ 'mhrsResponseStatus'
-    -> ModifyHostsResponse
+    -> ModifyHostsResponse (a)
 modifyHostsResponse pResponseStatus_ =
     ModifyHostsResponse'
     { _mhrsUnsuccessful = Nothing
@@ -137,15 +137,15 @@ modifyHostsResponse pResponseStatus_ =
     }
 
 -- | The IDs of the Dedicated Hosts that could not be modified. Check whether the setting you requested can be used.
-mhrsUnsuccessful :: Lens' ModifyHostsResponse [UnsuccessfulItem]
+mhrsUnsuccessful :: Lens' (ModifyHostsResponse (a)) [UnsuccessfulItem]
 mhrsUnsuccessful = lens _mhrsUnsuccessful (\ s a -> s{_mhrsUnsuccessful = a}) . _Default . _Coerce;
 
 -- | The IDs of the Dedicated Hosts that were successfully modified.
-mhrsSuccessful :: Lens' ModifyHostsResponse [Text]
+mhrsSuccessful :: Lens' (ModifyHostsResponse (a)) [Text]
 mhrsSuccessful = lens _mhrsSuccessful (\ s a -> s{_mhrsSuccessful = a}) . _Default . _Coerce;
 
 -- | The response status code.
-mhrsResponseStatus :: Lens' ModifyHostsResponse Int
+mhrsResponseStatus :: Lens' (ModifyHostsResponse (a)) Int
 mhrsResponseStatus = lens _mhrsResponseStatus (\ s a -> s{_mhrsResponseStatus = a});
 
 instance NFData ModifyHostsResponse

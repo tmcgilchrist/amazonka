@@ -119,14 +119,14 @@ instance ToQuery ChangeMessageVisibility where
                "VisibilityTimeout" =: _cmvVisibilityTimeout]
 
 -- | /See:/ 'changeMessageVisibilityResponse' smart constructor.
-data ChangeMessageVisibilityResponse =
+data ChangeMessageVisibilityResponse a =
     ChangeMessageVisibilityResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ChangeMessageVisibilityResponse' with the minimum fields required to make a request.
 --
 changeMessageVisibilityResponse
-    :: ChangeMessageVisibilityResponse
+    :: ChangeMessageVisibilityResponse (a)
 changeMessageVisibilityResponse = ChangeMessageVisibilityResponse'
 
 instance NFData ChangeMessageVisibilityResponse

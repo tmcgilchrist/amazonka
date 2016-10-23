@@ -114,14 +114,14 @@ instance ToQuery ResetInstanceAttribute where
                "Attribute" =: _riaAttribute]
 
 -- | /See:/ 'resetInstanceAttributeResponse' smart constructor.
-data ResetInstanceAttributeResponse =
+data ResetInstanceAttributeResponse a =
     ResetInstanceAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ResetInstanceAttributeResponse' with the minimum fields required to make a request.
 --
 resetInstanceAttributeResponse
-    :: ResetInstanceAttributeResponse
+    :: ResetInstanceAttributeResponse (a)
 resetInstanceAttributeResponse = ResetInstanceAttributeResponse'
 
 instance NFData ResetInstanceAttributeResponse

@@ -331,7 +331,7 @@ instance ToQuery CreateMultipartUpload where
         toQuery = const (mconcat ["uploads"])
 
 -- | /See:/ 'createMultipartUploadResponse' smart constructor.
-data CreateMultipartUploadResponse = CreateMultipartUploadResponse'
+data CreateMultipartUploadResponse a = CreateMultipartUploadResponse'
     { _cmursRequestCharged       :: !(Maybe RequestCharged)
     , _cmursBucket               :: !(Maybe BucketName)
     , _cmursSSECustomerAlgorithm :: !(Maybe Text)
@@ -372,7 +372,7 @@ data CreateMultipartUploadResponse = CreateMultipartUploadResponse'
 -- * 'cmursResponseStatus'
 createMultipartUploadResponse
     :: Int -- ^ 'cmursResponseStatus'
-    -> CreateMultipartUploadResponse
+    -> CreateMultipartUploadResponse (a)
 createMultipartUploadResponse pResponseStatus_ =
     CreateMultipartUploadResponse'
     { _cmursRequestCharged = Nothing
@@ -389,47 +389,47 @@ createMultipartUploadResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cmursRequestCharged :: Lens' CreateMultipartUploadResponse (Maybe RequestCharged)
+cmursRequestCharged :: Lens' (CreateMultipartUploadResponse (a)) (Maybe RequestCharged)
 cmursRequestCharged = lens _cmursRequestCharged (\ s a -> s{_cmursRequestCharged = a});
 
 -- | Name of the bucket to which the multipart upload was initiated.
-cmursBucket :: Lens' CreateMultipartUploadResponse (Maybe BucketName)
+cmursBucket :: Lens' (CreateMultipartUploadResponse (a)) (Maybe BucketName)
 cmursBucket = lens _cmursBucket (\ s a -> s{_cmursBucket = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
-cmursSSECustomerAlgorithm :: Lens' CreateMultipartUploadResponse (Maybe Text)
+cmursSSECustomerAlgorithm :: Lens' (CreateMultipartUploadResponse (a)) (Maybe Text)
 cmursSSECustomerAlgorithm = lens _cmursSSECustomerAlgorithm (\ s a -> s{_cmursSSECustomerAlgorithm = a});
 
 -- | Date when multipart upload will become eligible for abort operation by lifecycle.
-cmursAbortDate :: Lens' CreateMultipartUploadResponse (Maybe UTCTime)
+cmursAbortDate :: Lens' (CreateMultipartUploadResponse (a)) (Maybe UTCTime)
 cmursAbortDate = lens _cmursAbortDate (\ s a -> s{_cmursAbortDate = a}) . mapping _Time;
 
 -- | Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
-cmursAbortRuleId :: Lens' CreateMultipartUploadResponse (Maybe Text)
+cmursAbortRuleId :: Lens' (CreateMultipartUploadResponse (a)) (Maybe Text)
 cmursAbortRuleId = lens _cmursAbortRuleId (\ s a -> s{_cmursAbortRuleId = a});
 
 -- | Object key for which the multipart upload was initiated.
-cmursKey :: Lens' CreateMultipartUploadResponse (Maybe ObjectKey)
+cmursKey :: Lens' (CreateMultipartUploadResponse (a)) (Maybe ObjectKey)
 cmursKey = lens _cmursKey (\ s a -> s{_cmursKey = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-cmursSSECustomerKeyMD5 :: Lens' CreateMultipartUploadResponse (Maybe Text)
+cmursSSECustomerKeyMD5 :: Lens' (CreateMultipartUploadResponse (a)) (Maybe Text)
 cmursSSECustomerKeyMD5 = lens _cmursSSECustomerKeyMD5 (\ s a -> s{_cmursSSECustomerKeyMD5 = a});
 
 -- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-cmursSSEKMSKeyId :: Lens' CreateMultipartUploadResponse (Maybe Text)
+cmursSSEKMSKeyId :: Lens' (CreateMultipartUploadResponse (a)) (Maybe Text)
 cmursSSEKMSKeyId = lens _cmursSSEKMSKeyId (\ s a -> s{_cmursSSEKMSKeyId = a}) . mapping _Sensitive;
 
 -- | ID for the initiated multipart upload.
-cmursUploadId :: Lens' CreateMultipartUploadResponse (Maybe Text)
+cmursUploadId :: Lens' (CreateMultipartUploadResponse (a)) (Maybe Text)
 cmursUploadId = lens _cmursUploadId (\ s a -> s{_cmursUploadId = a});
 
 -- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
-cmursServerSideEncryption :: Lens' CreateMultipartUploadResponse (Maybe ServerSideEncryption)
+cmursServerSideEncryption :: Lens' (CreateMultipartUploadResponse (a)) (Maybe ServerSideEncryption)
 cmursServerSideEncryption = lens _cmursServerSideEncryption (\ s a -> s{_cmursServerSideEncryption = a});
 
 -- | The response status code.
-cmursResponseStatus :: Lens' CreateMultipartUploadResponse Int
+cmursResponseStatus :: Lens' (CreateMultipartUploadResponse (a)) Int
 cmursResponseStatus = lens _cmursResponseStatus (\ s a -> s{_cmursResponseStatus = a});
 
 instance NFData CreateMultipartUploadResponse

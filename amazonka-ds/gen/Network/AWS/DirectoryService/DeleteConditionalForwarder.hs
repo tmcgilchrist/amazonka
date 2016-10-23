@@ -115,7 +115,7 @@ instance ToQuery DeleteConditionalForwarder where
 -- | The result of a DeleteConditionalForwarder request.
 --
 -- /See:/ 'deleteConditionalForwarderResponse' smart constructor.
-newtype DeleteConditionalForwarderResponse = DeleteConditionalForwarderResponse'
+newtype DeleteConditionalForwarderResponse a = DeleteConditionalForwarderResponse'
     { _drsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -126,14 +126,14 @@ newtype DeleteConditionalForwarderResponse = DeleteConditionalForwarderResponse'
 -- * 'drsResponseStatus'
 deleteConditionalForwarderResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteConditionalForwarderResponse
+    -> DeleteConditionalForwarderResponse (a)
 deleteConditionalForwarderResponse pResponseStatus_ =
     DeleteConditionalForwarderResponse'
     { _drsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteConditionalForwarderResponse Int
+drsResponseStatus :: Lens' (DeleteConditionalForwarderResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteConditionalForwarderResponse

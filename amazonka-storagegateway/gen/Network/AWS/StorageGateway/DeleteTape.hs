@@ -114,7 +114,7 @@ instance ToQuery DeleteTape where
 -- | DeleteTapeOutput
 --
 -- /See:/ 'deleteTapeResponse' smart constructor.
-data DeleteTapeResponse = DeleteTapeResponse'
+data DeleteTapeResponse a = DeleteTapeResponse'
     { _dtrsTapeARN        :: !(Maybe Text)
     , _dtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data DeleteTapeResponse = DeleteTapeResponse'
 -- * 'dtrsResponseStatus'
 deleteTapeResponse
     :: Int -- ^ 'dtrsResponseStatus'
-    -> DeleteTapeResponse
+    -> DeleteTapeResponse (a)
 deleteTapeResponse pResponseStatus_ =
     DeleteTapeResponse'
     { _dtrsTapeARN = Nothing
@@ -136,11 +136,11 @@ deleteTapeResponse pResponseStatus_ =
     }
 
 -- | The Amazon Resource Name (ARN) of the deleted virtual tape.
-dtrsTapeARN :: Lens' DeleteTapeResponse (Maybe Text)
+dtrsTapeARN :: Lens' (DeleteTapeResponse (a)) (Maybe Text)
 dtrsTapeARN = lens _dtrsTapeARN (\ s a -> s{_dtrsTapeARN = a});
 
 -- | The response status code.
-dtrsResponseStatus :: Lens' DeleteTapeResponse Int
+dtrsResponseStatus :: Lens' (DeleteTapeResponse (a)) Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a});
 
 instance NFData DeleteTapeResponse

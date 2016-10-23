@@ -109,7 +109,7 @@ instance ToQuery DeleteEvaluation where
 -- You can use the 'GetEvaluation' operation and check the value of the 'Status' parameter to see whether an 'Evaluation' is marked as 'DELETED'.
 --
 -- /See:/ 'deleteEvaluationResponse' smart constructor.
-data DeleteEvaluationResponse = DeleteEvaluationResponse'
+data DeleteEvaluationResponse a = DeleteEvaluationResponse'
     { _dersEvaluationId   :: !(Maybe Text)
     , _dersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -123,7 +123,7 @@ data DeleteEvaluationResponse = DeleteEvaluationResponse'
 -- * 'dersResponseStatus'
 deleteEvaluationResponse
     :: Int -- ^ 'dersResponseStatus'
-    -> DeleteEvaluationResponse
+    -> DeleteEvaluationResponse (a)
 deleteEvaluationResponse pResponseStatus_ =
     DeleteEvaluationResponse'
     { _dersEvaluationId = Nothing
@@ -131,11 +131,11 @@ deleteEvaluationResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the 'Evaluation'. This value should be identical to the value of the 'EvaluationId' in the request.
-dersEvaluationId :: Lens' DeleteEvaluationResponse (Maybe Text)
+dersEvaluationId :: Lens' (DeleteEvaluationResponse (a)) (Maybe Text)
 dersEvaluationId = lens _dersEvaluationId (\ s a -> s{_dersEvaluationId = a});
 
 -- | The response status code.
-dersResponseStatus :: Lens' DeleteEvaluationResponse Int
+dersResponseStatus :: Lens' (DeleteEvaluationResponse (a)) Int
 dersResponseStatus = lens _dersResponseStatus (\ s a -> s{_dersResponseStatus = a});
 
 instance NFData DeleteEvaluationResponse

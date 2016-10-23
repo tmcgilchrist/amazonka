@@ -110,14 +110,14 @@ instance ToQuery ReleaseAddress where
                "PublicIp" =: _raPublicIP, "DryRun" =: _raDryRun]
 
 -- | /See:/ 'releaseAddressResponse' smart constructor.
-data ReleaseAddressResponse =
+data ReleaseAddressResponse a =
     ReleaseAddressResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ReleaseAddressResponse' with the minimum fields required to make a request.
 --
 releaseAddressResponse
-    :: ReleaseAddressResponse
+    :: ReleaseAddressResponse (a)
 releaseAddressResponse = ReleaseAddressResponse'
 
 instance NFData ReleaseAddressResponse

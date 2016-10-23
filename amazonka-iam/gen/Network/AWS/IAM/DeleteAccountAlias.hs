@@ -87,14 +87,14 @@ instance ToQuery DeleteAccountAlias where
                "AccountAlias" =: _daaAccountAlias]
 
 -- | /See:/ 'deleteAccountAliasResponse' smart constructor.
-data DeleteAccountAliasResponse =
+data DeleteAccountAliasResponse a =
     DeleteAccountAliasResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAccountAliasResponse' with the minimum fields required to make a request.
 --
 deleteAccountAliasResponse
-    :: DeleteAccountAliasResponse
+    :: DeleteAccountAliasResponse (a)
 deleteAccountAliasResponse = DeleteAccountAliasResponse'
 
 instance NFData DeleteAccountAliasResponse

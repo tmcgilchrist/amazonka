@@ -108,14 +108,14 @@ instance ToQuery AttachInternetGateway where
                "VpcId" =: _aigVPCId]
 
 -- | /See:/ 'attachInternetGatewayResponse' smart constructor.
-data AttachInternetGatewayResponse =
+data AttachInternetGatewayResponse a =
     AttachInternetGatewayResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AttachInternetGatewayResponse' with the minimum fields required to make a request.
 --
 attachInternetGatewayResponse
-    :: AttachInternetGatewayResponse
+    :: AttachInternetGatewayResponse (a)
 attachInternetGatewayResponse = AttachInternetGatewayResponse'
 
 instance NFData AttachInternetGatewayResponse

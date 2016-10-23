@@ -96,14 +96,14 @@ instance ToQuery RegisterCrossAccountAccessRole where
         toQuery = const mempty
 
 -- | /See:/ 'registerCrossAccountAccessRoleResponse' smart constructor.
-data RegisterCrossAccountAccessRoleResponse =
+data RegisterCrossAccountAccessRoleResponse a =
     RegisterCrossAccountAccessRoleResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RegisterCrossAccountAccessRoleResponse' with the minimum fields required to make a request.
 --
 registerCrossAccountAccessRoleResponse
-    :: RegisterCrossAccountAccessRoleResponse
+    :: RegisterCrossAccountAccessRoleResponse (a)
 registerCrossAccountAccessRoleResponse =
     RegisterCrossAccountAccessRoleResponse'
 

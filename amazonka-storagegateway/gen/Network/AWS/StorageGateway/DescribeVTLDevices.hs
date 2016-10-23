@@ -154,7 +154,7 @@ instance ToQuery DescribeVTLDevices where
 -- | DescribeVTLDevicesOutput
 --
 -- /See:/ 'describeVTLDevicesResponse' smart constructor.
-data DescribeVTLDevicesResponse = DescribeVTLDevicesResponse'
+data DescribeVTLDevicesResponse a = DescribeVTLDevicesResponse'
     { _dvtldrsVTLDevices     :: !(Maybe [VTLDevice])
     , _dvtldrsGatewayARN     :: !(Maybe Text)
     , _dvtldrsMarker         :: !(Maybe Text)
@@ -174,7 +174,7 @@ data DescribeVTLDevicesResponse = DescribeVTLDevicesResponse'
 -- * 'dvtldrsResponseStatus'
 describeVTLDevicesResponse
     :: Int -- ^ 'dvtldrsResponseStatus'
-    -> DescribeVTLDevicesResponse
+    -> DescribeVTLDevicesResponse (a)
 describeVTLDevicesResponse pResponseStatus_ =
     DescribeVTLDevicesResponse'
     { _dvtldrsVTLDevices = Nothing
@@ -184,19 +184,19 @@ describeVTLDevicesResponse pResponseStatus_ =
     }
 
 -- | An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.
-dvtldrsVTLDevices :: Lens' DescribeVTLDevicesResponse [VTLDevice]
+dvtldrsVTLDevices :: Lens' (DescribeVTLDevicesResponse (a)) [VTLDevice]
 dvtldrsVTLDevices = lens _dvtldrsVTLDevices (\ s a -> s{_dvtldrsVTLDevices = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-dvtldrsGatewayARN :: Lens' DescribeVTLDevicesResponse (Maybe Text)
+dvtldrsGatewayARN :: Lens' (DescribeVTLDevicesResponse (a)) (Maybe Text)
 dvtldrsGatewayARN = lens _dvtldrsGatewayARN (\ s a -> s{_dvtldrsGatewayARN = a});
 
 -- | An opaque string that indicates the position at which the VTL devices that were fetched for description ended. Use the marker in your next request to fetch the next set of VTL devices in the list. If there are no more VTL devices to describe, this field does not appear in the response.
-dvtldrsMarker :: Lens' DescribeVTLDevicesResponse (Maybe Text)
+dvtldrsMarker :: Lens' (DescribeVTLDevicesResponse (a)) (Maybe Text)
 dvtldrsMarker = lens _dvtldrsMarker (\ s a -> s{_dvtldrsMarker = a});
 
 -- | The response status code.
-dvtldrsResponseStatus :: Lens' DescribeVTLDevicesResponse Int
+dvtldrsResponseStatus :: Lens' (DescribeVTLDevicesResponse (a)) Int
 dvtldrsResponseStatus = lens _dvtldrsResponseStatus (\ s a -> s{_dvtldrsResponseStatus = a});
 
 instance NFData DescribeVTLDevicesResponse

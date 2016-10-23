@@ -211,7 +211,7 @@ instance ToQuery DescribeReservedDBInstancesOfferings
 -- | Contains the result of a successful invocation of the < DescribeReservedDBInstancesOfferings> action.
 --
 -- /See:/ 'describeReservedDBInstancesOfferingsResponse' smart constructor.
-data DescribeReservedDBInstancesOfferingsResponse = DescribeReservedDBInstancesOfferingsResponse'
+data DescribeReservedDBInstancesOfferingsResponse a = DescribeReservedDBInstancesOfferingsResponse'
     { _drdiorsMarker                       :: !(Maybe Text)
     , _drdiorsReservedDBInstancesOfferings :: !(Maybe [ReservedDBInstancesOffering])
     , _drdiorsResponseStatus               :: !Int
@@ -228,7 +228,7 @@ data DescribeReservedDBInstancesOfferingsResponse = DescribeReservedDBInstancesO
 -- * 'drdiorsResponseStatus'
 describeReservedDBInstancesOfferingsResponse
     :: Int -- ^ 'drdiorsResponseStatus'
-    -> DescribeReservedDBInstancesOfferingsResponse
+    -> DescribeReservedDBInstancesOfferingsResponse (a)
 describeReservedDBInstancesOfferingsResponse pResponseStatus_ =
     DescribeReservedDBInstancesOfferingsResponse'
     { _drdiorsMarker = Nothing
@@ -237,15 +237,15 @@ describeReservedDBInstancesOfferingsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-drdiorsMarker :: Lens' DescribeReservedDBInstancesOfferingsResponse (Maybe Text)
+drdiorsMarker :: Lens' (DescribeReservedDBInstancesOfferingsResponse (a)) (Maybe Text)
 drdiorsMarker = lens _drdiorsMarker (\ s a -> s{_drdiorsMarker = a});
 
 -- | A list of reserved DB instance offerings.
-drdiorsReservedDBInstancesOfferings :: Lens' DescribeReservedDBInstancesOfferingsResponse [ReservedDBInstancesOffering]
+drdiorsReservedDBInstancesOfferings :: Lens' (DescribeReservedDBInstancesOfferingsResponse (a)) [ReservedDBInstancesOffering]
 drdiorsReservedDBInstancesOfferings = lens _drdiorsReservedDBInstancesOfferings (\ s a -> s{_drdiorsReservedDBInstancesOfferings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drdiorsResponseStatus :: Lens' DescribeReservedDBInstancesOfferingsResponse Int
+drdiorsResponseStatus :: Lens' (DescribeReservedDBInstancesOfferingsResponse (a)) Int
 drdiorsResponseStatus = lens _drdiorsResponseStatus (\ s a -> s{_drdiorsResponseStatus = a});
 
 instance NFData

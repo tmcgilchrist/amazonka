@@ -128,7 +128,7 @@ instance ToQuery DetachInstances where
 -- | Contains the output of DetachInstances.
 --
 -- /See:/ 'detachInstancesResponse' smart constructor.
-data DetachInstancesResponse = DetachInstancesResponse'
+data DetachInstancesResponse a = DetachInstancesResponse'
     { _dirsActivities     :: !(Maybe [Activity])
     , _dirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -142,7 +142,7 @@ data DetachInstancesResponse = DetachInstancesResponse'
 -- * 'dirsResponseStatus'
 detachInstancesResponse
     :: Int -- ^ 'dirsResponseStatus'
-    -> DetachInstancesResponse
+    -> DetachInstancesResponse (a)
 detachInstancesResponse pResponseStatus_ =
     DetachInstancesResponse'
     { _dirsActivities = Nothing
@@ -150,11 +150,11 @@ detachInstancesResponse pResponseStatus_ =
     }
 
 -- | The activities related to detaching the instances from the Auto Scaling group.
-dirsActivities :: Lens' DetachInstancesResponse [Activity]
+dirsActivities :: Lens' (DetachInstancesResponse (a)) [Activity]
 dirsActivities = lens _dirsActivities (\ s a -> s{_dirsActivities = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dirsResponseStatus :: Lens' DetachInstancesResponse Int
+dirsResponseStatus :: Lens' (DetachInstancesResponse (a)) Int
 dirsResponseStatus = lens _dirsResponseStatus (\ s a -> s{_dirsResponseStatus = a});
 
 instance NFData DetachInstancesResponse

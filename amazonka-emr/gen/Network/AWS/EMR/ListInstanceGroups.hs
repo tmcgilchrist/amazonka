@@ -128,7 +128,7 @@ instance ToQuery ListInstanceGroups where
 -- | This input determines which instance groups to retrieve.
 --
 -- /See:/ 'listInstanceGroupsResponse' smart constructor.
-data ListInstanceGroupsResponse = ListInstanceGroupsResponse'
+data ListInstanceGroupsResponse a = ListInstanceGroupsResponse'
     { _ligrsMarker         :: !(Maybe Text)
     , _ligrsInstanceGroups :: !(Maybe [InstanceGroup])
     , _ligrsResponseStatus :: !Int
@@ -145,7 +145,7 @@ data ListInstanceGroupsResponse = ListInstanceGroupsResponse'
 -- * 'ligrsResponseStatus'
 listInstanceGroupsResponse
     :: Int -- ^ 'ligrsResponseStatus'
-    -> ListInstanceGroupsResponse
+    -> ListInstanceGroupsResponse (a)
 listInstanceGroupsResponse pResponseStatus_ =
     ListInstanceGroupsResponse'
     { _ligrsMarker = Nothing
@@ -154,15 +154,15 @@ listInstanceGroupsResponse pResponseStatus_ =
     }
 
 -- | The pagination token that indicates the next set of results to retrieve.
-ligrsMarker :: Lens' ListInstanceGroupsResponse (Maybe Text)
+ligrsMarker :: Lens' (ListInstanceGroupsResponse (a)) (Maybe Text)
 ligrsMarker = lens _ligrsMarker (\ s a -> s{_ligrsMarker = a});
 
 -- | The list of instance groups for the cluster and given filters.
-ligrsInstanceGroups :: Lens' ListInstanceGroupsResponse [InstanceGroup]
+ligrsInstanceGroups :: Lens' (ListInstanceGroupsResponse (a)) [InstanceGroup]
 ligrsInstanceGroups = lens _ligrsInstanceGroups (\ s a -> s{_ligrsInstanceGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ligrsResponseStatus :: Lens' ListInstanceGroupsResponse Int
+ligrsResponseStatus :: Lens' (ListInstanceGroupsResponse (a)) Int
 ligrsResponseStatus = lens _ligrsResponseStatus (\ s a -> s{_ligrsResponseStatus = a});
 
 instance NFData ListInstanceGroupsResponse

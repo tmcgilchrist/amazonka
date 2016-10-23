@@ -132,7 +132,7 @@ instance ToQuery CreateLoadBalancerPolicy where
 -- | Contains the output of CreateLoadBalancerPolicy.
 --
 -- /See:/ 'createLoadBalancerPolicyResponse' smart constructor.
-newtype CreateLoadBalancerPolicyResponse = CreateLoadBalancerPolicyResponse'
+newtype CreateLoadBalancerPolicyResponse a = CreateLoadBalancerPolicyResponse'
     { _clbprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -143,14 +143,14 @@ newtype CreateLoadBalancerPolicyResponse = CreateLoadBalancerPolicyResponse'
 -- * 'clbprsResponseStatus'
 createLoadBalancerPolicyResponse
     :: Int -- ^ 'clbprsResponseStatus'
-    -> CreateLoadBalancerPolicyResponse
+    -> CreateLoadBalancerPolicyResponse (a)
 createLoadBalancerPolicyResponse pResponseStatus_ =
     CreateLoadBalancerPolicyResponse'
     { _clbprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-clbprsResponseStatus :: Lens' CreateLoadBalancerPolicyResponse Int
+clbprsResponseStatus :: Lens' (CreateLoadBalancerPolicyResponse (a)) Int
 clbprsResponseStatus = lens _clbprsResponseStatus (\ s a -> s{_clbprsResponseStatus = a});
 
 instance NFData CreateLoadBalancerPolicyResponse

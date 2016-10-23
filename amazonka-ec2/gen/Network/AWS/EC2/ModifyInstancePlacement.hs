@@ -134,7 +134,7 @@ instance ToQuery ModifyInstancePlacement where
 -- | Contains the output of ModifyInstancePlacement.
 --
 -- /See:/ 'modifyInstancePlacementResponse' smart constructor.
-data ModifyInstancePlacementResponse = ModifyInstancePlacementResponse'
+data ModifyInstancePlacementResponse a = ModifyInstancePlacementResponse'
     { _miprsReturn         :: !(Maybe Bool)
     , _miprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -148,7 +148,7 @@ data ModifyInstancePlacementResponse = ModifyInstancePlacementResponse'
 -- * 'miprsResponseStatus'
 modifyInstancePlacementResponse
     :: Int -- ^ 'miprsResponseStatus'
-    -> ModifyInstancePlacementResponse
+    -> ModifyInstancePlacementResponse (a)
 modifyInstancePlacementResponse pResponseStatus_ =
     ModifyInstancePlacementResponse'
     { _miprsReturn = Nothing
@@ -156,11 +156,11 @@ modifyInstancePlacementResponse pResponseStatus_ =
     }
 
 -- | Is 'true' if the request succeeds, and an error otherwise.
-miprsReturn :: Lens' ModifyInstancePlacementResponse (Maybe Bool)
+miprsReturn :: Lens' (ModifyInstancePlacementResponse (a)) (Maybe Bool)
 miprsReturn = lens _miprsReturn (\ s a -> s{_miprsReturn = a});
 
 -- | The response status code.
-miprsResponseStatus :: Lens' ModifyInstancePlacementResponse Int
+miprsResponseStatus :: Lens' (ModifyInstancePlacementResponse (a)) Int
 miprsResponseStatus = lens _miprsResponseStatus (\ s a -> s{_miprsResponseStatus = a});
 
 instance NFData ModifyInstancePlacementResponse

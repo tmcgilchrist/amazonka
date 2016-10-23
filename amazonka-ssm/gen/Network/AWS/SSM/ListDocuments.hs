@@ -131,7 +131,7 @@ instance ToQuery ListDocuments where
         toQuery = const mempty
 
 -- | /See:/ 'listDocumentsResponse' smart constructor.
-data ListDocumentsResponse = ListDocumentsResponse'
+data ListDocumentsResponse a = ListDocumentsResponse'
     { _ldrsDocumentIdentifiers :: !(Maybe [DocumentIdentifier])
     , _ldrsNextToken           :: !(Maybe Text)
     , _ldrsResponseStatus      :: !Int
@@ -148,7 +148,7 @@ data ListDocumentsResponse = ListDocumentsResponse'
 -- * 'ldrsResponseStatus'
 listDocumentsResponse
     :: Int -- ^ 'ldrsResponseStatus'
-    -> ListDocumentsResponse
+    -> ListDocumentsResponse (a)
 listDocumentsResponse pResponseStatus_ =
     ListDocumentsResponse'
     { _ldrsDocumentIdentifiers = Nothing
@@ -157,15 +157,15 @@ listDocumentsResponse pResponseStatus_ =
     }
 
 -- | The names of the SSM documents.
-ldrsDocumentIdentifiers :: Lens' ListDocumentsResponse [DocumentIdentifier]
+ldrsDocumentIdentifiers :: Lens' (ListDocumentsResponse (a)) [DocumentIdentifier]
 ldrsDocumentIdentifiers = lens _ldrsDocumentIdentifiers (\ s a -> s{_ldrsDocumentIdentifiers = a}) . _Default . _Coerce;
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-ldrsNextToken :: Lens' ListDocumentsResponse (Maybe Text)
+ldrsNextToken :: Lens' (ListDocumentsResponse (a)) (Maybe Text)
 ldrsNextToken = lens _ldrsNextToken (\ s a -> s{_ldrsNextToken = a});
 
 -- | The response status code.
-ldrsResponseStatus :: Lens' ListDocumentsResponse Int
+ldrsResponseStatus :: Lens' (ListDocumentsResponse (a)) Int
 ldrsResponseStatus = lens _ldrsResponseStatus (\ s a -> s{_ldrsResponseStatus = a});
 
 instance NFData ListDocumentsResponse

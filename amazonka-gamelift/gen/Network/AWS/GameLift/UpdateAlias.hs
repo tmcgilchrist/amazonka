@@ -133,7 +133,7 @@ instance ToQuery UpdateAlias where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'updateAliasResponse' smart constructor.
-data UpdateAliasResponse = UpdateAliasResponse'
+data UpdateAliasResponse a = UpdateAliasResponse'
     { _uarsAlias          :: !(Maybe Alias)
     , _uarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -147,7 +147,7 @@ data UpdateAliasResponse = UpdateAliasResponse'
 -- * 'uarsResponseStatus'
 updateAliasResponse
     :: Int -- ^ 'uarsResponseStatus'
-    -> UpdateAliasResponse
+    -> UpdateAliasResponse (a)
 updateAliasResponse pResponseStatus_ =
     UpdateAliasResponse'
     { _uarsAlias = Nothing
@@ -155,11 +155,11 @@ updateAliasResponse pResponseStatus_ =
     }
 
 -- | Object containing the updated alias configuration.
-uarsAlias :: Lens' UpdateAliasResponse (Maybe Alias)
+uarsAlias :: Lens' (UpdateAliasResponse (a)) (Maybe Alias)
 uarsAlias = lens _uarsAlias (\ s a -> s{_uarsAlias = a});
 
 -- | The response status code.
-uarsResponseStatus :: Lens' UpdateAliasResponse Int
+uarsResponseStatus :: Lens' (UpdateAliasResponse (a)) Int
 uarsResponseStatus = lens _uarsResponseStatus (\ s a -> s{_uarsResponseStatus = a});
 
 instance NFData UpdateAliasResponse

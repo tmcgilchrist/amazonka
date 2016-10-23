@@ -126,7 +126,7 @@ instance ToQuery ApplyEnvironmentManagedAction where
 -- | The result message containing information about the managed action.
 --
 -- /See:/ 'applyEnvironmentManagedActionResponse' smart constructor.
-data ApplyEnvironmentManagedActionResponse = ApplyEnvironmentManagedActionResponse'
+data ApplyEnvironmentManagedActionResponse a = ApplyEnvironmentManagedActionResponse'
     { _aemarsStatus            :: !(Maybe Text)
     , _aemarsActionId          :: !(Maybe Text)
     , _aemarsActionDescription :: !(Maybe Text)
@@ -149,7 +149,7 @@ data ApplyEnvironmentManagedActionResponse = ApplyEnvironmentManagedActionRespon
 -- * 'aemarsResponseStatus'
 applyEnvironmentManagedActionResponse
     :: Int -- ^ 'aemarsResponseStatus'
-    -> ApplyEnvironmentManagedActionResponse
+    -> ApplyEnvironmentManagedActionResponse (a)
 applyEnvironmentManagedActionResponse pResponseStatus_ =
     ApplyEnvironmentManagedActionResponse'
     { _aemarsStatus = Nothing
@@ -160,23 +160,23 @@ applyEnvironmentManagedActionResponse pResponseStatus_ =
     }
 
 -- | The status of the managed action.
-aemarsStatus :: Lens' ApplyEnvironmentManagedActionResponse (Maybe Text)
+aemarsStatus :: Lens' (ApplyEnvironmentManagedActionResponse (a)) (Maybe Text)
 aemarsStatus = lens _aemarsStatus (\ s a -> s{_aemarsStatus = a});
 
 -- | The action ID of the managed action.
-aemarsActionId :: Lens' ApplyEnvironmentManagedActionResponse (Maybe Text)
+aemarsActionId :: Lens' (ApplyEnvironmentManagedActionResponse (a)) (Maybe Text)
 aemarsActionId = lens _aemarsActionId (\ s a -> s{_aemarsActionId = a});
 
 -- | A description of the managed action.
-aemarsActionDescription :: Lens' ApplyEnvironmentManagedActionResponse (Maybe Text)
+aemarsActionDescription :: Lens' (ApplyEnvironmentManagedActionResponse (a)) (Maybe Text)
 aemarsActionDescription = lens _aemarsActionDescription (\ s a -> s{_aemarsActionDescription = a});
 
 -- | The type of managed action.
-aemarsActionType :: Lens' ApplyEnvironmentManagedActionResponse (Maybe ActionType)
+aemarsActionType :: Lens' (ApplyEnvironmentManagedActionResponse (a)) (Maybe ActionType)
 aemarsActionType = lens _aemarsActionType (\ s a -> s{_aemarsActionType = a});
 
 -- | The response status code.
-aemarsResponseStatus :: Lens' ApplyEnvironmentManagedActionResponse Int
+aemarsResponseStatus :: Lens' (ApplyEnvironmentManagedActionResponse (a)) Int
 aemarsResponseStatus = lens _aemarsResponseStatus (\ s a -> s{_aemarsResponseStatus = a});
 
 instance NFData ApplyEnvironmentManagedActionResponse

@@ -119,7 +119,7 @@ instance ToQuery DeregisterInstancesFromLoadBalancer
 -- | Contains the output of DeregisterInstancesFromLoadBalancer.
 --
 -- /See:/ 'deregisterInstancesFromLoadBalancerResponse' smart constructor.
-data DeregisterInstancesFromLoadBalancerResponse = DeregisterInstancesFromLoadBalancerResponse'
+data DeregisterInstancesFromLoadBalancerResponse a = DeregisterInstancesFromLoadBalancerResponse'
     { _diflbrsInstances      :: !(Maybe [Instance])
     , _diflbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data DeregisterInstancesFromLoadBalancerResponse = DeregisterInstancesFromLoadBa
 -- * 'diflbrsResponseStatus'
 deregisterInstancesFromLoadBalancerResponse
     :: Int -- ^ 'diflbrsResponseStatus'
-    -> DeregisterInstancesFromLoadBalancerResponse
+    -> DeregisterInstancesFromLoadBalancerResponse (a)
 deregisterInstancesFromLoadBalancerResponse pResponseStatus_ =
     DeregisterInstancesFromLoadBalancerResponse'
     { _diflbrsInstances = Nothing
@@ -141,11 +141,11 @@ deregisterInstancesFromLoadBalancerResponse pResponseStatus_ =
     }
 
 -- | The remaining instances registered with the load balancer.
-diflbrsInstances :: Lens' DeregisterInstancesFromLoadBalancerResponse [Instance]
+diflbrsInstances :: Lens' (DeregisterInstancesFromLoadBalancerResponse (a)) [Instance]
 diflbrsInstances = lens _diflbrsInstances (\ s a -> s{_diflbrsInstances = a}) . _Default . _Coerce;
 
 -- | The response status code.
-diflbrsResponseStatus :: Lens' DeregisterInstancesFromLoadBalancerResponse Int
+diflbrsResponseStatus :: Lens' (DeregisterInstancesFromLoadBalancerResponse (a)) Int
 diflbrsResponseStatus = lens _diflbrsResponseStatus (\ s a -> s{_diflbrsResponseStatus = a});
 
 instance NFData

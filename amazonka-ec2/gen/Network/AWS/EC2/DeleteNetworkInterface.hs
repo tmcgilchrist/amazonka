@@ -99,14 +99,14 @@ instance ToQuery DeleteNetworkInterface where
                "NetworkInterfaceId" =: _dninNetworkInterfaceId]
 
 -- | /See:/ 'deleteNetworkInterfaceResponse' smart constructor.
-data DeleteNetworkInterfaceResponse =
+data DeleteNetworkInterfaceResponse a =
     DeleteNetworkInterfaceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteNetworkInterfaceResponse' with the minimum fields required to make a request.
 --
 deleteNetworkInterfaceResponse
-    :: DeleteNetworkInterfaceResponse
+    :: DeleteNetworkInterfaceResponse (a)
 deleteNetworkInterfaceResponse = DeleteNetworkInterfaceResponse'
 
 instance NFData DeleteNetworkInterfaceResponse

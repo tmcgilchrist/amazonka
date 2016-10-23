@@ -127,7 +127,7 @@ instance ToQuery ModifyLoadBalancerAttributes where
 -- | Contains the output of ModifyLoadBalancerAttributes.
 --
 -- /See:/ 'modifyLoadBalancerAttributesResponse' smart constructor.
-data ModifyLoadBalancerAttributesResponse = ModifyLoadBalancerAttributesResponse'
+data ModifyLoadBalancerAttributesResponse a = ModifyLoadBalancerAttributesResponse'
     { _mlbarsLoadBalancerName       :: !(Maybe Text)
     , _mlbarsLoadBalancerAttributes :: !(Maybe LoadBalancerAttributes)
     , _mlbarsResponseStatus         :: !Int
@@ -144,7 +144,7 @@ data ModifyLoadBalancerAttributesResponse = ModifyLoadBalancerAttributesResponse
 -- * 'mlbarsResponseStatus'
 modifyLoadBalancerAttributesResponse
     :: Int -- ^ 'mlbarsResponseStatus'
-    -> ModifyLoadBalancerAttributesResponse
+    -> ModifyLoadBalancerAttributesResponse (a)
 modifyLoadBalancerAttributesResponse pResponseStatus_ =
     ModifyLoadBalancerAttributesResponse'
     { _mlbarsLoadBalancerName = Nothing
@@ -153,15 +153,15 @@ modifyLoadBalancerAttributesResponse pResponseStatus_ =
     }
 
 -- | The name of the load balancer.
-mlbarsLoadBalancerName :: Lens' ModifyLoadBalancerAttributesResponse (Maybe Text)
+mlbarsLoadBalancerName :: Lens' (ModifyLoadBalancerAttributesResponse (a)) (Maybe Text)
 mlbarsLoadBalancerName = lens _mlbarsLoadBalancerName (\ s a -> s{_mlbarsLoadBalancerName = a});
 
 -- | Undocumented member.
-mlbarsLoadBalancerAttributes :: Lens' ModifyLoadBalancerAttributesResponse (Maybe LoadBalancerAttributes)
+mlbarsLoadBalancerAttributes :: Lens' (ModifyLoadBalancerAttributesResponse (a)) (Maybe LoadBalancerAttributes)
 mlbarsLoadBalancerAttributes = lens _mlbarsLoadBalancerAttributes (\ s a -> s{_mlbarsLoadBalancerAttributes = a});
 
 -- | The response status code.
-mlbarsResponseStatus :: Lens' ModifyLoadBalancerAttributesResponse Int
+mlbarsResponseStatus :: Lens' (ModifyLoadBalancerAttributesResponse (a)) Int
 mlbarsResponseStatus = lens _mlbarsResponseStatus (\ s a -> s{_mlbarsResponseStatus = a});
 
 instance NFData ModifyLoadBalancerAttributesResponse

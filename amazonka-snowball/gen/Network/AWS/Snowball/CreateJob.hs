@@ -198,7 +198,7 @@ instance ToQuery CreateJob where
         toQuery = const mempty
 
 -- | /See:/ 'createJobResponse' smart constructor.
-data CreateJobResponse = CreateJobResponse'
+data CreateJobResponse a = CreateJobResponse'
     { _cjrsJobId          :: !(Maybe Text)
     , _cjrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -212,7 +212,7 @@ data CreateJobResponse = CreateJobResponse'
 -- * 'cjrsResponseStatus'
 createJobResponse
     :: Int -- ^ 'cjrsResponseStatus'
-    -> CreateJobResponse
+    -> CreateJobResponse (a)
 createJobResponse pResponseStatus_ =
     CreateJobResponse'
     { _cjrsJobId = Nothing
@@ -220,11 +220,11 @@ createJobResponse pResponseStatus_ =
     }
 
 -- | The automatically generated ID for a job, for example 'JID123e4567-e89b-12d3-a456-426655440000'.
-cjrsJobId :: Lens' CreateJobResponse (Maybe Text)
+cjrsJobId :: Lens' (CreateJobResponse (a)) (Maybe Text)
 cjrsJobId = lens _cjrsJobId (\ s a -> s{_cjrsJobId = a});
 
 -- | The response status code.
-cjrsResponseStatus :: Lens' CreateJobResponse Int
+cjrsResponseStatus :: Lens' (CreateJobResponse (a)) Int
 cjrsResponseStatus = lens _cjrsResponseStatus (\ s a -> s{_cjrsResponseStatus = a});
 
 instance NFData CreateJobResponse

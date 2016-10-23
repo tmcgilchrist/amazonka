@@ -99,14 +99,14 @@ instance ToQuery CreateLogGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createLogGroupResponse' smart constructor.
-data CreateLogGroupResponse =
+data CreateLogGroupResponse a =
     CreateLogGroupResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CreateLogGroupResponse' with the minimum fields required to make a request.
 --
 createLogGroupResponse
-    :: CreateLogGroupResponse
+    :: CreateLogGroupResponse (a)
 createLogGroupResponse = CreateLogGroupResponse'
 
 instance NFData CreateLogGroupResponse

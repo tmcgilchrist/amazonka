@@ -188,7 +188,7 @@ instance ToQuery ListObjectVersions where
                "delimiter" =: _lovDelimiter, "versions"]
 
 -- | /See:/ 'listObjectVersionsResponse' smart constructor.
-data ListObjectVersionsResponse = ListObjectVersionsResponse'
+data ListObjectVersionsResponse a = ListObjectVersionsResponse'
     { _lovrsNextVersionIdMarker :: !(Maybe Text)
     , _lovrsKeyMarker           :: !(Maybe Text)
     , _lovrsDeleteMarkers       :: !(Maybe [DeleteMarkerEntry])
@@ -238,7 +238,7 @@ data ListObjectVersionsResponse = ListObjectVersionsResponse'
 -- * 'lovrsResponseStatus'
 listObjectVersionsResponse
     :: Int -- ^ 'lovrsResponseStatus'
-    -> ListObjectVersionsResponse
+    -> ListObjectVersionsResponse (a)
 listObjectVersionsResponse pResponseStatus_ =
     ListObjectVersionsResponse'
     { _lovrsNextVersionIdMarker = Nothing
@@ -258,59 +258,59 @@ listObjectVersionsResponse pResponseStatus_ =
     }
 
 -- | Use this value for the next version id marker parameter in a subsequent request.
-lovrsNextVersionIdMarker :: Lens' ListObjectVersionsResponse (Maybe Text)
+lovrsNextVersionIdMarker :: Lens' (ListObjectVersionsResponse (a)) (Maybe Text)
 lovrsNextVersionIdMarker = lens _lovrsNextVersionIdMarker (\ s a -> s{_lovrsNextVersionIdMarker = a});
 
 -- | Marks the last Key returned in a truncated response.
-lovrsKeyMarker :: Lens' ListObjectVersionsResponse (Maybe Text)
+lovrsKeyMarker :: Lens' (ListObjectVersionsResponse (a)) (Maybe Text)
 lovrsKeyMarker = lens _lovrsKeyMarker (\ s a -> s{_lovrsKeyMarker = a});
 
 -- | Undocumented member.
-lovrsDeleteMarkers :: Lens' ListObjectVersionsResponse [DeleteMarkerEntry]
+lovrsDeleteMarkers :: Lens' (ListObjectVersionsResponse (a)) [DeleteMarkerEntry]
 lovrsDeleteMarkers = lens _lovrsDeleteMarkers (\ s a -> s{_lovrsDeleteMarkers = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-lovrsPrefix :: Lens' ListObjectVersionsResponse (Maybe Text)
+lovrsPrefix :: Lens' (ListObjectVersionsResponse (a)) (Maybe Text)
 lovrsPrefix = lens _lovrsPrefix (\ s a -> s{_lovrsPrefix = a});
 
 -- | Undocumented member.
-lovrsCommonPrefixes :: Lens' ListObjectVersionsResponse [CommonPrefix]
+lovrsCommonPrefixes :: Lens' (ListObjectVersionsResponse (a)) [CommonPrefix]
 lovrsCommonPrefixes = lens _lovrsCommonPrefixes (\ s a -> s{_lovrsCommonPrefixes = a}) . _Default . _Coerce;
 
 -- | Encoding type used by Amazon S3 to encode object keys in the response.
-lovrsEncodingType :: Lens' ListObjectVersionsResponse (Maybe EncodingType)
+lovrsEncodingType :: Lens' (ListObjectVersionsResponse (a)) (Maybe EncodingType)
 lovrsEncodingType = lens _lovrsEncodingType (\ s a -> s{_lovrsEncodingType = a});
 
 -- | Undocumented member.
-lovrsVersions :: Lens' ListObjectVersionsResponse [ObjectVersion]
+lovrsVersions :: Lens' (ListObjectVersionsResponse (a)) [ObjectVersion]
 lovrsVersions = lens _lovrsVersions (\ s a -> s{_lovrsVersions = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-lovrsName :: Lens' ListObjectVersionsResponse (Maybe BucketName)
+lovrsName :: Lens' (ListObjectVersionsResponse (a)) (Maybe BucketName)
 lovrsName = lens _lovrsName (\ s a -> s{_lovrsName = a});
 
 -- | Use this value for the key marker request parameter in a subsequent request.
-lovrsNextKeyMarker :: Lens' ListObjectVersionsResponse (Maybe Text)
+lovrsNextKeyMarker :: Lens' (ListObjectVersionsResponse (a)) (Maybe Text)
 lovrsNextKeyMarker = lens _lovrsNextKeyMarker (\ s a -> s{_lovrsNextKeyMarker = a});
 
 -- | Undocumented member.
-lovrsVersionIdMarker :: Lens' ListObjectVersionsResponse (Maybe Text)
+lovrsVersionIdMarker :: Lens' (ListObjectVersionsResponse (a)) (Maybe Text)
 lovrsVersionIdMarker = lens _lovrsVersionIdMarker (\ s a -> s{_lovrsVersionIdMarker = a});
 
 -- | Undocumented member.
-lovrsMaxKeys :: Lens' ListObjectVersionsResponse (Maybe Int)
+lovrsMaxKeys :: Lens' (ListObjectVersionsResponse (a)) (Maybe Int)
 lovrsMaxKeys = lens _lovrsMaxKeys (\ s a -> s{_lovrsMaxKeys = a});
 
 -- | A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria. If your results were truncated, you can make a follow-up paginated request using the NextKeyMarker and NextVersionIdMarker response parameters as a starting place in another request to return the rest of the results.
-lovrsIsTruncated :: Lens' ListObjectVersionsResponse (Maybe Bool)
+lovrsIsTruncated :: Lens' (ListObjectVersionsResponse (a)) (Maybe Bool)
 lovrsIsTruncated = lens _lovrsIsTruncated (\ s a -> s{_lovrsIsTruncated = a});
 
 -- | Undocumented member.
-lovrsDelimiter :: Lens' ListObjectVersionsResponse (Maybe Delimiter)
+lovrsDelimiter :: Lens' (ListObjectVersionsResponse (a)) (Maybe Delimiter)
 lovrsDelimiter = lens _lovrsDelimiter (\ s a -> s{_lovrsDelimiter = a});
 
 -- | The response status code.
-lovrsResponseStatus :: Lens' ListObjectVersionsResponse Int
+lovrsResponseStatus :: Lens' (ListObjectVersionsResponse (a)) Int
 lovrsResponseStatus = lens _lovrsResponseStatus (\ s a -> s{_lovrsResponseStatus = a});
 
 instance NFData ListObjectVersionsResponse

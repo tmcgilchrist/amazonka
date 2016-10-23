@@ -121,7 +121,7 @@ instance ToQuery GetRecords where
 -- | Represents the output of a /GetRecords/ operation.
 --
 -- /See:/ 'getRecordsResponse' smart constructor.
-data GetRecordsResponse = GetRecordsResponse'
+data GetRecordsResponse a = GetRecordsResponse'
     { _grrsRecords           :: !(Maybe [Record])
     , _grrsNextShardIterator :: !(Maybe Text)
     , _grrsResponseStatus    :: !Int
@@ -138,7 +138,7 @@ data GetRecordsResponse = GetRecordsResponse'
 -- * 'grrsResponseStatus'
 getRecordsResponse
     :: Int -- ^ 'grrsResponseStatus'
-    -> GetRecordsResponse
+    -> GetRecordsResponse (a)
 getRecordsResponse pResponseStatus_ =
     GetRecordsResponse'
     { _grrsRecords = Nothing
@@ -147,15 +147,15 @@ getRecordsResponse pResponseStatus_ =
     }
 
 -- | The stream records from the shard, which were retrieved using the shard iterator.
-grrsRecords :: Lens' GetRecordsResponse [Record]
+grrsRecords :: Lens' (GetRecordsResponse (a)) [Record]
 grrsRecords = lens _grrsRecords (\ s a -> s{_grrsRecords = a}) . _Default . _Coerce;
 
 -- | The next position in the shard from which to start sequentially reading stream records. If set to 'null', the shard has been closed and the requested iterator will not return any more data.
-grrsNextShardIterator :: Lens' GetRecordsResponse (Maybe Text)
+grrsNextShardIterator :: Lens' (GetRecordsResponse (a)) (Maybe Text)
 grrsNextShardIterator = lens _grrsNextShardIterator (\ s a -> s{_grrsNextShardIterator = a});
 
 -- | The response status code.
-grrsResponseStatus :: Lens' GetRecordsResponse Int
+grrsResponseStatus :: Lens' (GetRecordsResponse (a)) Int
 grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a});
 
 instance NFData GetRecordsResponse

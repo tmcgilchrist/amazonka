@@ -112,7 +112,7 @@ instance ToQuery DescribeAddresses where
         toQuery = const mempty
 
 -- | /See:/ 'describeAddressesResponse' smart constructor.
-data DescribeAddressesResponse = DescribeAddressesResponse'
+data DescribeAddressesResponse a = DescribeAddressesResponse'
     { _drsAddresses      :: !(Maybe [Address])
     , _drsNextToken      :: !(Maybe Text)
     , _drsResponseStatus :: !Int
@@ -129,7 +129,7 @@ data DescribeAddressesResponse = DescribeAddressesResponse'
 -- * 'drsResponseStatus'
 describeAddressesResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DescribeAddressesResponse
+    -> DescribeAddressesResponse (a)
 describeAddressesResponse pResponseStatus_ =
     DescribeAddressesResponse'
     { _drsAddresses = Nothing
@@ -138,15 +138,15 @@ describeAddressesResponse pResponseStatus_ =
     }
 
 -- | The Snowball shipping addresses that were created for this account.
-drsAddresses :: Lens' DescribeAddressesResponse [Address]
+drsAddresses :: Lens' (DescribeAddressesResponse (a)) [Address]
 drsAddresses = lens _drsAddresses (\ s a -> s{_drsAddresses = a}) . _Default . _Coerce;
 
 -- | HTTP requests are stateless. If you use the automatically generated 'NextToken' value in your next 'DescribeAddresses' call, your list of returned addresses will start from this point in the array.
-drsNextToken :: Lens' DescribeAddressesResponse (Maybe Text)
+drsNextToken :: Lens' (DescribeAddressesResponse (a)) (Maybe Text)
 drsNextToken = lens _drsNextToken (\ s a -> s{_drsNextToken = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DescribeAddressesResponse Int
+drsResponseStatus :: Lens' (DescribeAddressesResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DescribeAddressesResponse

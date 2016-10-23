@@ -109,7 +109,7 @@ instance ToQuery DescribeTimeBasedAutoScaling where
 -- | Contains the response to a 'DescribeTimeBasedAutoScaling' request.
 --
 -- /See:/ 'describeTimeBasedAutoScalingResponse' smart constructor.
-data DescribeTimeBasedAutoScalingResponse = DescribeTimeBasedAutoScalingResponse'
+data DescribeTimeBasedAutoScalingResponse a = DescribeTimeBasedAutoScalingResponse'
     { _dtbasrsTimeBasedAutoScalingConfigurations :: !(Maybe [TimeBasedAutoScalingConfiguration])
     , _dtbasrsResponseStatus                     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -123,7 +123,7 @@ data DescribeTimeBasedAutoScalingResponse = DescribeTimeBasedAutoScalingResponse
 -- * 'dtbasrsResponseStatus'
 describeTimeBasedAutoScalingResponse
     :: Int -- ^ 'dtbasrsResponseStatus'
-    -> DescribeTimeBasedAutoScalingResponse
+    -> DescribeTimeBasedAutoScalingResponse (a)
 describeTimeBasedAutoScalingResponse pResponseStatus_ =
     DescribeTimeBasedAutoScalingResponse'
     { _dtbasrsTimeBasedAutoScalingConfigurations = Nothing
@@ -131,11 +131,11 @@ describeTimeBasedAutoScalingResponse pResponseStatus_ =
     }
 
 -- | An array of 'TimeBasedAutoScalingConfiguration' objects that describe the configuration for the specified instances.
-dtbasrsTimeBasedAutoScalingConfigurations :: Lens' DescribeTimeBasedAutoScalingResponse [TimeBasedAutoScalingConfiguration]
+dtbasrsTimeBasedAutoScalingConfigurations :: Lens' (DescribeTimeBasedAutoScalingResponse (a)) [TimeBasedAutoScalingConfiguration]
 dtbasrsTimeBasedAutoScalingConfigurations = lens _dtbasrsTimeBasedAutoScalingConfigurations (\ s a -> s{_dtbasrsTimeBasedAutoScalingConfigurations = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dtbasrsResponseStatus :: Lens' DescribeTimeBasedAutoScalingResponse Int
+dtbasrsResponseStatus :: Lens' (DescribeTimeBasedAutoScalingResponse (a)) Int
 dtbasrsResponseStatus = lens _dtbasrsResponseStatus (\ s a -> s{_dtbasrsResponseStatus = a});
 
 instance NFData DescribeTimeBasedAutoScalingResponse

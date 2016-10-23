@@ -118,7 +118,7 @@ instance ToQuery DescribeWorkspacesConnectionStatus
         toQuery = const mempty
 
 -- | /See:/ 'describeWorkspacesConnectionStatusResponse' smart constructor.
-data DescribeWorkspacesConnectionStatusResponse = DescribeWorkspacesConnectionStatusResponse'
+data DescribeWorkspacesConnectionStatusResponse a = DescribeWorkspacesConnectionStatusResponse'
     { _dwcsrsNextToken                  :: !(Maybe Text)
     , _dwcsrsWorkspacesConnectionStatus :: !(Maybe [WorkspaceConnectionStatus])
     , _dwcsrsResponseStatus             :: !Int
@@ -135,7 +135,7 @@ data DescribeWorkspacesConnectionStatusResponse = DescribeWorkspacesConnectionSt
 -- * 'dwcsrsResponseStatus'
 describeWorkspacesConnectionStatusResponse
     :: Int -- ^ 'dwcsrsResponseStatus'
-    -> DescribeWorkspacesConnectionStatusResponse
+    -> DescribeWorkspacesConnectionStatusResponse (a)
 describeWorkspacesConnectionStatusResponse pResponseStatus_ =
     DescribeWorkspacesConnectionStatusResponse'
     { _dwcsrsNextToken = Nothing
@@ -144,15 +144,15 @@ describeWorkspacesConnectionStatusResponse pResponseStatus_ =
     }
 
 -- | The next token of the result.
-dwcsrsNextToken :: Lens' DescribeWorkspacesConnectionStatusResponse (Maybe Text)
+dwcsrsNextToken :: Lens' (DescribeWorkspacesConnectionStatusResponse (a)) (Maybe Text)
 dwcsrsNextToken = lens _dwcsrsNextToken (\ s a -> s{_dwcsrsNextToken = a});
 
 -- | The connection status of the WorkSpace.
-dwcsrsWorkspacesConnectionStatus :: Lens' DescribeWorkspacesConnectionStatusResponse [WorkspaceConnectionStatus]
+dwcsrsWorkspacesConnectionStatus :: Lens' (DescribeWorkspacesConnectionStatusResponse (a)) [WorkspaceConnectionStatus]
 dwcsrsWorkspacesConnectionStatus = lens _dwcsrsWorkspacesConnectionStatus (\ s a -> s{_dwcsrsWorkspacesConnectionStatus = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dwcsrsResponseStatus :: Lens' DescribeWorkspacesConnectionStatusResponse Int
+dwcsrsResponseStatus :: Lens' (DescribeWorkspacesConnectionStatusResponse (a)) Int
 dwcsrsResponseStatus = lens _dwcsrsResponseStatus (\ s a -> s{_dwcsrsResponseStatus = a});
 
 instance NFData

@@ -146,7 +146,7 @@ instance ToQuery DescribePrefixLists where
 -- | Contains the output of DescribePrefixLists.
 --
 -- /See:/ 'describePrefixListsResponse' smart constructor.
-data DescribePrefixListsResponse = DescribePrefixListsResponse'
+data DescribePrefixListsResponse a = DescribePrefixListsResponse'
     { _dplrsNextToken      :: !(Maybe Text)
     , _dplrsPrefixLists    :: !(Maybe [PrefixList])
     , _dplrsResponseStatus :: !Int
@@ -163,7 +163,7 @@ data DescribePrefixListsResponse = DescribePrefixListsResponse'
 -- * 'dplrsResponseStatus'
 describePrefixListsResponse
     :: Int -- ^ 'dplrsResponseStatus'
-    -> DescribePrefixListsResponse
+    -> DescribePrefixListsResponse (a)
 describePrefixListsResponse pResponseStatus_ =
     DescribePrefixListsResponse'
     { _dplrsNextToken = Nothing
@@ -172,15 +172,15 @@ describePrefixListsResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dplrsNextToken :: Lens' DescribePrefixListsResponse (Maybe Text)
+dplrsNextToken :: Lens' (DescribePrefixListsResponse (a)) (Maybe Text)
 dplrsNextToken = lens _dplrsNextToken (\ s a -> s{_dplrsNextToken = a});
 
 -- | All available prefix lists.
-dplrsPrefixLists :: Lens' DescribePrefixListsResponse [PrefixList]
+dplrsPrefixLists :: Lens' (DescribePrefixListsResponse (a)) [PrefixList]
 dplrsPrefixLists = lens _dplrsPrefixLists (\ s a -> s{_dplrsPrefixLists = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dplrsResponseStatus :: Lens' DescribePrefixListsResponse Int
+dplrsResponseStatus :: Lens' (DescribePrefixListsResponse (a)) Int
 dplrsResponseStatus = lens _dplrsResponseStatus (\ s a -> s{_dplrsResponseStatus = a});
 
 instance NFData DescribePrefixListsResponse

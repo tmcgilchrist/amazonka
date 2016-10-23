@@ -124,7 +124,7 @@ instance ToQuery DisableSSO where
 -- | Contains the results of the < DisableSso> operation.
 --
 -- /See:/ 'disableSSOResponse' smart constructor.
-newtype DisableSSOResponse = DisableSSOResponse'
+newtype DisableSSOResponse a = DisableSSOResponse'
     { _dssorsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -135,14 +135,14 @@ newtype DisableSSOResponse = DisableSSOResponse'
 -- * 'dssorsResponseStatus'
 disableSSOResponse
     :: Int -- ^ 'dssorsResponseStatus'
-    -> DisableSSOResponse
+    -> DisableSSOResponse (a)
 disableSSOResponse pResponseStatus_ =
     DisableSSOResponse'
     { _dssorsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dssorsResponseStatus :: Lens' DisableSSOResponse Int
+dssorsResponseStatus :: Lens' (DisableSSOResponse (a)) Int
 dssorsResponseStatus = lens _dssorsResponseStatus (\ s a -> s{_dssorsResponseStatus = a});
 
 instance NFData DisableSSOResponse

@@ -108,14 +108,14 @@ instance ToQuery SetIdentityPoolRoles where
         toQuery = const mempty
 
 -- | /See:/ 'setIdentityPoolRolesResponse' smart constructor.
-data SetIdentityPoolRolesResponse =
+data SetIdentityPoolRolesResponse a =
     SetIdentityPoolRolesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetIdentityPoolRolesResponse' with the minimum fields required to make a request.
 --
 setIdentityPoolRolesResponse
-    :: SetIdentityPoolRolesResponse
+    :: SetIdentityPoolRolesResponse (a)
 setIdentityPoolRolesResponse = SetIdentityPoolRolesResponse'
 
 instance NFData SetIdentityPoolRolesResponse

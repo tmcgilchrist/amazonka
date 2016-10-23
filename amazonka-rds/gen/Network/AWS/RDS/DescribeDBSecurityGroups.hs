@@ -145,7 +145,7 @@ instance ToQuery DescribeDBSecurityGroups where
 -- | Contains the result of a successful invocation of the < DescribeDBSecurityGroups> action.
 --
 -- /See:/ 'describeDBSecurityGroupsResponse' smart constructor.
-data DescribeDBSecurityGroupsResponse = DescribeDBSecurityGroupsResponse'
+data DescribeDBSecurityGroupsResponse a = DescribeDBSecurityGroupsResponse'
     { _ddbsgrsDBSecurityGroups :: !(Maybe [DBSecurityGroup])
     , _ddbsgrsMarker           :: !(Maybe Text)
     , _ddbsgrsResponseStatus   :: !Int
@@ -162,7 +162,7 @@ data DescribeDBSecurityGroupsResponse = DescribeDBSecurityGroupsResponse'
 -- * 'ddbsgrsResponseStatus'
 describeDBSecurityGroupsResponse
     :: Int -- ^ 'ddbsgrsResponseStatus'
-    -> DescribeDBSecurityGroupsResponse
+    -> DescribeDBSecurityGroupsResponse (a)
 describeDBSecurityGroupsResponse pResponseStatus_ =
     DescribeDBSecurityGroupsResponse'
     { _ddbsgrsDBSecurityGroups = Nothing
@@ -171,15 +171,15 @@ describeDBSecurityGroupsResponse pResponseStatus_ =
     }
 
 -- | A list of < DBSecurityGroup> instances.
-ddbsgrsDBSecurityGroups :: Lens' DescribeDBSecurityGroupsResponse [DBSecurityGroup]
+ddbsgrsDBSecurityGroups :: Lens' (DescribeDBSecurityGroupsResponse (a)) [DBSecurityGroup]
 ddbsgrsDBSecurityGroups = lens _ddbsgrsDBSecurityGroups (\ s a -> s{_ddbsgrsDBSecurityGroups = a}) . _Default . _Coerce;
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-ddbsgrsMarker :: Lens' DescribeDBSecurityGroupsResponse (Maybe Text)
+ddbsgrsMarker :: Lens' (DescribeDBSecurityGroupsResponse (a)) (Maybe Text)
 ddbsgrsMarker = lens _ddbsgrsMarker (\ s a -> s{_ddbsgrsMarker = a});
 
 -- | The response status code.
-ddbsgrsResponseStatus :: Lens' DescribeDBSecurityGroupsResponse Int
+ddbsgrsResponseStatus :: Lens' (DescribeDBSecurityGroupsResponse (a)) Int
 ddbsgrsResponseStatus = lens _ddbsgrsResponseStatus (\ s a -> s{_ddbsgrsResponseStatus = a});
 
 instance NFData DescribeDBSecurityGroupsResponse

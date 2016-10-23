@@ -86,14 +86,14 @@ instance ToQuery DeleteRestAPI where
         toQuery = const mempty
 
 -- | /See:/ 'deleteRestAPIResponse' smart constructor.
-data DeleteRestAPIResponse =
+data DeleteRestAPIResponse a =
     DeleteRestAPIResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteRestAPIResponse' with the minimum fields required to make a request.
 --
 deleteRestAPIResponse
-    :: DeleteRestAPIResponse
+    :: DeleteRestAPIResponse (a)
 deleteRestAPIResponse = DeleteRestAPIResponse'
 
 instance NFData DeleteRestAPIResponse

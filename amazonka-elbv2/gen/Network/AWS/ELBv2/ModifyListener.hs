@@ -150,7 +150,7 @@ instance ToQuery ModifyListener where
 -- | Contains the output of ModifyListener.
 --
 -- /See:/ 'modifyListenerResponse' smart constructor.
-data ModifyListenerResponse = ModifyListenerResponse'
+data ModifyListenerResponse a = ModifyListenerResponse'
     { _mlrsListeners      :: !(Maybe [Listener])
     , _mlrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -164,7 +164,7 @@ data ModifyListenerResponse = ModifyListenerResponse'
 -- * 'mlrsResponseStatus'
 modifyListenerResponse
     :: Int -- ^ 'mlrsResponseStatus'
-    -> ModifyListenerResponse
+    -> ModifyListenerResponse (a)
 modifyListenerResponse pResponseStatus_ =
     ModifyListenerResponse'
     { _mlrsListeners = Nothing
@@ -172,11 +172,11 @@ modifyListenerResponse pResponseStatus_ =
     }
 
 -- | Information about the modified listeners.
-mlrsListeners :: Lens' ModifyListenerResponse [Listener]
+mlrsListeners :: Lens' (ModifyListenerResponse (a)) [Listener]
 mlrsListeners = lens _mlrsListeners (\ s a -> s{_mlrsListeners = a}) . _Default . _Coerce;
 
 -- | The response status code.
-mlrsResponseStatus :: Lens' ModifyListenerResponse Int
+mlrsResponseStatus :: Lens' (ModifyListenerResponse (a)) Int
 mlrsResponseStatus = lens _mlrsResponseStatus (\ s a -> s{_mlrsResponseStatus = a});
 
 instance NFData ModifyListenerResponse

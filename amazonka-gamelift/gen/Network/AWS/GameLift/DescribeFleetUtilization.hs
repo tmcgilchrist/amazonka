@@ -128,7 +128,7 @@ instance ToQuery DescribeFleetUtilization where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeFleetUtilizationResponse' smart constructor.
-data DescribeFleetUtilizationResponse = DescribeFleetUtilizationResponse'
+data DescribeFleetUtilizationResponse a = DescribeFleetUtilizationResponse'
     { _dfursNextToken        :: !(Maybe Text)
     , _dfursFleetUtilization :: !(Maybe [FleetUtilization])
     , _dfursResponseStatus   :: !Int
@@ -145,7 +145,7 @@ data DescribeFleetUtilizationResponse = DescribeFleetUtilizationResponse'
 -- * 'dfursResponseStatus'
 describeFleetUtilizationResponse
     :: Int -- ^ 'dfursResponseStatus'
-    -> DescribeFleetUtilizationResponse
+    -> DescribeFleetUtilizationResponse (a)
 describeFleetUtilizationResponse pResponseStatus_ =
     DescribeFleetUtilizationResponse'
     { _dfursNextToken = Nothing
@@ -156,15 +156,15 @@ describeFleetUtilizationResponse pResponseStatus_ =
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-dfursNextToken :: Lens' DescribeFleetUtilizationResponse (Maybe Text)
+dfursNextToken :: Lens' (DescribeFleetUtilizationResponse (a)) (Maybe Text)
 dfursNextToken = lens _dfursNextToken (\ s a -> s{_dfursNextToken = a});
 
 -- | Collection of objects containing utilization information for each requested fleet ID.
-dfursFleetUtilization :: Lens' DescribeFleetUtilizationResponse [FleetUtilization]
+dfursFleetUtilization :: Lens' (DescribeFleetUtilizationResponse (a)) [FleetUtilization]
 dfursFleetUtilization = lens _dfursFleetUtilization (\ s a -> s{_dfursFleetUtilization = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dfursResponseStatus :: Lens' DescribeFleetUtilizationResponse Int
+dfursResponseStatus :: Lens' (DescribeFleetUtilizationResponse (a)) Int
 dfursResponseStatus = lens _dfursResponseStatus (\ s a -> s{_dfursResponseStatus = a});
 
 instance NFData DescribeFleetUtilizationResponse

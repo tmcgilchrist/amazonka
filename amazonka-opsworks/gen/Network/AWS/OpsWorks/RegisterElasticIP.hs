@@ -115,7 +115,7 @@ instance ToQuery RegisterElasticIP where
 -- | Contains the response to a 'RegisterElasticIp' request.
 --
 -- /See:/ 'registerElasticIPResponse' smart constructor.
-data RegisterElasticIPResponse = RegisterElasticIPResponse'
+data RegisterElasticIPResponse a = RegisterElasticIPResponse'
     { _reirsElasticIP      :: !(Maybe Text)
     , _reirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data RegisterElasticIPResponse = RegisterElasticIPResponse'
 -- * 'reirsResponseStatus'
 registerElasticIPResponse
     :: Int -- ^ 'reirsResponseStatus'
-    -> RegisterElasticIPResponse
+    -> RegisterElasticIPResponse (a)
 registerElasticIPResponse pResponseStatus_ =
     RegisterElasticIPResponse'
     { _reirsElasticIP = Nothing
@@ -137,11 +137,11 @@ registerElasticIPResponse pResponseStatus_ =
     }
 
 -- | The Elastic IP address.
-reirsElasticIP :: Lens' RegisterElasticIPResponse (Maybe Text)
+reirsElasticIP :: Lens' (RegisterElasticIPResponse (a)) (Maybe Text)
 reirsElasticIP = lens _reirsElasticIP (\ s a -> s{_reirsElasticIP = a});
 
 -- | The response status code.
-reirsResponseStatus :: Lens' RegisterElasticIPResponse Int
+reirsResponseStatus :: Lens' (RegisterElasticIPResponse (a)) Int
 reirsResponseStatus = lens _reirsResponseStatus (\ s a -> s{_reirsResponseStatus = a});
 
 instance NFData RegisterElasticIPResponse

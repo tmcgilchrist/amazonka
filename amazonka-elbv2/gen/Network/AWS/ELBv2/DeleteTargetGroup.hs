@@ -95,7 +95,7 @@ instance ToQuery DeleteTargetGroup where
 -- | Contains the output of DeleteTargetGroup.
 --
 -- /See:/ 'deleteTargetGroupResponse' smart constructor.
-newtype DeleteTargetGroupResponse = DeleteTargetGroupResponse'
+newtype DeleteTargetGroupResponse a = DeleteTargetGroupResponse'
     { _dtgrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -106,14 +106,14 @@ newtype DeleteTargetGroupResponse = DeleteTargetGroupResponse'
 -- * 'dtgrsResponseStatus'
 deleteTargetGroupResponse
     :: Int -- ^ 'dtgrsResponseStatus'
-    -> DeleteTargetGroupResponse
+    -> DeleteTargetGroupResponse (a)
 deleteTargetGroupResponse pResponseStatus_ =
     DeleteTargetGroupResponse'
     { _dtgrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dtgrsResponseStatus :: Lens' DeleteTargetGroupResponse Int
+dtgrsResponseStatus :: Lens' (DeleteTargetGroupResponse (a)) Int
 dtgrsResponseStatus = lens _dtgrsResponseStatus (\ s a -> s{_dtgrsResponseStatus = a});
 
 instance NFData DeleteTargetGroupResponse

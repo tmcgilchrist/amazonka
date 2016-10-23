@@ -103,7 +103,7 @@ instance ToQuery GetApplication where
 -- | Represents the output of a get application operation.
 --
 -- /See:/ 'getApplicationResponse' smart constructor.
-data GetApplicationResponse = GetApplicationResponse'
+data GetApplicationResponse a = GetApplicationResponse'
     { _garsApplication    :: !(Maybe ApplicationInfo)
     , _garsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data GetApplicationResponse = GetApplicationResponse'
 -- * 'garsResponseStatus'
 getApplicationResponse
     :: Int -- ^ 'garsResponseStatus'
-    -> GetApplicationResponse
+    -> GetApplicationResponse (a)
 getApplicationResponse pResponseStatus_ =
     GetApplicationResponse'
     { _garsApplication = Nothing
@@ -125,11 +125,11 @@ getApplicationResponse pResponseStatus_ =
     }
 
 -- | Information about the application.
-garsApplication :: Lens' GetApplicationResponse (Maybe ApplicationInfo)
+garsApplication :: Lens' (GetApplicationResponse (a)) (Maybe ApplicationInfo)
 garsApplication = lens _garsApplication (\ s a -> s{_garsApplication = a});
 
 -- | The response status code.
-garsResponseStatus :: Lens' GetApplicationResponse Int
+garsResponseStatus :: Lens' (GetApplicationResponse (a)) Int
 garsResponseStatus = lens _garsResponseStatus (\ s a -> s{_garsResponseStatus = a});
 
 instance NFData GetApplicationResponse

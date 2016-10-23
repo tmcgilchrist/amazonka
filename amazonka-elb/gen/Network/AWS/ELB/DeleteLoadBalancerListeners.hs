@@ -108,7 +108,7 @@ instance ToQuery DeleteLoadBalancerListeners where
 -- | Contains the output of DeleteLoadBalancerListeners.
 --
 -- /See:/ 'deleteLoadBalancerListenersResponse' smart constructor.
-newtype DeleteLoadBalancerListenersResponse = DeleteLoadBalancerListenersResponse'
+newtype DeleteLoadBalancerListenersResponse a = DeleteLoadBalancerListenersResponse'
     { _dlblrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -119,14 +119,14 @@ newtype DeleteLoadBalancerListenersResponse = DeleteLoadBalancerListenersRespons
 -- * 'dlblrsResponseStatus'
 deleteLoadBalancerListenersResponse
     :: Int -- ^ 'dlblrsResponseStatus'
-    -> DeleteLoadBalancerListenersResponse
+    -> DeleteLoadBalancerListenersResponse (a)
 deleteLoadBalancerListenersResponse pResponseStatus_ =
     DeleteLoadBalancerListenersResponse'
     { _dlblrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-dlblrsResponseStatus :: Lens' DeleteLoadBalancerListenersResponse Int
+dlblrsResponseStatus :: Lens' (DeleteLoadBalancerListenersResponse (a)) Int
 dlblrsResponseStatus = lens _dlblrsResponseStatus (\ s a -> s{_dlblrsResponseStatus = a});
 
 instance NFData DeleteLoadBalancerListenersResponse

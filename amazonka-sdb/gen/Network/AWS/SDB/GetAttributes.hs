@@ -126,7 +126,7 @@ instance ToQuery GetAttributes where
                "ItemName" =: _gaItemName]
 
 -- | /See:/ 'getAttributesResponse' smart constructor.
-data GetAttributesResponse = GetAttributesResponse'
+data GetAttributesResponse a = GetAttributesResponse'
     { _garsAttributes     :: !(Maybe [Attribute])
     , _garsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data GetAttributesResponse = GetAttributesResponse'
 -- * 'garsResponseStatus'
 getAttributesResponse
     :: Int -- ^ 'garsResponseStatus'
-    -> GetAttributesResponse
+    -> GetAttributesResponse (a)
 getAttributesResponse pResponseStatus_ =
     GetAttributesResponse'
     { _garsAttributes = Nothing
@@ -148,11 +148,11 @@ getAttributesResponse pResponseStatus_ =
     }
 
 -- | The list of attributes returned by the operation.
-garsAttributes :: Lens' GetAttributesResponse [Attribute]
+garsAttributes :: Lens' (GetAttributesResponse (a)) [Attribute]
 garsAttributes = lens _garsAttributes (\ s a -> s{_garsAttributes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-garsResponseStatus :: Lens' GetAttributesResponse Int
+garsResponseStatus :: Lens' (GetAttributesResponse (a)) Int
 garsResponseStatus = lens _garsResponseStatus (\ s a -> s{_garsResponseStatus = a});
 
 instance NFData GetAttributesResponse

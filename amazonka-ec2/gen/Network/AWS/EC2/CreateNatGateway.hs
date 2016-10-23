@@ -120,7 +120,7 @@ instance ToQuery CreateNatGateway where
 -- | Contains the output of CreateNatGateway.
 --
 -- /See:/ 'createNatGatewayResponse' smart constructor.
-data CreateNatGatewayResponse = CreateNatGatewayResponse'
+data CreateNatGatewayResponse a = CreateNatGatewayResponse'
     { _cngrsClientToken    :: !(Maybe Text)
     , _cngrsNatGateway     :: !(Maybe NatGateway)
     , _cngrsResponseStatus :: !Int
@@ -137,7 +137,7 @@ data CreateNatGatewayResponse = CreateNatGatewayResponse'
 -- * 'cngrsResponseStatus'
 createNatGatewayResponse
     :: Int -- ^ 'cngrsResponseStatus'
-    -> CreateNatGatewayResponse
+    -> CreateNatGatewayResponse (a)
 createNatGatewayResponse pResponseStatus_ =
     CreateNatGatewayResponse'
     { _cngrsClientToken = Nothing
@@ -146,15 +146,15 @@ createNatGatewayResponse pResponseStatus_ =
     }
 
 -- | Unique, case-sensitive identifier to ensure the idempotency of the request. Only returned if a client token was provided in the request.
-cngrsClientToken :: Lens' CreateNatGatewayResponse (Maybe Text)
+cngrsClientToken :: Lens' (CreateNatGatewayResponse (a)) (Maybe Text)
 cngrsClientToken = lens _cngrsClientToken (\ s a -> s{_cngrsClientToken = a});
 
 -- | Information about the NAT gateway.
-cngrsNatGateway :: Lens' CreateNatGatewayResponse (Maybe NatGateway)
+cngrsNatGateway :: Lens' (CreateNatGatewayResponse (a)) (Maybe NatGateway)
 cngrsNatGateway = lens _cngrsNatGateway (\ s a -> s{_cngrsNatGateway = a});
 
 -- | The response status code.
-cngrsResponseStatus :: Lens' CreateNatGatewayResponse Int
+cngrsResponseStatus :: Lens' (CreateNatGatewayResponse (a)) Int
 cngrsResponseStatus = lens _cngrsResponseStatus (\ s a -> s{_cngrsResponseStatus = a});
 
 instance NFData CreateNatGatewayResponse

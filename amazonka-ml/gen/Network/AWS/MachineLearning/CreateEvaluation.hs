@@ -143,7 +143,7 @@ instance ToQuery CreateEvaluation where
 -- 'CreateEvaluation' operation is asynchronous. You can poll for status updates by using the 'GetEvcaluation' operation and checking the 'Status' parameter.
 --
 -- /See:/ 'createEvaluationResponse' smart constructor.
-data CreateEvaluationResponse = CreateEvaluationResponse'
+data CreateEvaluationResponse a = CreateEvaluationResponse'
     { _cersEvaluationId   :: !(Maybe Text)
     , _cersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -157,7 +157,7 @@ data CreateEvaluationResponse = CreateEvaluationResponse'
 -- * 'cersResponseStatus'
 createEvaluationResponse
     :: Int -- ^ 'cersResponseStatus'
-    -> CreateEvaluationResponse
+    -> CreateEvaluationResponse (a)
 createEvaluationResponse pResponseStatus_ =
     CreateEvaluationResponse'
     { _cersEvaluationId = Nothing
@@ -165,11 +165,11 @@ createEvaluationResponse pResponseStatus_ =
     }
 
 -- | The user-supplied ID that uniquely identifies the 'Evaluation'. This value should be identical to the value of the 'EvaluationId' in the request.
-cersEvaluationId :: Lens' CreateEvaluationResponse (Maybe Text)
+cersEvaluationId :: Lens' (CreateEvaluationResponse (a)) (Maybe Text)
 cersEvaluationId = lens _cersEvaluationId (\ s a -> s{_cersEvaluationId = a});
 
 -- | The response status code.
-cersResponseStatus :: Lens' CreateEvaluationResponse Int
+cersResponseStatus :: Lens' (CreateEvaluationResponse (a)) Int
 cersResponseStatus = lens _cersResponseStatus (\ s a -> s{_cersResponseStatus = a});
 
 instance NFData CreateEvaluationResponse

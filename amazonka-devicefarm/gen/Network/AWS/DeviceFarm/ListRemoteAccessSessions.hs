@@ -118,7 +118,7 @@ instance ToQuery ListRemoteAccessSessions where
 -- | Represents the response from the server after AWS Device Farm makes a request to return information about the remote access session.
 --
 -- /See:/ 'listRemoteAccessSessionsResponse' smart constructor.
-data ListRemoteAccessSessionsResponse = ListRemoteAccessSessionsResponse'
+data ListRemoteAccessSessionsResponse a = ListRemoteAccessSessionsResponse'
     { _lrasrsNextToken            :: !(Maybe Text)
     , _lrasrsRemoteAccessSessions :: !(Maybe [RemoteAccessSession])
     , _lrasrsResponseStatus       :: !Int
@@ -135,7 +135,7 @@ data ListRemoteAccessSessionsResponse = ListRemoteAccessSessionsResponse'
 -- * 'lrasrsResponseStatus'
 listRemoteAccessSessionsResponse
     :: Int -- ^ 'lrasrsResponseStatus'
-    -> ListRemoteAccessSessionsResponse
+    -> ListRemoteAccessSessionsResponse (a)
 listRemoteAccessSessionsResponse pResponseStatus_ =
     ListRemoteAccessSessionsResponse'
     { _lrasrsNextToken = Nothing
@@ -144,15 +144,15 @@ listRemoteAccessSessionsResponse pResponseStatus_ =
     }
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
-lrasrsNextToken :: Lens' ListRemoteAccessSessionsResponse (Maybe Text)
+lrasrsNextToken :: Lens' (ListRemoteAccessSessionsResponse (a)) (Maybe Text)
 lrasrsNextToken = lens _lrasrsNextToken (\ s a -> s{_lrasrsNextToken = a});
 
 -- | A container representing the metadata from the service about each remote access session you are requesting.
-lrasrsRemoteAccessSessions :: Lens' ListRemoteAccessSessionsResponse [RemoteAccessSession]
+lrasrsRemoteAccessSessions :: Lens' (ListRemoteAccessSessionsResponse (a)) [RemoteAccessSession]
 lrasrsRemoteAccessSessions = lens _lrasrsRemoteAccessSessions (\ s a -> s{_lrasrsRemoteAccessSessions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lrasrsResponseStatus :: Lens' ListRemoteAccessSessionsResponse Int
+lrasrsResponseStatus :: Lens' (ListRemoteAccessSessionsResponse (a)) Int
 lrasrsResponseStatus = lens _lrasrsResponseStatus (\ s a -> s{_lrasrsResponseStatus = a});
 
 instance NFData ListRemoteAccessSessionsResponse

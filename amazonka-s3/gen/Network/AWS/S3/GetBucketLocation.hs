@@ -88,7 +88,7 @@ instance ToQuery GetBucketLocation where
         toQuery = const (mconcat ["location"])
 
 -- | /See:/ 'getBucketLocationResponse' smart constructor.
-data GetBucketLocationResponse = GetBucketLocationResponse'
+data GetBucketLocationResponse a = GetBucketLocationResponse'
     { _grsResponseStatus     :: !Int
     , _grsLocationConstraint :: !LocationConstraint
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetBucketLocationResponse = GetBucketLocationResponse'
 getBucketLocationResponse
     :: Int -- ^ 'grsResponseStatus'
     -> LocationConstraint -- ^ 'grsLocationConstraint'
-    -> GetBucketLocationResponse
+    -> GetBucketLocationResponse (a)
 getBucketLocationResponse pResponseStatus_ pLocationConstraint_ =
     GetBucketLocationResponse'
     { _grsResponseStatus = pResponseStatus_
@@ -111,11 +111,11 @@ getBucketLocationResponse pResponseStatus_ pLocationConstraint_ =
     }
 
 -- | The response status code.
-grsResponseStatus :: Lens' GetBucketLocationResponse Int
+grsResponseStatus :: Lens' (GetBucketLocationResponse (a)) Int
 grsResponseStatus = lens _grsResponseStatus (\ s a -> s{_grsResponseStatus = a});
 
 -- | Undocumented member.
-grsLocationConstraint :: Lens' GetBucketLocationResponse LocationConstraint
+grsLocationConstraint :: Lens' (GetBucketLocationResponse (a)) LocationConstraint
 grsLocationConstraint = lens _grsLocationConstraint (\ s a -> s{_grsLocationConstraint = a});
 
 instance NFData GetBucketLocationResponse

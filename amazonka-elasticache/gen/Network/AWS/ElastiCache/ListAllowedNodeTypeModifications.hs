@@ -119,7 +119,7 @@ instance ToQuery ListAllowedNodeTypeModifications
 -- | Represents the allowed node types you can use to modify your cache cluster or replication group.
 --
 -- /See:/ 'listAllowedNodeTypeModificationsResponse' smart constructor.
-data ListAllowedNodeTypeModificationsResponse = ListAllowedNodeTypeModificationsResponse'
+data ListAllowedNodeTypeModificationsResponse a = ListAllowedNodeTypeModificationsResponse'
     { _lantmrsScaleUpModifications :: !(Maybe [Text])
     , _lantmrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data ListAllowedNodeTypeModificationsResponse = ListAllowedNodeTypeModifications
 -- * 'lantmrsResponseStatus'
 listAllowedNodeTypeModificationsResponse
     :: Int -- ^ 'lantmrsResponseStatus'
-    -> ListAllowedNodeTypeModificationsResponse
+    -> ListAllowedNodeTypeModificationsResponse (a)
 listAllowedNodeTypeModificationsResponse pResponseStatus_ =
     ListAllowedNodeTypeModificationsResponse'
     { _lantmrsScaleUpModifications = Nothing
@@ -143,11 +143,11 @@ listAllowedNodeTypeModificationsResponse pResponseStatus_ =
 -- | A string list, each element of which specifies a cache node type which you can use to scale your cache cluster or replication group.
 --
 -- When scaling up a Redis cluster or replication group using 'ModifyCacheCluster' or 'ModifyReplicationGroup', use a value from this list for the /CacheNodeType/ parameter.
-lantmrsScaleUpModifications :: Lens' ListAllowedNodeTypeModificationsResponse [Text]
+lantmrsScaleUpModifications :: Lens' (ListAllowedNodeTypeModificationsResponse (a)) [Text]
 lantmrsScaleUpModifications = lens _lantmrsScaleUpModifications (\ s a -> s{_lantmrsScaleUpModifications = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lantmrsResponseStatus :: Lens' ListAllowedNodeTypeModificationsResponse Int
+lantmrsResponseStatus :: Lens' (ListAllowedNodeTypeModificationsResponse (a)) Int
 lantmrsResponseStatus = lens _lantmrsResponseStatus (\ s a -> s{_lantmrsResponseStatus = a});
 
 instance NFData

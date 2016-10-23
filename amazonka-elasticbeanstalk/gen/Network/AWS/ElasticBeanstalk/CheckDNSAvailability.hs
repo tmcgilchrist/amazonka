@@ -98,7 +98,7 @@ instance ToQuery CheckDNSAvailability where
 -- | Indicates if the specified CNAME is available.
 --
 -- /See:/ 'checkDNSAvailabilityResponse' smart constructor.
-data CheckDNSAvailabilityResponse = CheckDNSAvailabilityResponse'
+data CheckDNSAvailabilityResponse a = CheckDNSAvailabilityResponse'
     { _cdarsFullyQualifiedCNAME :: !(Maybe Text)
     , _cdarsAvailable           :: !(Maybe Bool)
     , _cdarsResponseStatus      :: !Int
@@ -115,7 +115,7 @@ data CheckDNSAvailabilityResponse = CheckDNSAvailabilityResponse'
 -- * 'cdarsResponseStatus'
 checkDNSAvailabilityResponse
     :: Int -- ^ 'cdarsResponseStatus'
-    -> CheckDNSAvailabilityResponse
+    -> CheckDNSAvailabilityResponse (a)
 checkDNSAvailabilityResponse pResponseStatus_ =
     CheckDNSAvailabilityResponse'
     { _cdarsFullyQualifiedCNAME = Nothing
@@ -124,18 +124,18 @@ checkDNSAvailabilityResponse pResponseStatus_ =
     }
 
 -- | The fully qualified CNAME to reserve when < CreateEnvironment> is called with the provided prefix.
-cdarsFullyQualifiedCNAME :: Lens' CheckDNSAvailabilityResponse (Maybe Text)
+cdarsFullyQualifiedCNAME :: Lens' (CheckDNSAvailabilityResponse (a)) (Maybe Text)
 cdarsFullyQualifiedCNAME = lens _cdarsFullyQualifiedCNAME (\ s a -> s{_cdarsFullyQualifiedCNAME = a});
 
 -- | Indicates if the specified CNAME is available:
 --
 -- -   'true' : The CNAME is available.
 -- -   'false' : The CNAME is not available.
-cdarsAvailable :: Lens' CheckDNSAvailabilityResponse (Maybe Bool)
+cdarsAvailable :: Lens' (CheckDNSAvailabilityResponse (a)) (Maybe Bool)
 cdarsAvailable = lens _cdarsAvailable (\ s a -> s{_cdarsAvailable = a});
 
 -- | The response status code.
-cdarsResponseStatus :: Lens' CheckDNSAvailabilityResponse Int
+cdarsResponseStatus :: Lens' (CheckDNSAvailabilityResponse (a)) Int
 cdarsResponseStatus = lens _cdarsResponseStatus (\ s a -> s{_cdarsResponseStatus = a});
 
 instance NFData CheckDNSAvailabilityResponse

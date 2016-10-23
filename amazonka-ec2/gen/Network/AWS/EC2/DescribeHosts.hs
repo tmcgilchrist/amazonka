@@ -143,7 +143,7 @@ instance ToQuery DescribeHosts where
 -- | Contains the output of DescribeHosts.
 --
 -- /See:/ 'describeHostsResponse' smart constructor.
-data DescribeHostsResponse = DescribeHostsResponse'
+data DescribeHostsResponse a = DescribeHostsResponse'
     { _dhrsHosts          :: !(Maybe [Host])
     , _dhrsNextToken      :: !(Maybe Text)
     , _dhrsResponseStatus :: !Int
@@ -160,7 +160,7 @@ data DescribeHostsResponse = DescribeHostsResponse'
 -- * 'dhrsResponseStatus'
 describeHostsResponse
     :: Int -- ^ 'dhrsResponseStatus'
-    -> DescribeHostsResponse
+    -> DescribeHostsResponse (a)
 describeHostsResponse pResponseStatus_ =
     DescribeHostsResponse'
     { _dhrsHosts = Nothing
@@ -169,15 +169,15 @@ describeHostsResponse pResponseStatus_ =
     }
 
 -- | Information about the Dedicated Hosts.
-dhrsHosts :: Lens' DescribeHostsResponse [Host]
+dhrsHosts :: Lens' (DescribeHostsResponse (a)) [Host]
 dhrsHosts = lens _dhrsHosts (\ s a -> s{_dhrsHosts = a}) . _Default . _Coerce;
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dhrsNextToken :: Lens' DescribeHostsResponse (Maybe Text)
+dhrsNextToken :: Lens' (DescribeHostsResponse (a)) (Maybe Text)
 dhrsNextToken = lens _dhrsNextToken (\ s a -> s{_dhrsNextToken = a});
 
 -- | The response status code.
-dhrsResponseStatus :: Lens' DescribeHostsResponse Int
+dhrsResponseStatus :: Lens' (DescribeHostsResponse (a)) Int
 dhrsResponseStatus = lens _dhrsResponseStatus (\ s a -> s{_dhrsResponseStatus = a});
 
 instance NFData DescribeHostsResponse

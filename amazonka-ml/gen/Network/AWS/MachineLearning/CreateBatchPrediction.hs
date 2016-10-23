@@ -157,7 +157,7 @@ instance ToQuery CreateBatchPrediction where
 -- The 'CreateBatchPrediction' operation is asynchronous. You can poll for status updates by using the '>GetBatchPrediction' operation and checking the 'Status' parameter of the result.
 --
 -- /See:/ 'createBatchPredictionResponse' smart constructor.
-data CreateBatchPredictionResponse = CreateBatchPredictionResponse'
+data CreateBatchPredictionResponse a = CreateBatchPredictionResponse'
     { _cbprsBatchPredictionId :: !(Maybe Text)
     , _cbprsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -171,7 +171,7 @@ data CreateBatchPredictionResponse = CreateBatchPredictionResponse'
 -- * 'cbprsResponseStatus'
 createBatchPredictionResponse
     :: Int -- ^ 'cbprsResponseStatus'
-    -> CreateBatchPredictionResponse
+    -> CreateBatchPredictionResponse (a)
 createBatchPredictionResponse pResponseStatus_ =
     CreateBatchPredictionResponse'
     { _cbprsBatchPredictionId = Nothing
@@ -179,11 +179,11 @@ createBatchPredictionResponse pResponseStatus_ =
     }
 
 -- | A user-supplied ID that uniquely identifies the 'BatchPrediction'. This value is identical to the value of the 'BatchPredictionId' in the request.
-cbprsBatchPredictionId :: Lens' CreateBatchPredictionResponse (Maybe Text)
+cbprsBatchPredictionId :: Lens' (CreateBatchPredictionResponse (a)) (Maybe Text)
 cbprsBatchPredictionId = lens _cbprsBatchPredictionId (\ s a -> s{_cbprsBatchPredictionId = a});
 
 -- | The response status code.
-cbprsResponseStatus :: Lens' CreateBatchPredictionResponse Int
+cbprsResponseStatus :: Lens' (CreateBatchPredictionResponse (a)) Int
 cbprsResponseStatus = lens _cbprsResponseStatus (\ s a -> s{_cbprsResponseStatus = a});
 
 instance NFData CreateBatchPredictionResponse

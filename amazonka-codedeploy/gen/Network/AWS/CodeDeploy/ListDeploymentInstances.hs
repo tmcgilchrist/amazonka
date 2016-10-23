@@ -136,7 +136,7 @@ instance ToQuery ListDeploymentInstances where
 -- | Represents the output of a list deployment instances operation.
 --
 -- /See:/ 'listDeploymentInstancesResponse' smart constructor.
-data ListDeploymentInstancesResponse = ListDeploymentInstancesResponse'
+data ListDeploymentInstancesResponse a = ListDeploymentInstancesResponse'
     { _ldirsNextToken      :: !(Maybe Text)
     , _ldirsInstancesList  :: !(Maybe [Text])
     , _ldirsResponseStatus :: !Int
@@ -153,7 +153,7 @@ data ListDeploymentInstancesResponse = ListDeploymentInstancesResponse'
 -- * 'ldirsResponseStatus'
 listDeploymentInstancesResponse
     :: Int -- ^ 'ldirsResponseStatus'
-    -> ListDeploymentInstancesResponse
+    -> ListDeploymentInstancesResponse (a)
 listDeploymentInstancesResponse pResponseStatus_ =
     ListDeploymentInstancesResponse'
     { _ldirsNextToken = Nothing
@@ -162,15 +162,15 @@ listDeploymentInstancesResponse pResponseStatus_ =
     }
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment instances call to return the next set of deployment instances in the list.
-ldirsNextToken :: Lens' ListDeploymentInstancesResponse (Maybe Text)
+ldirsNextToken :: Lens' (ListDeploymentInstancesResponse (a)) (Maybe Text)
 ldirsNextToken = lens _ldirsNextToken (\ s a -> s{_ldirsNextToken = a});
 
 -- | A list of instance IDs.
-ldirsInstancesList :: Lens' ListDeploymentInstancesResponse [Text]
+ldirsInstancesList :: Lens' (ListDeploymentInstancesResponse (a)) [Text]
 ldirsInstancesList = lens _ldirsInstancesList (\ s a -> s{_ldirsInstancesList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ldirsResponseStatus :: Lens' ListDeploymentInstancesResponse Int
+ldirsResponseStatus :: Lens' (ListDeploymentInstancesResponse (a)) Int
 ldirsResponseStatus = lens _ldirsResponseStatus (\ s a -> s{_ldirsResponseStatus = a});
 
 instance NFData ListDeploymentInstancesResponse

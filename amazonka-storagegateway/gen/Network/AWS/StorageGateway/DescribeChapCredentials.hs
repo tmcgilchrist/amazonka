@@ -105,7 +105,7 @@ instance ToQuery DescribeChapCredentials where
 -- | A JSON object containing a .
 --
 -- /See:/ 'describeChapCredentialsResponse' smart constructor.
-data DescribeChapCredentialsResponse = DescribeChapCredentialsResponse'
+data DescribeChapCredentialsResponse a = DescribeChapCredentialsResponse'
     { _dccrsChapCredentials :: !(Maybe [ChapInfo])
     , _dccrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data DescribeChapCredentialsResponse = DescribeChapCredentialsResponse'
 -- * 'dccrsResponseStatus'
 describeChapCredentialsResponse
     :: Int -- ^ 'dccrsResponseStatus'
-    -> DescribeChapCredentialsResponse
+    -> DescribeChapCredentialsResponse (a)
 describeChapCredentialsResponse pResponseStatus_ =
     DescribeChapCredentialsResponse'
     { _dccrsChapCredentials = Nothing
@@ -136,11 +136,11 @@ describeChapCredentialsResponse pResponseStatus_ =
 --
 -- -   __TargetARN__: The Amazon Resource Name (ARN) of the storage volume.
 --
-dccrsChapCredentials :: Lens' DescribeChapCredentialsResponse [ChapInfo]
+dccrsChapCredentials :: Lens' (DescribeChapCredentialsResponse (a)) [ChapInfo]
 dccrsChapCredentials = lens _dccrsChapCredentials (\ s a -> s{_dccrsChapCredentials = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dccrsResponseStatus :: Lens' DescribeChapCredentialsResponse Int
+dccrsResponseStatus :: Lens' (DescribeChapCredentialsResponse (a)) Int
 dccrsResponseStatus = lens _dccrsResponseStatus (\ s a -> s{_dccrsResponseStatus = a});
 
 instance NFData DescribeChapCredentialsResponse

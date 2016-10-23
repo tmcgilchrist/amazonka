@@ -103,14 +103,14 @@ instance ToQuery DeleteConfigurationRecorder where
         toQuery = const mempty
 
 -- | /See:/ 'deleteConfigurationRecorderResponse' smart constructor.
-data DeleteConfigurationRecorderResponse =
+data DeleteConfigurationRecorderResponse a =
     DeleteConfigurationRecorderResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteConfigurationRecorderResponse' with the minimum fields required to make a request.
 --
 deleteConfigurationRecorderResponse
-    :: DeleteConfigurationRecorderResponse
+    :: DeleteConfigurationRecorderResponse (a)
 deleteConfigurationRecorderResponse = DeleteConfigurationRecorderResponse'
 
 instance NFData DeleteConfigurationRecorderResponse

@@ -89,7 +89,7 @@ instance ToQuery GetAccountSettings where
 -- | Represents the account settings return values from the 'GetAccountSettings' request.
 --
 -- /See:/ 'getAccountSettingsResponse' smart constructor.
-data GetAccountSettingsResponse = GetAccountSettingsResponse'
+data GetAccountSettingsResponse a = GetAccountSettingsResponse'
     { _gasrsAccountSettings :: !(Maybe AccountSettings)
     , _gasrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -103,7 +103,7 @@ data GetAccountSettingsResponse = GetAccountSettingsResponse'
 -- * 'gasrsResponseStatus'
 getAccountSettingsResponse
     :: Int -- ^ 'gasrsResponseStatus'
-    -> GetAccountSettingsResponse
+    -> GetAccountSettingsResponse (a)
 getAccountSettingsResponse pResponseStatus_ =
     GetAccountSettingsResponse'
     { _gasrsAccountSettings = Nothing
@@ -111,11 +111,11 @@ getAccountSettingsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gasrsAccountSettings :: Lens' GetAccountSettingsResponse (Maybe AccountSettings)
+gasrsAccountSettings :: Lens' (GetAccountSettingsResponse (a)) (Maybe AccountSettings)
 gasrsAccountSettings = lens _gasrsAccountSettings (\ s a -> s{_gasrsAccountSettings = a});
 
 -- | The response status code.
-gasrsResponseStatus :: Lens' GetAccountSettingsResponse Int
+gasrsResponseStatus :: Lens' (GetAccountSettingsResponse (a)) Int
 gasrsResponseStatus = lens _gasrsResponseStatus (\ s a -> s{_gasrsResponseStatus = a});
 
 instance NFData GetAccountSettingsResponse

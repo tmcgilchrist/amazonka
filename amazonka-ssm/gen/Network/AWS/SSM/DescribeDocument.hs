@@ -97,7 +97,7 @@ instance ToQuery DescribeDocument where
         toQuery = const mempty
 
 -- | /See:/ 'describeDocumentResponse' smart constructor.
-data DescribeDocumentResponse = DescribeDocumentResponse'
+data DescribeDocumentResponse a = DescribeDocumentResponse'
     { _drsDocument       :: !(Maybe DocumentDescription)
     , _drsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -111,7 +111,7 @@ data DescribeDocumentResponse = DescribeDocumentResponse'
 -- * 'drsResponseStatus'
 describeDocumentResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DescribeDocumentResponse
+    -> DescribeDocumentResponse (a)
 describeDocumentResponse pResponseStatus_ =
     DescribeDocumentResponse'
     { _drsDocument = Nothing
@@ -119,11 +119,11 @@ describeDocumentResponse pResponseStatus_ =
     }
 
 -- | Information about the SSM document.
-drsDocument :: Lens' DescribeDocumentResponse (Maybe DocumentDescription)
+drsDocument :: Lens' (DescribeDocumentResponse (a)) (Maybe DocumentDescription)
 drsDocument = lens _drsDocument (\ s a -> s{_drsDocument = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DescribeDocumentResponse Int
+drsResponseStatus :: Lens' (DescribeDocumentResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DescribeDocumentResponse

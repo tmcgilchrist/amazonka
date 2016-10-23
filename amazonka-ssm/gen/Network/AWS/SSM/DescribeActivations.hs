@@ -122,7 +122,7 @@ instance ToQuery DescribeActivations where
         toQuery = const mempty
 
 -- | /See:/ 'describeActivationsResponse' smart constructor.
-data DescribeActivationsResponse = DescribeActivationsResponse'
+data DescribeActivationsResponse a = DescribeActivationsResponse'
     { _darsActivationList :: !(Maybe [Activation])
     , _darsNextToken      :: !(Maybe Text)
     , _darsResponseStatus :: !Int
@@ -139,7 +139,7 @@ data DescribeActivationsResponse = DescribeActivationsResponse'
 -- * 'darsResponseStatus'
 describeActivationsResponse
     :: Int -- ^ 'darsResponseStatus'
-    -> DescribeActivationsResponse
+    -> DescribeActivationsResponse (a)
 describeActivationsResponse pResponseStatus_ =
     DescribeActivationsResponse'
     { _darsActivationList = Nothing
@@ -148,15 +148,15 @@ describeActivationsResponse pResponseStatus_ =
     }
 
 -- | A list of activations for your AWS account.
-darsActivationList :: Lens' DescribeActivationsResponse [Activation]
+darsActivationList :: Lens' (DescribeActivationsResponse (a)) [Activation]
 darsActivationList = lens _darsActivationList (\ s a -> s{_darsActivationList = a}) . _Default . _Coerce;
 
 -- | The token for the next set of items to return. Use this token to get the next set of results.
-darsNextToken :: Lens' DescribeActivationsResponse (Maybe Text)
+darsNextToken :: Lens' (DescribeActivationsResponse (a)) (Maybe Text)
 darsNextToken = lens _darsNextToken (\ s a -> s{_darsNextToken = a});
 
 -- | The response status code.
-darsResponseStatus :: Lens' DescribeActivationsResponse Int
+darsResponseStatus :: Lens' (DescribeActivationsResponse (a)) Int
 darsResponseStatus = lens _darsResponseStatus (\ s a -> s{_darsResponseStatus = a});
 
 instance NFData DescribeActivationsResponse

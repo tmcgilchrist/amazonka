@@ -125,7 +125,7 @@ instance ToQuery ListBranches where
 -- | Represents the output of a list branches operation.
 --
 -- /See:/ 'listBranchesResponse' smart constructor.
-data ListBranchesResponse = ListBranchesResponse'
+data ListBranchesResponse a = ListBranchesResponse'
     { _lbrsBranches       :: !(Maybe [Text])
     , _lbrsNextToken      :: !(Maybe Text)
     , _lbrsResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ListBranchesResponse = ListBranchesResponse'
 -- * 'lbrsResponseStatus'
 listBranchesResponse
     :: Int -- ^ 'lbrsResponseStatus'
-    -> ListBranchesResponse
+    -> ListBranchesResponse (a)
 listBranchesResponse pResponseStatus_ =
     ListBranchesResponse'
     { _lbrsBranches = Nothing
@@ -151,15 +151,15 @@ listBranchesResponse pResponseStatus_ =
     }
 
 -- | The list of branch names.
-lbrsBranches :: Lens' ListBranchesResponse [Text]
+lbrsBranches :: Lens' (ListBranchesResponse (a)) [Text]
 lbrsBranches = lens _lbrsBranches (\ s a -> s{_lbrsBranches = a}) . _Default . _Coerce;
 
 -- | An enumeration token that returns the batch of the results.
-lbrsNextToken :: Lens' ListBranchesResponse (Maybe Text)
+lbrsNextToken :: Lens' (ListBranchesResponse (a)) (Maybe Text)
 lbrsNextToken = lens _lbrsNextToken (\ s a -> s{_lbrsNextToken = a});
 
 -- | The response status code.
-lbrsResponseStatus :: Lens' ListBranchesResponse Int
+lbrsResponseStatus :: Lens' (ListBranchesResponse (a)) Int
 lbrsResponseStatus = lens _lbrsResponseStatus (\ s a -> s{_lbrsResponseStatus = a});
 
 instance NFData ListBranchesResponse

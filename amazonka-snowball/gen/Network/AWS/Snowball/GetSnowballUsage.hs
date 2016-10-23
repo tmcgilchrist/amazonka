@@ -88,7 +88,7 @@ instance ToQuery GetSnowballUsage where
         toQuery = const mempty
 
 -- | /See:/ 'getSnowballUsageResponse' smart constructor.
-data GetSnowballUsageResponse = GetSnowballUsageResponse'
+data GetSnowballUsageResponse a = GetSnowballUsageResponse'
     { _gsursSnowballsInUse :: !(Maybe Int)
     , _gsursSnowballLimit  :: !(Maybe Int)
     , _gsursResponseStatus :: !Int
@@ -105,7 +105,7 @@ data GetSnowballUsageResponse = GetSnowballUsageResponse'
 -- * 'gsursResponseStatus'
 getSnowballUsageResponse
     :: Int -- ^ 'gsursResponseStatus'
-    -> GetSnowballUsageResponse
+    -> GetSnowballUsageResponse (a)
 getSnowballUsageResponse pResponseStatus_ =
     GetSnowballUsageResponse'
     { _gsursSnowballsInUse = Nothing
@@ -114,15 +114,15 @@ getSnowballUsageResponse pResponseStatus_ =
     }
 
 -- | The number of Snowballs that this account is currently using.
-gsursSnowballsInUse :: Lens' GetSnowballUsageResponse (Maybe Int)
+gsursSnowballsInUse :: Lens' (GetSnowballUsageResponse (a)) (Maybe Int)
 gsursSnowballsInUse = lens _gsursSnowballsInUse (\ s a -> s{_gsursSnowballsInUse = a});
 
 -- | The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).
-gsursSnowballLimit :: Lens' GetSnowballUsageResponse (Maybe Int)
+gsursSnowballLimit :: Lens' (GetSnowballUsageResponse (a)) (Maybe Int)
 gsursSnowballLimit = lens _gsursSnowballLimit (\ s a -> s{_gsursSnowballLimit = a});
 
 -- | The response status code.
-gsursResponseStatus :: Lens' GetSnowballUsageResponse Int
+gsursResponseStatus :: Lens' (GetSnowballUsageResponse (a)) Int
 gsursResponseStatus = lens _gsursResponseStatus (\ s a -> s{_gsursResponseStatus = a});
 
 instance NFData GetSnowballUsageResponse

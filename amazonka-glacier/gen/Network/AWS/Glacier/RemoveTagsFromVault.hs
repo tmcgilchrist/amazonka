@@ -110,14 +110,14 @@ instance ToQuery RemoveTagsFromVault where
         toQuery = const (mconcat ["operation=remove"])
 
 -- | /See:/ 'removeTagsFromVaultResponse' smart constructor.
-data RemoveTagsFromVaultResponse =
+data RemoveTagsFromVaultResponse a =
     RemoveTagsFromVaultResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveTagsFromVaultResponse' with the minimum fields required to make a request.
 --
 removeTagsFromVaultResponse
-    :: RemoveTagsFromVaultResponse
+    :: RemoveTagsFromVaultResponse (a)
 removeTagsFromVaultResponse = RemoveTagsFromVaultResponse'
 
 instance NFData RemoveTagsFromVaultResponse

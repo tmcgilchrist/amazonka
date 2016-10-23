@@ -248,7 +248,7 @@ instance ToQuery CreateTable where
 -- | Represents the output of a /CreateTable/ operation.
 --
 -- /See:/ 'createTableResponse' smart constructor.
-data CreateTableResponse = CreateTableResponse'
+data CreateTableResponse a = CreateTableResponse'
     { _ctrsTableDescription :: !(Maybe TableDescription)
     , _ctrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -262,7 +262,7 @@ data CreateTableResponse = CreateTableResponse'
 -- * 'ctrsResponseStatus'
 createTableResponse
     :: Int -- ^ 'ctrsResponseStatus'
-    -> CreateTableResponse
+    -> CreateTableResponse (a)
 createTableResponse pResponseStatus_ =
     CreateTableResponse'
     { _ctrsTableDescription = Nothing
@@ -270,11 +270,11 @@ createTableResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ctrsTableDescription :: Lens' CreateTableResponse (Maybe TableDescription)
+ctrsTableDescription :: Lens' (CreateTableResponse (a)) (Maybe TableDescription)
 ctrsTableDescription = lens _ctrsTableDescription (\ s a -> s{_ctrsTableDescription = a});
 
 -- | The response status code.
-ctrsResponseStatus :: Lens' CreateTableResponse Int
+ctrsResponseStatus :: Lens' (CreateTableResponse (a)) Int
 ctrsResponseStatus = lens _ctrsResponseStatus (\ s a -> s{_ctrsResponseStatus = a});
 
 instance NFData CreateTableResponse

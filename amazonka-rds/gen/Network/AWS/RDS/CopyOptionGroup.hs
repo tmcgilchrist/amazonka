@@ -149,7 +149,7 @@ instance ToQuery CopyOptionGroup where
                  _cTargetOptionGroupDescription]
 
 -- | /See:/ 'copyOptionGroupResponse' smart constructor.
-data CopyOptionGroupResponse = CopyOptionGroupResponse'
+data CopyOptionGroupResponse a = CopyOptionGroupResponse'
     { _cogrsOptionGroup    :: !(Maybe OptionGroup)
     , _cogrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -163,7 +163,7 @@ data CopyOptionGroupResponse = CopyOptionGroupResponse'
 -- * 'cogrsResponseStatus'
 copyOptionGroupResponse
     :: Int -- ^ 'cogrsResponseStatus'
-    -> CopyOptionGroupResponse
+    -> CopyOptionGroupResponse (a)
 copyOptionGroupResponse pResponseStatus_ =
     CopyOptionGroupResponse'
     { _cogrsOptionGroup = Nothing
@@ -171,11 +171,11 @@ copyOptionGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cogrsOptionGroup :: Lens' CopyOptionGroupResponse (Maybe OptionGroup)
+cogrsOptionGroup :: Lens' (CopyOptionGroupResponse (a)) (Maybe OptionGroup)
 cogrsOptionGroup = lens _cogrsOptionGroup (\ s a -> s{_cogrsOptionGroup = a});
 
 -- | The response status code.
-cogrsResponseStatus :: Lens' CopyOptionGroupResponse Int
+cogrsResponseStatus :: Lens' (CopyOptionGroupResponse (a)) Int
 cogrsResponseStatus = lens _cogrsResponseStatus (\ s a -> s{_cogrsResponseStatus = a});
 
 instance NFData CopyOptionGroupResponse

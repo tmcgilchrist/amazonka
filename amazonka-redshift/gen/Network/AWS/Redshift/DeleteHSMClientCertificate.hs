@@ -90,14 +90,14 @@ instance ToQuery DeleteHSMClientCertificate where
                  _dhsmccHSMClientCertificateIdentifier]
 
 -- | /See:/ 'deleteHSMClientCertificateResponse' smart constructor.
-data DeleteHSMClientCertificateResponse =
+data DeleteHSMClientCertificateResponse a =
     DeleteHSMClientCertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteHSMClientCertificateResponse' with the minimum fields required to make a request.
 --
 deleteHSMClientCertificateResponse
-    :: DeleteHSMClientCertificateResponse
+    :: DeleteHSMClientCertificateResponse (a)
 deleteHSMClientCertificateResponse = DeleteHSMClientCertificateResponse'
 
 instance NFData DeleteHSMClientCertificateResponse

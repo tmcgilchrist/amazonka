@@ -108,7 +108,7 @@ instance ToQuery CreateStreamingDistributionWithTags
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'createStreamingDistributionWithTagsResponse' smart constructor.
-data CreateStreamingDistributionWithTagsResponse = CreateStreamingDistributionWithTagsResponse'
+data CreateStreamingDistributionWithTagsResponse a = CreateStreamingDistributionWithTagsResponse'
     { _csdwtrsETag                  :: !(Maybe Text)
     , _csdwtrsLocation              :: !(Maybe Text)
     , _csdwtrsStreamingDistribution :: !(Maybe StreamingDistribution)
@@ -128,7 +128,7 @@ data CreateStreamingDistributionWithTagsResponse = CreateStreamingDistributionWi
 -- * 'csdwtrsResponseStatus'
 createStreamingDistributionWithTagsResponse
     :: Int -- ^ 'csdwtrsResponseStatus'
-    -> CreateStreamingDistributionWithTagsResponse
+    -> CreateStreamingDistributionWithTagsResponse (a)
 createStreamingDistributionWithTagsResponse pResponseStatus_ =
     CreateStreamingDistributionWithTagsResponse'
     { _csdwtrsETag = Nothing
@@ -138,19 +138,19 @@ createStreamingDistributionWithTagsResponse pResponseStatus_ =
     }
 
 -- | The current version of the streaming distribution created.
-csdwtrsETag :: Lens' CreateStreamingDistributionWithTagsResponse (Maybe Text)
+csdwtrsETag :: Lens' (CreateStreamingDistributionWithTagsResponse (a)) (Maybe Text)
 csdwtrsETag = lens _csdwtrsETag (\ s a -> s{_csdwtrsETag = a});
 
 -- | The fully qualified URI of the new streaming distribution resource just created. For example: https:\/\/cloudfront.amazonaws.com\/2010-11-01\/streaming-distribution\/EGTXBD79H29TRA8.
-csdwtrsLocation :: Lens' CreateStreamingDistributionWithTagsResponse (Maybe Text)
+csdwtrsLocation :: Lens' (CreateStreamingDistributionWithTagsResponse (a)) (Maybe Text)
 csdwtrsLocation = lens _csdwtrsLocation (\ s a -> s{_csdwtrsLocation = a});
 
 -- | The streaming distribution\'s information.
-csdwtrsStreamingDistribution :: Lens' CreateStreamingDistributionWithTagsResponse (Maybe StreamingDistribution)
+csdwtrsStreamingDistribution :: Lens' (CreateStreamingDistributionWithTagsResponse (a)) (Maybe StreamingDistribution)
 csdwtrsStreamingDistribution = lens _csdwtrsStreamingDistribution (\ s a -> s{_csdwtrsStreamingDistribution = a});
 
 -- | The response status code.
-csdwtrsResponseStatus :: Lens' CreateStreamingDistributionWithTagsResponse Int
+csdwtrsResponseStatus :: Lens' (CreateStreamingDistributionWithTagsResponse (a)) Int
 csdwtrsResponseStatus = lens _csdwtrsResponseStatus (\ s a -> s{_csdwtrsResponseStatus = a});
 
 instance NFData

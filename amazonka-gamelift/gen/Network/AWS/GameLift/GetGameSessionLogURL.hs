@@ -106,7 +106,7 @@ instance ToQuery GetGameSessionLogURL where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'getGameSessionLogURLResponse' smart constructor.
-data GetGameSessionLogURLResponse = GetGameSessionLogURLResponse'
+data GetGameSessionLogURLResponse a = GetGameSessionLogURLResponse'
     { _ggslursPreSignedURL   :: !(Maybe Text)
     , _ggslursResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data GetGameSessionLogURLResponse = GetGameSessionLogURLResponse'
 -- * 'ggslursResponseStatus'
 getGameSessionLogURLResponse
     :: Int -- ^ 'ggslursResponseStatus'
-    -> GetGameSessionLogURLResponse
+    -> GetGameSessionLogURLResponse (a)
 getGameSessionLogURLResponse pResponseStatus_ =
     GetGameSessionLogURLResponse'
     { _ggslursPreSignedURL = Nothing
@@ -128,11 +128,11 @@ getGameSessionLogURLResponse pResponseStatus_ =
     }
 
 -- | Location of the requested game session logs, available for download.
-ggslursPreSignedURL :: Lens' GetGameSessionLogURLResponse (Maybe Text)
+ggslursPreSignedURL :: Lens' (GetGameSessionLogURLResponse (a)) (Maybe Text)
 ggslursPreSignedURL = lens _ggslursPreSignedURL (\ s a -> s{_ggslursPreSignedURL = a});
 
 -- | The response status code.
-ggslursResponseStatus :: Lens' GetGameSessionLogURLResponse Int
+ggslursResponseStatus :: Lens' (GetGameSessionLogURLResponse (a)) Int
 ggslursResponseStatus = lens _ggslursResponseStatus (\ s a -> s{_ggslursResponseStatus = a});
 
 instance NFData GetGameSessionLogURLResponse

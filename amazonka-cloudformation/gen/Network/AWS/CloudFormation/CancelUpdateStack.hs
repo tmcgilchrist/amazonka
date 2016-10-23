@@ -88,14 +88,14 @@ instance ToQuery CancelUpdateStack where
                "StackName" =: _cusStackName]
 
 -- | /See:/ 'cancelUpdateStackResponse' smart constructor.
-data CancelUpdateStackResponse =
+data CancelUpdateStackResponse a =
     CancelUpdateStackResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CancelUpdateStackResponse' with the minimum fields required to make a request.
 --
 cancelUpdateStackResponse
-    :: CancelUpdateStackResponse
+    :: CancelUpdateStackResponse (a)
 cancelUpdateStackResponse = CancelUpdateStackResponse'
 
 instance NFData CancelUpdateStackResponse

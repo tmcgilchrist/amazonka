@@ -107,7 +107,7 @@ instance ToQuery GetOfferingStatus where
 -- | Returns the status result for a device offering.
 --
 -- /See:/ 'getOfferingStatusResponse' smart constructor.
-data GetOfferingStatusResponse = GetOfferingStatusResponse'
+data GetOfferingStatusResponse a = GetOfferingStatusResponse'
     { _gosrsNextPeriod     :: !(Maybe (Map Text OfferingStatus))
     , _gosrsCurrent        :: !(Maybe (Map Text OfferingStatus))
     , _gosrsNextToken      :: !(Maybe Text)
@@ -127,7 +127,7 @@ data GetOfferingStatusResponse = GetOfferingStatusResponse'
 -- * 'gosrsResponseStatus'
 getOfferingStatusResponse
     :: Int -- ^ 'gosrsResponseStatus'
-    -> GetOfferingStatusResponse
+    -> GetOfferingStatusResponse (a)
 getOfferingStatusResponse pResponseStatus_ =
     GetOfferingStatusResponse'
     { _gosrsNextPeriod = Nothing
@@ -137,19 +137,19 @@ getOfferingStatusResponse pResponseStatus_ =
     }
 
 -- | When specified, gets the offering status for the next period.
-gosrsNextPeriod :: Lens' GetOfferingStatusResponse (HashMap Text OfferingStatus)
+gosrsNextPeriod :: Lens' (GetOfferingStatusResponse (a)) (HashMap Text OfferingStatus)
 gosrsNextPeriod = lens _gosrsNextPeriod (\ s a -> s{_gosrsNextPeriod = a}) . _Default . _Map;
 
 -- | When specified, gets the offering status for the current period.
-gosrsCurrent :: Lens' GetOfferingStatusResponse (HashMap Text OfferingStatus)
+gosrsCurrent :: Lens' (GetOfferingStatusResponse (a)) (HashMap Text OfferingStatus)
 gosrsCurrent = lens _gosrsCurrent (\ s a -> s{_gosrsCurrent = a}) . _Default . _Map;
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
-gosrsNextToken :: Lens' GetOfferingStatusResponse (Maybe Text)
+gosrsNextToken :: Lens' (GetOfferingStatusResponse (a)) (Maybe Text)
 gosrsNextToken = lens _gosrsNextToken (\ s a -> s{_gosrsNextToken = a});
 
 -- | The response status code.
-gosrsResponseStatus :: Lens' GetOfferingStatusResponse Int
+gosrsResponseStatus :: Lens' (GetOfferingStatusResponse (a)) Int
 gosrsResponseStatus = lens _gosrsResponseStatus (\ s a -> s{_gosrsResponseStatus = a});
 
 instance NFData GetOfferingStatusResponse

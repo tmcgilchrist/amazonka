@@ -411,7 +411,7 @@ instance ToQuery Scan where
 -- | Represents the output of a /Scan/ operation.
 --
 -- /See:/ 'scanResponse' smart constructor.
-data ScanResponse = ScanResponse'
+data ScanResponse a = ScanResponse'
     { _srsLastEvaluatedKey :: !(Maybe (Map Text AttributeValue))
     , _srsCount            :: !(Maybe Int)
     , _srsScannedCount     :: !(Maybe Int)
@@ -437,7 +437,7 @@ data ScanResponse = ScanResponse'
 -- * 'srsResponseStatus'
 scanResponse
     :: Int -- ^ 'srsResponseStatus'
-    -> ScanResponse
+    -> ScanResponse (a)
 scanResponse pResponseStatus_ =
     ScanResponse'
     { _srsLastEvaluatedKey = Nothing
@@ -453,7 +453,7 @@ scanResponse pResponseStatus_ =
 -- If /LastEvaluatedKey/ is empty, then the \"last page\" of results has been processed and there is no more data to be retrieved.
 --
 -- If /LastEvaluatedKey/ is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when /LastEvaluatedKey/ is empty.
-srsLastEvaluatedKey :: Lens' ScanResponse (HashMap Text AttributeValue)
+srsLastEvaluatedKey :: Lens' (ScanResponse (a)) (HashMap Text AttributeValue)
 srsLastEvaluatedKey = lens _srsLastEvaluatedKey (\ s a -> s{_srsLastEvaluatedKey = a}) . _Default . _Map;
 
 -- | The number of items in the response.
@@ -461,25 +461,25 @@ srsLastEvaluatedKey = lens _srsLastEvaluatedKey (\ s a -> s{_srsLastEvaluatedKey
 -- If you set /ScanFilter/ in the request, then /Count/ is the number of items returned after the filter was applied, and /ScannedCount/ is the number of matching items before the filter was applied.
 --
 -- If you did not use a filter in the request, then /Count/ is the same as /ScannedCount/.
-srsCount :: Lens' ScanResponse (Maybe Int)
+srsCount :: Lens' (ScanResponse (a)) (Maybe Int)
 srsCount = lens _srsCount (\ s a -> s{_srsCount = a});
 
 -- | The number of items evaluated, before any /ScanFilter/ is applied. A high /ScannedCount/ value with few, or no, /Count/ results indicates an inefficient /Scan/ operation. For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count Count and ScannedCount> in the /Amazon DynamoDB Developer Guide/.
 --
 -- If you did not use a filter in the request, then /ScannedCount/ is the same as /Count/.
-srsScannedCount :: Lens' ScanResponse (Maybe Int)
+srsScannedCount :: Lens' (ScanResponse (a)) (Maybe Int)
 srsScannedCount = lens _srsScannedCount (\ s a -> s{_srsScannedCount = a});
 
 -- | An array of item attributes that match the scan criteria. Each element in this array consists of an attribute name and the value for that attribute.
-srsItems :: Lens' ScanResponse [HashMap Text AttributeValue]
+srsItems :: Lens' (ScanResponse (a)) [HashMap Text AttributeValue]
 srsItems = lens _srsItems (\ s a -> s{_srsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-srsConsumedCapacity :: Lens' ScanResponse (Maybe ConsumedCapacity)
+srsConsumedCapacity :: Lens' (ScanResponse (a)) (Maybe ConsumedCapacity)
 srsConsumedCapacity = lens _srsConsumedCapacity (\ s a -> s{_srsConsumedCapacity = a});
 
 -- | The response status code.
-srsResponseStatus :: Lens' ScanResponse Int
+srsResponseStatus :: Lens' (ScanResponse (a)) Int
 srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a});
 
 instance NFData ScanResponse

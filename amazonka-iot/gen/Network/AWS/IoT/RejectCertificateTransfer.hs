@@ -106,14 +106,14 @@ instance ToQuery RejectCertificateTransfer where
         toQuery = const mempty
 
 -- | /See:/ 'rejectCertificateTransferResponse' smart constructor.
-data RejectCertificateTransferResponse =
+data RejectCertificateTransferResponse a =
     RejectCertificateTransferResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RejectCertificateTransferResponse' with the minimum fields required to make a request.
 --
 rejectCertificateTransferResponse
-    :: RejectCertificateTransferResponse
+    :: RejectCertificateTransferResponse (a)
 rejectCertificateTransferResponse = RejectCertificateTransferResponse'
 
 instance NFData RejectCertificateTransferResponse

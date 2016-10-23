@@ -100,14 +100,14 @@ instance ToQuery RebuildEnvironment where
                "EnvironmentId" =: _reEnvironmentId]
 
 -- | /See:/ 'rebuildEnvironmentResponse' smart constructor.
-data RebuildEnvironmentResponse =
+data RebuildEnvironmentResponse a =
     RebuildEnvironmentResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RebuildEnvironmentResponse' with the minimum fields required to make a request.
 --
 rebuildEnvironmentResponse
-    :: RebuildEnvironmentResponse
+    :: RebuildEnvironmentResponse (a)
 rebuildEnvironmentResponse = RebuildEnvironmentResponse'
 
 instance NFData RebuildEnvironmentResponse

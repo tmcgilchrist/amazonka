@@ -129,7 +129,7 @@ instance ToQuery CreateClusterSecurityGroup where
                "Description" =: _creDescription]
 
 -- | /See:/ 'createClusterSecurityGroupResponse' smart constructor.
-data CreateClusterSecurityGroupResponse = CreateClusterSecurityGroupResponse'
+data CreateClusterSecurityGroupResponse a = CreateClusterSecurityGroupResponse'
     { _crsClusterSecurityGroup :: !(Maybe ClusterSecurityGroup)
     , _crsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -143,7 +143,7 @@ data CreateClusterSecurityGroupResponse = CreateClusterSecurityGroupResponse'
 -- * 'crsResponseStatus'
 createClusterSecurityGroupResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CreateClusterSecurityGroupResponse
+    -> CreateClusterSecurityGroupResponse (a)
 createClusterSecurityGroupResponse pResponseStatus_ =
     CreateClusterSecurityGroupResponse'
     { _crsClusterSecurityGroup = Nothing
@@ -151,11 +151,11 @@ createClusterSecurityGroupResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-crsClusterSecurityGroup :: Lens' CreateClusterSecurityGroupResponse (Maybe ClusterSecurityGroup)
+crsClusterSecurityGroup :: Lens' (CreateClusterSecurityGroupResponse (a)) (Maybe ClusterSecurityGroup)
 crsClusterSecurityGroup = lens _crsClusterSecurityGroup (\ s a -> s{_crsClusterSecurityGroup = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CreateClusterSecurityGroupResponse Int
+crsResponseStatus :: Lens' (CreateClusterSecurityGroupResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CreateClusterSecurityGroupResponse

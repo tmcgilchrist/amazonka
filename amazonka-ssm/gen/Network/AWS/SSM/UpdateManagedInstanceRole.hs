@@ -111,7 +111,7 @@ instance ToQuery UpdateManagedInstanceRole where
         toQuery = const mempty
 
 -- | /See:/ 'updateManagedInstanceRoleResponse' smart constructor.
-newtype UpdateManagedInstanceRoleResponse = UpdateManagedInstanceRoleResponse'
+newtype UpdateManagedInstanceRoleResponse a = UpdateManagedInstanceRoleResponse'
     { _umirrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -122,14 +122,14 @@ newtype UpdateManagedInstanceRoleResponse = UpdateManagedInstanceRoleResponse'
 -- * 'umirrsResponseStatus'
 updateManagedInstanceRoleResponse
     :: Int -- ^ 'umirrsResponseStatus'
-    -> UpdateManagedInstanceRoleResponse
+    -> UpdateManagedInstanceRoleResponse (a)
 updateManagedInstanceRoleResponse pResponseStatus_ =
     UpdateManagedInstanceRoleResponse'
     { _umirrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-umirrsResponseStatus :: Lens' UpdateManagedInstanceRoleResponse Int
+umirrsResponseStatus :: Lens' (UpdateManagedInstanceRoleResponse (a)) Int
 umirrsResponseStatus = lens _umirrsResponseStatus (\ s a -> s{_umirrsResponseStatus = a});
 
 instance NFData UpdateManagedInstanceRoleResponse

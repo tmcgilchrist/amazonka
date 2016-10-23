@@ -123,7 +123,7 @@ instance ToQuery RevokeCacheSecurityGroupIngress
                  _rcsgiEC2SecurityGroupOwnerId]
 
 -- | /See:/ 'revokeCacheSecurityGroupIngressResponse' smart constructor.
-data RevokeCacheSecurityGroupIngressResponse = RevokeCacheSecurityGroupIngressResponse'
+data RevokeCacheSecurityGroupIngressResponse a = RevokeCacheSecurityGroupIngressResponse'
     { _rcsgirsCacheSecurityGroup :: !(Maybe CacheSecurityGroup)
     , _rcsgirsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -137,7 +137,7 @@ data RevokeCacheSecurityGroupIngressResponse = RevokeCacheSecurityGroupIngressRe
 -- * 'rcsgirsResponseStatus'
 revokeCacheSecurityGroupIngressResponse
     :: Int -- ^ 'rcsgirsResponseStatus'
-    -> RevokeCacheSecurityGroupIngressResponse
+    -> RevokeCacheSecurityGroupIngressResponse (a)
 revokeCacheSecurityGroupIngressResponse pResponseStatus_ =
     RevokeCacheSecurityGroupIngressResponse'
     { _rcsgirsCacheSecurityGroup = Nothing
@@ -145,11 +145,11 @@ revokeCacheSecurityGroupIngressResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rcsgirsCacheSecurityGroup :: Lens' RevokeCacheSecurityGroupIngressResponse (Maybe CacheSecurityGroup)
+rcsgirsCacheSecurityGroup :: Lens' (RevokeCacheSecurityGroupIngressResponse (a)) (Maybe CacheSecurityGroup)
 rcsgirsCacheSecurityGroup = lens _rcsgirsCacheSecurityGroup (\ s a -> s{_rcsgirsCacheSecurityGroup = a});
 
 -- | The response status code.
-rcsgirsResponseStatus :: Lens' RevokeCacheSecurityGroupIngressResponse Int
+rcsgirsResponseStatus :: Lens' (RevokeCacheSecurityGroupIngressResponse (a)) Int
 rcsgirsResponseStatus = lens _rcsgirsResponseStatus (\ s a -> s{_rcsgirsResponseStatus = a});
 
 instance NFData

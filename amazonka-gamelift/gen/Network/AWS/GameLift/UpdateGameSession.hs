@@ -148,7 +148,7 @@ instance ToQuery UpdateGameSession where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'updateGameSessionResponse' smart constructor.
-data UpdateGameSessionResponse = UpdateGameSessionResponse'
+data UpdateGameSessionResponse a = UpdateGameSessionResponse'
     { _ugsrsGameSession    :: !(Maybe GameSession)
     , _ugsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -162,7 +162,7 @@ data UpdateGameSessionResponse = UpdateGameSessionResponse'
 -- * 'ugsrsResponseStatus'
 updateGameSessionResponse
     :: Int -- ^ 'ugsrsResponseStatus'
-    -> UpdateGameSessionResponse
+    -> UpdateGameSessionResponse (a)
 updateGameSessionResponse pResponseStatus_ =
     UpdateGameSessionResponse'
     { _ugsrsGameSession = Nothing
@@ -170,11 +170,11 @@ updateGameSessionResponse pResponseStatus_ =
     }
 
 -- | Object containing the updated game session metadata.
-ugsrsGameSession :: Lens' UpdateGameSessionResponse (Maybe GameSession)
+ugsrsGameSession :: Lens' (UpdateGameSessionResponse (a)) (Maybe GameSession)
 ugsrsGameSession = lens _ugsrsGameSession (\ s a -> s{_ugsrsGameSession = a});
 
 -- | The response status code.
-ugsrsResponseStatus :: Lens' UpdateGameSessionResponse Int
+ugsrsResponseStatus :: Lens' (UpdateGameSessionResponse (a)) Int
 ugsrsResponseStatus = lens _ugsrsResponseStatus (\ s a -> s{_ugsrsResponseStatus = a});
 
 instance NFData UpdateGameSessionResponse

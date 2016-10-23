@@ -100,14 +100,14 @@ instance ToQuery DetachUserPolicy where
                "UserName" =: _dUserName, "PolicyArn" =: _dPolicyARN]
 
 -- | /See:/ 'detachUserPolicyResponse' smart constructor.
-data DetachUserPolicyResponse =
+data DetachUserPolicyResponse a =
     DetachUserPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DetachUserPolicyResponse' with the minimum fields required to make a request.
 --
 detachUserPolicyResponse
-    :: DetachUserPolicyResponse
+    :: DetachUserPolicyResponse (a)
 detachUserPolicyResponse = DetachUserPolicyResponse'
 
 instance NFData DetachUserPolicyResponse

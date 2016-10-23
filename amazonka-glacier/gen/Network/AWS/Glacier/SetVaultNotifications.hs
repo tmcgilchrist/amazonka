@@ -123,14 +123,14 @@ instance ToQuery SetVaultNotifications where
         toQuery = const mempty
 
 -- | /See:/ 'setVaultNotificationsResponse' smart constructor.
-data SetVaultNotificationsResponse =
+data SetVaultNotificationsResponse a =
     SetVaultNotificationsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetVaultNotificationsResponse' with the minimum fields required to make a request.
 --
 setVaultNotificationsResponse
-    :: SetVaultNotificationsResponse
+    :: SetVaultNotificationsResponse (a)
 setVaultNotificationsResponse = SetVaultNotificationsResponse'
 
 instance NFData SetVaultNotificationsResponse

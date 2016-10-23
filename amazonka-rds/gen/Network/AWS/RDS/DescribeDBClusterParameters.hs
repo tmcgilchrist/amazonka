@@ -159,7 +159,7 @@ instance ToQuery DescribeDBClusterParameters where
 -- | Provides details about a DB cluster parameter group including the parameters in the DB cluster parameter group.
 --
 -- /See:/ 'describeDBClusterParametersResponse' smart constructor.
-data DescribeDBClusterParametersResponse = DescribeDBClusterParametersResponse'
+data DescribeDBClusterParametersResponse a = DescribeDBClusterParametersResponse'
     { _ddcprsMarker         :: !(Maybe Text)
     , _ddcprsParameters     :: !(Maybe [Parameter])
     , _ddcprsResponseStatus :: !Int
@@ -176,7 +176,7 @@ data DescribeDBClusterParametersResponse = DescribeDBClusterParametersResponse'
 -- * 'ddcprsResponseStatus'
 describeDBClusterParametersResponse
     :: Int -- ^ 'ddcprsResponseStatus'
-    -> DescribeDBClusterParametersResponse
+    -> DescribeDBClusterParametersResponse (a)
 describeDBClusterParametersResponse pResponseStatus_ =
     DescribeDBClusterParametersResponse'
     { _ddcprsMarker = Nothing
@@ -185,15 +185,15 @@ describeDBClusterParametersResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous DescribeDBClusterParameters request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords' .
-ddcprsMarker :: Lens' DescribeDBClusterParametersResponse (Maybe Text)
+ddcprsMarker :: Lens' (DescribeDBClusterParametersResponse (a)) (Maybe Text)
 ddcprsMarker = lens _ddcprsMarker (\ s a -> s{_ddcprsMarker = a});
 
 -- | Provides a list of parameters for the DB cluster parameter group.
-ddcprsParameters :: Lens' DescribeDBClusterParametersResponse [Parameter]
+ddcprsParameters :: Lens' (DescribeDBClusterParametersResponse (a)) [Parameter]
 ddcprsParameters = lens _ddcprsParameters (\ s a -> s{_ddcprsParameters = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ddcprsResponseStatus :: Lens' DescribeDBClusterParametersResponse Int
+ddcprsResponseStatus :: Lens' (DescribeDBClusterParametersResponse (a)) Int
 ddcprsResponseStatus = lens _ddcprsResponseStatus (\ s a -> s{_ddcprsResponseStatus = a});
 
 instance NFData DescribeDBClusterParametersResponse

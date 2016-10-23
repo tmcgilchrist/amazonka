@@ -152,14 +152,14 @@ instance ToQuery GetJobOutput where
 -- | Contains the Amazon Glacier response to your request.
 --
 -- /See:/ 'getJobOutputResponse' smart constructor.
-data GetJobOutputResponse = GetJobOutputResponse'
+data GetJobOutputResponse a = GetJobOutputResponse'
     { _gjorsChecksum           :: !(Maybe Text)
     , _gjorsAcceptRanges       :: !(Maybe Text)
     , _gjorsArchiveDescription :: !(Maybe Text)
     , _gjorsContentRange       :: !(Maybe Text)
     , _gjorsContentType        :: !(Maybe Text)
     , _gjorsStatus             :: !Int
-    , _gjorsBody               :: !RsBody
+    , _gjorsBody               :: !a
     } deriving (Show,Generic)
 
 -- | Creates a value of 'GetJobOutputResponse' with the minimum fields required to make a request.
@@ -181,8 +181,8 @@ data GetJobOutputResponse = GetJobOutputResponse'
 -- * 'gjorsBody'
 getJobOutputResponse
     :: Int -- ^ 'gjorsStatus'
-    -> RsBody -- ^ 'gjorsBody'
-    -> GetJobOutputResponse
+    -> a -- ^ 'gjorsBody'
+    -> GetJobOutputResponse (a)
 getJobOutputResponse pStatus_ pBody_ =
     GetJobOutputResponse'
     { _gjorsChecksum = Nothing
@@ -199,29 +199,29 @@ getJobOutputResponse pStatus_ pBody_ =
 -- -   You get the entire range of the archive.
 -- -   You request a range to return of the archive that starts and ends on a multiple of 1 MB. For example, if you have an 3.1 MB archive and you specify a range to return that starts at 1 MB and ends at 2 MB, then the x-amz-sha256-tree-hash is returned as a response header.
 -- -   You request a range of the archive to return that starts on a multiple of 1 MB and goes to the end of the archive. For example, if you have a 3.1 MB archive and you specify a range that starts at 2 MB and ends at 3.1 MB (the end of the archive), then the x-amz-sha256-tree-hash is returned as a response header.
-gjorsChecksum :: Lens' GetJobOutputResponse (Maybe Text)
+gjorsChecksum :: Lens' (GetJobOutputResponse (a)) (Maybe Text)
 gjorsChecksum = lens _gjorsChecksum (\ s a -> s{_gjorsChecksum = a});
 
 -- | Indicates the range units accepted. For more information, go to <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html RFC2616>.
-gjorsAcceptRanges :: Lens' GetJobOutputResponse (Maybe Text)
+gjorsAcceptRanges :: Lens' (GetJobOutputResponse (a)) (Maybe Text)
 gjorsAcceptRanges = lens _gjorsAcceptRanges (\ s a -> s{_gjorsAcceptRanges = a});
 
 -- | The description of an archive.
-gjorsArchiveDescription :: Lens' GetJobOutputResponse (Maybe Text)
+gjorsArchiveDescription :: Lens' (GetJobOutputResponse (a)) (Maybe Text)
 gjorsArchiveDescription = lens _gjorsArchiveDescription (\ s a -> s{_gjorsArchiveDescription = a});
 
 -- | The range of bytes returned by Amazon Glacier. If only partial output is downloaded, the response provides the range of bytes Amazon Glacier returned. For example, bytes 0-1048575\/8388608 returns the first 1 MB from 8 MB.
-gjorsContentRange :: Lens' GetJobOutputResponse (Maybe Text)
+gjorsContentRange :: Lens' (GetJobOutputResponse (a)) (Maybe Text)
 gjorsContentRange = lens _gjorsContentRange (\ s a -> s{_gjorsContentRange = a});
 
 -- | The Content-Type depends on whether the job output is an archive or a vault inventory. For archive data, the Content-Type is application\/octet-stream. For vault inventory, if you requested CSV format when you initiated the job, the Content-Type is text\/csv. Otherwise, by default, vault inventory is returned as JSON, and the Content-Type is application\/json.
-gjorsContentType :: Lens' GetJobOutputResponse (Maybe Text)
+gjorsContentType :: Lens' (GetJobOutputResponse (a)) (Maybe Text)
 gjorsContentType = lens _gjorsContentType (\ s a -> s{_gjorsContentType = a});
 
 -- | The HTTP response code for a job output request. The value depends on whether a range was specified in the request.
-gjorsStatus :: Lens' GetJobOutputResponse Int
+gjorsStatus :: Lens' (GetJobOutputResponse (a)) Int
 gjorsStatus = lens _gjorsStatus (\ s a -> s{_gjorsStatus = a});
 
 -- | The job data, either archive data or inventory data.
-gjorsBody :: Lens' GetJobOutputResponse RsBody
+gjorsBody :: Lens' (GetJobOutputResponse (a)) a
 gjorsBody = lens _gjorsBody (\ s a -> s{_gjorsBody = a});

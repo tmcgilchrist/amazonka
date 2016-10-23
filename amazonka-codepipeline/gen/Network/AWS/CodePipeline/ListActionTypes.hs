@@ -115,7 +115,7 @@ instance ToQuery ListActionTypes where
 -- | Represents the output of a list action types action.
 --
 -- /See:/ 'listActionTypesResponse' smart constructor.
-data ListActionTypesResponse = ListActionTypesResponse'
+data ListActionTypesResponse a = ListActionTypesResponse'
     { _latrsNextToken      :: !(Maybe Text)
     , _latrsResponseStatus :: !Int
     , _latrsActionTypes    :: ![ActionType]
@@ -132,7 +132,7 @@ data ListActionTypesResponse = ListActionTypesResponse'
 -- * 'latrsActionTypes'
 listActionTypesResponse
     :: Int -- ^ 'latrsResponseStatus'
-    -> ListActionTypesResponse
+    -> ListActionTypesResponse (a)
 listActionTypesResponse pResponseStatus_ =
     ListActionTypesResponse'
     { _latrsNextToken = Nothing
@@ -141,15 +141,15 @@ listActionTypesResponse pResponseStatus_ =
     }
 
 -- | If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list action types call to return the next set of action types in the list.
-latrsNextToken :: Lens' ListActionTypesResponse (Maybe Text)
+latrsNextToken :: Lens' (ListActionTypesResponse (a)) (Maybe Text)
 latrsNextToken = lens _latrsNextToken (\ s a -> s{_latrsNextToken = a});
 
 -- | The response status code.
-latrsResponseStatus :: Lens' ListActionTypesResponse Int
+latrsResponseStatus :: Lens' (ListActionTypesResponse (a)) Int
 latrsResponseStatus = lens _latrsResponseStatus (\ s a -> s{_latrsResponseStatus = a});
 
 -- | Provides details of the action types.
-latrsActionTypes :: Lens' ListActionTypesResponse [ActionType]
+latrsActionTypes :: Lens' (ListActionTypesResponse (a)) [ActionType]
 latrsActionTypes = lens _latrsActionTypes (\ s a -> s{_latrsActionTypes = a}) . _Coerce;
 
 instance NFData ListActionTypesResponse

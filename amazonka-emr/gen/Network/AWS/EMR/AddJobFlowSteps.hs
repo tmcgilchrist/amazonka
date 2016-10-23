@@ -121,7 +121,7 @@ instance ToQuery AddJobFlowSteps where
 -- | The output for the < AddJobFlowSteps> operation.
 --
 -- /See:/ 'addJobFlowStepsResponse' smart constructor.
-data AddJobFlowStepsResponse = AddJobFlowStepsResponse'
+data AddJobFlowStepsResponse a = AddJobFlowStepsResponse'
     { _ajfsrsStepIds        :: !(Maybe [Text])
     , _ajfsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -135,7 +135,7 @@ data AddJobFlowStepsResponse = AddJobFlowStepsResponse'
 -- * 'ajfsrsResponseStatus'
 addJobFlowStepsResponse
     :: Int -- ^ 'ajfsrsResponseStatus'
-    -> AddJobFlowStepsResponse
+    -> AddJobFlowStepsResponse (a)
 addJobFlowStepsResponse pResponseStatus_ =
     AddJobFlowStepsResponse'
     { _ajfsrsStepIds = Nothing
@@ -143,11 +143,11 @@ addJobFlowStepsResponse pResponseStatus_ =
     }
 
 -- | The identifiers of the list of steps added to the job flow.
-ajfsrsStepIds :: Lens' AddJobFlowStepsResponse [Text]
+ajfsrsStepIds :: Lens' (AddJobFlowStepsResponse (a)) [Text]
 ajfsrsStepIds = lens _ajfsrsStepIds (\ s a -> s{_ajfsrsStepIds = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ajfsrsResponseStatus :: Lens' AddJobFlowStepsResponse Int
+ajfsrsResponseStatus :: Lens' (AddJobFlowStepsResponse (a)) Int
 ajfsrsResponseStatus = lens _ajfsrsResponseStatus (\ s a -> s{_ajfsrsResponseStatus = a});
 
 instance NFData AddJobFlowStepsResponse

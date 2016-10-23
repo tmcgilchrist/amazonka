@@ -114,7 +114,7 @@ instance ToQuery TerminateWorkspaces where
 -- | Contains the results of the < TerminateWorkspaces> operation.
 --
 -- /See:/ 'terminateWorkspacesResponse' smart constructor.
-data TerminateWorkspacesResponse = TerminateWorkspacesResponse'
+data TerminateWorkspacesResponse a = TerminateWorkspacesResponse'
     { _twrsFailedRequests :: !(Maybe [FailedWorkspaceChangeRequest])
     , _twrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data TerminateWorkspacesResponse = TerminateWorkspacesResponse'
 -- * 'twrsResponseStatus'
 terminateWorkspacesResponse
     :: Int -- ^ 'twrsResponseStatus'
-    -> TerminateWorkspacesResponse
+    -> TerminateWorkspacesResponse (a)
 terminateWorkspacesResponse pResponseStatus_ =
     TerminateWorkspacesResponse'
     { _twrsFailedRequests = Nothing
@@ -136,11 +136,11 @@ terminateWorkspacesResponse pResponseStatus_ =
     }
 
 -- | An array of structures representing any WorkSpaces that could not be terminated.
-twrsFailedRequests :: Lens' TerminateWorkspacesResponse [FailedWorkspaceChangeRequest]
+twrsFailedRequests :: Lens' (TerminateWorkspacesResponse (a)) [FailedWorkspaceChangeRequest]
 twrsFailedRequests = lens _twrsFailedRequests (\ s a -> s{_twrsFailedRequests = a}) . _Default . _Coerce;
 
 -- | The response status code.
-twrsResponseStatus :: Lens' TerminateWorkspacesResponse Int
+twrsResponseStatus :: Lens' (TerminateWorkspacesResponse (a)) Int
 twrsResponseStatus = lens _twrsResponseStatus (\ s a -> s{_twrsResponseStatus = a});
 
 instance NFData TerminateWorkspacesResponse

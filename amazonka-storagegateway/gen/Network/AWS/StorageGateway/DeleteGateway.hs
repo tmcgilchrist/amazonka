@@ -107,7 +107,7 @@ instance ToQuery DeleteGateway where
 -- | A JSON object containing the id of the deleted gateway.
 --
 -- /See:/ 'deleteGatewayResponse' smart constructor.
-data DeleteGatewayResponse = DeleteGatewayResponse'
+data DeleteGatewayResponse a = DeleteGatewayResponse'
     { _dgrsGatewayARN     :: !(Maybe Text)
     , _dgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -121,7 +121,7 @@ data DeleteGatewayResponse = DeleteGatewayResponse'
 -- * 'dgrsResponseStatus'
 deleteGatewayResponse
     :: Int -- ^ 'dgrsResponseStatus'
-    -> DeleteGatewayResponse
+    -> DeleteGatewayResponse (a)
 deleteGatewayResponse pResponseStatus_ =
     DeleteGatewayResponse'
     { _dgrsGatewayARN = Nothing
@@ -129,11 +129,11 @@ deleteGatewayResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dgrsGatewayARN :: Lens' DeleteGatewayResponse (Maybe Text)
+dgrsGatewayARN :: Lens' (DeleteGatewayResponse (a)) (Maybe Text)
 dgrsGatewayARN = lens _dgrsGatewayARN (\ s a -> s{_dgrsGatewayARN = a});
 
 -- | The response status code.
-dgrsResponseStatus :: Lens' DeleteGatewayResponse Int
+dgrsResponseStatus :: Lens' (DeleteGatewayResponse (a)) Int
 dgrsResponseStatus = lens _dgrsResponseStatus (\ s a -> s{_dgrsResponseStatus = a});
 
 instance NFData DeleteGatewayResponse

@@ -302,7 +302,7 @@ instance ToQuery CreateInstance where
 -- | Contains the response to a 'CreateInstance' request.
 --
 -- /See:/ 'createInstanceResponse' smart constructor.
-data CreateInstanceResponse = CreateInstanceResponse'
+data CreateInstanceResponse a = CreateInstanceResponse'
     { _cirsInstanceId     :: !(Maybe Text)
     , _cirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -316,7 +316,7 @@ data CreateInstanceResponse = CreateInstanceResponse'
 -- * 'cirsResponseStatus'
 createInstanceResponse
     :: Int -- ^ 'cirsResponseStatus'
-    -> CreateInstanceResponse
+    -> CreateInstanceResponse (a)
 createInstanceResponse pResponseStatus_ =
     CreateInstanceResponse'
     { _cirsInstanceId = Nothing
@@ -324,11 +324,11 @@ createInstanceResponse pResponseStatus_ =
     }
 
 -- | The instance ID.
-cirsInstanceId :: Lens' CreateInstanceResponse (Maybe Text)
+cirsInstanceId :: Lens' (CreateInstanceResponse (a)) (Maybe Text)
 cirsInstanceId = lens _cirsInstanceId (\ s a -> s{_cirsInstanceId = a});
 
 -- | The response status code.
-cirsResponseStatus :: Lens' CreateInstanceResponse Int
+cirsResponseStatus :: Lens' (CreateInstanceResponse (a)) Int
 cirsResponseStatus = lens _cirsResponseStatus (\ s a -> s{_cirsResponseStatus = a});
 
 instance NFData CreateInstanceResponse

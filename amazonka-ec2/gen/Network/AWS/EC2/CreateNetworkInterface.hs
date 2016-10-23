@@ -164,7 +164,7 @@ instance ToQuery CreateNetworkInterface where
 -- | Contains the output of CreateNetworkInterface.
 --
 -- /See:/ 'createNetworkInterfaceResponse' smart constructor.
-data CreateNetworkInterfaceResponse = CreateNetworkInterfaceResponse'
+data CreateNetworkInterfaceResponse a = CreateNetworkInterfaceResponse'
     { _cnirsNetworkInterface :: !(Maybe NetworkInterface)
     , _cnirsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -178,7 +178,7 @@ data CreateNetworkInterfaceResponse = CreateNetworkInterfaceResponse'
 -- * 'cnirsResponseStatus'
 createNetworkInterfaceResponse
     :: Int -- ^ 'cnirsResponseStatus'
-    -> CreateNetworkInterfaceResponse
+    -> CreateNetworkInterfaceResponse (a)
 createNetworkInterfaceResponse pResponseStatus_ =
     CreateNetworkInterfaceResponse'
     { _cnirsNetworkInterface = Nothing
@@ -186,11 +186,11 @@ createNetworkInterfaceResponse pResponseStatus_ =
     }
 
 -- | Information about the network interface.
-cnirsNetworkInterface :: Lens' CreateNetworkInterfaceResponse (Maybe NetworkInterface)
+cnirsNetworkInterface :: Lens' (CreateNetworkInterfaceResponse (a)) (Maybe NetworkInterface)
 cnirsNetworkInterface = lens _cnirsNetworkInterface (\ s a -> s{_cnirsNetworkInterface = a});
 
 -- | The response status code.
-cnirsResponseStatus :: Lens' CreateNetworkInterfaceResponse Int
+cnirsResponseStatus :: Lens' (CreateNetworkInterfaceResponse (a)) Int
 cnirsResponseStatus = lens _cnirsResponseStatus (\ s a -> s{_cnirsResponseStatus = a});
 
 instance NFData CreateNetworkInterfaceResponse

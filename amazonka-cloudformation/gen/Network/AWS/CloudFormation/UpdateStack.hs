@@ -248,7 +248,7 @@ instance ToQuery UpdateStack where
 -- | The output for an < UpdateStack> action.
 --
 -- /See:/ 'updateStackResponse' smart constructor.
-data UpdateStackResponse = UpdateStackResponse'
+data UpdateStackResponse a = UpdateStackResponse'
     { _usrsStackId        :: !(Maybe Text)
     , _usrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -262,7 +262,7 @@ data UpdateStackResponse = UpdateStackResponse'
 -- * 'usrsResponseStatus'
 updateStackResponse
     :: Int -- ^ 'usrsResponseStatus'
-    -> UpdateStackResponse
+    -> UpdateStackResponse (a)
 updateStackResponse pResponseStatus_ =
     UpdateStackResponse'
     { _usrsStackId = Nothing
@@ -270,11 +270,11 @@ updateStackResponse pResponseStatus_ =
     }
 
 -- | Unique identifier of the stack.
-usrsStackId :: Lens' UpdateStackResponse (Maybe Text)
+usrsStackId :: Lens' (UpdateStackResponse (a)) (Maybe Text)
 usrsStackId = lens _usrsStackId (\ s a -> s{_usrsStackId = a});
 
 -- | The response status code.
-usrsResponseStatus :: Lens' UpdateStackResponse Int
+usrsResponseStatus :: Lens' (UpdateStackResponse (a)) Int
 usrsResponseStatus = lens _usrsResponseStatus (\ s a -> s{_usrsResponseStatus = a});
 
 instance NFData UpdateStackResponse

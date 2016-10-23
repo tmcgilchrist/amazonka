@@ -108,14 +108,14 @@ instance ToQuery PutBucketLogging where
         toQuery = const (mconcat ["logging"])
 
 -- | /See:/ 'putBucketLoggingResponse' smart constructor.
-data PutBucketLoggingResponse =
+data PutBucketLoggingResponse a =
     PutBucketLoggingResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketLoggingResponse' with the minimum fields required to make a request.
 --
 putBucketLoggingResponse
-    :: PutBucketLoggingResponse
+    :: PutBucketLoggingResponse (a)
 putBucketLoggingResponse = PutBucketLoggingResponse'
 
 instance NFData PutBucketLoggingResponse

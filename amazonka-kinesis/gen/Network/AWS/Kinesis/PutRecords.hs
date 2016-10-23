@@ -136,7 +136,7 @@ instance ToQuery PutRecords where
 -- | 'PutRecords' results.
 --
 -- /See:/ 'putRecordsResponse' smart constructor.
-data PutRecordsResponse = PutRecordsResponse'
+data PutRecordsResponse a = PutRecordsResponse'
     { _prsFailedRecordCount :: !(Maybe Nat)
     , _prsResponseStatus    :: !Int
     , _prsRecords           :: !(List1 PutRecordsResultEntry)
@@ -154,7 +154,7 @@ data PutRecordsResponse = PutRecordsResponse'
 putRecordsResponse
     :: Int -- ^ 'prsResponseStatus'
     -> NonEmpty PutRecordsResultEntry -- ^ 'prsRecords'
-    -> PutRecordsResponse
+    -> PutRecordsResponse (a)
 putRecordsResponse pResponseStatus_ pRecords_ =
     PutRecordsResponse'
     { _prsFailedRecordCount = Nothing
@@ -163,15 +163,15 @@ putRecordsResponse pResponseStatus_ pRecords_ =
     }
 
 -- | The number of unsuccessfully processed records in a 'PutRecords' request.
-prsFailedRecordCount :: Lens' PutRecordsResponse (Maybe Natural)
+prsFailedRecordCount :: Lens' (PutRecordsResponse (a)) (Maybe Natural)
 prsFailedRecordCount = lens _prsFailedRecordCount (\ s a -> s{_prsFailedRecordCount = a}) . mapping _Nat;
 
 -- | The response status code.
-prsResponseStatus :: Lens' PutRecordsResponse Int
+prsResponseStatus :: Lens' (PutRecordsResponse (a)) Int
 prsResponseStatus = lens _prsResponseStatus (\ s a -> s{_prsResponseStatus = a});
 
 -- | An array of successfully and unsuccessfully processed record results, correlated with the request by natural ordering. A record that is successfully added to a stream includes 'SequenceNumber' and 'ShardId' in the result. A record that fails to be added to a stream includes 'ErrorCode' and 'ErrorMessage' in the result.
-prsRecords :: Lens' PutRecordsResponse (NonEmpty PutRecordsResultEntry)
+prsRecords :: Lens' (PutRecordsResponse (a)) (NonEmpty PutRecordsResultEntry)
 prsRecords = lens _prsRecords (\ s a -> s{_prsRecords = a}) . _List1;
 
 instance NFData PutRecordsResponse

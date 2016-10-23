@@ -136,7 +136,7 @@ instance ToQuery CreateCustomerGateway where
 -- | Contains the output of CreateCustomerGateway.
 --
 -- /See:/ 'createCustomerGatewayResponse' smart constructor.
-data CreateCustomerGatewayResponse = CreateCustomerGatewayResponse'
+data CreateCustomerGatewayResponse a = CreateCustomerGatewayResponse'
     { _ccgrsCustomerGateway :: !(Maybe CustomerGateway)
     , _ccgrsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -150,7 +150,7 @@ data CreateCustomerGatewayResponse = CreateCustomerGatewayResponse'
 -- * 'ccgrsResponseStatus'
 createCustomerGatewayResponse
     :: Int -- ^ 'ccgrsResponseStatus'
-    -> CreateCustomerGatewayResponse
+    -> CreateCustomerGatewayResponse (a)
 createCustomerGatewayResponse pResponseStatus_ =
     CreateCustomerGatewayResponse'
     { _ccgrsCustomerGateway = Nothing
@@ -158,11 +158,11 @@ createCustomerGatewayResponse pResponseStatus_ =
     }
 
 -- | Information about the customer gateway.
-ccgrsCustomerGateway :: Lens' CreateCustomerGatewayResponse (Maybe CustomerGateway)
+ccgrsCustomerGateway :: Lens' (CreateCustomerGatewayResponse (a)) (Maybe CustomerGateway)
 ccgrsCustomerGateway = lens _ccgrsCustomerGateway (\ s a -> s{_ccgrsCustomerGateway = a});
 
 -- | The response status code.
-ccgrsResponseStatus :: Lens' CreateCustomerGatewayResponse Int
+ccgrsResponseStatus :: Lens' (CreateCustomerGatewayResponse (a)) Int
 ccgrsResponseStatus = lens _ccgrsResponseStatus (\ s a -> s{_ccgrsResponseStatus = a});
 
 instance NFData CreateCustomerGatewayResponse

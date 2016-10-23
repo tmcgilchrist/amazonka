@@ -141,7 +141,7 @@ instance ToQuery CreateBuild where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'createBuildResponse' smart constructor.
-data CreateBuildResponse = CreateBuildResponse'
+data CreateBuildResponse a = CreateBuildResponse'
     { _cbrsStorageLocation   :: !(Maybe S3Location)
     , _cbrsUploadCredentials :: !(Maybe (Sensitive AWSCredentials))
     , _cbrsBuild             :: !(Maybe Build)
@@ -161,7 +161,7 @@ data CreateBuildResponse = CreateBuildResponse'
 -- * 'cbrsResponseStatus'
 createBuildResponse
     :: Int -- ^ 'cbrsResponseStatus'
-    -> CreateBuildResponse
+    -> CreateBuildResponse (a)
 createBuildResponse pResponseStatus_ =
     CreateBuildResponse'
     { _cbrsStorageLocation = Nothing
@@ -171,19 +171,19 @@ createBuildResponse pResponseStatus_ =
     }
 
 -- | Amazon S3 path and key, identifying where the game build files are stored.
-cbrsStorageLocation :: Lens' CreateBuildResponse (Maybe S3Location)
+cbrsStorageLocation :: Lens' (CreateBuildResponse (a)) (Maybe S3Location)
 cbrsStorageLocation = lens _cbrsStorageLocation (\ s a -> s{_cbrsStorageLocation = a});
 
 -- | AWS credentials required when uploading a game build to the storage location. These credentials have a limited lifespan and are valid only for the build they were issued for. If you need to get fresh credentials, call 'RequestUploadCredentials'.
-cbrsUploadCredentials :: Lens' CreateBuildResponse (Maybe AWSCredentials)
+cbrsUploadCredentials :: Lens' (CreateBuildResponse (a)) (Maybe AWSCredentials)
 cbrsUploadCredentials = lens _cbrsUploadCredentials (\ s a -> s{_cbrsUploadCredentials = a}) . mapping _Sensitive;
 
 -- | Set of properties for the newly created build.
-cbrsBuild :: Lens' CreateBuildResponse (Maybe Build)
+cbrsBuild :: Lens' (CreateBuildResponse (a)) (Maybe Build)
 cbrsBuild = lens _cbrsBuild (\ s a -> s{_cbrsBuild = a});
 
 -- | The response status code.
-cbrsResponseStatus :: Lens' CreateBuildResponse Int
+cbrsResponseStatus :: Lens' (CreateBuildResponse (a)) Int
 cbrsResponseStatus = lens _cbrsResponseStatus (\ s a -> s{_cbrsResponseStatus = a});
 
 instance NFData CreateBuildResponse

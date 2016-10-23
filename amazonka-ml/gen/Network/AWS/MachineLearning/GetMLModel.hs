@@ -157,7 +157,7 @@ instance ToQuery GetMLModel where
 -- | Represents the output of a 'GetMLModel' operation, and provides detailed information about a 'MLModel'.
 --
 -- /See:/ 'getMLModelResponse' smart constructor.
-data GetMLModelResponse = GetMLModelResponse'
+data GetMLModelResponse a = GetMLModelResponse'
     { _gmlmrsStatus                      :: !(Maybe EntityStatus)
     , _gmlmrsLastUpdatedAt               :: !(Maybe POSIX)
     , _gmlmrsTrainingParameters          :: !(Maybe (Map Text Text))
@@ -231,7 +231,7 @@ data GetMLModelResponse = GetMLModelResponse'
 -- * 'gmlmrsResponseStatus'
 getMLModelResponse
     :: Int -- ^ 'gmlmrsResponseStatus'
-    -> GetMLModelResponse
+    -> GetMLModelResponse (a)
 getMLModelResponse pResponseStatus_ =
     GetMLModelResponse'
     { _gmlmrsStatus = Nothing
@@ -265,11 +265,11 @@ getMLModelResponse pResponseStatus_ =
 -- -   'FAILED' - The request did not run to completion. The ML model isn\'t usable.
 -- -   'COMPLETED' - The request completed successfully.
 -- -   'DELETED' - The 'MLModel' is marked as deleted. It isn\'t usable.
-gmlmrsStatus :: Lens' GetMLModelResponse (Maybe EntityStatus)
+gmlmrsStatus :: Lens' (GetMLModelResponse (a)) (Maybe EntityStatus)
 gmlmrsStatus = lens _gmlmrsStatus (\ s a -> s{_gmlmrsStatus = a});
 
 -- | The time of the most recent edit to the 'MLModel'. The time is expressed in epoch time.
-gmlmrsLastUpdatedAt :: Lens' GetMLModelResponse (Maybe UTCTime)
+gmlmrsLastUpdatedAt :: Lens' (GetMLModelResponse (a)) (Maybe UTCTime)
 gmlmrsLastUpdatedAt = lens _gmlmrsLastUpdatedAt (\ s a -> s{_gmlmrsLastUpdatedAt = a}) . mapping _Time;
 
 -- | A list of the training parameters in the 'MLModel'. The list is implemented as a map of key-value pairs.
@@ -292,19 +292,19 @@ gmlmrsLastUpdatedAt = lens _gmlmrsLastUpdatedAt (\ s a -> s{_gmlmrsLastUpdatedAt
 --
 --     The value is a double that ranges from '0' to 'MAX_DOUBLE'. The default is to not use L2 normalization. This parameter can\'t be used when 'L1' is specified. Use this parameter sparingly.
 --
-gmlmrsTrainingParameters :: Lens' GetMLModelResponse (HashMap Text Text)
+gmlmrsTrainingParameters :: Lens' (GetMLModelResponse (a)) (HashMap Text Text)
 gmlmrsTrainingParameters = lens _gmlmrsTrainingParameters (\ s a -> s{_gmlmrsTrainingParameters = a}) . _Default . _Map;
 
 -- | The time of the most recent edit to the 'ScoreThreshold'. The time is expressed in epoch time.
-gmlmrsScoreThresholdLastUpdatedAt :: Lens' GetMLModelResponse (Maybe UTCTime)
+gmlmrsScoreThresholdLastUpdatedAt :: Lens' (GetMLModelResponse (a)) (Maybe UTCTime)
 gmlmrsScoreThresholdLastUpdatedAt = lens _gmlmrsScoreThresholdLastUpdatedAt (\ s a -> s{_gmlmrsScoreThresholdLastUpdatedAt = a}) . mapping _Time;
 
 -- | The time that the 'MLModel' was created. The time is expressed in epoch time.
-gmlmrsCreatedAt :: Lens' GetMLModelResponse (Maybe UTCTime)
+gmlmrsCreatedAt :: Lens' (GetMLModelResponse (a)) (Maybe UTCTime)
 gmlmrsCreatedAt = lens _gmlmrsCreatedAt (\ s a -> s{_gmlmrsCreatedAt = a}) . mapping _Time;
 
 -- | The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the 'MLModel', normalized and scaled on computation resources. 'ComputeTime' is only available if the 'MLModel' is in the 'COMPLETED' state.
-gmlmrsComputeTime :: Lens' GetMLModelResponse (Maybe Integer)
+gmlmrsComputeTime :: Lens' (GetMLModelResponse (a)) (Maybe Integer)
 gmlmrsComputeTime = lens _gmlmrsComputeTime (\ s a -> s{_gmlmrsComputeTime = a});
 
 -- | The recipe to use when training the 'MLModel'. The 'Recipe' provides detailed information about the observation data to use during training, and manipulations to perform on the observation data during training.
@@ -312,19 +312,19 @@ gmlmrsComputeTime = lens _gmlmrsComputeTime (\ s a -> s{_gmlmrsComputeTime = a})
 -- Note
 --
 -- This parameter is provided as part of the verbose format.
-gmlmrsRecipe :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsRecipe :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsRecipe = lens _gmlmrsRecipe (\ s a -> s{_gmlmrsRecipe = a});
 
 -- | The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).
-gmlmrsInputDataLocationS3 :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsInputDataLocationS3 :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsInputDataLocationS3 = lens _gmlmrsInputDataLocationS3 (\ s a -> s{_gmlmrsInputDataLocationS3 = a});
 
 -- | The MLModel ID, which is same as the 'MLModelId' in the request.
-gmlmrsMLModelId :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsMLModelId :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsMLModelId = lens _gmlmrsMLModelId (\ s a -> s{_gmlmrsMLModelId = a});
 
 -- | Undocumented member.
-gmlmrsSizeInBytes :: Lens' GetMLModelResponse (Maybe Integer)
+gmlmrsSizeInBytes :: Lens' (GetMLModelResponse (a)) (Maybe Integer)
 gmlmrsSizeInBytes = lens _gmlmrsSizeInBytes (\ s a -> s{_gmlmrsSizeInBytes = a});
 
 -- | The schema used by all of the data files referenced by the 'DataSource'.
@@ -332,45 +332,45 @@ gmlmrsSizeInBytes = lens _gmlmrsSizeInBytes (\ s a -> s{_gmlmrsSizeInBytes = a})
 -- Note
 --
 -- This parameter is provided as part of the verbose format.
-gmlmrsSchema :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsSchema :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsSchema = lens _gmlmrsSchema (\ s a -> s{_gmlmrsSchema = a});
 
 -- | The epoch time when Amazon Machine Learning marked the 'MLModel' as 'INPROGRESS'. 'StartedAt' isn\'t available if the 'MLModel' is in the 'PENDING' state.
-gmlmrsStartedAt :: Lens' GetMLModelResponse (Maybe UTCTime)
+gmlmrsStartedAt :: Lens' (GetMLModelResponse (a)) (Maybe UTCTime)
 gmlmrsStartedAt = lens _gmlmrsStartedAt (\ s a -> s{_gmlmrsStartedAt = a}) . mapping _Time;
 
 -- | The scoring threshold is used in binary classification 'MLModel' models. It marks the boundary between a positive prediction and a negative prediction.
 --
 -- Output values greater than or equal to the threshold receive a positive result from the MLModel, such as 'true'. Output values less than the threshold receive a negative response from the MLModel, such as 'false'.
-gmlmrsScoreThreshold :: Lens' GetMLModelResponse (Maybe Double)
+gmlmrsScoreThreshold :: Lens' (GetMLModelResponse (a)) (Maybe Double)
 gmlmrsScoreThreshold = lens _gmlmrsScoreThreshold (\ s a -> s{_gmlmrsScoreThreshold = a});
 
 -- | The epoch time when Amazon Machine Learning marked the 'MLModel' as 'COMPLETED' or 'FAILED'. 'FinishedAt' is only available when the 'MLModel' is in the 'COMPLETED' or 'FAILED' state.
-gmlmrsFinishedAt :: Lens' GetMLModelResponse (Maybe UTCTime)
+gmlmrsFinishedAt :: Lens' (GetMLModelResponse (a)) (Maybe UTCTime)
 gmlmrsFinishedAt = lens _gmlmrsFinishedAt (\ s a -> s{_gmlmrsFinishedAt = a}) . mapping _Time;
 
 -- | The AWS user account from which the 'MLModel' was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.
-gmlmrsCreatedByIAMUser :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsCreatedByIAMUser :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsCreatedByIAMUser = lens _gmlmrsCreatedByIAMUser (\ s a -> s{_gmlmrsCreatedByIAMUser = a});
 
 -- | A user-supplied name or description of the 'MLModel'.
-gmlmrsName :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsName :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsName = lens _gmlmrsName (\ s a -> s{_gmlmrsName = a});
 
 -- | A link to the file that contains logs of the 'CreateMLModel' operation.
-gmlmrsLogURI :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsLogURI :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsLogURI = lens _gmlmrsLogURI (\ s a -> s{_gmlmrsLogURI = a});
 
 -- | The current endpoint of the 'MLModel'
-gmlmrsEndpointInfo :: Lens' GetMLModelResponse (Maybe RealtimeEndpointInfo)
+gmlmrsEndpointInfo :: Lens' (GetMLModelResponse (a)) (Maybe RealtimeEndpointInfo)
 gmlmrsEndpointInfo = lens _gmlmrsEndpointInfo (\ s a -> s{_gmlmrsEndpointInfo = a});
 
 -- | The ID of the training 'DataSource'.
-gmlmrsTrainingDataSourceId :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsTrainingDataSourceId :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsTrainingDataSourceId = lens _gmlmrsTrainingDataSourceId (\ s a -> s{_gmlmrsTrainingDataSourceId = a});
 
 -- | A description of the most recent details about accessing the 'MLModel'.
-gmlmrsMessage :: Lens' GetMLModelResponse (Maybe Text)
+gmlmrsMessage :: Lens' (GetMLModelResponse (a)) (Maybe Text)
 gmlmrsMessage = lens _gmlmrsMessage (\ s a -> s{_gmlmrsMessage = a});
 
 -- | Identifies the 'MLModel' category. The following are the available types:
@@ -378,11 +378,11 @@ gmlmrsMessage = lens _gmlmrsMessage (\ s a -> s{_gmlmrsMessage = a});
 -- -   REGRESSION -- Produces a numeric result. For example, \"What price should a house be listed at?\"
 -- -   BINARY -- Produces one of two possible results. For example, \"Is this an e-commerce website?\"
 -- -   MULTICLASS -- Produces one of several possible results. For example, \"Is this a HIGH, LOW or MEDIUM risk trade?\"
-gmlmrsMLModelType :: Lens' GetMLModelResponse (Maybe MLModelType)
+gmlmrsMLModelType :: Lens' (GetMLModelResponse (a)) (Maybe MLModelType)
 gmlmrsMLModelType = lens _gmlmrsMLModelType (\ s a -> s{_gmlmrsMLModelType = a});
 
 -- | The response status code.
-gmlmrsResponseStatus :: Lens' GetMLModelResponse Int
+gmlmrsResponseStatus :: Lens' (GetMLModelResponse (a)) Int
 gmlmrsResponseStatus = lens _gmlmrsResponseStatus (\ s a -> s{_gmlmrsResponseStatus = a});
 
 instance NFData GetMLModelResponse

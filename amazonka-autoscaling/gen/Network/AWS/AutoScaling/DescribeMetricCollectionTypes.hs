@@ -93,7 +93,7 @@ instance ToQuery DescribeMetricCollectionTypes where
 -- | Contains the output of DescribeMetricsCollectionTypes.
 --
 -- /See:/ 'describeMetricCollectionTypesResponse' smart constructor.
-data DescribeMetricCollectionTypesResponse = DescribeMetricCollectionTypesResponse'
+data DescribeMetricCollectionTypesResponse a = DescribeMetricCollectionTypesResponse'
     { _dmctrsMetrics        :: !(Maybe [MetricCollectionType])
     , _dmctrsGranularities  :: !(Maybe [MetricGranularityType])
     , _dmctrsResponseStatus :: !Int
@@ -110,7 +110,7 @@ data DescribeMetricCollectionTypesResponse = DescribeMetricCollectionTypesRespon
 -- * 'dmctrsResponseStatus'
 describeMetricCollectionTypesResponse
     :: Int -- ^ 'dmctrsResponseStatus'
-    -> DescribeMetricCollectionTypesResponse
+    -> DescribeMetricCollectionTypesResponse (a)
 describeMetricCollectionTypesResponse pResponseStatus_ =
     DescribeMetricCollectionTypesResponse'
     { _dmctrsMetrics = Nothing
@@ -119,15 +119,15 @@ describeMetricCollectionTypesResponse pResponseStatus_ =
     }
 
 -- | One or more metrics.
-dmctrsMetrics :: Lens' DescribeMetricCollectionTypesResponse [MetricCollectionType]
+dmctrsMetrics :: Lens' (DescribeMetricCollectionTypesResponse (a)) [MetricCollectionType]
 dmctrsMetrics = lens _dmctrsMetrics (\ s a -> s{_dmctrsMetrics = a}) . _Default . _Coerce;
 
 -- | The granularities for the metrics.
-dmctrsGranularities :: Lens' DescribeMetricCollectionTypesResponse [MetricGranularityType]
+dmctrsGranularities :: Lens' (DescribeMetricCollectionTypesResponse (a)) [MetricGranularityType]
 dmctrsGranularities = lens _dmctrsGranularities (\ s a -> s{_dmctrsGranularities = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dmctrsResponseStatus :: Lens' DescribeMetricCollectionTypesResponse Int
+dmctrsResponseStatus :: Lens' (DescribeMetricCollectionTypesResponse (a)) Int
 dmctrsResponseStatus = lens _dmctrsResponseStatus (\ s a -> s{_dmctrsResponseStatus = a});
 
 instance NFData DescribeMetricCollectionTypesResponse

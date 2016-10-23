@@ -114,7 +114,7 @@ instance ToQuery GrantAccess where
 -- | Contains the response to a 'GrantAccess' request.
 --
 -- /See:/ 'grantAccessResponse' smart constructor.
-data GrantAccessResponse = GrantAccessResponse'
+data GrantAccessResponse a = GrantAccessResponse'
     { _garsTemporaryCredential :: !(Maybe TemporaryCredential)
     , _garsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data GrantAccessResponse = GrantAccessResponse'
 -- * 'garsResponseStatus'
 grantAccessResponse
     :: Int -- ^ 'garsResponseStatus'
-    -> GrantAccessResponse
+    -> GrantAccessResponse (a)
 grantAccessResponse pResponseStatus_ =
     GrantAccessResponse'
     { _garsTemporaryCredential = Nothing
@@ -136,11 +136,11 @@ grantAccessResponse pResponseStatus_ =
     }
 
 -- | A 'TemporaryCredential' object that contains the data needed to log in to the instance by RDP clients, such as the Microsoft Remote Desktop Connection.
-garsTemporaryCredential :: Lens' GrantAccessResponse (Maybe TemporaryCredential)
+garsTemporaryCredential :: Lens' (GrantAccessResponse (a)) (Maybe TemporaryCredential)
 garsTemporaryCredential = lens _garsTemporaryCredential (\ s a -> s{_garsTemporaryCredential = a});
 
 -- | The response status code.
-garsResponseStatus :: Lens' GrantAccessResponse Int
+garsResponseStatus :: Lens' (GrantAccessResponse (a)) Int
 garsResponseStatus = lens _garsResponseStatus (\ s a -> s{_garsResponseStatus = a});
 
 instance NFData GrantAccessResponse

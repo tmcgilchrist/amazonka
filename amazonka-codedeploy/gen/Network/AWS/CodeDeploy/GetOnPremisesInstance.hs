@@ -105,7 +105,7 @@ instance ToQuery GetOnPremisesInstance where
 -- | Represents the output of a get on-premises instance operation.
 --
 -- /See:/ 'getOnPremisesInstanceResponse' smart constructor.
-data GetOnPremisesInstanceResponse = GetOnPremisesInstanceResponse'
+data GetOnPremisesInstanceResponse a = GetOnPremisesInstanceResponse'
     { _gopirsInstanceInfo   :: !(Maybe InstanceInfo)
     , _gopirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data GetOnPremisesInstanceResponse = GetOnPremisesInstanceResponse'
 -- * 'gopirsResponseStatus'
 getOnPremisesInstanceResponse
     :: Int -- ^ 'gopirsResponseStatus'
-    -> GetOnPremisesInstanceResponse
+    -> GetOnPremisesInstanceResponse (a)
 getOnPremisesInstanceResponse pResponseStatus_ =
     GetOnPremisesInstanceResponse'
     { _gopirsInstanceInfo = Nothing
@@ -127,11 +127,11 @@ getOnPremisesInstanceResponse pResponseStatus_ =
     }
 
 -- | Information about the on-premises instance.
-gopirsInstanceInfo :: Lens' GetOnPremisesInstanceResponse (Maybe InstanceInfo)
+gopirsInstanceInfo :: Lens' (GetOnPremisesInstanceResponse (a)) (Maybe InstanceInfo)
 gopirsInstanceInfo = lens _gopirsInstanceInfo (\ s a -> s{_gopirsInstanceInfo = a});
 
 -- | The response status code.
-gopirsResponseStatus :: Lens' GetOnPremisesInstanceResponse Int
+gopirsResponseStatus :: Lens' (GetOnPremisesInstanceResponse (a)) Int
 gopirsResponseStatus = lens _gopirsResponseStatus (\ s a -> s{_gopirsResponseStatus = a});
 
 instance NFData GetOnPremisesInstanceResponse

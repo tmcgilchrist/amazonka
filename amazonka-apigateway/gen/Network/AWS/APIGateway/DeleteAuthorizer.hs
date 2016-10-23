@@ -100,14 +100,14 @@ instance ToQuery DeleteAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAuthorizerResponse' smart constructor.
-data DeleteAuthorizerResponse =
+data DeleteAuthorizerResponse a =
     DeleteAuthorizerResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAuthorizerResponse' with the minimum fields required to make a request.
 --
 deleteAuthorizerResponse
-    :: DeleteAuthorizerResponse
+    :: DeleteAuthorizerResponse (a)
 deleteAuthorizerResponse = DeleteAuthorizerResponse'
 
 instance NFData DeleteAuthorizerResponse

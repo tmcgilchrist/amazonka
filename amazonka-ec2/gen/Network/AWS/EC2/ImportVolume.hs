@@ -138,7 +138,7 @@ instance ToQuery ImportVolume where
 -- | Contains the output for ImportVolume.
 --
 -- /See:/ 'importVolumeResponse' smart constructor.
-data ImportVolumeResponse = ImportVolumeResponse'
+data ImportVolumeResponse a = ImportVolumeResponse'
     { _ivrsConversionTask :: !(Maybe ConversionTask)
     , _ivrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -152,7 +152,7 @@ data ImportVolumeResponse = ImportVolumeResponse'
 -- * 'ivrsResponseStatus'
 importVolumeResponse
     :: Int -- ^ 'ivrsResponseStatus'
-    -> ImportVolumeResponse
+    -> ImportVolumeResponse (a)
 importVolumeResponse pResponseStatus_ =
     ImportVolumeResponse'
     { _ivrsConversionTask = Nothing
@@ -160,11 +160,11 @@ importVolumeResponse pResponseStatus_ =
     }
 
 -- | Information about the conversion task.
-ivrsConversionTask :: Lens' ImportVolumeResponse (Maybe ConversionTask)
+ivrsConversionTask :: Lens' (ImportVolumeResponse (a)) (Maybe ConversionTask)
 ivrsConversionTask = lens _ivrsConversionTask (\ s a -> s{_ivrsConversionTask = a});
 
 -- | The response status code.
-ivrsResponseStatus :: Lens' ImportVolumeResponse Int
+ivrsResponseStatus :: Lens' (ImportVolumeResponse (a)) Int
 ivrsResponseStatus = lens _ivrsResponseStatus (\ s a -> s{_ivrsResponseStatus = a});
 
 instance NFData ImportVolumeResponse

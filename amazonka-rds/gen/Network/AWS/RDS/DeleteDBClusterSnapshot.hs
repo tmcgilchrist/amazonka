@@ -102,7 +102,7 @@ instance ToQuery DeleteDBClusterSnapshot where
                  _ddcsDBClusterSnapshotIdentifier]
 
 -- | /See:/ 'deleteDBClusterSnapshotResponse' smart constructor.
-data DeleteDBClusterSnapshotResponse = DeleteDBClusterSnapshotResponse'
+data DeleteDBClusterSnapshotResponse a = DeleteDBClusterSnapshotResponse'
     { _ddcsrsDBClusterSnapshot :: !(Maybe DBClusterSnapshot)
     , _ddcsrsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data DeleteDBClusterSnapshotResponse = DeleteDBClusterSnapshotResponse'
 -- * 'ddcsrsResponseStatus'
 deleteDBClusterSnapshotResponse
     :: Int -- ^ 'ddcsrsResponseStatus'
-    -> DeleteDBClusterSnapshotResponse
+    -> DeleteDBClusterSnapshotResponse (a)
 deleteDBClusterSnapshotResponse pResponseStatus_ =
     DeleteDBClusterSnapshotResponse'
     { _ddcsrsDBClusterSnapshot = Nothing
@@ -124,11 +124,11 @@ deleteDBClusterSnapshotResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ddcsrsDBClusterSnapshot :: Lens' DeleteDBClusterSnapshotResponse (Maybe DBClusterSnapshot)
+ddcsrsDBClusterSnapshot :: Lens' (DeleteDBClusterSnapshotResponse (a)) (Maybe DBClusterSnapshot)
 ddcsrsDBClusterSnapshot = lens _ddcsrsDBClusterSnapshot (\ s a -> s{_ddcsrsDBClusterSnapshot = a});
 
 -- | The response status code.
-ddcsrsResponseStatus :: Lens' DeleteDBClusterSnapshotResponse Int
+ddcsrsResponseStatus :: Lens' (DeleteDBClusterSnapshotResponse (a)) Int
 ddcsrsResponseStatus = lens _ddcsrsResponseStatus (\ s a -> s{_ddcsrsResponseStatus = a});
 
 instance NFData DeleteDBClusterSnapshotResponse

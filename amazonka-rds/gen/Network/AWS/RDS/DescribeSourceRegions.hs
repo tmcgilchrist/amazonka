@@ -139,7 +139,7 @@ instance ToQuery DescribeSourceRegions where
 -- | Contains the result of a successful invocation of the < DescribeSourceRegions> action.
 --
 -- /See:/ 'describeSourceRegionsResponse' smart constructor.
-data DescribeSourceRegionsResponse = DescribeSourceRegionsResponse'
+data DescribeSourceRegionsResponse a = DescribeSourceRegionsResponse'
     { _dsrrsMarker         :: !(Maybe Text)
     , _dsrrsSourceRegions  :: !(Maybe [SourceRegion])
     , _dsrrsResponseStatus :: !Int
@@ -156,7 +156,7 @@ data DescribeSourceRegionsResponse = DescribeSourceRegionsResponse'
 -- * 'dsrrsResponseStatus'
 describeSourceRegionsResponse
     :: Int -- ^ 'dsrrsResponseStatus'
-    -> DescribeSourceRegionsResponse
+    -> DescribeSourceRegionsResponse (a)
 describeSourceRegionsResponse pResponseStatus_ =
     DescribeSourceRegionsResponse'
     { _dsrrsMarker = Nothing
@@ -165,15 +165,15 @@ describeSourceRegionsResponse pResponseStatus_ =
     }
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by 'MaxRecords'.
-dsrrsMarker :: Lens' DescribeSourceRegionsResponse (Maybe Text)
+dsrrsMarker :: Lens' (DescribeSourceRegionsResponse (a)) (Maybe Text)
 dsrrsMarker = lens _dsrrsMarker (\ s a -> s{_dsrrsMarker = a});
 
 -- | A list of SourceRegion instances that contains each source AWS Region that the current region can get a Read Replica or a DB snapshot from.
-dsrrsSourceRegions :: Lens' DescribeSourceRegionsResponse [SourceRegion]
+dsrrsSourceRegions :: Lens' (DescribeSourceRegionsResponse (a)) [SourceRegion]
 dsrrsSourceRegions = lens _dsrrsSourceRegions (\ s a -> s{_dsrrsSourceRegions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dsrrsResponseStatus :: Lens' DescribeSourceRegionsResponse Int
+dsrrsResponseStatus :: Lens' (DescribeSourceRegionsResponse (a)) Int
 dsrrsResponseStatus = lens _dsrrsResponseStatus (\ s a -> s{_dsrrsResponseStatus = a});
 
 instance NFData DescribeSourceRegionsResponse

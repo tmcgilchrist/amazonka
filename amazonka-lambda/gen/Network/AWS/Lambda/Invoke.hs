@@ -163,7 +163,7 @@ instance ToQuery Invoke where
 -- | Upon success, returns an empty response. Otherwise, throws an exception.
 --
 -- /See:/ 'invokeResponse' smart constructor.
-data InvokeResponse = InvokeResponse'
+data InvokeResponse a = InvokeResponse'
     { _irsFunctionError :: !(Maybe Text)
     , _irsLogResult     :: !(Maybe Text)
     , _irsPayload       :: !(Maybe (HashMap Text Value))
@@ -183,7 +183,7 @@ data InvokeResponse = InvokeResponse'
 -- * 'irsStatusCode'
 invokeResponse
     :: Int -- ^ 'irsStatusCode'
-    -> InvokeResponse
+    -> InvokeResponse (a)
 invokeResponse pStatusCode_ =
     InvokeResponse'
     { _irsFunctionError = Nothing
@@ -193,21 +193,21 @@ invokeResponse pStatusCode_ =
     }
 
 -- | Indicates whether an error occurred while executing the Lambda function. If an error occurred this field will have one of two values; 'Handled' or 'Unhandled'. 'Handled' errors are errors that are reported by the function while the 'Unhandled' errors are those detected and reported by AWS Lambda. Unhandled errors include out of memory errors and function timeouts. For information about how to report an 'Handled' error, see <http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html Programming Model>.
-irsFunctionError :: Lens' InvokeResponse (Maybe Text)
+irsFunctionError :: Lens' (InvokeResponse (a)) (Maybe Text)
 irsFunctionError = lens _irsFunctionError (\ s a -> s{_irsFunctionError = a});
 
 -- | It is the base64-encoded logs for the Lambda function invocation. This is present only if the invocation type is 'RequestResponse' and the logs were requested.
-irsLogResult :: Lens' InvokeResponse (Maybe Text)
+irsLogResult :: Lens' (InvokeResponse (a)) (Maybe Text)
 irsLogResult = lens _irsLogResult (\ s a -> s{_irsLogResult = a});
 
 -- | It is the JSON representation of the object returned by the Lambda function. In This is present only if the invocation type is 'RequestResponse'.
 --
 -- In the event of a function error this field contains a message describing the error. For the 'Handled' errors the Lambda function will report this message. For 'Unhandled' errors AWS Lambda reports the message.
-irsPayload :: Lens' InvokeResponse (Maybe (HashMap Text Value))
+irsPayload :: Lens' (InvokeResponse (a)) (Maybe (HashMap Text Value))
 irsPayload = lens _irsPayload (\ s a -> s{_irsPayload = a});
 
 -- | The HTTP status code will be in the 200 range for successful request. For the 'RequestResonse' invocation type this status code will be 200. For the 'Event' invocation type this status code will be 202. For the 'DryRun' invocation type the status code will be 204.
-irsStatusCode :: Lens' InvokeResponse Int
+irsStatusCode :: Lens' (InvokeResponse (a)) Int
 irsStatusCode = lens _irsStatusCode (\ s a -> s{_irsStatusCode = a});
 
 instance NFData InvokeResponse

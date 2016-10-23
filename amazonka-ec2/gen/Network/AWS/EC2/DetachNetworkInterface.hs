@@ -108,14 +108,14 @@ instance ToQuery DetachNetworkInterface where
                "AttachmentId" =: _dniAttachmentId]
 
 -- | /See:/ 'detachNetworkInterfaceResponse' smart constructor.
-data DetachNetworkInterfaceResponse =
+data DetachNetworkInterfaceResponse a =
     DetachNetworkInterfaceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DetachNetworkInterfaceResponse' with the minimum fields required to make a request.
 --
 detachNetworkInterfaceResponse
-    :: DetachNetworkInterfaceResponse
+    :: DetachNetworkInterfaceResponse (a)
 detachNetworkInterfaceResponse = DetachNetworkInterfaceResponse'
 
 instance NFData DetachNetworkInterfaceResponse

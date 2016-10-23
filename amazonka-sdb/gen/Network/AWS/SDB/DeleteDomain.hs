@@ -84,14 +84,14 @@ instance ToQuery DeleteDomain where
                "DomainName" =: _ddDomainName]
 
 -- | /See:/ 'deleteDomainResponse' smart constructor.
-data DeleteDomainResponse =
+data DeleteDomainResponse a =
     DeleteDomainResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteDomainResponse' with the minimum fields required to make a request.
 --
 deleteDomainResponse
-    :: DeleteDomainResponse
+    :: DeleteDomainResponse (a)
 deleteDomainResponse = DeleteDomainResponse'
 
 instance NFData DeleteDomainResponse

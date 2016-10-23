@@ -94,14 +94,14 @@ instance ToQuery TerminateJobFlows where
         toQuery = const mempty
 
 -- | /See:/ 'terminateJobFlowsResponse' smart constructor.
-data TerminateJobFlowsResponse =
+data TerminateJobFlowsResponse a =
     TerminateJobFlowsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'TerminateJobFlowsResponse' with the minimum fields required to make a request.
 --
 terminateJobFlowsResponse
-    :: TerminateJobFlowsResponse
+    :: TerminateJobFlowsResponse (a)
 terminateJobFlowsResponse = TerminateJobFlowsResponse'
 
 instance NFData TerminateJobFlowsResponse

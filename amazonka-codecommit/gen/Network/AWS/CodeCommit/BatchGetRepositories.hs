@@ -109,7 +109,7 @@ instance ToQuery BatchGetRepositories where
 -- | Represents the output of a batch get repositories operation.
 --
 -- /See:/ 'batchGetRepositoriesResponse' smart constructor.
-data BatchGetRepositoriesResponse = BatchGetRepositoriesResponse'
+data BatchGetRepositoriesResponse a = BatchGetRepositoriesResponse'
     { _bgrrsRepositories         :: !(Maybe [RepositoryMetadata])
     , _bgrrsRepositoriesNotFound :: !(Maybe [Text])
     , _bgrrsResponseStatus       :: !Int
@@ -126,7 +126,7 @@ data BatchGetRepositoriesResponse = BatchGetRepositoriesResponse'
 -- * 'bgrrsResponseStatus'
 batchGetRepositoriesResponse
     :: Int -- ^ 'bgrrsResponseStatus'
-    -> BatchGetRepositoriesResponse
+    -> BatchGetRepositoriesResponse (a)
 batchGetRepositoriesResponse pResponseStatus_ =
     BatchGetRepositoriesResponse'
     { _bgrrsRepositories = Nothing
@@ -135,15 +135,15 @@ batchGetRepositoriesResponse pResponseStatus_ =
     }
 
 -- | A list of repositories returned by the batch get repositories operation.
-bgrrsRepositories :: Lens' BatchGetRepositoriesResponse [RepositoryMetadata]
+bgrrsRepositories :: Lens' (BatchGetRepositoriesResponse (a)) [RepositoryMetadata]
 bgrrsRepositories = lens _bgrrsRepositories (\ s a -> s{_bgrrsRepositories = a}) . _Default . _Coerce;
 
 -- | Returns a list of repository names for which information could not be found.
-bgrrsRepositoriesNotFound :: Lens' BatchGetRepositoriesResponse [Text]
+bgrrsRepositoriesNotFound :: Lens' (BatchGetRepositoriesResponse (a)) [Text]
 bgrrsRepositoriesNotFound = lens _bgrrsRepositoriesNotFound (\ s a -> s{_bgrrsRepositoriesNotFound = a}) . _Default . _Coerce;
 
 -- | The response status code.
-bgrrsResponseStatus :: Lens' BatchGetRepositoriesResponse Int
+bgrrsResponseStatus :: Lens' (BatchGetRepositoriesResponse (a)) Int
 bgrrsResponseStatus = lens _bgrrsResponseStatus (\ s a -> s{_bgrrsResponseStatus = a});
 
 instance NFData BatchGetRepositoriesResponse

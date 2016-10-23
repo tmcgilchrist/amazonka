@@ -128,7 +128,7 @@ instance ToQuery DescribeFleetCapacity where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeFleetCapacityResponse' smart constructor.
-data DescribeFleetCapacityResponse = DescribeFleetCapacityResponse'
+data DescribeFleetCapacityResponse a = DescribeFleetCapacityResponse'
     { _dfcrsNextToken      :: !(Maybe Text)
     , _dfcrsFleetCapacity  :: !(Maybe [FleetCapacity])
     , _dfcrsResponseStatus :: !Int
@@ -145,7 +145,7 @@ data DescribeFleetCapacityResponse = DescribeFleetCapacityResponse'
 -- * 'dfcrsResponseStatus'
 describeFleetCapacityResponse
     :: Int -- ^ 'dfcrsResponseStatus'
-    -> DescribeFleetCapacityResponse
+    -> DescribeFleetCapacityResponse (a)
 describeFleetCapacityResponse pResponseStatus_ =
     DescribeFleetCapacityResponse'
     { _dfcrsNextToken = Nothing
@@ -156,15 +156,15 @@ describeFleetCapacityResponse pResponseStatus_ =
 -- | Token indicating where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- If a request has a limit that exactly matches the number of remaining results, a token is returned even though there are no more results to retrieve.
-dfcrsNextToken :: Lens' DescribeFleetCapacityResponse (Maybe Text)
+dfcrsNextToken :: Lens' (DescribeFleetCapacityResponse (a)) (Maybe Text)
 dfcrsNextToken = lens _dfcrsNextToken (\ s a -> s{_dfcrsNextToken = a});
 
 -- | Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.
-dfcrsFleetCapacity :: Lens' DescribeFleetCapacityResponse [FleetCapacity]
+dfcrsFleetCapacity :: Lens' (DescribeFleetCapacityResponse (a)) [FleetCapacity]
 dfcrsFleetCapacity = lens _dfcrsFleetCapacity (\ s a -> s{_dfcrsFleetCapacity = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dfcrsResponseStatus :: Lens' DescribeFleetCapacityResponse Int
+dfcrsResponseStatus :: Lens' (DescribeFleetCapacityResponse (a)) Int
 dfcrsResponseStatus = lens _dfcrsResponseStatus (\ s a -> s{_dfcrsResponseStatus = a});
 
 instance NFData DescribeFleetCapacityResponse

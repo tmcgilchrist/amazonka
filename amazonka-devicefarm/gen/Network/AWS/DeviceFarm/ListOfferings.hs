@@ -104,7 +104,7 @@ instance ToQuery ListOfferings where
 -- | Represents the return values of the list of offerings.
 --
 -- /See:/ 'listOfferingsResponse' smart constructor.
-data ListOfferingsResponse = ListOfferingsResponse'
+data ListOfferingsResponse a = ListOfferingsResponse'
     { _lorsNextToken      :: !(Maybe Text)
     , _lorsOfferings      :: !(Maybe [Offering])
     , _lorsResponseStatus :: !Int
@@ -121,7 +121,7 @@ data ListOfferingsResponse = ListOfferingsResponse'
 -- * 'lorsResponseStatus'
 listOfferingsResponse
     :: Int -- ^ 'lorsResponseStatus'
-    -> ListOfferingsResponse
+    -> ListOfferingsResponse (a)
 listOfferingsResponse pResponseStatus_ =
     ListOfferingsResponse'
     { _lorsNextToken = Nothing
@@ -130,15 +130,15 @@ listOfferingsResponse pResponseStatus_ =
     }
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
-lorsNextToken :: Lens' ListOfferingsResponse (Maybe Text)
+lorsNextToken :: Lens' (ListOfferingsResponse (a)) (Maybe Text)
 lorsNextToken = lens _lorsNextToken (\ s a -> s{_lorsNextToken = a});
 
 -- | A value representing the list offering results.
-lorsOfferings :: Lens' ListOfferingsResponse [Offering]
+lorsOfferings :: Lens' (ListOfferingsResponse (a)) [Offering]
 lorsOfferings = lens _lorsOfferings (\ s a -> s{_lorsOfferings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lorsResponseStatus :: Lens' ListOfferingsResponse Int
+lorsResponseStatus :: Lens' (ListOfferingsResponse (a)) Int
 lorsResponseStatus = lens _lorsResponseStatus (\ s a -> s{_lorsResponseStatus = a});
 
 instance NFData ListOfferingsResponse

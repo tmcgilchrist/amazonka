@@ -117,7 +117,7 @@ instance ToQuery PollForThirdPartyJobs where
 -- | Represents the output of a poll for third party jobs action.
 --
 -- /See:/ 'pollForThirdPartyJobsResponse' smart constructor.
-data PollForThirdPartyJobsResponse = PollForThirdPartyJobsResponse'
+data PollForThirdPartyJobsResponse a = PollForThirdPartyJobsResponse'
     { _pftpjrsJobs           :: !(Maybe [ThirdPartyJob])
     , _pftpjrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data PollForThirdPartyJobsResponse = PollForThirdPartyJobsResponse'
 -- * 'pftpjrsResponseStatus'
 pollForThirdPartyJobsResponse
     :: Int -- ^ 'pftpjrsResponseStatus'
-    -> PollForThirdPartyJobsResponse
+    -> PollForThirdPartyJobsResponse (a)
 pollForThirdPartyJobsResponse pResponseStatus_ =
     PollForThirdPartyJobsResponse'
     { _pftpjrsJobs = Nothing
@@ -139,11 +139,11 @@ pollForThirdPartyJobsResponse pResponseStatus_ =
     }
 
 -- | Information about the jobs to take action on.
-pftpjrsJobs :: Lens' PollForThirdPartyJobsResponse [ThirdPartyJob]
+pftpjrsJobs :: Lens' (PollForThirdPartyJobsResponse (a)) [ThirdPartyJob]
 pftpjrsJobs = lens _pftpjrsJobs (\ s a -> s{_pftpjrsJobs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-pftpjrsResponseStatus :: Lens' PollForThirdPartyJobsResponse Int
+pftpjrsResponseStatus :: Lens' (PollForThirdPartyJobsResponse (a)) Int
 pftpjrsResponseStatus = lens _pftpjrsResponseStatus (\ s a -> s{_pftpjrsResponseStatus = a});
 
 instance NFData PollForThirdPartyJobsResponse

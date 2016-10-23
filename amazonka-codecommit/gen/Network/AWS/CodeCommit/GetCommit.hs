@@ -114,7 +114,7 @@ instance ToQuery GetCommit where
 -- | Represents the output of a get commit operation.
 --
 -- /See:/ 'getCommitResponse' smart constructor.
-data GetCommitResponse = GetCommitResponse'
+data GetCommitResponse a = GetCommitResponse'
     { _gcrsResponseStatus :: !Int
     , _gcrsCommit         :: !Commit
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -129,7 +129,7 @@ data GetCommitResponse = GetCommitResponse'
 getCommitResponse
     :: Int -- ^ 'gcrsResponseStatus'
     -> Commit -- ^ 'gcrsCommit'
-    -> GetCommitResponse
+    -> GetCommitResponse (a)
 getCommitResponse pResponseStatus_ pCommit_ =
     GetCommitResponse'
     { _gcrsResponseStatus = pResponseStatus_
@@ -137,11 +137,11 @@ getCommitResponse pResponseStatus_ pCommit_ =
     }
 
 -- | The response status code.
-gcrsResponseStatus :: Lens' GetCommitResponse Int
+gcrsResponseStatus :: Lens' (GetCommitResponse (a)) Int
 gcrsResponseStatus = lens _gcrsResponseStatus (\ s a -> s{_gcrsResponseStatus = a});
 
 -- | Information about the specified commit.
-gcrsCommit :: Lens' GetCommitResponse Commit
+gcrsCommit :: Lens' (GetCommitResponse (a)) Commit
 gcrsCommit = lens _gcrsCommit (\ s a -> s{_gcrsCommit = a});
 
 instance NFData GetCommitResponse

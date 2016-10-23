@@ -111,7 +111,7 @@ instance ToQuery CreateCloudFrontOriginAccessIdentity
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'createCloudFrontOriginAccessIdentityResponse' smart constructor.
-data CreateCloudFrontOriginAccessIdentityResponse = CreateCloudFrontOriginAccessIdentityResponse'
+data CreateCloudFrontOriginAccessIdentityResponse a = CreateCloudFrontOriginAccessIdentityResponse'
     { _ccfoairsETag                           :: !(Maybe Text)
     , _ccfoairsLocation                       :: !(Maybe Text)
     , _ccfoairsCloudFrontOriginAccessIdentity :: !(Maybe CloudFrontOriginAccessIdentity)
@@ -131,7 +131,7 @@ data CreateCloudFrontOriginAccessIdentityResponse = CreateCloudFrontOriginAccess
 -- * 'ccfoairsResponseStatus'
 createCloudFrontOriginAccessIdentityResponse
     :: Int -- ^ 'ccfoairsResponseStatus'
-    -> CreateCloudFrontOriginAccessIdentityResponse
+    -> CreateCloudFrontOriginAccessIdentityResponse (a)
 createCloudFrontOriginAccessIdentityResponse pResponseStatus_ =
     CreateCloudFrontOriginAccessIdentityResponse'
     { _ccfoairsETag = Nothing
@@ -141,19 +141,19 @@ createCloudFrontOriginAccessIdentityResponse pResponseStatus_ =
     }
 
 -- | The current version of the origin access identity created.
-ccfoairsETag :: Lens' CreateCloudFrontOriginAccessIdentityResponse (Maybe Text)
+ccfoairsETag :: Lens' (CreateCloudFrontOriginAccessIdentityResponse (a)) (Maybe Text)
 ccfoairsETag = lens _ccfoairsETag (\ s a -> s{_ccfoairsETag = a});
 
 -- | The fully qualified URI of the new origin access identity just created. For example: https:\/\/cloudfront.amazonaws.com\/2010-11-01\/origin-access-identity\/cloudfront\/E74FTE3AJFJ256A.
-ccfoairsLocation :: Lens' CreateCloudFrontOriginAccessIdentityResponse (Maybe Text)
+ccfoairsLocation :: Lens' (CreateCloudFrontOriginAccessIdentityResponse (a)) (Maybe Text)
 ccfoairsLocation = lens _ccfoairsLocation (\ s a -> s{_ccfoairsLocation = a});
 
 -- | The origin access identity\'s information.
-ccfoairsCloudFrontOriginAccessIdentity :: Lens' CreateCloudFrontOriginAccessIdentityResponse (Maybe CloudFrontOriginAccessIdentity)
+ccfoairsCloudFrontOriginAccessIdentity :: Lens' (CreateCloudFrontOriginAccessIdentityResponse (a)) (Maybe CloudFrontOriginAccessIdentity)
 ccfoairsCloudFrontOriginAccessIdentity = lens _ccfoairsCloudFrontOriginAccessIdentity (\ s a -> s{_ccfoairsCloudFrontOriginAccessIdentity = a});
 
 -- | The response status code.
-ccfoairsResponseStatus :: Lens' CreateCloudFrontOriginAccessIdentityResponse Int
+ccfoairsResponseStatus :: Lens' (CreateCloudFrontOriginAccessIdentityResponse (a)) Int
 ccfoairsResponseStatus = lens _ccfoairsResponseStatus (\ s a -> s{_ccfoairsResponseStatus = a});
 
 instance NFData

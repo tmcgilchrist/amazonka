@@ -166,7 +166,7 @@ instance ToQuery DescribeClusterParameterGroups where
 -- | Contains the output from the < DescribeClusterParameterGroups> action.
 --
 -- /See:/ 'describeClusterParameterGroupsResponse' smart constructor.
-data DescribeClusterParameterGroupsResponse = DescribeClusterParameterGroupsResponse'
+data DescribeClusterParameterGroupsResponse a = DescribeClusterParameterGroupsResponse'
     { _dcpgrsMarker          :: !(Maybe Text)
     , _dcpgrsParameterGroups :: !(Maybe [ClusterParameterGroup])
     , _dcpgrsResponseStatus  :: !Int
@@ -183,7 +183,7 @@ data DescribeClusterParameterGroupsResponse = DescribeClusterParameterGroupsResp
 -- * 'dcpgrsResponseStatus'
 describeClusterParameterGroupsResponse
     :: Int -- ^ 'dcpgrsResponseStatus'
-    -> DescribeClusterParameterGroupsResponse
+    -> DescribeClusterParameterGroupsResponse (a)
 describeClusterParameterGroupsResponse pResponseStatus_ =
     DescribeClusterParameterGroupsResponse'
     { _dcpgrsMarker = Nothing
@@ -192,15 +192,15 @@ describeClusterParameterGroupsResponse pResponseStatus_ =
     }
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-dcpgrsMarker :: Lens' DescribeClusterParameterGroupsResponse (Maybe Text)
+dcpgrsMarker :: Lens' (DescribeClusterParameterGroupsResponse (a)) (Maybe Text)
 dcpgrsMarker = lens _dcpgrsMarker (\ s a -> s{_dcpgrsMarker = a});
 
 -- | A list of < ClusterParameterGroup> instances. Each instance describes one cluster parameter group.
-dcpgrsParameterGroups :: Lens' DescribeClusterParameterGroupsResponse [ClusterParameterGroup]
+dcpgrsParameterGroups :: Lens' (DescribeClusterParameterGroupsResponse (a)) [ClusterParameterGroup]
 dcpgrsParameterGroups = lens _dcpgrsParameterGroups (\ s a -> s{_dcpgrsParameterGroups = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dcpgrsResponseStatus :: Lens' DescribeClusterParameterGroupsResponse Int
+dcpgrsResponseStatus :: Lens' (DescribeClusterParameterGroupsResponse (a)) Int
 dcpgrsResponseStatus = lens _dcpgrsResponseStatus (\ s a -> s{_dcpgrsResponseStatus = a});
 
 instance NFData

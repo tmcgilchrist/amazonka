@@ -106,14 +106,14 @@ instance ToQuery Publish where
         toQuery Publish'{..} = mconcat ["qos" =: _pQos]
 
 -- | /See:/ 'publishResponse' smart constructor.
-data PublishResponse =
+data PublishResponse a =
     PublishResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PublishResponse' with the minimum fields required to make a request.
 --
 publishResponse
-    :: PublishResponse
+    :: PublishResponse (a)
 publishResponse = PublishResponse'
 
 instance NFData PublishResponse

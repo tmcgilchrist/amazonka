@@ -104,7 +104,7 @@ instance ToQuery CreateApplication where
 -- | Represents the output of a create application operation.
 --
 -- /See:/ 'createApplicationResponse' smart constructor.
-data CreateApplicationResponse = CreateApplicationResponse'
+data CreateApplicationResponse a = CreateApplicationResponse'
     { _carsApplicationId  :: !(Maybe Text)
     , _carsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data CreateApplicationResponse = CreateApplicationResponse'
 -- * 'carsResponseStatus'
 createApplicationResponse
     :: Int -- ^ 'carsResponseStatus'
-    -> CreateApplicationResponse
+    -> CreateApplicationResponse (a)
 createApplicationResponse pResponseStatus_ =
     CreateApplicationResponse'
     { _carsApplicationId = Nothing
@@ -126,11 +126,11 @@ createApplicationResponse pResponseStatus_ =
     }
 
 -- | A unique application ID.
-carsApplicationId :: Lens' CreateApplicationResponse (Maybe Text)
+carsApplicationId :: Lens' (CreateApplicationResponse (a)) (Maybe Text)
 carsApplicationId = lens _carsApplicationId (\ s a -> s{_carsApplicationId = a});
 
 -- | The response status code.
-carsResponseStatus :: Lens' CreateApplicationResponse Int
+carsResponseStatus :: Lens' (CreateApplicationResponse (a)) Int
 carsResponseStatus = lens _carsResponseStatus (\ s a -> s{_carsResponseStatus = a});
 
 instance NFData CreateApplicationResponse

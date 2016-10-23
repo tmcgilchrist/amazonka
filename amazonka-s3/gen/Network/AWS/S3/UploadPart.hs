@@ -211,7 +211,7 @@ instance ToQuery UploadPart where
                "uploadId" =: _upUploadId]
 
 -- | /See:/ 'uploadPartResponse' smart constructor.
-data UploadPartResponse = UploadPartResponse'
+data UploadPartResponse a = UploadPartResponse'
     { _uprsRequestCharged       :: !(Maybe RequestCharged)
     , _uprsETag                 :: !(Maybe ETag)
     , _uprsSSECustomerAlgorithm :: !(Maybe Text)
@@ -240,7 +240,7 @@ data UploadPartResponse = UploadPartResponse'
 -- * 'uprsResponseStatus'
 uploadPartResponse
     :: Int -- ^ 'uprsResponseStatus'
-    -> UploadPartResponse
+    -> UploadPartResponse (a)
 uploadPartResponse pResponseStatus_ =
     UploadPartResponse'
     { _uprsRequestCharged = Nothing
@@ -253,31 +253,31 @@ uploadPartResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-uprsRequestCharged :: Lens' UploadPartResponse (Maybe RequestCharged)
+uprsRequestCharged :: Lens' (UploadPartResponse (a)) (Maybe RequestCharged)
 uprsRequestCharged = lens _uprsRequestCharged (\ s a -> s{_uprsRequestCharged = a});
 
 -- | Entity tag for the uploaded object.
-uprsETag :: Lens' UploadPartResponse (Maybe ETag)
+uprsETag :: Lens' (UploadPartResponse (a)) (Maybe ETag)
 uprsETag = lens _uprsETag (\ s a -> s{_uprsETag = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
-uprsSSECustomerAlgorithm :: Lens' UploadPartResponse (Maybe Text)
+uprsSSECustomerAlgorithm :: Lens' (UploadPartResponse (a)) (Maybe Text)
 uprsSSECustomerAlgorithm = lens _uprsSSECustomerAlgorithm (\ s a -> s{_uprsSSECustomerAlgorithm = a});
 
 -- | If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-uprsSSECustomerKeyMD5 :: Lens' UploadPartResponse (Maybe Text)
+uprsSSECustomerKeyMD5 :: Lens' (UploadPartResponse (a)) (Maybe Text)
 uprsSSECustomerKeyMD5 = lens _uprsSSECustomerKeyMD5 (\ s a -> s{_uprsSSECustomerKeyMD5 = a});
 
 -- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-uprsSSEKMSKeyId :: Lens' UploadPartResponse (Maybe Text)
+uprsSSEKMSKeyId :: Lens' (UploadPartResponse (a)) (Maybe Text)
 uprsSSEKMSKeyId = lens _uprsSSEKMSKeyId (\ s a -> s{_uprsSSEKMSKeyId = a}) . mapping _Sensitive;
 
 -- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
-uprsServerSideEncryption :: Lens' UploadPartResponse (Maybe ServerSideEncryption)
+uprsServerSideEncryption :: Lens' (UploadPartResponse (a)) (Maybe ServerSideEncryption)
 uprsServerSideEncryption = lens _uprsServerSideEncryption (\ s a -> s{_uprsServerSideEncryption = a});
 
 -- | The response status code.
-uprsResponseStatus :: Lens' UploadPartResponse Int
+uprsResponseStatus :: Lens' (UploadPartResponse (a)) Int
 uprsResponseStatus = lens _uprsResponseStatus (\ s a -> s{_uprsResponseStatus = a});
 
 instance NFData UploadPartResponse

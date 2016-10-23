@@ -233,7 +233,7 @@ instance ToQuery DescribeMLModels where
 -- | Represents the output of a 'DescribeMLModels' operation. The content is essentially a list of 'MLModel'.
 --
 -- /See:/ 'describeMLModelsResponse' smart constructor.
-data DescribeMLModelsResponse = DescribeMLModelsResponse'
+data DescribeMLModelsResponse a = DescribeMLModelsResponse'
     { _dmlmsrsResults        :: !(Maybe [MLModel])
     , _dmlmsrsNextToken      :: !(Maybe Text)
     , _dmlmsrsResponseStatus :: !Int
@@ -250,7 +250,7 @@ data DescribeMLModelsResponse = DescribeMLModelsResponse'
 -- * 'dmlmsrsResponseStatus'
 describeMLModelsResponse
     :: Int -- ^ 'dmlmsrsResponseStatus'
-    -> DescribeMLModelsResponse
+    -> DescribeMLModelsResponse (a)
 describeMLModelsResponse pResponseStatus_ =
     DescribeMLModelsResponse'
     { _dmlmsrsResults = Nothing
@@ -259,15 +259,15 @@ describeMLModelsResponse pResponseStatus_ =
     }
 
 -- | A list of 'MLModel' that meet the search criteria.
-dmlmsrsResults :: Lens' DescribeMLModelsResponse [MLModel]
+dmlmsrsResults :: Lens' (DescribeMLModelsResponse (a)) [MLModel]
 dmlmsrsResults = lens _dmlmsrsResults (\ s a -> s{_dmlmsrsResults = a}) . _Default . _Coerce;
 
 -- | The ID of the next page in the paginated results that indicates at least one more page follows.
-dmlmsrsNextToken :: Lens' DescribeMLModelsResponse (Maybe Text)
+dmlmsrsNextToken :: Lens' (DescribeMLModelsResponse (a)) (Maybe Text)
 dmlmsrsNextToken = lens _dmlmsrsNextToken (\ s a -> s{_dmlmsrsNextToken = a});
 
 -- | The response status code.
-dmlmsrsResponseStatus :: Lens' DescribeMLModelsResponse Int
+dmlmsrsResponseStatus :: Lens' (DescribeMLModelsResponse (a)) Int
 dmlmsrsResponseStatus = lens _dmlmsrsResponseStatus (\ s a -> s{_dmlmsrsResponseStatus = a});
 
 instance NFData DescribeMLModelsResponse

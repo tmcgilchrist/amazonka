@@ -129,7 +129,7 @@ instance ToQuery PurchaseReservedCacheNodesOffering
                  _prcnoReservedCacheNodesOfferingId]
 
 -- | /See:/ 'purchaseReservedCacheNodesOfferingResponse' smart constructor.
-data PurchaseReservedCacheNodesOfferingResponse = PurchaseReservedCacheNodesOfferingResponse'
+data PurchaseReservedCacheNodesOfferingResponse a = PurchaseReservedCacheNodesOfferingResponse'
     { _prcnorsReservedCacheNode :: !(Maybe ReservedCacheNode)
     , _prcnorsResponseStatus    :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -143,7 +143,7 @@ data PurchaseReservedCacheNodesOfferingResponse = PurchaseReservedCacheNodesOffe
 -- * 'prcnorsResponseStatus'
 purchaseReservedCacheNodesOfferingResponse
     :: Int -- ^ 'prcnorsResponseStatus'
-    -> PurchaseReservedCacheNodesOfferingResponse
+    -> PurchaseReservedCacheNodesOfferingResponse (a)
 purchaseReservedCacheNodesOfferingResponse pResponseStatus_ =
     PurchaseReservedCacheNodesOfferingResponse'
     { _prcnorsReservedCacheNode = Nothing
@@ -151,11 +151,11 @@ purchaseReservedCacheNodesOfferingResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-prcnorsReservedCacheNode :: Lens' PurchaseReservedCacheNodesOfferingResponse (Maybe ReservedCacheNode)
+prcnorsReservedCacheNode :: Lens' (PurchaseReservedCacheNodesOfferingResponse (a)) (Maybe ReservedCacheNode)
 prcnorsReservedCacheNode = lens _prcnorsReservedCacheNode (\ s a -> s{_prcnorsReservedCacheNode = a});
 
 -- | The response status code.
-prcnorsResponseStatus :: Lens' PurchaseReservedCacheNodesOfferingResponse Int
+prcnorsResponseStatus :: Lens' (PurchaseReservedCacheNodesOfferingResponse (a)) Int
 prcnorsResponseStatus = lens _prcnorsResponseStatus (\ s a -> s{_prcnorsResponseStatus = a});
 
 instance NFData

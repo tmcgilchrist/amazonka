@@ -104,7 +104,7 @@ instance ToQuery DescribeStackSummary where
 -- | Contains the response to a 'DescribeStackSummary' request.
 --
 -- /See:/ 'describeStackSummaryResponse' smart constructor.
-data DescribeStackSummaryResponse = DescribeStackSummaryResponse'
+data DescribeStackSummaryResponse a = DescribeStackSummaryResponse'
     { _dssrsStackSummary   :: !(Maybe StackSummary)
     , _dssrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data DescribeStackSummaryResponse = DescribeStackSummaryResponse'
 -- * 'dssrsResponseStatus'
 describeStackSummaryResponse
     :: Int -- ^ 'dssrsResponseStatus'
-    -> DescribeStackSummaryResponse
+    -> DescribeStackSummaryResponse (a)
 describeStackSummaryResponse pResponseStatus_ =
     DescribeStackSummaryResponse'
     { _dssrsStackSummary = Nothing
@@ -126,11 +126,11 @@ describeStackSummaryResponse pResponseStatus_ =
     }
 
 -- | A 'StackSummary' object that contains the results.
-dssrsStackSummary :: Lens' DescribeStackSummaryResponse (Maybe StackSummary)
+dssrsStackSummary :: Lens' (DescribeStackSummaryResponse (a)) (Maybe StackSummary)
 dssrsStackSummary = lens _dssrsStackSummary (\ s a -> s{_dssrsStackSummary = a});
 
 -- | The response status code.
-dssrsResponseStatus :: Lens' DescribeStackSummaryResponse Int
+dssrsResponseStatus :: Lens' (DescribeStackSummaryResponse (a)) Int
 dssrsResponseStatus = lens _dssrsResponseStatus (\ s a -> s{_dssrsResponseStatus = a});
 
 instance NFData DescribeStackSummaryResponse

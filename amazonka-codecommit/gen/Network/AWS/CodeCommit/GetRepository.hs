@@ -105,7 +105,7 @@ instance ToQuery GetRepository where
 -- | Represents the output of a get repository operation.
 --
 -- /See:/ 'getRepositoryResponse' smart constructor.
-data GetRepositoryResponse = GetRepositoryResponse'
+data GetRepositoryResponse a = GetRepositoryResponse'
     { _grrsRepositoryMetadata :: !(Maybe RepositoryMetadata)
     , _grrsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -119,7 +119,7 @@ data GetRepositoryResponse = GetRepositoryResponse'
 -- * 'grrsResponseStatus'
 getRepositoryResponse
     :: Int -- ^ 'grrsResponseStatus'
-    -> GetRepositoryResponse
+    -> GetRepositoryResponse (a)
 getRepositoryResponse pResponseStatus_ =
     GetRepositoryResponse'
     { _grrsRepositoryMetadata = Nothing
@@ -127,11 +127,11 @@ getRepositoryResponse pResponseStatus_ =
     }
 
 -- | Information about the repository.
-grrsRepositoryMetadata :: Lens' GetRepositoryResponse (Maybe RepositoryMetadata)
+grrsRepositoryMetadata :: Lens' (GetRepositoryResponse (a)) (Maybe RepositoryMetadata)
 grrsRepositoryMetadata = lens _grrsRepositoryMetadata (\ s a -> s{_grrsRepositoryMetadata = a});
 
 -- | The response status code.
-grrsResponseStatus :: Lens' GetRepositoryResponse Int
+grrsResponseStatus :: Lens' (GetRepositoryResponse (a)) Int
 grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a});
 
 instance NFData GetRepositoryResponse

@@ -106,7 +106,7 @@ instance ToQuery RestoreFromSnapshot where
 -- | Contains the results of the < RestoreFromSnapshot> operation.
 --
 -- /See:/ 'restoreFromSnapshotResponse' smart constructor.
-newtype RestoreFromSnapshotResponse = RestoreFromSnapshotResponse'
+newtype RestoreFromSnapshotResponse a = RestoreFromSnapshotResponse'
     { _rfsrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -117,14 +117,14 @@ newtype RestoreFromSnapshotResponse = RestoreFromSnapshotResponse'
 -- * 'rfsrsResponseStatus'
 restoreFromSnapshotResponse
     :: Int -- ^ 'rfsrsResponseStatus'
-    -> RestoreFromSnapshotResponse
+    -> RestoreFromSnapshotResponse (a)
 restoreFromSnapshotResponse pResponseStatus_ =
     RestoreFromSnapshotResponse'
     { _rfsrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-rfsrsResponseStatus :: Lens' RestoreFromSnapshotResponse Int
+rfsrsResponseStatus :: Lens' (RestoreFromSnapshotResponse (a)) Int
 rfsrsResponseStatus = lens _rfsrsResponseStatus (\ s a -> s{_rfsrsResponseStatus = a});
 
 instance NFData RestoreFromSnapshotResponse

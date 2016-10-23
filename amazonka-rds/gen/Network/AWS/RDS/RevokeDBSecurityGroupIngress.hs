@@ -138,7 +138,7 @@ instance ToQuery RevokeDBSecurityGroupIngress where
                "DBSecurityGroupName" =: _rdsgiDBSecurityGroupName]
 
 -- | /See:/ 'revokeDBSecurityGroupIngressResponse' smart constructor.
-data RevokeDBSecurityGroupIngressResponse = RevokeDBSecurityGroupIngressResponse'
+data RevokeDBSecurityGroupIngressResponse a = RevokeDBSecurityGroupIngressResponse'
     { _rdsgirsDBSecurityGroup :: !(Maybe DBSecurityGroup)
     , _rdsgirsResponseStatus  :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -152,7 +152,7 @@ data RevokeDBSecurityGroupIngressResponse = RevokeDBSecurityGroupIngressResponse
 -- * 'rdsgirsResponseStatus'
 revokeDBSecurityGroupIngressResponse
     :: Int -- ^ 'rdsgirsResponseStatus'
-    -> RevokeDBSecurityGroupIngressResponse
+    -> RevokeDBSecurityGroupIngressResponse (a)
 revokeDBSecurityGroupIngressResponse pResponseStatus_ =
     RevokeDBSecurityGroupIngressResponse'
     { _rdsgirsDBSecurityGroup = Nothing
@@ -160,11 +160,11 @@ revokeDBSecurityGroupIngressResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rdsgirsDBSecurityGroup :: Lens' RevokeDBSecurityGroupIngressResponse (Maybe DBSecurityGroup)
+rdsgirsDBSecurityGroup :: Lens' (RevokeDBSecurityGroupIngressResponse (a)) (Maybe DBSecurityGroup)
 rdsgirsDBSecurityGroup = lens _rdsgirsDBSecurityGroup (\ s a -> s{_rdsgirsDBSecurityGroup = a});
 
 -- | The response status code.
-rdsgirsResponseStatus :: Lens' RevokeDBSecurityGroupIngressResponse Int
+rdsgirsResponseStatus :: Lens' (RevokeDBSecurityGroupIngressResponse (a)) Int
 rdsgirsResponseStatus = lens _rdsgirsResponseStatus (\ s a -> s{_rdsgirsResponseStatus = a});
 
 instance NFData RevokeDBSecurityGroupIngressResponse

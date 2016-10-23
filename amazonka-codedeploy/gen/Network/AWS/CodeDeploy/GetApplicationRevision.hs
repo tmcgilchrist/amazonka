@@ -120,7 +120,7 @@ instance ToQuery GetApplicationRevision where
 -- | Represents the output of a get application revision operation.
 --
 -- /See:/ 'getApplicationRevisionResponse' smart constructor.
-data GetApplicationRevisionResponse = GetApplicationRevisionResponse'
+data GetApplicationRevisionResponse a = GetApplicationRevisionResponse'
     { _garrsApplicationName :: !(Maybe Text)
     , _garrsRevisionInfo    :: !(Maybe GenericRevisionInfo)
     , _garrsRevision        :: !(Maybe RevisionLocation)
@@ -140,7 +140,7 @@ data GetApplicationRevisionResponse = GetApplicationRevisionResponse'
 -- * 'garrsResponseStatus'
 getApplicationRevisionResponse
     :: Int -- ^ 'garrsResponseStatus'
-    -> GetApplicationRevisionResponse
+    -> GetApplicationRevisionResponse (a)
 getApplicationRevisionResponse pResponseStatus_ =
     GetApplicationRevisionResponse'
     { _garrsApplicationName = Nothing
@@ -150,19 +150,19 @@ getApplicationRevisionResponse pResponseStatus_ =
     }
 
 -- | The name of the application that corresponds to the revision.
-garrsApplicationName :: Lens' GetApplicationRevisionResponse (Maybe Text)
+garrsApplicationName :: Lens' (GetApplicationRevisionResponse (a)) (Maybe Text)
 garrsApplicationName = lens _garrsApplicationName (\ s a -> s{_garrsApplicationName = a});
 
 -- | General information about the revision.
-garrsRevisionInfo :: Lens' GetApplicationRevisionResponse (Maybe GenericRevisionInfo)
+garrsRevisionInfo :: Lens' (GetApplicationRevisionResponse (a)) (Maybe GenericRevisionInfo)
 garrsRevisionInfo = lens _garrsRevisionInfo (\ s a -> s{_garrsRevisionInfo = a});
 
 -- | Additional information about the revision, including type and location.
-garrsRevision :: Lens' GetApplicationRevisionResponse (Maybe RevisionLocation)
+garrsRevision :: Lens' (GetApplicationRevisionResponse (a)) (Maybe RevisionLocation)
 garrsRevision = lens _garrsRevision (\ s a -> s{_garrsRevision = a});
 
 -- | The response status code.
-garrsResponseStatus :: Lens' GetApplicationRevisionResponse Int
+garrsResponseStatus :: Lens' (GetApplicationRevisionResponse (a)) Int
 garrsResponseStatus = lens _garrsResponseStatus (\ s a -> s{_garrsResponseStatus = a});
 
 instance NFData GetApplicationRevisionResponse

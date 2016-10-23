@@ -125,7 +125,7 @@ instance ToQuery DescribeKeyPairs where
 -- | Contains the output of DescribeKeyPairs.
 --
 -- /See:/ 'describeKeyPairsResponse' smart constructor.
-data DescribeKeyPairsResponse = DescribeKeyPairsResponse'
+data DescribeKeyPairsResponse a = DescribeKeyPairsResponse'
     { _dkprsKeyPairs       :: !(Maybe [KeyPairInfo])
     , _dkprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -139,7 +139,7 @@ data DescribeKeyPairsResponse = DescribeKeyPairsResponse'
 -- * 'dkprsResponseStatus'
 describeKeyPairsResponse
     :: Int -- ^ 'dkprsResponseStatus'
-    -> DescribeKeyPairsResponse
+    -> DescribeKeyPairsResponse (a)
 describeKeyPairsResponse pResponseStatus_ =
     DescribeKeyPairsResponse'
     { _dkprsKeyPairs = Nothing
@@ -147,11 +147,11 @@ describeKeyPairsResponse pResponseStatus_ =
     }
 
 -- | Information about one or more key pairs.
-dkprsKeyPairs :: Lens' DescribeKeyPairsResponse [KeyPairInfo]
+dkprsKeyPairs :: Lens' (DescribeKeyPairsResponse (a)) [KeyPairInfo]
 dkprsKeyPairs = lens _dkprsKeyPairs (\ s a -> s{_dkprsKeyPairs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dkprsResponseStatus :: Lens' DescribeKeyPairsResponse Int
+dkprsResponseStatus :: Lens' (DescribeKeyPairsResponse (a)) Int
 dkprsResponseStatus = lens _dkprsResponseStatus (\ s a -> s{_dkprsResponseStatus = a});
 
 instance NFData DescribeKeyPairsResponse

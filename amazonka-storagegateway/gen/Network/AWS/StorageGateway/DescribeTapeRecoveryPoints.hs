@@ -142,7 +142,7 @@ instance ToQuery DescribeTapeRecoveryPoints where
 -- | DescribeTapeRecoveryPointsOutput
 --
 -- /See:/ 'describeTapeRecoveryPointsResponse' smart constructor.
-data DescribeTapeRecoveryPointsResponse = DescribeTapeRecoveryPointsResponse'
+data DescribeTapeRecoveryPointsResponse a = DescribeTapeRecoveryPointsResponse'
     { _dtrprsTapeRecoveryPointInfos :: !(Maybe [TapeRecoveryPointInfo])
     , _dtrprsGatewayARN             :: !(Maybe Text)
     , _dtrprsMarker                 :: !(Maybe Text)
@@ -162,7 +162,7 @@ data DescribeTapeRecoveryPointsResponse = DescribeTapeRecoveryPointsResponse'
 -- * 'dtrprsResponseStatus'
 describeTapeRecoveryPointsResponse
     :: Int -- ^ 'dtrprsResponseStatus'
-    -> DescribeTapeRecoveryPointsResponse
+    -> DescribeTapeRecoveryPointsResponse (a)
 describeTapeRecoveryPointsResponse pResponseStatus_ =
     DescribeTapeRecoveryPointsResponse'
     { _dtrprsTapeRecoveryPointInfos = Nothing
@@ -172,21 +172,21 @@ describeTapeRecoveryPointsResponse pResponseStatus_ =
     }
 
 -- | An array of TapeRecoveryPointInfos that are available for the specified gateway.
-dtrprsTapeRecoveryPointInfos :: Lens' DescribeTapeRecoveryPointsResponse [TapeRecoveryPointInfo]
+dtrprsTapeRecoveryPointInfos :: Lens' (DescribeTapeRecoveryPointsResponse (a)) [TapeRecoveryPointInfo]
 dtrprsTapeRecoveryPointInfos = lens _dtrprsTapeRecoveryPointInfos (\ s a -> s{_dtrprsTapeRecoveryPointInfos = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-dtrprsGatewayARN :: Lens' DescribeTapeRecoveryPointsResponse (Maybe Text)
+dtrprsGatewayARN :: Lens' (DescribeTapeRecoveryPointsResponse (a)) (Maybe Text)
 dtrprsGatewayARN = lens _dtrprsGatewayARN (\ s a -> s{_dtrprsGatewayARN = a});
 
 -- | An opaque string that indicates the position at which the virtual tape recovery points that were listed for description ended.
 --
 -- Use this marker in your next request to list the next set of virtual tape recovery points in the list. If there are no more recovery points to describe, this field does not appear in the response.
-dtrprsMarker :: Lens' DescribeTapeRecoveryPointsResponse (Maybe Text)
+dtrprsMarker :: Lens' (DescribeTapeRecoveryPointsResponse (a)) (Maybe Text)
 dtrprsMarker = lens _dtrprsMarker (\ s a -> s{_dtrprsMarker = a});
 
 -- | The response status code.
-dtrprsResponseStatus :: Lens' DescribeTapeRecoveryPointsResponse Int
+dtrprsResponseStatus :: Lens' (DescribeTapeRecoveryPointsResponse (a)) Int
 dtrprsResponseStatus = lens _dtrprsResponseStatus (\ s a -> s{_dtrprsResponseStatus = a});
 
 instance NFData DescribeTapeRecoveryPointsResponse

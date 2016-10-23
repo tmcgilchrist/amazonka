@@ -85,7 +85,7 @@ instance ToQuery ListOpenIdConnectProviders where
 -- | Contains the response to a successful < ListOpenIDConnectProviders> request.
 --
 -- /See:/ 'listOpenIdConnectProvidersResponse' smart constructor.
-data ListOpenIdConnectProvidersResponse = ListOpenIdConnectProvidersResponse'
+data ListOpenIdConnectProvidersResponse a = ListOpenIdConnectProvidersResponse'
     { _loicprsOpenIdConnectProviderList :: !(Maybe [OpenIdConnectProviderListEntry])
     , _loicprsResponseStatus            :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -99,7 +99,7 @@ data ListOpenIdConnectProvidersResponse = ListOpenIdConnectProvidersResponse'
 -- * 'loicprsResponseStatus'
 listOpenIdConnectProvidersResponse
     :: Int -- ^ 'loicprsResponseStatus'
-    -> ListOpenIdConnectProvidersResponse
+    -> ListOpenIdConnectProvidersResponse (a)
 listOpenIdConnectProvidersResponse pResponseStatus_ =
     ListOpenIdConnectProvidersResponse'
     { _loicprsOpenIdConnectProviderList = Nothing
@@ -107,11 +107,11 @@ listOpenIdConnectProvidersResponse pResponseStatus_ =
     }
 
 -- | The list of IAM OIDC provider resource objects defined in the AWS account.
-loicprsOpenIdConnectProviderList :: Lens' ListOpenIdConnectProvidersResponse [OpenIdConnectProviderListEntry]
+loicprsOpenIdConnectProviderList :: Lens' (ListOpenIdConnectProvidersResponse (a)) [OpenIdConnectProviderListEntry]
 loicprsOpenIdConnectProviderList = lens _loicprsOpenIdConnectProviderList (\ s a -> s{_loicprsOpenIdConnectProviderList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-loicprsResponseStatus :: Lens' ListOpenIdConnectProvidersResponse Int
+loicprsResponseStatus :: Lens' (ListOpenIdConnectProvidersResponse (a)) Int
 loicprsResponseStatus = lens _loicprsResponseStatus (\ s a -> s{_loicprsResponseStatus = a});
 
 instance NFData ListOpenIdConnectProvidersResponse

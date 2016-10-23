@@ -117,14 +117,14 @@ instance ToQuery AbortMultipartUpload where
         toQuery = const mempty
 
 -- | /See:/ 'abortMultipartUploadResponse' smart constructor.
-data AbortMultipartUploadResponse =
+data AbortMultipartUploadResponse a =
     AbortMultipartUploadResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AbortMultipartUploadResponse' with the minimum fields required to make a request.
 --
 abortMultipartUploadResponse
-    :: AbortMultipartUploadResponse
+    :: AbortMultipartUploadResponse (a)
 abortMultipartUploadResponse = AbortMultipartUploadResponse'
 
 instance NFData AbortMultipartUploadResponse

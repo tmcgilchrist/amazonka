@@ -113,7 +113,7 @@ instance ToQuery RegisterVolume where
 -- | Contains the response to a 'RegisterVolume' request.
 --
 -- /See:/ 'registerVolumeResponse' smart constructor.
-data RegisterVolumeResponse = RegisterVolumeResponse'
+data RegisterVolumeResponse a = RegisterVolumeResponse'
     { _rvrsVolumeId       :: !(Maybe Text)
     , _rvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data RegisterVolumeResponse = RegisterVolumeResponse'
 -- * 'rvrsResponseStatus'
 registerVolumeResponse
     :: Int -- ^ 'rvrsResponseStatus'
-    -> RegisterVolumeResponse
+    -> RegisterVolumeResponse (a)
 registerVolumeResponse pResponseStatus_ =
     RegisterVolumeResponse'
     { _rvrsVolumeId = Nothing
@@ -135,11 +135,11 @@ registerVolumeResponse pResponseStatus_ =
     }
 
 -- | The volume ID.
-rvrsVolumeId :: Lens' RegisterVolumeResponse (Maybe Text)
+rvrsVolumeId :: Lens' (RegisterVolumeResponse (a)) (Maybe Text)
 rvrsVolumeId = lens _rvrsVolumeId (\ s a -> s{_rvrsVolumeId = a});
 
 -- | The response status code.
-rvrsResponseStatus :: Lens' RegisterVolumeResponse Int
+rvrsResponseStatus :: Lens' (RegisterVolumeResponse (a)) Int
 rvrsResponseStatus = lens _rvrsResponseStatus (\ s a -> s{_rvrsResponseStatus = a});
 
 instance NFData RegisterVolumeResponse

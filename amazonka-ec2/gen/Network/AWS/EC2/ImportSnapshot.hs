@@ -148,7 +148,7 @@ instance ToQuery ImportSnapshot where
 -- | Contains the output for ImportSnapshot.
 --
 -- /See:/ 'importSnapshotResponse' smart constructor.
-data ImportSnapshotResponse = ImportSnapshotResponse'
+data ImportSnapshotResponse a = ImportSnapshotResponse'
     { _isrsSnapshotTaskDetail :: !(Maybe SnapshotTaskDetail)
     , _isrsImportTaskId       :: !(Maybe Text)
     , _isrsDescription        :: !(Maybe Text)
@@ -168,7 +168,7 @@ data ImportSnapshotResponse = ImportSnapshotResponse'
 -- * 'isrsResponseStatus'
 importSnapshotResponse
     :: Int -- ^ 'isrsResponseStatus'
-    -> ImportSnapshotResponse
+    -> ImportSnapshotResponse (a)
 importSnapshotResponse pResponseStatus_ =
     ImportSnapshotResponse'
     { _isrsSnapshotTaskDetail = Nothing
@@ -178,19 +178,19 @@ importSnapshotResponse pResponseStatus_ =
     }
 
 -- | Information about the import snapshot task.
-isrsSnapshotTaskDetail :: Lens' ImportSnapshotResponse (Maybe SnapshotTaskDetail)
+isrsSnapshotTaskDetail :: Lens' (ImportSnapshotResponse (a)) (Maybe SnapshotTaskDetail)
 isrsSnapshotTaskDetail = lens _isrsSnapshotTaskDetail (\ s a -> s{_isrsSnapshotTaskDetail = a});
 
 -- | The ID of the import snapshot task.
-isrsImportTaskId :: Lens' ImportSnapshotResponse (Maybe Text)
+isrsImportTaskId :: Lens' (ImportSnapshotResponse (a)) (Maybe Text)
 isrsImportTaskId = lens _isrsImportTaskId (\ s a -> s{_isrsImportTaskId = a});
 
 -- | A description of the import snapshot task.
-isrsDescription :: Lens' ImportSnapshotResponse (Maybe Text)
+isrsDescription :: Lens' (ImportSnapshotResponse (a)) (Maybe Text)
 isrsDescription = lens _isrsDescription (\ s a -> s{_isrsDescription = a});
 
 -- | The response status code.
-isrsResponseStatus :: Lens' ImportSnapshotResponse Int
+isrsResponseStatus :: Lens' (ImportSnapshotResponse (a)) Int
 isrsResponseStatus = lens _isrsResponseStatus (\ s a -> s{_isrsResponseStatus = a});
 
 instance NFData ImportSnapshotResponse

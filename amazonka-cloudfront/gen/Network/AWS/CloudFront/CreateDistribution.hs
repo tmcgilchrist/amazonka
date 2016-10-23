@@ -103,7 +103,7 @@ instance ToQuery CreateDistribution where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'createDistributionResponse' smart constructor.
-data CreateDistributionResponse = CreateDistributionResponse'
+data CreateDistributionResponse a = CreateDistributionResponse'
     { _cdrsETag           :: !(Maybe Text)
     , _cdrsDistribution   :: !(Maybe Distribution)
     , _cdrsLocation       :: !(Maybe Text)
@@ -123,7 +123,7 @@ data CreateDistributionResponse = CreateDistributionResponse'
 -- * 'cdrsResponseStatus'
 createDistributionResponse
     :: Int -- ^ 'cdrsResponseStatus'
-    -> CreateDistributionResponse
+    -> CreateDistributionResponse (a)
 createDistributionResponse pResponseStatus_ =
     CreateDistributionResponse'
     { _cdrsETag = Nothing
@@ -133,19 +133,19 @@ createDistributionResponse pResponseStatus_ =
     }
 
 -- | The current version of the distribution created.
-cdrsETag :: Lens' CreateDistributionResponse (Maybe Text)
+cdrsETag :: Lens' (CreateDistributionResponse (a)) (Maybe Text)
 cdrsETag = lens _cdrsETag (\ s a -> s{_cdrsETag = a});
 
 -- | The distribution\'s information.
-cdrsDistribution :: Lens' CreateDistributionResponse (Maybe Distribution)
+cdrsDistribution :: Lens' (CreateDistributionResponse (a)) (Maybe Distribution)
 cdrsDistribution = lens _cdrsDistribution (\ s a -> s{_cdrsDistribution = a});
 
 -- | The fully qualified URI of the new distribution resource just created. For example: https:\/\/cloudfront.amazonaws.com\/2010-11-01\/distribution\/EDFDVBD632BHDS5.
-cdrsLocation :: Lens' CreateDistributionResponse (Maybe Text)
+cdrsLocation :: Lens' (CreateDistributionResponse (a)) (Maybe Text)
 cdrsLocation = lens _cdrsLocation (\ s a -> s{_cdrsLocation = a});
 
 -- | The response status code.
-cdrsResponseStatus :: Lens' CreateDistributionResponse Int
+cdrsResponseStatus :: Lens' (CreateDistributionResponse (a)) Int
 cdrsResponseStatus = lens _cdrsResponseStatus (\ s a -> s{_cdrsResponseStatus = a});
 
 instance NFData CreateDistributionResponse

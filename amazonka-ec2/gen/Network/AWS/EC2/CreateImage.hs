@@ -153,7 +153,7 @@ instance ToQuery CreateImage where
 -- | Contains the output of CreateImage.
 --
 -- /See:/ 'createImageResponse' smart constructor.
-data CreateImageResponse = CreateImageResponse'
+data CreateImageResponse a = CreateImageResponse'
     { _cirsImageId        :: !(Maybe Text)
     , _cirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -167,7 +167,7 @@ data CreateImageResponse = CreateImageResponse'
 -- * 'cirsResponseStatus'
 createImageResponse
     :: Int -- ^ 'cirsResponseStatus'
-    -> CreateImageResponse
+    -> CreateImageResponse (a)
 createImageResponse pResponseStatus_ =
     CreateImageResponse'
     { _cirsImageId = Nothing
@@ -175,11 +175,11 @@ createImageResponse pResponseStatus_ =
     }
 
 -- | The ID of the new AMI.
-cirsImageId :: Lens' CreateImageResponse (Maybe Text)
+cirsImageId :: Lens' (CreateImageResponse (a)) (Maybe Text)
 cirsImageId = lens _cirsImageId (\ s a -> s{_cirsImageId = a});
 
 -- | The response status code.
-cirsResponseStatus :: Lens' CreateImageResponse Int
+cirsResponseStatus :: Lens' (CreateImageResponse (a)) Int
 cirsResponseStatus = lens _cirsResponseStatus (\ s a -> s{_cirsResponseStatus = a});
 
 instance NFData CreateImageResponse

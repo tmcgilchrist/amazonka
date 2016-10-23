@@ -130,7 +130,7 @@ instance ToQuery ListJobs where
 -- | Output structure for the ListJobs operation.
 --
 -- /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse = ListJobsResponse'
+data ListJobsResponse a = ListJobsResponse'
     { _ljrsJobs           :: !(Maybe [Job])
     , _ljrsIsTruncated    :: !(Maybe Bool)
     , _ljrsResponseStatus :: !Int
@@ -147,7 +147,7 @@ data ListJobsResponse = ListJobsResponse'
 -- * 'ljrsResponseStatus'
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
-    -> ListJobsResponse
+    -> ListJobsResponse (a)
 listJobsResponse pResponseStatus_ =
     ListJobsResponse'
     { _ljrsJobs = Nothing
@@ -156,15 +156,15 @@ listJobsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-ljrsJobs :: Lens' ListJobsResponse [Job]
+ljrsJobs :: Lens' (ListJobsResponse (a)) [Job]
 ljrsJobs = lens _ljrsJobs (\ s a -> s{_ljrsJobs = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-ljrsIsTruncated :: Lens' ListJobsResponse (Maybe Bool)
+ljrsIsTruncated :: Lens' (ListJobsResponse (a)) (Maybe Bool)
 ljrsIsTruncated = lens _ljrsIsTruncated (\ s a -> s{_ljrsIsTruncated = a});
 
 -- | The response status code.
-ljrsResponseStatus :: Lens' ListJobsResponse Int
+ljrsResponseStatus :: Lens' (ListJobsResponse (a)) Int
 ljrsResponseStatus = lens _ljrsResponseStatus (\ s a -> s{_ljrsResponseStatus = a});
 
 instance NFData ListJobsResponse

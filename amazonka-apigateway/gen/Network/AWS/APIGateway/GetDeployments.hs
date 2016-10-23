@@ -132,7 +132,7 @@ instance ToQuery GetDeployments where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html Deploying an API>, <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html AWS CLI>, <https://aws.amazon.com/tools/ AWS SDKs>
 --
 -- /See:/ 'getDeploymentsResponse' smart constructor.
-data GetDeploymentsResponse = GetDeploymentsResponse'
+data GetDeploymentsResponse a = GetDeploymentsResponse'
     { _gdrsItems          :: !(Maybe [Deployment])
     , _gdrsPosition       :: !(Maybe Text)
     , _gdrsResponseStatus :: !Int
@@ -149,7 +149,7 @@ data GetDeploymentsResponse = GetDeploymentsResponse'
 -- * 'gdrsResponseStatus'
 getDeploymentsResponse
     :: Int -- ^ 'gdrsResponseStatus'
-    -> GetDeploymentsResponse
+    -> GetDeploymentsResponse (a)
 getDeploymentsResponse pResponseStatus_ =
     GetDeploymentsResponse'
     { _gdrsItems = Nothing
@@ -158,15 +158,15 @@ getDeploymentsResponse pResponseStatus_ =
     }
 
 -- | The current page of any < Deployment> resources in the collection of deployment resources.
-gdrsItems :: Lens' GetDeploymentsResponse [Deployment]
+gdrsItems :: Lens' (GetDeploymentsResponse (a)) [Deployment]
 gdrsItems = lens _gdrsItems (\ s a -> s{_gdrsItems = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-gdrsPosition :: Lens' GetDeploymentsResponse (Maybe Text)
+gdrsPosition :: Lens' (GetDeploymentsResponse (a)) (Maybe Text)
 gdrsPosition = lens _gdrsPosition (\ s a -> s{_gdrsPosition = a});
 
 -- | The response status code.
-gdrsResponseStatus :: Lens' GetDeploymentsResponse Int
+gdrsResponseStatus :: Lens' (GetDeploymentsResponse (a)) Int
 gdrsResponseStatus = lens _gdrsResponseStatus (\ s a -> s{_gdrsResponseStatus = a});
 
 instance NFData GetDeploymentsResponse

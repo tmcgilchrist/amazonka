@@ -143,7 +143,7 @@ instance ToQuery PurchaseHostReservation where
                toQueryList "HostIdSet" _phrHostIdSet]
 
 -- | /See:/ 'purchaseHostReservationResponse' smart constructor.
-data PurchaseHostReservationResponse = PurchaseHostReservationResponse'
+data PurchaseHostReservationResponse a = PurchaseHostReservationResponse'
     { _phrrsCurrencyCode      :: !(Maybe CurrencyCodeValues)
     , _phrrsClientToken       :: !(Maybe Text)
     , _phrrsTotalHourlyPrice  :: !(Maybe Text)
@@ -169,7 +169,7 @@ data PurchaseHostReservationResponse = PurchaseHostReservationResponse'
 -- * 'phrrsResponseStatus'
 purchaseHostReservationResponse
     :: Int -- ^ 'phrrsResponseStatus'
-    -> PurchaseHostReservationResponse
+    -> PurchaseHostReservationResponse (a)
 purchaseHostReservationResponse pResponseStatus_ =
     PurchaseHostReservationResponse'
     { _phrrsCurrencyCode = Nothing
@@ -181,27 +181,27 @@ purchaseHostReservationResponse pResponseStatus_ =
     }
 
 -- | The currency in which the 'totalUpfrontPrice' and 'totalHourlyPrice' amounts are specified. At this time, the only supported currency is 'USD'.
-phrrsCurrencyCode :: Lens' PurchaseHostReservationResponse (Maybe CurrencyCodeValues)
+phrrsCurrencyCode :: Lens' (PurchaseHostReservationResponse (a)) (Maybe CurrencyCodeValues)
 phrrsCurrencyCode = lens _phrrsCurrencyCode (\ s a -> s{_phrrsCurrencyCode = a});
 
 -- | Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html How to Ensure Idempotency> in the /Amazon Elastic Compute Cloud User Guide/
-phrrsClientToken :: Lens' PurchaseHostReservationResponse (Maybe Text)
+phrrsClientToken :: Lens' (PurchaseHostReservationResponse (a)) (Maybe Text)
 phrrsClientToken = lens _phrrsClientToken (\ s a -> s{_phrrsClientToken = a});
 
 -- | The total hourly price of the reservation calculated per hour.
-phrrsTotalHourlyPrice :: Lens' PurchaseHostReservationResponse (Maybe Text)
+phrrsTotalHourlyPrice :: Lens' (PurchaseHostReservationResponse (a)) (Maybe Text)
 phrrsTotalHourlyPrice = lens _phrrsTotalHourlyPrice (\ s a -> s{_phrrsTotalHourlyPrice = a});
 
 -- | The total amount that will be charged to your account when you purchase the reservation.
-phrrsTotalUpfrontPrice :: Lens' PurchaseHostReservationResponse (Maybe Text)
+phrrsTotalUpfrontPrice :: Lens' (PurchaseHostReservationResponse (a)) (Maybe Text)
 phrrsTotalUpfrontPrice = lens _phrrsTotalUpfrontPrice (\ s a -> s{_phrrsTotalUpfrontPrice = a});
 
 -- | Describes the details of the purchase.
-phrrsPurchase :: Lens' PurchaseHostReservationResponse [Purchase]
+phrrsPurchase :: Lens' (PurchaseHostReservationResponse (a)) [Purchase]
 phrrsPurchase = lens _phrrsPurchase (\ s a -> s{_phrrsPurchase = a}) . _Default . _Coerce;
 
 -- | The response status code.
-phrrsResponseStatus :: Lens' PurchaseHostReservationResponse Int
+phrrsResponseStatus :: Lens' (PurchaseHostReservationResponse (a)) Int
 phrrsResponseStatus = lens _phrrsResponseStatus (\ s a -> s{_phrrsResponseStatus = a});
 
 instance NFData PurchaseHostReservationResponse

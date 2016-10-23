@@ -114,7 +114,7 @@ instance ToQuery DescribeLayers where
 -- | Contains the response to a 'DescribeLayers' request.
 --
 -- /See:/ 'describeLayersResponse' smart constructor.
-data DescribeLayersResponse = DescribeLayersResponse'
+data DescribeLayersResponse a = DescribeLayersResponse'
     { _dlrsLayers         :: !(Maybe [Layer])
     , _dlrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -128,7 +128,7 @@ data DescribeLayersResponse = DescribeLayersResponse'
 -- * 'dlrsResponseStatus'
 describeLayersResponse
     :: Int -- ^ 'dlrsResponseStatus'
-    -> DescribeLayersResponse
+    -> DescribeLayersResponse (a)
 describeLayersResponse pResponseStatus_ =
     DescribeLayersResponse'
     { _dlrsLayers = Nothing
@@ -136,11 +136,11 @@ describeLayersResponse pResponseStatus_ =
     }
 
 -- | An array of 'Layer' objects that describe the layers.
-dlrsLayers :: Lens' DescribeLayersResponse [Layer]
+dlrsLayers :: Lens' (DescribeLayersResponse (a)) [Layer]
 dlrsLayers = lens _dlrsLayers (\ s a -> s{_dlrsLayers = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlrsResponseStatus :: Lens' DescribeLayersResponse Int
+dlrsResponseStatus :: Lens' (DescribeLayersResponse (a)) Int
 dlrsResponseStatus = lens _dlrsResponseStatus (\ s a -> s{_dlrsResponseStatus = a});
 
 instance NFData DescribeLayersResponse

@@ -125,7 +125,7 @@ instance ToQuery ListUploads where
 -- | Represents the result of a list uploads request.
 --
 -- /See:/ 'listUploadsResponse' smart constructor.
-data ListUploadsResponse = ListUploadsResponse'
+data ListUploadsResponse a = ListUploadsResponse'
     { _lursNextToken      :: !(Maybe Text)
     , _lursUploads        :: !(Maybe [Upload])
     , _lursResponseStatus :: !Int
@@ -142,7 +142,7 @@ data ListUploadsResponse = ListUploadsResponse'
 -- * 'lursResponseStatus'
 listUploadsResponse
     :: Int -- ^ 'lursResponseStatus'
-    -> ListUploadsResponse
+    -> ListUploadsResponse (a)
 listUploadsResponse pResponseStatus_ =
     ListUploadsResponse'
     { _lursNextToken = Nothing
@@ -151,15 +151,15 @@ listUploadsResponse pResponseStatus_ =
     }
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-lursNextToken :: Lens' ListUploadsResponse (Maybe Text)
+lursNextToken :: Lens' (ListUploadsResponse (a)) (Maybe Text)
 lursNextToken = lens _lursNextToken (\ s a -> s{_lursNextToken = a});
 
 -- | Information about the uploads.
-lursUploads :: Lens' ListUploadsResponse [Upload]
+lursUploads :: Lens' (ListUploadsResponse (a)) [Upload]
 lursUploads = lens _lursUploads (\ s a -> s{_lursUploads = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lursResponseStatus :: Lens' ListUploadsResponse Int
+lursResponseStatus :: Lens' (ListUploadsResponse (a)) Int
 lursResponseStatus = lens _lursResponseStatus (\ s a -> s{_lursResponseStatus = a});
 
 instance NFData ListUploadsResponse

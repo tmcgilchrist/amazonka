@@ -126,7 +126,7 @@ instance ToQuery DeleteTags where
 -- | Amazon ML returns the following elements.
 --
 -- /See:/ 'deleteTagsResponse' smart constructor.
-data DeleteTagsResponse = DeleteTagsResponse'
+data DeleteTagsResponse a = DeleteTagsResponse'
     { _drsResourceId     :: !(Maybe Text)
     , _drsResourceType   :: !(Maybe TaggableResourceType)
     , _drsResponseStatus :: !Int
@@ -143,7 +143,7 @@ data DeleteTagsResponse = DeleteTagsResponse'
 -- * 'drsResponseStatus'
 deleteTagsResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteTagsResponse
+    -> DeleteTagsResponse (a)
 deleteTagsResponse pResponseStatus_ =
     DeleteTagsResponse'
     { _drsResourceId = Nothing
@@ -152,15 +152,15 @@ deleteTagsResponse pResponseStatus_ =
     }
 
 -- | The ID of the ML object from which tags were deleted.
-drsResourceId :: Lens' DeleteTagsResponse (Maybe Text)
+drsResourceId :: Lens' (DeleteTagsResponse (a)) (Maybe Text)
 drsResourceId = lens _drsResourceId (\ s a -> s{_drsResourceId = a});
 
 -- | The type of the ML object from which tags were deleted.
-drsResourceType :: Lens' DeleteTagsResponse (Maybe TaggableResourceType)
+drsResourceType :: Lens' (DeleteTagsResponse (a)) (Maybe TaggableResourceType)
 drsResourceType = lens _drsResourceType (\ s a -> s{_drsResourceType = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteTagsResponse Int
+drsResponseStatus :: Lens' (DeleteTagsResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteTagsResponse

@@ -189,7 +189,7 @@ instance ToQuery ReceiveMessage where
 -- | A list of received messages.
 --
 -- /See:/ 'receiveMessageResponse' smart constructor.
-data ReceiveMessageResponse = ReceiveMessageResponse'
+data ReceiveMessageResponse a = ReceiveMessageResponse'
     { _rmrsMessages       :: !(Maybe [Message])
     , _rmrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -203,7 +203,7 @@ data ReceiveMessageResponse = ReceiveMessageResponse'
 -- * 'rmrsResponseStatus'
 receiveMessageResponse
     :: Int -- ^ 'rmrsResponseStatus'
-    -> ReceiveMessageResponse
+    -> ReceiveMessageResponse (a)
 receiveMessageResponse pResponseStatus_ =
     ReceiveMessageResponse'
     { _rmrsMessages = Nothing
@@ -211,11 +211,11 @@ receiveMessageResponse pResponseStatus_ =
     }
 
 -- | A list of messages.
-rmrsMessages :: Lens' ReceiveMessageResponse [Message]
+rmrsMessages :: Lens' (ReceiveMessageResponse (a)) [Message]
 rmrsMessages = lens _rmrsMessages (\ s a -> s{_rmrsMessages = a}) . _Default . _Coerce;
 
 -- | The response status code.
-rmrsResponseStatus :: Lens' ReceiveMessageResponse Int
+rmrsResponseStatus :: Lens' (ReceiveMessageResponse (a)) Int
 rmrsResponseStatus = lens _rmrsResponseStatus (\ s a -> s{_rmrsResponseStatus = a});
 
 instance NFData ReceiveMessageResponse

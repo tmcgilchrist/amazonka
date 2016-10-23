@@ -95,14 +95,14 @@ instance ToQuery ModifyInstanceGroups where
         toQuery = const mempty
 
 -- | /See:/ 'modifyInstanceGroupsResponse' smart constructor.
-data ModifyInstanceGroupsResponse =
+data ModifyInstanceGroupsResponse a =
     ModifyInstanceGroupsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyInstanceGroupsResponse' with the minimum fields required to make a request.
 --
 modifyInstanceGroupsResponse
-    :: ModifyInstanceGroupsResponse
+    :: ModifyInstanceGroupsResponse (a)
 modifyInstanceGroupsResponse = ModifyInstanceGroupsResponse'
 
 instance NFData ModifyInstanceGroupsResponse

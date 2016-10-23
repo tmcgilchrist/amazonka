@@ -133,7 +133,7 @@ instance ToQuery DescribeReservedNodes where
 -- |
 --
 -- /See:/ 'describeReservedNodesResponse' smart constructor.
-data DescribeReservedNodesResponse = DescribeReservedNodesResponse'
+data DescribeReservedNodesResponse a = DescribeReservedNodesResponse'
     { _drnrsReservedNodes  :: !(Maybe [ReservedNode])
     , _drnrsMarker         :: !(Maybe Text)
     , _drnrsResponseStatus :: !Int
@@ -150,7 +150,7 @@ data DescribeReservedNodesResponse = DescribeReservedNodesResponse'
 -- * 'drnrsResponseStatus'
 describeReservedNodesResponse
     :: Int -- ^ 'drnrsResponseStatus'
-    -> DescribeReservedNodesResponse
+    -> DescribeReservedNodesResponse (a)
 describeReservedNodesResponse pResponseStatus_ =
     DescribeReservedNodesResponse'
     { _drnrsReservedNodes = Nothing
@@ -159,15 +159,15 @@ describeReservedNodesResponse pResponseStatus_ =
     }
 
 -- | The list of 'ReservedNode' objects.
-drnrsReservedNodes :: Lens' DescribeReservedNodesResponse [ReservedNode]
+drnrsReservedNodes :: Lens' (DescribeReservedNodesResponse (a)) [ReservedNode]
 drnrsReservedNodes = lens _drnrsReservedNodes (\ s a -> s{_drnrsReservedNodes = a}) . _Default . _Coerce;
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-drnrsMarker :: Lens' DescribeReservedNodesResponse (Maybe Text)
+drnrsMarker :: Lens' (DescribeReservedNodesResponse (a)) (Maybe Text)
 drnrsMarker = lens _drnrsMarker (\ s a -> s{_drnrsMarker = a});
 
 -- | The response status code.
-drnrsResponseStatus :: Lens' DescribeReservedNodesResponse Int
+drnrsResponseStatus :: Lens' (DescribeReservedNodesResponse (a)) Int
 drnrsResponseStatus = lens _drnrsResponseStatus (\ s a -> s{_drnrsResponseStatus = a});
 
 instance NFData DescribeReservedNodesResponse

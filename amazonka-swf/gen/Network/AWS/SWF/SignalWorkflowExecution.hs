@@ -151,14 +151,14 @@ instance ToQuery SignalWorkflowExecution where
         toQuery = const mempty
 
 -- | /See:/ 'signalWorkflowExecutionResponse' smart constructor.
-data SignalWorkflowExecutionResponse =
+data SignalWorkflowExecutionResponse a =
     SignalWorkflowExecutionResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SignalWorkflowExecutionResponse' with the minimum fields required to make a request.
 --
 signalWorkflowExecutionResponse
-    :: SignalWorkflowExecutionResponse
+    :: SignalWorkflowExecutionResponse (a)
 signalWorkflowExecutionResponse = SignalWorkflowExecutionResponse'
 
 instance NFData SignalWorkflowExecutionResponse

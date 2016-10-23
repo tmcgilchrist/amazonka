@@ -103,7 +103,7 @@ instance ToQuery ListHSMs where
 -- | Contains the output of the < ListHsms> operation.
 --
 -- /See:/ 'listHSMsResponse' smart constructor.
-data ListHSMsResponse = ListHSMsResponse'
+data ListHSMsResponse a = ListHSMsResponse'
     { _lhsmrsNextToken      :: !(Maybe Text)
     , _lhsmrsHSMList        :: !(Maybe [Text])
     , _lhsmrsResponseStatus :: !Int
@@ -120,7 +120,7 @@ data ListHSMsResponse = ListHSMsResponse'
 -- * 'lhsmrsResponseStatus'
 listHSMsResponse
     :: Int -- ^ 'lhsmrsResponseStatus'
-    -> ListHSMsResponse
+    -> ListHSMsResponse (a)
 listHSMsResponse pResponseStatus_ =
     ListHSMsResponse'
     { _lhsmrsNextToken = Nothing
@@ -129,15 +129,15 @@ listHSMsResponse pResponseStatus_ =
     }
 
 -- | If not null, more results are available. Pass this value to < ListHsms> to retrieve the next set of items.
-lhsmrsNextToken :: Lens' ListHSMsResponse (Maybe Text)
+lhsmrsNextToken :: Lens' (ListHSMsResponse (a)) (Maybe Text)
 lhsmrsNextToken = lens _lhsmrsNextToken (\ s a -> s{_lhsmrsNextToken = a});
 
 -- | The list of ARNs that identify the HSMs.
-lhsmrsHSMList :: Lens' ListHSMsResponse [Text]
+lhsmrsHSMList :: Lens' (ListHSMsResponse (a)) [Text]
 lhsmrsHSMList = lens _lhsmrsHSMList (\ s a -> s{_lhsmrsHSMList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lhsmrsResponseStatus :: Lens' ListHSMsResponse Int
+lhsmrsResponseStatus :: Lens' (ListHSMsResponse (a)) Int
 lhsmrsResponseStatus = lens _lhsmrsResponseStatus (\ s a -> s{_lhsmrsResponseStatus = a});
 
 instance NFData ListHSMsResponse

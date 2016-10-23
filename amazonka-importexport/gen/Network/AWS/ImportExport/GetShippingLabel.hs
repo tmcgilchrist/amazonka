@@ -201,7 +201,7 @@ instance ToQuery GetShippingLabel where
                "jobIds" =: toQueryList "member" _gslJobIds]
 
 -- | /See:/ 'getShippingLabelResponse' smart constructor.
-data GetShippingLabelResponse = GetShippingLabelResponse'
+data GetShippingLabelResponse a = GetShippingLabelResponse'
     { _gslrsShippingLabelURL :: !(Maybe Text)
     , _gslrsWarning          :: !(Maybe Text)
     , _gslrsResponseStatus   :: !Int
@@ -218,7 +218,7 @@ data GetShippingLabelResponse = GetShippingLabelResponse'
 -- * 'gslrsResponseStatus'
 getShippingLabelResponse
     :: Int -- ^ 'gslrsResponseStatus'
-    -> GetShippingLabelResponse
+    -> GetShippingLabelResponse (a)
 getShippingLabelResponse pResponseStatus_ =
     GetShippingLabelResponse'
     { _gslrsShippingLabelURL = Nothing
@@ -227,15 +227,15 @@ getShippingLabelResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gslrsShippingLabelURL :: Lens' GetShippingLabelResponse (Maybe Text)
+gslrsShippingLabelURL :: Lens' (GetShippingLabelResponse (a)) (Maybe Text)
 gslrsShippingLabelURL = lens _gslrsShippingLabelURL (\ s a -> s{_gslrsShippingLabelURL = a});
 
 -- | Undocumented member.
-gslrsWarning :: Lens' GetShippingLabelResponse (Maybe Text)
+gslrsWarning :: Lens' (GetShippingLabelResponse (a)) (Maybe Text)
 gslrsWarning = lens _gslrsWarning (\ s a -> s{_gslrsWarning = a});
 
 -- | The response status code.
-gslrsResponseStatus :: Lens' GetShippingLabelResponse Int
+gslrsResponseStatus :: Lens' (GetShippingLabelResponse (a)) Int
 gslrsResponseStatus = lens _gslrsResponseStatus (\ s a -> s{_gslrsResponseStatus = a});
 
 instance NFData GetShippingLabelResponse

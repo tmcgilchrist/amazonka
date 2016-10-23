@@ -99,14 +99,14 @@ instance ToQuery DeleteBasePathMapping where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBasePathMappingResponse' smart constructor.
-data DeleteBasePathMappingResponse =
+data DeleteBasePathMappingResponse a =
     DeleteBasePathMappingResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteBasePathMappingResponse' with the minimum fields required to make a request.
 --
 deleteBasePathMappingResponse
-    :: DeleteBasePathMappingResponse
+    :: DeleteBasePathMappingResponse (a)
 deleteBasePathMappingResponse = DeleteBasePathMappingResponse'
 
 instance NFData DeleteBasePathMappingResponse

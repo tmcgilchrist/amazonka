@@ -179,7 +179,7 @@ instance ToQuery ListParts where
                "uploadId" =: _lpUploadId]
 
 -- | /See:/ 'listPartsResponse' smart constructor.
-data ListPartsResponse = ListPartsResponse'
+data ListPartsResponse a = ListPartsResponse'
     { _lprsParts                :: !(Maybe [Part])
     , _lprsRequestCharged       :: !(Maybe RequestCharged)
     , _lprsMaxParts             :: !(Maybe Int)
@@ -232,7 +232,7 @@ data ListPartsResponse = ListPartsResponse'
 -- * 'lprsResponseStatus'
 listPartsResponse
     :: Int -- ^ 'lprsResponseStatus'
-    -> ListPartsResponse
+    -> ListPartsResponse (a)
 listPartsResponse pResponseStatus_ =
     ListPartsResponse'
     { _lprsParts = Nothing
@@ -253,63 +253,63 @@ listPartsResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-lprsParts :: Lens' ListPartsResponse [Part]
+lprsParts :: Lens' (ListPartsResponse (a)) [Part]
 lprsParts = lens _lprsParts (\ s a -> s{_lprsParts = a}) . _Default . _Coerce;
 
 -- | Undocumented member.
-lprsRequestCharged :: Lens' ListPartsResponse (Maybe RequestCharged)
+lprsRequestCharged :: Lens' (ListPartsResponse (a)) (Maybe RequestCharged)
 lprsRequestCharged = lens _lprsRequestCharged (\ s a -> s{_lprsRequestCharged = a});
 
 -- | Maximum number of parts that were allowed in the response.
-lprsMaxParts :: Lens' ListPartsResponse (Maybe Int)
+lprsMaxParts :: Lens' (ListPartsResponse (a)) (Maybe Int)
 lprsMaxParts = lens _lprsMaxParts (\ s a -> s{_lprsMaxParts = a});
 
 -- | Identifies who initiated the multipart upload.
-lprsInitiator :: Lens' ListPartsResponse (Maybe Initiator)
+lprsInitiator :: Lens' (ListPartsResponse (a)) (Maybe Initiator)
 lprsInitiator = lens _lprsInitiator (\ s a -> s{_lprsInitiator = a});
 
 -- | Name of the bucket to which the multipart upload was initiated.
-lprsBucket :: Lens' ListPartsResponse (Maybe BucketName)
+lprsBucket :: Lens' (ListPartsResponse (a)) (Maybe BucketName)
 lprsBucket = lens _lprsBucket (\ s a -> s{_lprsBucket = a});
 
 -- | Date when multipart upload will become eligible for abort operation by lifecycle.
-lprsAbortDate :: Lens' ListPartsResponse (Maybe UTCTime)
+lprsAbortDate :: Lens' (ListPartsResponse (a)) (Maybe UTCTime)
 lprsAbortDate = lens _lprsAbortDate (\ s a -> s{_lprsAbortDate = a}) . mapping _Time;
 
 -- | When a list is truncated, this element specifies the last part in the list, as well as the value to use for the part-number-marker request parameter in a subsequent request.
-lprsNextPartNumberMarker :: Lens' ListPartsResponse (Maybe Int)
+lprsNextPartNumberMarker :: Lens' (ListPartsResponse (a)) (Maybe Int)
 lprsNextPartNumberMarker = lens _lprsNextPartNumberMarker (\ s a -> s{_lprsNextPartNumberMarker = a});
 
 -- | Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
-lprsAbortRuleId :: Lens' ListPartsResponse (Maybe Text)
+lprsAbortRuleId :: Lens' (ListPartsResponse (a)) (Maybe Text)
 lprsAbortRuleId = lens _lprsAbortRuleId (\ s a -> s{_lprsAbortRuleId = a});
 
 -- | Undocumented member.
-lprsOwner :: Lens' ListPartsResponse (Maybe Owner)
+lprsOwner :: Lens' (ListPartsResponse (a)) (Maybe Owner)
 lprsOwner = lens _lprsOwner (\ s a -> s{_lprsOwner = a});
 
 -- | Object key for which the multipart upload was initiated.
-lprsKey :: Lens' ListPartsResponse (Maybe ObjectKey)
+lprsKey :: Lens' (ListPartsResponse (a)) (Maybe ObjectKey)
 lprsKey = lens _lprsKey (\ s a -> s{_lprsKey = a});
 
 -- | The class of storage used to store the object.
-lprsStorageClass :: Lens' ListPartsResponse (Maybe StorageClass)
+lprsStorageClass :: Lens' (ListPartsResponse (a)) (Maybe StorageClass)
 lprsStorageClass = lens _lprsStorageClass (\ s a -> s{_lprsStorageClass = a});
 
 -- | Indicates whether the returned list of parts is truncated.
-lprsIsTruncated :: Lens' ListPartsResponse (Maybe Bool)
+lprsIsTruncated :: Lens' (ListPartsResponse (a)) (Maybe Bool)
 lprsIsTruncated = lens _lprsIsTruncated (\ s a -> s{_lprsIsTruncated = a});
 
 -- | Part number after which listing begins.
-lprsPartNumberMarker :: Lens' ListPartsResponse (Maybe Int)
+lprsPartNumberMarker :: Lens' (ListPartsResponse (a)) (Maybe Int)
 lprsPartNumberMarker = lens _lprsPartNumberMarker (\ s a -> s{_lprsPartNumberMarker = a});
 
 -- | Upload ID identifying the multipart upload whose parts are being listed.
-lprsUploadId :: Lens' ListPartsResponse (Maybe Text)
+lprsUploadId :: Lens' (ListPartsResponse (a)) (Maybe Text)
 lprsUploadId = lens _lprsUploadId (\ s a -> s{_lprsUploadId = a});
 
 -- | The response status code.
-lprsResponseStatus :: Lens' ListPartsResponse Int
+lprsResponseStatus :: Lens' (ListPartsResponse (a)) Int
 lprsResponseStatus = lens _lprsResponseStatus (\ s a -> s{_lprsResponseStatus = a});
 
 instance NFData ListPartsResponse

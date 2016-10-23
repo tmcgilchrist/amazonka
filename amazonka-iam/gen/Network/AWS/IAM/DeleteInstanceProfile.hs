@@ -91,14 +91,14 @@ instance ToQuery DeleteInstanceProfile where
                "InstanceProfileName" =: _dipInstanceProfileName]
 
 -- | /See:/ 'deleteInstanceProfileResponse' smart constructor.
-data DeleteInstanceProfileResponse =
+data DeleteInstanceProfileResponse a =
     DeleteInstanceProfileResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteInstanceProfileResponse' with the minimum fields required to make a request.
 --
 deleteInstanceProfileResponse
-    :: DeleteInstanceProfileResponse
+    :: DeleteInstanceProfileResponse (a)
 deleteInstanceProfileResponse = DeleteInstanceProfileResponse'
 
 instance NFData DeleteInstanceProfileResponse

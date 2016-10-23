@@ -144,14 +144,14 @@ instance ToQuery ModifyNetworkInterfaceAttribute
                "NetworkInterfaceId" =: _mniaNetworkInterfaceId]
 
 -- | /See:/ 'modifyNetworkInterfaceAttributeResponse' smart constructor.
-data ModifyNetworkInterfaceAttributeResponse =
+data ModifyNetworkInterfaceAttributeResponse a =
     ModifyNetworkInterfaceAttributeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ModifyNetworkInterfaceAttributeResponse' with the minimum fields required to make a request.
 --
 modifyNetworkInterfaceAttributeResponse
-    :: ModifyNetworkInterfaceAttributeResponse
+    :: ModifyNetworkInterfaceAttributeResponse (a)
 modifyNetworkInterfaceAttributeResponse =
     ModifyNetworkInterfaceAttributeResponse'
 

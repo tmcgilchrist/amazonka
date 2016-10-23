@@ -102,7 +102,7 @@ instance ToQuery StartWorkspaces where
         toQuery = const mempty
 
 -- | /See:/ 'startWorkspacesResponse' smart constructor.
-data StartWorkspacesResponse = StartWorkspacesResponse'
+data StartWorkspacesResponse a = StartWorkspacesResponse'
     { _swrsFailedRequests :: !(Maybe [FailedWorkspaceChangeRequest])
     , _swrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -116,7 +116,7 @@ data StartWorkspacesResponse = StartWorkspacesResponse'
 -- * 'swrsResponseStatus'
 startWorkspacesResponse
     :: Int -- ^ 'swrsResponseStatus'
-    -> StartWorkspacesResponse
+    -> StartWorkspacesResponse (a)
 startWorkspacesResponse pResponseStatus_ =
     StartWorkspacesResponse'
     { _swrsFailedRequests = Nothing
@@ -124,11 +124,11 @@ startWorkspacesResponse pResponseStatus_ =
     }
 
 -- | The failed requests.
-swrsFailedRequests :: Lens' StartWorkspacesResponse [FailedWorkspaceChangeRequest]
+swrsFailedRequests :: Lens' (StartWorkspacesResponse (a)) [FailedWorkspaceChangeRequest]
 swrsFailedRequests = lens _swrsFailedRequests (\ s a -> s{_swrsFailedRequests = a}) . _Default . _Coerce;
 
 -- | The response status code.
-swrsResponseStatus :: Lens' StartWorkspacesResponse Int
+swrsResponseStatus :: Lens' (StartWorkspacesResponse (a)) Int
 swrsResponseStatus = lens _swrsResponseStatus (\ s a -> s{_swrsResponseStatus = a});
 
 instance NFData StartWorkspacesResponse

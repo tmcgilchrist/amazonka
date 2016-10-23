@@ -93,7 +93,7 @@ instance ToQuery ListTagsForResource where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse = ListTagsForResourceResponse'
+data ListTagsForResourceResponse a = ListTagsForResourceResponse'
     { _ltfrrsResponseStatus :: !Int
     , _ltfrrsTags           :: !Tags
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -108,7 +108,7 @@ data ListTagsForResourceResponse = ListTagsForResourceResponse'
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
     -> Tags -- ^ 'ltfrrsTags'
-    -> ListTagsForResourceResponse
+    -> ListTagsForResourceResponse (a)
 listTagsForResourceResponse pResponseStatus_ pTags_ =
     ListTagsForResourceResponse'
     { _ltfrrsResponseStatus = pResponseStatus_
@@ -116,11 +116,11 @@ listTagsForResourceResponse pResponseStatus_ pTags_ =
     }
 
 -- | The response status code.
-ltfrrsResponseStatus :: Lens' ListTagsForResourceResponse Int
+ltfrrsResponseStatus :: Lens' (ListTagsForResourceResponse (a)) Int
 ltfrrsResponseStatus = lens _ltfrrsResponseStatus (\ s a -> s{_ltfrrsResponseStatus = a});
 
 -- | A complex type that contains zero or more Tag elements.
-ltfrrsTags :: Lens' ListTagsForResourceResponse Tags
+ltfrrsTags :: Lens' (ListTagsForResourceResponse (a)) Tags
 ltfrrsTags = lens _ltfrrsTags (\ s a -> s{_ltfrrsTags = a});
 
 instance NFData ListTagsForResourceResponse

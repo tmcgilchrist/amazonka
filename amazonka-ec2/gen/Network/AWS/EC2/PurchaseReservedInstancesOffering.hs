@@ -138,7 +138,7 @@ instance ToQuery PurchaseReservedInstancesOffering
 -- | Contains the output of PurchaseReservedInstancesOffering.
 --
 -- /See:/ 'purchaseReservedInstancesOfferingResponse' smart constructor.
-data PurchaseReservedInstancesOfferingResponse = PurchaseReservedInstancesOfferingResponse'
+data PurchaseReservedInstancesOfferingResponse a = PurchaseReservedInstancesOfferingResponse'
     { _priorsReservedInstancesId :: !(Maybe Text)
     , _priorsResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -152,7 +152,7 @@ data PurchaseReservedInstancesOfferingResponse = PurchaseReservedInstancesOfferi
 -- * 'priorsResponseStatus'
 purchaseReservedInstancesOfferingResponse
     :: Int -- ^ 'priorsResponseStatus'
-    -> PurchaseReservedInstancesOfferingResponse
+    -> PurchaseReservedInstancesOfferingResponse (a)
 purchaseReservedInstancesOfferingResponse pResponseStatus_ =
     PurchaseReservedInstancesOfferingResponse'
     { _priorsReservedInstancesId = Nothing
@@ -160,11 +160,11 @@ purchaseReservedInstancesOfferingResponse pResponseStatus_ =
     }
 
 -- | The IDs of the purchased Reserved Instances.
-priorsReservedInstancesId :: Lens' PurchaseReservedInstancesOfferingResponse (Maybe Text)
+priorsReservedInstancesId :: Lens' (PurchaseReservedInstancesOfferingResponse (a)) (Maybe Text)
 priorsReservedInstancesId = lens _priorsReservedInstancesId (\ s a -> s{_priorsReservedInstancesId = a});
 
 -- | The response status code.
-priorsResponseStatus :: Lens' PurchaseReservedInstancesOfferingResponse Int
+priorsResponseStatus :: Lens' (PurchaseReservedInstancesOfferingResponse (a)) Int
 priorsResponseStatus = lens _priorsResponseStatus (\ s a -> s{_priorsResponseStatus = a});
 
 instance NFData

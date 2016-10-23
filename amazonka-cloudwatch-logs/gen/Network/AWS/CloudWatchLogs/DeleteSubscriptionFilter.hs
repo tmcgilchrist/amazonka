@@ -106,14 +106,14 @@ instance ToQuery DeleteSubscriptionFilter where
         toQuery = const mempty
 
 -- | /See:/ 'deleteSubscriptionFilterResponse' smart constructor.
-data DeleteSubscriptionFilterResponse =
+data DeleteSubscriptionFilterResponse a =
     DeleteSubscriptionFilterResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSubscriptionFilterResponse' with the minimum fields required to make a request.
 --
 deleteSubscriptionFilterResponse
-    :: DeleteSubscriptionFilterResponse
+    :: DeleteSubscriptionFilterResponse (a)
 deleteSubscriptionFilterResponse = DeleteSubscriptionFilterResponse'
 
 instance NFData DeleteSubscriptionFilterResponse

@@ -149,7 +149,7 @@ instance ToQuery ModifyVPCEndpoint where
 -- | Contains the output of ModifyVpcEndpoint.
 --
 -- /See:/ 'modifyVPCEndpointResponse' smart constructor.
-data ModifyVPCEndpointResponse = ModifyVPCEndpointResponse'
+data ModifyVPCEndpointResponse a = ModifyVPCEndpointResponse'
     { _mversReturn         :: !(Maybe Bool)
     , _mversResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -163,7 +163,7 @@ data ModifyVPCEndpointResponse = ModifyVPCEndpointResponse'
 -- * 'mversResponseStatus'
 modifyVPCEndpointResponse
     :: Int -- ^ 'mversResponseStatus'
-    -> ModifyVPCEndpointResponse
+    -> ModifyVPCEndpointResponse (a)
 modifyVPCEndpointResponse pResponseStatus_ =
     ModifyVPCEndpointResponse'
     { _mversReturn = Nothing
@@ -171,11 +171,11 @@ modifyVPCEndpointResponse pResponseStatus_ =
     }
 
 -- | Returns 'true' if the request succeeds; otherwise, it returns an error.
-mversReturn :: Lens' ModifyVPCEndpointResponse (Maybe Bool)
+mversReturn :: Lens' (ModifyVPCEndpointResponse (a)) (Maybe Bool)
 mversReturn = lens _mversReturn (\ s a -> s{_mversReturn = a});
 
 -- | The response status code.
-mversResponseStatus :: Lens' ModifyVPCEndpointResponse Int
+mversResponseStatus :: Lens' (ModifyVPCEndpointResponse (a)) Int
 mversResponseStatus = lens _mversResponseStatus (\ s a -> s{_mversResponseStatus = a});
 
 instance NFData ModifyVPCEndpointResponse

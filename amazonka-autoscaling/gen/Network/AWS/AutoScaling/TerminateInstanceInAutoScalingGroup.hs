@@ -117,7 +117,7 @@ instance ToQuery TerminateInstanceInAutoScalingGroup
 -- | Contains the output of TerminateInstancesInAutoScalingGroup.
 --
 -- /See:/ 'terminateInstanceInAutoScalingGroupResponse' smart constructor.
-data TerminateInstanceInAutoScalingGroupResponse = TerminateInstanceInAutoScalingGroupResponse'
+data TerminateInstanceInAutoScalingGroupResponse a = TerminateInstanceInAutoScalingGroupResponse'
     { _tiiasgrsActivity       :: !(Maybe Activity)
     , _tiiasgrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -131,7 +131,7 @@ data TerminateInstanceInAutoScalingGroupResponse = TerminateInstanceInAutoScalin
 -- * 'tiiasgrsResponseStatus'
 terminateInstanceInAutoScalingGroupResponse
     :: Int -- ^ 'tiiasgrsResponseStatus'
-    -> TerminateInstanceInAutoScalingGroupResponse
+    -> TerminateInstanceInAutoScalingGroupResponse (a)
 terminateInstanceInAutoScalingGroupResponse pResponseStatus_ =
     TerminateInstanceInAutoScalingGroupResponse'
     { _tiiasgrsActivity = Nothing
@@ -139,11 +139,11 @@ terminateInstanceInAutoScalingGroupResponse pResponseStatus_ =
     }
 
 -- | A scaling activity.
-tiiasgrsActivity :: Lens' TerminateInstanceInAutoScalingGroupResponse (Maybe Activity)
+tiiasgrsActivity :: Lens' (TerminateInstanceInAutoScalingGroupResponse (a)) (Maybe Activity)
 tiiasgrsActivity = lens _tiiasgrsActivity (\ s a -> s{_tiiasgrsActivity = a});
 
 -- | The response status code.
-tiiasgrsResponseStatus :: Lens' TerminateInstanceInAutoScalingGroupResponse Int
+tiiasgrsResponseStatus :: Lens' (TerminateInstanceInAutoScalingGroupResponse (a)) Int
 tiiasgrsResponseStatus = lens _tiiasgrsResponseStatus (\ s a -> s{_tiiasgrsResponseStatus = a});
 
 instance NFData

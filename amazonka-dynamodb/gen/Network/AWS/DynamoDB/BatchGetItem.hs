@@ -185,7 +185,7 @@ instance ToQuery BatchGetItem where
 -- | Represents the output of a /BatchGetItem/ operation.
 --
 -- /See:/ 'batchGetItemResponse' smart constructor.
-data BatchGetItemResponse = BatchGetItemResponse'
+data BatchGetItemResponse a = BatchGetItemResponse'
     { _bgirsUnprocessedKeys  :: !(Maybe (Map Text KeysAndAttributes))
     , _bgirsResponses        :: !(Maybe (Map Text [Map Text AttributeValue]))
     , _bgirsConsumedCapacity :: !(Maybe [ConsumedCapacity])
@@ -205,7 +205,7 @@ data BatchGetItemResponse = BatchGetItemResponse'
 -- * 'bgirsResponseStatus'
 batchGetItemResponse
     :: Int -- ^ 'bgirsResponseStatus'
-    -> BatchGetItemResponse
+    -> BatchGetItemResponse (a)
 batchGetItemResponse pResponseStatus_ =
     BatchGetItemResponse'
     { _bgirsUnprocessedKeys = Nothing
@@ -225,11 +225,11 @@ batchGetItemResponse pResponseStatus_ =
 -- -   /ConsistentRead/ - The consistency of a read operation. If set to 'true', then a strongly consistent read is used; otherwise, an eventually consistent read is used.
 --
 -- If there are no unprocessed keys remaining, the response contains an empty /UnprocessedKeys/ map.
-bgirsUnprocessedKeys :: Lens' BatchGetItemResponse (HashMap Text KeysAndAttributes)
+bgirsUnprocessedKeys :: Lens' (BatchGetItemResponse (a)) (HashMap Text KeysAndAttributes)
 bgirsUnprocessedKeys = lens _bgirsUnprocessedKeys (\ s a -> s{_bgirsUnprocessedKeys = a}) . _Default . _Map;
 
 -- | A map of table name to a list of items. Each object in /Responses/ consists of a table name, along with a map of attribute data consisting of the data type and attribute value.
-bgirsResponses :: Lens' BatchGetItemResponse (HashMap Text [HashMap Text AttributeValue])
+bgirsResponses :: Lens' (BatchGetItemResponse (a)) (HashMap Text [HashMap Text AttributeValue])
 bgirsResponses = lens _bgirsResponses (\ s a -> s{_bgirsResponses = a}) . _Default . _Map;
 
 -- | The read capacity units consumed by the operation.
@@ -240,11 +240,11 @@ bgirsResponses = lens _bgirsResponses (\ s a -> s{_bgirsResponses = a}) . _Defau
 --
 -- -   /CapacityUnits/ - The total number of capacity units consumed.
 --
-bgirsConsumedCapacity :: Lens' BatchGetItemResponse [ConsumedCapacity]
+bgirsConsumedCapacity :: Lens' (BatchGetItemResponse (a)) [ConsumedCapacity]
 bgirsConsumedCapacity = lens _bgirsConsumedCapacity (\ s a -> s{_bgirsConsumedCapacity = a}) . _Default . _Coerce;
 
 -- | The response status code.
-bgirsResponseStatus :: Lens' BatchGetItemResponse Int
+bgirsResponseStatus :: Lens' (BatchGetItemResponse (a)) Int
 bgirsResponseStatus = lens _bgirsResponseStatus (\ s a -> s{_bgirsResponseStatus = a});
 
 instance NFData BatchGetItemResponse

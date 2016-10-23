@@ -365,7 +365,7 @@ instance ToQuery CreateStack where
 -- | Contains the response to a 'CreateStack' request.
 --
 -- /See:/ 'createStackResponse' smart constructor.
-data CreateStackResponse = CreateStackResponse'
+data CreateStackResponse a = CreateStackResponse'
     { _crsStackId        :: !(Maybe Text)
     , _crsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -379,7 +379,7 @@ data CreateStackResponse = CreateStackResponse'
 -- * 'crsResponseStatus'
 createStackResponse
     :: Int -- ^ 'crsResponseStatus'
-    -> CreateStackResponse
+    -> CreateStackResponse (a)
 createStackResponse pResponseStatus_ =
     CreateStackResponse'
     { _crsStackId = Nothing
@@ -387,11 +387,11 @@ createStackResponse pResponseStatus_ =
     }
 
 -- | The stack ID, which is an opaque string that you use to identify the stack when performing actions such as 'DescribeStacks'.
-crsStackId :: Lens' CreateStackResponse (Maybe Text)
+crsStackId :: Lens' (CreateStackResponse (a)) (Maybe Text)
 crsStackId = lens _crsStackId (\ s a -> s{_crsStackId = a});
 
 -- | The response status code.
-crsResponseStatus :: Lens' CreateStackResponse Int
+crsResponseStatus :: Lens' (CreateStackResponse (a)) Int
 crsResponseStatus = lens _crsResponseStatus (\ s a -> s{_crsResponseStatus = a});
 
 instance NFData CreateStackResponse

@@ -119,14 +119,14 @@ instance ToQuery UpdateAssessmentTarget where
         toQuery = const mempty
 
 -- | /See:/ 'updateAssessmentTargetResponse' smart constructor.
-data UpdateAssessmentTargetResponse =
+data UpdateAssessmentTargetResponse a =
     UpdateAssessmentTargetResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateAssessmentTargetResponse' with the minimum fields required to make a request.
 --
 updateAssessmentTargetResponse
-    :: UpdateAssessmentTargetResponse
+    :: UpdateAssessmentTargetResponse (a)
 updateAssessmentTargetResponse = UpdateAssessmentTargetResponse'
 
 instance NFData UpdateAssessmentTargetResponse

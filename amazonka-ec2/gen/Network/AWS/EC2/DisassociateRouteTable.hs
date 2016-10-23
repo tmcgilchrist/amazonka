@@ -101,14 +101,14 @@ instance ToQuery DisassociateRouteTable where
                "AssociationId" =: _drtAssociationId]
 
 -- | /See:/ 'disassociateRouteTableResponse' smart constructor.
-data DisassociateRouteTableResponse =
+data DisassociateRouteTableResponse a =
     DisassociateRouteTableResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DisassociateRouteTableResponse' with the minimum fields required to make a request.
 --
 disassociateRouteTableResponse
-    :: DisassociateRouteTableResponse
+    :: DisassociateRouteTableResponse (a)
 disassociateRouteTableResponse = DisassociateRouteTableResponse'
 
 instance NFData DisassociateRouteTableResponse

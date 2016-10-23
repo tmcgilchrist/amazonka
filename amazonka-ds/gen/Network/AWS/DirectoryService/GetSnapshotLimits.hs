@@ -103,7 +103,7 @@ instance ToQuery GetSnapshotLimits where
 -- | Contains the results of the < GetSnapshotLimits> operation.
 --
 -- /See:/ 'getSnapshotLimitsResponse' smart constructor.
-data GetSnapshotLimitsResponse = GetSnapshotLimitsResponse'
+data GetSnapshotLimitsResponse a = GetSnapshotLimitsResponse'
     { _gslrsSnapshotLimits :: !(Maybe SnapshotLimits)
     , _gslrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data GetSnapshotLimitsResponse = GetSnapshotLimitsResponse'
 -- * 'gslrsResponseStatus'
 getSnapshotLimitsResponse
     :: Int -- ^ 'gslrsResponseStatus'
-    -> GetSnapshotLimitsResponse
+    -> GetSnapshotLimitsResponse (a)
 getSnapshotLimitsResponse pResponseStatus_ =
     GetSnapshotLimitsResponse'
     { _gslrsSnapshotLimits = Nothing
@@ -125,11 +125,11 @@ getSnapshotLimitsResponse pResponseStatus_ =
     }
 
 -- | A < SnapshotLimits> object that contains the manual snapshot limits for the specified directory.
-gslrsSnapshotLimits :: Lens' GetSnapshotLimitsResponse (Maybe SnapshotLimits)
+gslrsSnapshotLimits :: Lens' (GetSnapshotLimitsResponse (a)) (Maybe SnapshotLimits)
 gslrsSnapshotLimits = lens _gslrsSnapshotLimits (\ s a -> s{_gslrsSnapshotLimits = a});
 
 -- | The response status code.
-gslrsResponseStatus :: Lens' GetSnapshotLimitsResponse Int
+gslrsResponseStatus :: Lens' (GetSnapshotLimitsResponse (a)) Int
 gslrsResponseStatus = lens _gslrsResponseStatus (\ s a -> s{_gslrsResponseStatus = a});
 
 instance NFData GetSnapshotLimitsResponse

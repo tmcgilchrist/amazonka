@@ -119,7 +119,7 @@ instance ToQuery InstallToRemoteAccessSession where
 -- | Represents the response from the server after AWS Device Farm makes a request to install to a remote access session.
 --
 -- /See:/ 'installToRemoteAccessSessionResponse' smart constructor.
-data InstallToRemoteAccessSessionResponse = InstallToRemoteAccessSessionResponse'
+data InstallToRemoteAccessSessionResponse a = InstallToRemoteAccessSessionResponse'
     { _itrasrsAppUpload      :: !(Maybe Upload)
     , _itrasrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -133,7 +133,7 @@ data InstallToRemoteAccessSessionResponse = InstallToRemoteAccessSessionResponse
 -- * 'itrasrsResponseStatus'
 installToRemoteAccessSessionResponse
     :: Int -- ^ 'itrasrsResponseStatus'
-    -> InstallToRemoteAccessSessionResponse
+    -> InstallToRemoteAccessSessionResponse (a)
 installToRemoteAccessSessionResponse pResponseStatus_ =
     InstallToRemoteAccessSessionResponse'
     { _itrasrsAppUpload = Nothing
@@ -141,11 +141,11 @@ installToRemoteAccessSessionResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-itrasrsAppUpload :: Lens' InstallToRemoteAccessSessionResponse (Maybe Upload)
+itrasrsAppUpload :: Lens' (InstallToRemoteAccessSessionResponse (a)) (Maybe Upload)
 itrasrsAppUpload = lens _itrasrsAppUpload (\ s a -> s{_itrasrsAppUpload = a});
 
 -- | The response status code.
-itrasrsResponseStatus :: Lens' InstallToRemoteAccessSessionResponse Int
+itrasrsResponseStatus :: Lens' (InstallToRemoteAccessSessionResponse (a)) Int
 itrasrsResponseStatus = lens _itrasrsResponseStatus (\ s a -> s{_itrasrsResponseStatus = a});
 
 instance NFData InstallToRemoteAccessSessionResponse

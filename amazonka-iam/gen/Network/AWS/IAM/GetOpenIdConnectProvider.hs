@@ -107,7 +107,7 @@ instance ToQuery GetOpenIdConnectProvider where
 -- | Contains the response to a successful < GetOpenIDConnectProvider> request.
 --
 -- /See:/ 'getOpenIdConnectProviderResponse' smart constructor.
-data GetOpenIdConnectProviderResponse = GetOpenIdConnectProviderResponse'
+data GetOpenIdConnectProviderResponse a = GetOpenIdConnectProviderResponse'
     { _goicprsCreateDate     :: !(Maybe ISO8601)
     , _goicprsURL            :: !(Maybe Text)
     , _goicprsThumbprintList :: !(Maybe [Text])
@@ -130,7 +130,7 @@ data GetOpenIdConnectProviderResponse = GetOpenIdConnectProviderResponse'
 -- * 'goicprsResponseStatus'
 getOpenIdConnectProviderResponse
     :: Int -- ^ 'goicprsResponseStatus'
-    -> GetOpenIdConnectProviderResponse
+    -> GetOpenIdConnectProviderResponse (a)
 getOpenIdConnectProviderResponse pResponseStatus_ =
     GetOpenIdConnectProviderResponse'
     { _goicprsCreateDate = Nothing
@@ -141,23 +141,23 @@ getOpenIdConnectProviderResponse pResponseStatus_ =
     }
 
 -- | The date and time when the IAM OIDC provider resource object was created in the AWS account.
-goicprsCreateDate :: Lens' GetOpenIdConnectProviderResponse (Maybe UTCTime)
+goicprsCreateDate :: Lens' (GetOpenIdConnectProviderResponse (a)) (Maybe UTCTime)
 goicprsCreateDate = lens _goicprsCreateDate (\ s a -> s{_goicprsCreateDate = a}) . mapping _Time;
 
 -- | The URL that the IAM OIDC provider resource object is associated with. For more information, see < CreateOpenIDConnectProvider>.
-goicprsURL :: Lens' GetOpenIdConnectProviderResponse (Maybe Text)
+goicprsURL :: Lens' (GetOpenIdConnectProviderResponse (a)) (Maybe Text)
 goicprsURL = lens _goicprsURL (\ s a -> s{_goicprsURL = a});
 
 -- | A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see < CreateOpenIDConnectProvider>.
-goicprsThumbprintList :: Lens' GetOpenIdConnectProviderResponse [Text]
+goicprsThumbprintList :: Lens' (GetOpenIdConnectProviderResponse (a)) [Text]
 goicprsThumbprintList = lens _goicprsThumbprintList (\ s a -> s{_goicprsThumbprintList = a}) . _Default . _Coerce;
 
 -- | A list of client IDs (also known as audiences) that are associated with the specified IAM OIDC provider resource object. For more information, see < CreateOpenIDConnectProvider>.
-goicprsClientIdList :: Lens' GetOpenIdConnectProviderResponse [Text]
+goicprsClientIdList :: Lens' (GetOpenIdConnectProviderResponse (a)) [Text]
 goicprsClientIdList = lens _goicprsClientIdList (\ s a -> s{_goicprsClientIdList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-goicprsResponseStatus :: Lens' GetOpenIdConnectProviderResponse Int
+goicprsResponseStatus :: Lens' (GetOpenIdConnectProviderResponse (a)) Int
 goicprsResponseStatus = lens _goicprsResponseStatus (\ s a -> s{_goicprsResponseStatus = a});
 
 instance NFData GetOpenIdConnectProviderResponse

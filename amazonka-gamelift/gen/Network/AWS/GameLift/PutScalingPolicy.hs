@@ -204,7 +204,7 @@ instance ToQuery PutScalingPolicy where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'putScalingPolicyResponse' smart constructor.
-data PutScalingPolicyResponse = PutScalingPolicyResponse'
+data PutScalingPolicyResponse a = PutScalingPolicyResponse'
     { _psprsName           :: !(Maybe Text)
     , _psprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -218,7 +218,7 @@ data PutScalingPolicyResponse = PutScalingPolicyResponse'
 -- * 'psprsResponseStatus'
 putScalingPolicyResponse
     :: Int -- ^ 'psprsResponseStatus'
-    -> PutScalingPolicyResponse
+    -> PutScalingPolicyResponse (a)
 putScalingPolicyResponse pResponseStatus_ =
     PutScalingPolicyResponse'
     { _psprsName = Nothing
@@ -226,11 +226,11 @@ putScalingPolicyResponse pResponseStatus_ =
     }
 
 -- | Descriptive label associated with a scaling policy. Policy names do not need to be unique.
-psprsName :: Lens' PutScalingPolicyResponse (Maybe Text)
+psprsName :: Lens' (PutScalingPolicyResponse (a)) (Maybe Text)
 psprsName = lens _psprsName (\ s a -> s{_psprsName = a});
 
 -- | The response status code.
-psprsResponseStatus :: Lens' PutScalingPolicyResponse Int
+psprsResponseStatus :: Lens' (PutScalingPolicyResponse (a)) Int
 psprsResponseStatus = lens _psprsResponseStatus (\ s a -> s{_psprsResponseStatus = a});
 
 instance NFData PutScalingPolicyResponse

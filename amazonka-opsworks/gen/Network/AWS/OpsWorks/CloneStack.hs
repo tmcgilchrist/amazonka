@@ -396,7 +396,7 @@ instance ToQuery CloneStack where
 -- | Contains the response to a 'CloneStack' request.
 --
 -- /See:/ 'cloneStackResponse' smart constructor.
-data CloneStackResponse = CloneStackResponse'
+data CloneStackResponse a = CloneStackResponse'
     { _csrsStackId        :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -410,7 +410,7 @@ data CloneStackResponse = CloneStackResponse'
 -- * 'csrsResponseStatus'
 cloneStackResponse
     :: Int -- ^ 'csrsResponseStatus'
-    -> CloneStackResponse
+    -> CloneStackResponse (a)
 cloneStackResponse pResponseStatus_ =
     CloneStackResponse'
     { _csrsStackId = Nothing
@@ -418,11 +418,11 @@ cloneStackResponse pResponseStatus_ =
     }
 
 -- | The cloned stack ID.
-csrsStackId :: Lens' CloneStackResponse (Maybe Text)
+csrsStackId :: Lens' (CloneStackResponse (a)) (Maybe Text)
 csrsStackId = lens _csrsStackId (\ s a -> s{_csrsStackId = a});
 
 -- | The response status code.
-csrsResponseStatus :: Lens' CloneStackResponse Int
+csrsResponseStatus :: Lens' (CloneStackResponse (a)) Int
 csrsResponseStatus = lens _csrsResponseStatus (\ s a -> s{_csrsResponseStatus = a});
 
 instance NFData CloneStackResponse

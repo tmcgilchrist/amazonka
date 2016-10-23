@@ -108,14 +108,14 @@ instance ToQuery PutBucketTagging where
         toQuery = const (mconcat ["tagging"])
 
 -- | /See:/ 'putBucketTaggingResponse' smart constructor.
-data PutBucketTaggingResponse =
+data PutBucketTaggingResponse a =
     PutBucketTaggingResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutBucketTaggingResponse' with the minimum fields required to make a request.
 --
 putBucketTaggingResponse
-    :: PutBucketTaggingResponse
+    :: PutBucketTaggingResponse (a)
 putBucketTaggingResponse = PutBucketTaggingResponse'
 
 instance NFData PutBucketTaggingResponse

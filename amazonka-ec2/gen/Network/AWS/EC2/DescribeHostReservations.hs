@@ -135,7 +135,7 @@ instance ToQuery DescribeHostReservations where
                "MaxResults" =: _dhrMaxResults]
 
 -- | /See:/ 'describeHostReservationsResponse' smart constructor.
-data DescribeHostReservationsResponse = DescribeHostReservationsResponse'
+data DescribeHostReservationsResponse a = DescribeHostReservationsResponse'
     { _dhrrsNextToken          :: !(Maybe Text)
     , _dhrrsHostReservationSet :: !(Maybe [HostReservation])
     , _dhrrsResponseStatus     :: !Int
@@ -152,7 +152,7 @@ data DescribeHostReservationsResponse = DescribeHostReservationsResponse'
 -- * 'dhrrsResponseStatus'
 describeHostReservationsResponse
     :: Int -- ^ 'dhrrsResponseStatus'
-    -> DescribeHostReservationsResponse
+    -> DescribeHostReservationsResponse (a)
 describeHostReservationsResponse pResponseStatus_ =
     DescribeHostReservationsResponse'
     { _dhrrsNextToken = Nothing
@@ -161,15 +161,15 @@ describeHostReservationsResponse pResponseStatus_ =
     }
 
 -- | The token to use to retrieve the next page of results. This value is 'null' when there are no more results to return.
-dhrrsNextToken :: Lens' DescribeHostReservationsResponse (Maybe Text)
+dhrrsNextToken :: Lens' (DescribeHostReservationsResponse (a)) (Maybe Text)
 dhrrsNextToken = lens _dhrrsNextToken (\ s a -> s{_dhrrsNextToken = a});
 
 -- | Details about the reservation\'s configuration.
-dhrrsHostReservationSet :: Lens' DescribeHostReservationsResponse [HostReservation]
+dhrrsHostReservationSet :: Lens' (DescribeHostReservationsResponse (a)) [HostReservation]
 dhrrsHostReservationSet = lens _dhrrsHostReservationSet (\ s a -> s{_dhrrsHostReservationSet = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dhrrsResponseStatus :: Lens' DescribeHostReservationsResponse Int
+dhrrsResponseStatus :: Lens' (DescribeHostReservationsResponse (a)) Int
 dhrrsResponseStatus = lens _dhrrsResponseStatus (\ s a -> s{_dhrrsResponseStatus = a});
 
 instance NFData DescribeHostReservationsResponse

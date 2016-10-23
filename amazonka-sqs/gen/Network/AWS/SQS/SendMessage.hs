@@ -138,7 +138,7 @@ instance ToQuery SendMessage where
 -- | The MD5OfMessageBody and MessageId elements.
 --
 -- /See:/ 'sendMessageResponse' smart constructor.
-data SendMessageResponse = SendMessageResponse'
+data SendMessageResponse a = SendMessageResponse'
     { _smrsMessageId              :: !(Maybe Text)
     , _smrsMD5OfMessageBody       :: !(Maybe Text)
     , _smrsMD5OfMessageAttributes :: !(Maybe Text)
@@ -158,7 +158,7 @@ data SendMessageResponse = SendMessageResponse'
 -- * 'smrsResponseStatus'
 sendMessageResponse
     :: Int -- ^ 'smrsResponseStatus'
-    -> SendMessageResponse
+    -> SendMessageResponse (a)
 sendMessageResponse pResponseStatus_ =
     SendMessageResponse'
     { _smrsMessageId = Nothing
@@ -168,19 +168,19 @@ sendMessageResponse pResponseStatus_ =
     }
 
 -- | An element containing the message ID of the message sent to the queue. For more information, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/ImportantIdentifiers.html Queue and Message Identifiers> in the /Amazon SQS Developer Guide/.
-smrsMessageId :: Lens' SendMessageResponse (Maybe Text)
+smrsMessageId :: Lens' (SendMessageResponse (a)) (Maybe Text)
 smrsMessageId = lens _smrsMessageId (\ s a -> s{_smrsMessageId = a});
 
 -- | An MD5 digest of the non-URL-encoded message body string. This can be used to verify that Amazon SQS received the message correctly. Amazon SQS first URL decodes the message before creating the MD5 digest. For information about MD5, go to <http://www.faqs.org/rfcs/rfc1321.html>.
-smrsMD5OfMessageBody :: Lens' SendMessageResponse (Maybe Text)
+smrsMD5OfMessageBody :: Lens' (SendMessageResponse (a)) (Maybe Text)
 smrsMD5OfMessageBody = lens _smrsMD5OfMessageBody (\ s a -> s{_smrsMD5OfMessageBody = a});
 
 -- | An MD5 digest of the non-URL-encoded message attribute string. This can be used to verify that Amazon SQS received the message correctly. Amazon SQS first URL decodes the message before creating the MD5 digest. For information about MD5, go to <http://www.faqs.org/rfcs/rfc1321.html>.
-smrsMD5OfMessageAttributes :: Lens' SendMessageResponse (Maybe Text)
+smrsMD5OfMessageAttributes :: Lens' (SendMessageResponse (a)) (Maybe Text)
 smrsMD5OfMessageAttributes = lens _smrsMD5OfMessageAttributes (\ s a -> s{_smrsMD5OfMessageAttributes = a});
 
 -- | The response status code.
-smrsResponseStatus :: Lens' SendMessageResponse Int
+smrsResponseStatus :: Lens' (SendMessageResponse (a)) Int
 smrsResponseStatus = lens _smrsResponseStatus (\ s a -> s{_smrsResponseStatus = a});
 
 instance NFData SendMessageResponse

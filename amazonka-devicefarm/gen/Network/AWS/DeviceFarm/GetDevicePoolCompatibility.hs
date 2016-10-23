@@ -159,7 +159,7 @@ instance ToQuery GetDevicePoolCompatibility where
 -- | Represents the result of describe device pool compatibility request.
 --
 -- /See:/ 'getDevicePoolCompatibilityResponse' smart constructor.
-data GetDevicePoolCompatibilityResponse = GetDevicePoolCompatibilityResponse'
+data GetDevicePoolCompatibilityResponse a = GetDevicePoolCompatibilityResponse'
     { _gdpcrsIncompatibleDevices :: !(Maybe [DevicePoolCompatibilityResult])
     , _gdpcrsCompatibleDevices   :: !(Maybe [DevicePoolCompatibilityResult])
     , _gdpcrsResponseStatus      :: !Int
@@ -176,7 +176,7 @@ data GetDevicePoolCompatibilityResponse = GetDevicePoolCompatibilityResponse'
 -- * 'gdpcrsResponseStatus'
 getDevicePoolCompatibilityResponse
     :: Int -- ^ 'gdpcrsResponseStatus'
-    -> GetDevicePoolCompatibilityResponse
+    -> GetDevicePoolCompatibilityResponse (a)
 getDevicePoolCompatibilityResponse pResponseStatus_ =
     GetDevicePoolCompatibilityResponse'
     { _gdpcrsIncompatibleDevices = Nothing
@@ -185,15 +185,15 @@ getDevicePoolCompatibilityResponse pResponseStatus_ =
     }
 
 -- | Information about incompatible devices.
-gdpcrsIncompatibleDevices :: Lens' GetDevicePoolCompatibilityResponse [DevicePoolCompatibilityResult]
+gdpcrsIncompatibleDevices :: Lens' (GetDevicePoolCompatibilityResponse (a)) [DevicePoolCompatibilityResult]
 gdpcrsIncompatibleDevices = lens _gdpcrsIncompatibleDevices (\ s a -> s{_gdpcrsIncompatibleDevices = a}) . _Default . _Coerce;
 
 -- | Information about compatible devices.
-gdpcrsCompatibleDevices :: Lens' GetDevicePoolCompatibilityResponse [DevicePoolCompatibilityResult]
+gdpcrsCompatibleDevices :: Lens' (GetDevicePoolCompatibilityResponse (a)) [DevicePoolCompatibilityResult]
 gdpcrsCompatibleDevices = lens _gdpcrsCompatibleDevices (\ s a -> s{_gdpcrsCompatibleDevices = a}) . _Default . _Coerce;
 
 -- | The response status code.
-gdpcrsResponseStatus :: Lens' GetDevicePoolCompatibilityResponse Int
+gdpcrsResponseStatus :: Lens' (GetDevicePoolCompatibilityResponse (a)) Int
 gdpcrsResponseStatus = lens _gdpcrsResponseStatus (\ s a -> s{_gdpcrsResponseStatus = a});
 
 instance NFData GetDevicePoolCompatibilityResponse

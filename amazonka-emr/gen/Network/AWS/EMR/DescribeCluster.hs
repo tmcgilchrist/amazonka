@@ -102,7 +102,7 @@ instance ToQuery DescribeCluster where
 -- | This output contains the description of the cluster.
 --
 -- /See:/ 'describeClusterResponse' smart constructor.
-data DescribeClusterResponse = DescribeClusterResponse'
+data DescribeClusterResponse a = DescribeClusterResponse'
     { _dcrsResponseStatus :: !Int
     , _dcrsCluster        :: !Cluster
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data DescribeClusterResponse = DescribeClusterResponse'
 describeClusterResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> Cluster -- ^ 'dcrsCluster'
-    -> DescribeClusterResponse
+    -> DescribeClusterResponse (a)
 describeClusterResponse pResponseStatus_ pCluster_ =
     DescribeClusterResponse'
     { _dcrsResponseStatus = pResponseStatus_
@@ -125,11 +125,11 @@ describeClusterResponse pResponseStatus_ pCluster_ =
     }
 
 -- | The response status code.
-dcrsResponseStatus :: Lens' DescribeClusterResponse Int
+dcrsResponseStatus :: Lens' (DescribeClusterResponse (a)) Int
 dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a});
 
 -- | This output contains the details for the requested cluster.
-dcrsCluster :: Lens' DescribeClusterResponse Cluster
+dcrsCluster :: Lens' (DescribeClusterResponse (a)) Cluster
 dcrsCluster = lens _dcrsCluster (\ s a -> s{_dcrsCluster = a});
 
 instance NFData DescribeClusterResponse

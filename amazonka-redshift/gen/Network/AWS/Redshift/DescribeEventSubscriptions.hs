@@ -135,7 +135,7 @@ instance ToQuery DescribeEventSubscriptions where
 -- |
 --
 -- /See:/ 'describeEventSubscriptionsResponse' smart constructor.
-data DescribeEventSubscriptionsResponse = DescribeEventSubscriptionsResponse'
+data DescribeEventSubscriptionsResponse a = DescribeEventSubscriptionsResponse'
     { _desrsEventSubscriptionsList :: !(Maybe [EventSubscription])
     , _desrsMarker                 :: !(Maybe Text)
     , _desrsResponseStatus         :: !Int
@@ -152,7 +152,7 @@ data DescribeEventSubscriptionsResponse = DescribeEventSubscriptionsResponse'
 -- * 'desrsResponseStatus'
 describeEventSubscriptionsResponse
     :: Int -- ^ 'desrsResponseStatus'
-    -> DescribeEventSubscriptionsResponse
+    -> DescribeEventSubscriptionsResponse (a)
 describeEventSubscriptionsResponse pResponseStatus_ =
     DescribeEventSubscriptionsResponse'
     { _desrsEventSubscriptionsList = Nothing
@@ -161,15 +161,15 @@ describeEventSubscriptionsResponse pResponseStatus_ =
     }
 
 -- | A list of event subscriptions.
-desrsEventSubscriptionsList :: Lens' DescribeEventSubscriptionsResponse [EventSubscription]
+desrsEventSubscriptionsList :: Lens' (DescribeEventSubscriptionsResponse (a)) [EventSubscription]
 desrsEventSubscriptionsList = lens _desrsEventSubscriptionsList (\ s a -> s{_desrsEventSubscriptionsList = a}) . _Default . _Coerce;
 
 -- | A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the 'Marker' parameter and retrying the command. If the 'Marker' field is empty, all response records have been retrieved for the request.
-desrsMarker :: Lens' DescribeEventSubscriptionsResponse (Maybe Text)
+desrsMarker :: Lens' (DescribeEventSubscriptionsResponse (a)) (Maybe Text)
 desrsMarker = lens _desrsMarker (\ s a -> s{_desrsMarker = a});
 
 -- | The response status code.
-desrsResponseStatus :: Lens' DescribeEventSubscriptionsResponse Int
+desrsResponseStatus :: Lens' (DescribeEventSubscriptionsResponse (a)) Int
 desrsResponseStatus = lens _desrsResponseStatus (\ s a -> s{_desrsResponseStatus = a});
 
 instance NFData DescribeEventSubscriptionsResponse

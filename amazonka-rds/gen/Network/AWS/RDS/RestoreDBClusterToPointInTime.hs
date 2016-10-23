@@ -251,7 +251,7 @@ instance ToQuery RestoreDBClusterToPointInTime where
                  _rdctpitSourceDBClusterIdentifier]
 
 -- | /See:/ 'restoreDBClusterToPointInTimeResponse' smart constructor.
-data RestoreDBClusterToPointInTimeResponse = RestoreDBClusterToPointInTimeResponse'
+data RestoreDBClusterToPointInTimeResponse a = RestoreDBClusterToPointInTimeResponse'
     { _rdctpitrsDBCluster      :: !(Maybe DBCluster)
     , _rdctpitrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -265,7 +265,7 @@ data RestoreDBClusterToPointInTimeResponse = RestoreDBClusterToPointInTimeRespon
 -- * 'rdctpitrsResponseStatus'
 restoreDBClusterToPointInTimeResponse
     :: Int -- ^ 'rdctpitrsResponseStatus'
-    -> RestoreDBClusterToPointInTimeResponse
+    -> RestoreDBClusterToPointInTimeResponse (a)
 restoreDBClusterToPointInTimeResponse pResponseStatus_ =
     RestoreDBClusterToPointInTimeResponse'
     { _rdctpitrsDBCluster = Nothing
@@ -273,11 +273,11 @@ restoreDBClusterToPointInTimeResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-rdctpitrsDBCluster :: Lens' RestoreDBClusterToPointInTimeResponse (Maybe DBCluster)
+rdctpitrsDBCluster :: Lens' (RestoreDBClusterToPointInTimeResponse (a)) (Maybe DBCluster)
 rdctpitrsDBCluster = lens _rdctpitrsDBCluster (\ s a -> s{_rdctpitrsDBCluster = a});
 
 -- | The response status code.
-rdctpitrsResponseStatus :: Lens' RestoreDBClusterToPointInTimeResponse Int
+rdctpitrsResponseStatus :: Lens' (RestoreDBClusterToPointInTimeResponse (a)) Int
 rdctpitrsResponseStatus = lens _rdctpitrsResponseStatus (\ s a -> s{_rdctpitrsResponseStatus = a});
 
 instance NFData RestoreDBClusterToPointInTimeResponse

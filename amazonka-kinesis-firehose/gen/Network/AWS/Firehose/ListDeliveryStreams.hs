@@ -120,7 +120,7 @@ instance ToQuery ListDeliveryStreams where
 -- | Contains the output of < ListDeliveryStreams>.
 --
 -- /See:/ 'listDeliveryStreamsResponse' smart constructor.
-data ListDeliveryStreamsResponse = ListDeliveryStreamsResponse'
+data ListDeliveryStreamsResponse a = ListDeliveryStreamsResponse'
     { _ldsrsResponseStatus         :: !Int
     , _ldsrsDeliveryStreamNames    :: ![Text]
     , _ldsrsHasMoreDeliveryStreams :: !Bool
@@ -138,7 +138,7 @@ data ListDeliveryStreamsResponse = ListDeliveryStreamsResponse'
 listDeliveryStreamsResponse
     :: Int -- ^ 'ldsrsResponseStatus'
     -> Bool -- ^ 'ldsrsHasMoreDeliveryStreams'
-    -> ListDeliveryStreamsResponse
+    -> ListDeliveryStreamsResponse (a)
 listDeliveryStreamsResponse pResponseStatus_ pHasMoreDeliveryStreams_ =
     ListDeliveryStreamsResponse'
     { _ldsrsResponseStatus = pResponseStatus_
@@ -147,15 +147,15 @@ listDeliveryStreamsResponse pResponseStatus_ pHasMoreDeliveryStreams_ =
     }
 
 -- | The response status code.
-ldsrsResponseStatus :: Lens' ListDeliveryStreamsResponse Int
+ldsrsResponseStatus :: Lens' (ListDeliveryStreamsResponse (a)) Int
 ldsrsResponseStatus = lens _ldsrsResponseStatus (\ s a -> s{_ldsrsResponseStatus = a});
 
 -- | The names of the delivery streams.
-ldsrsDeliveryStreamNames :: Lens' ListDeliveryStreamsResponse [Text]
+ldsrsDeliveryStreamNames :: Lens' (ListDeliveryStreamsResponse (a)) [Text]
 ldsrsDeliveryStreamNames = lens _ldsrsDeliveryStreamNames (\ s a -> s{_ldsrsDeliveryStreamNames = a}) . _Coerce;
 
 -- | Indicates whether there are more delivery streams available to list.
-ldsrsHasMoreDeliveryStreams :: Lens' ListDeliveryStreamsResponse Bool
+ldsrsHasMoreDeliveryStreams :: Lens' (ListDeliveryStreamsResponse (a)) Bool
 ldsrsHasMoreDeliveryStreams = lens _ldsrsHasMoreDeliveryStreams (\ s a -> s{_ldsrsHasMoreDeliveryStreams = a});
 
 instance NFData ListDeliveryStreamsResponse

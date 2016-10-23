@@ -85,14 +85,14 @@ instance ToQuery DeleteAlarms where
                "AlarmNames" =: toQueryList "member" _dAlarmNames]
 
 -- | /See:/ 'deleteAlarmsResponse' smart constructor.
-data DeleteAlarmsResponse =
+data DeleteAlarmsResponse a =
     DeleteAlarmsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteAlarmsResponse' with the minimum fields required to make a request.
 --
 deleteAlarmsResponse
-    :: DeleteAlarmsResponse
+    :: DeleteAlarmsResponse (a)
 deleteAlarmsResponse = DeleteAlarmsResponse'
 
 instance NFData DeleteAlarmsResponse

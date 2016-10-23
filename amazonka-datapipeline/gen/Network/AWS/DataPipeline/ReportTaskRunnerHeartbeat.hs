@@ -125,7 +125,7 @@ instance ToQuery ReportTaskRunnerHeartbeat where
 -- | Contains the output of ReportTaskRunnerHeartbeat.
 --
 -- /See:/ 'reportTaskRunnerHeartbeatResponse' smart constructor.
-data ReportTaskRunnerHeartbeatResponse = ReportTaskRunnerHeartbeatResponse'
+data ReportTaskRunnerHeartbeatResponse a = ReportTaskRunnerHeartbeatResponse'
     { _rtrhrsResponseStatus :: !Int
     , _rtrhrsTerminate      :: !Bool
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -140,7 +140,7 @@ data ReportTaskRunnerHeartbeatResponse = ReportTaskRunnerHeartbeatResponse'
 reportTaskRunnerHeartbeatResponse
     :: Int -- ^ 'rtrhrsResponseStatus'
     -> Bool -- ^ 'rtrhrsTerminate'
-    -> ReportTaskRunnerHeartbeatResponse
+    -> ReportTaskRunnerHeartbeatResponse (a)
 reportTaskRunnerHeartbeatResponse pResponseStatus_ pTerminate_ =
     ReportTaskRunnerHeartbeatResponse'
     { _rtrhrsResponseStatus = pResponseStatus_
@@ -148,11 +148,11 @@ reportTaskRunnerHeartbeatResponse pResponseStatus_ pTerminate_ =
     }
 
 -- | The response status code.
-rtrhrsResponseStatus :: Lens' ReportTaskRunnerHeartbeatResponse Int
+rtrhrsResponseStatus :: Lens' (ReportTaskRunnerHeartbeatResponse (a)) Int
 rtrhrsResponseStatus = lens _rtrhrsResponseStatus (\ s a -> s{_rtrhrsResponseStatus = a});
 
 -- | Indicates whether the calling task runner should terminate.
-rtrhrsTerminate :: Lens' ReportTaskRunnerHeartbeatResponse Bool
+rtrhrsTerminate :: Lens' (ReportTaskRunnerHeartbeatResponse (a)) Bool
 rtrhrsTerminate = lens _rtrhrsTerminate (\ s a -> s{_rtrhrsTerminate = a});
 
 instance NFData ReportTaskRunnerHeartbeatResponse

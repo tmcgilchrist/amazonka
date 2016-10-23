@@ -103,7 +103,7 @@ instance ToQuery GetXSSMatchSet where
 -- | The response to a < GetXssMatchSet> request.
 --
 -- /See:/ 'getXSSMatchSetResponse' smart constructor.
-data GetXSSMatchSetResponse = GetXSSMatchSetResponse'
+data GetXSSMatchSetResponse a = GetXSSMatchSetResponse'
     { _gxmsrsXSSMatchSet    :: !(Maybe XSSMatchSet)
     , _gxmsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -117,7 +117,7 @@ data GetXSSMatchSetResponse = GetXSSMatchSetResponse'
 -- * 'gxmsrsResponseStatus'
 getXSSMatchSetResponse
     :: Int -- ^ 'gxmsrsResponseStatus'
-    -> GetXSSMatchSetResponse
+    -> GetXSSMatchSetResponse (a)
 getXSSMatchSetResponse pResponseStatus_ =
     GetXSSMatchSetResponse'
     { _gxmsrsXSSMatchSet = Nothing
@@ -129,11 +129,11 @@ getXSSMatchSetResponse pResponseStatus_ =
 -- -   < XssMatchSet>: Contains 'Name', 'XssMatchSetId', and an array of 'XssMatchTuple' objects
 -- -   < XssMatchTuple>: Each 'XssMatchTuple' object contains 'FieldToMatch' and 'TextTransformation'
 -- -   < FieldToMatch>: Contains 'Data' and 'Type'
-gxmsrsXSSMatchSet :: Lens' GetXSSMatchSetResponse (Maybe XSSMatchSet)
+gxmsrsXSSMatchSet :: Lens' (GetXSSMatchSetResponse (a)) (Maybe XSSMatchSet)
 gxmsrsXSSMatchSet = lens _gxmsrsXSSMatchSet (\ s a -> s{_gxmsrsXSSMatchSet = a});
 
 -- | The response status code.
-gxmsrsResponseStatus :: Lens' GetXSSMatchSetResponse Int
+gxmsrsResponseStatus :: Lens' (GetXSSMatchSetResponse (a)) Int
 gxmsrsResponseStatus = lens _gxmsrsResponseStatus (\ s a -> s{_gxmsrsResponseStatus = a});
 
 instance NFData GetXSSMatchSetResponse

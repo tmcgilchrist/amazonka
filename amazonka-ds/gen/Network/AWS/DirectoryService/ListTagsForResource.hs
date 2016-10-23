@@ -123,7 +123,7 @@ instance ToQuery ListTagsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse = ListTagsForResourceResponse'
+data ListTagsForResourceResponse a = ListTagsForResourceResponse'
     { _ltfrrsNextToken      :: !(Maybe Text)
     , _ltfrrsTags           :: !(Maybe [Tag])
     , _ltfrrsResponseStatus :: !Int
@@ -140,7 +140,7 @@ data ListTagsForResourceResponse = ListTagsForResourceResponse'
 -- * 'ltfrrsResponseStatus'
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
-    -> ListTagsForResourceResponse
+    -> ListTagsForResourceResponse (a)
 listTagsForResourceResponse pResponseStatus_ =
     ListTagsForResourceResponse'
     { _ltfrrsNextToken = Nothing
@@ -149,15 +149,15 @@ listTagsForResourceResponse pResponseStatus_ =
     }
 
 -- | Reserved for future use.
-ltfrrsNextToken :: Lens' ListTagsForResourceResponse (Maybe Text)
+ltfrrsNextToken :: Lens' (ListTagsForResourceResponse (a)) (Maybe Text)
 ltfrrsNextToken = lens _ltfrrsNextToken (\ s a -> s{_ltfrrsNextToken = a});
 
 -- | List of tags returned by the ListTagsForResource operation.
-ltfrrsTags :: Lens' ListTagsForResourceResponse [Tag]
+ltfrrsTags :: Lens' (ListTagsForResourceResponse (a)) [Tag]
 ltfrrsTags = lens _ltfrrsTags (\ s a -> s{_ltfrrsTags = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ltfrrsResponseStatus :: Lens' ListTagsForResourceResponse Int
+ltfrrsResponseStatus :: Lens' (ListTagsForResourceResponse (a)) Int
 ltfrrsResponseStatus = lens _ltfrrsResponseStatus (\ s a -> s{_ltfrrsResponseStatus = a});
 
 instance NFData ListTagsForResourceResponse

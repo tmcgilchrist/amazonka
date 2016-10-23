@@ -105,14 +105,14 @@ instance ToQuery PutConfigurationRecorder where
         toQuery = const mempty
 
 -- | /See:/ 'putConfigurationRecorderResponse' smart constructor.
-data PutConfigurationRecorderResponse =
+data PutConfigurationRecorderResponse a =
     PutConfigurationRecorderResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutConfigurationRecorderResponse' with the minimum fields required to make a request.
 --
 putConfigurationRecorderResponse
-    :: PutConfigurationRecorderResponse
+    :: PutConfigurationRecorderResponse (a)
 putConfigurationRecorderResponse = PutConfigurationRecorderResponse'
 
 instance NFData PutConfigurationRecorderResponse

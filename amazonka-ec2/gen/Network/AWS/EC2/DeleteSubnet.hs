@@ -95,14 +95,14 @@ instance ToQuery DeleteSubnet where
                "DryRun" =: _ddDryRun, "SubnetId" =: _ddSubnetId]
 
 -- | /See:/ 'deleteSubnetResponse' smart constructor.
-data DeleteSubnetResponse =
+data DeleteSubnetResponse a =
     DeleteSubnetResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteSubnetResponse' with the minimum fields required to make a request.
 --
 deleteSubnetResponse
-    :: DeleteSubnetResponse
+    :: DeleteSubnetResponse (a)
 deleteSubnetResponse = DeleteSubnetResponse'
 
 instance NFData DeleteSubnetResponse

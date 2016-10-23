@@ -206,7 +206,7 @@ instance ToQuery PutObjectACL where
           = mconcat ["versionId" =: _poaVersionId, "acl"]
 
 -- | /See:/ 'putObjectACLResponse' smart constructor.
-data PutObjectACLResponse = PutObjectACLResponse'
+data PutObjectACLResponse a = PutObjectACLResponse'
     { _poarsRequestCharged :: !(Maybe RequestCharged)
     , _poarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -220,7 +220,7 @@ data PutObjectACLResponse = PutObjectACLResponse'
 -- * 'poarsResponseStatus'
 putObjectACLResponse
     :: Int -- ^ 'poarsResponseStatus'
-    -> PutObjectACLResponse
+    -> PutObjectACLResponse (a)
 putObjectACLResponse pResponseStatus_ =
     PutObjectACLResponse'
     { _poarsRequestCharged = Nothing
@@ -228,11 +228,11 @@ putObjectACLResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-poarsRequestCharged :: Lens' PutObjectACLResponse (Maybe RequestCharged)
+poarsRequestCharged :: Lens' (PutObjectACLResponse (a)) (Maybe RequestCharged)
 poarsRequestCharged = lens _poarsRequestCharged (\ s a -> s{_poarsRequestCharged = a});
 
 -- | The response status code.
-poarsResponseStatus :: Lens' PutObjectACLResponse Int
+poarsResponseStatus :: Lens' (PutObjectACLResponse (a)) Int
 poarsResponseStatus = lens _poarsResponseStatus (\ s a -> s{_poarsResponseStatus = a});
 
 instance NFData PutObjectACLResponse

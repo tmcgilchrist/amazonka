@@ -141,7 +141,7 @@ instance ToQuery CreateQueue where
 -- | Returns the QueueUrl element of the created queue.
 --
 -- /See:/ 'createQueueResponse' smart constructor.
-data CreateQueueResponse = CreateQueueResponse'
+data CreateQueueResponse a = CreateQueueResponse'
     { _cqrsQueueURL       :: !(Maybe Text)
     , _cqrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -155,7 +155,7 @@ data CreateQueueResponse = CreateQueueResponse'
 -- * 'cqrsResponseStatus'
 createQueueResponse
     :: Int -- ^ 'cqrsResponseStatus'
-    -> CreateQueueResponse
+    -> CreateQueueResponse (a)
 createQueueResponse pResponseStatus_ =
     CreateQueueResponse'
     { _cqrsQueueURL = Nothing
@@ -163,11 +163,11 @@ createQueueResponse pResponseStatus_ =
     }
 
 -- | The URL for the created Amazon SQS queue.
-cqrsQueueURL :: Lens' CreateQueueResponse (Maybe Text)
+cqrsQueueURL :: Lens' (CreateQueueResponse (a)) (Maybe Text)
 cqrsQueueURL = lens _cqrsQueueURL (\ s a -> s{_cqrsQueueURL = a});
 
 -- | The response status code.
-cqrsResponseStatus :: Lens' CreateQueueResponse Int
+cqrsResponseStatus :: Lens' (CreateQueueResponse (a)) Int
 cqrsResponseStatus = lens _cqrsResponseStatus (\ s a -> s{_cqrsResponseStatus = a});
 
 instance NFData CreateQueueResponse

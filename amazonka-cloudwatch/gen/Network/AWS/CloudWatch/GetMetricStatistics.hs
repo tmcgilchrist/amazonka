@@ -192,7 +192,7 @@ instance ToQuery GetMetricStatistics where
 -- | The output for < GetMetricStatistics>.
 --
 -- /See:/ 'getMetricStatisticsResponse' smart constructor.
-data GetMetricStatisticsResponse = GetMetricStatisticsResponse'
+data GetMetricStatisticsResponse a = GetMetricStatisticsResponse'
     { _gmsrsDatapoints     :: !(Maybe [Datapoint])
     , _gmsrsLabel          :: !(Maybe Text)
     , _gmsrsResponseStatus :: !Int
@@ -209,7 +209,7 @@ data GetMetricStatisticsResponse = GetMetricStatisticsResponse'
 -- * 'gmsrsResponseStatus'
 getMetricStatisticsResponse
     :: Int -- ^ 'gmsrsResponseStatus'
-    -> GetMetricStatisticsResponse
+    -> GetMetricStatisticsResponse (a)
 getMetricStatisticsResponse pResponseStatus_ =
     GetMetricStatisticsResponse'
     { _gmsrsDatapoints = Nothing
@@ -218,15 +218,15 @@ getMetricStatisticsResponse pResponseStatus_ =
     }
 
 -- | The datapoints for the specified metric.
-gmsrsDatapoints :: Lens' GetMetricStatisticsResponse [Datapoint]
+gmsrsDatapoints :: Lens' (GetMetricStatisticsResponse (a)) [Datapoint]
 gmsrsDatapoints = lens _gmsrsDatapoints (\ s a -> s{_gmsrsDatapoints = a}) . _Default . _Coerce;
 
 -- | A label describing the specified metric.
-gmsrsLabel :: Lens' GetMetricStatisticsResponse (Maybe Text)
+gmsrsLabel :: Lens' (GetMetricStatisticsResponse (a)) (Maybe Text)
 gmsrsLabel = lens _gmsrsLabel (\ s a -> s{_gmsrsLabel = a});
 
 -- | The response status code.
-gmsrsResponseStatus :: Lens' GetMetricStatisticsResponse Int
+gmsrsResponseStatus :: Lens' (GetMetricStatisticsResponse (a)) Int
 gmsrsResponseStatus = lens _gmsrsResponseStatus (\ s a -> s{_gmsrsResponseStatus = a});
 
 instance NFData GetMetricStatisticsResponse

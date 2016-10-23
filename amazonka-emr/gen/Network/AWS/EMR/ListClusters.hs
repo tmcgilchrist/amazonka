@@ -144,7 +144,7 @@ instance ToQuery ListClusters where
 -- | This contains a ClusterSummaryList with the cluster details; for example, the cluster IDs, names, and status.
 --
 -- /See:/ 'listClustersResponse' smart constructor.
-data ListClustersResponse = ListClustersResponse'
+data ListClustersResponse a = ListClustersResponse'
     { _lcrsMarker         :: !(Maybe Text)
     , _lcrsClusters       :: !(Maybe [ClusterSummary])
     , _lcrsResponseStatus :: !Int
@@ -161,7 +161,7 @@ data ListClustersResponse = ListClustersResponse'
 -- * 'lcrsResponseStatus'
 listClustersResponse
     :: Int -- ^ 'lcrsResponseStatus'
-    -> ListClustersResponse
+    -> ListClustersResponse (a)
 listClustersResponse pResponseStatus_ =
     ListClustersResponse'
     { _lcrsMarker = Nothing
@@ -170,15 +170,15 @@ listClustersResponse pResponseStatus_ =
     }
 
 -- | The pagination token that indicates the next set of results to retrieve.
-lcrsMarker :: Lens' ListClustersResponse (Maybe Text)
+lcrsMarker :: Lens' (ListClustersResponse (a)) (Maybe Text)
 lcrsMarker = lens _lcrsMarker (\ s a -> s{_lcrsMarker = a});
 
 -- | The list of clusters for the account based on the given filters.
-lcrsClusters :: Lens' ListClustersResponse [ClusterSummary]
+lcrsClusters :: Lens' (ListClustersResponse (a)) [ClusterSummary]
 lcrsClusters = lens _lcrsClusters (\ s a -> s{_lcrsClusters = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lcrsResponseStatus :: Lens' ListClustersResponse Int
+lcrsResponseStatus :: Lens' (ListClustersResponse (a)) Int
 lcrsResponseStatus = lens _lcrsResponseStatus (\ s a -> s{_lcrsResponseStatus = a});
 
 instance NFData ListClustersResponse

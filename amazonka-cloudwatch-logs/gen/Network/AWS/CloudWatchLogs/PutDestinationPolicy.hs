@@ -104,14 +104,14 @@ instance ToQuery PutDestinationPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putDestinationPolicyResponse' smart constructor.
-data PutDestinationPolicyResponse =
+data PutDestinationPolicyResponse a =
     PutDestinationPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutDestinationPolicyResponse' with the minimum fields required to make a request.
 --
 putDestinationPolicyResponse
-    :: PutDestinationPolicyResponse
+    :: PutDestinationPolicyResponse (a)
 putDestinationPolicyResponse = PutDestinationPolicyResponse'
 
 instance NFData PutDestinationPolicyResponse

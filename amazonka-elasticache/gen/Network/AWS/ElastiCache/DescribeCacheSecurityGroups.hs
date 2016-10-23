@@ -136,7 +136,7 @@ instance ToQuery DescribeCacheSecurityGroups where
 -- | Represents the output of a /DescribeCacheSecurityGroups/ action.
 --
 -- /See:/ 'describeCacheSecurityGroupsResponse' smart constructor.
-data DescribeCacheSecurityGroupsResponse = DescribeCacheSecurityGroupsResponse'
+data DescribeCacheSecurityGroupsResponse a = DescribeCacheSecurityGroupsResponse'
     { _dcsgsrsCacheSecurityGroups :: !(Maybe [CacheSecurityGroup])
     , _dcsgsrsMarker              :: !(Maybe Text)
     , _dcsgsrsResponseStatus      :: !Int
@@ -153,7 +153,7 @@ data DescribeCacheSecurityGroupsResponse = DescribeCacheSecurityGroupsResponse'
 -- * 'dcsgsrsResponseStatus'
 describeCacheSecurityGroupsResponse
     :: Int -- ^ 'dcsgsrsResponseStatus'
-    -> DescribeCacheSecurityGroupsResponse
+    -> DescribeCacheSecurityGroupsResponse (a)
 describeCacheSecurityGroupsResponse pResponseStatus_ =
     DescribeCacheSecurityGroupsResponse'
     { _dcsgsrsCacheSecurityGroups = Nothing
@@ -162,15 +162,15 @@ describeCacheSecurityGroupsResponse pResponseStatus_ =
     }
 
 -- | A list of cache security groups. Each element in the list contains detailed information about one group.
-dcsgsrsCacheSecurityGroups :: Lens' DescribeCacheSecurityGroupsResponse [CacheSecurityGroup]
+dcsgsrsCacheSecurityGroups :: Lens' (DescribeCacheSecurityGroupsResponse (a)) [CacheSecurityGroup]
 dcsgsrsCacheSecurityGroups = lens _dcsgsrsCacheSecurityGroups (\ s a -> s{_dcsgsrsCacheSecurityGroups = a}) . _Default . _Coerce;
 
 -- | Provides an identifier to allow retrieval of paginated results.
-dcsgsrsMarker :: Lens' DescribeCacheSecurityGroupsResponse (Maybe Text)
+dcsgsrsMarker :: Lens' (DescribeCacheSecurityGroupsResponse (a)) (Maybe Text)
 dcsgsrsMarker = lens _dcsgsrsMarker (\ s a -> s{_dcsgsrsMarker = a});
 
 -- | The response status code.
-dcsgsrsResponseStatus :: Lens' DescribeCacheSecurityGroupsResponse Int
+dcsgsrsResponseStatus :: Lens' (DescribeCacheSecurityGroupsResponse (a)) Int
 dcsgsrsResponseStatus = lens _dcsgsrsResponseStatus (\ s a -> s{_dcsgsrsResponseStatus = a});
 
 instance NFData DescribeCacheSecurityGroupsResponse

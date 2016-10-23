@@ -111,7 +111,7 @@ instance ToQuery DeleteDeliveryStream where
 -- | Contains the output of < DeleteDeliveryStream>.
 --
 -- /See:/ 'deleteDeliveryStreamResponse' smart constructor.
-newtype DeleteDeliveryStreamResponse = DeleteDeliveryStreamResponse'
+newtype DeleteDeliveryStreamResponse a = DeleteDeliveryStreamResponse'
     { _drsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -122,14 +122,14 @@ newtype DeleteDeliveryStreamResponse = DeleteDeliveryStreamResponse'
 -- * 'drsResponseStatus'
 deleteDeliveryStreamResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DeleteDeliveryStreamResponse
+    -> DeleteDeliveryStreamResponse (a)
 deleteDeliveryStreamResponse pResponseStatus_ =
     DeleteDeliveryStreamResponse'
     { _drsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-drsResponseStatus :: Lens' DeleteDeliveryStreamResponse Int
+drsResponseStatus :: Lens' (DeleteDeliveryStreamResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DeleteDeliveryStreamResponse

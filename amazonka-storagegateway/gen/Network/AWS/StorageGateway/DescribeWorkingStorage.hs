@@ -114,7 +114,7 @@ instance ToQuery DescribeWorkingStorage where
 -- | A JSON object containing the following fields:
 --
 -- /See:/ 'describeWorkingStorageResponse' smart constructor.
-data DescribeWorkingStorageResponse = DescribeWorkingStorageResponse'
+data DescribeWorkingStorageResponse a = DescribeWorkingStorageResponse'
     { _dwsrsGatewayARN                     :: !(Maybe Text)
     , _dwsrsDiskIds                        :: !(Maybe [Text])
     , _dwsrsWorkingStorageAllocatedInBytes :: !(Maybe Integer)
@@ -137,7 +137,7 @@ data DescribeWorkingStorageResponse = DescribeWorkingStorageResponse'
 -- * 'dwsrsResponseStatus'
 describeWorkingStorageResponse
     :: Int -- ^ 'dwsrsResponseStatus'
-    -> DescribeWorkingStorageResponse
+    -> DescribeWorkingStorageResponse (a)
 describeWorkingStorageResponse pResponseStatus_ =
     DescribeWorkingStorageResponse'
     { _dwsrsGatewayARN = Nothing
@@ -148,23 +148,23 @@ describeWorkingStorageResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dwsrsGatewayARN :: Lens' DescribeWorkingStorageResponse (Maybe Text)
+dwsrsGatewayARN :: Lens' (DescribeWorkingStorageResponse (a)) (Maybe Text)
 dwsrsGatewayARN = lens _dwsrsGatewayARN (\ s a -> s{_dwsrsGatewayARN = a});
 
 -- | An array of the gateway\'s local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.
-dwsrsDiskIds :: Lens' DescribeWorkingStorageResponse [Text]
+dwsrsDiskIds :: Lens' (DescribeWorkingStorageResponse (a)) [Text]
 dwsrsDiskIds = lens _dwsrsDiskIds (\ s a -> s{_dwsrsDiskIds = a}) . _Default . _Coerce;
 
 -- | The total working storage in bytes allocated for the gateway. If no working storage is configured for the gateway, this field returns 0.
-dwsrsWorkingStorageAllocatedInBytes :: Lens' DescribeWorkingStorageResponse (Maybe Integer)
+dwsrsWorkingStorageAllocatedInBytes :: Lens' (DescribeWorkingStorageResponse (a)) (Maybe Integer)
 dwsrsWorkingStorageAllocatedInBytes = lens _dwsrsWorkingStorageAllocatedInBytes (\ s a -> s{_dwsrsWorkingStorageAllocatedInBytes = a});
 
 -- | The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.
-dwsrsWorkingStorageUsedInBytes :: Lens' DescribeWorkingStorageResponse (Maybe Integer)
+dwsrsWorkingStorageUsedInBytes :: Lens' (DescribeWorkingStorageResponse (a)) (Maybe Integer)
 dwsrsWorkingStorageUsedInBytes = lens _dwsrsWorkingStorageUsedInBytes (\ s a -> s{_dwsrsWorkingStorageUsedInBytes = a});
 
 -- | The response status code.
-dwsrsResponseStatus :: Lens' DescribeWorkingStorageResponse Int
+dwsrsResponseStatus :: Lens' (DescribeWorkingStorageResponse (a)) Int
 dwsrsResponseStatus = lens _dwsrsResponseStatus (\ s a -> s{_dwsrsResponseStatus = a});
 
 instance NFData DescribeWorkingStorageResponse

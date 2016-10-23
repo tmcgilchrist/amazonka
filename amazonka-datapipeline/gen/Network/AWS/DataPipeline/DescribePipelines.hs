@@ -104,7 +104,7 @@ instance ToQuery DescribePipelines where
 -- | Contains the output of DescribePipelines.
 --
 -- /See:/ 'describePipelinesResponse' smart constructor.
-data DescribePipelinesResponse = DescribePipelinesResponse'
+data DescribePipelinesResponse a = DescribePipelinesResponse'
     { _dprsResponseStatus          :: !Int
     , _dprsPipelineDescriptionList :: ![PipelineDescription]
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data DescribePipelinesResponse = DescribePipelinesResponse'
 -- * 'dprsPipelineDescriptionList'
 describePipelinesResponse
     :: Int -- ^ 'dprsResponseStatus'
-    -> DescribePipelinesResponse
+    -> DescribePipelinesResponse (a)
 describePipelinesResponse pResponseStatus_ =
     DescribePipelinesResponse'
     { _dprsResponseStatus = pResponseStatus_
@@ -126,11 +126,11 @@ describePipelinesResponse pResponseStatus_ =
     }
 
 -- | The response status code.
-dprsResponseStatus :: Lens' DescribePipelinesResponse Int
+dprsResponseStatus :: Lens' (DescribePipelinesResponse (a)) Int
 dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a});
 
 -- | An array of descriptions for the specified pipelines.
-dprsPipelineDescriptionList :: Lens' DescribePipelinesResponse [PipelineDescription]
+dprsPipelineDescriptionList :: Lens' (DescribePipelinesResponse (a)) [PipelineDescription]
 dprsPipelineDescriptionList = lens _dprsPipelineDescriptionList (\ s a -> s{_dprsPipelineDescriptionList = a}) . _Coerce;
 
 instance NFData DescribePipelinesResponse

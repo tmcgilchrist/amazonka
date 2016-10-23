@@ -104,7 +104,7 @@ instance ToQuery StartPipelineExecution where
 -- | Represents the output of a start pipeline execution action.
 --
 -- /See:/ 'startPipelineExecutionResponse' smart constructor.
-data StartPipelineExecutionResponse = StartPipelineExecutionResponse'
+data StartPipelineExecutionResponse a = StartPipelineExecutionResponse'
     { _spersPipelineExecutionId :: !(Maybe Text)
     , _spersResponseStatus      :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -118,7 +118,7 @@ data StartPipelineExecutionResponse = StartPipelineExecutionResponse'
 -- * 'spersResponseStatus'
 startPipelineExecutionResponse
     :: Int -- ^ 'spersResponseStatus'
-    -> StartPipelineExecutionResponse
+    -> StartPipelineExecutionResponse (a)
 startPipelineExecutionResponse pResponseStatus_ =
     StartPipelineExecutionResponse'
     { _spersPipelineExecutionId = Nothing
@@ -126,11 +126,11 @@ startPipelineExecutionResponse pResponseStatus_ =
     }
 
 -- | The unique system-generated ID of the pipeline execution that was started.
-spersPipelineExecutionId :: Lens' StartPipelineExecutionResponse (Maybe Text)
+spersPipelineExecutionId :: Lens' (StartPipelineExecutionResponse (a)) (Maybe Text)
 spersPipelineExecutionId = lens _spersPipelineExecutionId (\ s a -> s{_spersPipelineExecutionId = a});
 
 -- | The response status code.
-spersResponseStatus :: Lens' StartPipelineExecutionResponse Int
+spersResponseStatus :: Lens' (StartPipelineExecutionResponse (a)) Int
 spersResponseStatus = lens _spersResponseStatus (\ s a -> s{_spersResponseStatus = a});
 
 instance NFData StartPipelineExecutionResponse

@@ -134,7 +134,7 @@ instance ToQuery DescribeVolumes where
 -- | Contains the response to a 'DescribeVolumes' request.
 --
 -- /See:/ 'describeVolumesResponse' smart constructor.
-data DescribeVolumesResponse = DescribeVolumesResponse'
+data DescribeVolumesResponse a = DescribeVolumesResponse'
     { _dvrsVolumes        :: !(Maybe [Volume])
     , _dvrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -148,7 +148,7 @@ data DescribeVolumesResponse = DescribeVolumesResponse'
 -- * 'dvrsResponseStatus'
 describeVolumesResponse
     :: Int -- ^ 'dvrsResponseStatus'
-    -> DescribeVolumesResponse
+    -> DescribeVolumesResponse (a)
 describeVolumesResponse pResponseStatus_ =
     DescribeVolumesResponse'
     { _dvrsVolumes = Nothing
@@ -156,11 +156,11 @@ describeVolumesResponse pResponseStatus_ =
     }
 
 -- | An array of volume IDs.
-dvrsVolumes :: Lens' DescribeVolumesResponse [Volume]
+dvrsVolumes :: Lens' (DescribeVolumesResponse (a)) [Volume]
 dvrsVolumes = lens _dvrsVolumes (\ s a -> s{_dvrsVolumes = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dvrsResponseStatus :: Lens' DescribeVolumesResponse Int
+dvrsResponseStatus :: Lens' (DescribeVolumesResponse (a)) Int
 dvrsResponseStatus = lens _dvrsResponseStatus (\ s a -> s{_dvrsResponseStatus = a});
 
 instance NFData DescribeVolumesResponse

@@ -277,14 +277,14 @@ instance ToQuery PutMetricAlarm where
                "ComparisonOperator" =: _pmaComparisonOperator]
 
 -- | /See:/ 'putMetricAlarmResponse' smart constructor.
-data PutMetricAlarmResponse =
+data PutMetricAlarmResponse a =
     PutMetricAlarmResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutMetricAlarmResponse' with the minimum fields required to make a request.
 --
 putMetricAlarmResponse
-    :: PutMetricAlarmResponse
+    :: PutMetricAlarmResponse (a)
 putMetricAlarmResponse = PutMetricAlarmResponse'
 
 instance NFData PutMetricAlarmResponse

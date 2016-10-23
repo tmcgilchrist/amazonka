@@ -121,7 +121,7 @@ instance ToQuery AddWorkingStorage where
 -- | A JSON object containing the of the gateway for which working storage was configured.
 --
 -- /See:/ 'addWorkingStorageResponse' smart constructor.
-data AddWorkingStorageResponse = AddWorkingStorageResponse'
+data AddWorkingStorageResponse a = AddWorkingStorageResponse'
     { _awsrsGatewayARN     :: !(Maybe Text)
     , _awsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -135,7 +135,7 @@ data AddWorkingStorageResponse = AddWorkingStorageResponse'
 -- * 'awsrsResponseStatus'
 addWorkingStorageResponse
     :: Int -- ^ 'awsrsResponseStatus'
-    -> AddWorkingStorageResponse
+    -> AddWorkingStorageResponse (a)
 addWorkingStorageResponse pResponseStatus_ =
     AddWorkingStorageResponse'
     { _awsrsGatewayARN = Nothing
@@ -143,11 +143,11 @@ addWorkingStorageResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-awsrsGatewayARN :: Lens' AddWorkingStorageResponse (Maybe Text)
+awsrsGatewayARN :: Lens' (AddWorkingStorageResponse (a)) (Maybe Text)
 awsrsGatewayARN = lens _awsrsGatewayARN (\ s a -> s{_awsrsGatewayARN = a});
 
 -- | The response status code.
-awsrsResponseStatus :: Lens' AddWorkingStorageResponse Int
+awsrsResponseStatus :: Lens' (AddWorkingStorageResponse (a)) Int
 awsrsResponseStatus = lens _awsrsResponseStatus (\ s a -> s{_awsrsResponseStatus = a});
 
 instance NFData AddWorkingStorageResponse

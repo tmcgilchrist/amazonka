@@ -136,7 +136,7 @@ instance ToQuery ImportInstance where
 -- | Contains the output for ImportInstance.
 --
 -- /See:/ 'importInstanceResponse' smart constructor.
-data ImportInstanceResponse = ImportInstanceResponse'
+data ImportInstanceResponse a = ImportInstanceResponse'
     { _iirsConversionTask :: !(Maybe ConversionTask)
     , _iirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -150,7 +150,7 @@ data ImportInstanceResponse = ImportInstanceResponse'
 -- * 'iirsResponseStatus'
 importInstanceResponse
     :: Int -- ^ 'iirsResponseStatus'
-    -> ImportInstanceResponse
+    -> ImportInstanceResponse (a)
 importInstanceResponse pResponseStatus_ =
     ImportInstanceResponse'
     { _iirsConversionTask = Nothing
@@ -158,11 +158,11 @@ importInstanceResponse pResponseStatus_ =
     }
 
 -- | Information about the conversion task.
-iirsConversionTask :: Lens' ImportInstanceResponse (Maybe ConversionTask)
+iirsConversionTask :: Lens' (ImportInstanceResponse (a)) (Maybe ConversionTask)
 iirsConversionTask = lens _iirsConversionTask (\ s a -> s{_iirsConversionTask = a});
 
 -- | The response status code.
-iirsResponseStatus :: Lens' ImportInstanceResponse Int
+iirsResponseStatus :: Lens' (ImportInstanceResponse (a)) Int
 iirsResponseStatus = lens _iirsResponseStatus (\ s a -> s{_iirsResponseStatus = a});
 
 instance NFData ImportInstanceResponse

@@ -139,7 +139,7 @@ instance ToQuery CreateReservedInstancesListing where
 -- | Contains the output of CreateReservedInstancesListing.
 --
 -- /See:/ 'createReservedInstancesListingResponse' smart constructor.
-data CreateReservedInstancesListingResponse = CreateReservedInstancesListingResponse'
+data CreateReservedInstancesListingResponse a = CreateReservedInstancesListingResponse'
     { _crersReservedInstancesListings :: !(Maybe [ReservedInstancesListing])
     , _crersResponseStatus            :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -153,7 +153,7 @@ data CreateReservedInstancesListingResponse = CreateReservedInstancesListingResp
 -- * 'crersResponseStatus'
 createReservedInstancesListingResponse
     :: Int -- ^ 'crersResponseStatus'
-    -> CreateReservedInstancesListingResponse
+    -> CreateReservedInstancesListingResponse (a)
 createReservedInstancesListingResponse pResponseStatus_ =
     CreateReservedInstancesListingResponse'
     { _crersReservedInstancesListings = Nothing
@@ -161,11 +161,11 @@ createReservedInstancesListingResponse pResponseStatus_ =
     }
 
 -- | Information about the Reserved Instance listing.
-crersReservedInstancesListings :: Lens' CreateReservedInstancesListingResponse [ReservedInstancesListing]
+crersReservedInstancesListings :: Lens' (CreateReservedInstancesListingResponse (a)) [ReservedInstancesListing]
 crersReservedInstancesListings = lens _crersReservedInstancesListings (\ s a -> s{_crersReservedInstancesListings = a}) . _Default . _Coerce;
 
 -- | The response status code.
-crersResponseStatus :: Lens' CreateReservedInstancesListingResponse Int
+crersResponseStatus :: Lens' (CreateReservedInstancesListingResponse (a)) Int
 crersResponseStatus = lens _crersResponseStatus (\ s a -> s{_crersResponseStatus = a});
 
 instance NFData

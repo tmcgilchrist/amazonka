@@ -124,7 +124,7 @@ instance ToQuery ListDevices where
 -- | Represents the result of a list devices operation.
 --
 -- /See:/ 'listDevicesResponse' smart constructor.
-data ListDevicesResponse = ListDevicesResponse'
+data ListDevicesResponse a = ListDevicesResponse'
     { _ldrsNextToken      :: !(Maybe Text)
     , _ldrsDevices        :: !(Maybe [Device])
     , _ldrsResponseStatus :: !Int
@@ -141,7 +141,7 @@ data ListDevicesResponse = ListDevicesResponse'
 -- * 'ldrsResponseStatus'
 listDevicesResponse
     :: Int -- ^ 'ldrsResponseStatus'
-    -> ListDevicesResponse
+    -> ListDevicesResponse (a)
 listDevicesResponse pResponseStatus_ =
     ListDevicesResponse'
     { _ldrsNextToken = Nothing
@@ -150,15 +150,15 @@ listDevicesResponse pResponseStatus_ =
     }
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
-ldrsNextToken :: Lens' ListDevicesResponse (Maybe Text)
+ldrsNextToken :: Lens' (ListDevicesResponse (a)) (Maybe Text)
 ldrsNextToken = lens _ldrsNextToken (\ s a -> s{_ldrsNextToken = a});
 
 -- | Information about the devices.
-ldrsDevices :: Lens' ListDevicesResponse [Device]
+ldrsDevices :: Lens' (ListDevicesResponse (a)) [Device]
 ldrsDevices = lens _ldrsDevices (\ s a -> s{_ldrsDevices = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ldrsResponseStatus :: Lens' ListDevicesResponse Int
+ldrsResponseStatus :: Lens' (ListDevicesResponse (a)) Int
 ldrsResponseStatus = lens _ldrsResponseStatus (\ s a -> s{_ldrsResponseStatus = a});
 
 instance NFData ListDevicesResponse

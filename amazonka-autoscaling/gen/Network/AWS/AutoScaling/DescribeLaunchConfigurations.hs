@@ -134,7 +134,7 @@ instance ToQuery DescribeLaunchConfigurations where
 -- | Contains the output of DescribeLaunchConfigurations.
 --
 -- /See:/ 'describeLaunchConfigurationsResponse' smart constructor.
-data DescribeLaunchConfigurationsResponse = DescribeLaunchConfigurationsResponse'
+data DescribeLaunchConfigurationsResponse a = DescribeLaunchConfigurationsResponse'
     { _dlcrsNextToken            :: !(Maybe Text)
     , _dlcrsResponseStatus       :: !Int
     , _dlcrsLaunchConfigurations :: ![LaunchConfiguration]
@@ -151,7 +151,7 @@ data DescribeLaunchConfigurationsResponse = DescribeLaunchConfigurationsResponse
 -- * 'dlcrsLaunchConfigurations'
 describeLaunchConfigurationsResponse
     :: Int -- ^ 'dlcrsResponseStatus'
-    -> DescribeLaunchConfigurationsResponse
+    -> DescribeLaunchConfigurationsResponse (a)
 describeLaunchConfigurationsResponse pResponseStatus_ =
     DescribeLaunchConfigurationsResponse'
     { _dlcrsNextToken = Nothing
@@ -160,15 +160,15 @@ describeLaunchConfigurationsResponse pResponseStatus_ =
     }
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
-dlcrsNextToken :: Lens' DescribeLaunchConfigurationsResponse (Maybe Text)
+dlcrsNextToken :: Lens' (DescribeLaunchConfigurationsResponse (a)) (Maybe Text)
 dlcrsNextToken = lens _dlcrsNextToken (\ s a -> s{_dlcrsNextToken = a});
 
 -- | The response status code.
-dlcrsResponseStatus :: Lens' DescribeLaunchConfigurationsResponse Int
+dlcrsResponseStatus :: Lens' (DescribeLaunchConfigurationsResponse (a)) Int
 dlcrsResponseStatus = lens _dlcrsResponseStatus (\ s a -> s{_dlcrsResponseStatus = a});
 
 -- | The launch configurations.
-dlcrsLaunchConfigurations :: Lens' DescribeLaunchConfigurationsResponse [LaunchConfiguration]
+dlcrsLaunchConfigurations :: Lens' (DescribeLaunchConfigurationsResponse (a)) [LaunchConfiguration]
 dlcrsLaunchConfigurations = lens _dlcrsLaunchConfigurations (\ s a -> s{_dlcrsLaunchConfigurations = a}) . _Coerce;
 
 instance NFData DescribeLaunchConfigurationsResponse

@@ -123,14 +123,14 @@ instance ToQuery RespondActivityTaskCanceled where
         toQuery = const mempty
 
 -- | /See:/ 'respondActivityTaskCanceledResponse' smart constructor.
-data RespondActivityTaskCanceledResponse =
+data RespondActivityTaskCanceledResponse a =
     RespondActivityTaskCanceledResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RespondActivityTaskCanceledResponse' with the minimum fields required to make a request.
 --
 respondActivityTaskCanceledResponse
-    :: RespondActivityTaskCanceledResponse
+    :: RespondActivityTaskCanceledResponse (a)
 respondActivityTaskCanceledResponse = RespondActivityTaskCanceledResponse'
 
 instance NFData RespondActivityTaskCanceledResponse

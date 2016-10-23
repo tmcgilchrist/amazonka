@@ -135,7 +135,7 @@ instance ToQuery ListOnPremisesInstances where
 -- | Represents the output of list on-premises instances operation.
 --
 -- /See:/ 'listOnPremisesInstancesResponse' smart constructor.
-data ListOnPremisesInstancesResponse = ListOnPremisesInstancesResponse'
+data ListOnPremisesInstancesResponse a = ListOnPremisesInstancesResponse'
     { _lopirsNextToken      :: !(Maybe Text)
     , _lopirsInstanceNames  :: !(Maybe [Text])
     , _lopirsResponseStatus :: !Int
@@ -152,7 +152,7 @@ data ListOnPremisesInstancesResponse = ListOnPremisesInstancesResponse'
 -- * 'lopirsResponseStatus'
 listOnPremisesInstancesResponse
     :: Int -- ^ 'lopirsResponseStatus'
-    -> ListOnPremisesInstancesResponse
+    -> ListOnPremisesInstancesResponse (a)
 listOnPremisesInstancesResponse pResponseStatus_ =
     ListOnPremisesInstancesResponse'
     { _lopirsNextToken = Nothing
@@ -161,15 +161,15 @@ listOnPremisesInstancesResponse pResponseStatus_ =
     }
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list on-premises instances call to return the next set of on-premises instances in the list.
-lopirsNextToken :: Lens' ListOnPremisesInstancesResponse (Maybe Text)
+lopirsNextToken :: Lens' (ListOnPremisesInstancesResponse (a)) (Maybe Text)
 lopirsNextToken = lens _lopirsNextToken (\ s a -> s{_lopirsNextToken = a});
 
 -- | The list of matching on-premises instance names.
-lopirsInstanceNames :: Lens' ListOnPremisesInstancesResponse [Text]
+lopirsInstanceNames :: Lens' (ListOnPremisesInstancesResponse (a)) [Text]
 lopirsInstanceNames = lens _lopirsInstanceNames (\ s a -> s{_lopirsInstanceNames = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lopirsResponseStatus :: Lens' ListOnPremisesInstancesResponse Int
+lopirsResponseStatus :: Lens' (ListOnPremisesInstancesResponse (a)) Int
 lopirsResponseStatus = lens _lopirsResponseStatus (\ s a -> s{_lopirsResponseStatus = a});
 
 instance NFData ListOnPremisesInstancesResponse

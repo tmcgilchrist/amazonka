@@ -159,7 +159,7 @@ instance ToQuery DescribeRouteTables where
 -- | Contains the output of DescribeRouteTables.
 --
 -- /See:/ 'describeRouteTablesResponse' smart constructor.
-data DescribeRouteTablesResponse = DescribeRouteTablesResponse'
+data DescribeRouteTablesResponse a = DescribeRouteTablesResponse'
     { _drtrsRouteTables    :: !(Maybe [RouteTable])
     , _drtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -173,7 +173,7 @@ data DescribeRouteTablesResponse = DescribeRouteTablesResponse'
 -- * 'drtrsResponseStatus'
 describeRouteTablesResponse
     :: Int -- ^ 'drtrsResponseStatus'
-    -> DescribeRouteTablesResponse
+    -> DescribeRouteTablesResponse (a)
 describeRouteTablesResponse pResponseStatus_ =
     DescribeRouteTablesResponse'
     { _drtrsRouteTables = Nothing
@@ -181,11 +181,11 @@ describeRouteTablesResponse pResponseStatus_ =
     }
 
 -- | Information about one or more route tables.
-drtrsRouteTables :: Lens' DescribeRouteTablesResponse [RouteTable]
+drtrsRouteTables :: Lens' (DescribeRouteTablesResponse (a)) [RouteTable]
 drtrsRouteTables = lens _drtrsRouteTables (\ s a -> s{_drtrsRouteTables = a}) . _Default . _Coerce;
 
 -- | The response status code.
-drtrsResponseStatus :: Lens' DescribeRouteTablesResponse Int
+drtrsResponseStatus :: Lens' (DescribeRouteTablesResponse (a)) Int
 drtrsResponseStatus = lens _drtrsResponseStatus (\ s a -> s{_drtrsResponseStatus = a});
 
 instance NFData DescribeRouteTablesResponse

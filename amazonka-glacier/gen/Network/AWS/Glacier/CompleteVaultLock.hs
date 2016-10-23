@@ -112,14 +112,14 @@ instance ToQuery CompleteVaultLock where
         toQuery = const mempty
 
 -- | /See:/ 'completeVaultLockResponse' smart constructor.
-data CompleteVaultLockResponse =
+data CompleteVaultLockResponse a =
     CompleteVaultLockResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'CompleteVaultLockResponse' with the minimum fields required to make a request.
 --
 completeVaultLockResponse
-    :: CompleteVaultLockResponse
+    :: CompleteVaultLockResponse (a)
 completeVaultLockResponse = CompleteVaultLockResponse'
 
 instance NFData CompleteVaultLockResponse

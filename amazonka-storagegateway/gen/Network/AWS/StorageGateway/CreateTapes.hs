@@ -157,7 +157,7 @@ instance ToQuery CreateTapes where
 -- | CreateTapeOutput
 --
 -- /See:/ 'createTapesResponse' smart constructor.
-data CreateTapesResponse = CreateTapesResponse'
+data CreateTapesResponse a = CreateTapesResponse'
     { _ctrsTapeARNs       :: !(Maybe [Text])
     , _ctrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -171,7 +171,7 @@ data CreateTapesResponse = CreateTapesResponse'
 -- * 'ctrsResponseStatus'
 createTapesResponse
     :: Int -- ^ 'ctrsResponseStatus'
-    -> CreateTapesResponse
+    -> CreateTapesResponse (a)
 createTapesResponse pResponseStatus_ =
     CreateTapesResponse'
     { _ctrsTapeARNs = Nothing
@@ -179,11 +179,11 @@ createTapesResponse pResponseStatus_ =
     }
 
 -- | A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.
-ctrsTapeARNs :: Lens' CreateTapesResponse [Text]
+ctrsTapeARNs :: Lens' (CreateTapesResponse (a)) [Text]
 ctrsTapeARNs = lens _ctrsTapeARNs (\ s a -> s{_ctrsTapeARNs = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ctrsResponseStatus :: Lens' CreateTapesResponse Int
+ctrsResponseStatus :: Lens' (CreateTapesResponse (a)) Int
 ctrsResponseStatus = lens _ctrsResponseStatus (\ s a -> s{_ctrsResponseStatus = a});
 
 instance NFData CreateTapesResponse

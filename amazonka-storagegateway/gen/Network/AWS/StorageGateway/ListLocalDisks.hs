@@ -105,7 +105,7 @@ instance ToQuery ListLocalDisks where
         toQuery = const mempty
 
 -- | /See:/ 'listLocalDisksResponse' smart constructor.
-data ListLocalDisksResponse = ListLocalDisksResponse'
+data ListLocalDisksResponse a = ListLocalDisksResponse'
     { _lldrsGatewayARN     :: !(Maybe Text)
     , _lldrsDisks          :: !(Maybe [Disk])
     , _lldrsResponseStatus :: !Int
@@ -122,7 +122,7 @@ data ListLocalDisksResponse = ListLocalDisksResponse'
 -- * 'lldrsResponseStatus'
 listLocalDisksResponse
     :: Int -- ^ 'lldrsResponseStatus'
-    -> ListLocalDisksResponse
+    -> ListLocalDisksResponse (a)
 listLocalDisksResponse pResponseStatus_ =
     ListLocalDisksResponse'
     { _lldrsGatewayARN = Nothing
@@ -131,15 +131,15 @@ listLocalDisksResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-lldrsGatewayARN :: Lens' ListLocalDisksResponse (Maybe Text)
+lldrsGatewayARN :: Lens' (ListLocalDisksResponse (a)) (Maybe Text)
 lldrsGatewayARN = lens _lldrsGatewayARN (\ s a -> s{_lldrsGatewayARN = a});
 
 -- | Undocumented member.
-lldrsDisks :: Lens' ListLocalDisksResponse [Disk]
+lldrsDisks :: Lens' (ListLocalDisksResponse (a)) [Disk]
 lldrsDisks = lens _lldrsDisks (\ s a -> s{_lldrsDisks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-lldrsResponseStatus :: Lens' ListLocalDisksResponse Int
+lldrsResponseStatus :: Lens' (ListLocalDisksResponse (a)) Int
 lldrsResponseStatus = lens _lldrsResponseStatus (\ s a -> s{_lldrsResponseStatus = a});
 
 instance NFData ListLocalDisksResponse

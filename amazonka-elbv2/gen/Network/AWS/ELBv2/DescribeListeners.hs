@@ -138,7 +138,7 @@ instance ToQuery DescribeListeners where
 -- | Contains the output of DescribeListeners.
 --
 -- /See:/ 'describeListenersResponse' smart constructor.
-data DescribeListenersResponse = DescribeListenersResponse'
+data DescribeListenersResponse a = DescribeListenersResponse'
     { _dlsrsNextMarker     :: !(Maybe Text)
     , _dlsrsListeners      :: !(Maybe [Listener])
     , _dlsrsResponseStatus :: !Int
@@ -155,7 +155,7 @@ data DescribeListenersResponse = DescribeListenersResponse'
 -- * 'dlsrsResponseStatus'
 describeListenersResponse
     :: Int -- ^ 'dlsrsResponseStatus'
-    -> DescribeListenersResponse
+    -> DescribeListenersResponse (a)
 describeListenersResponse pResponseStatus_ =
     DescribeListenersResponse'
     { _dlsrsNextMarker = Nothing
@@ -164,15 +164,15 @@ describeListenersResponse pResponseStatus_ =
     }
 
 -- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
-dlsrsNextMarker :: Lens' DescribeListenersResponse (Maybe Text)
+dlsrsNextMarker :: Lens' (DescribeListenersResponse (a)) (Maybe Text)
 dlsrsNextMarker = lens _dlsrsNextMarker (\ s a -> s{_dlsrsNextMarker = a});
 
 -- | Information about the listeners.
-dlsrsListeners :: Lens' DescribeListenersResponse [Listener]
+dlsrsListeners :: Lens' (DescribeListenersResponse (a)) [Listener]
 dlsrsListeners = lens _dlsrsListeners (\ s a -> s{_dlsrsListeners = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlsrsResponseStatus :: Lens' DescribeListenersResponse Int
+dlsrsResponseStatus :: Lens' (DescribeListenersResponse (a)) Int
 dlsrsResponseStatus = lens _dlsrsResponseStatus (\ s a -> s{_dlsrsResponseStatus = a});
 
 instance NFData DescribeListenersResponse

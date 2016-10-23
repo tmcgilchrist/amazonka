@@ -106,7 +106,7 @@ instance ToQuery ListDeploymentConfigs where
 -- | Represents the output of a list deployment configurations operation.
 --
 -- /See:/ 'listDeploymentConfigsResponse' smart constructor.
-data ListDeploymentConfigsResponse = ListDeploymentConfigsResponse'
+data ListDeploymentConfigsResponse a = ListDeploymentConfigsResponse'
     { _ldcrsNextToken             :: !(Maybe Text)
     , _ldcrsDeploymentConfigsList :: !(Maybe [Text])
     , _ldcrsResponseStatus        :: !Int
@@ -123,7 +123,7 @@ data ListDeploymentConfigsResponse = ListDeploymentConfigsResponse'
 -- * 'ldcrsResponseStatus'
 listDeploymentConfigsResponse
     :: Int -- ^ 'ldcrsResponseStatus'
-    -> ListDeploymentConfigsResponse
+    -> ListDeploymentConfigsResponse (a)
 listDeploymentConfigsResponse pResponseStatus_ =
     ListDeploymentConfigsResponse'
     { _ldcrsNextToken = Nothing
@@ -132,15 +132,15 @@ listDeploymentConfigsResponse pResponseStatus_ =
     }
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment configurations call to return the next set of deployment configurations in the list.
-ldcrsNextToken :: Lens' ListDeploymentConfigsResponse (Maybe Text)
+ldcrsNextToken :: Lens' (ListDeploymentConfigsResponse (a)) (Maybe Text)
 ldcrsNextToken = lens _ldcrsNextToken (\ s a -> s{_ldcrsNextToken = a});
 
 -- | A list of deployment configurations, including built-in configurations such as CodeDeployDefault.OneAtATime.
-ldcrsDeploymentConfigsList :: Lens' ListDeploymentConfigsResponse [Text]
+ldcrsDeploymentConfigsList :: Lens' (ListDeploymentConfigsResponse (a)) [Text]
 ldcrsDeploymentConfigsList = lens _ldcrsDeploymentConfigsList (\ s a -> s{_ldcrsDeploymentConfigsList = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ldcrsResponseStatus :: Lens' ListDeploymentConfigsResponse Int
+ldcrsResponseStatus :: Lens' (ListDeploymentConfigsResponse (a)) Int
 ldcrsResponseStatus = lens _ldcrsResponseStatus (\ s a -> s{_ldcrsResponseStatus = a});
 
 instance NFData ListDeploymentConfigsResponse

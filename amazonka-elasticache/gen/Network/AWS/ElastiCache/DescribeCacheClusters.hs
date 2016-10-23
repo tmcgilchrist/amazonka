@@ -151,7 +151,7 @@ instance ToQuery DescribeCacheClusters where
 -- | Represents the output of a /DescribeCacheClusters/ action.
 --
 -- /See:/ 'describeCacheClustersResponse' smart constructor.
-data DescribeCacheClustersResponse = DescribeCacheClustersResponse'
+data DescribeCacheClustersResponse a = DescribeCacheClustersResponse'
     { _drsCacheClusters  :: !(Maybe [CacheCluster])
     , _drsMarker         :: !(Maybe Text)
     , _drsResponseStatus :: !Int
@@ -168,7 +168,7 @@ data DescribeCacheClustersResponse = DescribeCacheClustersResponse'
 -- * 'drsResponseStatus'
 describeCacheClustersResponse
     :: Int -- ^ 'drsResponseStatus'
-    -> DescribeCacheClustersResponse
+    -> DescribeCacheClustersResponse (a)
 describeCacheClustersResponse pResponseStatus_ =
     DescribeCacheClustersResponse'
     { _drsCacheClusters = Nothing
@@ -177,15 +177,15 @@ describeCacheClustersResponse pResponseStatus_ =
     }
 
 -- | A list of cache clusters. Each item in the list contains detailed information about one cache cluster.
-drsCacheClusters :: Lens' DescribeCacheClustersResponse [CacheCluster]
+drsCacheClusters :: Lens' (DescribeCacheClustersResponse (a)) [CacheCluster]
 drsCacheClusters = lens _drsCacheClusters (\ s a -> s{_drsCacheClusters = a}) . _Default . _Coerce;
 
 -- | Provides an identifier to allow retrieval of paginated results.
-drsMarker :: Lens' DescribeCacheClustersResponse (Maybe Text)
+drsMarker :: Lens' (DescribeCacheClustersResponse (a)) (Maybe Text)
 drsMarker = lens _drsMarker (\ s a -> s{_drsMarker = a});
 
 -- | The response status code.
-drsResponseStatus :: Lens' DescribeCacheClustersResponse Int
+drsResponseStatus :: Lens' (DescribeCacheClustersResponse (a)) Int
 drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a});
 
 instance NFData DescribeCacheClustersResponse

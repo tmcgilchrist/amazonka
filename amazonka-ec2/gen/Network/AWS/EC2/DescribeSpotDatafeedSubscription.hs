@@ -101,7 +101,7 @@ instance ToQuery DescribeSpotDatafeedSubscription
 -- | Contains the output of DescribeSpotDatafeedSubscription.
 --
 -- /See:/ 'describeSpotDatafeedSubscriptionResponse' smart constructor.
-data DescribeSpotDatafeedSubscriptionResponse = DescribeSpotDatafeedSubscriptionResponse'
+data DescribeSpotDatafeedSubscriptionResponse a = DescribeSpotDatafeedSubscriptionResponse'
     { _dsdsrsSpotDatafeedSubscription :: !(Maybe SpotDatafeedSubscription)
     , _dsdsrsResponseStatus           :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data DescribeSpotDatafeedSubscriptionResponse = DescribeSpotDatafeedSubscription
 -- * 'dsdsrsResponseStatus'
 describeSpotDatafeedSubscriptionResponse
     :: Int -- ^ 'dsdsrsResponseStatus'
-    -> DescribeSpotDatafeedSubscriptionResponse
+    -> DescribeSpotDatafeedSubscriptionResponse (a)
 describeSpotDatafeedSubscriptionResponse pResponseStatus_ =
     DescribeSpotDatafeedSubscriptionResponse'
     { _dsdsrsSpotDatafeedSubscription = Nothing
@@ -123,11 +123,11 @@ describeSpotDatafeedSubscriptionResponse pResponseStatus_ =
     }
 
 -- | The Spot instance data feed subscription.
-dsdsrsSpotDatafeedSubscription :: Lens' DescribeSpotDatafeedSubscriptionResponse (Maybe SpotDatafeedSubscription)
+dsdsrsSpotDatafeedSubscription :: Lens' (DescribeSpotDatafeedSubscriptionResponse (a)) (Maybe SpotDatafeedSubscription)
 dsdsrsSpotDatafeedSubscription = lens _dsdsrsSpotDatafeedSubscription (\ s a -> s{_dsdsrsSpotDatafeedSubscription = a});
 
 -- | The response status code.
-dsdsrsResponseStatus :: Lens' DescribeSpotDatafeedSubscriptionResponse Int
+dsdsrsResponseStatus :: Lens' (DescribeSpotDatafeedSubscriptionResponse (a)) Int
 dsdsrsResponseStatus = lens _dsdsrsResponseStatus (\ s a -> s{_dsdsrsResponseStatus = a});
 
 instance NFData

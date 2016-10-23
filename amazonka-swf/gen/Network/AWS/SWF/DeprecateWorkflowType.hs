@@ -119,14 +119,14 @@ instance ToQuery DeprecateWorkflowType where
         toQuery = const mempty
 
 -- | /See:/ 'deprecateWorkflowTypeResponse' smart constructor.
-data DeprecateWorkflowTypeResponse =
+data DeprecateWorkflowTypeResponse a =
     DeprecateWorkflowTypeResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeprecateWorkflowTypeResponse' with the minimum fields required to make a request.
 --
 deprecateWorkflowTypeResponse
-    :: DeprecateWorkflowTypeResponse
+    :: DeprecateWorkflowTypeResponse (a)
 deprecateWorkflowTypeResponse = DeprecateWorkflowTypeResponse'
 
 instance NFData DeprecateWorkflowTypeResponse

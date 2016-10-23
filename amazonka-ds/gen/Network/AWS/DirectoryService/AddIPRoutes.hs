@@ -161,7 +161,7 @@ instance ToQuery AddIPRoutes where
         toQuery = const mempty
 
 -- | /See:/ 'addIPRoutesResponse' smart constructor.
-newtype AddIPRoutesResponse = AddIPRoutesResponse'
+newtype AddIPRoutesResponse a = AddIPRoutesResponse'
     { _airrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -172,14 +172,14 @@ newtype AddIPRoutesResponse = AddIPRoutesResponse'
 -- * 'airrsResponseStatus'
 addIPRoutesResponse
     :: Int -- ^ 'airrsResponseStatus'
-    -> AddIPRoutesResponse
+    -> AddIPRoutesResponse (a)
 addIPRoutesResponse pResponseStatus_ =
     AddIPRoutesResponse'
     { _airrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-airrsResponseStatus :: Lens' AddIPRoutesResponse Int
+airrsResponseStatus :: Lens' (AddIPRoutesResponse (a)) Int
 airrsResponseStatus = lens _airrsResponseStatus (\ s a -> s{_airrsResponseStatus = a});
 
 instance NFData AddIPRoutesResponse

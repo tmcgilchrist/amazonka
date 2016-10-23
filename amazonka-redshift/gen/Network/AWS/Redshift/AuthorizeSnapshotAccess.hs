@@ -120,7 +120,7 @@ instance ToQuery AuthorizeSnapshotAccess where
                  _asaAccountWithRestoreAccess]
 
 -- | /See:/ 'authorizeSnapshotAccessResponse' smart constructor.
-data AuthorizeSnapshotAccessResponse = AuthorizeSnapshotAccessResponse'
+data AuthorizeSnapshotAccessResponse a = AuthorizeSnapshotAccessResponse'
     { _asarsSnapshot       :: !(Maybe Snapshot)
     , _asarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -134,7 +134,7 @@ data AuthorizeSnapshotAccessResponse = AuthorizeSnapshotAccessResponse'
 -- * 'asarsResponseStatus'
 authorizeSnapshotAccessResponse
     :: Int -- ^ 'asarsResponseStatus'
-    -> AuthorizeSnapshotAccessResponse
+    -> AuthorizeSnapshotAccessResponse (a)
 authorizeSnapshotAccessResponse pResponseStatus_ =
     AuthorizeSnapshotAccessResponse'
     { _asarsSnapshot = Nothing
@@ -142,11 +142,11 @@ authorizeSnapshotAccessResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-asarsSnapshot :: Lens' AuthorizeSnapshotAccessResponse (Maybe Snapshot)
+asarsSnapshot :: Lens' (AuthorizeSnapshotAccessResponse (a)) (Maybe Snapshot)
 asarsSnapshot = lens _asarsSnapshot (\ s a -> s{_asarsSnapshot = a});
 
 -- | The response status code.
-asarsResponseStatus :: Lens' AuthorizeSnapshotAccessResponse Int
+asarsResponseStatus :: Lens' (AuthorizeSnapshotAccessResponse (a)) Int
 asarsResponseStatus = lens _asarsResponseStatus (\ s a -> s{_asarsResponseStatus = a});
 
 instance NFData AuthorizeSnapshotAccessResponse

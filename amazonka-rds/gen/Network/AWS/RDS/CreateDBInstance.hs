@@ -887,7 +887,7 @@ instance ToQuery CreateDBInstance where
                "Engine" =: _cdiEngine]
 
 -- | /See:/ 'createDBInstanceResponse' smart constructor.
-data CreateDBInstanceResponse = CreateDBInstanceResponse'
+data CreateDBInstanceResponse a = CreateDBInstanceResponse'
     { _cdirsDBInstance     :: !(Maybe DBInstance)
     , _cdirsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -901,7 +901,7 @@ data CreateDBInstanceResponse = CreateDBInstanceResponse'
 -- * 'cdirsResponseStatus'
 createDBInstanceResponse
     :: Int -- ^ 'cdirsResponseStatus'
-    -> CreateDBInstanceResponse
+    -> CreateDBInstanceResponse (a)
 createDBInstanceResponse pResponseStatus_ =
     CreateDBInstanceResponse'
     { _cdirsDBInstance = Nothing
@@ -909,11 +909,11 @@ createDBInstanceResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-cdirsDBInstance :: Lens' CreateDBInstanceResponse (Maybe DBInstance)
+cdirsDBInstance :: Lens' (CreateDBInstanceResponse (a)) (Maybe DBInstance)
 cdirsDBInstance = lens _cdirsDBInstance (\ s a -> s{_cdirsDBInstance = a});
 
 -- | The response status code.
-cdirsResponseStatus :: Lens' CreateDBInstanceResponse Int
+cdirsResponseStatus :: Lens' (CreateDBInstanceResponse (a)) Int
 cdirsResponseStatus = lens _cdirsResponseStatus (\ s a -> s{_cdirsResponseStatus = a});
 
 instance NFData CreateDBInstanceResponse

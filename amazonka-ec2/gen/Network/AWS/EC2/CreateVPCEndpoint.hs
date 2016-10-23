@@ -151,7 +151,7 @@ instance ToQuery CreateVPCEndpoint where
 -- | Contains the output of CreateVpcEndpoint.
 --
 -- /See:/ 'createVPCEndpointResponse' smart constructor.
-data CreateVPCEndpointResponse = CreateVPCEndpointResponse'
+data CreateVPCEndpointResponse a = CreateVPCEndpointResponse'
     { _cversClientToken    :: !(Maybe Text)
     , _cversVPCEndpoint    :: !(Maybe VPCEndpoint)
     , _cversResponseStatus :: !Int
@@ -168,7 +168,7 @@ data CreateVPCEndpointResponse = CreateVPCEndpointResponse'
 -- * 'cversResponseStatus'
 createVPCEndpointResponse
     :: Int -- ^ 'cversResponseStatus'
-    -> CreateVPCEndpointResponse
+    -> CreateVPCEndpointResponse (a)
 createVPCEndpointResponse pResponseStatus_ =
     CreateVPCEndpointResponse'
     { _cversClientToken = Nothing
@@ -177,15 +177,15 @@ createVPCEndpointResponse pResponseStatus_ =
     }
 
 -- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
-cversClientToken :: Lens' CreateVPCEndpointResponse (Maybe Text)
+cversClientToken :: Lens' (CreateVPCEndpointResponse (a)) (Maybe Text)
 cversClientToken = lens _cversClientToken (\ s a -> s{_cversClientToken = a});
 
 -- | Information about the endpoint.
-cversVPCEndpoint :: Lens' CreateVPCEndpointResponse (Maybe VPCEndpoint)
+cversVPCEndpoint :: Lens' (CreateVPCEndpointResponse (a)) (Maybe VPCEndpoint)
 cversVPCEndpoint = lens _cversVPCEndpoint (\ s a -> s{_cversVPCEndpoint = a});
 
 -- | The response status code.
-cversResponseStatus :: Lens' CreateVPCEndpointResponse Int
+cversResponseStatus :: Lens' (CreateVPCEndpointResponse (a)) Int
 cversResponseStatus = lens _cversResponseStatus (\ s a -> s{_cversResponseStatus = a});
 
 instance NFData CreateVPCEndpointResponse

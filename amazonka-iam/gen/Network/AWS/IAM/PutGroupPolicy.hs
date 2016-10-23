@@ -118,14 +118,14 @@ instance ToQuery PutGroupPolicy where
                "PolicyDocument" =: _pgpPolicyDocument]
 
 -- | /See:/ 'putGroupPolicyResponse' smart constructor.
-data PutGroupPolicyResponse =
+data PutGroupPolicyResponse a =
     PutGroupPolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'PutGroupPolicyResponse' with the minimum fields required to make a request.
 --
 putGroupPolicyResponse
-    :: PutGroupPolicyResponse
+    :: PutGroupPolicyResponse (a)
 putGroupPolicyResponse = PutGroupPolicyResponse'
 
 instance NFData PutGroupPolicyResponse

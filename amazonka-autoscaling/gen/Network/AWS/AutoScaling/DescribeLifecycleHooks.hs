@@ -111,7 +111,7 @@ instance ToQuery DescribeLifecycleHooks where
 -- | Contains the output of DescribeLifecycleHooks.
 --
 -- /See:/ 'describeLifecycleHooksResponse' smart constructor.
-data DescribeLifecycleHooksResponse = DescribeLifecycleHooksResponse'
+data DescribeLifecycleHooksResponse a = DescribeLifecycleHooksResponse'
     { _dlhrsLifecycleHooks :: !(Maybe [LifecycleHook])
     , _dlhrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -125,7 +125,7 @@ data DescribeLifecycleHooksResponse = DescribeLifecycleHooksResponse'
 -- * 'dlhrsResponseStatus'
 describeLifecycleHooksResponse
     :: Int -- ^ 'dlhrsResponseStatus'
-    -> DescribeLifecycleHooksResponse
+    -> DescribeLifecycleHooksResponse (a)
 describeLifecycleHooksResponse pResponseStatus_ =
     DescribeLifecycleHooksResponse'
     { _dlhrsLifecycleHooks = Nothing
@@ -133,11 +133,11 @@ describeLifecycleHooksResponse pResponseStatus_ =
     }
 
 -- | The lifecycle hooks for the specified group.
-dlhrsLifecycleHooks :: Lens' DescribeLifecycleHooksResponse [LifecycleHook]
+dlhrsLifecycleHooks :: Lens' (DescribeLifecycleHooksResponse (a)) [LifecycleHook]
 dlhrsLifecycleHooks = lens _dlhrsLifecycleHooks (\ s a -> s{_dlhrsLifecycleHooks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlhrsResponseStatus :: Lens' DescribeLifecycleHooksResponse Int
+dlhrsResponseStatus :: Lens' (DescribeLifecycleHooksResponse (a)) Int
 dlhrsResponseStatus = lens _dlhrsResponseStatus (\ s a -> s{_dlhrsResponseStatus = a});
 
 instance NFData DescribeLifecycleHooksResponse

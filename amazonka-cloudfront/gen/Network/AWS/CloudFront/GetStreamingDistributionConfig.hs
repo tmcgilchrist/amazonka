@@ -99,7 +99,7 @@ instance ToQuery GetStreamingDistributionConfig where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'getStreamingDistributionConfigResponse' smart constructor.
-data GetStreamingDistributionConfigResponse = GetStreamingDistributionConfigResponse'
+data GetStreamingDistributionConfigResponse a = GetStreamingDistributionConfigResponse'
     { _gsdcrsStreamingDistributionConfig :: !(Maybe StreamingDistributionConfig)
     , _gsdcrsETag                        :: !(Maybe Text)
     , _gsdcrsResponseStatus              :: !Int
@@ -116,7 +116,7 @@ data GetStreamingDistributionConfigResponse = GetStreamingDistributionConfigResp
 -- * 'gsdcrsResponseStatus'
 getStreamingDistributionConfigResponse
     :: Int -- ^ 'gsdcrsResponseStatus'
-    -> GetStreamingDistributionConfigResponse
+    -> GetStreamingDistributionConfigResponse (a)
 getStreamingDistributionConfigResponse pResponseStatus_ =
     GetStreamingDistributionConfigResponse'
     { _gsdcrsStreamingDistributionConfig = Nothing
@@ -125,15 +125,15 @@ getStreamingDistributionConfigResponse pResponseStatus_ =
     }
 
 -- | The streaming distribution\'s configuration information.
-gsdcrsStreamingDistributionConfig :: Lens' GetStreamingDistributionConfigResponse (Maybe StreamingDistributionConfig)
+gsdcrsStreamingDistributionConfig :: Lens' (GetStreamingDistributionConfigResponse (a)) (Maybe StreamingDistributionConfig)
 gsdcrsStreamingDistributionConfig = lens _gsdcrsStreamingDistributionConfig (\ s a -> s{_gsdcrsStreamingDistributionConfig = a});
 
 -- | The current version of the configuration. For example: E2QWRUHAPOMQZL.
-gsdcrsETag :: Lens' GetStreamingDistributionConfigResponse (Maybe Text)
+gsdcrsETag :: Lens' (GetStreamingDistributionConfigResponse (a)) (Maybe Text)
 gsdcrsETag = lens _gsdcrsETag (\ s a -> s{_gsdcrsETag = a});
 
 -- | The response status code.
-gsdcrsResponseStatus :: Lens' GetStreamingDistributionConfigResponse Int
+gsdcrsResponseStatus :: Lens' (GetStreamingDistributionConfigResponse (a)) Int
 gsdcrsResponseStatus = lens _gsdcrsResponseStatus (\ s a -> s{_gsdcrsResponseStatus = a});
 
 instance NFData

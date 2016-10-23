@@ -141,7 +141,7 @@ instance ToQuery ListLaunchPaths where
         toQuery = const mempty
 
 -- | /See:/ 'listLaunchPathsResponse' smart constructor.
-data ListLaunchPathsResponse = ListLaunchPathsResponse'
+data ListLaunchPathsResponse a = ListLaunchPathsResponse'
     { _llprsNextPageToken       :: !(Maybe Text)
     , _llprsLaunchPathSummaries :: !(Maybe [LaunchPathSummary])
     , _llprsResponseStatus      :: !Int
@@ -158,7 +158,7 @@ data ListLaunchPathsResponse = ListLaunchPathsResponse'
 -- * 'llprsResponseStatus'
 listLaunchPathsResponse
     :: Int -- ^ 'llprsResponseStatus'
-    -> ListLaunchPathsResponse
+    -> ListLaunchPathsResponse (a)
 listLaunchPathsResponse pResponseStatus_ =
     ListLaunchPathsResponse'
     { _llprsNextPageToken = Nothing
@@ -167,15 +167,15 @@ listLaunchPathsResponse pResponseStatus_ =
     }
 
 -- | The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
-llprsNextPageToken :: Lens' ListLaunchPathsResponse (Maybe Text)
+llprsNextPageToken :: Lens' (ListLaunchPathsResponse (a)) (Maybe Text)
 llprsNextPageToken = lens _llprsNextPageToken (\ s a -> s{_llprsNextPageToken = a});
 
 -- | List of launch path information summaries for the specified 'PageToken'.
-llprsLaunchPathSummaries :: Lens' ListLaunchPathsResponse [LaunchPathSummary]
+llprsLaunchPathSummaries :: Lens' (ListLaunchPathsResponse (a)) [LaunchPathSummary]
 llprsLaunchPathSummaries = lens _llprsLaunchPathSummaries (\ s a -> s{_llprsLaunchPathSummaries = a}) . _Default . _Coerce;
 
 -- | The response status code.
-llprsResponseStatus :: Lens' ListLaunchPathsResponse Int
+llprsResponseStatus :: Lens' (ListLaunchPathsResponse (a)) Int
 llprsResponseStatus = lens _llprsResponseStatus (\ s a -> s{_llprsResponseStatus = a});
 
 instance NFData ListLaunchPathsResponse

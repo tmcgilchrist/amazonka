@@ -107,7 +107,7 @@ instance ToQuery GetRepositoryTriggers where
 -- | Represents the output of a get repository triggers operation.
 --
 -- /See:/ 'getRepositoryTriggersResponse' smart constructor.
-data GetRepositoryTriggersResponse = GetRepositoryTriggersResponse'
+data GetRepositoryTriggersResponse a = GetRepositoryTriggersResponse'
     { _grtrsConfigurationId :: !(Maybe Text)
     , _grtrsTriggers        :: !(Maybe [RepositoryTrigger])
     , _grtrsResponseStatus  :: !Int
@@ -124,7 +124,7 @@ data GetRepositoryTriggersResponse = GetRepositoryTriggersResponse'
 -- * 'grtrsResponseStatus'
 getRepositoryTriggersResponse
     :: Int -- ^ 'grtrsResponseStatus'
-    -> GetRepositoryTriggersResponse
+    -> GetRepositoryTriggersResponse (a)
 getRepositoryTriggersResponse pResponseStatus_ =
     GetRepositoryTriggersResponse'
     { _grtrsConfigurationId = Nothing
@@ -133,15 +133,15 @@ getRepositoryTriggersResponse pResponseStatus_ =
     }
 
 -- | The system-generated unique ID for the trigger.
-grtrsConfigurationId :: Lens' GetRepositoryTriggersResponse (Maybe Text)
+grtrsConfigurationId :: Lens' (GetRepositoryTriggersResponse (a)) (Maybe Text)
 grtrsConfigurationId = lens _grtrsConfigurationId (\ s a -> s{_grtrsConfigurationId = a});
 
 -- | The JSON block of configuration information for each trigger.
-grtrsTriggers :: Lens' GetRepositoryTriggersResponse [RepositoryTrigger]
+grtrsTriggers :: Lens' (GetRepositoryTriggersResponse (a)) [RepositoryTrigger]
 grtrsTriggers = lens _grtrsTriggers (\ s a -> s{_grtrsTriggers = a}) . _Default . _Coerce;
 
 -- | The response status code.
-grtrsResponseStatus :: Lens' GetRepositoryTriggersResponse Int
+grtrsResponseStatus :: Lens' (GetRepositoryTriggersResponse (a)) Int
 grtrsResponseStatus = lens _grtrsResponseStatus (\ s a -> s{_grtrsResponseStatus = a});
 
 instance NFData GetRepositoryTriggersResponse

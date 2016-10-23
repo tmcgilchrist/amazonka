@@ -121,7 +121,7 @@ instance ToQuery CreateAlias where
 -- | Contains the results of the < CreateAlias> operation.
 --
 -- /See:/ 'createAliasResponse' smart constructor.
-data CreateAliasResponse = CreateAliasResponse'
+data CreateAliasResponse a = CreateAliasResponse'
     { _carsDirectoryId    :: !(Maybe Text)
     , _carsAlias          :: !(Maybe Text)
     , _carsResponseStatus :: !Int
@@ -138,7 +138,7 @@ data CreateAliasResponse = CreateAliasResponse'
 -- * 'carsResponseStatus'
 createAliasResponse
     :: Int -- ^ 'carsResponseStatus'
-    -> CreateAliasResponse
+    -> CreateAliasResponse (a)
 createAliasResponse pResponseStatus_ =
     CreateAliasResponse'
     { _carsDirectoryId = Nothing
@@ -147,15 +147,15 @@ createAliasResponse pResponseStatus_ =
     }
 
 -- | The identifier of the directory.
-carsDirectoryId :: Lens' CreateAliasResponse (Maybe Text)
+carsDirectoryId :: Lens' (CreateAliasResponse (a)) (Maybe Text)
 carsDirectoryId = lens _carsDirectoryId (\ s a -> s{_carsDirectoryId = a});
 
 -- | The alias for the directory.
-carsAlias :: Lens' CreateAliasResponse (Maybe Text)
+carsAlias :: Lens' (CreateAliasResponse (a)) (Maybe Text)
 carsAlias = lens _carsAlias (\ s a -> s{_carsAlias = a});
 
 -- | The response status code.
-carsResponseStatus :: Lens' CreateAliasResponse Int
+carsResponseStatus :: Lens' (CreateAliasResponse (a)) Int
 carsResponseStatus = lens _carsResponseStatus (\ s a -> s{_carsResponseStatus = a});
 
 instance NFData CreateAliasResponse

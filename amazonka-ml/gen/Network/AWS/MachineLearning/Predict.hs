@@ -124,7 +124,7 @@ instance ToQuery Predict where
         toQuery = const mempty
 
 -- | /See:/ 'predictResponse' smart constructor.
-data PredictResponse = PredictResponse'
+data PredictResponse a = PredictResponse'
     { _prsPrediction     :: !(Maybe Prediction)
     , _prsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data PredictResponse = PredictResponse'
 -- * 'prsResponseStatus'
 predictResponse
     :: Int -- ^ 'prsResponseStatus'
-    -> PredictResponse
+    -> PredictResponse (a)
 predictResponse pResponseStatus_ =
     PredictResponse'
     { _prsPrediction = Nothing
@@ -146,11 +146,11 @@ predictResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-prsPrediction :: Lens' PredictResponse (Maybe Prediction)
+prsPrediction :: Lens' (PredictResponse (a)) (Maybe Prediction)
 prsPrediction = lens _prsPrediction (\ s a -> s{_prsPrediction = a});
 
 -- | The response status code.
-prsResponseStatus :: Lens' PredictResponse Int
+prsResponseStatus :: Lens' (PredictResponse (a)) Int
 prsResponseStatus = lens _prsResponseStatus (\ s a -> s{_prsResponseStatus = a});
 
 instance NFData PredictResponse

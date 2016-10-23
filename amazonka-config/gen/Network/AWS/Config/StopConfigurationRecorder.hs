@@ -99,14 +99,14 @@ instance ToQuery StopConfigurationRecorder where
         toQuery = const mempty
 
 -- | /See:/ 'stopConfigurationRecorderResponse' smart constructor.
-data StopConfigurationRecorderResponse =
+data StopConfigurationRecorderResponse a =
     StopConfigurationRecorderResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'StopConfigurationRecorderResponse' with the minimum fields required to make a request.
 --
 stopConfigurationRecorderResponse
-    :: StopConfigurationRecorderResponse
+    :: StopConfigurationRecorderResponse (a)
 stopConfigurationRecorderResponse = StopConfigurationRecorderResponse'
 
 instance NFData StopConfigurationRecorderResponse

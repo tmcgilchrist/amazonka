@@ -112,7 +112,7 @@ instance ToQuery ModifyWorkspaceProperties where
         toQuery = const mempty
 
 -- | /See:/ 'modifyWorkspacePropertiesResponse' smart constructor.
-newtype ModifyWorkspacePropertiesResponse = ModifyWorkspacePropertiesResponse'
+newtype ModifyWorkspacePropertiesResponse a = ModifyWorkspacePropertiesResponse'
     { _mwprsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -123,14 +123,14 @@ newtype ModifyWorkspacePropertiesResponse = ModifyWorkspacePropertiesResponse'
 -- * 'mwprsResponseStatus'
 modifyWorkspacePropertiesResponse
     :: Int -- ^ 'mwprsResponseStatus'
-    -> ModifyWorkspacePropertiesResponse
+    -> ModifyWorkspacePropertiesResponse (a)
 modifyWorkspacePropertiesResponse pResponseStatus_ =
     ModifyWorkspacePropertiesResponse'
     { _mwprsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-mwprsResponseStatus :: Lens' ModifyWorkspacePropertiesResponse Int
+mwprsResponseStatus :: Lens' (ModifyWorkspacePropertiesResponse (a)) Int
 mwprsResponseStatus = lens _mwprsResponseStatus (\ s a -> s{_mwprsResponseStatus = a});
 
 instance NFData ModifyWorkspacePropertiesResponse

@@ -144,7 +144,7 @@ instance ToQuery RecordLifecycleActionHeartbeat where
 -- | Contains the output of RecordLifecycleActionHeartBeat.
 --
 -- /See:/ 'recordLifecycleActionHeartbeatResponse' smart constructor.
-newtype RecordLifecycleActionHeartbeatResponse = RecordLifecycleActionHeartbeatResponse'
+newtype RecordLifecycleActionHeartbeatResponse a = RecordLifecycleActionHeartbeatResponse'
     { _rlahrsResponseStatus :: Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
 
@@ -155,14 +155,14 @@ newtype RecordLifecycleActionHeartbeatResponse = RecordLifecycleActionHeartbeatR
 -- * 'rlahrsResponseStatus'
 recordLifecycleActionHeartbeatResponse
     :: Int -- ^ 'rlahrsResponseStatus'
-    -> RecordLifecycleActionHeartbeatResponse
+    -> RecordLifecycleActionHeartbeatResponse (a)
 recordLifecycleActionHeartbeatResponse pResponseStatus_ =
     RecordLifecycleActionHeartbeatResponse'
     { _rlahrsResponseStatus = pResponseStatus_
     }
 
 -- | The response status code.
-rlahrsResponseStatus :: Lens' RecordLifecycleActionHeartbeatResponse Int
+rlahrsResponseStatus :: Lens' (RecordLifecycleActionHeartbeatResponse (a)) Int
 rlahrsResponseStatus = lens _rlahrsResponseStatus (\ s a -> s{_rlahrsResponseStatus = a});
 
 instance NFData

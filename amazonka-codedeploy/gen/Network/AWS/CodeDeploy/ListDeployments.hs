@@ -155,7 +155,7 @@ instance ToQuery ListDeployments where
 -- | Represents the output of a list deployments operation.
 --
 -- /See:/ 'listDeploymentsResponse' smart constructor.
-data ListDeploymentsResponse = ListDeploymentsResponse'
+data ListDeploymentsResponse a = ListDeploymentsResponse'
     { _ldrsNextToken      :: !(Maybe Text)
     , _ldrsDeployments    :: !(Maybe [Text])
     , _ldrsResponseStatus :: !Int
@@ -172,7 +172,7 @@ data ListDeploymentsResponse = ListDeploymentsResponse'
 -- * 'ldrsResponseStatus'
 listDeploymentsResponse
     :: Int -- ^ 'ldrsResponseStatus'
-    -> ListDeploymentsResponse
+    -> ListDeploymentsResponse (a)
 listDeploymentsResponse pResponseStatus_ =
     ListDeploymentsResponse'
     { _ldrsNextToken = Nothing
@@ -181,15 +181,15 @@ listDeploymentsResponse pResponseStatus_ =
     }
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployments call to return the next set of deployments in the list.
-ldrsNextToken :: Lens' ListDeploymentsResponse (Maybe Text)
+ldrsNextToken :: Lens' (ListDeploymentsResponse (a)) (Maybe Text)
 ldrsNextToken = lens _ldrsNextToken (\ s a -> s{_ldrsNextToken = a});
 
 -- | A list of deployment IDs.
-ldrsDeployments :: Lens' ListDeploymentsResponse [Text]
+ldrsDeployments :: Lens' (ListDeploymentsResponse (a)) [Text]
 ldrsDeployments = lens _ldrsDeployments (\ s a -> s{_ldrsDeployments = a}) . _Default . _Coerce;
 
 -- | The response status code.
-ldrsResponseStatus :: Lens' ListDeploymentsResponse Int
+ldrsResponseStatus :: Lens' (ListDeploymentsResponse (a)) Int
 ldrsResponseStatus = lens _ldrsResponseStatus (\ s a -> s{_ldrsResponseStatus = a});
 
 instance NFData ListDeploymentsResponse

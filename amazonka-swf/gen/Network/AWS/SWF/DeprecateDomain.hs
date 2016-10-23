@@ -103,14 +103,14 @@ instance ToQuery DeprecateDomain where
         toQuery = const mempty
 
 -- | /See:/ 'deprecateDomainResponse' smart constructor.
-data DeprecateDomainResponse =
+data DeprecateDomainResponse a =
     DeprecateDomainResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeprecateDomainResponse' with the minimum fields required to make a request.
 --
 deprecateDomainResponse
-    :: DeprecateDomainResponse
+    :: DeprecateDomainResponse (a)
 deprecateDomainResponse = DeprecateDomainResponse'
 
 instance NFData DeprecateDomainResponse

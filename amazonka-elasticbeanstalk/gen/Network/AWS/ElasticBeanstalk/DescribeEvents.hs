@@ -210,7 +210,7 @@ instance ToQuery DescribeEvents where
 -- | Result message wrapping a list of event descriptions.
 --
 -- /See:/ 'describeEventsResponse' smart constructor.
-data DescribeEventsResponse = DescribeEventsResponse'
+data DescribeEventsResponse a = DescribeEventsResponse'
     { _dersNextToken      :: !(Maybe Text)
     , _dersEvents         :: !(Maybe [EventDescription])
     , _dersResponseStatus :: !Int
@@ -227,7 +227,7 @@ data DescribeEventsResponse = DescribeEventsResponse'
 -- * 'dersResponseStatus'
 describeEventsResponse
     :: Int -- ^ 'dersResponseStatus'
-    -> DescribeEventsResponse
+    -> DescribeEventsResponse (a)
 describeEventsResponse pResponseStatus_ =
     DescribeEventsResponse'
     { _dersNextToken = Nothing
@@ -236,15 +236,15 @@ describeEventsResponse pResponseStatus_ =
     }
 
 -- | If returned, this indicates that there are more results to obtain. Use this token in the next < DescribeEvents> call to get the next batch of events.
-dersNextToken :: Lens' DescribeEventsResponse (Maybe Text)
+dersNextToken :: Lens' (DescribeEventsResponse (a)) (Maybe Text)
 dersNextToken = lens _dersNextToken (\ s a -> s{_dersNextToken = a});
 
 -- | A list of < EventDescription>.
-dersEvents :: Lens' DescribeEventsResponse [EventDescription]
+dersEvents :: Lens' (DescribeEventsResponse (a)) [EventDescription]
 dersEvents = lens _dersEvents (\ s a -> s{_dersEvents = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dersResponseStatus :: Lens' DescribeEventsResponse Int
+dersResponseStatus :: Lens' (DescribeEventsResponse (a)) Int
 dersResponseStatus = lens _dersResponseStatus (\ s a -> s{_dersResponseStatus = a});
 
 instance NFData DescribeEventsResponse

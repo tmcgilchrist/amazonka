@@ -109,14 +109,14 @@ instance ToQuery DetachVPNGateway where
                "VpcId" =: _dvpngVPCId]
 
 -- | /See:/ 'detachVPNGatewayResponse' smart constructor.
-data DetachVPNGatewayResponse =
+data DetachVPNGatewayResponse a =
     DetachVPNGatewayResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DetachVPNGatewayResponse' with the minimum fields required to make a request.
 --
 detachVPNGatewayResponse
-    :: DetachVPNGatewayResponse
+    :: DetachVPNGatewayResponse (a)
 detachVPNGatewayResponse = DetachVPNGatewayResponse'
 
 instance NFData DetachVPNGatewayResponse

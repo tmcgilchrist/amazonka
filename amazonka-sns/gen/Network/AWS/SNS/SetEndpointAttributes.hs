@@ -105,14 +105,14 @@ instance ToQuery SetEndpointAttributes where
                  toQueryMap "entry" "key" "value" _seaAttributes]
 
 -- | /See:/ 'setEndpointAttributesResponse' smart constructor.
-data SetEndpointAttributesResponse =
+data SetEndpointAttributesResponse a =
     SetEndpointAttributesResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'SetEndpointAttributesResponse' with the minimum fields required to make a request.
 --
 setEndpointAttributesResponse
-    :: SetEndpointAttributesResponse
+    :: SetEndpointAttributesResponse (a)
 setEndpointAttributesResponse = SetEndpointAttributesResponse'
 
 instance NFData SetEndpointAttributesResponse

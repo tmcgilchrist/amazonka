@@ -108,7 +108,7 @@ instance ToQuery DeleteVPCPeeringConnection where
 -- | Contains the output of DeleteVpcPeeringConnection.
 --
 -- /See:/ 'deleteVPCPeeringConnectionResponse' smart constructor.
-data DeleteVPCPeeringConnectionResponse = DeleteVPCPeeringConnectionResponse'
+data DeleteVPCPeeringConnectionResponse a = DeleteVPCPeeringConnectionResponse'
     { _dvpcrsReturn         :: !(Maybe Bool)
     , _dvpcrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -122,7 +122,7 @@ data DeleteVPCPeeringConnectionResponse = DeleteVPCPeeringConnectionResponse'
 -- * 'dvpcrsResponseStatus'
 deleteVPCPeeringConnectionResponse
     :: Int -- ^ 'dvpcrsResponseStatus'
-    -> DeleteVPCPeeringConnectionResponse
+    -> DeleteVPCPeeringConnectionResponse (a)
 deleteVPCPeeringConnectionResponse pResponseStatus_ =
     DeleteVPCPeeringConnectionResponse'
     { _dvpcrsReturn = Nothing
@@ -130,11 +130,11 @@ deleteVPCPeeringConnectionResponse pResponseStatus_ =
     }
 
 -- | Returns 'true' if the request succeeds; otherwise, it returns an error.
-dvpcrsReturn :: Lens' DeleteVPCPeeringConnectionResponse (Maybe Bool)
+dvpcrsReturn :: Lens' (DeleteVPCPeeringConnectionResponse (a)) (Maybe Bool)
 dvpcrsReturn = lens _dvpcrsReturn (\ s a -> s{_dvpcrsReturn = a});
 
 -- | The response status code.
-dvpcrsResponseStatus :: Lens' DeleteVPCPeeringConnectionResponse Int
+dvpcrsResponseStatus :: Lens' (DeleteVPCPeeringConnectionResponse (a)) Int
 dvpcrsResponseStatus = lens _dvpcrsResponseStatus (\ s a -> s{_dvpcrsResponseStatus = a});
 
 instance NFData DeleteVPCPeeringConnectionResponse

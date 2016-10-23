@@ -193,7 +193,7 @@ instance ToQuery GenerateDataSet where
 -- | Container for the result of the GenerateDataSet operation.
 --
 -- /See:/ 'generateDataSetResponse' smart constructor.
-data GenerateDataSetResponse = GenerateDataSetResponse'
+data GenerateDataSetResponse a = GenerateDataSetResponse'
     { _gdsrsDataSetRequestId :: !(Maybe Text)
     , _gdsrsResponseStatus   :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -207,7 +207,7 @@ data GenerateDataSetResponse = GenerateDataSetResponse'
 -- * 'gdsrsResponseStatus'
 generateDataSetResponse
     :: Int -- ^ 'gdsrsResponseStatus'
-    -> GenerateDataSetResponse
+    -> GenerateDataSetResponse (a)
 generateDataSetResponse pResponseStatus_ =
     GenerateDataSetResponse'
     { _gdsrsDataSetRequestId = Nothing
@@ -215,11 +215,11 @@ generateDataSetResponse pResponseStatus_ =
     }
 
 -- | A unique identifier representing a specific request to the GenerateDataSet operation. This identifier can be used to correlate a request with notifications from the SNS topic.
-gdsrsDataSetRequestId :: Lens' GenerateDataSetResponse (Maybe Text)
+gdsrsDataSetRequestId :: Lens' (GenerateDataSetResponse (a)) (Maybe Text)
 gdsrsDataSetRequestId = lens _gdsrsDataSetRequestId (\ s a -> s{_gdsrsDataSetRequestId = a});
 
 -- | The response status code.
-gdsrsResponseStatus :: Lens' GenerateDataSetResponse Int
+gdsrsResponseStatus :: Lens' (GenerateDataSetResponse (a)) Int
 gdsrsResponseStatus = lens _gdsrsResponseStatus (\ s a -> s{_gdsrsResponseStatus = a});
 
 instance NFData GenerateDataSetResponse

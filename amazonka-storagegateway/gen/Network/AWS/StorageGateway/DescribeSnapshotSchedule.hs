@@ -110,7 +110,7 @@ instance ToQuery DescribeSnapshotSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'describeSnapshotScheduleResponse' smart constructor.
-data DescribeSnapshotScheduleResponse = DescribeSnapshotScheduleResponse'
+data DescribeSnapshotScheduleResponse a = DescribeSnapshotScheduleResponse'
     { _dssrsStartAt           :: !(Maybe Nat)
     , _dssrsVolumeARN         :: !(Maybe Text)
     , _dssrsRecurrenceInHours :: !(Maybe Nat)
@@ -136,7 +136,7 @@ data DescribeSnapshotScheduleResponse = DescribeSnapshotScheduleResponse'
 -- * 'dssrsResponseStatus'
 describeSnapshotScheduleResponse
     :: Int -- ^ 'dssrsResponseStatus'
-    -> DescribeSnapshotScheduleResponse
+    -> DescribeSnapshotScheduleResponse (a)
 describeSnapshotScheduleResponse pResponseStatus_ =
     DescribeSnapshotScheduleResponse'
     { _dssrsStartAt = Nothing
@@ -148,27 +148,27 @@ describeSnapshotScheduleResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-dssrsStartAt :: Lens' DescribeSnapshotScheduleResponse (Maybe Natural)
+dssrsStartAt :: Lens' (DescribeSnapshotScheduleResponse (a)) (Maybe Natural)
 dssrsStartAt = lens _dssrsStartAt (\ s a -> s{_dssrsStartAt = a}) . mapping _Nat;
 
 -- | Undocumented member.
-dssrsVolumeARN :: Lens' DescribeSnapshotScheduleResponse (Maybe Text)
+dssrsVolumeARN :: Lens' (DescribeSnapshotScheduleResponse (a)) (Maybe Text)
 dssrsVolumeARN = lens _dssrsVolumeARN (\ s a -> s{_dssrsVolumeARN = a});
 
 -- | Undocumented member.
-dssrsRecurrenceInHours :: Lens' DescribeSnapshotScheduleResponse (Maybe Natural)
+dssrsRecurrenceInHours :: Lens' (DescribeSnapshotScheduleResponse (a)) (Maybe Natural)
 dssrsRecurrenceInHours = lens _dssrsRecurrenceInHours (\ s a -> s{_dssrsRecurrenceInHours = a}) . mapping _Nat;
 
 -- | Undocumented member.
-dssrsTimezone :: Lens' DescribeSnapshotScheduleResponse (Maybe Text)
+dssrsTimezone :: Lens' (DescribeSnapshotScheduleResponse (a)) (Maybe Text)
 dssrsTimezone = lens _dssrsTimezone (\ s a -> s{_dssrsTimezone = a});
 
 -- | Undocumented member.
-dssrsDescription :: Lens' DescribeSnapshotScheduleResponse (Maybe Text)
+dssrsDescription :: Lens' (DescribeSnapshotScheduleResponse (a)) (Maybe Text)
 dssrsDescription = lens _dssrsDescription (\ s a -> s{_dssrsDescription = a});
 
 -- | The response status code.
-dssrsResponseStatus :: Lens' DescribeSnapshotScheduleResponse Int
+dssrsResponseStatus :: Lens' (DescribeSnapshotScheduleResponse (a)) Int
 dssrsResponseStatus = lens _dssrsResponseStatus (\ s a -> s{_dssrsResponseStatus = a});
 
 instance NFData DescribeSnapshotScheduleResponse

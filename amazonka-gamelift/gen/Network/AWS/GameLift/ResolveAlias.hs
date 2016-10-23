@@ -101,7 +101,7 @@ instance ToQuery ResolveAlias where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'resolveAliasResponse' smart constructor.
-data ResolveAliasResponse = ResolveAliasResponse'
+data ResolveAliasResponse a = ResolveAliasResponse'
     { _rarsFleetId        :: !(Maybe Text)
     , _rarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data ResolveAliasResponse = ResolveAliasResponse'
 -- * 'rarsResponseStatus'
 resolveAliasResponse
     :: Int -- ^ 'rarsResponseStatus'
-    -> ResolveAliasResponse
+    -> ResolveAliasResponse (a)
 resolveAliasResponse pResponseStatus_ =
     ResolveAliasResponse'
     { _rarsFleetId = Nothing
@@ -123,11 +123,11 @@ resolveAliasResponse pResponseStatus_ =
     }
 
 -- | Fleet ID associated with the requested alias.
-rarsFleetId :: Lens' ResolveAliasResponse (Maybe Text)
+rarsFleetId :: Lens' (ResolveAliasResponse (a)) (Maybe Text)
 rarsFleetId = lens _rarsFleetId (\ s a -> s{_rarsFleetId = a});
 
 -- | The response status code.
-rarsResponseStatus :: Lens' ResolveAliasResponse Int
+rarsResponseStatus :: Lens' (ResolveAliasResponse (a)) Int
 rarsResponseStatus = lens _rarsResponseStatus (\ s a -> s{_rarsResponseStatus = a});
 
 instance NFData ResolveAliasResponse

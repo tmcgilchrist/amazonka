@@ -97,14 +97,14 @@ instance ToQuery DisableKey where
         toQuery = const mempty
 
 -- | /See:/ 'disableKeyResponse' smart constructor.
-data DisableKeyResponse =
+data DisableKeyResponse a =
     DisableKeyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DisableKeyResponse' with the minimum fields required to make a request.
 --
 disableKeyResponse
-    :: DisableKeyResponse
+    :: DisableKeyResponse (a)
 disableKeyResponse = DisableKeyResponse'
 
 instance NFData DisableKeyResponse

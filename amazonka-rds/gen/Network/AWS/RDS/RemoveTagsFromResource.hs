@@ -101,14 +101,14 @@ instance ToQuery RemoveTagsFromResource where
                "TagKeys" =: toQueryList "member" _rtfrTagKeys]
 
 -- | /See:/ 'removeTagsFromResourceResponse' smart constructor.
-data RemoveTagsFromResourceResponse =
+data RemoveTagsFromResourceResponse a =
     RemoveTagsFromResourceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'RemoveTagsFromResourceResponse' with the minimum fields required to make a request.
 --
 removeTagsFromResourceResponse
-    :: RemoveTagsFromResourceResponse
+    :: RemoveTagsFromResourceResponse (a)
 removeTagsFromResourceResponse = RemoveTagsFromResourceResponse'
 
 instance NFData RemoveTagsFromResourceResponse

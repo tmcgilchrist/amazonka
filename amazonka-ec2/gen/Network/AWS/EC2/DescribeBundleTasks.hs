@@ -142,7 +142,7 @@ instance ToQuery DescribeBundleTasks where
 -- | Contains the output of DescribeBundleTasks.
 --
 -- /See:/ 'describeBundleTasksResponse' smart constructor.
-data DescribeBundleTasksResponse = DescribeBundleTasksResponse'
+data DescribeBundleTasksResponse a = DescribeBundleTasksResponse'
     { _dbtrsBundleTasks    :: !(Maybe [BundleTask])
     , _dbtrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -156,7 +156,7 @@ data DescribeBundleTasksResponse = DescribeBundleTasksResponse'
 -- * 'dbtrsResponseStatus'
 describeBundleTasksResponse
     :: Int -- ^ 'dbtrsResponseStatus'
-    -> DescribeBundleTasksResponse
+    -> DescribeBundleTasksResponse (a)
 describeBundleTasksResponse pResponseStatus_ =
     DescribeBundleTasksResponse'
     { _dbtrsBundleTasks = Nothing
@@ -164,11 +164,11 @@ describeBundleTasksResponse pResponseStatus_ =
     }
 
 -- | Information about one or more bundle tasks.
-dbtrsBundleTasks :: Lens' DescribeBundleTasksResponse [BundleTask]
+dbtrsBundleTasks :: Lens' (DescribeBundleTasksResponse (a)) [BundleTask]
 dbtrsBundleTasks = lens _dbtrsBundleTasks (\ s a -> s{_dbtrsBundleTasks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dbtrsResponseStatus :: Lens' DescribeBundleTasksResponse Int
+dbtrsResponseStatus :: Lens' (DescribeBundleTasksResponse (a)) Int
 dbtrsResponseStatus = lens _dbtrsResponseStatus (\ s a -> s{_dbtrsResponseStatus = a});
 
 instance NFData DescribeBundleTasksResponse

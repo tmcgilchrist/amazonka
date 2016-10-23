@@ -113,7 +113,7 @@ instance ToQuery DescribeLoadBalancerPolicies where
 -- | Contains the output of DescribeLoadBalancerPolicies.
 --
 -- /See:/ 'describeLoadBalancerPoliciesResponse' smart constructor.
-data DescribeLoadBalancerPoliciesResponse = DescribeLoadBalancerPoliciesResponse'
+data DescribeLoadBalancerPoliciesResponse a = DescribeLoadBalancerPoliciesResponse'
     { _dlbprsPolicyDescriptions :: !(Maybe [PolicyDescription])
     , _dlbprsResponseStatus     :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -127,7 +127,7 @@ data DescribeLoadBalancerPoliciesResponse = DescribeLoadBalancerPoliciesResponse
 -- * 'dlbprsResponseStatus'
 describeLoadBalancerPoliciesResponse
     :: Int -- ^ 'dlbprsResponseStatus'
-    -> DescribeLoadBalancerPoliciesResponse
+    -> DescribeLoadBalancerPoliciesResponse (a)
 describeLoadBalancerPoliciesResponse pResponseStatus_ =
     DescribeLoadBalancerPoliciesResponse'
     { _dlbprsPolicyDescriptions = Nothing
@@ -135,11 +135,11 @@ describeLoadBalancerPoliciesResponse pResponseStatus_ =
     }
 
 -- | Information about the policies.
-dlbprsPolicyDescriptions :: Lens' DescribeLoadBalancerPoliciesResponse [PolicyDescription]
+dlbprsPolicyDescriptions :: Lens' (DescribeLoadBalancerPoliciesResponse (a)) [PolicyDescription]
 dlbprsPolicyDescriptions = lens _dlbprsPolicyDescriptions (\ s a -> s{_dlbprsPolicyDescriptions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-dlbprsResponseStatus :: Lens' DescribeLoadBalancerPoliciesResponse Int
+dlbprsResponseStatus :: Lens' (DescribeLoadBalancerPoliciesResponse (a)) Int
 dlbprsResponseStatus = lens _dlbprsResponseStatus (\ s a -> s{_dlbprsResponseStatus = a});
 
 instance NFData DescribeLoadBalancerPoliciesResponse

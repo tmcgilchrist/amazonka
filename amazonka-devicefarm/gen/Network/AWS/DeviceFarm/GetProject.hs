@@ -101,7 +101,7 @@ instance ToQuery GetProject where
 -- | Represents the result of a get project request.
 --
 -- /See:/ 'getProjectResponse' smart constructor.
-data GetProjectResponse = GetProjectResponse'
+data GetProjectResponse a = GetProjectResponse'
     { _gprsProject        :: !(Maybe Project)
     , _gprsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -115,7 +115,7 @@ data GetProjectResponse = GetProjectResponse'
 -- * 'gprsResponseStatus'
 getProjectResponse
     :: Int -- ^ 'gprsResponseStatus'
-    -> GetProjectResponse
+    -> GetProjectResponse (a)
 getProjectResponse pResponseStatus_ =
     GetProjectResponse'
     { _gprsProject = Nothing
@@ -123,11 +123,11 @@ getProjectResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gprsProject :: Lens' GetProjectResponse (Maybe Project)
+gprsProject :: Lens' (GetProjectResponse (a)) (Maybe Project)
 gprsProject = lens _gprsProject (\ s a -> s{_gprsProject = a});
 
 -- | The response status code.
-gprsResponseStatus :: Lens' GetProjectResponse Int
+gprsResponseStatus :: Lens' (GetProjectResponse (a)) Int
 gprsResponseStatus = lens _gprsResponseStatus (\ s a -> s{_gprsResponseStatus = a});
 
 instance NFData GetProjectResponse

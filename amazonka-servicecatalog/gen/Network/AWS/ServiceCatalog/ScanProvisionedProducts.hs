@@ -131,7 +131,7 @@ instance ToQuery ScanProvisionedProducts where
         toQuery = const mempty
 
 -- | /See:/ 'scanProvisionedProductsResponse' smart constructor.
-data ScanProvisionedProductsResponse = ScanProvisionedProductsResponse'
+data ScanProvisionedProductsResponse a = ScanProvisionedProductsResponse'
     { _spprsNextPageToken       :: !(Maybe Text)
     , _spprsProvisionedProducts :: !(Maybe [ProvisionedProductDetail])
     , _spprsResponseStatus      :: !Int
@@ -148,7 +148,7 @@ data ScanProvisionedProductsResponse = ScanProvisionedProductsResponse'
 -- * 'spprsResponseStatus'
 scanProvisionedProductsResponse
     :: Int -- ^ 'spprsResponseStatus'
-    -> ScanProvisionedProductsResponse
+    -> ScanProvisionedProductsResponse (a)
 scanProvisionedProductsResponse pResponseStatus_ =
     ScanProvisionedProductsResponse'
     { _spprsNextPageToken = Nothing
@@ -157,15 +157,15 @@ scanProvisionedProductsResponse pResponseStatus_ =
     }
 
 -- | The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
-spprsNextPageToken :: Lens' ScanProvisionedProductsResponse (Maybe Text)
+spprsNextPageToken :: Lens' (ScanProvisionedProductsResponse (a)) (Maybe Text)
 spprsNextPageToken = lens _spprsNextPageToken (\ s a -> s{_spprsNextPageToken = a});
 
 -- | A list of ProvisionedProduct detail objects.
-spprsProvisionedProducts :: Lens' ScanProvisionedProductsResponse [ProvisionedProductDetail]
+spprsProvisionedProducts :: Lens' (ScanProvisionedProductsResponse (a)) [ProvisionedProductDetail]
 spprsProvisionedProducts = lens _spprsProvisionedProducts (\ s a -> s{_spprsProvisionedProducts = a}) . _Default . _Coerce;
 
 -- | The response status code.
-spprsResponseStatus :: Lens' ScanProvisionedProductsResponse Int
+spprsResponseStatus :: Lens' (ScanProvisionedProductsResponse (a)) Int
 spprsResponseStatus = lens _spprsResponseStatus (\ s a -> s{_spprsResponseStatus = a});
 
 instance NFData ScanProvisionedProductsResponse

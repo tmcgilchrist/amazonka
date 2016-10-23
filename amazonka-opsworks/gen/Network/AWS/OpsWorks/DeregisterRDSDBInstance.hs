@@ -97,14 +97,14 @@ instance ToQuery DeregisterRDSDBInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterRDSDBInstanceResponse' smart constructor.
-data DeregisterRDSDBInstanceResponse =
+data DeregisterRDSDBInstanceResponse a =
     DeregisterRDSDBInstanceResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeregisterRDSDBInstanceResponse' with the minimum fields required to make a request.
 --
 deregisterRDSDBInstanceResponse
-    :: DeregisterRDSDBInstanceResponse
+    :: DeregisterRDSDBInstanceResponse (a)
 deregisterRDSDBInstanceResponse = DeregisterRDSDBInstanceResponse'
 
 instance NFData DeregisterRDSDBInstanceResponse

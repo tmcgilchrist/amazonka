@@ -106,7 +106,7 @@ instance ToQuery DescribeRuntimeConfiguration where
 -- | Represents the returned data in response to a request action.
 --
 -- /See:/ 'describeRuntimeConfigurationResponse' smart constructor.
-data DescribeRuntimeConfigurationResponse = DescribeRuntimeConfigurationResponse'
+data DescribeRuntimeConfigurationResponse a = DescribeRuntimeConfigurationResponse'
     { _drcrsRuntimeConfiguration :: !(Maybe RuntimeConfiguration)
     , _drcrsResponseStatus       :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -120,7 +120,7 @@ data DescribeRuntimeConfigurationResponse = DescribeRuntimeConfigurationResponse
 -- * 'drcrsResponseStatus'
 describeRuntimeConfigurationResponse
     :: Int -- ^ 'drcrsResponseStatus'
-    -> DescribeRuntimeConfigurationResponse
+    -> DescribeRuntimeConfigurationResponse (a)
 describeRuntimeConfigurationResponse pResponseStatus_ =
     DescribeRuntimeConfigurationResponse'
     { _drcrsRuntimeConfiguration = Nothing
@@ -128,11 +128,11 @@ describeRuntimeConfigurationResponse pResponseStatus_ =
     }
 
 -- | Instructions describing how server processes should be launched and maintained on each instance in the fleet.
-drcrsRuntimeConfiguration :: Lens' DescribeRuntimeConfigurationResponse (Maybe RuntimeConfiguration)
+drcrsRuntimeConfiguration :: Lens' (DescribeRuntimeConfigurationResponse (a)) (Maybe RuntimeConfiguration)
 drcrsRuntimeConfiguration = lens _drcrsRuntimeConfiguration (\ s a -> s{_drcrsRuntimeConfiguration = a});
 
 -- | The response status code.
-drcrsResponseStatus :: Lens' DescribeRuntimeConfigurationResponse Int
+drcrsResponseStatus :: Lens' (DescribeRuntimeConfigurationResponse (a)) Int
 drcrsResponseStatus = lens _drcrsResponseStatus (\ s a -> s{_drcrsResponseStatus = a});
 
 instance NFData DescribeRuntimeConfigurationResponse

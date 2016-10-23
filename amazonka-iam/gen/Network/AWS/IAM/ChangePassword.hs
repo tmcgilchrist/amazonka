@@ -99,14 +99,14 @@ instance ToQuery ChangePassword where
                "NewPassword" =: _cpNewPassword]
 
 -- | /See:/ 'changePasswordResponse' smart constructor.
-data ChangePasswordResponse =
+data ChangePasswordResponse a =
     ChangePasswordResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'ChangePasswordResponse' with the minimum fields required to make a request.
 --
 changePasswordResponse
-    :: ChangePasswordResponse
+    :: ChangePasswordResponse (a)
 changePasswordResponse = ChangePasswordResponse'
 
 instance NFData ChangePasswordResponse

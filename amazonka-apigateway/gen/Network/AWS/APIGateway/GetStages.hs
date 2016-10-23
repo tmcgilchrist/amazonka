@@ -108,7 +108,7 @@ instance ToQuery GetStages where
 -- <http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html Deploying API in Stages>
 --
 -- /See:/ 'getStagesResponse' smart constructor.
-data GetStagesResponse = GetStagesResponse'
+data GetStagesResponse a = GetStagesResponse'
     { _gsrsItem           :: !(Maybe [Stage])
     , _gsrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -122,7 +122,7 @@ data GetStagesResponse = GetStagesResponse'
 -- * 'gsrsResponseStatus'
 getStagesResponse
     :: Int -- ^ 'gsrsResponseStatus'
-    -> GetStagesResponse
+    -> GetStagesResponse (a)
 getStagesResponse pResponseStatus_ =
     GetStagesResponse'
     { _gsrsItem = Nothing
@@ -130,11 +130,11 @@ getStagesResponse pResponseStatus_ =
     }
 
 -- | An individual < Stage> resource.
-gsrsItem :: Lens' GetStagesResponse [Stage]
+gsrsItem :: Lens' (GetStagesResponse (a)) [Stage]
 gsrsItem = lens _gsrsItem (\ s a -> s{_gsrsItem = a}) . _Default . _Coerce;
 
 -- | The response status code.
-gsrsResponseStatus :: Lens' GetStagesResponse Int
+gsrsResponseStatus :: Lens' (GetStagesResponse (a)) Int
 gsrsResponseStatus = lens _gsrsResponseStatus (\ s a -> s{_gsrsResponseStatus = a});
 
 instance NFData GetStagesResponse

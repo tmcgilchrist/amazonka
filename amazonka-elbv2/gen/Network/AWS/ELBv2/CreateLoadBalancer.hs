@@ -153,7 +153,7 @@ instance ToQuery CreateLoadBalancer where
 -- | Contains the output of CreateLoadBalancer.
 --
 -- /See:/ 'createLoadBalancerResponse' smart constructor.
-data CreateLoadBalancerResponse = CreateLoadBalancerResponse'
+data CreateLoadBalancerResponse a = CreateLoadBalancerResponse'
     { _clbrsLoadBalancers  :: !(Maybe [LoadBalancer])
     , _clbrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -167,7 +167,7 @@ data CreateLoadBalancerResponse = CreateLoadBalancerResponse'
 -- * 'clbrsResponseStatus'
 createLoadBalancerResponse
     :: Int -- ^ 'clbrsResponseStatus'
-    -> CreateLoadBalancerResponse
+    -> CreateLoadBalancerResponse (a)
 createLoadBalancerResponse pResponseStatus_ =
     CreateLoadBalancerResponse'
     { _clbrsLoadBalancers = Nothing
@@ -175,11 +175,11 @@ createLoadBalancerResponse pResponseStatus_ =
     }
 
 -- | Information about the load balancer.
-clbrsLoadBalancers :: Lens' CreateLoadBalancerResponse [LoadBalancer]
+clbrsLoadBalancers :: Lens' (CreateLoadBalancerResponse (a)) [LoadBalancer]
 clbrsLoadBalancers = lens _clbrsLoadBalancers (\ s a -> s{_clbrsLoadBalancers = a}) . _Default . _Coerce;
 
 -- | The response status code.
-clbrsResponseStatus :: Lens' CreateLoadBalancerResponse Int
+clbrsResponseStatus :: Lens' (CreateLoadBalancerResponse (a)) Int
 clbrsResponseStatus = lens _clbrsResponseStatus (\ s a -> s{_clbrsResponseStatus = a});
 
 instance NFData CreateLoadBalancerResponse

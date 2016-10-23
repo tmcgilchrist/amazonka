@@ -99,7 +99,7 @@ instance ToQuery GetDocument where
         toQuery = const mempty
 
 -- | /See:/ 'getDocumentResponse' smart constructor.
-data GetDocumentResponse = GetDocumentResponse'
+data GetDocumentResponse a = GetDocumentResponse'
     { _gdrsContent        :: !(Maybe Text)
     , _gdrsName           :: !(Maybe Text)
     , _gdrsResponseStatus :: !Int
@@ -116,7 +116,7 @@ data GetDocumentResponse = GetDocumentResponse'
 -- * 'gdrsResponseStatus'
 getDocumentResponse
     :: Int -- ^ 'gdrsResponseStatus'
-    -> GetDocumentResponse
+    -> GetDocumentResponse (a)
 getDocumentResponse pResponseStatus_ =
     GetDocumentResponse'
     { _gdrsContent = Nothing
@@ -125,15 +125,15 @@ getDocumentResponse pResponseStatus_ =
     }
 
 -- | The contents of the SSM document.
-gdrsContent :: Lens' GetDocumentResponse (Maybe Text)
+gdrsContent :: Lens' (GetDocumentResponse (a)) (Maybe Text)
 gdrsContent = lens _gdrsContent (\ s a -> s{_gdrsContent = a});
 
 -- | The name of the SSM document.
-gdrsName :: Lens' GetDocumentResponse (Maybe Text)
+gdrsName :: Lens' (GetDocumentResponse (a)) (Maybe Text)
 gdrsName = lens _gdrsName (\ s a -> s{_gdrsName = a});
 
 -- | The response status code.
-gdrsResponseStatus :: Lens' GetDocumentResponse Int
+gdrsResponseStatus :: Lens' (GetDocumentResponse (a)) Int
 gdrsResponseStatus = lens _gdrsResponseStatus (\ s a -> s{_gdrsResponseStatus = a});
 
 instance NFData GetDocumentResponse

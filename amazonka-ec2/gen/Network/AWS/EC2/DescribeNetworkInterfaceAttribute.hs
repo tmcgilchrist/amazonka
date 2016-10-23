@@ -131,7 +131,7 @@ instance ToQuery DescribeNetworkInterfaceAttribute
 -- | Contains the output of DescribeNetworkInterfaceAttribute.
 --
 -- /See:/ 'describeNetworkInterfaceAttributeResponse' smart constructor.
-data DescribeNetworkInterfaceAttributeResponse = DescribeNetworkInterfaceAttributeResponse'
+data DescribeNetworkInterfaceAttributeResponse a = DescribeNetworkInterfaceAttributeResponse'
     { _dniarsGroups             :: !(Maybe [GroupIdentifier])
     , _dniarsSourceDestCheck    :: !(Maybe AttributeBooleanValue)
     , _dniarsNetworkInterfaceId :: !(Maybe Text)
@@ -157,7 +157,7 @@ data DescribeNetworkInterfaceAttributeResponse = DescribeNetworkInterfaceAttribu
 -- * 'dniarsResponseStatus'
 describeNetworkInterfaceAttributeResponse
     :: Int -- ^ 'dniarsResponseStatus'
-    -> DescribeNetworkInterfaceAttributeResponse
+    -> DescribeNetworkInterfaceAttributeResponse (a)
 describeNetworkInterfaceAttributeResponse pResponseStatus_ =
     DescribeNetworkInterfaceAttributeResponse'
     { _dniarsGroups = Nothing
@@ -169,27 +169,27 @@ describeNetworkInterfaceAttributeResponse pResponseStatus_ =
     }
 
 -- | The security groups associated with the network interface.
-dniarsGroups :: Lens' DescribeNetworkInterfaceAttributeResponse [GroupIdentifier]
+dniarsGroups :: Lens' (DescribeNetworkInterfaceAttributeResponse (a)) [GroupIdentifier]
 dniarsGroups = lens _dniarsGroups (\ s a -> s{_dniarsGroups = a}) . _Default . _Coerce;
 
 -- | Indicates whether source\/destination checking is enabled.
-dniarsSourceDestCheck :: Lens' DescribeNetworkInterfaceAttributeResponse (Maybe AttributeBooleanValue)
+dniarsSourceDestCheck :: Lens' (DescribeNetworkInterfaceAttributeResponse (a)) (Maybe AttributeBooleanValue)
 dniarsSourceDestCheck = lens _dniarsSourceDestCheck (\ s a -> s{_dniarsSourceDestCheck = a});
 
 -- | The ID of the network interface.
-dniarsNetworkInterfaceId :: Lens' DescribeNetworkInterfaceAttributeResponse (Maybe Text)
+dniarsNetworkInterfaceId :: Lens' (DescribeNetworkInterfaceAttributeResponse (a)) (Maybe Text)
 dniarsNetworkInterfaceId = lens _dniarsNetworkInterfaceId (\ s a -> s{_dniarsNetworkInterfaceId = a});
 
 -- | The attachment (if any) of the network interface.
-dniarsAttachment :: Lens' DescribeNetworkInterfaceAttributeResponse (Maybe NetworkInterfaceAttachment)
+dniarsAttachment :: Lens' (DescribeNetworkInterfaceAttributeResponse (a)) (Maybe NetworkInterfaceAttachment)
 dniarsAttachment = lens _dniarsAttachment (\ s a -> s{_dniarsAttachment = a});
 
 -- | The description of the network interface.
-dniarsDescription :: Lens' DescribeNetworkInterfaceAttributeResponse (Maybe AttributeValue)
+dniarsDescription :: Lens' (DescribeNetworkInterfaceAttributeResponse (a)) (Maybe AttributeValue)
 dniarsDescription = lens _dniarsDescription (\ s a -> s{_dniarsDescription = a});
 
 -- | The response status code.
-dniarsResponseStatus :: Lens' DescribeNetworkInterfaceAttributeResponse Int
+dniarsResponseStatus :: Lens' (DescribeNetworkInterfaceAttributeResponse (a)) Int
 dniarsResponseStatus = lens _dniarsResponseStatus (\ s a -> s{_dniarsResponseStatus = a});
 
 instance NFData

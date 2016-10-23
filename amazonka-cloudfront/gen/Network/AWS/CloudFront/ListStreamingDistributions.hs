@@ -123,7 +123,7 @@ instance ToQuery ListStreamingDistributions where
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'listStreamingDistributionsResponse' smart constructor.
-data ListStreamingDistributionsResponse = ListStreamingDistributionsResponse'
+data ListStreamingDistributionsResponse a = ListStreamingDistributionsResponse'
     { _lsdrsResponseStatus            :: !Int
     , _lsdrsStreamingDistributionList :: !StreamingDistributionList
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -138,7 +138,7 @@ data ListStreamingDistributionsResponse = ListStreamingDistributionsResponse'
 listStreamingDistributionsResponse
     :: Int -- ^ 'lsdrsResponseStatus'
     -> StreamingDistributionList -- ^ 'lsdrsStreamingDistributionList'
-    -> ListStreamingDistributionsResponse
+    -> ListStreamingDistributionsResponse (a)
 listStreamingDistributionsResponse pResponseStatus_ pStreamingDistributionList_ =
     ListStreamingDistributionsResponse'
     { _lsdrsResponseStatus = pResponseStatus_
@@ -146,11 +146,11 @@ listStreamingDistributionsResponse pResponseStatus_ pStreamingDistributionList_ 
     }
 
 -- | The response status code.
-lsdrsResponseStatus :: Lens' ListStreamingDistributionsResponse Int
+lsdrsResponseStatus :: Lens' (ListStreamingDistributionsResponse (a)) Int
 lsdrsResponseStatus = lens _lsdrsResponseStatus (\ s a -> s{_lsdrsResponseStatus = a});
 
 -- | The StreamingDistributionList type.
-lsdrsStreamingDistributionList :: Lens' ListStreamingDistributionsResponse StreamingDistributionList
+lsdrsStreamingDistributionList :: Lens' (ListStreamingDistributionsResponse (a)) StreamingDistributionList
 lsdrsStreamingDistributionList = lens _lsdrsStreamingDistributionList (\ s a -> s{_lsdrsStreamingDistributionList = a});
 
 instance NFData ListStreamingDistributionsResponse

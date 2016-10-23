@@ -77,8 +77,6 @@ library
         , bifunctors           >= 4.1
         , bytestring           >= 0.9
         , case-insensitive     >= 1.2
-        , conduit              >= 1.1
-        , conduit-extra        >= 1.1
         , cryptonite           >= 0.4
         , deepseq              >= 1.4
         , exceptions           >= 0.6
@@ -97,8 +95,6 @@ library
         , unordered-containers >= 0.2.7
         , xml-conduit          >= 1.2
         , xml-types            >= 0.3.4
-
-        , resourcet
 
     if !impl(ghc>=7.9)
         build-depends:

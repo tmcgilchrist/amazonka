@@ -129,7 +129,7 @@ instance ToQuery CreateInstanceExportTask where
 -- | Contains the output for CreateInstanceExportTask.
 --
 -- /See:/ 'createInstanceExportTaskResponse' smart constructor.
-data CreateInstanceExportTaskResponse = CreateInstanceExportTaskResponse'
+data CreateInstanceExportTaskResponse a = CreateInstanceExportTaskResponse'
     { _cietrsExportTask     :: !(Maybe ExportTask)
     , _cietrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -143,7 +143,7 @@ data CreateInstanceExportTaskResponse = CreateInstanceExportTaskResponse'
 -- * 'cietrsResponseStatus'
 createInstanceExportTaskResponse
     :: Int -- ^ 'cietrsResponseStatus'
-    -> CreateInstanceExportTaskResponse
+    -> CreateInstanceExportTaskResponse (a)
 createInstanceExportTaskResponse pResponseStatus_ =
     CreateInstanceExportTaskResponse'
     { _cietrsExportTask = Nothing
@@ -151,11 +151,11 @@ createInstanceExportTaskResponse pResponseStatus_ =
     }
 
 -- | Information about the instance export task.
-cietrsExportTask :: Lens' CreateInstanceExportTaskResponse (Maybe ExportTask)
+cietrsExportTask :: Lens' (CreateInstanceExportTaskResponse (a)) (Maybe ExportTask)
 cietrsExportTask = lens _cietrsExportTask (\ s a -> s{_cietrsExportTask = a});
 
 -- | The response status code.
-cietrsResponseStatus :: Lens' CreateInstanceExportTaskResponse Int
+cietrsResponseStatus :: Lens' (CreateInstanceExportTaskResponse (a)) Int
 cietrsResponseStatus = lens _cietrsResponseStatus (\ s a -> s{_cietrsResponseStatus = a});
 
 instance NFData CreateInstanceExportTaskResponse

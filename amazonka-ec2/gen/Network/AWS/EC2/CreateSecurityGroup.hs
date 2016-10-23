@@ -150,7 +150,7 @@ instance ToQuery CreateSecurityGroup where
 -- | Contains the output of CreateSecurityGroup.
 --
 -- /See:/ 'createSecurityGroupResponse' smart constructor.
-data CreateSecurityGroupResponse = CreateSecurityGroupResponse'
+data CreateSecurityGroupResponse a = CreateSecurityGroupResponse'
     { _csgrsResponseStatus :: !Int
     , _csgrsGroupId        :: !Text
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -165,7 +165,7 @@ data CreateSecurityGroupResponse = CreateSecurityGroupResponse'
 createSecurityGroupResponse
     :: Int -- ^ 'csgrsResponseStatus'
     -> Text -- ^ 'csgrsGroupId'
-    -> CreateSecurityGroupResponse
+    -> CreateSecurityGroupResponse (a)
 createSecurityGroupResponse pResponseStatus_ pGroupId_ =
     CreateSecurityGroupResponse'
     { _csgrsResponseStatus = pResponseStatus_
@@ -173,11 +173,11 @@ createSecurityGroupResponse pResponseStatus_ pGroupId_ =
     }
 
 -- | The response status code.
-csgrsResponseStatus :: Lens' CreateSecurityGroupResponse Int
+csgrsResponseStatus :: Lens' (CreateSecurityGroupResponse (a)) Int
 csgrsResponseStatus = lens _csgrsResponseStatus (\ s a -> s{_csgrsResponseStatus = a});
 
 -- | The ID of the security group.
-csgrsGroupId :: Lens' CreateSecurityGroupResponse Text
+csgrsGroupId :: Lens' (CreateSecurityGroupResponse (a)) Text
 csgrsGroupId = lens _csgrsGroupId (\ s a -> s{_csgrsGroupId = a});
 
 instance NFData CreateSecurityGroupResponse

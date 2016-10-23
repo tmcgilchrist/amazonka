@@ -101,14 +101,14 @@ instance ToQuery DetachRolePolicy where
                "PolicyArn" =: _drpPolicyARN]
 
 -- | /See:/ 'detachRolePolicyResponse' smart constructor.
-data DetachRolePolicyResponse =
+data DetachRolePolicyResponse a =
     DetachRolePolicyResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DetachRolePolicyResponse' with the minimum fields required to make a request.
 --
 detachRolePolicyResponse
-    :: DetachRolePolicyResponse
+    :: DetachRolePolicyResponse (a)
 detachRolePolicyResponse = DetachRolePolicyResponse'
 
 instance NFData DetachRolePolicyResponse

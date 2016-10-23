@@ -112,14 +112,14 @@ instance ToQuery AssociateDHCPOptions where
                "VpcId" =: _adoVPCId]
 
 -- | /See:/ 'associateDHCPOptionsResponse' smart constructor.
-data AssociateDHCPOptionsResponse =
+data AssociateDHCPOptionsResponse a =
     AssociateDHCPOptionsResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'AssociateDHCPOptionsResponse' with the minimum fields required to make a request.
 --
 associateDHCPOptionsResponse
-    :: AssociateDHCPOptionsResponse
+    :: AssociateDHCPOptionsResponse (a)
 associateDHCPOptionsResponse = AssociateDHCPOptionsResponse'
 
 instance NFData AssociateDHCPOptionsResponse

@@ -97,7 +97,7 @@ instance ToQuery GetBucketWebsite where
         toQuery = const (mconcat ["website"])
 
 -- | /See:/ 'getBucketWebsiteResponse' smart constructor.
-data GetBucketWebsiteResponse = GetBucketWebsiteResponse'
+data GetBucketWebsiteResponse a = GetBucketWebsiteResponse'
     { _gbwrsRedirectAllRequestsTo :: !(Maybe RedirectAllRequestsTo)
     , _gbwrsErrorDocument         :: !(Maybe ErrorDocument)
     , _gbwrsIndexDocument         :: !(Maybe IndexDocument)
@@ -120,7 +120,7 @@ data GetBucketWebsiteResponse = GetBucketWebsiteResponse'
 -- * 'gbwrsResponseStatus'
 getBucketWebsiteResponse
     :: Int -- ^ 'gbwrsResponseStatus'
-    -> GetBucketWebsiteResponse
+    -> GetBucketWebsiteResponse (a)
 getBucketWebsiteResponse pResponseStatus_ =
     GetBucketWebsiteResponse'
     { _gbwrsRedirectAllRequestsTo = Nothing
@@ -131,23 +131,23 @@ getBucketWebsiteResponse pResponseStatus_ =
     }
 
 -- | Undocumented member.
-gbwrsRedirectAllRequestsTo :: Lens' GetBucketWebsiteResponse (Maybe RedirectAllRequestsTo)
+gbwrsRedirectAllRequestsTo :: Lens' (GetBucketWebsiteResponse (a)) (Maybe RedirectAllRequestsTo)
 gbwrsRedirectAllRequestsTo = lens _gbwrsRedirectAllRequestsTo (\ s a -> s{_gbwrsRedirectAllRequestsTo = a});
 
 -- | Undocumented member.
-gbwrsErrorDocument :: Lens' GetBucketWebsiteResponse (Maybe ErrorDocument)
+gbwrsErrorDocument :: Lens' (GetBucketWebsiteResponse (a)) (Maybe ErrorDocument)
 gbwrsErrorDocument = lens _gbwrsErrorDocument (\ s a -> s{_gbwrsErrorDocument = a});
 
 -- | Undocumented member.
-gbwrsIndexDocument :: Lens' GetBucketWebsiteResponse (Maybe IndexDocument)
+gbwrsIndexDocument :: Lens' (GetBucketWebsiteResponse (a)) (Maybe IndexDocument)
 gbwrsIndexDocument = lens _gbwrsIndexDocument (\ s a -> s{_gbwrsIndexDocument = a});
 
 -- | Undocumented member.
-gbwrsRoutingRules :: Lens' GetBucketWebsiteResponse [RoutingRule]
+gbwrsRoutingRules :: Lens' (GetBucketWebsiteResponse (a)) [RoutingRule]
 gbwrsRoutingRules = lens _gbwrsRoutingRules (\ s a -> s{_gbwrsRoutingRules = a}) . _Default . _Coerce;
 
 -- | The response status code.
-gbwrsResponseStatus :: Lens' GetBucketWebsiteResponse Int
+gbwrsResponseStatus :: Lens' (GetBucketWebsiteResponse (a)) Int
 gbwrsResponseStatus = lens _gbwrsResponseStatus (\ s a -> s{_gbwrsResponseStatus = a});
 
 instance NFData GetBucketWebsiteResponse

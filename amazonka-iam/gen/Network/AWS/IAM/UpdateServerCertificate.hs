@@ -120,14 +120,14 @@ instance ToQuery UpdateServerCertificate where
                "ServerCertificateName" =: _uServerCertificateName]
 
 -- | /See:/ 'updateServerCertificateResponse' smart constructor.
-data UpdateServerCertificateResponse =
+data UpdateServerCertificateResponse a =
     UpdateServerCertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'UpdateServerCertificateResponse' with the minimum fields required to make a request.
 --
 updateServerCertificateResponse
-    :: UpdateServerCertificateResponse
+    :: UpdateServerCertificateResponse (a)
 updateServerCertificateResponse = UpdateServerCertificateResponse'
 
 instance NFData UpdateServerCertificateResponse

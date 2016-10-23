@@ -98,7 +98,7 @@ instance ToQuery DescribeExportTasks where
 -- | Contains the output for DescribeExportTasks.
 --
 -- /See:/ 'describeExportTasksResponse' smart constructor.
-data DescribeExportTasksResponse = DescribeExportTasksResponse'
+data DescribeExportTasksResponse a = DescribeExportTasksResponse'
     { _detrsExportTasks    :: !(Maybe [ExportTask])
     , _detrsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -112,7 +112,7 @@ data DescribeExportTasksResponse = DescribeExportTasksResponse'
 -- * 'detrsResponseStatus'
 describeExportTasksResponse
     :: Int -- ^ 'detrsResponseStatus'
-    -> DescribeExportTasksResponse
+    -> DescribeExportTasksResponse (a)
 describeExportTasksResponse pResponseStatus_ =
     DescribeExportTasksResponse'
     { _detrsExportTasks = Nothing
@@ -120,11 +120,11 @@ describeExportTasksResponse pResponseStatus_ =
     }
 
 -- | Information about the export tasks.
-detrsExportTasks :: Lens' DescribeExportTasksResponse [ExportTask]
+detrsExportTasks :: Lens' (DescribeExportTasksResponse (a)) [ExportTask]
 detrsExportTasks = lens _detrsExportTasks (\ s a -> s{_detrsExportTasks = a}) . _Default . _Coerce;
 
 -- | The response status code.
-detrsResponseStatus :: Lens' DescribeExportTasksResponse Int
+detrsResponseStatus :: Lens' (DescribeExportTasksResponse (a)) Int
 detrsResponseStatus = lens _detrsResponseStatus (\ s a -> s{_detrsResponseStatus = a});
 
 instance NFData DescribeExportTasksResponse

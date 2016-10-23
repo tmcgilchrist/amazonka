@@ -117,7 +117,7 @@ instance ToQuery TestRepositoryTriggers where
 -- | Represents the output of a test repository triggers operation.
 --
 -- /See:/ 'testRepositoryTriggersResponse' smart constructor.
-data TestRepositoryTriggersResponse = TestRepositoryTriggersResponse'
+data TestRepositoryTriggersResponse a = TestRepositoryTriggersResponse'
     { _trtrsFailedExecutions     :: !(Maybe [RepositoryTriggerExecutionFailure])
     , _trtrsSuccessfulExecutions :: !(Maybe [Text])
     , _trtrsResponseStatus       :: !Int
@@ -134,7 +134,7 @@ data TestRepositoryTriggersResponse = TestRepositoryTriggersResponse'
 -- * 'trtrsResponseStatus'
 testRepositoryTriggersResponse
     :: Int -- ^ 'trtrsResponseStatus'
-    -> TestRepositoryTriggersResponse
+    -> TestRepositoryTriggersResponse (a)
 testRepositoryTriggersResponse pResponseStatus_ =
     TestRepositoryTriggersResponse'
     { _trtrsFailedExecutions = Nothing
@@ -143,15 +143,15 @@ testRepositoryTriggersResponse pResponseStatus_ =
     }
 
 -- | The list of triggers that were not able to be tested. This list provides the names of the triggers that could not be tested, separated by commas.
-trtrsFailedExecutions :: Lens' TestRepositoryTriggersResponse [RepositoryTriggerExecutionFailure]
+trtrsFailedExecutions :: Lens' (TestRepositoryTriggersResponse (a)) [RepositoryTriggerExecutionFailure]
 trtrsFailedExecutions = lens _trtrsFailedExecutions (\ s a -> s{_trtrsFailedExecutions = a}) . _Default . _Coerce;
 
 -- | The list of triggers that were successfully tested. This list provides the names of the triggers that were successfully tested, separated by commas.
-trtrsSuccessfulExecutions :: Lens' TestRepositoryTriggersResponse [Text]
+trtrsSuccessfulExecutions :: Lens' (TestRepositoryTriggersResponse (a)) [Text]
 trtrsSuccessfulExecutions = lens _trtrsSuccessfulExecutions (\ s a -> s{_trtrsSuccessfulExecutions = a}) . _Default . _Coerce;
 
 -- | The response status code.
-trtrsResponseStatus :: Lens' TestRepositoryTriggersResponse Int
+trtrsResponseStatus :: Lens' (TestRepositoryTriggersResponse (a)) Int
 trtrsResponseStatus = lens _trtrsResponseStatus (\ s a -> s{_trtrsResponseStatus = a});
 
 instance NFData TestRepositoryTriggersResponse

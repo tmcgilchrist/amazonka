@@ -82,14 +82,14 @@ instance ToQuery DeleteBucketTagging where
         toQuery = const (mconcat ["tagging"])
 
 -- | /See:/ 'deleteBucketTaggingResponse' smart constructor.
-data DeleteBucketTaggingResponse =
+data DeleteBucketTaggingResponse a =
     DeleteBucketTaggingResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteBucketTaggingResponse' with the minimum fields required to make a request.
 --
 deleteBucketTaggingResponse
-    :: DeleteBucketTaggingResponse
+    :: DeleteBucketTaggingResponse (a)
 deleteBucketTaggingResponse = DeleteBucketTaggingResponse'
 
 instance NFData DeleteBucketTaggingResponse

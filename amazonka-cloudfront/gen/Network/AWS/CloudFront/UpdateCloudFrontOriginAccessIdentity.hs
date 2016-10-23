@@ -130,7 +130,7 @@ instance ToQuery UpdateCloudFrontOriginAccessIdentity
 -- | The returned result of the corresponding request.
 --
 -- /See:/ 'updateCloudFrontOriginAccessIdentityResponse' smart constructor.
-data UpdateCloudFrontOriginAccessIdentityResponse = UpdateCloudFrontOriginAccessIdentityResponse'
+data UpdateCloudFrontOriginAccessIdentityResponse a = UpdateCloudFrontOriginAccessIdentityResponse'
     { _ucfoairsETag                           :: !(Maybe Text)
     , _ucfoairsCloudFrontOriginAccessIdentity :: !(Maybe CloudFrontOriginAccessIdentity)
     , _ucfoairsResponseStatus                 :: !Int
@@ -147,7 +147,7 @@ data UpdateCloudFrontOriginAccessIdentityResponse = UpdateCloudFrontOriginAccess
 -- * 'ucfoairsResponseStatus'
 updateCloudFrontOriginAccessIdentityResponse
     :: Int -- ^ 'ucfoairsResponseStatus'
-    -> UpdateCloudFrontOriginAccessIdentityResponse
+    -> UpdateCloudFrontOriginAccessIdentityResponse (a)
 updateCloudFrontOriginAccessIdentityResponse pResponseStatus_ =
     UpdateCloudFrontOriginAccessIdentityResponse'
     { _ucfoairsETag = Nothing
@@ -156,15 +156,15 @@ updateCloudFrontOriginAccessIdentityResponse pResponseStatus_ =
     }
 
 -- | The current version of the configuration. For example: E2QWRUHAPOMQZL.
-ucfoairsETag :: Lens' UpdateCloudFrontOriginAccessIdentityResponse (Maybe Text)
+ucfoairsETag :: Lens' (UpdateCloudFrontOriginAccessIdentityResponse (a)) (Maybe Text)
 ucfoairsETag = lens _ucfoairsETag (\ s a -> s{_ucfoairsETag = a});
 
 -- | The origin access identity\'s information.
-ucfoairsCloudFrontOriginAccessIdentity :: Lens' UpdateCloudFrontOriginAccessIdentityResponse (Maybe CloudFrontOriginAccessIdentity)
+ucfoairsCloudFrontOriginAccessIdentity :: Lens' (UpdateCloudFrontOriginAccessIdentityResponse (a)) (Maybe CloudFrontOriginAccessIdentity)
 ucfoairsCloudFrontOriginAccessIdentity = lens _ucfoairsCloudFrontOriginAccessIdentity (\ s a -> s{_ucfoairsCloudFrontOriginAccessIdentity = a});
 
 -- | The response status code.
-ucfoairsResponseStatus :: Lens' UpdateCloudFrontOriginAccessIdentityResponse Int
+ucfoairsResponseStatus :: Lens' (UpdateCloudFrontOriginAccessIdentityResponse (a)) Int
 ucfoairsResponseStatus = lens _ucfoairsResponseStatus (\ s a -> s{_ucfoairsResponseStatus = a});
 
 instance NFData

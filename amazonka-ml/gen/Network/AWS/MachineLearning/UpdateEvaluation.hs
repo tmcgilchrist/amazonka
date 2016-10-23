@@ -116,7 +116,7 @@ instance ToQuery UpdateEvaluation where
 -- You can see the updated content by using the 'GetEvaluation' operation.
 --
 -- /See:/ 'updateEvaluationResponse' smart constructor.
-data UpdateEvaluationResponse = UpdateEvaluationResponse'
+data UpdateEvaluationResponse a = UpdateEvaluationResponse'
     { _uersEvaluationId   :: !(Maybe Text)
     , _uersResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -130,7 +130,7 @@ data UpdateEvaluationResponse = UpdateEvaluationResponse'
 -- * 'uersResponseStatus'
 updateEvaluationResponse
     :: Int -- ^ 'uersResponseStatus'
-    -> UpdateEvaluationResponse
+    -> UpdateEvaluationResponse (a)
 updateEvaluationResponse pResponseStatus_ =
     UpdateEvaluationResponse'
     { _uersEvaluationId = Nothing
@@ -138,11 +138,11 @@ updateEvaluationResponse pResponseStatus_ =
     }
 
 -- | The ID assigned to the 'Evaluation' during creation. This value should be identical to the value of the 'Evaluation' in the request.
-uersEvaluationId :: Lens' UpdateEvaluationResponse (Maybe Text)
+uersEvaluationId :: Lens' (UpdateEvaluationResponse (a)) (Maybe Text)
 uersEvaluationId = lens _uersEvaluationId (\ s a -> s{_uersEvaluationId = a});
 
 -- | The response status code.
-uersResponseStatus :: Lens' UpdateEvaluationResponse Int
+uersResponseStatus :: Lens' (UpdateEvaluationResponse (a)) Int
 uersResponseStatus = lens _uersResponseStatus (\ s a -> s{_uersResponseStatus = a});
 
 instance NFData UpdateEvaluationResponse

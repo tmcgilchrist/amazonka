@@ -85,14 +85,14 @@ instance ToQuery DeleteCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCertificateResponse' smart constructor.
-data DeleteCertificateResponse =
+data DeleteCertificateResponse a =
     DeleteCertificateResponse'
     deriving (Eq,Read,Show,Data,Typeable,Generic)
 
 -- | Creates a value of 'DeleteCertificateResponse' with the minimum fields required to make a request.
 --
 deleteCertificateResponse
-    :: DeleteCertificateResponse
+    :: DeleteCertificateResponse (a)
 deleteCertificateResponse = DeleteCertificateResponse'
 
 instance NFData DeleteCertificateResponse

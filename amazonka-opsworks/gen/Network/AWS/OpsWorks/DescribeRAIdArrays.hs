@@ -127,7 +127,7 @@ instance ToQuery DescribeRAIdArrays where
 -- | Contains the response to a 'DescribeRaidArrays' request.
 --
 -- /See:/ 'describeRAIdArraysResponse' smart constructor.
-data DescribeRAIdArraysResponse = DescribeRAIdArraysResponse'
+data DescribeRAIdArraysResponse a = DescribeRAIdArraysResponse'
     { _draiarsRAIdArrays     :: !(Maybe [RAIdArray])
     , _draiarsResponseStatus :: !Int
     } deriving (Eq,Read,Show,Data,Typeable,Generic)
@@ -141,7 +141,7 @@ data DescribeRAIdArraysResponse = DescribeRAIdArraysResponse'
 -- * 'draiarsResponseStatus'
 describeRAIdArraysResponse
     :: Int -- ^ 'draiarsResponseStatus'
-    -> DescribeRAIdArraysResponse
+    -> DescribeRAIdArraysResponse (a)
 describeRAIdArraysResponse pResponseStatus_ =
     DescribeRAIdArraysResponse'
     { _draiarsRAIdArrays = Nothing
@@ -149,11 +149,11 @@ describeRAIdArraysResponse pResponseStatus_ =
     }
 
 -- | A 'RaidArrays' object that describes the specified RAID arrays.
-draiarsRAIdArrays :: Lens' DescribeRAIdArraysResponse [RAIdArray]
+draiarsRAIdArrays :: Lens' (DescribeRAIdArraysResponse (a)) [RAIdArray]
 draiarsRAIdArrays = lens _draiarsRAIdArrays (\ s a -> s{_draiarsRAIdArrays = a}) . _Default . _Coerce;
 
 -- | The response status code.
-draiarsResponseStatus :: Lens' DescribeRAIdArraysResponse Int
+draiarsResponseStatus :: Lens' (DescribeRAIdArraysResponse (a)) Int
 draiarsResponseStatus = lens _draiarsResponseStatus (\ s a -> s{_draiarsResponseStatus = a});
 
 instance NFData DescribeRAIdArraysResponse
