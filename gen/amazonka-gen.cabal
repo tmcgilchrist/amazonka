@@ -75,7 +75,6 @@ executable amazonka-gen
         , hashable
         , haskell-src-exts
         , hindent
-        , html-conduit
         , lens
         , mtl
         , optparse-applicative
@@ -93,4 +92,3 @@ executable amazonka-gen
         , transformers
         , unexceptionalio
         , unordered-containers
-        , xml-conduit
