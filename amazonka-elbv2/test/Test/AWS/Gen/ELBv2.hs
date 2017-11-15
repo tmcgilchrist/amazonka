@@ -5,9 +5,9 @@
 
 -- |
 -- Module      : Test.AWS.Gen.ELBv2
--- Copyright   : (c) 2013-2017 Brendan Hay
+-- Copyright   : (c) 2013-2016 Brendan Hay
 -- License     : Mozilla Public License, v. 2.0.
--- Maintainer  : Brendan Hay <brendan.g.hay+amazonka@gmail.com>
+-- Maintainer  : Brendan Hay <brendan.g.hay@gmail.com>
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
@@ -49,9 +49,6 @@ import Test.Tasty
 --         , requestCreateRule $
 --             createRule
 --
---         , requestDescribeListenerCertificates $
---             describeListenerCertificates
---
 --         , requestSetSecurityGroups $
 --             setSecurityGroups
 --
@@ -88,9 +85,6 @@ import Test.Tasty
 --         , requestDescribeSSLPolicies $
 --             describeSSLPolicies
 --
---         , requestDescribeAccountLimits $
---             describeAccountLimits
---
 --         , requestDeregisterTargets $
 --             deregisterTargets
 --
@@ -102,9 +96,6 @@ import Test.Tasty
 --
 --         , requestModifyLoadBalancerAttributes $
 --             modifyLoadBalancerAttributes
---
---         , requestSetIPAddressType $
---             setIPAddressType
 --
 --         , requestAddTags $
 --             addTags
@@ -121,14 +112,8 @@ import Test.Tasty
 --         , requestCreateLoadBalancer $
 --             createLoadBalancer
 --
---         , requestRemoveListenerCertificates $
---             removeListenerCertificates
---
 --         , requestModifyRule $
 --             modifyRule
---
---         , requestAddListenerCertificates $
---             addListenerCertificates
 --
 --           ]
 
@@ -153,9 +138,6 @@ import Test.Tasty
 --
 --         , responseCreateRule $
 --             createRuleResponse
---
---         , responseDescribeListenerCertificates $
---             describeListenerCertificatesResponse
 --
 --         , responseSetSecurityGroups $
 --             setSecurityGroupsResponse
@@ -193,9 +175,6 @@ import Test.Tasty
 --         , responseDescribeSSLPolicies $
 --             describeSSLPoliciesResponse
 --
---         , responseDescribeAccountLimits $
---             describeAccountLimitsResponse
---
 --         , responseDeregisterTargets $
 --             deregisterTargetsResponse
 --
@@ -207,9 +186,6 @@ import Test.Tasty
 --
 --         , responseModifyLoadBalancerAttributes $
 --             modifyLoadBalancerAttributesResponse
---
---         , responseSetIPAddressType $
---             setIPAddressTypeResponse
 --
 --         , responseAddTags $
 --             addTagsResponse
@@ -226,14 +202,8 @@ import Test.Tasty
 --         , responseCreateLoadBalancer $
 --             createLoadBalancerResponse
 --
---         , responseRemoveListenerCertificates $
---             removeListenerCertificatesResponse
---
 --         , responseModifyRule $
 --             modifyRuleResponse
---
---         , responseAddListenerCertificates $
---             addListenerCertificatesResponse
 --
 --           ]
 --     ]
@@ -274,11 +244,6 @@ requestCreateRule :: CreateRule -> TestTree
 requestCreateRule = req
     "CreateRule"
     "fixture/CreateRule.yaml"
-
-requestDescribeListenerCertificates :: DescribeListenerCertificates -> TestTree
-requestDescribeListenerCertificates = req
-    "DescribeListenerCertificates"
-    "fixture/DescribeListenerCertificates.yaml"
 
 requestSetSecurityGroups :: SetSecurityGroups -> TestTree
 requestSetSecurityGroups = req
@@ -340,11 +305,6 @@ requestDescribeSSLPolicies = req
     "DescribeSSLPolicies"
     "fixture/DescribeSSLPolicies.yaml"
 
-requestDescribeAccountLimits :: DescribeAccountLimits -> TestTree
-requestDescribeAccountLimits = req
-    "DescribeAccountLimits"
-    "fixture/DescribeAccountLimits.yaml"
-
 requestDeregisterTargets :: DeregisterTargets -> TestTree
 requestDeregisterTargets = req
     "DeregisterTargets"
@@ -364,11 +324,6 @@ requestModifyLoadBalancerAttributes :: ModifyLoadBalancerAttributes -> TestTree
 requestModifyLoadBalancerAttributes = req
     "ModifyLoadBalancerAttributes"
     "fixture/ModifyLoadBalancerAttributes.yaml"
-
-requestSetIPAddressType :: SetIPAddressType -> TestTree
-requestSetIPAddressType = req
-    "SetIPAddressType"
-    "fixture/SetIPAddressType.yaml"
 
 requestAddTags :: AddTags -> TestTree
 requestAddTags = req
@@ -395,20 +350,10 @@ requestCreateLoadBalancer = req
     "CreateLoadBalancer"
     "fixture/CreateLoadBalancer.yaml"
 
-requestRemoveListenerCertificates :: RemoveListenerCertificates -> TestTree
-requestRemoveListenerCertificates = req
-    "RemoveListenerCertificates"
-    "fixture/RemoveListenerCertificates.yaml"
-
 requestModifyRule :: ModifyRule -> TestTree
 requestModifyRule = req
     "ModifyRule"
     "fixture/ModifyRule.yaml"
-
-requestAddListenerCertificates :: AddListenerCertificates -> TestTree
-requestAddListenerCertificates = req
-    "AddListenerCertificates"
-    "fixture/AddListenerCertificates.yaml"
 
 -- Responses
 
@@ -416,236 +361,201 @@ responseDescribeLoadBalancers :: DescribeLoadBalancersResponse -> TestTree
 responseDescribeLoadBalancers = res
     "DescribeLoadBalancersResponse"
     "fixture/DescribeLoadBalancersResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeLoadBalancers)
 
 responseDescribeTags :: DescribeTagsResponse -> TestTree
 responseDescribeTags = res
     "DescribeTagsResponse"
     "fixture/DescribeTagsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeTags)
 
 responseDeleteRule :: DeleteRuleResponse -> TestTree
 responseDeleteRule = res
     "DeleteRuleResponse"
     "fixture/DeleteRuleResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DeleteRule)
 
 responseRemoveTags :: RemoveTagsResponse -> TestTree
 responseRemoveTags = res
     "RemoveTagsResponse"
     "fixture/RemoveTagsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy RemoveTags)
 
 responseDeleteTargetGroup :: DeleteTargetGroupResponse -> TestTree
 responseDeleteTargetGroup = res
     "DeleteTargetGroupResponse"
     "fixture/DeleteTargetGroupResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DeleteTargetGroup)
 
 responseSetSubnets :: SetSubnetsResponse -> TestTree
 responseSetSubnets = res
     "SetSubnetsResponse"
     "fixture/SetSubnetsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy SetSubnets)
 
 responseCreateRule :: CreateRuleResponse -> TestTree
 responseCreateRule = res
     "CreateRuleResponse"
     "fixture/CreateRuleResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy CreateRule)
-
-responseDescribeListenerCertificates :: DescribeListenerCertificatesResponse -> TestTree
-responseDescribeListenerCertificates = res
-    "DescribeListenerCertificatesResponse"
-    "fixture/DescribeListenerCertificatesResponse.proto"
-    eLBv2
-    (Proxy :: Proxy DescribeListenerCertificates)
 
 responseSetSecurityGroups :: SetSecurityGroupsResponse -> TestTree
 responseSetSecurityGroups = res
     "SetSecurityGroupsResponse"
     "fixture/SetSecurityGroupsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy SetSecurityGroups)
 
 responseSetRulePriorities :: SetRulePrioritiesResponse -> TestTree
 responseSetRulePriorities = res
     "SetRulePrioritiesResponse"
     "fixture/SetRulePrioritiesResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy SetRulePriorities)
 
 responseDescribeTargetGroups :: DescribeTargetGroupsResponse -> TestTree
 responseDescribeTargetGroups = res
     "DescribeTargetGroupsResponse"
     "fixture/DescribeTargetGroupsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeTargetGroups)
 
 responseDescribeRules :: DescribeRulesResponse -> TestTree
 responseDescribeRules = res
     "DescribeRulesResponse"
     "fixture/DescribeRulesResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeRules)
 
 responseDeleteLoadBalancer :: DeleteLoadBalancerResponse -> TestTree
 responseDeleteLoadBalancer = res
     "DeleteLoadBalancerResponse"
     "fixture/DeleteLoadBalancerResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DeleteLoadBalancer)
 
 responseRegisterTargets :: RegisterTargetsResponse -> TestTree
 responseRegisterTargets = res
     "RegisterTargetsResponse"
     "fixture/RegisterTargetsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy RegisterTargets)
 
 responseModifyListener :: ModifyListenerResponse -> TestTree
 responseModifyListener = res
     "ModifyListenerResponse"
     "fixture/ModifyListenerResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy ModifyListener)
 
 responseModifyTargetGroup :: ModifyTargetGroupResponse -> TestTree
 responseModifyTargetGroup = res
     "ModifyTargetGroupResponse"
     "fixture/ModifyTargetGroupResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy ModifyTargetGroup)
 
 responseModifyTargetGroupAttributes :: ModifyTargetGroupAttributesResponse -> TestTree
 responseModifyTargetGroupAttributes = res
     "ModifyTargetGroupAttributesResponse"
     "fixture/ModifyTargetGroupAttributesResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy ModifyTargetGroupAttributes)
 
 responseDescribeTargetGroupAttributes :: DescribeTargetGroupAttributesResponse -> TestTree
 responseDescribeTargetGroupAttributes = res
     "DescribeTargetGroupAttributesResponse"
     "fixture/DescribeTargetGroupAttributesResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeTargetGroupAttributes)
 
 responseDeleteListener :: DeleteListenerResponse -> TestTree
 responseDeleteListener = res
     "DeleteListenerResponse"
     "fixture/DeleteListenerResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DeleteListener)
 
 responseDescribeSSLPolicies :: DescribeSSLPoliciesResponse -> TestTree
 responseDescribeSSLPolicies = res
     "DescribeSSLPoliciesResponse"
     "fixture/DescribeSSLPoliciesResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeSSLPolicies)
-
-responseDescribeAccountLimits :: DescribeAccountLimitsResponse -> TestTree
-responseDescribeAccountLimits = res
-    "DescribeAccountLimitsResponse"
-    "fixture/DescribeAccountLimitsResponse.proto"
-    eLBv2
-    (Proxy :: Proxy DescribeAccountLimits)
 
 responseDeregisterTargets :: DeregisterTargetsResponse -> TestTree
 responseDeregisterTargets = res
     "DeregisterTargetsResponse"
     "fixture/DeregisterTargetsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DeregisterTargets)
 
 responseCreateListener :: CreateListenerResponse -> TestTree
 responseCreateListener = res
     "CreateListenerResponse"
     "fixture/CreateListenerResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy CreateListener)
 
 responseCreateTargetGroup :: CreateTargetGroupResponse -> TestTree
 responseCreateTargetGroup = res
     "CreateTargetGroupResponse"
     "fixture/CreateTargetGroupResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy CreateTargetGroup)
 
 responseModifyLoadBalancerAttributes :: ModifyLoadBalancerAttributesResponse -> TestTree
 responseModifyLoadBalancerAttributes = res
     "ModifyLoadBalancerAttributesResponse"
     "fixture/ModifyLoadBalancerAttributesResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy ModifyLoadBalancerAttributes)
-
-responseSetIPAddressType :: SetIPAddressTypeResponse -> TestTree
-responseSetIPAddressType = res
-    "SetIPAddressTypeResponse"
-    "fixture/SetIPAddressTypeResponse.proto"
-    eLBv2
-    (Proxy :: Proxy SetIPAddressType)
 
 responseAddTags :: AddTagsResponse -> TestTree
 responseAddTags = res
     "AddTagsResponse"
     "fixture/AddTagsResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy AddTags)
 
 responseDescribeLoadBalancerAttributes :: DescribeLoadBalancerAttributesResponse -> TestTree
 responseDescribeLoadBalancerAttributes = res
     "DescribeLoadBalancerAttributesResponse"
     "fixture/DescribeLoadBalancerAttributesResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeLoadBalancerAttributes)
 
 responseDescribeListeners :: DescribeListenersResponse -> TestTree
 responseDescribeListeners = res
     "DescribeListenersResponse"
     "fixture/DescribeListenersResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeListeners)
 
 responseDescribeTargetHealth :: DescribeTargetHealthResponse -> TestTree
 responseDescribeTargetHealth = res
     "DescribeTargetHealthResponse"
     "fixture/DescribeTargetHealthResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy DescribeTargetHealth)
 
 responseCreateLoadBalancer :: CreateLoadBalancerResponse -> TestTree
 responseCreateLoadBalancer = res
     "CreateLoadBalancerResponse"
     "fixture/CreateLoadBalancerResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy CreateLoadBalancer)
-
-responseRemoveListenerCertificates :: RemoveListenerCertificatesResponse -> TestTree
-responseRemoveListenerCertificates = res
-    "RemoveListenerCertificatesResponse"
-    "fixture/RemoveListenerCertificatesResponse.proto"
-    eLBv2
-    (Proxy :: Proxy RemoveListenerCertificates)
 
 responseModifyRule :: ModifyRuleResponse -> TestTree
 responseModifyRule = res
     "ModifyRuleResponse"
     "fixture/ModifyRuleResponse.proto"
-    eLBv2
+    elbv2
     (Proxy :: Proxy ModifyRule)
-
-responseAddListenerCertificates :: AddListenerCertificatesResponse -> TestTree
-responseAddListenerCertificates = res
-    "AddListenerCertificatesResponse"
-    "fixture/AddListenerCertificatesResponse.proto"
-    eLBv2
-    (Proxy :: Proxy AddListenerCertificates)
