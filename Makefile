@@ -3,7 +3,9 @@ LIBRARIES ?= core amazonka test $(SERVICES)
 FORWARD   := sdist upload upload-docs
 
 build:
-	stack build --fast
+	stack build --fast \
+	--extra-include-dirs=/usr/local/Cellar/icu4c/58.1/include \
+	--extra-lib-dirs=/usr/local/Cellar/icu4c/58.1/lib
 
 clean:
 	stack clean
